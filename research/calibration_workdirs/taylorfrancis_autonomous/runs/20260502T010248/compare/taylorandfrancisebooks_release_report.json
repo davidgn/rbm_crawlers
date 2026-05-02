@@ -1,0 +1,53 @@
+{
+  "site_name": "TaylorAndFranciseBooks",
+  "generated_at_utc": "2026-05-02T05:07:48+00:00",
+  "overall_status": "contained",
+  "release_lane": "quarantine",
+  "probation_class": "provisional",
+  "site_family": "generic",
+  "preflight": {
+    "lint_ok": false,
+    "regression_ok": false,
+    "sentinel_ok": true
+  },
+  "scorecard": {},
+  "diagnostics": {},
+  "promotion_gate": {
+    "overall_status": "fail",
+    "failing_checks": [
+      "acceptance_rate_pct",
+      "evidence_rows",
+      "lint_ok",
+      "regression_ok"
+    ]
+  },
+  "quarantine": {
+    "site_name": "TaylorAndFranciseBooks",
+    "generated_at_utc": "2026-05-02T05:07:48+00:00",
+    "quarantined": true,
+    "release_lane": "quarantine",
+    "summary_reason": "quarantine_mode=force",
+    "reasons": [
+      "quarantine_mode=force"
+    ],
+    "probation_class": "provisional",
+    "gate_overall_status": "fail",
+    "gate_failing_checks": [
+      "acceptance_rate_pct",
+      "evidence_rows",
+      "lint_ok",
+      "regression_ok"
+    ]
+  },
+  "baseline_diff": {
+    "summary_status": "no_reference",
+    "reference_found": false,
+    "notable_regressions": []
+  },
+  "artifacts": {
+    "manifest_file_count": 0,
+    "triage_rows": 0,
+    "alias_rows": 0,
+    "ambiguity_rows": 0
+  }
+}

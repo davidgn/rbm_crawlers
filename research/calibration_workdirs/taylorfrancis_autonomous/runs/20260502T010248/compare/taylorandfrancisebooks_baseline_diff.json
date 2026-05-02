@@ -1,0 +1,15 @@
+{
+  "site_name": "TaylorAndFranciseBooks",
+  "generated_at_utc": "2026-05-02T05:07:48+00:00",
+  "reference_found": false,
+  "baseline_collect_dir": "",
+  "baseline_compare_dir": "",
+  "current_collect_dir": "/home/davidgn/calibration_workdirs/taylorfrancis_autonomous/runs/20260502T010248/collect",
+  "current_compare_dir": "/home/davidgn/calibration_workdirs/taylorfrancis_autonomous/runs/20260502T010248/compare",
+  "metric_changes": [],
+  "breakdown_changes": [],
+  "manifest_changes": [],
+  "pair_delta": {},
+  "notable_regressions": [],
+  "summary_status": "no_reference"
+}

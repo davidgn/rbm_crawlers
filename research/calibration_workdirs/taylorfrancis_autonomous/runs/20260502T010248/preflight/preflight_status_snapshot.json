@@ -1,0 +1,5 @@
+{
+  "lint_ok": false,
+  "regression_ok": false,
+  "sentinel_ok": true
+}

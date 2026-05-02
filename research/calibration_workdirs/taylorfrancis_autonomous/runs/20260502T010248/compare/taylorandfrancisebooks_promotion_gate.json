@@ -1,0 +1,101 @@
+{
+  "site_name": "TaylorAndFranciseBooks",
+  "schema_version": "multisite_release_gate_schema_term6_2026-03-15",
+  "probation_class": "provisional",
+  "evaluated_at_utc": "2026-05-02T05:07:48+00:00",
+  "scorecard": {},
+  "thresholds": {
+    "min_acceptance_rate_pct": 25.0,
+    "min_evidence_rows": 1,
+    "max_ambiguity_per_evidence_pct": 400.0,
+    "max_rows_missing_body_pct": 60.0,
+    "max_rows_missing_outcome_pct": 95.0,
+    "min_high_confidence_rows": 0
+  },
+  "preflight": {
+    "lint_ok": false,
+    "regression_ok": false,
+    "sentinel_ok": true
+  },
+  "checks": [
+    {
+      "check_name": "acceptance_rate_pct",
+      "value": 0.0,
+      "threshold_kind": "min",
+      "threshold_value": 25.0,
+      "status": "fail",
+      "notes": "Accepted fetched pages / fetched pages."
+    },
+    {
+      "check_name": "evidence_rows",
+      "value": 0,
+      "threshold_kind": "min",
+      "threshold_value": 1,
+      "status": "fail",
+      "notes": "Total promoted evidence rows."
+    },
+    {
+      "check_name": "ambiguity_per_evidence_pct",
+      "value": 0.0,
+      "threshold_kind": "max",
+      "threshold_value": 400.0,
+      "status": "pass",
+      "notes": "Ambiguous rows relative to evidence rows."
+    },
+    {
+      "check_name": "rows_missing_body_pct",
+      "value": 0.0,
+      "threshold_kind": "max",
+      "threshold_value": 60.0,
+      "status": "pass",
+      "notes": "Evidence rows lacking an awarding body."
+    },
+    {
+      "check_name": "rows_missing_outcome_pct",
+      "value": 0.0,
+      "threshold_kind": "max",
+      "threshold_value": 95.0,
+      "status": "pass",
+      "notes": "Evidence rows lacking an explicit outcome."
+    },
+    {
+      "check_name": "high_confidence_rows",
+      "value": 0,
+      "threshold_kind": "min",
+      "threshold_value": 0,
+      "status": "pass",
+      "notes": "High-confidence evidence rows in current run."
+    },
+    {
+      "check_name": "lint_ok",
+      "value": "no",
+      "threshold_kind": "preflight",
+      "threshold_value": "yes",
+      "status": "fail",
+      "notes": "Supervisor preflight outcome for this run."
+    },
+    {
+      "check_name": "regression_ok",
+      "value": "no",
+      "threshold_kind": "preflight",
+      "threshold_value": "yes",
+      "status": "fail",
+      "notes": "Supervisor preflight outcome for this run."
+    },
+    {
+      "check_name": "sentinel_ok",
+      "value": "yes",
+      "threshold_kind": "preflight",
+      "threshold_value": "yes",
+      "status": "pass",
+      "notes": "Supervisor preflight outcome for this run."
+    }
+  ],
+  "overall_status": "fail",
+  "failing_checks": [
+    "acceptance_rate_pct",
+    "evidence_rows",
+    "lint_ok",
+    "regression_ok"
+  ]
+}

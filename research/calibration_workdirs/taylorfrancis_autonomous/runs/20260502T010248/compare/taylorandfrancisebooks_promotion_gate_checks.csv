@@ -1,0 +1,10 @@
+check_name,value,threshold_kind,threshold_value,status,notes
+acceptance_rate_pct,0.0,min,25.0,fail,Accepted fetched pages / fetched pages.
+evidence_rows,0,min,1,fail,Total promoted evidence rows.
+ambiguity_per_evidence_pct,0.0,max,400.0,pass,Ambiguous rows relative to evidence rows.
+rows_missing_body_pct,0.0,max,60.0,pass,Evidence rows lacking an awarding body.
+rows_missing_outcome_pct,0.0,max,95.0,pass,Evidence rows lacking an explicit outcome.
+high_confidence_rows,0,min,0,pass,High-confidence evidence rows in current run.
+lint_ok,no,preflight,yes,fail,Supervisor preflight outcome for this run.
+regression_ok,no,preflight,yes,fail,Supervisor preflight outcome for this run.
+sentinel_ok,yes,preflight,yes,pass,Supervisor preflight outcome for this run.

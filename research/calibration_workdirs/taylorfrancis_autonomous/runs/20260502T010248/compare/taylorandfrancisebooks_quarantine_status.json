@@ -1,0 +1,18 @@
+{
+  "site_name": "TaylorAndFranciseBooks",
+  "generated_at_utc": "2026-05-02T05:07:48+00:00",
+  "quarantined": true,
+  "release_lane": "quarantine",
+  "summary_reason": "quarantine_mode=force",
+  "reasons": [
+    "quarantine_mode=force"
+  ],
+  "probation_class": "provisional",
+  "gate_overall_status": "fail",
+  "gate_failing_checks": [
+    "acceptance_rate_pct",
+    "evidence_rows",
+    "lint_ok",
+    "regression_ok"
+  ]
+}
