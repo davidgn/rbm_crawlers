@@ -1,3 +1,4 @@
+import argparse
 import time
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
@@ -97,5 +98,8 @@ class SastoKitabSpider(BaseSpider):
         self.save_item(item)
 
 if __name__ == "__main__":
-    spider = SastoKitabSpider(limit_pages=3)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=10)
+    args = parser.parse_args()
+    spider = SastoKitabSpider(limit_pages=args.limit)
     spider.run()

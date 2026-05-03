@@ -1,3 +1,4 @@
+import argparse
 import httpx
 from bs4 import BeautifulSoup
 import time
@@ -88,5 +89,8 @@ class KitabainSpider(BaseSpider):
         self.save_item(item)
 
 if __name__ == "__main__":
-    spider = KitabainSpider(limit_pages=3) # Dry run limit
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=10)
+    args = parser.parse_args()
+    spider = KitabainSpider(limit_pages=args.limit)
     spider.run()
