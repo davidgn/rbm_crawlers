@@ -20,10 +20,10 @@ class KitabainSpider(BaseSpider):
         ]
 
     def run(self):
-        self.logger.info(f"Starting Kitabain Crawler. Priority: English/All. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Kitabain Harvest (Cache-First). Priority: English/All. Limit: {self.limit_pages} pages.")
         
         for cat in self.categories:
-            self.logger.info(f"=== Crawling Category: {cat['name']} ===")
+            self.logger.info(f"=== Harvesting Category: {cat['name']} ===")
             for page in range(1, self.limit_pages + 1):
                 url = f"{cat['url']}?page={page}"
                 try:
@@ -40,14 +40,15 @@ class KitabainSpider(BaseSpider):
 
                 for item in items:
                     try:
-                        self._parse_item(item, cat['name'])
+                        self._harvest_item(item, cat['name'])
                     except Exception as e:
-                        self.logger.error(f"Error parsing item: {e}")
-                time.sleep(1)
+                        self.logger.error(f"Error harvesting item: {e}")
                 
-        self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
+                time.sleep(1) # Politeness between category pages
+                
+        self.logger.info(f"Finished. Harvested {self.items_scraped} items to cache.")
 
-    def _parse_item(self, div, category_label):
+    def _harvest_item(self, div, category_label):
         title_a = div.find("p").find("a") if div.find("p") else None
         if not title_a: return
             
@@ -56,35 +57,31 @@ class KitabainSpider(BaseSpider):
         if listing_url and listing_url.startswith("/"):
             listing_url = "https://www.kitabain.com" + listing_url
 
+        # Extract a unique ID from the URL (e.g., ...-221715)
+        item_id = listing_url.split("-")[-1] if "-" in listing_url else str(time.time())
+
         try:
             resp = self.client.get(listing_url)
             if resp.status_code == 200:
-                soup = BeautifulSoup(resp.text, "html.parser")
-                details = {}
-                for li in soup.find_all("li"):
-                    if ":" in li.text:
-                        parts = li.text.split(":", 1)
-                        details[parts[0].strip().lower()] = parts[1].strip()
+                # CACHE FIRST: Dump raw HTML for AI batch processing
+                self.cache_html(item_id, resp.text)
                 
+                # Save a minimal manifest record
                 item = BookListing(
                     territory=self.territory,
                     platform=self.platform_name,
                     title=title,
-                    author=details.get("by"),
-                    isbn=details.get("isbn") if details.get("isbn") != "-" else None,
-                    condition=details.get("condition"),
-                    pages=details.get("no of pages"),
-                    binding="Paperback" if details.get("specification") == "pb" else ("Hardcover" if details.get("specification") == "hb" else details.get("specification")),
-                    category=details.get("category", category_label),
-                    price="PKR " + re.search(r"Rs\s*([\d,.]+)", details.get("price", "")).group(1).replace(",", "") if re.search(r"Rs\s*([\d,.]+)", details.get("price", "")) else None,
                     listing_url=listing_url,
+                    category=category_label,
+                    condition="Cached for AI extraction"
                 )
                 self.save_item(item)
         except Exception as e:
-            self.logger.error(f"Error fetching details for {listing_url}: {e}")
+            self.logger.error(f"Error fetching/caching {listing_url}: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
-    KitabainSpider(limit_pages=args.limit).run()
+    spider = KitabainSpider(limit_pages=args.limit)
+    spider.run()

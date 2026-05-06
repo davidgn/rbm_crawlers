@@ -5,18 +5,26 @@ import random
 import time
 from pathlib import Path
 from models import BookListing
+from ai_extractor import deep_extract
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 
 class BaseSpider:
-    """Base class for RBM Crawlers providing common output and logging features."""
+    """Base class for RBM Crawlers providing common output and caching features."""
     
     def __init__(self, platform_name: str, territory: str):
         self.platform_name = platform_name
         self.territory = territory
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.output_dir = Path(os.path.dirname(os.path.abspath(__file__))) / "data"
-        self.output_dir.mkdir(exist_ok=True)
+        
+        # Paths
+        base_path = Path(os.path.dirname(os.path.abspath(__file__)))
+        self.output_dir = base_path / "data"
+        self.cache_dir = base_path / "cache" / self.platform_name.lower().replace('.', '_')
+        
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        
         self.output_file = self.output_dir / f"{self.platform_name.lower().replace('.', '_')}_listings.jsonl"
         self.items_scraped = 0
         self.user_agents = [
@@ -30,6 +38,13 @@ class BaseSpider:
         with open(self.output_file, 'a', encoding='utf-8') as f:
             f.write(json.dumps(item.to_dict()) + '\n')
         self.items_scraped += 1
+
+    def cache_html(self, item_id: str, html_content: str):
+        """Save raw HTML to cache for batch processing."""
+        cache_file = self.cache_dir / f"{item_id}.html"
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        return cache_file
         
     def random_delay(self, min_s=1, max_s=3):
         time.sleep(random.uniform(min_s, max_s))
@@ -45,6 +60,10 @@ class BaseSpider:
             viewport={'width': 1920, 'height': 1080}
         )
         return browser, context
+
+    def ai_enrich(self, html_content):
+        """Use the bibliographic-parser AI subagent to enrich/extract data."""
+        return deep_extract(html_content)
 
     def run(self):
         """Main execution method. Should be overridden by subclasses."""

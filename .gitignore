@@ -2,5 +2,9 @@
 __pycache__/
 *.log
 src/data/
+data/
+research/decompiled/
+research/retained_qid_A14_repo_search_*/
+research/snapshots/
 *.zip
 .env*

@@ -1,8 +1,6 @@
 import argparse
 import time
 import json
-import os
-import re
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
@@ -12,18 +10,11 @@ class TikiSpider(BaseSpider):
     def __init__(self, limit_pages=50):
         super().__init__(platform_name="Tiki.vn", territory="Vietnam")
         self.limit_pages = limit_pages
-        # Primary is Vietnamese: Prioritizing English (320) then Vietnamese (316) and others
+        # Focus on English Books (320) then Vietnamese (316)
         self.category_ids = [320, 316, 7741, 18328]
-        self.isbn_pattern = re.compile(r'\b(97[89][0-9]{10})\b')
-
-    def scavenge_isbn(self, text):
-        if not text: return None
-        clean_text = re.sub('<[^<]+?>', '', text)
-        match = self.isbn_pattern.search(clean_text)
-        return match.group(1) if match else None
 
     def run(self):
-        self.logger.info(f"Starting Tiki Crawler. Priority: English Books (320). Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Tiki Harvest (Cache-First). Priority: English Books. Limit: {self.limit_pages} pages.")
         
         with sync_playwright() as p:
             browser, context = self.get_playwright_stealth_config(p)
@@ -50,44 +41,26 @@ class TikiSpider(BaseSpider):
                             pid = prod.get('id')
                             if not pid: continue
                             
-                            detail_res = page.evaluate(f'''async () => {{
+                            detail_res_text = page.evaluate(f'''async () => {{
                                 try {{
                                     const res = await fetch("https://tiki.vn/api/v2/products/{pid}");
-                                    return await res.json();
+                                    return await res.text();
                                 }} catch(e) {{ return null; }}
                             }}''')
                             
-                            if not detail_res: continue
-                            
-                            isbn = None
-                            publisher = None
-                            pub_year = None
-                            
-                            for spec in detail_res.get('specifications', []):
-                                for attr in spec.get('attributes', []):
-                                    code = attr.get('code', '').lower()
-                                    name = attr.get('name', '').lower()
-                                    val = attr.get('value')
-                                    if code in ['isbn', 'barcode'] or 'isbn' in name: isbn = val
-                                    if code in ['publisher_vn', 'manufacturer'] or 'phát hành' in name: publisher = val
-                                    if code == 'publication_date': pub_year = val.split('-')[0]
-
-                            if not isbn: isbn = self.scavenge_isbn(detail_res.get('description'))
+                            if detail_res_text:
+                                # CACHE JSON response
+                                self.cache_html(str(pid), detail_res_text)
                                 
-                            listing = BookListing(
-                                territory="Vietnam",
-                                platform="Tiki.vn",
-                                title=detail_res.get('name'),
-                                author=detail_res.get('authors', [{}])[0].get('name') if detail_res.get('authors') else None,
-                                isbn=isbn,
-                                publisher=publisher,
-                                publication_year=pub_year,
-                                category=detail_res.get('categories', {}).get('name'),
-                                price=f"VND {detail_res.get('price')}",
-                                listing_url=f"https://tiki.vn/{detail_res.get('url_path')}",
-                                condition=None
-                            )
-                            self.save_item(listing)
+                                item = BookListing(
+                                    territory="Vietnam",
+                                    platform="Tiki.vn",
+                                    title=prod.get('name') or "Cached API Item",
+                                    listing_url=f"https://tiki.vn/product-p{pid}.html",
+                                    condition="Cached API for extraction"
+                                )
+                                self.save_item(item)
+                        
                         page.wait_for_timeout(1000)
                         
             except Exception as e:

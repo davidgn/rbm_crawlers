@@ -23,13 +23,12 @@ class TaazeSpider(BaseSpider):
         ]
 
     def run(self):
-        self.logger.info(f"Starting TAAZE Crawler with Language & Category prioritization. Limit: {self.limit_pages} pages per category.")
+        self.logger.info(f"Starting TAAZE Harvest (Cache-First). Limit: {self.limit_pages} pages per category.")
         
         for cat in self.categories:
-            self.logger.info(f"=== Crawling Category: {cat['name']} ===")
+            self.logger.info(f"=== Harvesting Category: {cat['name']} ===")
             
             for current_page in range(1, self.limit_pages + 1):
-                # Using gift_index as a discovery surface that often bypasses deep pagination limits
                 url = f"https://www.taaze.tw/gift_index.html?{cat['params']}&cp={current_page}&ps=30&cl=1"
                 self.logger.info(f"Fetching page {current_page}: {url}")
                 
@@ -41,66 +40,43 @@ class TaazeSpider(BaseSpider):
                     p_paths = [l["href"] for l in links if "products/" in l["href"]]
                     
                     if not p_paths:
-                        self.logger.warning(f"No product links found for {cat['name']} at page {current_page}. Moving to next category.")
+                        self.logger.warning(f"No product links found for {cat['name']} at page {current_page}. Moving to next.")
                         break
                         
                     for path in list(set(p_paths)):
                         abs_url = urljoin(self.base_url, path)
                         try:
-                            self._scrape_detail(abs_url, cat['name'])
+                            self._harvest_item(abs_url, cat['name'])
                             time.sleep(0.5)
                         except Exception as e:
-                            self.logger.error(f"Error scraping {abs_url}: {e}")
+                            self.logger.error(f"Error harvesting {abs_url}: {e}")
                             
                 except Exception as e:
                     self.logger.error(f"Page fetch failed: {e}")
                     break
 
-    def _scrape_detail(self, url, category_label):
-        resp = self.client.get(url, headers=self.headers)
-        if resp.status_code != 200: return
-        
-        soup = BeautifulSoup(resp.text, "html.parser")
-        text = soup.get_text()
-        
-        title = soup.find("h1").text.strip() if soup.find("h1") else "Unknown"
-        
-        isbn = None
-        isbn_match = re.search(r"ISBN/ISSN[：:]\s*(\d+)", text)
-        if isbn_match: isbn = isbn_match.group(1)
-        
-        publisher = None
-        pub_match = re.search(r"出版社[：:]\s*([^\n|]+)", text)
-        if pub_match: publisher = pub_match.group(1).split("出版日期")[0].strip()
-        
-        pub_year = None
-        year_match = re.search(r"出版日期[：:]\s*(\d{4})", text)
-        if year_match: pub_year = year_match.group(1)
-        
-        author = None
-        author_match = re.search(r"作者[：:]\s*([^\n|]+)", text)
-        if author_match: author = author_match.group(1).split("譯者")[0].strip()
+    def _harvest_item(self, url, category_label):
+        # Unique ID from products/11101086185.html
+        item_id = url.split("/")[-1].split(".")[0]
 
-        price = None
-        price_match = re.search(r"元\s*(\d+)\s*元", text)
-        if not price_match:
-            price_match = re.search(r"(\d+)\s*元", text)
-        if price_match: price = "TWD " + price_match.group(1)
-
-        listing = BookListing(
-            territory=self.territory,
-            platform=self.platform_name,
-            title=title,
-            author=author,
-            isbn=isbn,
-            publisher=publisher,
-            publication_year=pub_year,
-            price=price,
-            listing_url=url,
-            category=category_label,
-            condition="Used"
-        )
-        self.save_item(listing)
+        try:
+            resp = self.client.get(url, headers=self.headers)
+            if resp.status_code == 200:
+                # CACHE FIRST
+                self.cache_html(item_id, resp.text)
+                
+                # Minimal record
+                item = BookListing(
+                    territory=self.territory,
+                    platform=self.platform_name,
+                    title="Cached Item", # Deep title will come from AI
+                    listing_url=url,
+                    category=category_label,
+                    condition="Cached for AI extraction"
+                )
+                self.save_item(item)
+        except Exception as e:
+            self.logger.error(f"Error fetching/caching {url}: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
