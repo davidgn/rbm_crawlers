@@ -3,94 +3,88 @@ import httpx
 from bs4 import BeautifulSoup
 import time
 import re
-import math
 from models import BookListing
 from base_spider import BaseSpider
 
 class KitabainSpider(BaseSpider):
     def __init__(self, limit_pages=100):
         super().__init__(platform_name="Kitabain", territory="Pakistan")
-        self.base_url = "https://www.kitabain.com/books/all"
         self.limit_pages = limit_pages
         self.client = httpx.Client(timeout=30.0, follow_redirects=True)
+        # English is dominant: Focus on English/All first
+        self.categories = [
+            {"name": "All Books", "url": "https://www.kitabain.com/books/all"},
+            {"name": "English Literature", "url": "https://www.kitabain.com/books/english-literature"},
+            {"name": "Urdu Books", "url": "https://www.kitabain.com/books/Urdu-Books"},
+            {"name": "Other Language", "url": "https://www.kitabain.com/books/Other-Language"}
+        ]
 
     def run(self):
-        self.logger.info(f"Starting Kitabain crawler. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Kitabain Crawler. Priority: English/All. Limit: {self.limit_pages} pages.")
         
-        for page in range(1, self.limit_pages + 1):
-            url = f"{self.base_url}?page={page}"
-            self.logger.info(f"Fetching page {page}: {url}")
-            
-            try:
-                response = self.client.get(url)
-                response.raise_for_status()
-            except Exception as e:
-                self.logger.error(f"Failed to fetch {url}: {e}")
-                break
-
-            soup = BeautifulSoup(response.text, "html.parser")
-            items = soup.find_all("div", class_="bookimgdiv")
-            if not items:
-                self.logger.info(f"No items found on page {page}. Stopping.")
-                break
-
-            for item in items:
+        for cat in self.categories:
+            self.logger.info(f"=== Crawling Category: {cat['name']} ===")
+            for page in range(1, self.limit_pages + 1):
+                url = f"{cat['url']}?page={page}"
                 try:
-                    self._parse_item(item)
+                    response = self.client.get(url)
+                    if response.status_code == 500: continue
+                    response.raise_for_status()
                 except Exception as e:
-                    self.logger.error(f"Error parsing item on page {page}: {e}")
-
-            # Check if there's a next page link
-            pagination = soup.find(class_="pagination")
-            if pagination:
-                next_page_link = pagination.find("a", href=lambda h: h and f"page={page+1}" in h)
-                if not next_page_link:
-                    self.logger.info("No next page link found. Reached end of pagination.")
+                    self.logger.error(f"Failed to fetch {url}: {e}")
                     break
-            else:
-                break
+
+                soup = BeautifulSoup(response.text, "html.parser")
+                items = soup.find_all("div", class_="bookimgdiv")
+                if not items: break
+
+                for item in items:
+                    try:
+                        self._parse_item(item, cat['name'])
+                    except Exception as e:
+                        self.logger.error(f"Error parsing item: {e}")
+                time.sleep(1)
                 
-            time.sleep(1) # Polite delay
-            
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
 
-    def _parse_item(self, div):
-        # Extract Title and URL
+    def _parse_item(self, div, category_label):
         title_a = div.find("p").find("a") if div.find("p") else None
-        if not title_a:
-            return
+        if not title_a: return
             
         title = title_a.text.strip()
         listing_url = title_a.get("href")
         if listing_url and listing_url.startswith("/"):
             listing_url = "https://www.kitabain.com" + listing_url
 
-        # Extract Author
-        author_p = div.find("p", class_="other_name")
-        author = author_p.text.strip() if author_p else None
-
-        # Extract Price
-        price_val = None
-        price_texts = div.find_all(string=re.compile(r"Rs"))
-        for pt in price_texts:
-            match = re.search(r"Rs\s*([\d,.]+)", pt)
-            if match:
-                price_val = "PKR " + match.group(1).replace(",", "")
-                break
-
-        item = BookListing(
-            territory=self.territory,
-            platform=self.platform_name,
-            title=title,
-            author=author,
-            price=price_val,
-            listing_url=listing_url,
-        )
-        self.save_item(item)
+        try:
+            resp = self.client.get(listing_url)
+            if resp.status_code == 200:
+                soup = BeautifulSoup(resp.text, "html.parser")
+                details = {}
+                for li in soup.find_all("li"):
+                    if ":" in li.text:
+                        parts = li.text.split(":", 1)
+                        details[parts[0].strip().lower()] = parts[1].strip()
+                
+                item = BookListing(
+                    territory=self.territory,
+                    platform=self.platform_name,
+                    title=title,
+                    author=details.get("by"),
+                    isbn=details.get("isbn") if details.get("isbn") != "-" else None,
+                    condition=details.get("condition"),
+                    pages=details.get("no of pages"),
+                    binding="Paperback" if details.get("specification") == "pb" else ("Hardcover" if details.get("specification") == "hb" else details.get("specification")),
+                    category=details.get("category", category_label),
+                    price="PKR " + re.search(r"Rs\s*([\d,.]+)", details.get("price", "")).group(1).replace(",", "") if re.search(r"Rs\s*([\d,.]+)", details.get("price", "")) else None,
+                    listing_url=listing_url,
+                )
+                self.save_item(item)
+        except Exception as e:
+            self.logger.error(f"Error fetching details for {listing_url}: {e}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
-    spider = KitabainSpider(limit_pages=args.limit)
-    spider.run()
+    KitabainSpider(limit_pages=args.limit).run()

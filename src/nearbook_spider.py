@@ -45,7 +45,6 @@ class NearBookSpider(BaseSpider):
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
 
     def _parse_item(self, book_id, list_book_data):
-        # Fetch details to get author and condition
         detail_url = f"{self.base_url}/getBookDetail?bookId={book_id}&locationId=0"
         
         try:
@@ -67,7 +66,6 @@ class NearBookSpider(BaseSpider):
         price = book_details.get("price")
         price_val = f"INR {price}" if price else None
         
-        # condition is an int enum in the API, usually 0=New, 1=Like New, etc. We'll store the raw or map it if known
         condition_val = book_details.get("condition")
         condition = str(condition_val) if condition_val is not None else None
 
@@ -76,9 +74,12 @@ class NearBookSpider(BaseSpider):
             platform=self.platform_name,
             title=title,
             author=author,
+            edition=book_details.get("book_edition"),
+            category=str(book_details.get("book_category_id")),
             price=price_val,
             condition=condition,
-            listing_url=f"https://nearbook.app/book/{book_id}", # Assuming web representation
+            listing_url=f"https://nearbook.app/book/{book_id}",
+            seller_id=str(book_details.get("userId")) if book_details.get("userId") else None
         )
         self.save_item(item)
 

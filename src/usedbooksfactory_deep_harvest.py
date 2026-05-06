@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 import logging
+import re
 import random
 import signal
 from datetime import datetime
@@ -108,12 +109,19 @@ class UsedBooksFactoryDeepHarvest:
             if "Condition" in p.text:
                 condition = p.text.replace("Condition", "").replace(":", "").strip()
                 break
+        
+        # ISBN Scavenging
+        isbn = None
+        isbn_match = re.search(r'\b(97[89][0-9]{10})\b', full_title + soup.get_text())
+        if isbn_match:
+            isbn = isbn_match.group(1)
 
         item = BookListing(
             territory="India",
             platform="UsedBooksFactory",
             title=title,
             author=author,
+            isbn=isbn,
             price=price_val,
             condition=condition,
             listing_url=url

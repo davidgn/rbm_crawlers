@@ -5,7 +5,7 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class BooktionarySpider(BaseSpider):
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=200):
         super().__init__(platform_name="Booktionary", territory="Bangladesh")
         self.limit_pages = limit_pages
 

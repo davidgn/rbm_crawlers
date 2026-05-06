@@ -1,67 +1,79 @@
-import re
+import json
+from pathlib import Path
 
-manifest_path = "/home/davidgn/active_repos/openrefine-reconciliation-service/lib/schemas/manifest.py"
-dispatch_path = "/home/davidgn/active_repos/openrefine-reconciliation-service/lib/reconcile_dispatch.py"
+repo_root = Path("/media/davidgn/data8/active_repos/unipress-parser-crawler-family")
+sites_dir = repo_root / "config/sites"
 
-targets = [
-    ("Dictionary_of_Norwegian_Translators_ID", "P13211", "Person", "Dictionary of Norwegian Translators"),
-    ("Dictionary_of_Swedish_Translators_ID", "P5147", "Person", "Dictionary of Swedish Translators"),
-    ("MAPS_poet_ID", "P5509", "Person", "MAPS Poet"),
-    ("Finnish_national_bibliography_corporate_name_ID", "P5266", "Organization", "Finnish National Bibliography (Org)"),
-    ("A_Dictionary_of_Biology_ID", "P12774", "Work", "Oxford Dictionary of Biology"),
-    ("A_Dictionary_of_Contemporary_Icelandic_ID", "P12790", "Work", "Dictionary of Contemporary Icelandic"),
-    ("A_Dictionary_of_Media_and_Communication_entry_ID", "P13542", "Work", "Oxford Dict of Media & Communication"),
-    ("A_Dictionary_of_Sociology_entry_ID", "P13277", "Work", "Oxford Dictionary of Sociology"),
-    ("A_Dictionary_of_Geography_entry_ID", "P13276", "Work", "Oxford Dictionary of Geography"),
-    ("A_Dictionary_of_Education_entry_ID", "P13431", "Work", "Oxford Dictionary of Education"),
-    ("A_Dictionary_of_Plant_Sciences_ID", "P12788", "Work", "Oxford Dictionary of Plant Sciences"),
-    ("A_Dictionary_of_Zoology_ID", "P12789", "Work", "Oxford Dictionary of Zoology"),
-    ("Alabama_Authors_ID", "P11831", "Person", "Alabama Authors"),
-    ("Alsharekh_Archive_author_ID", "P9792", "Person", "Alsharekh Archive Arabic Author"),
-    ("Acervo_de_Literatura_Digital_Mato-Grossense_person_ID", "P13075", "Person", "Literatura Digital Mato-Grossense"),
-    ("Anglo-Norman_Dictionary_entry", "P12441", "Work", "Anglo-Norman Dictionary"),
-    ("Archives_de_la_critique_d_art_author_ID", "P6635", "Person", "Archives de la critique d'art"),
-    ("ASCAP_ACE_Repertory_publisher_ID", "P10550", "Organization", "ASCAP ACE Repertory Publisher"),
-    ("Associacio_d_Escriptors_en_Llengua_Catalana_author_ID", "P13086", "Person", "Catalan Writers (AELC)"),
-    ("Association_francaise_pour_l_avancement_des_sciences_ID", "P6038", "Person", "AFAS Scholarly Profiles"),
-    ("Australian_Dictionary_of_Biography_ID", "P1907", "Person", "Australian Dictionary of Biography"),
-    ("Bologna_Children_s_Book_Fair_exhibitor_ID", "P11634", "Organization", "Bologna Book Fair Exhibitor"),
-    ("Book_Industry_Communication_ID", "P12130", "Organization", "Book Industry Communication"),
-    ("Book_Trust_author_ID", "P11739", "Person", "Book Trust Author"),
-    ("Book_Web_Taiwan_author_ID", "P11578", "Person", "Book Web Taiwan Author"),
-    ("British_Council_Writers_ID", "P5364", "Person", "British Council Writers"),
-    ("Cambridge_University_Press_book_ID", "P12847", "Work", "Cambridge University Press Book"),
-    ("Catalogo_Informatizzato_delle_Riviste_Italiane_ID", "P11942", "Work", "Italian Journals (CIRI)"),
-    ("Centro_de_Documentacion_de_las_Artes_Escenicas_ID", "P12389", "Person", "Spanish Performing Arts Doc"),
-    ("Chambers_Biographical_Dictionary_ID", "P11235", "Person", "Chambers Biographical Dictionary")
-]
+# 1. Apply Promotions (Batch 18 & 19)
+promotion_files = ["/home/davidgn/batch18_promotions.json", "/home/davidgn/batch19_promotions.json"]
 
-# 1. Update manifest.py
-with open(manifest_path, 'r') as f:
-    content = f.read()
+for promo_file in promotion_files:
+    if not Path(promo_file).exists():
+        continue
+    with open(promo_file, 'r') as f:
+        promotions = json.load(f)["promotions"]
 
-# Add to DEFAULT_TYPE_IDS
-new_ids = [t[0] for t in targets]
-formatted_ids = ",\n    " + ",\n    ".join([f"'{i}'" for i in new_ids])
-content = re.sub(r"'VIAF_Personal'\]", f"'VIAF_Personal'{formatted_ids}]", content)
+    for p in promotions:
+        filename = p['slug'] + ".json"
+        filepath = sites_dir / filename
+        # Standard template
+        profile = {
+            "site_name": p['site_name'],
+            "slug": p['slug'],
+            "base_url": p['base_url'],
+            "discovery_mode": p['discovery_mode'],
+            "book_url_regex": p['book_url_regex'],
+            "title_suffix_regexes": p.get('title_suffix_regexes', []),
+            "awards_heading_names": p.get('awards_heading_names', ["Awards", "Prizes"]),
+            "evidence_normalizer_family": "generic",
+            "probation_class": "provisional",
+            "site_policy": {
+                "default_delay_seconds": 1.0,
+                "default_max_pages": 100,
+                "honor_robots": True,
+                "preferred_release_lane": "quarantine"
+            },
+            "wikidata_qid": p.get('wikidata_qid', "")
+        }
+        if 'sitemap_guesses' in p:
+            profile['sitemap_guesses'] = p['sitemap_guesses']
+        
+        with open(filepath, 'w') as f:
+            json.dump(profile, f, indent=2, ensure_ascii=False)
 
-# Add to TYPE_NAME_OVERRIDES
-new_overrides = ",\n    " + ",\n    ".join([f"'{t[0]}': '{t[2]} -- {t[3]}'" for t in targets])
-content = re.sub(r"'VIAF_Personal': 'Name -- VIAF Personal',\n\}", f"'VIAF_Personal': 'Name -- VIAF Personal'{new_overrides},\n}}", content)
+# 2. Apply Backlog Repairs (Batch 2 & 3)
+repair_files = ["/home/davidgn/backlog_repair_batch2.json", "/home/davidgn/backlog_repair_batch3.json"]
 
-with open(manifest_path, 'w') as f:
-    f.write(content)
+# We need to find the correct filename for the backlog items.
+name_to_file = {}
+for site_file in sites_dir.glob("*.json"):
+    with open(site_file, 'r') as f:
+        try:
+            d = json.load(f)
+            name_to_file[d.get('site_name', '')] = site_file
+        except:
+            continue
 
-# 2. Update reconcile_dispatch.py
-with open(dispatch_path, 'r') as f:
-    content = f.read()
+for r_file in repair_files:
+    if not Path(r_file).exists():
+        continue
+    with open(r_file, 'r') as f:
+        repairs = json.load(f)["repairs"]
 
-# Add to SPARQL_PROPERTIES
-new_props = ",\n    " + ",\n    ".join([f"'{t[0]}': ('{t[1]}', '{t[2]}', 'en')" for t in targets])
-# Need to find the end of SPARQL_PROPERTIES
-content = re.sub(r"'TwoGIS_Place': \('P12487', 'Place', 'en'\),\n\}", f"'TwoGIS_Place': ('P12487', 'Place', 'en'){new_props},\n}}", content)
+    for r in repairs:
+        name = r['site_name']
+        if name in name_to_file:
+            filepath = name_to_file[name]
+            with open(filepath, 'r') as f:
+                profile = json.load(f)
+            
+            profile['base_url'] = r['base_url']
+            profile['book_url_regex'] = r['book_url_regex']
+            profile['discovery_mode'] = r['discovery_mode']
+            
+            with open(filepath, 'w') as f:
+                json.dump(profile, f, indent=2, ensure_ascii=False)
+        else:
+            print(f"Warning: Could not find file for {name}")
 
-with open(dispatch_path, 'w') as f:
-    f.write(content)
-
-print("Updated manifest.py and reconcile_dispatch.py")
+print("Site configuration updates complete.")
