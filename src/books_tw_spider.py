@@ -13,102 +13,79 @@ class BooksTwSpider(BaseSpider):
         self.base_url = "https://www.books.com.tw"
 
     def run(self):
-        self.logger.info(f"Starting Books.com.tw Crawler. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Books.com.tw Harvest (Cache-First). Limit: {self.limit_pages} pages.")
         
         with sync_playwright() as p:
-            # Use headful mode conceptually but since we are in CLI, we use standard launch
-            # but with slow_mo to appear more human
-            browser = p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
-            context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-                viewport={"width": 1920, "height": 1080}
-            )
+            browser, context = self.get_playwright_stealth_config(p)
             page = context.new_page()
             Stealth().apply_stealth_sync(page)
             
             try:
-                # Start URL for new arrivals
-                start_url = "https://www.books.com.tw/web/books_n_newbook_01/?o=1&v=1"
+                # Optimized Start URL: 30-day new arrivals (more stable than daily)
+                start_url = "https://www.books.com.tw/web/books_n_newbook_02/?o=1&v=1"
                 
                 for current_page in range(1, self.limit_pages + 1):
                     url = f"{start_url}&page={current_page}"
-                    self.logger.info(f"Fetching page {current_page}: {url}")
+                    self.logger.info(f"Fetching index page {current_page}: {url}")
                     
                     try:
                         page.goto(url, wait_until="domcontentloaded", timeout=60000)
-                        page.wait_for_timeout(5000) # Give Cloudflare time to clear
+                        page.wait_for_timeout(3000)
                     except Exception as e:
                         self.logger.error(f"Failed to load {url}: {e}")
                         continue
                         
-                    # Extract product links
+                    # Extract product links using a broader selector
+                    # Books.com.tw often uses .item, .msg, or simple <a> tags in a list
                     links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
-                    product_links = list(set([l for l in links if "/products/" in l and "loc=" not in l and "?loc=" not in l]))
+                    product_links = list(set([l for l in links if "/products/" in l and ("?loc=" in l or "loc=" in l)]))
                     
                     if not product_links:
-                        self.logger.warning("No product links found. Attempting to scroll...")
-                        page.evaluate("window.scrollBy(0, 1000)")
-                        page.wait_for_timeout(2000)
-                        links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
-                        product_links = list(set([l for l in links if "/products/" in l and "loc=" not in l]))
+                        self.logger.warning("No product links found with primary pattern. Trying secondary...")
+                        product_links = list(set([l for l in links if "/products/" in l and l.split("/products/")[1][:10].isdigit()]))
 
-                    self.logger.info(f"Found {len(product_links)} products.")
+                    self.logger.info(f"Found {len(product_links)} products on index page.")
                     
                     for plink in product_links:
                         try:
-                            self._scrape_detail(page, plink)
-                            page.wait_for_timeout(2000) # Politeness
+                            self._harvest_item(page, plink)
+                            page.wait_for_timeout(1000)
                         except Exception as e:
-                            self.logger.error(f"Error scraping {plink}: {e}")
+                            self.logger.error(f"Error harvesting {plink}: {e}")
                             
             except Exception as e:
-                self.logger.error(f"Crawl failed: {e}")
+                self.logger.error(f"Harvest failed: {e}")
             finally:
                 browser.close()
 
-    def _scrape_detail(self, page, url):
+    def _harvest_item(self, page, url):
+        # Extract unique ID (e.g., 0011049935)
+        # URL pattern: https://www.books.com.tw/products/0011049935?loc=...
+        item_id_match = re.search(r"/products/(\d+)", url)
+        item_id = item_id_match.group(1) if item_id_match else str(time.time())
+        
+        self.logger.info(f"Harvesting item: {url}")
         page.goto(url, wait_until="domcontentloaded", timeout=30000)
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(1500)
         
-        text = page.inner_text("body")
-        title = page.locator("h1").inner_text() if page.locator("h1").count() > 0 else "Unknown"
+        html_content = page.content()
         
-        isbn = None
-        isbn_match = re.search(r"ISBN[：:]\s*(\d+)", text)
-        if isbn_match: isbn = isbn_match.group(1)
+        # CACHE FIRST
+        self.cache_html(item_id, html_content)
         
-        publisher = None
-        pub_match = re.search(r"出版社[：:]\s*([^\n|]+)", text)
-        if pub_match: publisher = pub_match.group(1).strip()
-        
-        pub_year = None
-        date_match = re.search(r"出版日期[：:]\s*(\d{4})", text)
-        if date_match: pub_year = date_match.group(1)
-        
-        author = None
-        author_match = re.search(r"作者[：:]\s*([^\n|]+)", text)
-        if author_match: author = author_match.group(1).strip()
-
-        price = None
-        price_match = re.search(r"優惠價[：:]\s*(\d+)\s*元", text)
-        if price_match: price = "TWD " + price_match.group(1)
-
-        listing = BookListing(
-            territory="Taiwan",
-            platform="Books.com.tw",
-            title=title,
-            author=author,
-            isbn=isbn,
-            publisher=publisher,
-            publication_year=pub_year,
-            price=price,
+        # Save minimal record
+        item = BookListing(
+            territory=self.territory,
+            platform=self.platform_name,
+            title="Cached Item", # Deep title will come from AI
             listing_url=url,
-            condition="New"
+            condition="Cached for AI extraction"
         )
-        self.save_item(listing)
+        self.save_item(item)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=50)
+    parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
-    BooksTwSpider(limit_pages=args.limit).run()
+    spider = BooksTwSpider(limit_pages=args.limit)
+    spider.run()
