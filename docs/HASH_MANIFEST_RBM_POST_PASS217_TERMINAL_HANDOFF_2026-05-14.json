@@ -1,0 +1,137 @@
+[
+  {
+    "filename": "00_READ_FIRST_CAPSULE_HISTORY_RBM_PASS193_TO_PASS217_TERMINAL_HANDOFF_2026-05-14.md",
+    "sha256": "099cd07baefc1ad7a8a5ff81ba295c1ac3a049a81692159d794c766eee90d618",
+    "bytes": 5572
+  },
+  {
+    "filename": "00_READ_FIRST_CAPSULE_HISTORY_RBM_PASS217_2026-05-06.md",
+    "sha256": "7d34b4daf64e0e3f4eac6c02d176ce3588fc630e74c897b88ff101e3705ccaa1",
+    "bytes": 774
+  },
+  {
+    "filename": "00_READ_FIRST_CONTINUITY_HANDOFF_RBM_POST_PASS217_2026-05-06.md",
+    "sha256": "3cd1090f45db9f6a18b23b4f74ad1e37dc097cf0949c5526cd96de1c1ae26867",
+    "bytes": 1112
+  },
+  {
+    "filename": "00_READ_FIRST_CONTINUITY_HANDOFF_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.md",
+    "sha256": "3ced74c23bf601464c3cc6cf55608bddefd3b4a1973632eed4fc4bfb4a1b1192",
+    "bytes": 3692
+  },
+  {
+    "filename": "00_READ_FIRST_RESUME_PROMPT_RBM_POST_PASS217_2026-05-06.md",
+    "sha256": "16b6f021c6128550979a2eee5cd921af38c426fa898e448a465679c349c04192",
+    "bytes": 672
+  },
+  {
+    "filename": "00_READ_FIRST_RESUME_PROMPT_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.md",
+    "sha256": "86a380e9354a884a8011850ebe0a77c38de7310536def946484df5f9d7a3de88",
+    "bytes": 2096
+  },
+  {
+    "filename": "00_READ_FIRST_TECHNICAL_OBSERVATIONS_AND_DECISIONS_RBM_POST_PASS217_2026-05-06.md",
+    "sha256": "13a5aec3d7fafb2f3194b2d9e5c4e0e84c3ff27b5ba6ba5853de9222dd4ef609",
+    "bytes": 891
+  },
+  {
+    "filename": "00_READ_FIRST_TECHNICAL_OBSERVATIONS_AND_DECISIONS_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.md",
+    "sha256": "840d65a7678e1a22f0b6585fae93cc57f24b85cf63d208974f518f57b20ee98e",
+    "bytes": 4071
+  },
+  {
+    "filename": "COMPLETE_CHAT_TRANSCRIPT_RBM_PASS193_TO_PASS217_VISIBLE_TERMINAL_HANDOFF_2026-05-14.md",
+    "sha256": "c481bdaa8ec9e644ebf99058a7fdcf2a10a5ca06c1be9e275234427a842c6c39",
+    "bytes": 16620
+  },
+  {
+    "filename": "COMPLETE_CHAT_TRANSCRIPT_RBM_PASS217_BEST_AVAILABLE_2026-05-06.md",
+    "sha256": "599be9f2e2d6869d5dd4caed566f09404baade498f90fe22399eef5ff62bb5ea",
+    "bytes": 150
+  },
+  {
+    "filename": "CURRENT_STATE_SNAPSHOT_RBM_PASS217_RUSSIA_FINAL_SATURATION_CLEANUP_2026-05-06.json",
+    "sha256": "2f81d5e868813082d29a9ab1091e38825287e622d778fa040be9fcccc83202bc",
+    "bytes": 942
+  },
+  {
+    "filename": "HASH_MANIFEST_RBM_PASS217_RUSSIA_FINAL_SATURATION_CLEANUP_2026-05-06.json",
+    "sha256": "1936b8d41198476d93f2347a7d16b77c099518026dbef160d484d54f938e47df",
+    "bytes": 2341
+  },
+  {
+    "filename": "NON_SUPERSEDED_ARTIFACT_INDEX_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.csv",
+    "sha256": "c00cb5ee167db43dbf442e1b885bc63fd41157c9aa34d5805978405e329e7ca8",
+    "bytes": 3530
+  },
+  {
+    "filename": "PACKAGE_FILE_LIST_RBM_PASS217_RUSSIA_FINAL_SATURATION_CLEANUP_2026-05-06.json",
+    "sha256": "b5d628d61d862efe3f62ce261474b10e5f8aaf2771752beb6cd17b4bf4f60a3e",
+    "bytes": 1820
+  },
+  {
+    "filename": "README_RBM_PASS217_RUSSIA_FINAL_SATURATION_CLEANUP_2026-05-06.md",
+    "sha256": "71cdf57c669b21ecffb264613597a24c88c27f56f40f75cc0670faa75c9190f4",
+    "bytes": 72
+  },
+  {
+    "filename": "README_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.md",
+    "sha256": "982210f2413a95e077eedbe99a7930ed54e88901e5f37c59de397865df7f2ac1",
+    "bytes": 417
+  },
+  {
+    "filename": "ROW_COUNT_VALIDATION_RBM_PASS217_RUSSIA_FINAL_SATURATION_CLEANUP_2026-05-06.txt",
+    "sha256": "25016d698d3ca4ca0340b45dac03e5b446c8911a024dae59160c39799f1a308f",
+    "bytes": 592
+  },
+  {
+    "filename": "ROW_COUNT_VALIDATION_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.txt",
+    "sha256": "57fbd60dc14909d10f7a7c90ce21b0f5da9ad2881fafabe4bfb04f9bd5a61d02",
+    "bytes": 894
+  },
+  {
+    "filename": "SHA256SUMS_RBM_PASS217_RUSSIA_FINAL_SATURATION_CLEANUP_2026-05-06.txt",
+    "sha256": "838f65b5b725463e1e1f0fb247fa5ef8f5b74fe90e5540c59fef72727876c578",
+    "bytes": 2227
+  },
+  {
+    "filename": "SUPERSEDED_OR_EXCLUDED_ARTIFACT_INDEX_RBM_POST_PASS217_TERMINAL_HANDOFF_2026-05-14.csv",
+    "sha256": "dbd1ac2dbe7f3edc361c30c7cad319db63b8e1e0f56dbe244727fa31692eed7a",
+    "bytes": 5198
+  },
+  {
+    "filename": "build_pass217_russia_final_saturation_cleanup.py",
+    "sha256": "850dc7f4f6e5d2af0a9931459c3964bb5155c4cdfc6f4c49f035f35094f816b5",
+    "bytes": 106
+  },
+  {
+    "filename": "rbm_all_categories_verbose_compile_2026-05-06_pass217_russia_final_saturation_cleanup.csv",
+    "sha256": "749380641a8db2ef21039af0b5ec3a2a98fec6ed16f8e9f514d19e13e2b8ef5b",
+    "bytes": 874844
+  },
+  {
+    "filename": "rbm_canonical_site_registry_2026-05-06_pass217_russia_final_saturation_cleanup.csv",
+    "sha256": "b53078b0301cf97b56d13e3cddf93f6869cd01af6c6de6fee6bc761d38b881dd",
+    "bytes": 946195
+  },
+  {
+    "filename": "rbm_revisit_queue_2026-05-06_pass217_russia_final_saturation_cleanup.csv",
+    "sha256": "a302aeef6d7f40e601fef311b4cbbf53b2229e11206eb40fc8b67c4a5cbe33f6",
+    "bytes": 113364
+  },
+  {
+    "filename": "rbm_runtime_gap_bridge_evidence_2026-05-06_pass217_russia_final_saturation_cleanup.csv",
+    "sha256": "64ab0da2cd6d8a914c3af3cd574b92b79406bcf06ca389924e5974bc8fdbd1a9",
+    "bytes": 1063393
+  },
+  {
+    "filename": "rbm_sources_consulted_2026-05-06_pass217_russia_final_saturation_cleanup.csv",
+    "sha256": "87b298e8bda28546a4ecc93231420cba333dcaff5fc133db4faeddb76f2bcd8d",
+    "bytes": 433766
+  },
+  {
+    "filename": "rbm_territory_summaries_2026-05-06_pass217_russia_final_saturation_cleanup.csv",
+    "sha256": "1b1e1f6008632680ccef92eff71923c1a4ec32b437a0956b75602b397e61b676",
+    "bytes": 146377
+  }
+]

@@ -1,0 +1,26 @@
+filename,status,reason
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass193_croatia_vFINAL(1).zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass193_croatia_vFINAL(2).zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass194_slovenia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass195_venezuela_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass196_venezuela_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass197_hong_kong_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass198_hong_kong_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass199_hong_kong_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass200_philippines_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass201_philippines_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass202_egypt_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass203_egypt_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass205_romania_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass206_indonesia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass207_indonesia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass208_malaysia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass209_malaysia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass210_ukraine_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass211_ukraine_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass212_russia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass213_russia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass214_russia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass215_russia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass216_russia_vFINAL.zip,superseded_by_terminal_pass217_csvs,Earlier checkpoint ZIP superseded by latest pass217 live CSV surfaces and terminal handoff.
+rbm_checkpoint_handoff_FLAT_ROOT_2026-05-06_post_pass217_russia_vFINAL.zip,source_parent_excluded_after_flat_extraction,Parent ZIP was unpacked; non-ZIP contents copied flat into terminal handoff; nested ZIP deliberately excluded.

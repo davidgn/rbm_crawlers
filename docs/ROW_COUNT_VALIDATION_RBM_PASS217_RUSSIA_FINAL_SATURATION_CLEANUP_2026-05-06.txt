@@ -1,0 +1,5 @@
+RBM pass217 Russia final saturation cleanup row-count validation
+Parent counts: {'territories': 202, 'explicit_rows': 2250, 'canonical_rows': 2235, 'revisit_rows': 221, 'source_rows': 2573, 'evidence_rows': 2132}
+New counts: {'territories': 202, 'explicit_rows': 2254, 'canonical_rows': 2239, 'revisit_rows': 221, 'source_rows': 2581, 'evidence_rows': 2140}
+Delta: {'territories': 0, 'explicit_rows': 4, 'canonical_rows': 4, 'revisit_rows': 0, 'source_rows': 8, 'evidence_rows': 8}
+Direct CSV validation performed by build_pass217_russia_final_saturation_cleanup.py from pass216 parent CSVs.

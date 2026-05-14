@@ -1,0 +1,14 @@
+# Row count validation — RBM post-pass217 terminal handoff, 2026-05-14
+
+Direct CSV validation performed during terminal packaging.
+
+File | Data rows | Columns
+--- | ---: | ---:
+`rbm_all_categories_verbose_compile_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2254 | 10
+`rbm_canonical_site_registry_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2239 | 12
+`rbm_revisit_queue_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 221 | 5
+`rbm_sources_consulted_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2581 | 5
+`rbm_runtime_gap_bridge_evidence_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2140 | 14
+`rbm_territory_summaries_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 202 | 17
+
+Stopline count tuple: **202 territories / 2254 explicit rows / 2239 canonical rows / 221 revisit rows / 2581 source rows / 2140 evidence rows**.
