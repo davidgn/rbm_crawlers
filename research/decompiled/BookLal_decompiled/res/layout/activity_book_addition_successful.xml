@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#fffbe9e7" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/customToolbarPublicProfile" layout="@layout/custom_toolbar_other_noimage" />
+    <ImageView android:layout_width="280.0dip" android:layout_height="240.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/nobookfoundillustration" android:layout_above="@id/textViewSuccess" android:layout_below="@id/customToolbarPublicProfile" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/lightgreen" android:id="@id/textViewSuccess" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Congratulations!!" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="24.0sp" android:textColor="@color/red" android:id="@id/textViewSuccess2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="Your Book got listed." android:layout_below="@id/textViewSuccess" android:layout_centerHorizontal="true" style="@style/TextAppearance.MaterialComponents.Body1" />
+    <com.google.android.gms.ads.AdView android:layout_gravity="center_horizontal" android:id="@id/adView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" ads:adSize="BANNER" ads:adUnitId="ca-app-pub-4643637679250357/9062094420" xmlns:ads="http://schemas.android.com/apk/res-auto" />
+</RelativeLayout>

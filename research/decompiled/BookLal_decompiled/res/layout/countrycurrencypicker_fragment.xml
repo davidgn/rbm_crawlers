@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:id="@id/txt_search" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:hint="@string/countryCurrencyPicker_search" android:maxLines="1" android:inputType="text" android:imeOptions="actionDone|flagNoFullscreen" android:drawableStart="@drawable/APKTOOL_DUMMY_350" />
+        <ProgressBar android:id="@id/progressbar" android:layout_width="24.0dip" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="6.0dip" android:layout_alignEnd="@id/txt_search" style="@android:style/Widget.Holo.ProgressBar" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:scrollbarSize="5.0dip" android:scrollbarThumbVertical="@android:color/darker_gray" android:id="@id/recycler" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:scrollbarFadeDuration="500" android:fadeScrollbars="true" />
+</LinearLayout>

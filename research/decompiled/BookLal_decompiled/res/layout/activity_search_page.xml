@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/drawer" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/relative1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/coordinatorLayoutDashboard" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/searchResultMessage">
+            <include android:id="@id/customToolbarRelativeLayout" layout="@layout/custom_toolbar_other_noimage" />
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@id/pullToRefresh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/coordinatorLayoutDashboard" app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/searchResultMessage" android:background="#ffefe5fd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.google.android.gms.ads.AdView android:layout_gravity="center_horizontal" android:id="@id/adView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" ads:adSize="BANNER" ads:adUnitId="ca-app-pub-4643637679250357/9062094420" xmlns:ads="http://schemas.android.com/apk/res-auto" />
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="Showing Results for:" android:layout_marginStart="8.0dip" style="@style/TextAppearance.MaterialComponents.Body1" />
+            <TextView android:textSize="17.0sp" android:id="@id/searchTermText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="3.0dip" android:text="booklal" android:layout_marginStart="8.0dip" style="@style/TextAppearance.MaterialComponents.Body2" />
+        </LinearLayout>
+        <ProgressBar android:id="@id/loadMoreProgressBar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_above="@id/searchResultMessage" />
+        <ImageView android:id="@id/noBookFoundImage" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="90.0dip" android:src="@drawable/no_results_found" android:layout_above="@id/searchResultMessage" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

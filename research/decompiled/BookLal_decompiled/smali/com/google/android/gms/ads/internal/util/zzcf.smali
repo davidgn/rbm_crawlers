@@ -1,0 +1,33 @@
+.class final Lcom/google/android/gms/ads/internal/util/zzcf;
+.super Landroid/content/BroadcastReceiver;
+.source "SourceFile"
+
+
+# instance fields
+.field final synthetic zza:Lcom/google/android/gms/ads/internal/util/zzcg;
+
+
+# direct methods
+.method public constructor <init>(Lcom/google/android/gms/ads/internal/util/zzcg;)V
+    .locals 0
+
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    iput-object p1, p0, Lcom/google/android/gms/ads/internal/util/zzcf;->zza:Lcom/google/android/gms/ads/internal/util/zzcg;
+
+    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/android/gms/ads/internal/util/zzcf;->zza:Lcom/google/android/gms/ads/internal/util/zzcg;
+
+    invoke-virtual {v0, p1, p2}, Lcom/google/android/gms/ads/internal/util/zzcg;->zzd(Landroid/content/Context;Landroid/content/Intent;)V
+
+    return-void
+.end method

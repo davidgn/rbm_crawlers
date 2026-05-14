@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/support_developer_toolbar" layout="@layout/custom_toolbar_other_noimage" />
+    <TextView android:textSize="19.0sp" android:id="@id/support_developer_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="Feel free to support developer of this app." android:layout_below="@id/support_developer_toolbar" style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+    <TextView android:id="@id/btcTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="BTC Address" android:layout_below="@id/support_developer_title" android:layout_marginStart="25.0dip" style="@style/TextAppearance.MaterialComponents.Body1" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/btc_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/btcTitle" android:layout_marginStart="25.0dip" android:layout_marginEnd="5.0dip">
+        <TextView android:textSize="14.0sp" android:id="@id/developerBtcAddress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="btc" android:textIsSelectable="true" />
+        <ImageView android:id="@id/copyBtcAddress" android:background="?selectableItemBackground" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/content_copy_36" android:layout_marginStart="5.0dip" />
+    </LinearLayout>
+    <TextView android:id="@id/upiTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="UPI Address" android:layout_below="@id/btc_layout" android:layout_marginStart="25.0dip" style="@style/TextAppearance.MaterialComponents.Body1" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/upi_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/upiTitle" android:layout_marginStart="25.0dip">
+        <TextView android:textSize="17.0sp" android:id="@id/developerUpiAddress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="upi" android:textIsSelectable="true" />
+        <ImageView android:id="@id/copyUpiAddress" android:background="?selectableItemBackground" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/content_copy_36" android:layout_marginStart="5.0dip" />
+    </LinearLayout>
+    <ImageView android:id="@id/supportDeveloperPayPalButtom" android:background="@android:color/white" android:layout_width="wrap_content" android:layout_height="90.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/pay_with_paypal" android:layout_below="@id/upi_layout" />
+</RelativeLayout>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How This App Works</title>
+    <style>
+  /* Resetting default margin and padding */
+  body, h1, h2, p, ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Positioning content at the top and allowing scrolling */
+  body {
+    overflow-y: scroll;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  /* Container for the content */
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 600px;
+    margin: auto;
+    background-color: #ffffff; /* White */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  /* Title styling */
+  h1 {
+    font-size: 36px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    color: #004d40; /* Dark Green */
+    margin-bottom: 20px;
+    font-weight: bold; /* Bold */
+  }
+
+  /* Subtitle styling */
+  h2 {
+    font-size: 24px;
+    color: #00695c; /* Teal */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: bold; /* Bold */
+  }
+
+  /* Description styling */
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* List styling */
+  ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  ol li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .icon {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+
+  .step-content {
+    flex-grow: 1;
+  }
+
+  /* Custom button styling */
+  .button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #00897b; /* Dark Teal */
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: bold; /* Bold */
+  }
+
+  .button:hover {
+    background-color: #004d40; /* Dark Green */
+  }
+
+  /* Hover effect for button */
+  .button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>How BookLal Works</h1>
+    <div id="disclaimer" style="background-color: #ffeb3b; padding: 10px; border-radius: 5px;">
+        <h2 style="color: #d32f2f;">⚠️ Be Safe from Frauds | धोखाधड़ी से सुरक्षित रहें</h2>
+        <p style="font-weight: bold; color: #d32f2f;">
+            Always verify payments independently. Do not refund money based on screenshots
+            alone. BookLal never calls its users for any reason. Stay safe if someone pretends to be from BookLal.<br><br>
+            हमेशा स्वतंत्र रूप से भुगतान की पुष्टि करें। केवल स्क्रीनशॉट के आधार पर पैसे वापस न
+            करें। BookLal कभी भी किसी भी कारण से अपने उपयोगकर्ताओं को कॉल नहीं करता है। यदि कोई BookLal का होने का नाटक करता है, तो सावधान रहें।
+        </p>
+    </div>
+
+    <div id="buying">
+        <h2>Buying on BookLal</h2>
+        <p>Welcome to <strong>BookLal</strong>, your destination for finding great deals on used
+            books! Here's how to buy books on our platform:</p>
+        <ol>
+            <li>
+                <span class="icon">&#x1F4D6;</span>
+                <div class="step-content">
+                    <strong>Browse Latest Listings:</strong> Explore our main screen to discover the
+                    latest books available for sale. Scroll through the feed to find your next read.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F50D;</span>
+                <div class="step-content">
+                    <strong>Search by Keywords:</strong> Looking for something specific? Use
+                    keywords like book name, author name, or publisher to narrow down your search.
+                    You can combine multiple keywords for a more refined search.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F4D6;</span>
+                <div class="step-content">
+                    <strong>Explore by Category:</strong> Dive into different categories such as
+                    UPSC, JEE, Novels, and more to find books tailored to your interests.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F4AC;</span>
+                <div class="step-content">
+                    <strong>Contact Sellers:</strong> Found a book you're interested in? Contact the
+                    seller directly through our chat feature to discuss the details and arrange the
+                    exchange.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F60A;</span>
+                <div class="step-content">
+                    <strong>Enjoy Your New Read:</strong> Once you've finalized the purchase, enjoy
+                    your new book! Remember to leave feedback for the seller to help improve the
+                    BookLal community.
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div id="selling">
+        <h2>Selling on BookLal</h2>
+        <p>Ready to declutter your bookshelf and make some extra cash? Here's how to sell your books
+            on <strong>BookLal</strong>:</p>
+        <ol>
+            <li>
+                <span class="icon">&#x1F4D6;</span>
+                <div class="step-content">
+                    <strong>List Your Books:</strong> Head to the selling tab and list the books you
+                    want to sell. Provide details like title, author, condition, and price to
+                    attract potential buyers.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F4CA;</span>
+                <div class="step-content">
+                    <strong>Track Your Listings:</strong> Keep an eye on your listings' performance
+                    by monitoring stats like impressions and clicks. Impressions indicate how many
+                    users have seen your listing, while clicks show how many have engaged with it.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F4AC;</span>
+                <div class="step-content">
+                    <strong>Respond to Inquiries:</strong> When potential buyers reach out through
+                    chat, respond promptly to discuss the book's details, negotiate, and arrange the
+                    exchange.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F4B0;</span>
+                <div class="step-content">
+                    <strong>Use BookLal Coins:</strong> Use BookLal coins to list your books. Don't
+                    have enough coins? No worries! You can earn more by watching ads on the coins
+                    page.
+                </div>
+            </li>
+            <li>
+                <span class="icon">&#x1F6A9;</span>
+                <div class="step-content">
+                    <strong>Close the Deal:</strong> Once you've agreed with a buyer, arrange the
+                    exchange. BookLal facilitates connections between buyers and sellers, but
+                    shipping and payment arrangements are handled directly between the parties
+                    involved.
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

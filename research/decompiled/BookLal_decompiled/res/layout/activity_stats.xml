@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/customToolbarLookBookDetailsBeforeEdit" layout="@layout/custom_toolbar_other_noimage" />
+    <com.google.android.gms.ads.AdView android:layout_gravity="center_horizontal" android:id="@id/adView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" ads:adSize="BANNER" ads:adUnitId="ca-app-pub-4643637679250357/9062094420" xmlns:ads="http://schemas.android.com/apk/res-auto" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/adView" android:layout_below="@id/customToolbarLookBookDetailsBeforeEdit"
+      xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="horizontal" android:id="@id/linearLayoutHeading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_centerHorizontal="true">
+                <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_stats" />
+                <TextView android:textSize="28.0sp" android:textColor="@color/lightgreen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Analytics" android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/linearLayoutBookNameStats" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/linearLayoutHeading" android:layout_alignParentLeft="true">
+                <TextView android:textSize="17.0sp" android:textColor="@color/purple_500" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Book Name: " android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+                <TextView android:textSize="17.0sp" android:id="@id/booknameStatstextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/linearLayoutImpresionsStats" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/linearLayoutBookNameStats" android:layout_alignParentLeft="true">
+                <TextView android:textSize="17.0sp" android:textColor="@color/purple_500" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Impressions: " android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+                <TextView android:textSize="17.0sp" android:id="@id/impressionsStatstextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/linearLayoutClicksStats" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="20.0dip" android:layout_below="@id/linearLayoutImpresionsStats" android:layout_alignParentLeft="true">
+                <TextView android:textSize="17.0sp" android:textColor="@color/purple_500" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clicks: " android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+                <TextView android:textSize="17.0sp" android:id="@id/clicksStatstextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_marginStart="20.0dip" style="@style/TextAppearance.AppCompat.Title" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

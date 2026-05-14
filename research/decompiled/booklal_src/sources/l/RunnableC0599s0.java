@@ -1,0 +1,48 @@
+package l;
+
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewParent;
+/* renamed from: l.s0  reason: case insensitive filesystem */
+/* loaded from: classes.dex */
+public final class RunnableC0599s0 implements Runnable {
+
+    /* renamed from: a  reason: collision with root package name */
+    public final /* synthetic */ int f8631a;
+
+    /* renamed from: b  reason: collision with root package name */
+    public final /* synthetic */ AbstractView$OnTouchListenerC0601t0 f8632b;
+
+    public /* synthetic */ RunnableC0599s0(AbstractView$OnTouchListenerC0601t0 abstractView$OnTouchListenerC0601t0, int i) {
+        this.f8631a = i;
+        this.f8632b = abstractView$OnTouchListenerC0601t0;
+    }
+
+    @Override // java.lang.Runnable
+    public final void run() {
+        switch (this.f8631a) {
+            case 0:
+                ViewParent parent = this.f8632b.f8639d.getParent();
+                if (parent != null) {
+                    parent.requestDisallowInterceptTouchEvent(true);
+                    return;
+                }
+                return;
+            default:
+                AbstractView$OnTouchListenerC0601t0 abstractView$OnTouchListenerC0601t0 = this.f8632b;
+                abstractView$OnTouchListenerC0601t0.a();
+                View view = abstractView$OnTouchListenerC0601t0.f8639d;
+                if (view.isEnabled() && !view.isLongClickable() && abstractView$OnTouchListenerC0601t0.c()) {
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
+                    long uptimeMillis = SystemClock.uptimeMillis();
+                    MotionEvent obtain = MotionEvent.obtain(uptimeMillis, uptimeMillis, 3, 0.0f, 0.0f, 0);
+                    view.onTouchEvent(obtain);
+                    obtain.recycle();
+                    abstractView$OnTouchListenerC0601t0.f8642l = true;
+                    return;
+                }
+                return;
+        }
+    }
+}

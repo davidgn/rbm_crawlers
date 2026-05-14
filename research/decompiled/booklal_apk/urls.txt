@@ -1,0 +1,15 @@
+http://
+http://[
+http://localhost
+http://ns.adobe.com/xap/1.0/
+https://
+https://api.bitactro.com/api
+https://app-measurement.com/a
+https://csi.gstatic.com/csi
+https://firebasestorage.googleapis.com/v0/b/booklal.appspot.com/o/DEFAULTBOOK.png?alt=media&token=5b390670-f1fe-4678-ad0f-5d65d89ed66c
+https://google.com/search?
+https://play.google.com/d
+https://www.example.com
+https://www.google.com
+http://www.example.com
+http://www.google.com

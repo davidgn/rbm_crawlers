@@ -1,0 +1,19 @@
+package com.google.ads.mediation;
+
+import android.view.View;
+import com.google.android.gms.ads.formats.zzc;
+import com.google.android.gms.ads.formats.zzh;
+import com.google.android.gms.ads.mediation.UnifiedNativeAdMapper;
+import java.util.Map;
+/* loaded from: classes.dex */
+public final class a extends UnifiedNativeAdMapper {
+    @Override // com.google.android.gms.ads.mediation.UnifiedNativeAdMapper
+    public final void trackViews(View view, Map map, Map map2) {
+        if (view instanceof zzh) {
+            throw null;
+        }
+        if (((zzc) zzc.zza.get(view)) != null) {
+            throw null;
+        }
+    }
+}

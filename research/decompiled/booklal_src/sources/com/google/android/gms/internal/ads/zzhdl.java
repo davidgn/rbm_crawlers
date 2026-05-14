@@ -1,0 +1,11 @@
+package com.google.android.gms.internal.ads;
+
+import java.nio.charset.Charset;
+/* loaded from: classes.dex */
+final class zzhdl {
+    public static final /* synthetic */ int zza = 0;
+
+    static {
+        Charset.forName("UTF-8");
+    }
+}

@@ -1,0 +1,17 @@
+package com.google.android.gms.internal.ads;
+
+import android.os.IBinder;
+import android.os.Parcel;
+/* loaded from: classes.dex */
+public final class zzbpt extends zzbdj implements zzbpv {
+    public zzbpt(IBinder iBinder) {
+        super(iBinder, "com.google.android.gms.ads.internal.h5.client.IH5AdsEventListener");
+    }
+
+    @Override // com.google.android.gms.internal.ads.zzbpv
+    public final void zzb(String str) {
+        Parcel zza = zza();
+        zza.writeString(str);
+        zzda(1, zza);
+    }
+}

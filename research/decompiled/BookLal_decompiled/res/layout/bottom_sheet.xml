@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip">
+        <TextView android:textSize="26.0sp" android:textStyle="bold" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="Add Book for Sale" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/closeBottomSheetDialog" android:background="?android:selectableItemBackground" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:src="@drawable/close" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/usedBookLayout" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:src="@drawable/used_books" />
+        <TextView android:textSize="21.0sp" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="Used Books" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/newBookLayout" android:background="?android:selectableItemBackground" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:src="@drawable/new_books" />
+        <TextView android:textSize="21.0sp" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:text="New Books" />
+    </LinearLayout>
+</LinearLayout>

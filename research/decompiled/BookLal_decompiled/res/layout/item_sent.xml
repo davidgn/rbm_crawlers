@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="55.0dip" android:layout_marginTop="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="18.0sp" android:textColorLink="@color/blue" android:autoLink="web" android:id="@id/sent_message" android:background="@drawable/sent_drawable" android:paddingLeft="21.0dip" android:paddingTop="5.0dip" android:paddingRight="8.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:text="" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintLeft_toRightOf="@id/sent_feeling" app:layout_constraintTop_toTopOf="parent" style="@style/TextAppearance.AppCompat.Body1" />
+    <ImageView android:id="@id/sent_feeling" android:visibility="invisible" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="5.0dip" app:layout_constraintBottom_toBottomOf="@id/sent_message" app:layout_constraintStart_toStartOf="@id/sent_message" app:srcCompat="@drawable/like" />
+</androidx.constraintlayout.widget.ConstraintLayout>

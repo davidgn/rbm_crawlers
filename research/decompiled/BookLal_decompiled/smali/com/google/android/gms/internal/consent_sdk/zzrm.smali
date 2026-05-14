@@ -1,0 +1,31 @@
+.class final Lcom/google/android/gms/internal/consent_sdk/zzrm;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field private static final zza:Lcom/google/android/gms/internal/consent_sdk/zzrl;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    sget v0, Lcom/google/android/gms/internal/consent_sdk/zzpc;->zza:I
+
+    new-instance v0, Lcom/google/android/gms/internal/consent_sdk/zzrl;
+
+    invoke-direct {v0}, Lcom/google/android/gms/internal/consent_sdk/zzrl;-><init>()V
+
+    sput-object v0, Lcom/google/android/gms/internal/consent_sdk/zzrm;->zza:Lcom/google/android/gms/internal/consent_sdk/zzrl;
+
+    return-void
+.end method
+
+.method public static zza()Lcom/google/android/gms/internal/consent_sdk/zzrl;
+    .locals 1
+
+    sget-object v0, Lcom/google/android/gms/internal/consent_sdk/zzrm;->zza:Lcom/google/android/gms/internal/consent_sdk/zzrl;
+
+    return-object v0
+.end method

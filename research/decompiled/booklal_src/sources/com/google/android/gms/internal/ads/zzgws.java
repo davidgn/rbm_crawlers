@@ -1,0 +1,50 @@
+package com.google.android.gms.internal.ads;
+
+import java.util.AbstractMap;
+import java.util.Collection;
+import java.util.Set;
+/* loaded from: classes.dex */
+abstract class zzgws extends AbstractMap {
+    private transient Set zza;
+    private transient Set zzb;
+    private transient Collection zzc;
+
+    @Override // java.util.AbstractMap, java.util.Map
+    public final Set entrySet() {
+        Set set = this.zza;
+        if (set == null) {
+            Set zza = zza();
+            this.zza = zza;
+            return zza;
+        }
+        return set;
+    }
+
+    @Override // java.util.AbstractMap, java.util.Map
+    public Set keySet() {
+        Set set = this.zzb;
+        if (set == null) {
+            Set zzh = zzh();
+            this.zzb = zzh;
+            return zzh;
+        }
+        return set;
+    }
+
+    @Override // java.util.AbstractMap, java.util.Map
+    public final Collection values() {
+        Collection collection = this.zzc;
+        if (collection == null) {
+            zzgwr zzgwrVar = new zzgwr(this);
+            this.zzc = zzgwrVar;
+            return zzgwrVar;
+        }
+        return collection;
+    }
+
+    public abstract Set zza();
+
+    public Set zzh() {
+        return new zzgwq(this);
+    }
+}

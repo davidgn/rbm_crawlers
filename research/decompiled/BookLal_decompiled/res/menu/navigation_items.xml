@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:icon="@drawable/ic_person_black_24dp" android:id="@id/profile_menu" android:title="Profile" />
+        <item android:icon="@drawable/chat_with_customer_care" android:id="@id/ask_support" android:title="Ask Support" />
+        <item android:icon="@drawable/ic_exit_to_app_black_24dp" android:id="@id/logout_menu" android:title="Logout" />
+    </group>
+    <item android:title="Support">
+        <menu>
+            <group android:menuCategory="container">
+                <item android:icon="@drawable/dollar" android:id="@id/support_developer" android:title="Support Developer" android:iconTint="@color/darkgreen" />
+                <item android:icon="@drawable/ic_share_black_24dp" android:id="@id/share_menu" android:title="Share" />
+                <item android:icon="@drawable/rate_us_icon" android:id="@id/rate_us_menu" android:title="Rate Us" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="About Us">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:icon="@drawable/abouttheappicon" android:id="@id/aboutus" android:title="About the App" />
+                <item android:icon="@drawable/privacypolicyicon" android:id="@id/privacy_policy" android:title="Privacy Policy" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Contribute ">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:icon="@drawable/abouttheappicon" android:id="@id/report_bug" android:title="Report Bug" />
+            </group>
+        </menu>
+    </item>
+</menu>

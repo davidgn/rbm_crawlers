@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/countryCurrencyPicker_row_item_container"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/flag" style="@style/countryCurrencyPicker_row_item_icon_flag" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/countryCurrencyPicker_row_item_txt_container">
+        <TextView android:id="@id/title" style="@style/countryCurrencyPicker_row_item_txt_title" />
+        <TextView android:id="@id/subtitle" style="@style/countryCurrencyPicker_row_item_txt_subtitle" />
+    </LinearLayout>
+    <TextView android:id="@id/code_or_symbol" style="@style/countryCurrencyPicker_row_item_txt_code_or_symbol" />
+</LinearLayout>

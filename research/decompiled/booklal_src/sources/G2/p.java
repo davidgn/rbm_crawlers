@@ -1,0 +1,6 @@
+package G2;
+
+import android.os.IInterface;
+/* loaded from: classes2.dex */
+public interface p extends IInterface {
+}

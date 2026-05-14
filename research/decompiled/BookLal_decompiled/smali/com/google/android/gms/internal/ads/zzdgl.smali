@@ -1,0 +1,44 @@
+.class final synthetic Lcom/google/android/gms/internal/ads/zzdgl;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/google/android/gms/internal/ads/zzdgm;
+
+
+# static fields
+.field static final synthetic zza:Lcom/google/android/gms/internal/ads/zzdgl;
+
+
+# direct methods
+.method public static synthetic constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/google/android/gms/internal/ads/zzdgl;
+
+    invoke-direct {v0}, Lcom/google/android/gms/internal/ads/zzdgl;-><init>()V
+
+    sput-object v0, Lcom/google/android/gms/internal/ads/zzdgl;->zza:Lcom/google/android/gms/internal/ads/zzdgl;
+
+    return-void
+.end method
+
+.method private synthetic constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final synthetic zza(Ljava/lang/Object;)V
+    .locals 0
+
+    check-cast p1, Lcom/google/android/gms/internal/ads/zzfio;
+
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/ads/zzfio;->zzdt()V
+
+    return-void
+.end method
