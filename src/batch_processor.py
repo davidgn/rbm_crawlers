@@ -37,28 +37,39 @@ class BatchProcessor:
         for html_file in files:
             with open(html_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
-            
-            # Simple heuristic to get a URL if not stored (optional)
-            # In a real batch system, we'd store a manifest.json with filename -> url
-            
+
+            # Load sidecar metadata written by spider at cache time
+            meta: dict = {}
+            meta_file = html_file.with_suffix(".meta.json")
+            if meta_file.exists():
+                try:
+                    with open(meta_file, "r", encoding="utf-8") as f:
+                        meta = json.load(f)
+                except Exception as e:
+                    logger.warning(f"Could not read sidecar {meta_file.name}: {e}")
+
             logger.info(f"Processing {html_file.name}...")
             ai_data = deep_extract(html_content)
-            
+
             if ai_data:
-                # Add territory and platform metadata
-                ai_data["territory"] = self.territory
-                ai_data["platform"] = self.platform
-                
-                # Use a fallback listing_url if not in data (could use filename)
+                # Sidecar values take precedence over whatever the AI inferred
+                ai_data["territory"] = meta.get("territory") or self.territory
+                ai_data["platform"]  = meta.get("platform")  or self.platform
                 if not ai_data.get("listing_url"):
-                    ai_data["listing_url"] = f"cached://{html_file.name}"
-                
+                    ai_data["listing_url"] = (
+                        meta.get("listing_url") or f"cached://{html_file.name}"
+                    )
+                elif meta.get("listing_url"):
+                    # Prefer the authoritative URL from the sidecar
+                    ai_data["listing_url"] = meta["listing_url"]
+
+                if meta.get("scraped_at"):
+                    ai_data.setdefault("scraped_at", meta["scraped_at"])
+
                 with open(self.output_file, "a", encoding="utf-8") as f_out:
                     f_out.write(json.dumps(ai_data, ensure_ascii=False) + "\n")
-                
+
                 count += 1
-                # Optional: remove file after success to save space
-                # os.remove(html_file)
             
         logger.info(f"Batch complete. Extracted {count} items.")
 

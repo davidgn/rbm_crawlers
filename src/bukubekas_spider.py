@@ -160,7 +160,7 @@ class BukubekasSpider(BaseSpider):
                 self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
                 return
 
-            self.cache_html(item_id, resp.text)
+            self.cache_html(item_id, resp.text, url=url)
 
             soup = BeautifulSoup(resp.text, "html.parser")
             h1 = soup.find("h1")
@@ -277,7 +277,7 @@ class BukubekasSpider(BaseSpider):
                 self.logger.warning(f"Thin response for {url} — skipping.")
                 return
 
-            self.cache_html(item_id, html)
+            self.cache_html(item_id, html, url=url)
 
             title_el = page.query_selector("h1")
             title = title_el.inner_text().strip() if title_el else "Cached Item"

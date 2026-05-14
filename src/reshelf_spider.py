@@ -129,7 +129,7 @@ class ReshelfSpider(BaseSpider):
                 self.logger.warning(f"Thin response for {url} — skipping.")
                 return
 
-            self.cache_html(item_id, html)
+            self.cache_html(item_id, html, url=url)
 
             title_el = page.query_selector("h1")
             title = title_el.inner_text().strip() if title_el else "Cached Item"
