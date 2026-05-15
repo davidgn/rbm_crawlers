@@ -30,10 +30,24 @@ class BaseSpider:
         self.items_scraped = 0
         self.user_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edge/123.0.2420.81",
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1"
         ]
         
+    def get_random_headers(self):
+        """Generate randomized browser headers to mimic different clients."""
+        ua = random.choice(self.user_agents)
+        headers = {
+            "User-Agent": ua,
+            "Accept": "*/*",
+            "Accept-Language": "en-US,en;q=0.9",
+            "DNT": "1",
+            "Connection": "keep-alive"
+        }
+        return headers
+
     def save_item(self, item: BookListing):
         """Append an item to the JSON Lines file."""
         with open(self.output_file, 'a', encoding='utf-8') as f:
