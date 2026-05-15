@@ -8,6 +8,7 @@ CONFIG = MarketplaceConfig(
     browse_paths=("/libros/search?q=usado", "/libros", "/libros-usados"),
     detail_signals=("/libro-", "/book-", "/producto/", "/products/"),
     headers={"Accept-Language": "es-EC,es;q=0.9,en;q=0.8"},
+    link_fallback_on_detail_failure=True,
 )
 
 

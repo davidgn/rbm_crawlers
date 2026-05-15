@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <meta name="csrf-token" content="VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB">
+    <title>Prisijungti
+</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+        
+        
+    <link rel="preload" as="style" href="https://www.naudotosknygos.lt/build/assets/app-a43a07d0.css" /><link rel="modulepreload" href="https://www.naudotosknygos.lt/build/assets/app-facf679b.js" /><link rel="stylesheet" href="https://www.naudotosknygos.lt/build/assets/app-a43a07d0.css" /><script type="module" src="https://www.naudotosknygos.lt/build/assets/app-facf679b.js"></script>    <!-- CSS for searching  -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.naudotosknygos.lt/css/style1.css">
+    <style>
+/*
+ * Social Buttons for Bootstrap
+ * https://github.com/lipis/bootstrap-social
+ */
+.btn-social{position:relative;padding-left:44px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.btn-social>:first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
+.btn-social.btn-lg{padding-left:61px}.btn-social.btn-lg>:first-child{line-height:45px;width:45px;font-size:1.8em}
+.btn-social.btn-sm{padding-left:38px}.btn-social.btn-sm>:first-child{line-height:28px;width:28px;font-size:1.4em}
+.btn-social.btn-xs{padding-left:30px}.btn-social.btn-xs>:first-child{line-height:20px;width:20px;font-size:1.2em}
+.btn-social-icon{position:relative;padding-left:44px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:34px;width:34px;padding:0}.btn-social-icon>:first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
+.btn-social-icon.btn-lg{padding-left:61px}.btn-social-icon.btn-lg>:first-child{line-height:45px;width:45px;font-size:1.8em}
+.btn-social-icon.btn-sm{padding-left:38px}.btn-social-icon.btn-sm>:first-child{line-height:28px;width:28px;font-size:1.4em}
+.btn-social-icon.btn-xs{padding-left:30px}.btn-social-icon.btn-xs>:first-child{line-height:20px;width:20px;font-size:1.2em}
+.btn-social-icon>:first-child{border:none;text-align:center;width:100% !important}
+.btn-social-icon.btn-lg{height:45px;width:45px;padding-left:0;padding-right:0}
+.btn-social-icon.btn-sm{height:30px;width:30px;padding-left:0;padding-right:0}
+.btn-social-icon.btn-xs{height:22px;width:22px;padding-left:0;padding-right:0}
+.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:focus,.btn-facebook.focus{color:#fff;background-color:#2d4373;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:hover{color:#fff;background-color:#2d4373;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:active,.btn-facebook.active,.open>.dropdown-toggle.btn-facebook{color:#fff;background-color:#2d4373;border-color:rgba(0,0,0,0.2)}.btn-facebook:active:hover,.btn-facebook.active:hover,.open>.dropdown-toggle.btn-facebook:hover,.btn-facebook:active:focus,.btn-facebook.active:focus,.open>.dropdown-toggle.btn-facebook:focus,.btn-facebook:active.focus,.btn-facebook.active.focus,.open>.dropdown-toggle.btn-facebook.focus{color:#fff;background-color:#23345a;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:active,.btn-facebook.active,.open>.dropdown-toggle.btn-facebook{background-image:none}
+.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled.focus,.btn-facebook[disabled].focus,fieldset[disabled] .btn-facebook.focus{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
+.btn-facebook .badge{color:#3b5998;background-color:#fff}
+.btn-google,.btn-google:hover{background-color: #dd4b39;border-color: rgba(0, 0, 0, .2); color: #fff;}
+</style>
+    
+    <script>
+        window.Laravel = {"csrfToken":"VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB"};
+    </script>
+            
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<style>
+    /* pagrindinis popup */
+    .cc-window {
+        border-radius: 0.75rem;
+        /* kaip Bootstrap */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+        font-family: var(--bs-font-sans-serif);
+        max-width: 420px;
+        padding: 1rem 1.25rem;
+    }
+
+    /* tekstas */
+    .cc-message {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+
+    /* mygtukų container */
+    .cc-compliance {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+
+    /* mygtukai → Bootstrap look */
+    .cc-btn {
+        border-radius: 0.5rem;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+    }
+
+    /* Sutinku (primary) */
+    .cc-allow {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+
+    .cc-allow:hover {
+        background-color: #0b5ed7;
+    }
+
+    /* Nesutinku (secondary) */
+    .cc-deny {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .cc-deny:hover {
+        background-color: #5c636a;
+    }
+
+    /* link kaip Bootstrap */
+    .cc-link {
+        color: #0d6efd;
+        text-decoration: none;
+    }
+
+    .cc-link:hover {
+        text-decoration: underline;
+    }
+
+    /* mobile optimizacija */
+    @media (max-width: 576px) {
+        .cc-window {
+            left: 1rem !important;
+            right: 1rem !important;
+            bottom: 1rem !important;
+            max-width: none;
+        }
+
+        .cc-compliance {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .cc-btn {
+            width: 100%;
+        }
+
+        /* Papildomas saugiklis mobiliems */
+        @media (max-width: 576px) {
+            .cc-revoke {
+                display: none !important;
+            }
+        }
+
+    }
+</style>
+
+<script>
+    window.GA_ID = "G-5ME3GGE16E";
+    let ccInstance = null;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        ccInstance = window.cookieconsent.initialise({
+            type: "opt-in",
+            position: "bottom-right",
+           theme: "classic",
+            palette: {
+                popup: {
+                    background: "#fff",
+                    text: "#212529"
+                },
+                button: {
+                    background: "#0d6efd",
+                    text: "#fff"
+                }
+            },
+
+            content: {
+                message: "🍪 Naudojame slapukus, kad pagerintume jūsų naršymo patirtį.",
+                allow: "Sutinku",
+                deny: "Nesutinku",
+                policy: "Slapukai",
+                link: "Privatumo politika",
+                href: "/privatumas"
+            },
+
+            onInitialise: function(status) {
+                if (status === 'allow' || this.hasConsented()) {
+                    loadAnalytics();
+                } else {
+                    disableAnalytics();
+                }
+            },
+
+            onStatusChange: function(status, previousStatus) {
+                console.log('Cookie consent pakeistas į:', status);
+                if (status === 'allow') {
+                    loadAnalytics();
+                } else {
+                    disableAnalytics();
+                }
+            }
+        });
+    });
+
+    // === Analytics įkėlimas ===
+    function loadAnalytics() {
+        if (window.gaLoaded || !window.GA_ID) return;
+        window.gaLoaded = true;
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_ID;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+
+        gtag('js', new Date());
+        gtag('config', window.GA_ID, {
+            'cookie_domain': location.hostname,
+            'cookie_flags': 'SameSite=None;Secure' // jei naudoji HTTPS
+        });
+
+        console.log("✅ Google Analytics įjungtas");
+    }
+
+    // === Išjungimas + priverstinis ištrynimas ===
+    function disableAnalytics() {
+        if (!window.GA_ID) return;
+
+        // 1. Disable GA tracking
+        window['ga-disable-' + window.GA_ID] = true;
+
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'denied'
+            });
+        }
+
+        // 2. Priverstinai ištriname visus GA slapukus (patobulinta funkcija)
+        deleteAllGACookies();
+
+        console.log("❌ Analytics išjungtas ir visi _ga slapukai ištrinti");
+    }
+
+    function deleteAllGACookies() {
+        const prefixes = ['_ga', '_gid', '_gat', '_gac_', 'AMP_TOKEN'];
+
+        document.cookie.split(";").forEach(cookie => {
+            const name = cookie.split("=")[0].trim();
+
+            if (prefixes.some(prefix => name.startsWith(prefix))) {
+                deleteCookie(name);
+            }
+        });
+
+        // Papildomas saugus variantas su visais galimais domain/path
+        const hostname = location.hostname;
+        const domains = [hostname, '.' + hostname, location.host];
+        const paths = ['/', ''];
+
+        prefixes.forEach(prefix => {
+            domains.forEach(domain => {
+                paths.forEach(path => {
+                    // Ištrina su įvairiais variantais
+                    document.cookie = `${prefix}=; Max-Age=0; path=${path}; domain=${domain};`;
+                    document.cookie =
+                        `${prefix}=; Max-Age=0; path=${path}; domain=${domain}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+                });
+            });
+        });
+    }
+
+    function deleteCookie(name) {
+        const hostname = location.hostname;
+        const domains = [hostname, '.' + hostname];
+        const paths = ['/', ''];
+
+        domains.forEach(domain => {
+            paths.forEach(path => {
+                document.cookie =
+                    `${name}=; Max-Age=0; path=${path}; domain=${domain}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+            });
+        });
+    }
+
+    // Funkcija slapukų nustatymams atidaryti (footeryje)
+    window.openCookieSettings = function() {
+        if (ccInstance) {
+            ccInstance.showSettings ? ccInstance.showSettings() : location.reload();
+        } else {
+            document.cookie = "cookieconsent_status=; path=/; Max-Age=0";
+            location.reload();
+        }
+    };
+</script>
+        <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="manifest" href="https://www.naudotosknygos.lt/manifest.json">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Navbar  Desctop-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
+    <!-- Container wrapper -->
+    <div class="container mb-2 mt-2">
+        <a class="navbar-brand " href="/">
+            <img src="/images/naudotosknygos.png" alt="" width="136" height="34">
+        </a>
+        <!-- Right elements -->
+        <!--  seaarch desktop -->
+        <div class=" w-100 me-3 ms-3 " id="select2-desctop">
+            <select class="form-control select2-search" id="select2-desctopd"></select>
+        </div>
+        <!--// seaarch desktop -->
+        
+        <ul class="navbar-nav me-auto0 me-3 ms-3  ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMano" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-book-open"></i> Mano </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMano">
+                    <a class="dropdown-item" href="/knyga/mano"><i class="fas fa-book-open"></i> Parduodu knygas</a>
+                    <a class="dropdown-item" href="/knyga/parduota"><i class="fas fa-shopping-bag"></i> Parduotos knygos</a>
+                    <a class="dropdown-item" href="/knyga/pirkiniai"><i class="fas fa-shopping-cart"></i> Mano
+                        pirkiniai</a>
+                    <a class="dropdown-item" href="/ieskau-knygu/show"><i class="fas fa-heart"></i> Mano norai</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="/finansai"><i class="fas fa-euro-sign"></i> Finansai</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="/duk"><i class="fas fa-info-circle"></i> DUK</a>
+                    <a class="dropdown-item" href="/kontaktai"><i class="fas fa-question-circle"></i> Kontaktai -
+                        pagalba</a>
+                </div>
+            </li>
+        </ul>
+        <!-- // Mano links -->
+        <!-- Right elements -->
+        <div class="">
+            <div class="d-flex   align-items-center ">
+                <a class="btn btn-danger me-3" href="/parduok-knyga">Parduoti</a>
+                <!-- Icon -->
+                <a class="text-reset me-3" href="/knyga/pirkiniai">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a class="text-reset me-3" href="/finansai">
+                    <i class="fas fa-euro-sign"></i>
+                </a>
+                <!-- Notifications -->
+                <a class="text-reset me-3" href="/kontaktai"><i class="fas fa-question-circle"></i></a>
+
+                <a class="text-reset me-3" target="_blank" href="https://www.facebook.com/NaudotosKnygos.lt"><i class="fab fa-facebook"></i></a>
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user text-danger"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                                                <li>
+                            <a class="dropdown-item" href="https://www.naudotosknygos.lt/login">Prisijungti</a>
+                        </li>
+                                                <li>
+                            <a class="dropdown-item"
+                                href="https://www.naudotosknygos.lt/register">Registruotis</a>
+                        </li>
+                                                                    <hr class="dropdown-divider">
+                     <a class="dropdown-item" href="/knyga/mano"><i class="fas fa-book-open"></i> Parduodu knygas</a>
+                    <a class="dropdown-item" href="/knyga/parduota"><i class="fas fa-shopping-bag"></i> Parduotos knygos</a>
+                    <a class="dropdown-item" href="/knyga/pirkiniai"><i class="fas fa-shopping-cart"></i> Mano
+                        pirkiniai</a>
+                    <a class="dropdown-item" href="/ieskau-knygu/show"><i class="fas fa-heart"></i> Mano norai</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="/finansai"><i class="fas fa-euro-sign"></i> Finansai</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- // Right elements -->
+    </div>
+ </nav>
+   <div class="clearfix mb-3 d-none d-lg-block"></div>
+<!-- Navbar Mobile-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-block d-lg-none">
+    <!-- Container wrapper -->
+    <div class="container-fluid mt-2">
+        <a class="navbar-brand " href="/">
+            <img src="/images/NK.png" alt="" height="34">
+        </a>
+        <!-- Right elements -->
+                <div class="d-flex align-items-center ">
+            <a class="btn btn-outline-danger me-3 fw-bold" href="https://www.naudotosknygos.lt/login"> <i class="fas fa-user fa-lg text-danger"></i> Prisijungti</a>
+        </div>
+                <!-- Right elements -->
+    </div>
+</nav>
+<!-- Search mobile -->
+<div class="container-fluid mb-3  mt-3  d-block  d-lg-none " id="select2-search-mob">
+    <div class="row">
+        <div class="col">
+            <div class="d-block w-100  ">
+                <select class="form-control select2-search" id="select2-searchmob"></select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--// Search mobile -->
+        <main class=" ">
+            <div class="container">
+                <div class="row">
+                    <div class="alert mb-3  alert-success status-box alert-dismissable fade show" role="alert">
+     Prašau prisijungti.
+  </div>
+
+
+    
+
+
+                </div>
+            </div>
+            <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class=>
+                <div class="text-center fw-bold mb-3">Prisijungti</div>
+                <div class="">
+                    <form method="POST" action="https://www.naudotosknygos.lt/login">
+                        <input type="hidden" name="_token" value="VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB" autocomplete="off">
+                        <div class="form-group row mb-2">
+                            <label for="email"
+                                class="col-sm-4 col-form-label text-md-end">El. pašto adresas</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email"
+                                    class="form-control" name="email"
+                                    value="" required autofocus>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group row mb-2">
+                            <label for="password"
+                                class="col-md-4 col-form-label text-md-end">Slaptažodis</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control"
+                                    name="password" required>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group row mb-2">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" checked>
+                                        Atsiminti
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4 text-center">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-danger">
+                                    Prisijungti
+                                </button>
+
+                                <a class="m-5" href="https://www.naudotosknygos.lt/password/reset">
+                                    Pamiršai slaptažodį?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="text-center">
+                            <p class=" mb-3 mt-3">
+                                <strong> Arba prisijungti su:</strong>
+                            </p>
+                            <div class="row justify-content-md-center">
+    <div class="col-6 col-md-3 mb-2">
+        <a href="https://www.naudotosknygos.lt/social/redirect/facebook" class="btn btn-block btn-social btn-facebook"><i class="fab fa-facebook" aria-hidden="true"></i>Facebook</a>
+    </div>
+    <div class="col-6 col-md-3 mb-2">
+        <a href="https://www.naudotosknygos.lt/social/redirect/google" class="btn btn-block btn-social btn-google"><i class="fab fa-google" aria-hidden="true"></i>Google</a>
+    </div>
+</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class=" text-center">
+                            <p class=" mb-2">
+                            <h4><a href="/register">Naujų narių registracija</a> </h4>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <div class=" d-none d-lg-inline">
+        <footer class="footer bg-dark text-white mt-3 py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <ul class="list-inline mb-2 small flex-wrap d-flex justify-content-center">
+                            <li class="list-inline-item px-2"><a href="/apie-mus" class="text-white">Apie</a></li>
+                            <li class="list-inline-item px-2"><a href="/duk" class="text-white">DUK</a></li>
+                            <li class="list-inline-item px-2"><a href="/kontaktai" class="text-white">Kontaktai</a></li>
+                            <li class="list-inline-item px-2"><a href="/taisykles" class="text-white">Taisyklės</a></li>
+                            <li class="list-inline-item px-2"><a href="/privatumas" class="text-white">Privatumo
+                                    politika</a></li>
+                            <li class="list-inline-item px-2" onclick="openCookieSettings()" class="text-white"><a
+                                    href="#">Slapukų nustatymai</a></li>
+                            <li class="list-inline-item px-2"><a href="/knyga/pigios-knygos-iki-2-euru"
+                                    class="text-white">Knygos iki 2 €</a></li>
+                            <li class="list-inline-item px-2"><a href="/apie-knygas/" class="text-white">Apie knygas</a>
+                            </li>
+                        </ul>
+                        <p class="small mb-0">&copy; NaudotosKnygos.lt 2006 - 2026 Visos teisės
+                            saugomos</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="mt-5 pb-4 d-lg-none"></div>
+    <!-- Fixed mobile bottom menu -->
+    <nav class="fixed-bottom bg-light py-2 border-top d-lg-none" aria-label="Mobili navigacija">
+        <div class="container-fluid px-1">
+            <div class="d-flex justify-content-around text-center">
+                <a href="/" class="flex-fill" aria-label="Pradžia">
+                    <div><i class="fas fa-lg fa-home text-danger"></i></div>
+                    <small class="d-block">Pradžia</small>
+                </a>
+                <a href="/finansai" class="flex-fill" aria-label="Finansai">
+                    <div><i class="fas fa-euro-sign fa-lg text-danger"></i></div>
+                    <small class="d-block">Finansai</small>
+                </a>
+                <a href="/knyga/pirkiniai" class="flex-fill" aria-label="Pirkiniai">
+                    <div><i class="fas fa-shopping-cart fa-lg text-danger"></i></div>
+                    <small class="d-block">Pirkiniai</small>
+                </a>
+                <a href="/kontaktai" class="flex-fill" aria-label="Pagalba">
+                    <div><i class="fas fa-question-circle fa-lg text-danger"></i></div>
+                    <small class="d-block">Pagalba</small>
+                </a>
+                <a href="https://www.naudotosknygos.lt/paskyra" class="flex-fill" aria-label="Paskyra">
+                    <div><i class="fas fa-user fa-lg text-danger"></i></div>
+                    <small class="d-block">Paskyra</small>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="https://www.naudotosknygos.lt/js/app.js?v=1"></script>
+  JS for searching            https://select2.org/data-sources/formats  -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="/sw.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            window.jQuery(document).on('select2:open', e => {
+                const id = e.target.id;
+                const target = document.querySelector(`[aria-controls=select2-${id}-results]`);
+                target.focus();
+            });
+
+            $('.select2-search').select2({
+                minimumInputLength: 2, // Require at least 2 characters
+                placeholder: 'Paieška pagal pavadinimą ARBA autorių',
+                language: {
+                    inputTooShort: function() {
+                        return 'Įrašykite daugiau raidžių';
+                    }
+                },
+                ajax: {
+                    url: '/select',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data, params) {
+                        if (data && data.current_page && data.data) {
+                            var options = [];
+
+                            $.each(data.data, function(index, book) {
+                                var text = book.name + ' - ';
+                                $.each(book.authors, function(index, author) {
+                                    if (index > 0) {
+                                        text += ', ';
+                                    }
+                                    text += author.fname;
+                                });
+
+                                var option = {
+                                    id: book.id,
+                                    text: text,
+                                    slug: book.slug,
+                                    image: book.image // Image URL (if available)
+                                };
+
+                                options.push(option);
+                            });
+                            // Paspaudus ant knygos pavadinimo ar paveiksliuko, atidaromas puslapis pagal data.slug
+                            $('.select2-search').on('select2:select', function(e) {
+                                var data = e.params.data;
+                                if (data.slug) {
+                                    var url = '/knygos/' + data
+                                        .slug; // Pridėkite jūsų puslapio URL pradžią
+                                    window.location.href = url;
+                                }
+                            });
+                            // Neradome
+                            if (data.total === 0) {
+                                var showMoreUrl = '/knygos/create'; //
+
+                                // Įtraukiame naują parinktį su nuoroda
+                                options.push({
+                                    id: '__nera__',
+                                    text: ' Nieko neradome. Paskelbkite savo parduodamą knygą.',
+                                    nera: true,
+                                    action: showMoreUrl
+                                });
+
+
+                                $('.select2-search').on('select2:select', function(e) {
+                                    var data = e.params.data;
+                                    if (data.nera) {
+                                        window.location.href = data.action;
+                                    }
+                                });
+                            }
+                            // Check if there's a "more results" page
+                            if (data.next_page_url) {
+                                var showMoreUrl = '/search?search=' + encodeURIComponent(params.term);
+                                // Įtraukiame naują parinktį su nuoroda
+                                options.push({
+                                    id: '__more__',
+                                    text: '______ Rodyti daugiau ...',
+                                    more: true,
+                                    action: showMoreUrl // Saugome nuorodos adresą šiame lauke
+                                });
+
+                                $('.select2-search').on('select2:select', function(e) {
+                                    var data = e.params.data;
+                                    if (data.more) {
+                                        window.location.href = data.action;
+                                    }
+                                });
+                            }
+                            return {
+                                results: options
+                            };
+
+                        }
+                    },
+                    cache: true
+                },
+                templateResult: function(data) {
+                    if (!data.id) {
+                        return data.text;
+                    }
+                    if (data.image) {
+                        var $image = $('<img>', {
+                            class: 'book-image',
+                            src: 'https://www.naudotosknygos.lt' + data
+                                .image, // Image URL (if available)
+                            width: 50,
+                            height: 60
+                        });
+                    }
+                    var $span = $('<span>', {
+                        text: data.text
+                    });
+                    var $container = $('<div>').append($image, $span);
+
+                    return $container;
+                },
+            });
+
+        });
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            let isSubscribed = true; // Pradinė būsena (numatoma, kad prenumeruota)
+            let isInstalled = true; // Pradinė būsena (numatoma, kad įdiegta)
+            let isLoggedIn = false;
+
+            navigator.serviceWorker.register('/sw.js').then(function(swReg) {
+                console.log('Service Worker registruotas:', swReg);
+                // Tikriname, ar vartotojas jau užsiprenumeravęs
+                swReg.pushManager.getSubscription().then(function(subscription) {
+                    if (subscription === null && isLoggedIn) {
+                        // Vartotojas yra prisijungęs ir nėra prenumeratos, prašome leidimo
+                        console.log('subscription === null && isLoggedIn');
+                        if (!sessionStorage.getItem('subscriptionPromptShown')) {
+                            // Parodome prenumeratos pasiūlymą ir įrašome į sesiją
+                            askForPermission();
+                            sessionStorage.setItem('subscriptionPromptShown', 'true');
+                            console.log('askForPermission +');
+                        }
+
+
+                        //    if (subscription === null) {
+                        const subscriptionPrompt = document.getElementById('subscription-prompt');
+                        if (subscriptionPrompt) {
+                            subscriptionPrompt.style.display = 'block';
+                            isSubscribed = false; // Nėra prenumeratos
+                        }
+                    } else {
+                        isSubscribed = true; // Prenumerata aktyvuota
+                    }
+                    checkInstallPromptVisibility();
+                });
+            }).catch(function(error) {
+                console.error('Service Worker registracija nepavyko:', error);
+            });
+
+            // Tikriname įdiegimo būseną
+            let deferredPrompt;
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                isInstalled = false; // Nėra įdiegta
+                const installButton = document.getElementById('install-button');
+                if (installButton) {
+                    installButton.style.display = 'block';
+                    document.getElementById("install-button").addEventListener("click", () => {
+                        deferredPrompt.prompt();
+                        deferredPrompt.userChoice.then((choiceResult) => {
+                            deferredPrompt = null;
+                            if (choiceResult.outcome === 'accepted') {
+                                isInstalled = true;
+                                document.getElementById("install-button").style.display = "none";
+                            }
+                            checkInstallPromptVisibility();
+                        });
+                    });
+                }
+
+                checkInstallPromptVisibility();
+            });
+
+            window.addEventListener("appinstalled", () => {
+                isInstalled = true;
+                checkInstallPromptVisibility();
+            });
+
+            // Funkcija, rodanti #install-all, jei bent viena funkcija neaktyvuota
+            function checkInstallPromptVisibility() {
+                const installPrompt = document.getElementById("install-all");
+                if (installPrompt) {
+                    if (!isSubscribed || !isInstalled) {
+                        installPrompt.style.display = "block";
+                    } else {
+                        installPrompt.style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+        function askForPermission() {
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                    // get service worker
+                    navigator.serviceWorker.ready.then((sw) => {
+                        // subscribe
+                        sw.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: "BEw1FUTQ6AyIdnKkohASAbWrZbAk232qxqDS3CZggrHUtS3HdI6Q7NBXZ9WzTGER61A8N9ubMSJSC3zqGeHHwsI"
+                        }).then((subscription) => {
+                            console.log(JSON.stringify(subscription));
+                            saveSub(JSON.stringify(subscription));
+                        });
+                    });
+                }
+            });
+        }
+
+        function saveSub(sub) {
+            $.ajax({
+                type: 'post',
+                url: '/save-push-notification-sub',
+                data: {
+                    '_token': "VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB",
+                    'sub': sub
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+        </body>
+
+</html>

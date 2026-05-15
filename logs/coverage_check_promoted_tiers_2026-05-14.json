@@ -1,0 +1,18 @@
+{
+  "non_india_main_recent": {
+    "expected": 14,
+    "missing": []
+  },
+  "promoted_weak_fit": {
+    "expected": 21,
+    "missing": []
+  },
+  "second_tier": {
+    "expected": 21,
+    "missing": []
+  },
+  "third_tier": {
+    "expected": 15,
+    "missing": []
+  }
+}

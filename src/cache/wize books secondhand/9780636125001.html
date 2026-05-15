@@ -1,0 +1,1499 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wize Books Secondhand</title>
+    <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Alpine Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script defer src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="/css/index.min.css?v=pBQCRXepYgzt6kU__lM6Ts5cJY4wPkxJ-rWBP8DYyus" rel="stylesheet">
+    <link href="/css/login.css?v=gQ6qCXBwvgj1uKy476vZVjTcizpW4UGkDiEpB_xEZk4" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    
+</head>
+<body data-mode="dark" class="bg-white w-full dark:bg-gray-800" id="app">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" />
+
+<div x-data="toast()"
+     x-cloak
+     x-on:notification.window="show($event)"
+     x-show="open"
+     x-transition:enter="transition ease-out duration-200"
+     x-transition:enter-start="opacity-0 translate-y-3"
+     x-transition:enter-end="opacity-100 translate-y-0"
+     x-transition:leave="transition ease-in duration-150"
+     x-transition:leave-start="opacity-100 translate-y-0"
+     x-transition:leave-end="opacity-0 translate-y-3"
+     role="status"
+     id="toast"
+     aria-live="polite"
+     class="
+        fixed bottom-4 left-4 right-4 z-[9999] pointer-events-auto
+        sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:w-[92vw] sm:max-w-xs">
+    <div :class="`ring-1 ring-${color}-500/40`"
+         class="relative overflow-hidden rounded-2xl bg-gray-950/90 backdrop-blur-md shadow-2xl"
+         x-on:click="closeToast()">
+        <!-- Accent bar -->
+        <div :class="`bg-${color}-500`" class="absolute left-0 top-0 h-full w-1.5"></div>
+
+        <div class="flex gap-3 p-4 pl-5">
+            <!-- Icon -->
+            <div class="mt-0.5 shrink-0">
+                <div :class="`bg-${color}-500/15 text-${color}-400 ring-1 ring-${color}-500/25`"
+                     class="flex h-9 w-9 items-center justify-center rounded-xl">
+                    <i class="bx bx-info-circle text-lg"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="min-w-0 flex-1">
+                <div class="flex items-start justify-between gap-3">
+                    <div class="min-w-0">
+                        <div class="truncate text-sm font-semibold text-gray-100" x-text="header"></div>
+                        <div class="mt-1 text-sm leading-5 text-gray-300" x-html="message"></div>
+                    </div>
+
+                    <!-- Close -->
+                    <button type="button"
+                            class="shrink-0 rounded-lg p-1 text-gray-300 hover:text-white hover:bg-white/10 transition"
+                            aria-label="Close"
+                            x-on:click.stop="closeToast()">
+                        <i class="bx bx-x text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Optional progress bar (auto-hide) -->
+                <div class="mt-3 h-1 w-full overflow-hidden rounded-full bg-white/10">
+                    <div :class="`bg-${color}-500`"
+                         class="h-full"
+                         :style="`width:${progress}%; transition: width 120ms linear;`"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("alpine:init", () => {
+      Alpine.data("toast", () => ({
+        open: false,
+        header: "",
+        message: "",
+        color: "blue",
+        time: 5000,
+
+        _timer: null,
+        _progressTimer: null,
+        progress: 100,
+
+        closeToast() {
+          this.open = false;
+          this._clearTimers();
+        },
+
+        _clearTimers() {
+          if (this._timer) clearTimeout(this._timer);
+          if (this._progressTimer) clearInterval(this._progressTimer);
+          this._timer = null;
+          this._progressTimer = null;
+        },
+
+        _startTimers() {
+          this._clearTimers();
+
+          const duration = Number(this.time) > 0 ? Number(this.time) : 5000;
+
+          // Auto close
+          this._timer = setTimeout(() => this.closeToast(), duration);
+
+          // Progress bar
+          this.progress = 100;
+          const start = Date.now();
+          this._progressTimer = setInterval(() => {
+            const elapsed = Date.now() - start;
+            const pct = 100 - (elapsed / duration) * 100;
+            this.progress = Math.max(0, Math.min(100, pct));
+            if (elapsed >= duration) this._clearTimers();
+          }, 120);
+        },
+
+        show(evt) {
+          const d = evt?.detail ?? {};
+          this.header = d.header ?? "";
+          this.message = d.message ?? "";
+          this.color = d.color ?? "blue";
+          this.time = d.time ?? 500000;
+
+          this.open = true;
+          this._startTimers();
+        },
+      }));
+    });
+</script>
+
+
+    
+<header class="fixed top-0 w-full" style="z-index:100;" id="header">
+    <nav x-data="{ isOpen: false, focused: false }" class="relative bg-white shadow border-solid border-b border-gray-600 dark:bg-gray-800" >
+        <div class="lg:container px-4 py-3 mx-auto">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div class="flex flex-grow lg:items-center ">
+
+                    <div class=" items-center mr-2  min-w-[160px]">
+                        <a href="/" >
+                            <img src="/Images/900_logo.png" class="h-16 object-cover"
+                                 alt="Logo">
+                        </a>
+
+                    </div>
+                    <div align="right" class="mx-auto my-auto">
+                        <div class="cursor-pointer" x-data="modeSwitch">
+
+    <div class="relative  w-[150px] sm:w-[240px] text-center text-[18px] tracking-wide rounded-full overflow-hidden bg-gray-600 animate-wiggle   "
+    id="comp">
+        <!-- Hidden checkbox toggling mode -->
+        <input type="checkbox"
+               :checked="$store.mode.value === 'buy'"
+        x-on:change="$store.mode.value = $event.target.checked ? 'buy' : 'sell'"
+               class="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer" x-on:click="swap($store.mode.value)">
+
+        <!-- Sliding background (switch) -->
+        <div class="absolute inset-0 w-full h-full rounded-full transition-transform  duration-300 z-10 cursor-pointer " 
+             :class="$store.mode.value === 'sell' ? ' translate-x-[75px]  sm:translate-x-[120px] bg-secondary-600' : ' translate-x-[-75px] sm:translate-x-[-120px] bg-primary-600 border-primary-500 '"></div>
+
+        <!-- Labels -->
+        <div class="relative z-10 flex justify-between">
+            <span class="w-[120px] py-3 pointer-events-none font-bold"
+                  :class="$store.mode.value === 'buy' ? 'text-gray-800' : 'text-gray-400 '">BUY</span>
+            <span class="w-[120px] py-3 pointer-events-none font-bold"
+                  :class="$store.mode.value === 'sell' ? 'text-gray-800' : 'text-gray-400'">SELL</span>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("modeSwitch", () => ({
+            swap:function(val){
+                document.getElementById("comp").classList.remove("animate-wiggle")
+                document.getElementById("comp").classList.remove("animate-wiggle-right")
+                document.getElementById("comp").classList.remove("animate-wiggle-left")
+                if(val == 'sell'){
+                    document.getElementById("comp").classList.add("animate-wiggle-right")
+                }
+                else{
+                    document.getElementById("comp").classList.add("animate-wiggle-left")
+                }
+            }
+
+        })
+        )
+    })
+</script>
+                    </div>
+                    <div class="hidden lg:block mx-2 w-full min-w-[150px] ">
+                        <!-- Search Component -->
+<div class="relative flex flex-grow rounded-full "
+     id="search-input-group"
+     style="z-index:400 !important;"
+     x-data="searchComponent()"
+     x-bind:class="searchOpen ? 'backdrop-blur-sm' : ''"
+     x-on:click.away="closeSearch()"
+     >
+
+    <!-- Search Icon (Optional) -->
+    <svg xmlns="http://www.w3.org/2000/svg" height="35px" width="35px"
+         class="fa-solid fa-magnifying-glass absolute top-1/2 ml-1 left-4 -translate-y-1/2 text-white bg-gray-800 rounded-full"
+         viewBox="0 -960 960 960" fill="#e8eaed">
+        <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+    </svg>
+
+    <!-- Search Input -->
+    <input class="w-full px-6 ml-4 py-3 pl-12 pr-5 rounded-full border border-gray-300 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300"
+           type="text"
+           :placeholder="$store.mode.value == 'buy' ? 'Search for a book to start buying' : 'Search for a book to start selling'"
+           id="search-input"
+           x-model="searchQuery"
+           x-on:keyup.enter="search()"
+           x-on:focus="openSearch()"
+           x-on:blur.debounce.300ms="closeSearch()"
+           x-on:input.debounce="debounceSearch()"
+           autocomplete="off" />
+
+    <!-- Search Results Dropdown -->
+    <div class="absolute left-0 top-full mt-2 w-full bg-white dark:bg-gray-700 rounded-md shadow-lg z-10 max-h-100 overflow-y-auto"
+        style="z-index:400 !important;"
+         x-show="searchOpen"
+         x-transition
+         id="search-list">
+        
+        <!-- Loading Indicator -->
+        <template x-if="loading">
+            <div class="flex items-center justify-center py-4" >
+                <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                </svg>
+            </div>
+        </template>
+
+        <!-- No Results Found -->
+        <template x-if="!loading && searchResults.length === 0 && searchQuery.trim() !== ''">
+            <div class="alert  bg-gray-700 text-white flex items-center gap-2 px-4 py-2 rounded-md" role="alert">
+                <div >No matches found for "<span x-text="searchQuery"></span>" </div>
+                <a class="btn-primary ml-auto" align="right" href="/Product/RequestProduct">Request</a>
+            </div>
+        </template>
+
+        <!-- Initial Prompt -->
+        <template x-if="!loading && searchResults.length === 0 && searchQuery.trim() === ''">
+            <div class="alert bg-gray-700 text-white flex items-center gap-2 px-4 py-2 rounded-md" role="alert">
+                <div class="alert-icon">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div>Start typing to search, you can search by Title, ISBN, or Author <i class="fa-solid fa-face-smile-wink"></i>!</div>
+            </div>
+        </template>
+
+        <!-- Search Results -->
+        <ul class="flex flex-col" style="z-index:400">
+            <template x-for="(item, index) in searchResults" :key="item.ISBN">
+                <li class="px-4 py-2 bg-gray-700 dark:hover:bg-gray-600 cursor-pointer"
+                    x-on:click="selectResult(item)">
+                    <div class="grid grid-rows-1 grid-cols-6 border-b border-gray-500 rounded p-2 my-auto">
+
+                        <img class="h-20 w-16 mx-auto" :src="'https://cdn.wizebooks.co.za/Images/Products/' + item.ISBN + '.jpg'" />
+                        <div class="col-span-5 grid grid-cols-6">
+
+                            <div class="col-span-5 grid grid-rows-2 grid-cols-1">
+
+                                <span class="font-semibold text-sm my-auto text-primary-600" align="left" x-text="item.Title"></span>
+
+                                <span class="text-gray-200 text-xs my-auto xs:hidden" align="left" x-text="item.ISBN"></span>
+                                <span x-show="$store.mode.buy" class="text-primary-200 text-xs my-auto xs:hidden" align="left" x-text="'Stock: '+ item.Stock"></span>
+                            </div>
+                            <div class=" my-auto " align="right">
+                                <button class="btn-primary my-auto ">View</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </template>
+        </ul>
+
+        <!-- Error Message -->
+        <template x-if="error">
+            <div class="alert bg-red-600 text-white flex items-center gap-2 px-4 py-2 rounded-md" role="alert">
+                <div class="alert-icon">
+                    <i class="fa-solid fa-exclamation-triangle"></i>
+                </div>
+                <div>Error fetching search results. Please try again.</div>
+            </div>
+        </template>
+    </div>
+</div>
+
+<!-- Alpine.js Component Script -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('searchComponent', () => ({
+            searchQuery: '',
+            searchResults: [],
+            loading: false,
+            error: false,
+            searchOpen: false,
+            debounceTimeout: null,
+
+            // Opens the search dropdown
+            openSearch() {
+                this.searchOpen = true;
+            },
+
+            // Closes the search dropdown
+            closeSearch() {
+                // Delay to allow click events to register
+                setTimeout(() => {
+                    this.searchOpen = false;
+                }, 200);
+            },
+
+            // Debounce function to limit API calls
+            debounceSearch() {
+                clearTimeout(this.debounceTimeout);
+                this.debounceTimeout = setTimeout(() => {
+                    this.performSearch();
+                }, 400);
+            },
+
+            // Performs the search API call
+            performSearch() {
+                const query = this.searchQuery.trim();
+
+                // Reset states
+                this.error = false;
+
+                if (query === '') {
+                    this.searchResults = [];
+                    return;
+                }
+
+                this.loading = true;
+
+                // Replace the endpoint URL with your actual search API endpoint
+                axios.get(`/Search/Search?q=${encodeURIComponent(query)}`)
+                    .then(response => {
+                        // Assuming the API returns an array of results
+                        this.searchResults = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        this.error = true;
+                        this.searchResults = [];
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                    });
+            },
+
+            // Format number as currency
+            numberFormat(value) {
+                return 'R' + Number(value).toFixed(2);
+            },
+            search(){
+                const query = this.searchQuery.trim();
+                window.location.href = `/Search/SearchPage?q=${query}`;
+            },
+            // Handles selection of a search result
+            selectResult(item) {
+                // Implement what should happen when a result is selected
+                // For example, navigate to the product page
+                window.location.href = `/Product/Buy/${item.ISBN}`;
+            }
+        }));
+    });
+</script>
+
+                    </div>
+                </div>
+
+                <div class="support-fab">
+                    <a class="hidden md:block " aria-label="Chat on WhatsApp" href="https://wa.me/message/OX7ZXNCDAA5OE1" target="_blank">
+                        <img alt="Chat on WhatsApp" src="/images/WhatsAppButtonGreenLarge.svg" />
+                    </a>
+                </div>
+                <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+                <div x-cloak class="hidden lg:block absolute w-full inset-x-0 z-20  px-6 py-2 transition-all duration-300 ease-in-out bg-white top-24 dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
+                    <div class="w-full flex flex-col md:flex-row lg:mx-1">
+                                <a href="/Authentication/Registration"
+                               class="my-auto text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:underline md:mx-4 md:my-0 flex">
+
+                                <span class="material-symbols-rounded text-primary-600 mr-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#02b0f1"><path d="M475.48-100.78v-106h277.74v-546.44H475.48v-106h277.74q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15v546.44q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H475.48Zm-97.52-152.09-73.66-75.52L402.91-427H100.78v-106h302.13l-98.61-98.61 73.66-75.52L604.52-480 377.96-252.87Z" /></svg>
+                                </span>
+                                <span class="my-auto">Create Account</span>
+                            </a>
+                            <a href="/Authentication/Login"
+                                class="my-auto text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:underline md:mx-2 md:my-0 flex">
+
+                                <span class="material-symbols-rounded text-primary-600 mr-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#02b0f1"><path d="M475.48-100.78v-106h277.74v-546.44H475.48v-106h277.74q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15v546.44q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H475.48Zm-97.52-152.09-73.66-75.52L402.91-427H100.78v-106h302.13l-98.61-98.61 73.66-75.52L604.52-480 377.96-252.87Z" /></svg>
+                                </span>
+                                <span class="my-auto">Log In</span>
+                            </a>
+                        <a class="my-auto text-sm leading-5 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:underline md:mx-4 md:my-0 flex" href="/" >
+                            <span class="material-symbols-rounded text-primary-600 mr-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="24px" fill="#02b0f1"><path d="M160-200v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H600q-17 0-28.5-11.5T560-160v-200q0-17-11.5-28.5T520-400h-80q-17 0-28.5 11.5T400-360v200q0 17-11.5 28.5T360-120H240q-33 0-56.5-23.5T160-200Z" /></svg>
+                            </span>
+                            <span class="my-auto">Home</span>
+                        </a>
+                        
+
+<div x-data="cartComponent"
+     class="my-auto "
+     x-init="$nextTick(() => initComponent())"
+     x-on:cartupdate.window="refresh(true)"
+     x-on:click.away="open = false">
+    <!-- Navbar Tool -->
+    <a class="my-auto text-sm leading-5 text-gray-700 whitespace-nowrap transition-colors duration-300 transform dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400  md:my-0 flex" href="/Checkout/Cart"
+       x-on:mouseover="open = true;">
+
+        <span class="material-symbols-rounded whitespace-nowrap  confetti " id="cartIcon">
+
+            <svg x-show="!loading" class=""  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" :fill="items.length > 0 ? '#d9412e' : '#02b0f1'"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Z" /></svg>
+            <svg x-show="loading" class="mx-auto  motion-safe:animate-spin " xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#02b0f1"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" /></svg>
+        </span>
+
+        <span x-cloak class="my-auto" x-show="items.length <= 0">Cart</span>
+        <span x-cloak class="my-auto" x-show="items.length > 0" x-text="total" class="no-wrap font-medium"></span>
+    </a>
+
+    <!-- Dropdown Menu -->
+    <div x-cloak class="absolute right-0 mt-2 min-w-[20rem] p-1 bg-gray-700 text-gray-300 border border-gray-600 rounded-lg shadow-lg" x-show="open">
+        <div class="p-4" style="max-height: 15rem; overflow-y: auto;">
+            <template x-if="items.length == 0">
+                <span class="text-lg text-red-500 font-medium">Cart empty</span>
+            </template>
+            <template x-if="items.length > 0">
+                <template x-for="(item,i) in items" :key="item.Isbn +''+ i">
+                    <div class="flex items-center border-b border-gray-400 py-2">
+                        <div class="ml-4 flex-1">
+                            <h6 class="text-sm font-semibold" x-text="item.Title"></h6>
+                            <small class="text-gray-200" x-text="item.Isbn"></small>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-gray-200" x-text="CUSTOM.numberFormat(item.Price)"></span>
+                                <button type="button"
+                                        class="text-secondary-600 text-xs border border-secondary-600 rounded px-2 py-1"
+                                        x-on:click="remove(item.Isbn, item.Quality)">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </div>
+        <div class="flex justify-between items-center p-4 border-t border-primary-600"
+             x-show="items.length > 0">
+            <span class="text-gray-300">Total:</span>
+            <span class="text-gray-300 font-medium" x-text="total"></span>
+        </div>
+        <a class="block text-center text-gray-900 bg-primary-600 hover:bg-primary-700 rounded-lg py-2"
+           x-show="items.length > 0"
+           href="/Checkout/Cart">
+            Checkout
+        </a>
+    </div>
+</div>
+<script>
+
+
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("cartComponent", () =>
+        ({
+            items: [],
+            loading: false,
+            totalRaw: 0,
+            open: false,
+            total: CUSTOM.currency(undefined),
+            initComponent: function () {
+                this.refresh()
+            },
+            remove: async function (isbn, quality) {
+                var loggedIn =false;
+                if (!loggedIn) {
+                    
+                    let currentCart = localStorage.getItem('cart');
+                    if (!CUSTOM.isJsonString(currentCart)) {
+                        currentCart = [];
+                    }
+                    else {
+                        currentCart = JSON.parse(currentCart);
+                    }
+
+                    if (currentCart.some(c => c.isbn == isbn && c.quality == quality)) {
+                        var index = currentCart.indexOf(currentCart.filter(c => c.isbn == isbn && c.quality == quality)[0])
+                        if (index > -1) {
+                            currentCart.splice(index, 1)
+                            localStorage.removeItem('cart');
+                            localStorage.setItem('cart', JSON.stringify(currentCart));
+                        }
+                    }
+                }
+                else {
+                    var index = this.items.indexOf(this.items.filter(c => c.Isbn == isbn && c.Quality == quality)[0])
+                    if (index > -1) {
+                        this.items.splice(index, 1)
+                    }
+                    this.loading = true;
+                    await fetch(`/Cart/Remove?isbn=${isbn}&quality=${quality}`)
+                    this.loading = false
+                }
+
+                this.refresh()
+            },
+            refresh: async function (added) {
+                this.loading = true
+                var before = this.items.length;
+                
+                var cartPromise = false ? this.fetchCart() : this.fetchLocalCart();
+                cartPromise
+                    .then((response) => {
+                        const contentType = response.headers.get("content-type");
+                        if (contentType && contentType.indexOf("application/json") === -1) {
+                            return {
+                                Items: []
+                            }
+                        }
+
+                        if (response.status != 200) {
+                            throw new Error(response.statusText);
+                        }
+                        return response.data
+                    })
+                    .then((data) => {
+                        console.log(data)
+                        if (before < data.Items) {
+                            var element = document.getElementById("cart");
+                            const mouseoverEvent = new Event('mouseover');
+                            element.dispatchEvent(mouseoverEvent);
+                        }
+                        this.items = data.Items ?? [];
+                        this.total = CUSTOM.numberFormat(data.Total ?? "0");
+                        this.totalRaw = data.Total ?? 0
+                    })
+                    .finally(() => {
+                        this.loading = false
+                        if(added){
+
+                            let button= document.getElementById("cartIcon")
+                            button.classList.add('bubble');
+                            setTimeout(() => {
+                                button.classList.remove('bubble');
+                            }, 800);
+                        }
+                    })
+            },
+            fetchLocalCart: function () {
+                let currentCart = localStorage.getItem('cart');
+
+                if (!CUSTOM.isJsonString(currentCart)) {
+                    currentCart = [];
+                }
+                else {
+                    currentCart = JSON.parse(currentCart);
+                }
+
+                return axios.post('/Cart/GetLocal', currentCart)
+            },
+            fetchCart: function () {
+                return axios.get('/Cart/Get')
+            }
+        }))
+    })
+</script>
+<style>
+    .fa-cart-shopping: hover {
+    }
+
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    
+</style>
+                    </div>
+
+                    <!-- Search input on mobile screen -->
+                    <div class="my-4 md:hidden">
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+
+                            <input type="text" class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300" placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </nav>
+</header>
+    <div b-6mcvv7jgc5 class=" md:hidden">
+        
+<div class="fixed flex items-center mt-24"
+     id="search-input-group"
+     x-show="show"
+     x-on:hideSearch.window="show = false"
+     style="z-index:400 !important;"
+     x-data="searchComponent()"
+     x-on:click.away="closeSearch()">
+
+    <!-- Toggle button (opens/closes the textbox + dropdown) -->
+    <button type="button"
+            class="inline-flex items-center justify-center h-11 w-11 rounded-full bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300"
+            aria-label="Open search"
+            x-on:click.stop="toggleSearch()">
+
+        <!-- icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="22" width="22" viewBox="0 -960 960 960" fill="#e8eaed">
+            <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+        </svg>
+    </button>
+
+    <!-- Search panel (hidden until opened) -->
+    <div class="relative flex-grow ml-2"
+         x-show="searchVisible"
+         x-transition.opacity.duration.150ms
+         x-cloak>
+
+        <!-- Search Input -->
+        <input class="w-full px-6 py-3 pl-12 pr-5 rounded-full border border-gray-300 dark:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300"
+               type="text"
+               :placeholder="$store.mode.value == 'buy' ? 'Search for a book to start buying' : 'Search for a book to start selling'"
+               id="search-input"
+               x-ref="searchInput"
+               x-model="searchQuery"
+               x-on:keyup.enter="goSearchPage()"
+               x-on:keydown.escape.prevent="closeSearch(true)"
+               x-on:input.debounce.350ms="debounceSearch()"
+               autocomplete="off" />
+
+        <!-- Inline icon inside textbox -->
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="absolute top-1/2 left-4 -translate-y-1/2 text-white bg-gray-800 rounded-full p-1"
+             height="26" width="26" viewBox="0 -960 960 960" fill="#e8eaed">
+            <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+        </svg>
+
+        <!-- Search Results Dropdown -->
+        <div class="absolute left-0 top-full  mt-2 w-full bg-white dark:bg-gray-700 rounded-md shadow-lg z-10 max-h-[500px]  overflow-y-scroll"
+             style="z-index:400 !important;"
+             x-show="searchOpen"
+             x-transition
+             id="search-list"
+             x-on:mousedown.prevent>
+
+            <!-- Loading -->
+            <template x-if="loading">
+                <div class="flex items-center justify-center py-4">
+                    <svg class="animate-spin h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                </div>
+            </template>
+
+            <!-- No results -->
+            <template x-if="!loading && searchResults.length === 0 && searchQuery.trim() !== '' && !error">
+                <div class="alert bg-gray-700 text-white flex items-center gap-2 px-4 py-2 rounded-md" role="alert">
+                    <div>No matches found for "<span x-text="searchQuery"></span>"</div>
+                    <a class="btn-primary ml-auto" align="right" href="/Product/RequestProduct">Request</a>
+                </div>
+            </template>
+
+            <!-- Prompt -->
+            <template x-if="!loading && searchResults.length === 0 && searchQuery.trim() === '' && !error">
+                <div class="alert bg-gray-700 text-white flex items-center gap-2 px-4 py-2 rounded-md" role="alert">
+                    <div class="alert-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div>Start typing to search, you can search by Title, ISBN, or Author <i class="fa-solid fa-face-smile-wink"></i>!</div>
+                </div>
+            </template>
+
+            <!-- Results -->
+            <ul class="flex flex-col" style="z-index:400">
+                <template x-for="(item, index) in searchResults" :key="item.ISBN">
+                    <li class="px-4 py-2 bg-gray-700 dark:hover:bg-gray-600 cursor-pointer"
+                        x-on:click="selectResult(item)">
+                        <div class="grid grid-rows-1 grid-cols-6 border-b border-gray-500 rounded p-2 my-auto">
+                            <img class="h-20 w-16 mx-auto pr-1 my-auto" :src="'https://cdn.wizebooks.co.za/Images/Products/' + item.ISBN + '.jpg'" />
+                            <div class="col-span-5 grid grid-cols-6">
+                                <div class="col-span-5 grid grid-rows-2 grid-cols-1">
+                                    <span class="font-semibold text-sm my-auto text-primary-600" align="left" x-text="item.Title"></span>
+                                    <span class="text-gray-200 text-xs my-auto xs:hidden" align="left" x-text="item.ISBN"></span>
+                                    <span x-show="$store.mode.buy" class="text-primary-200 text-xs my-auto xs:hidden" align="left" x-text="'Stock: '+ item.Stock"></span>
+                                </div>
+                                <div class="my-auto" align="right">
+                                    <button type="button" class="btn-primary my-auto">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+
+            <!-- Error -->
+            <template x-if="error">
+                <div class="alert bg-red-600 text-white flex items-center gap-2 px-4 py-2 rounded-md" role="alert">
+                    <div class="alert-icon">
+                        <i class="fa-solid fa-exclamation-triangle"></i>
+                    </div>
+                    <div>Error fetching search results. Please try again.</div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('searchComponent', () => ({
+            searchQuery: '',
+            searchResults: [],
+            loading: false,
+            error: false,
+            show: true,
+
+            // UI state
+            searchVisible: false, // textbox visible
+            searchOpen: false,    // dropdown visible
+            debounceTimeout: null,
+
+            toggleSearch() {
+                if (this.searchVisible) {
+                    this.closeSearch(true);
+                    return;
+                }
+
+                this.searchVisible = true;
+
+                // Focus next tick so transitions/layout settle
+                this.$nextTick(() => {
+                    this.$refs.searchInput?.focus();
+                    this.openDropdown();
+                });
+            },
+
+            openDropdown() {
+                this.searchOpen = true;
+            },
+
+            closeSearch(clearQuery) {
+                // close dropdown immediately
+                this.searchOpen = false;
+
+                // hide textbox
+                this.searchVisible = false;
+
+                if (clearQuery) {
+                    this.searchQuery = '';
+                    this.searchResults = [];
+                    this.error = false;
+                    this.loading = false;
+                    clearTimeout(this.debounceTimeout);
+                }
+            },
+
+            // Debounce search calls
+            debounceSearch() {
+                clearTimeout(this.debounceTimeout);
+
+                const query = this.searchQuery.trim();
+
+                // If empty: keep dropdown open to show prompt, but clear results
+                if (query === '') {
+                    this.error = false;
+                    this.searchResults = [];
+                    this.openDropdown();
+                    return;
+                }
+
+                this.debounceTimeout = setTimeout(() => {
+                    this.performSearch();
+                }, 400);
+
+                this.openDropdown();
+            },
+
+            performSearch() {
+                const query = this.searchQuery.trim();
+                this.error = false;
+
+                if (query === '') {
+                    this.searchResults = [];
+                    return;
+                }
+
+                this.loading = true;
+
+                axios.get(`/Search/Search?q=${encodeURIComponent(query)}`)
+                    .then(response => {
+                        this.searchResults = response.data ?? [];
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        this.error = true;
+                        this.searchResults = [];
+                    })
+                    .finally(() => {
+                        this.loading = false;
+                    });
+            },
+
+            // Enter key: go to search page
+            goSearchPage() {
+                const query = this.searchQuery.trim();
+                if (!query) return;
+                window.location.href = `/Search/SearchPage?q=${encodeURIComponent(query)}`;
+            },
+
+            selectResult(item) {
+                window.location.href = `/Product/Buy/${item.ISBN}`;
+            }
+        }));
+    });
+</script>
+
+    </div>
+    <main b-6mcvv7jgc5 role="main" class="mt-20  lg:min-h-[600px] w-full">
+        
+
+
+<div class="mx-1 mt-4">
+    <section class="grid grid-cols-1 place-items-center  pt-8 pb-8 md:mx-4 lg:mx-0" x-data="{ cart: cart }">
+        <div href="#" class=" md:w-[50%] block pt-0 pb-0 rounded-lg shadow wood bg-gray-100">
+            <section class=" -mt-2 hidden lg:block">
+                <section class=" font-logo neon-text font-bold text-primary-500 text-center z-2  bg-gray-700 back shelf h-16 font-bold rounded-lg drop-shadow-xl shelf-face text-center -mt-[0.1rem]" style="box-shadow: 0px 20px 30px 0px #111827">
+
+                    <div class="h1 text-2xl " x-show="$store.mode.buy" x-cloak>Buy Secondhand Book</div>
+                    <div class="h1 text-2xl " x-show="$store.mode.sell" x-cloak>Sell Secondhand Book</div>
+                    <div class="mt-1">Book Details</div>
+                </section>
+            </section>
+            <section class=" -mt-2 block lg:hidden">
+                <section class="font-logo brightness-[0.5] neon-text font-bold text-primary-500 text-center z-2  bg-gray-700 back shelf-sm h-16 font-bold rounded-lg drop-shadow-xl shelf-face text-center -mt-[0.1rem]">
+
+                    <div class="h1 text-2xl " x-show="$store.mode.buy" x-cloak>Buy Secondhand Book</div>
+                    <div class="h1 text-2xl " x-show="$store.mode.sell" x-cloak>Sell Secondhand Book</div>
+                    <div class="mt-1">Book Details</div>
+                </section>
+                <section class="bg-gray-700 back h-2 invert-trapezoid shelf-sm wood dark:bg-gray-600 -mt-2" style="transform: scaleY(-1); " ></section>
+            </section>
+
+
+            <section class="mx-2 ">
+                <div class="mt-8 grid xs:grid-cols-1 grid-rows-1 gap-y-2 md:gap-x-6 md:gap-y-5  md:grid-cols-3 xl:gap-x-6 justify-content-center ">
+
+                    <div class=" mx-auto my-auto  aspect-[3/2] w-2/3  overflow-hidden rounded-lg">
+                        <img class="aspect-[3/2] ma-0 w-auto mx-auto  bg-gradient-to-b from-primary-600 via-gray-700 to-secondary-600 h-full dark:hidden p-2 object-cover object-center lg:h-full lg:w-full drop-shadow-xl " src="https://cdn.wizebooks.co.za/Images/Products/9780636125001.jpg" alt="" />
+                        <img class=" aspect-[3/2] ma-0 w-auto rounded-md bg-gradient-to-b from-primary-600 via-gray-700 to-secondary-600 p-1 mx-auto hidden h-full dark:block object-cover object-center lg:h-full lg:w-full drop-shadow-xl " src="https://cdn.wizebooks.co.za/Images/Products/9780636125001.jpg" alt="" />
+                    </div>
+
+
+                    <div class="bg-gray-100 dark:bg-gray-700 mx-auto opacity-80 p-2 md:p-4 rounded-lg group grid grid-cols-1 grid-flow-row auto-rows-min md:max-w-[75%] md:col-span-2 ">
+                        <div class="flex-shrink">
+                            <h2 class="text-lg md:text-2xl place-self-start h1  line-clamp-2 ">Platinum English Home Language: Grade 2: Big Book 3</h2>
+                            <h2 class="text-sm md:text-md h4 place-self-start text-gray-600 dark:text-gray-400">9780636125001</h2>
+                            <h3 class="text-md md:text-lg place-self-start h3">J. Farrow, B. Pitt</h3>
+                            <h4 class="text-sm md:text-md h4 place-self-start text-gray-600 dark:text-gray-400">Maskew Miller Learning</h4>
+                        </div>
+                        <div class="flex-shrink max-w-96" x-data="{
+                            showMore:false
+                            }">
+                            <p class="text-sm text-gray-700 dark:text-gray-300 place-self-start mt-4" x-show="229 <= 229">Superior CAPS coverage and written by expert authors. Superior illustrations and activities to improve results and motivate learners. Superior teacher support to save time and make teaching easy. Superior quality = exam success!.</p>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 place-self-start mt-4" x-show="229 > 229 && !showMore">
+
+                                Superior CAPS coverage and written by expert authors. Superior illustrations and activities to improve results and motivate learners. Superior teacher support to save time and make teaching easy. Superior quality = exam success!....
+                                <span class="text-primary-500 cursor-pointer hover:underline" x-show="!showMore" x-on:click="showMore = !showMore">Read more</span></p>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 place-self-start mt-4" x-show="229 > 229 && showMore">
+                                Superior CAPS coverage and written by expert authors. Superior illustrations and activities to improve results and motivate learners. Superior teacher support to save time and make teaching easy. Superior quality = exam success!.
+                                <span class="text-primary-500 cursor-pointer hover:underline" x-show="showMore" x-on:click="showMore = !showMore">Show less</span>
+                            </p>
+
+                        </div>
+                        <p class="text-lg font-logo font-bold text-red-500 place-self-start break-words">Non-Refundable Secondhand Book</p>
+                    </div>
+                </div>
+            </section>
+            <section class="hidden lg:block">
+                <section class="bg-gray-700 back brightness-[0.5]  mt-6 h-4 trapezoid-sm shelf wood dark:bg-gray-600" ></section>
+                <section class="bg-gray-700 back  neon-text font-logo shelf h-6 font-bold rounded-lg drop-shadow-xl shelf-face text-center  -mt-[0.1rem] " style="box-shadow: 0px 20px 30px 0px #111827">Available Stock</section>
+            </section>
+            <section class=" my-4  lg:hidden">
+                <section class="bg-gray-700 back h-4 invert-trapezoid shelf-sm wood dark:bg-gray-600 -mt-2" ></section>
+                <section class="bg-gray-700 brightness-[0.5] back neon-text font-logo shelf-sm h-6 font-bold rounded-lg drop-shadow-xl shelf-face text-center  -mt-[0.1rem]" style="box-shadow: 0px 10px 50px 0px #111827">Available Stock</section>
+            </section>
+            <section class="mx-2   md:p-6">
+                <div class=" border-solid border-1 border-primary-600 grid grid-cols-6 gap-6">
+
+                    <div class="col-span-6  md:col-span-4">
+
+                        <table class="text-xs md:text-md text-left rtl:text-right text-gray-500 dark:text-gray-300 w-full   rounded-lg  dark:bg-gray-700 bg-gray-100 opacity-80"  >
+                            <thead class="text-sm italic text-gray-100 bg-transparent text-gray-700 dark:text-white border-b dark:border-secondary-500">
+                                <tr class="rounded">
+                                    <th scope="col" class="md:px-6 md:py-3">
+                                        Condition
+                                    </th>
+                                    <th scope="col" class="md:px-6 md:py-3" align="center">
+                                        Stock
+                                    </th>
+                                    <th scope="col" class="md:px-6 md:py-3" align="right" x-show="$store.mode.buy" x-cloak>
+                                        Price
+                                    </th>
+                                    <th scope="col" class="md:px-6 md:py-3"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                    <tr class="bg-transparent border-b dark:border-gray-700 dark:text-primary-600" x-show="$store.mode.buy" x-cloak>
+                                        <th scope="row" class="px-2 md:px-6 py-4 text-primary-600 whitespace-nowrap border-b border-gray-600 ">
+                                            New
+                                        </th>
+                                        <td class="md:px-6 md:py-4 font-medium  text-gray-900 dark:text-gray-100 border-b border-gray-600 " align="center">
+                                            0
+                                        </td>
+                                        <td class="md:px-6 md:py-2  text-gray-900 dark:text-gray-100 border-b border-gray-600 " align="right">
+                                            <div class="flex justify-end items-center gap-1">
+                                                <div class=" text-end">R</div>
+                                                <div class="d-flex justify-content-end">
+                                                    420.00
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-b border-gray-600 " align="center">
+
+                                            <button class="cursor-pointer btn-primary"
+                                            x-on:click="$openTab('https://www.wizebooks.co.za/get/9780636125001-platinum-english-hl-g02-bb-3')">
+                                                <span class="hidden md:block">
+                                                    Add to Cart
+                                                </span>
+                                                <svg class="block md:hidden " xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="white"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Z" /></svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="bg-transparent border-b border-gray-100 dark:border-gray-700  text-gray-900 dark:text-gray-100 ">
+                                        <th scope="row" class="px-2 md:px-6 py-4  whitespace-nowrap ">
+                                            Excellent
+
+                                        </th>
+                                        <td class="md:px-6 m:py-2 text-secondary-500 " align="center">
+                                            0
+                                        </td>
+                                        <td class="md:px-6 md:py-4 " align="right" x-show="$store.mode.buy" x-cloak>
+                                            <div class="flex justify-end items-center gap-1">
+                                                <div class="text-end">R</div>
+                                                <div class="d-flex">
+                                                    380.00
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 " align="center" x-show="$store.mode.buy" x-cloak>
+                                                <button class="btn-gray cursor-not-allowed hover:bg-gray-600"
+                                                title="No Stock Available" disabled>
+                                                    <span class="hidden md:block">
+
+                                                        Add to Cart
+                                                    </span>
+                                                    <svg class="block md:hidden" xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#d9412e"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Z" /></svg>
+                                                </button>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 " align="center" x-show="$store.mode.sell" x-cloak>
+
+                                            <button class="cursor-pointer  btn-secondary"
+                                            x-on:click="$openTab('/Listing/Add/9780636125001')">
+                                                <span class="hidden md:block">
+                                                    Sell This Book
+                                                </span>
+
+                                                <span class="block md:hidden">
+                                                    Sell
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-transparent border-b border-gray-100 dark:border-gray-700  text-gray-900 dark:text-gray-100 ">
+                                        <th scope="row" class="px-2 md:px-6 py-4  whitespace-nowrap border-t border-gray-600">
+                                            Good
+
+                                        </th>
+                                        <td class="md:px-6 m:py-2 text-secondary-500 border-t border-gray-600" align="center">
+                                            0
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-t border-gray-600" align="right" x-show="$store.mode.buy" x-cloak>
+                                            <div class="flex justify-end items-center gap-1">
+                                                <div class="text-end">R</div>
+                                                <div class="d-flex">
+                                                    340.00
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-t border-gray-600" align="center" x-show="$store.mode.buy" x-cloak>
+                                                <button class="btn-gray cursor-not-allowed hover:bg-gray-600"
+                                                title="No Stock Available" disabled>
+                                                    <span class="hidden md:block">
+
+                                                        Add to Cart
+                                                    </span>
+                                                    <svg class="block md:hidden" xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#d9412e"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Z" /></svg>
+                                                </button>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-t border-gray-600" align="center" x-show="$store.mode.sell" x-cloak>
+
+                                            <button class="cursor-pointer  btn-secondary"
+                                            x-on:click="$openTab('/Listing/Add/9780636125001')">
+                                                <span class="hidden md:block">
+                                                    Sell This Book
+                                                </span>
+
+                                                <span class="block md:hidden">
+                                                    Sell
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-transparent border-b border-gray-100 dark:border-gray-700  text-gray-900 dark:text-gray-100 ">
+                                        <th scope="row" class="px-2 md:px-6 py-4  whitespace-nowrap border-t border-gray-600">
+                                            Fair
+
+                                        </th>
+                                        <td class="md:px-6 m:py-2 text-secondary-500 border-t border-gray-600" align="center">
+                                            0
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-t border-gray-600" align="right" x-show="$store.mode.buy" x-cloak>
+                                            <div class="flex justify-end items-center gap-1">
+                                                <div class="text-end">R</div>
+                                                <div class="d-flex">
+                                                    315.00
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-t border-gray-600" align="center" x-show="$store.mode.buy" x-cloak>
+                                                <button class="btn-gray cursor-not-allowed hover:bg-gray-600"
+                                                title="No Stock Available" disabled>
+                                                    <span class="hidden md:block">
+
+                                                        Add to Cart
+                                                    </span>
+                                                    <svg class="block md:hidden" xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#d9412e"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Z" /></svg>
+                                                </button>
+                                        </td>
+                                        <td class="md:px-6 md:py-4 border-t border-gray-600" align="center" x-show="$store.mode.sell" x-cloak>
+
+                                            <button class="cursor-pointer  btn-secondary"
+                                            x-on:click="$openTab('/Listing/Add/9780636125001')">
+                                                <span class="hidden md:block">
+                                                    Sell This Book
+                                                </span>
+
+                                                <span class="block md:hidden">
+                                                    Sell
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                            </tbody>
+                            <tr class="bg-transparent dark:border-gray-700  text-gray-900 dark:text-gray-100 ">
+                                <td colspan="1" class=" relative border-t border-secondary-500">
+
+                                    <a class="btn-secondary lg:mx-4 lg:my-auto t-0 l-0 cursor-pointer hidden md:block"
+                                    x-show="$store.mode.buy" x-cloak
+                                       x-on:click="$store.mode.toggle()" >
+                                        Sell
+                                    </a>
+
+                                    <a class="btn-secondary lg:mx-4 lg:my-auto t-0 l-0 cursor-pointer block md:hidden"
+                                    x-show="$store.mode.buy" x-cloak
+                                       x-on:click="$store.mode.toggle()" >
+                                        Sell This Book
+                                    </a>
+                                    <a class="btn-primary mx-4 my-auto t-0 l-0 cursor-pointer" 
+                                    x-show="$store.mode.sell" x-cloak
+                                    x-on:click="$store.mode.toggle()">
+                                        Buy This Book
+                                    </a>
+
+                                </td>
+                                <td :colspan="$store.mode.buy ? 2: 1" class="border-t border-secondary-500">
+                                </td>
+                                <td colspan="1" class="border-t border-secondary-500 text-center align-middle">
+                                    <div class="flex justify-center items-center my-4"
+                                    x-data="{ wish : wishlistItem(false) }" >
+
+                                        <a class="flex items-center gap-1 cursor-pointer text-3xl" 
+                                        x-on:click="wish.sendPostRequest('9780636125001')"
+                                        x-bind:title="wish.title">
+
+                                            <i x-bind:class="wish.class"> favorite</i>
+                                            <span x-show="wish.class.includes('secondary')" class="text-xs text-secondary-600 hover:text-primary-600">Add to List</span>
+                                            <span class="text-xs text-primary-600 hover:text-secondary-600" x-show="!wish.class.includes('secondary')">Remove from List</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="col-span-6  md:col-span-2  ">
+
+                        <table class="text-xs md:text-md text-left rtl:text-right text-gray-500 dark:text-gray-300 w-full  rounded-lg  dark:bg-gray-700 bg-gray-100 opacity-80">
+                            <thead class="text-sm italic text-gray-100 bg-transparent text-gray-700 dark:text-white border-b dark:border-secondary-500">
+                                <tr class="rounded ">
+                                    <th scope="col" colspan="2" class="md:px-6 md:py-3">
+                                        Book Condition Definitions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class=" " x-show="$store.mode.buy" x-cloak>
+                                    <th scope="row" class="px-1 md:px-4 py-4 text-primary-600">
+                                        New
+                                    </th>
+                                    <td class="px-2 md:px-6 py-4">
+                                        <div class="text-sm mx-2 text-gray-300">
+                                            <b class=" text-gray-100">New book.</b>
+                                        </div>
+                                    </td>
+                                </tr>
+                                    <tr class="dark:text-gray-100 ">
+                                        <th scope="row" class="px-1 md:px-4 py-2 text-gray-100 " :class="$store.mode.sell && 'Excellent' == 'Excellent' ? '':'border-t border-gray-600' ">
+                                            Excellent
+                                        </th>
+                                        <td class="px-2 md:px-6 py-2  " :class="$store.mode.sell && 'Excellent' == 'Excellent' ? '':'border-t border-gray-600' ">
+                                            <div x-show="'Excellent' == 'Excellent'" class="text-sm mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Like new.</b>&nbsp;<small>No torn or missing pages. No writing and/or highlighting.</small>
+                                            </div>
+                                            <div x-show="'Excellent' == 'Good'" class="text-sm mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Lightly used.</b>&nbsp;<small> No tears or missing pages. Minimal writing and/or highlighting.</small>
+                                            </div>
+                                            <div x-show="'Excellent' == 'Fair'" class="text-sm  mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Significantly used.</b>&nbsp;<small>No missing pages. Significant writing and/or highlighting, but text remains legible.</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="dark:text-gray-100 ">
+                                        <th scope="row" class="px-1 md:px-4 py-2 text-gray-100 " :class="$store.mode.sell && 'Good' == 'Excellent' ? '':'border-t border-gray-600' ">
+                                            Good
+                                        </th>
+                                        <td class="px-2 md:px-6 py-2  " :class="$store.mode.sell && 'Good' == 'Excellent' ? '':'border-t border-gray-600' ">
+                                            <div x-show="'Good' == 'Excellent'" class="text-sm mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Like new.</b>&nbsp;<small>No torn or missing pages. No writing and/or highlighting.</small>
+                                            </div>
+                                            <div x-show="'Good' == 'Good'" class="text-sm mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Lightly used.</b>&nbsp;<small> No tears or missing pages. Minimal writing and/or highlighting.</small>
+                                            </div>
+                                            <div x-show="'Good' == 'Fair'" class="text-sm  mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Significantly used.</b>&nbsp;<small>No missing pages. Significant writing and/or highlighting, but text remains legible.</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="dark:text-gray-100 ">
+                                        <th scope="row" class="px-1 md:px-4 py-2 text-gray-100 " :class="$store.mode.sell && 'Fair' == 'Excellent' ? '':'border-t border-gray-600' ">
+                                            Fair
+                                        </th>
+                                        <td class="px-2 md:px-6 py-2  " :class="$store.mode.sell && 'Fair' == 'Excellent' ? '':'border-t border-gray-600' ">
+                                            <div x-show="'Fair' == 'Excellent'" class="text-sm mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Like new.</b>&nbsp;<small>No torn or missing pages. No writing and/or highlighting.</small>
+                                            </div>
+                                            <div x-show="'Fair' == 'Good'" class="text-sm mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Lightly used.</b>&nbsp;<small> No tears or missing pages. Minimal writing and/or highlighting.</small>
+                                            </div>
+                                            <div x-show="'Fair' == 'Fair'" class="text-sm  mx-2 text-gray-300">
+                                                <b class=" text-gray-100">Significantly used.</b>&nbsp;<small>No missing pages. Significant writing and/or highlighting, but text remains legible.</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </section>
+            <section class="hidden lg:block">
+                <section class="bg-gray-700 back brightness-[0.5] h-4 trapezoid-sm shelf wood dark:bg-gray-600"></section>
+                <section class="bg-gray-700 back shelf h-12 font-bold rounded-lg drop-shadow-xl shelf-face text-center text-primary-500 -mt-[0.1rem] " style="box-shadow: 0px 20px 30px 0px #111827"></section>
+            </section>
+            <section class="lg:hidden">
+                <section class="bg-gray-700 back mt-2 h-4 invert-trapezoid shelf-sm wood dark:bg-gray-600 " ></section>
+                <section class="bg-gray-700 back shelf-sm h-8 font-bold rounded-lg drop-shadow-xl shelf-face text-center text-primary-500 -mt-[0.1rem]" style="box-shadow: 0px 10px 50px 0px #111827"></section>
+            </section>
+        </div>
+    </section>
+</div>
+
+    </main>
+
+    <div b-6mcvv7jgc5 class="fixed md:hidden bottom-0 left-0 w-full bg-gray-900 border-t shadow-md border-gray-700" id="quickaccess">
+        <div b-6mcvv7jgc5 class="grid grid-cols-3 grid-rows-1 grid-flow-col bg-gray-900 mt-1 ">
+            <!-- Account Button -->
+            <a b-6mcvv7jgc5 href="/Account/Manage" class="flex flex-col items-center text-gray-700 hover:text-primary-600 dark:text-gray-200 dark:hover:text-primary-400">
+                <span b-6mcvv7jgc5 class="mb-1">
+                    <svg b-6mcvv7jgc5 xmlns="http://www.w3.org/2000/svg" height="25px" width="24px" viewBox="0 -960 960 960" fill="#02b0f1">
+                        <path b-6mcvv7jgc5 d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Z" />
+                    </svg>
+                </span>
+                    <span b-6mcvv7jgc5 class="text-sm">Login</span>
+            </a>
+
+            <!-- Cart (Partial View) -->
+            <a b-6mcvv7jgc5 href="/Checkout/Cart" class="flex flex-col  border-l border-r border-gray-700 flex-col items-center text-gray-700 hover:text-primary-600 dark:text-gray-200 dark:hover:text-primary-400">
+                <span b-6mcvv7jgc5 class="mb-1">
+                    <svg b-6mcvv7jgc5 xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#02b0f1"><path b-6mcvv7jgc5 d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM208-800h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Z" /></svg>
+                </span>
+                <span b-6mcvv7jgc5 class="text-sm">Cart</span>
+            </a>
+
+
+            <!-- WhatsApp Chat Button -->
+            <a b-6mcvv7jgc5 href="https://wa.me/message/OX7ZXNCDAA5OE1" class="flex flex-col items-center text-gray-700 hover:text-primary-600 dark:text-gray-200 dark:hover:text-primary-400">
+                <span b-6mcvv7jgc5 class="mb-1">
+                    <svg b-6mcvv7jgc5 fill="#02b0f1" height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 308 308" xml:space="preserve">
+                    <g b-6mcvv7jgc5 id="XMLID_468_">
+                    <path b-6mcvv7jgc5 id="XMLID_469_" d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156
+                  c-3.032,0-5.579,1.511-7.563,4.479c-2.243,3.334-9.033,11.271-11.131,13.642c-0.274,0.313-0.648,0.687-0.872,0.687
+                  c-0.201,0-3.676-1.431-4.728-1.888c-24.087-10.463-42.37-35.624-44.877-39.867c-0.358-0.61-0.373-0.887-0.376-0.887
+                  c0.088-0.323,0.898-1.135,1.316-1.554c1.223-1.21,2.548-2.805,3.83-4.348c0.607-0.731,1.215-1.463,1.812-2.153
+                  c1.86-2.164,2.688-3.844,3.648-5.79l0.503-1.011c2.344-4.657,0.342-8.587-0.305-9.856c-0.531-1.062-10.012-23.944-11.02-26.348
+                  c-2.424-5.801-5.627-8.502-10.078-8.502c-0.413,0,0,0-1.732,0.073c-2.109,0.089-13.594,1.601-18.672,4.802
+                  c-5.385,3.395-14.495,14.217-14.495,33.249c0,17.129,10.87,33.302,15.537,39.453c0.116,0.155,0.329,0.47,0.638,0.922
+                  c17.873,26.102,40.154,45.446,62.741,54.469c21.745,8.686,32.042,9.69,37.896,9.69c0.001,0,0.001,0,0.001,0
+                  c2.46,0,4.429-0.193,6.166-0.364l1.102-0.105c7.512-0.666,24.02-9.22,27.775-19.655c2.958-8.219,3.738-17.199,1.77-20.458
+                  C233.168,179.508,230.845,178.393,227.904,176.981z" />
+                    <path b-6mcvv7jgc5 id="XMLID_470_" d="M156.734,0C73.318,0,5.454,67.354,5.454,150.143c0,26.777,7.166,52.988,20.741,75.928L0.212,302.716
+                  c-0.484,1.429-0.124,3.009,0.933,4.085C1.908,307.58,2.943,308,4,308c0.405,0,0.813-0.061,1.211-0.188l79.92-25.396
+                  c21.87,11.685,46.588,17.853,71.604,17.853C240.143,300.27,308,232.923,308,150.143C308,67.354,240.143,0,156.734,0z
+                   M156.734,268.994c-23.539,0-46.338-6.797-65.936-19.657c-0.659-0.433-1.424-0.655-2.194-0.655c-0.407,0-0.815,0.062-1.212,0.188
+                  l-40.035,12.726l12.924-38.129c0.418-1.234,0.209-2.595-0.561-3.647c-14.924-20.392-22.813-44.485-22.813-69.677
+                  c0-65.543,53.754-118.867,119.826-118.867c66.064,0,119.812,53.324,119.812,118.867
+                  C276.546,215.678,222.799,268.994,156.734,268.994z" />
+              </g>
+            </svg>
+                </span>
+                <span b-6mcvv7jgc5 class="text-sm">Chat</span>
+            </a>
+        </div>
+    </div>
+
+
+    <footer class="bg-gray-200 dark:bg-primary-1100 border-top-2 border-secondary-600 pb-6 md:pb-0" id="footer">
+    <div class="max-w-screen-xl p-4 py-6 mx-auto lg:py-16 md:p-8 lg:p-10">
+
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-3">
+
+            <div class="col-span-2 md:col-span-1">
+                <a href="/">
+                    <img src="/Images/900_logo.png" class="max-w-1/2" />
+                </a>
+            </div>
+            <div>
+                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h3>
+                <ul class="text-gray-500 dark:text-gray-400">
+                    <li class="mb-4">
+                        <a href="/Home/HowItWorks" class="hover:underline hover:text-primary-650">How It Works</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Home/FAQ" class="hover:underline hover:text-primary-650">Frequently Asked Questions</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Home/ContactUs" class="hover:underline hover:text-primary-650">
+                            Contact Us
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Product/RequestProduct" class="hover:underline hover:text-primary-650">
+                            Request Product 
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h3>
+                <ul class="text-gray-500 dark:text-gray-400">
+                    <li class="mb-4">
+                        <a href="/Home/Article/privacy-policy" class="hover:underline hover:text-primary-650">Privacy Policy</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/content/PAIA_POPIA_Manual.pdf" class="hover:underline hover:text-primary-650">PAIA (POPIA) Manual</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Home/Article/terms-and-conditions" class="hover:underline hover:text-primary-650">Terms &amp; Conditions</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Home/Article/refund-policy" class="hover:underline hover:text-primary-650">Refund Policy</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Home/Article/payout-policy" class="hover:underline hover:text-primary-650">Payout Policy</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="/Home/Article/gaurantee-policy" class="hover:underline hover:text-primary-650">Guarantee Policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
+        <div class="text-center">
+            <ul class="flex justify-center mt-5 space-x-5">
+                <li>
+                    <a href="https://www.facebook.com/wizebooks/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/wizebooks/" class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/wizebooks" class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/company/wize-books" class="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" /></svg>
+                    </a>
+                </li>
+                <li>
+
+                    <div class="pb-4 fs-xs  text-center text-md-start my-auto dark:text-primary-50" id="powered-by">⚡ In House by Wize Books</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+    <script src="/js/theme.js?v=yRlzNHVCsS5R705KSoMJ4MMFdLVOkMXkAPD0YwuTHnA"></script>
+    <script>
+
+        async function performCheck(getter,storageKey = 'checkResult', timestampKey= 'checkTimestamp') {
+            const storedResult = localStorage.getItem(storageKey);
+            const storedTimestamp = localStorage.getItem(timestampKey);
+
+            const now = new Date();
+            // Check if the data is fresh (within 5 minutes)
+            if (storedTimestamp && storedResult) {
+                const lastRun = new Date(storedTimestamp);
+                const minutesElapsed = (now - lastRun) / 1000 / 60;
+
+                if (minutesElapsed <= 5) {
+                    //console.log('Using cached result:', storedResult);
+                    return JSON.parse(storedResult); 
+                }
+            }
+
+            // Perform the actual check
+            const result = await getter();
+            var data = await result.json()
+
+            
+            localStorage.setItem(storageKey, JSON.stringify(data));
+            localStorage.setItem(timestampKey, now.toISOString());
+            return data;
+        }
+        document.addEventListener("alpine:init", () => { 
+            Alpine.store('user', {
+                isLoggedIn: async function() 
+                {
+                    var loginCheck = (async () => 
+                    {
+                        return await fetch(`/Authentication/LoggedIn`, {
+                            method: "Get",
+                        })
+                    })
+                    return await loginCheck;
+                }
+            });
+
+
+            Alpine.store('mode', {
+              get value(){
+                  var storage = localStorage.getItem('mode')
+                  if(!storage)
+                  {
+                    return 'buy'
+                  }
+                  else {
+                      return storage
+                  }
+              },
+              get buy(){
+                  return this.value == 'buy'
+              },
+              get sell(){
+                  return this.value == 'sell'
+              },
+              set value(val){
+
+                  localStorage.setItem('mode', val)
+                  
+              },
+              toggle(){
+                  if(this.value == 'buy'){
+                      this.value = 'sell'
+                  }
+                  else {
+                      this.value = 'buy'
+                  }
+              }
+
+            })
+            Alpine.magic('openTab',  function () {
+                
+                return async (url) => {
+                    window.open(url,'_blank');
+                }
+            })
+            Alpine.magic('addToCart',  function () {
+                return async (isbn, quality) => {
+                    var isLoggedIn = await Alpine.store('user').isLoggedIn()
+                    isLoggedIn  = await isLoggedIn()
+                    var toAdd = []
+                    toAdd.push({
+                        isbn: isbn,
+                        quality: quality
+                    })
+                    var cart = localStorage.getItem('cart');
+                    if(cart == ""){
+                        cart = "[]"
+                    }
+                    var storedResult = JSON.parse(cart);
+                    if (isLoggedIn.ok) {
+                        if(storedResult && storedResult.length > 0){
+                            for (var i = 0; i < storedResult.length; i++) {
+                                toAdd.push({
+                                    isbn: storedResult[i].isbn,
+                                    quality: storedResult[i].quality,
+                                })
+                            }
+                        }
+                        for (var i = 0; i < toAdd.length; i++) {
+                            await fetch(`/Cart/Add?isbn=${toAdd[i].isbn}&quality=${toAdd[i].quality}`, {
+                                method: "POST",
+                            })
+                        }
+                        localStorage.removeItem('cart');
+                        showNotification("Added to cart","The book was added to your cart!", 'primary');
+                    }
+                    else {
+                        if(!Array.isArray(storedResult)){
+                            storedResult = []
+                        }
+
+                        storedResult.push({
+                            isbn: isbn,
+                            quality: quality,
+                        })
+                        localStorage.setItem('cart', JSON.stringify(storedResult));
+                        showNotification("Added to cart","The book was added to your cart!",  'primary');
+                    }
+                    dispatch('cartupdate')
+                };
+            });
+        });
+    </script>
+    
+</body>
+</html>
+
+

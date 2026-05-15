@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 4
+  },
+  "reports": [
+    {
+      "file": "src/bookloop_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.32,
+      "platform_name": "Bookloop UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:31:57,273 [INFO] ConfigurableMarketplaceSpider: Starting Bookloop UK harvest. limit_pages=1 limit_items=2\n2026-05-15 00:31:59,359 [INFO] ConfigurableMarketplaceSpider: Finished Bookloop UK harvest. Saved 1 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 1,
+      "output_items_added": 1,
+      "cache_html_before": 0,
+      "cache_html_after": 1,
+      "cache_html_added": 1
+    },
+    {
+      "file": "src/portal_dos_livreiros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.87,
+      "platform_name": "Portal dos Livreiros",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:31:57,260 [INFO] ConfigurableMarketplaceSpider: Starting Portal dos Livreiros harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/sellitback_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 1.45,
+      "platform_name": "SellitBack",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:32:00,156 [INFO] ConfigurableMarketplaceSpider: Starting SellitBack harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 2,
+      "cache_html_added": 2
+    },
+    {
+      "file": "src/todostuslibros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.07,
+      "platform_name": "TodosTusLibros",
+      "territory": "Spain",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:32:00,689 [INFO] ConfigurableMarketplaceSpider: Starting TodosTusLibros harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 2
+  },
+  "reports": [
+    {
+      "file": "src/biblio_greece_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.16,
+      "platform_name": "Biblio.com Greece",
+      "territory": "Greece",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:47:00,451 [INFO] ConfigurableMarketplaceSpider: Starting Biblio.com Greece harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/biblio_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.32,
+      "platform_name": "Biblio UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:47:05,208 [INFO] ConfigurableMarketplaceSpider: Starting Biblio UK harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    }
+  ]
+}

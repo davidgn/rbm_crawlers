@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="es"><head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v2"> 
+        <link rel="apple-itouch-icon" href="/apple-touch-icon.png?v2">
+                    <link rel="canonical" href="/">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		
+        <title>RELIBREA | Compra y vende libros de segunda mano</title>
+        <meta name="description" content=" Tu comunidad de referencia, con más de 100.000 libros usados en toda España. Ahorra hasta un 70% en libros de texto, lectura e incluso comics y libros antiguos." />
+        <meta name="keywords" content="libros, texto, académicos, lectura, novelas, comics, segunda mano, segundamano, compraventa, usados,  anuncios, comprar, vender, anuncios gratis, clasificados, primaria, secundaria, ESO, bachiller, bachillerato, universidad, oposiciones, apuntes, cuadernos, educación, ahorro, economía colaborativa, librería, online"/>
+
+    
+    <meta property ='og:url' content = 'relibrea.com'/>
+    <meta property ='og:title' content = 'Relibrea | Compra, venta e intercambio de libros usados'/>
+    <meta property ='og:image' content='http://v2.relibrea.com/sharing-icon.png'/>
+    <meta property ='og:description' content = 'Tu web de referencia para comprar o vender libros de segunda mano. Ahorra hasta un 70% en libros de texto, de lectura e incluso comics y libros antiguos. Echa un vistazo, es gratis.'/> 
+    <meta property="og:type" content="website"/>
+
+    <meta name="language" content="Spanish"/>
+    <meta name="distribution" content="global"/>
+    <meta name="ROBOTS" content="INDEX,FOLLOW"/>
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@relibrea" />
+    <meta name="twitter:creator" content="@relibrea" />
+    <meta property ='og:site_name' content = 'Relibrea'/>
+    <meta property ='og:type' content = 'website'/>
+    <meta property ='og:location' content = 'Spain'/>
+
+
+                    <link rel="stylesheet" href="/css/app.css" />
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> 
+    
+            
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+
+                <script src="/js/app.js"></script>
+        
+
+        <!-- Asynchronously load GoogleFonts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+        <script>
+            WebFont.load({
+                google: {
+                    families: ['Raleway:900', 'Open Sans:400,700']
+                }
+            });
+        </script>
+
+        <!-- Load Analytics -->
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-32243394-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+        <!-- Rich cards for Google -->
+        <script src="//cdn.jsdelivr.net/g/es6-promise@1.0.0"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jsonld/0.4.12/jsonld.min.js"></script>
+
+    
+                <script src="/js/app2.js"></script>
+        
+    
+		<!-- Rich cards for Google -->
+		<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "Organization",
+		  "additionalType": "http://www.productontology.org/id/Bookselling",
+		  "name": "Relibrea - Libros de segunda mano",
+		  "description": "Compra y vende libros usados online. En Relibrea ahorrarás hasta un 70% en libros de texto, lectura, idiomas, comics e incluso libros antiguos y descatalogados.",
+		  "url": "https://relibrea.com",
+		  "logo": "https://relibrea.com/assets/img/logo-relibrea-libros.png",
+		  "email": "info@relibrea.com",
+		  "sameAs": [
+		      "http://www.facebook.com/Relibrea/",
+		      "http://twitter.com/relibrea",
+		      "http://www.instagram.com/relibrea_libros/",
+		      "http://www.pinterest.es/relibrea/"
+		    ]
+		}
+		</script>         		
+
+        <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            // Mobile button for menu change on click
+                                            $(".navbar-toggle").on("click", function () {
+                                                $(this).toggleClass("active");
+                                                $(".navbar-relibrea").toggleClass("open");
+                                            });
+                                            // Script rotate parts of sentence
+                                            $(".rotate").textrotator({
+                                                animation: "dissolve",
+                                                separator: ",",
+                                                speed: 3000
+                                            });
+                                            // Blend mode detector - Can I use Multiply?
+                                            if (typeof window.getComputedStyle(document.body).backgroundBlendMode == 'undefined') {
+                                                document.documentElement.className += " no-bg-blend-mode";
+                                            }
+                                            // Unslider plugin for Homepage Slider
+                                            var slider = $('.header-slider').unslider({
+                                                speed: 300,
+                                                autoplay: true,
+                                                delay: 10000,
+                                                arrows: {
+                                                    //  Unslider default behaviour
+                                                    //  Remove Hidden on arrow next when more than 2 slides
+                                                    prev: '<a class="unslider-arrow prev hidden-xs"></a>',
+                                                    next: '<a class="unslider-arrow next hidden"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>',
+                                                }
+                                            });
+                                            // -- Preload images
+                                            pic = new Image();
+                                            pic.src = "/assets/img/relibrea-home-nueva-web-compraventa2.jpg?v2";
+
+                                            // -- Change BG on slide change. 0 is the initial one, 1 the first, etc.
+                                            slider.on('unslider.change', function (event, index, slide) {
+                                                if (index == 1) {
+                                                    $('.header').css("background-image", "url(/assets/img/relibrea-home-nueva-web-compraventa2.jpg?v2)");
+                                                } else {
+                                                    $('.header').css("background-image", "url(/assets/img/relibrea-home-libros-segundamano.jpg?v2)");
+                                                }
+                                            });
+                                            // -- Show and hide filters below search
+                                            $("#provincias_section").click(function () {
+                                                $("#citiesNearBy").load("/index/load/citiesNearBy/2601:407:c501:3890:1c01:1950:37d:e682");
+                                            });
+
+                                        });
+
+
+
+
+        </script>
+
+        <script>
+            // Detect Adblock - https://github.com/codepo8/detecting-adblock/
+            $(function () {
+                var test = document.createElement('div');
+                test.innerHTML = '&nbsp;';
+                test.className = 'adsbox';
+                document.body.appendChild(test);
+                window.setTimeout(function () {
+                    if (test.offsetHeight === 0) {
+                        console.log('Adblock activo');
+                        $(".link-pu-bl-alternat").css("display", "block");
+                    } else {
+                        console.log('Adblock Inactivo');
+                    }
+                    test.remove();
+                }, 100);
+                
+                $.ajax({url: "/index/load/lastresults", success: loadContent, cache: false});
+            });
+            
+            function loadContent(data) {
+                $("#latest-books").html(data);
+
+            }
+        </script>
+    
+
+
+
+    <!-- CSS file -->
+
+</head>
+    <body id="home" class="eupopup">
+        
+        <div id="nav-wrapper">
+            <nav id="nav" class="navbar navbar-relibrea">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Abrir/cerrar menu</span>
+                            <span class="icon-bar top-bar"></span>
+                            <span class="icon-bar middle-bar"></span>
+                            <span class="icon-bar bottom-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                            <span>
+                                <object type="image/svg+xml" data="https://relibrea.com/assets/img/relibrea-libros-logotipo.svg" title="Relibrea">
+                                    <img src="/assets/img/relibrea-libros-logotipo.png?v2" width="138" height="30" alt="Relibrea"/>
+                                </object>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="main-menu" aria-expanded="false" style="height: 1px;">
+
+                    </div><!-- /.container-->
+            </nav><!-- PART /.navbar -->       
+        </div>
+        <div class="wrapper">
+        
+
+        <div class="header">
+
+            <div class="header-slider">
+                <ul>
+                    <!-- Slide 1 -->
+                    <li class="section header-promo slide-main">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="title font-title">
+                                        <h2 class="font-title">Ahorra hasta un 70%</h2><span class="visible-xs"></span> en tu siguiente 
+                                        <div class="rotate_container">
+                                            <span class="rotate">
+                                                <a href="/libros-de-segunda-mano/libros-de-lectura" target="_self">novela</a>, 
+                                                <a href="/libros-de-segunda-mano/libros-de-texto/bachiller" target="_self">libro de bachillerato</a>, 
+                                                <a href="/libros-de-segunda-mano/libros-de-lectura/comic-y-novela-grafica" target="_self">comic</a>, 
+                                                <a href="/libros-de-segunda-mano?kws=cocina" target="_self">manual de cocina</a>
+                                            </span></div>
+                                    </div>
+                                    <br>
+                                    <span class="subtitle">
+                                        <span class="visible-xs"><br></span>
+                                        <h1>Compra tus libros de segunda mano desde casa</h1>, tenemos más de <a href="/libros-de-segunda-mano" class="marker white">100.000 ejemplares</a> para elegir
+                                    </span>
+                                </div>
+                            </div> 
+                        </div>     
+                    </li>
+                    <!-- /Sl 1 -->
+                    <!-- Slide 2 
+                    <li class="section header-promo slide-newsite">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="title font-title">
+                                        ¡Estrenamos nueva web!<br>Te damos la bienvenida al inicio de algo especial
+                                    </div>
+                                    <br>
+                                    <span class="subtitle">
+                                        <span class="visible-xs"><br></span>
+                                        ¿Quieres ver todo lo que tenemos preparado? <a href="http://blog.relibrea.com/relibrea/estreno-relibrea-compraventa-libros" class="marker white" target="_blank">Echa un vistazo a nuestro blog</a>
+                                </div>
+                            </div> 
+                        </div>     
+                    </li>
+                     /Sl 2 -->
+                </ul>
+            </div>
+            <div class="section header-buscador">
+                <div class="container">
+                    <div class="row sm-gutter">
+                        <form name="" method="post" action="/index/load/search/form" id="searchForm">
+<div class="col-sm-7 col-sm-offset-1">
+    <input type="text" id="kws" name="kws" class="form-control input-lg" placeholder="Introduce el Título, Autor, ISBN, ..." />
+</div>
+<div class="col-sm-3">
+    <button class="btn btn-buscador font-title btn-lg" type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        Búsqueda rápida
+    </button>
+</div>
+
+<div id="search_buttons" class="col-sm-10 col-sm-offset-1 filtros-botones">
+    <div class=""> 
+        <span class="filtrar-tag">FILTRAR</span>
+        <span class="visible-xs"></span>
+        <a href="#fakelink" id="show_city" class="btn btn-filtro btn-xs">Por provincia/ciudad</a>
+        <a href="#fakelink" id="show_category" class="btn btn-filtro btn-xs">Por tipo de libro</a>
+    </div>
+</div>
+<!--Extra inputs for filters  -->
+<div id="category_div" class="hide clearfix col-sm-3 col-sm-offset-1 col-md-2 filtros-inputs filtro-todos">
+    <select id="metacat" name="metacat" class="form-control selectpicker input-sm btn-primary" id="cat-meta" name="cat-meta" data-live-search="true" style="width: 100%;"><option value="0">Todas</option><option value="1">Libros de texto</option><option value="2">Libros de lectura</option><option value="3">Libros antiguos y de colección</option><option value="4">Revistas y otras publicaciones</option></select> 
+</div>
+<div id="city_div" class="hide col-sm-4 col-md-5 filtros-inputs filtro-localizacion">
+    <div class="input-group input-group-sm form-inline">
+        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+            <input type="text" id="city" name="city" class="form-control" placeholder="En cualquier ciudad" />
+    </div>
+</div>
+
+    </form>
+
+<script type="text/javascript">
+    $("#show_city").click(function (event) {
+        event.preventDefault();
+        $("#category_div").removeClass("hide");
+        $("#city_div").removeClass("hide");
+        $("#search_buttons").addClass("hide");
+    });
+    $("#show_category").click(function (event) {
+        event.preventDefault();
+        $("#category_div").removeClass("hide");
+        $("#city_div").removeClass("hide");
+        $("#search_buttons").addClass("hide");
+    });
+
+    var selectedCity = "";
+
+    // Handler for .ready() called.
+    $('#city').autocomplete({
+        getValue: function (item) {
+            return item.text;
+        },
+        valueKey: 'city',
+        getTitle: function (item) {
+            return item.text;
+        },
+        minLength: 2,
+        limit: 10,
+        accents: true,
+        visibleHeight: 105,
+        defaultHeightItem: 35,
+        source: [{
+                url: "/js/ciudades_busqueda.json?v2",
+                type: 'remote'
+            }]
+    }).on('selected.xdsoft', function (e, item) {
+        selectedCity = item.text;
+
+    });
+</script>
+
+
+
+
+                    </div> 
+                </div>
+                <div class="header-buscador-bg"></div>
+            </div> 
+        </div><!-- PART /.header --> 
+
+        <div class="main">
+            <div class="section">
+                <div class="container">            
+                    <div id="central-block">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div id="cat-navigation" class="cat-navigation nav-tabs-navigation">
+                                    <div class="nav-tabs-wrapper">
+                                        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                            <li class="active">
+                                                <a href="#categorias" data-toggle="tab" class="font-title">
+                                                    Todos <span class="hidden-xs">los libros</span></a>
+                                            </li>
+                                            <li>
+                                                <a id="provincias_section" href="#provincias" data-toggle="tab" class="font-title">En tu zona</a>
+                                            </li>
+                                            <li class="hidden-xs">
+                                                <a href="#favoritos" data-toggle="tab" class="font-title">Tus favoritos</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="cat-content" class="cat-content tab-content text-center">
+                                    <div class="tab-pane active" id="categorias">
+                                        <div class="row">
+    <div class="col-sm-4 col-xs-6 cat-block1">
+        <h2><a href="/libros-de-segunda-mano/libros-de-texto" target="_self">Libros de texto</a></h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/infantil" target="_self">Infantil</a></h3>
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/primaria" target="_self">Primaria</a></h3>
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/secundaria" target="_self">Secundaria</a></h3>
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/bachiller" target="_self">Bachiller</a></h3>
+            </div>
+            <div class="col-md-6">
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/universidad" target="_self">Universidad</a></h3>
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/oposiciones" target="_self">Oposiciones</a></h3>
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/idiomas" target="_self">Idiomas</a></h3>
+                <h3><a href="/libros-de-segunda-mano/libros-de-texto/formacion-profesional" target="_self">Formación profesional</a></h3>                                           
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-xs-6 col-md-offset-1 cat-block2">
+                    <h2><a href="/libros-de-segunda-mano/libros-de-lectura" target="_self">Libros de lectura</a></h2>
+                    <div class="row">
+                            <div class="col-md-6">
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/ficcion-literaria" target="_self">Ficción literaria</a></h3>
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/juvenil" target="_self">Juvenil</a></h3>
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/crimen-terror-y-misterio" target="_self">Crimen, terror y misterio</a></h3>
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/ciencia-ficcion-y-fantasia" target="_self">Ciencia ficción y fantasía</a></h3>
+                </div>
+                <div class="col-md-6">
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/ficcion-historica" target="_self">Ficción histórica</a></h3>
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/infantil-de-9-a-12-anos" target="_self">Infantil de 9 a 12 años</a></h3>
+                    <h3><a href="/libros-de-segunda-mano/libros-de-lectura/ficcion/romantica-y-erotica" target="_self">Romántica y Erótica</a></h3>
+                    <h3><i class="fa fa-bookmark-o fa-xtraspace col color-secondary" aria-hidden="true"></i><a href="/comprar-libros-segunda-mano" target="_self" class="color-secondary">TODAS</a></h3>
+                </div>
+                    </div>
+    </div>
+    <div class="col-xs-12 col-md-2 col-sm-4 col-md-offset-1 cat-block3">
+        <h2><a href="/libros-de-segunda-mano/revistas-y-otras-publicaciones" target="_self">Revistas y otras publicaciones</a></h2>
+        <h2><a href="/libros-de-segunda-mano/libros-de-lectura/comic-y-novela-grafica" target="_self">Comic y Novela Gráfica</a></h2>
+        <h2><a href="/libros-de-segunda-mano/libros-antiguos-y-de-coleccion" target="_self">Libros antiguos y de colección</a></h2>
+    </div>
+</div>
+
+                                    </div><!-- /Categorias --> 
+
+                                    <div class="tab-pane" id="provincias">
+                                        <div class="row">
+
+    <div class="col-sm-4 col-xs-6 cat-block1">
+
+        <span class="fakeH2">
+
+            Cerca de ti</span>
+
+
+
+        <div class="row">
+
+            <div id="citiesNearBy" class="col-md-12">
+
+               
+
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-7 col-xs-6 col-md-offset-1 cat-block2 nobar">
+
+        <span class="fakeH2">
+
+            Provincias más activas</span>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                                    <h3><a href="/libros-de-segunda-mano-en-madrid" target="_self">Madrid</a> <span class="counter">(70442 libros)</span></h3>
+                                    <h3><a href="/libros-de-segunda-mano-en-barcelona" target="_self">Barcelona</a> <span class="counter">(31626 libros)</span></h3>
+                                    <h3><a href="/libros-de-segunda-mano-en-valencia" target="_self">Valencia</a> <span class="counter">(13174 libros)</span></h3>
+                                    <h3><a href="/libros-de-segunda-mano-en-zaragoza" target="_self">Zaragoza</a> <span class="counter">(9012 libros)</span></h3>
+                                    <h3><a href="/libros-de-segunda-mano-en-valladolid" target="_self">Valladolid</a> <span class="counter">(8353 libros)</span></h3>
+                
+
+
+                <!-- <h3><a href="#" target="_self">Barcelona</a> <span class="counter">(10200)</span></h3>
+ 
+                 <h3><a href="#" target="_self">Valladolid</a> <span class="counter">(8450)</span></h3>
+ 
+                 <h3><a href="#" target="_self">Sevilla</a> <span class="counter">(7050)</span></h3>
+ 
+                 <h3><a href="#" target="_self">Tenerife</a> <span class="counter">(3050)</span></h3> -->
+
+            </div>
+
+            <div class="col-md-6">
+
+                                    <h3><a href="/libros-de-segunda-mano-en-alacant" target="_self">Alacant</a> <span class="counter">(6593 libros)</span></h3>
+                                    <h3><a href="/libros-de-segunda-mano-en-sevilla" target="_self">Sevilla</a> <span class="counter">(5915 libros)</span></h3>
+                                    <h3><a href="/libros-de-segunda-mano-en-a-coruna" target="_self">A Coruña</a> <span class="counter">(5031 libros)</span></h3>
+                
+                <!-- <h3><a href="#" target="_self">Madrid</a> <span class="counter">(12450)</span></h3>
+
+                <h3><a href="#" target="_self">Barcelona</a> <span class="counter">(10200)</span></h3>
+
+                <h3><a href="#" target="_self">Valladolid</a> <span class="counter">(8450)</span></h3> -->
+
+                <br>
+
+                <a href="/comprar-libros-segunda-mano" class="btn btn-xs btn-default">
+
+                    <i class="fa fa-map-marker fa-xtraspace" aria-hidden="true" style="margin"></i>Todas las provincias
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+                                    </div><!-- /Provincias --> 
+
+                                    <div class="tab-pane" id="favoritos">
+                                        <div class="row">
+    <div class="col" style="text-align: center;">
+    	<br>
+        ¿Te gustaría poder añadir libros a favoritos y volver a ellos rápidamente?
+        <br><br>
+        <span class="fakeH2">
+            <a href="/login">
+                Regístrate o Accede a tu cuenta
+            </a>
+        </span>
+        <br><br>
+    </div>
+</div>
+
+
+                                        <br>
+
+                                    </div><!-- /Favoritos --> 
+                                </div><!-- /cat-content --> 
+
+                                <!-- INDEX PROMO --> 
+								<div id="index-promo" class="hidden-xs">
+								    <div class="subsection-title font-title">¿Pensando en probar los libros electrónicos?</div>
+								    <div class="row">
+								        <div class="col-xs-12">
+								            <div class="cat-content">
+								                <a href="https://www.amazon.es/kindle-dbs/hz/signup/ref=as_li_ss_tl?&linkCode=ll2&tag=relib-index-main-21&linkId=1cb9027f02c951fc02c284957e922258&language=es_ES" target="_blank">
+								                    <img src="/assets/img/relibrea-promo-index.jpg?v2" alt="Descubre los mejores ebooks kindle del mercado" style="width:100%; max-width: 850px;">
+								                </a>
+								            </div>
+								        </div>
+								    </div>
+								</div> <!-- /index-promo --> 
+
+
+                                <div id="latest-books" class="hidden-xs">
+
+                                </div><!-- /latest-books -->    	
+
+                                <div class="subsection-title font-title visible-xs">Sobre Relibrea</div>
+                                <div id="about-relibrea">
+                                    <div class="row">
+                                        <div class="col-sm-2 hidden-xs sprite press-icon">
+                                        </div>
+                                        <div class="col-sm-10 col-xs-12">
+                                            Seas estudiante, lector incansable o coleccionista apasionado, <strong>Relibrea es la opción más segura, rápida y eficaz para comprar o vender tus libros de segunda mano</strong>. <br>
+                                            Publicar tu anuncio en el portal es <strong>totalmente gratuito</strong> y sin intermediarios entre tú y tus compradores. Ahorrarás hasta un 70% y ¡siempre saldrás ganando! 
+                                        </div>
+                                        <div class="col-sm-10 col-xs-12 col-sm-offset-2">
+                                            <a href="/info/acerca-de-relibrea" class=" press-logos"></a>
+                                        </div>
+                                    </div>
+                                </div><!-- /about-relibrea -->    	
+
+                            </div><!-- Col9 / Left block --> 
+                            <div class="col-md-3 publi-lateral">
+
+                                <!-- Publi PROPIA - Home 1 - Mobile -->
+                                <div class="banner visible-xs visible-sm" style="text-align: center;">
+                                    <a href="https://www.amazon.es/b/ref=as_li_ss_tl?node=10675217031&linkCode=ll2&tag=relib-bannersweb-21&linkId=530b22b04d49672f5e65bd9fabaf123f" target="_blank" class="link-pu-bl-alternat" style="display: none;">
+                                        <img src="/assets/img/relibrea-bnr-1.jpg?v2" alt="https://www.amazon.es/b/ref=as_li_ss_tl?node=10675217031&linkCode=ll2&tag=relib-bannersweb-21&linkId=530b22b04d49672f5e65bd9fabaf123f" style="width:100%; max-width: 550px; margin-bottom: 40px;">
+                                    </a>
+                                </div>
+
+                                <!-- Publi PROPIA - Home 2 - Desktop1 -->
+                                <div class="banner visible-md" style="text-align: left;">
+                                    <a href="https://www.amazon.es/b/ref=as_li_ss_tl?node=10675217031&linkCode=ll2&tag=relib-bannersweb-21&linkId=530b22b04d49672f5e65bd9fabaf123f" target="_blank" class="link-pu-bl-alternat" style="display: none;">
+                                        <img src="/assets/img/relibrea-bnr-2.jpg?v2" alt="https://www.amazon.es/b/ref=as_li_ss_tl?node=10675217031&linkCode=ll2&tag=relib-bannersweb-21&linkId=530b22b04d49672f5e65bd9fabaf123f">
+                                    </a>
+                                </div>
+
+                                <!-- Publi PROPIA - Home 3 - Desktop2 -->
+                                <div class="banner visible-lg" style="text-align: left;">
+                                    <a href="https://www.amazon.es/b/ref=as_li_ss_tl?node=10675217031&linkCode=ll2&tag=relib-bannersweb-21&linkId=530b22b04d49672f5e65bd9fabaf123f" target="_blank" class="link-pu-bl-alternat" style="display: none;">
+                                        <img src="/assets/img/relibrea-bnr-3.jpg?v2" alt="https://www.amazon.es/b/ref=as_li_ss_tl?node=10675217031&linkCode=ll2&tag=relib-bannersweb-21&linkId=530b22b04d49672f5e65bd9fabaf123f">
+                                    </a>
+                                </div>
+
+
+                            </div><!-- Col3 / Right block --> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- PART /.main --> 
+
+
+        </div> <!-- end wrapper -->
+            <div class="main">
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="hidden-xs hidden-sm col-md-1 ">
+                            <a class="footer-brand" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                                <path d="M18.1,16.1c2.8-0.7,4.6-3.3,4.6-6.7c0.2-3.2-2.2-5.9-5.4-6.1c-0.2,0-0.3,0-0.5,0H7.9C7.4,3.3,7,3.8,7,4.3
+                                      c0,0,0,0,0,0v1.4c0,0.5,0.4,0.9,0.9,0.9l0,0h8.9c1.4-0.1,2.5,1,2.6,2.3c0,0.2,0,0.3,0,0.5c0,2.2-1.1,3.6-2.8,3.6H7
+                                      c-0.5,0-0.9,0.4-0.9,0.9v1.4c0,0.5,0.4,0.9,0.9,0.9h7.4l6.8,12.2c0.2,0.5,0.8,0.6,1.3,0.4c0,0,0,0,0,0l1.3-0.7
+                                      c0.5-0.2,0.6-0.8,0.4-1.3c0,0,0,0,0,0L18.1,16.1z M9,19.4h1.3c0.5,0,0.9,0.4,0.9,0.9v6.4c0,0.5-0.4,0.9-0.9,0.9H9
+                                      c-0.5,0-0.9-0.4-0.9-0.9v-6.4C8.1,19.8,8.5,19.4,9,19.4z" style="fill:#FFF;"/>
+                                </svg>
+
+                            </a>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-6">
+                                                            <span class="footer-title font-title"><a href="/info/acerca-de-relibrea">El proyecto</a></span>
+                                <ul>
+                                                                <li><a href="/info/acerca-de-relibrea">Sobre Relibrea</a></li>
+                                <li><a href="/info/como-funciona-libros-usados-gratis">Cómo funciona</a></li>
+                                <li><a href="http://blog.relibrea.com" target="_blank">Blog</a></li>
+                            </ul>    
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-6">
+                                                            <span class="footer-title font-title"><a href="/info">Ayuda</a></span>
+                                <ul>
+                                                                <li><a href="/info/como-comprar-libros-segunda-mano">Cómo comprar libros</a></li>
+                                <li><a href="/info/como-vender-libros-segunda-mano">Cómo vender libros</a></li>
+                                <li><a href="/info/preguntas-frecuentes">Preguntas frecuentes</a></li>
+                            </ul>    
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-6">
+                                                            <span class="footer-title font-title">Más información</span>
+                                <ul>
+                                                                <li><a href="/contacto">Contacto</a></li>
+                                <li><a href="/info/aviso-legal">Condiciones de uso</a></li>
+								<li><a href="/info/politica-privacidad">Política de privacidad</a></li>
+                            </ul>    
+                        </div>
+                                                    <div class="col-md-5 col-sm-3 col-xs-6 social">
+                                <a href="/vender-libros-segunda-mano/paso1de2" class="btn btn-secondary btn-sm visible-xs-inline-block" style="margin: 0 40px 10px 0;">
+                                    Vende tus libros
+                                </a>
+
+                                <a href="https://www.facebook.com/Relibrea" target="_blank" title="Facebook" style="margin-right: 2px;"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/relibrea" target="_blank" title="Twitter" style="margin-right: 2px;"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/relibrea_libros/" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a><br>
+                            </div>
+                                                                            <!--
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="col-md-3 col-sm-12 banner-footer publi-lateral">
+                            <a href="#" target="_blank">
+                                <img src="/assets/img/banner-bottom-relibrea-pro@1x.png?v2" srcset="/assets/img/banner-bottom-relibrea-pro@2x.png 2x?v2" alt="banner">
+                            </a>
+                        </div>
+                            -->
+                                            </div>
+                </div>
+            </footer>
+        </div>
+    
+
+</body>
+
+<script>
+            $(function () {
+
+                    $.ajax({url: "/login-menu", success: loadContent, cache: false});
+
+
+                function loadContent(data) {
+                    $("#main-menu").html(data);
+                    $("#logout").click(function () {
+                        $.ajax({url: "/logout", success: logout, cache: false});
+
+                    });
+
+
+                    function logout() {
+                        window.location.replace("/");
+                    }
+                }
+                        });
+
+</script>
+
+</html>

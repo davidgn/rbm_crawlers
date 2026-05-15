@@ -1,0 +1,984 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Grāmatu Apmaiņa. Книжный Обмен. Book Exchange.">
+        <meta name="keywords" content="grāmatu maiņa, mainu grāmatu, pārdot grāmatas, mainīt grāmatas, pirkt grāmatas, grāmatu portāls, lietotas grāmatas, обмен книгами, книжный обмен, продажа книг, купить книги, книжный портал, подержанные книги, sell books, exchange books, buy books, book portal, used books">
+        <meta name="author" content="Sergejs Bure">
+        <title>Book Exchange - Recently added</title>
+        <link rel="icon" href="/static/book_exchange/img/favicon.ico" sizes="any">
+        <link rel="apple-touch-icon" href="/static/book_exchange/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" href="/static/book_exchange/img/apple-touch-icon-precomposed.png">
+        <link href="/static/book_exchange/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <script src="/static/book_exchange/bootstrap/bootstrap.bundle.min.js"></script>
+        <link href="/static/book_exchange/styles0003.css" rel="stylesheet">
+        <script src="/static/book_exchange/main0001.js"></script>
+        
+    <script src="/static/book_exchange/messages0002.js"></script>
+    <script src="/static/book_exchange/displayform0001.js"></script>
+
+    </head>
+    <body data-language="en">
+        
+        <noscript>
+            <div id="alert_logo">
+                <img src="/static/book_exchange/img/logotype.png" id="logotype" alt="Book Exchange">
+                <span id="site_address">Book.id.LV</span>
+            </div>
+            <div id="alert_msg">
+                <span>For full functionality of this site, please enable JavaScript in your browser settings.</span>
+            </div>
+        </noscript>
+        
+        <div id="center_div">
+            
+            <div class="site_header">
+                <div class="image_section">
+                    <a class="non_underline" href="/">
+                        <img src="/static/book_exchange/img/logotype.png" id="logotype" alt="Book Exchange">
+                    </a>
+                </div>
+                <div class="site_name_container" id="center_absolute">
+                    <a class="non_underline" href="/">
+                        <span id="site_name">Book Exchange</span>
+                        <span id="site_address">Book.id.LV</span>
+                    </a>
+                </div>
+            </div>
+            <div id="login_info_header">
+                <div id="login_info_container">
+                    <span id="login_info" class="truncate">
+                        
+                            <span>Not signed in.</span>
+                        
+                    </span>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav noprint">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-1 ms-1 me-1" href="/genres">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                            </svg>
+                            <span>Genres</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary mt-1 ms-1 me-1" href="/search">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <title>Search</title>
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                            <span>Search</span>
+                        </a>
+                    </li>
+                    
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary mt-1 ms-1 me-1" href="/login">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                                </svg>
+                                <span>Log In</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary mt-1 ms-1 me-1" href="/register">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
+                                    <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>
+                                </svg>
+                                <span>Register</span>
+                            </a>
+                        </li>
+                    
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle mt-1 ms-1 me-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                
+                                    <span>EN</span>
+                                
+                            </button>
+                            <ul id="drop_down_language" class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form action="/i18n/setlang/" method="post" class="inline">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                                        <input type="hidden" name="language" value="lv">
+                                        <input type="hidden" name="next" value="/">
+                                        <button type="submit" class="btn btn-outline-primary btn-sm ms-2 me-2 mt-1">
+                                            <span>LV Latviešu valoda</span>
+                                        </button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="/i18n/setlang/" method="post" class="inline">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                                        <input type="hidden" name="language" value="ru">
+                                        <input type="hidden" name="next" value="/">
+                                        <button type="submit" class="btn btn-outline-primary btn-sm ms-2 me-2 mt-1">
+                                            <span>RU Русский язык</span>
+                                        </button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="/i18n/setlang/" method="post" class="inline">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                                        <input type="hidden" name="language" value="en">
+                                        <input type="hidden" name="next" value="/">
+                                        <button type="submit" class="btn btn-outline-primary btn-sm ms-2 me-1 mt-1 mb-1 active disabled">
+                                            <span>EN English language</span>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <hr class="line">
+            </nav>
+
+            
+
+            
+    <div id="screen_box">
+        <div>
+            <!-- Display all listings -->
+            <br>
+            <div class="center_txt"> 
+                <a href="/about_us" class="non_underline">Find out more about the site!</a>
+            </div>
+            <br>
+
+            <h2>10 latest added books</h2>
+
+            
+                
+<div class="green_background rounded_corners" id="switch_view_container">
+    <a href="?view=card" class="btn btn-success me-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookshelf" viewBox="0 0 16 16">
+            <path d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5M3 14h10v-3H3zm0-4h10V7H3zm0-4h10V3H3z"/>
+        </svg>
+        <span>Cards</span>
+    </a>
+    <a href="?view=table" class="btn btn-outline-success">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z"/>
+        </svg>
+        <span>Table</span>
+    </a>
+    <span>Display style</span>
+</div>
+                <!-- Block for displaying all book information -->
+
+
+    
+        
+        <div class="card" data-book-id="f4312aa3-7f89-40c2-86d0-2c78cab099fd">
+            <div class="card-body">
+                <div class="text-center">
+                    
+                        <div class="big_image_container">
+                            <img src="/images/processed/f4312aa3-7f89-40c2-86d0-2c78cab099fd_processed.jpg" class="card-img-top big_image" alt="Book photo.">
+                        </div>
+                    
+                </div>
+                
+                <h5 class="card-title book_title_txt">Žurnāls kvadrātmetrs</h5>
+                <p class="card-text book_author_txt">Kvadrātmetrs redakcija</p>
+                <p class="card-text book_year_txt">2025</p>
+                <p class="card-text">Žurnāls kvadrātmetrs 09, 11 - 2025. Rus/Lat</p>
+                <p class="card-text">[Magazines] Other</p>
+                <p class="card-text">The book is written in: Latvian</p>
+                <p class="card-text">ISBN: None</p>
+                
+                    <p class="card-text">Price: €0.50</p>
+                
+                <p class="card-text">Condition: used, good condition</p>
+                
+                <p class="card-text show_contacts_p">
+                    Owner: "Sergey1979"
+                    
+                    <button class="btn btn-outline-primary show_contacts_btn mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                            <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                        </svg>
+                        <span>Contacts</span>
+                    </button>
+                </p>
+                
+                
+                <button class="btn btn-outline-primary mb-1 share_link_btn" data-book-url="/book_info/f4312aa3-7f89-40c2-86d0-2c78cab099fd">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                    </svg>
+                    <span>Share...</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                    </svg>
+                    <span>E-Mail</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                    </svg>
+                    <span>Facebook</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                    <span>Share with X</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                    </svg>
+                    <span>Telegram</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_viber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="none" stroke="currentColor" stroke-width="0.40893" d="M 8.5445036,5.2294852 A 1.2565445,1.1975916 0 0 1 9.8429339,6.466997 M 8.2513105,4.1516546 A 2.6806282,2.5548622 0 0 1 10.93194,6.8262751 M 7.8743442,3.1137396 A 4.062827,3.872213 0 0 1 12.020943,7.265392"/>
+                        <path fill="currentColor" stroke="none" fill-rule="evenodd" d="m 1.2565464,7.0657913 c 0,-3.6326929 0.7120403,-5.8681966 6.7434558,-5.8681966 6.0314118,0 6.7434558,2.2355037 6.7434558,5.8681966 0,3.6326967 -0.712044,5.8682007 -6.7434558,5.8682007 L 6.9109956,12.89408 4.6911014,15.409023 C 4.5235549,15.568708 4.3560085,15.448935 4.3560085,15.28925 v -2.754463 c -0.2513008,0 -1.2984265,-0.479037 -1.5916196,-0.758476 C 1.8429212,10.858158 1.256535,10.179525 1.256535,7.0657838 Z m -1.25654555051836,0 C 8.4948164e-7,2.0359091 2.3036645,2.275e-6 8.0000022,2.275e-6 13.696336,2.275e-6 16,2.0359091 16,7.0657913 c 0,5.0298857 -2.303664,7.0657927 -7.9999978,7.0657927 -0.418851,0 -0.7539288,0 -1.340315,-0.07982 l -1.5916233,1.716548 c -0.293178,0.31937 -1.1727761,0.439116 -1.1727761,-0.51896 v -1.676628 c -0.2513008,0 -0.8376945,-0.239509 -1.633508,-0.718553 C 1.46597,12.335212 8.4948164e-7,11.097701 8.4948164e-7,7.0658064 Z M 9.3403134,8.74242 Q 9.7591644,8.2234644 10.345551,8.582735 l 1.507853,1.0778343 q 0.335093,0.3991937 -0.293178,1.1177497 -0.62827,0.718556 -1.172776,0.598795 Q 8.1675562,10.898077 6.1151971,8.9819325 4.0628418,7.0657838 3.5602251,4.8302801 q 0,-0.7983949 1.0471219,-1.3572699 0.5445015,-0.3592819 0.921464,0.1995968 l 1.0471219,1.3971893 q 0.2513008,0.4790363 -0.293178,0.8782338 c -1.633508,0.5987943 2.1361248,4.4710069 3.0575887,2.7943786 z"/>
+                    </svg>
+                    <span>Viber</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 print_preview_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+                    </svg>
+                    <span>Print...</span>
+                </button>
+                
+                <button class="btn btn-outline-primary mb-1 copy_url_to_clipboard_btn" data-book-url="/book_info/f4312aa3-7f89-40c2-86d0-2c78cab099fd">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                    </svg>
+                    <span class="copy_url_to_clipboard_text">Copy the link</span>
+                </button>
+                <form action="/report_violation/f4312aa3-7f89-40c2-86d0-2c78cab099fd" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                    <button type="submit" class="btn btn-outline-primary mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Red" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg>
+                        <span>Report a violation</span>
+                    </button>
+                </form>
+                
+                
+                    <div class="card-header">
+                        <h5 class="center_txt">Comments:</h5>
+                    </div>
+                    
+                    <ul class="list-group list-group-flush comments_list">
+                        
+                            <li class="list-group-item preloaded_comments">
+                                <p class="card-text">User "Sergey1979":</p>
+                                <p class="card-text">Register and offer books, free ads!<br>Reģistrējieties un piedāvājiet grāmatas, sludinājumi ir bezmaksas!<br>Зарегистрируйтесь и предложите книги, бесплатные объявления!</p>
+                            </li>
+                        
+                        
+                        
+                    </ul>
+                
+            </div>
+        </div>
+        <br>
+    
+        
+        <div class="card" data-book-id="4fc3b90a-4967-4d24-aece-a27ce09bc578">
+            <div class="card-body">
+                <div class="text-center">
+                    
+                        <div class="big_image_container">
+                            <img src="/images/processed/4fc3b90a-4967-4d24-aece-a27ce09bc578_processed.jpg" class="card-img-top big_image" alt="Book photo.">
+                        </div>
+                    
+                </div>
+                
+                <h5 class="card-title book_title_txt">Žurnāls kvadrātmetrs</h5>
+                <p class="card-text book_author_txt">Kvadrātmetrs redakcija</p>
+                <p class="card-text book_year_txt">2025</p>
+                <p class="card-text">Žurnāls kvadrātmetrs 06, 08 - 2025. Rus/Lat</p>
+                <p class="card-text">[Magazines] Other</p>
+                <p class="card-text">The book is written in: Latvian</p>
+                <p class="card-text">ISBN: None</p>
+                
+                    <p class="card-text">Price: €0.50</p>
+                
+                <p class="card-text">Condition: used, good condition</p>
+                
+                <p class="card-text show_contacts_p">
+                    Owner: "Sergey1979"
+                    
+                    <button class="btn btn-outline-primary show_contacts_btn mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                            <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                        </svg>
+                        <span>Contacts</span>
+                    </button>
+                </p>
+                
+                
+                <button class="btn btn-outline-primary mb-1 share_link_btn" data-book-url="/book_info/4fc3b90a-4967-4d24-aece-a27ce09bc578">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                    </svg>
+                    <span>Share...</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                    </svg>
+                    <span>E-Mail</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                    </svg>
+                    <span>Facebook</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                    <span>Share with X</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                    </svg>
+                    <span>Telegram</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_viber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="none" stroke="currentColor" stroke-width="0.40893" d="M 8.5445036,5.2294852 A 1.2565445,1.1975916 0 0 1 9.8429339,6.466997 M 8.2513105,4.1516546 A 2.6806282,2.5548622 0 0 1 10.93194,6.8262751 M 7.8743442,3.1137396 A 4.062827,3.872213 0 0 1 12.020943,7.265392"/>
+                        <path fill="currentColor" stroke="none" fill-rule="evenodd" d="m 1.2565464,7.0657913 c 0,-3.6326929 0.7120403,-5.8681966 6.7434558,-5.8681966 6.0314118,0 6.7434558,2.2355037 6.7434558,5.8681966 0,3.6326967 -0.712044,5.8682007 -6.7434558,5.8682007 L 6.9109956,12.89408 4.6911014,15.409023 C 4.5235549,15.568708 4.3560085,15.448935 4.3560085,15.28925 v -2.754463 c -0.2513008,0 -1.2984265,-0.479037 -1.5916196,-0.758476 C 1.8429212,10.858158 1.256535,10.179525 1.256535,7.0657838 Z m -1.25654555051836,0 C 8.4948164e-7,2.0359091 2.3036645,2.275e-6 8.0000022,2.275e-6 13.696336,2.275e-6 16,2.0359091 16,7.0657913 c 0,5.0298857 -2.303664,7.0657927 -7.9999978,7.0657927 -0.418851,0 -0.7539288,0 -1.340315,-0.07982 l -1.5916233,1.716548 c -0.293178,0.31937 -1.1727761,0.439116 -1.1727761,-0.51896 v -1.676628 c -0.2513008,0 -0.8376945,-0.239509 -1.633508,-0.718553 C 1.46597,12.335212 8.4948164e-7,11.097701 8.4948164e-7,7.0658064 Z M 9.3403134,8.74242 Q 9.7591644,8.2234644 10.345551,8.582735 l 1.507853,1.0778343 q 0.335093,0.3991937 -0.293178,1.1177497 -0.62827,0.718556 -1.172776,0.598795 Q 8.1675562,10.898077 6.1151971,8.9819325 4.0628418,7.0657838 3.5602251,4.8302801 q 0,-0.7983949 1.0471219,-1.3572699 0.5445015,-0.3592819 0.921464,0.1995968 l 1.0471219,1.3971893 q 0.2513008,0.4790363 -0.293178,0.8782338 c -1.633508,0.5987943 2.1361248,4.4710069 3.0575887,2.7943786 z"/>
+                    </svg>
+                    <span>Viber</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 print_preview_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+                    </svg>
+                    <span>Print...</span>
+                </button>
+                
+                <button class="btn btn-outline-primary mb-1 copy_url_to_clipboard_btn" data-book-url="/book_info/4fc3b90a-4967-4d24-aece-a27ce09bc578">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                    </svg>
+                    <span class="copy_url_to_clipboard_text">Copy the link</span>
+                </button>
+                <form action="/report_violation/4fc3b90a-4967-4d24-aece-a27ce09bc578" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                    <button type="submit" class="btn btn-outline-primary mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Red" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg>
+                        <span>Report a violation</span>
+                    </button>
+                </form>
+                
+                
+                    <div class="card-header">
+                        <h5 class="center_txt">Comments:</h5>
+                    </div>
+                    
+                    <ul class="list-group list-group-flush comments_list">
+                        
+                            <li class="list-group-item preloaded_comments">
+                                <p class="card-text">User "Sergey1979":</p>
+                                <p class="card-text">Register and offer books, free ads!<br>Reģistrējieties un piedāvājiet grāmatas, sludinājumi ir bezmaksas!<br>Зарегистрируйтесь и предложите книги, бесплатные объявления!</p>
+                            </li>
+                        
+                        
+                        
+                    </ul>
+                
+            </div>
+        </div>
+        <br>
+    
+        
+        <div class="card" data-book-id="f509eb30-8ad6-4e97-a91e-33fedf6f2084">
+            <div class="card-body">
+                <div class="text-center">
+                    
+                        <div class="big_image_container">
+                            <img src="/images/processed/f509eb30-8ad6-4e97-a91e-33fedf6f2084_processed.jpg" class="card-img-top big_image" alt="Book photo.">
+                        </div>
+                    
+                </div>
+                
+                <h5 class="card-title book_title_txt">Žurnāls kvadrātmetrs</h5>
+                <p class="card-text book_author_txt">Kvadrātmetrs redakcija</p>
+                <p class="card-text book_year_txt">2025</p>
+                <p class="card-text">Žurnāls kvadrātmetrs 03, 05 - 2025. Rus/Lat</p>
+                <p class="card-text">[Magazines] Other</p>
+                <p class="card-text">The book is written in: Latvian</p>
+                <p class="card-text">ISBN: None</p>
+                
+                    <p class="card-text">Price: €0.50</p>
+                
+                <p class="card-text">Condition: used, good condition</p>
+                
+                <p class="card-text show_contacts_p">
+                    Owner: "Sergey1979"
+                    
+                    <button class="btn btn-outline-primary show_contacts_btn mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                            <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                        </svg>
+                        <span>Contacts</span>
+                    </button>
+                </p>
+                
+                
+                <button class="btn btn-outline-primary mb-1 share_link_btn" data-book-url="/book_info/f509eb30-8ad6-4e97-a91e-33fedf6f2084">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                    </svg>
+                    <span>Share...</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                    </svg>
+                    <span>E-Mail</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                    </svg>
+                    <span>Facebook</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                    <span>Share with X</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                    </svg>
+                    <span>Telegram</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_viber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="none" stroke="currentColor" stroke-width="0.40893" d="M 8.5445036,5.2294852 A 1.2565445,1.1975916 0 0 1 9.8429339,6.466997 M 8.2513105,4.1516546 A 2.6806282,2.5548622 0 0 1 10.93194,6.8262751 M 7.8743442,3.1137396 A 4.062827,3.872213 0 0 1 12.020943,7.265392"/>
+                        <path fill="currentColor" stroke="none" fill-rule="evenodd" d="m 1.2565464,7.0657913 c 0,-3.6326929 0.7120403,-5.8681966 6.7434558,-5.8681966 6.0314118,0 6.7434558,2.2355037 6.7434558,5.8681966 0,3.6326967 -0.712044,5.8682007 -6.7434558,5.8682007 L 6.9109956,12.89408 4.6911014,15.409023 C 4.5235549,15.568708 4.3560085,15.448935 4.3560085,15.28925 v -2.754463 c -0.2513008,0 -1.2984265,-0.479037 -1.5916196,-0.758476 C 1.8429212,10.858158 1.256535,10.179525 1.256535,7.0657838 Z m -1.25654555051836,0 C 8.4948164e-7,2.0359091 2.3036645,2.275e-6 8.0000022,2.275e-6 13.696336,2.275e-6 16,2.0359091 16,7.0657913 c 0,5.0298857 -2.303664,7.0657927 -7.9999978,7.0657927 -0.418851,0 -0.7539288,0 -1.340315,-0.07982 l -1.5916233,1.716548 c -0.293178,0.31937 -1.1727761,0.439116 -1.1727761,-0.51896 v -1.676628 c -0.2513008,0 -0.8376945,-0.239509 -1.633508,-0.718553 C 1.46597,12.335212 8.4948164e-7,11.097701 8.4948164e-7,7.0658064 Z M 9.3403134,8.74242 Q 9.7591644,8.2234644 10.345551,8.582735 l 1.507853,1.0778343 q 0.335093,0.3991937 -0.293178,1.1177497 -0.62827,0.718556 -1.172776,0.598795 Q 8.1675562,10.898077 6.1151971,8.9819325 4.0628418,7.0657838 3.5602251,4.8302801 q 0,-0.7983949 1.0471219,-1.3572699 0.5445015,-0.3592819 0.921464,0.1995968 l 1.0471219,1.3971893 q 0.2513008,0.4790363 -0.293178,0.8782338 c -1.633508,0.5987943 2.1361248,4.4710069 3.0575887,2.7943786 z"/>
+                    </svg>
+                    <span>Viber</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 print_preview_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+                    </svg>
+                    <span>Print...</span>
+                </button>
+                
+                <button class="btn btn-outline-primary mb-1 copy_url_to_clipboard_btn" data-book-url="/book_info/f509eb30-8ad6-4e97-a91e-33fedf6f2084">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                    </svg>
+                    <span class="copy_url_to_clipboard_text">Copy the link</span>
+                </button>
+                <form action="/report_violation/f509eb30-8ad6-4e97-a91e-33fedf6f2084" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                    <button type="submit" class="btn btn-outline-primary mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Red" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg>
+                        <span>Report a violation</span>
+                    </button>
+                </form>
+                
+                
+                    <div class="card-header">
+                        <h5 class="center_txt">Comments:</h5>
+                    </div>
+                    
+                    <ul class="list-group list-group-flush comments_list">
+                        
+                            <li class="list-group-item preloaded_comments">
+                                <p class="card-text">User "Sergey1979":</p>
+                                <p class="card-text">Register and offer books, free ads!<br>Reģistrējieties un piedāvājiet grāmatas, sludinājumi ir bezmaksas!<br>Зарегистрируйтесь и предложите книги, бесплатные объявления!</p>
+                            </li>
+                        
+                        
+                        
+                    </ul>
+                
+            </div>
+        </div>
+        <br>
+    
+        
+        <div class="card" data-book-id="20f500ae-f4f8-4c7e-a457-8aedaa3f85b8">
+            <div class="card-body">
+                <div class="text-center">
+                    
+                        <div class="big_image_container">
+                            <img src="/images/processed/20f500ae-f4f8-4c7e-a457-8aedaa3f85b8_processed.jpg" class="card-img-top big_image" alt="Book photo.">
+                        </div>
+                    
+                </div>
+                
+                <h5 class="card-title book_title_txt">Žurnāls kvadrātmetrs</h5>
+                <p class="card-text book_author_txt">Kvadrātmetrs redakcija</p>
+                <p class="card-text book_year_txt">2025</p>
+                <p class="card-text">Žurnāls kvadrātmetrs 12 2024 - 01, 02 2025. Rus /Lat</p>
+                <p class="card-text">[Magazines] Other</p>
+                <p class="card-text">The book is written in: Latvian</p>
+                <p class="card-text">ISBN: None</p>
+                
+                    <p class="card-text">Price: €0.50</p>
+                
+                <p class="card-text">Condition: used, good condition</p>
+                
+                <p class="card-text show_contacts_p">
+                    Owner: "Sergey1979"
+                    
+                    <button class="btn btn-outline-primary show_contacts_btn mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                            <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                        </svg>
+                        <span>Contacts</span>
+                    </button>
+                </p>
+                
+                
+                <button class="btn btn-outline-primary mb-1 share_link_btn" data-book-url="/book_info/20f500ae-f4f8-4c7e-a457-8aedaa3f85b8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                    </svg>
+                    <span>Share...</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                    </svg>
+                    <span>E-Mail</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                    </svg>
+                    <span>Facebook</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                    <span>Share with X</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                    </svg>
+                    <span>Telegram</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_viber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="none" stroke="currentColor" stroke-width="0.40893" d="M 8.5445036,5.2294852 A 1.2565445,1.1975916 0 0 1 9.8429339,6.466997 M 8.2513105,4.1516546 A 2.6806282,2.5548622 0 0 1 10.93194,6.8262751 M 7.8743442,3.1137396 A 4.062827,3.872213 0 0 1 12.020943,7.265392"/>
+                        <path fill="currentColor" stroke="none" fill-rule="evenodd" d="m 1.2565464,7.0657913 c 0,-3.6326929 0.7120403,-5.8681966 6.7434558,-5.8681966 6.0314118,0 6.7434558,2.2355037 6.7434558,5.8681966 0,3.6326967 -0.712044,5.8682007 -6.7434558,5.8682007 L 6.9109956,12.89408 4.6911014,15.409023 C 4.5235549,15.568708 4.3560085,15.448935 4.3560085,15.28925 v -2.754463 c -0.2513008,0 -1.2984265,-0.479037 -1.5916196,-0.758476 C 1.8429212,10.858158 1.256535,10.179525 1.256535,7.0657838 Z m -1.25654555051836,0 C 8.4948164e-7,2.0359091 2.3036645,2.275e-6 8.0000022,2.275e-6 13.696336,2.275e-6 16,2.0359091 16,7.0657913 c 0,5.0298857 -2.303664,7.0657927 -7.9999978,7.0657927 -0.418851,0 -0.7539288,0 -1.340315,-0.07982 l -1.5916233,1.716548 c -0.293178,0.31937 -1.1727761,0.439116 -1.1727761,-0.51896 v -1.676628 c -0.2513008,0 -0.8376945,-0.239509 -1.633508,-0.718553 C 1.46597,12.335212 8.4948164e-7,11.097701 8.4948164e-7,7.0658064 Z M 9.3403134,8.74242 Q 9.7591644,8.2234644 10.345551,8.582735 l 1.507853,1.0778343 q 0.335093,0.3991937 -0.293178,1.1177497 -0.62827,0.718556 -1.172776,0.598795 Q 8.1675562,10.898077 6.1151971,8.9819325 4.0628418,7.0657838 3.5602251,4.8302801 q 0,-0.7983949 1.0471219,-1.3572699 0.5445015,-0.3592819 0.921464,0.1995968 l 1.0471219,1.3971893 q 0.2513008,0.4790363 -0.293178,0.8782338 c -1.633508,0.5987943 2.1361248,4.4710069 3.0575887,2.7943786 z"/>
+                    </svg>
+                    <span>Viber</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 print_preview_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+                    </svg>
+                    <span>Print...</span>
+                </button>
+                
+                <button class="btn btn-outline-primary mb-1 copy_url_to_clipboard_btn" data-book-url="/book_info/20f500ae-f4f8-4c7e-a457-8aedaa3f85b8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                    </svg>
+                    <span class="copy_url_to_clipboard_text">Copy the link</span>
+                </button>
+                <form action="/report_violation/20f500ae-f4f8-4c7e-a457-8aedaa3f85b8" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                    <button type="submit" class="btn btn-outline-primary mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Red" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg>
+                        <span>Report a violation</span>
+                    </button>
+                </form>
+                
+                
+                    <div class="card-header">
+                        <h5 class="center_txt">Comments:</h5>
+                    </div>
+                    
+                    <ul class="list-group list-group-flush comments_list">
+                        
+                            <li class="list-group-item preloaded_comments">
+                                <p class="card-text">User "Sergey1979":</p>
+                                <p class="card-text">Register and offer books, free ads!<br>Reģistrējieties un piedāvājiet grāmatas, sludinājumi ir bezmaksas!<br>Зарегистрируйтесь и предложите книги, бесплатные объявления!</p>
+                            </li>
+                        
+                        
+                        
+                    </ul>
+                
+            </div>
+        </div>
+        <br>
+    
+        
+        <div class="card" data-book-id="f4e5229b-b90e-4cdc-881d-c465e68cf84a">
+            <div class="card-body">
+                <div class="text-center">
+                    
+                        <div class="big_image_container">
+                            <img src="/images/processed/f4e5229b-b90e-4cdc-881d-c465e68cf84a_processed.jpg" class="card-img-top big_image" alt="Book photo.">
+                        </div>
+                    
+                </div>
+                
+                <h5 class="card-title book_title_txt">Žurnāls kvadrātmetrs</h5>
+                <p class="card-text book_author_txt">Kvadrātmetrs redakcija</p>
+                <p class="card-text book_year_txt">2023</p>
+                <p class="card-text">Žurnāls kvadrātmetrs 06 - 07 2023. Rus/Lat</p>
+                <p class="card-text">[Magazines] Other</p>
+                <p class="card-text">The book is written in: Latvian</p>
+                <p class="card-text">ISBN: None</p>
+                
+                    <p class="card-text">Price: €0.50</p>
+                
+                <p class="card-text">Condition: used, good condition</p>
+                
+                <p class="card-text show_contacts_p">
+                    Owner: "Sergey1979"
+                    
+                    <button class="btn btn-outline-primary show_contacts_btn mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                            <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                            <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                        </svg>
+                        <span>Contacts</span>
+                    </button>
+                </p>
+                
+                
+                <button class="btn btn-outline-primary mb-1 share_link_btn" data-book-url="/book_info/f4e5229b-b90e-4cdc-881d-c465e68cf84a">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                    </svg>
+                    <span>Share...</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                    </svg>
+                    <span>E-Mail</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                    </svg>
+                    <span>Facebook</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_x">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                    <span>Share with X</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+                    </svg>
+                    <span>Telegram</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 default_hide_btn share_link_viber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="none" stroke="currentColor" stroke-width="0.40893" d="M 8.5445036,5.2294852 A 1.2565445,1.1975916 0 0 1 9.8429339,6.466997 M 8.2513105,4.1516546 A 2.6806282,2.5548622 0 0 1 10.93194,6.8262751 M 7.8743442,3.1137396 A 4.062827,3.872213 0 0 1 12.020943,7.265392"/>
+                        <path fill="currentColor" stroke="none" fill-rule="evenodd" d="m 1.2565464,7.0657913 c 0,-3.6326929 0.7120403,-5.8681966 6.7434558,-5.8681966 6.0314118,0 6.7434558,2.2355037 6.7434558,5.8681966 0,3.6326967 -0.712044,5.8682007 -6.7434558,5.8682007 L 6.9109956,12.89408 4.6911014,15.409023 C 4.5235549,15.568708 4.3560085,15.448935 4.3560085,15.28925 v -2.754463 c -0.2513008,0 -1.2984265,-0.479037 -1.5916196,-0.758476 C 1.8429212,10.858158 1.256535,10.179525 1.256535,7.0657838 Z m -1.25654555051836,0 C 8.4948164e-7,2.0359091 2.3036645,2.275e-6 8.0000022,2.275e-6 13.696336,2.275e-6 16,2.0359091 16,7.0657913 c 0,5.0298857 -2.303664,7.0657927 -7.9999978,7.0657927 -0.418851,0 -0.7539288,0 -1.340315,-0.07982 l -1.5916233,1.716548 c -0.293178,0.31937 -1.1727761,0.439116 -1.1727761,-0.51896 v -1.676628 c -0.2513008,0 -0.8376945,-0.239509 -1.633508,-0.718553 C 1.46597,12.335212 8.4948164e-7,11.097701 8.4948164e-7,7.0658064 Z M 9.3403134,8.74242 Q 9.7591644,8.2234644 10.345551,8.582735 l 1.507853,1.0778343 q 0.335093,0.3991937 -0.293178,1.1177497 -0.62827,0.718556 -1.172776,0.598795 Q 8.1675562,10.898077 6.1151971,8.9819325 4.0628418,7.0657838 3.5602251,4.8302801 q 0,-0.7983949 1.0471219,-1.3572699 0.5445015,-0.3592819 0.921464,0.1995968 l 1.0471219,1.3971893 q 0.2513008,0.4790363 -0.293178,0.8782338 c -1.633508,0.5987943 2.1361248,4.4710069 3.0575887,2.7943786 z"/>
+                    </svg>
+                    <span>Viber</span>
+                </button>
+                <button class="btn btn-outline-primary mb-1 print_preview_btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                        <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1"/>
+                        <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1"/>
+                    </svg>
+                    <span>Print...</span>
+                </button>
+                
+                <button class="btn btn-outline-primary mb-1 copy_url_to_clipboard_btn" data-book-url="/book_info/f4e5229b-b90e-4cdc-881d-c465e68cf84a">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                    </svg>
+                    <span class="copy_url_to_clipboard_text">Copy the link</span>
+                </button>
+                <form action="/report_violation/f4e5229b-b90e-4cdc-881d-c465e68cf84a" method="POST">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="AemhULecbyhyJxDN5Eg19J0OfKg0LULmVLxWvYMk9i2rlxvjnQC6nopy2Ec5Lo1f">
+                    <button type="submit" class="btn btn-outline-primary mb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="Red" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.15.15 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.2.2 0 0 1-.054.06.1.1 0 0 1-.066.017H1.146a.1.1 0 0 1-.066-.017.2.2 0 0 1-.054-.06.18.18 0 0 1 .002-.183L7.884 2.073a.15.15 0 0 1 .054-.057m1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767z"/>
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+                        </svg>
+                        <span>Report a violation</span>
+                    </button>
+                </form>
+                
+                
+                    <div class="card-header">
+                        <h5 class="center_txt">Comments:</h5>
+                    </div>
+                    
+                    <ul class="list-group list-group-flush comments_list">
+                        
+                            <li class="list-group-item preloaded_comments">
+                                <p class="card-text">User "Sergey1979":</p>
+                                <p class="card-text">Register and offer books, free ads!<br>Reģistrējieties un piedāvājiet grāmatas, sludinājumi ir bezmaksas!<br>Зарегистрируйтесь и предложите книги, бесплатные объявления!</p>
+                            </li>
+                        
+                        
+                        
+                    </ul>
+                
+            </div>
+        </div>
+        <br>
+    
+
+
+                <!-- Pagination desktop version -->
+
+<nav aria-label="Page navigation" id="pagination_desktop">
+    <ul class="pagination justify-content-center">
+        
+        
+            <li class="page-item disabled">
+                <span class="page-link one_line">&laquo; first</span>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link one_line">&lsaquo; previous</span>
+            </li>
+        
+
+        
+        
+
+        
+        
+            
+                <li class="page-item active">
+                    <span class="page-link">1</span>
+                </li>
+            
+        
+            
+                <li class="page-item">
+                    <a class="page-link" href="?page=2">2</a>
+                </li>
+            
+        
+
+        
+        
+
+        
+        
+            <li class="page-item">
+                <a class="page-link one_line" href="?page=2">next &rsaquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link one_line" href="?page=2">last &raquo;</a>
+            </li>
+        
+    </ul>
+</nav>
+
+<!-- Pagination mobile version -->
+<nav aria-label="Page navigation" id="pagination_mobile">
+    
+    <ul class="pagination justify-content-center">
+        
+            <li class="page-item disabled">
+                <span class="page-link one_line">&laquo; first</span>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link one_line">&lsaquo; previous</span>
+            </li>
+        
+    </ul>
+
+    <ul class="pagination justify-content-center">
+        
+        
+
+        
+        
+            
+                <li class="page-item active">
+                    <span class="page-link">1</span>
+                </li>
+            
+        
+            
+                <li class="page-item">
+                    <a class="page-link" href="?page=2">2</a>
+                </li>
+            
+        
+
+        
+        
+    </ul>
+
+    
+    <ul class="pagination justify-content-center">
+        
+            <li class="page-item">
+                <a class="page-link one_line" href="?page=2">next &rsaquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link one_line" href="?page=2">last &raquo;</a>
+            </li>
+        
+    </ul>
+</nav>
+
+            
+        </div>
+    </div>
+
+            
+            <hr class="line">
+            <span class="footer normal_font noprint">
+                <a href="/terms_of_use" class="non_underline">Terms of use</a>
+            </span>
+            <br class="mobile_only">
+            <span class="footer normal_font noprint">
+                <a href="/about_us" class="non_underline">About us</a>
+            </span>
+            <br class="mobile_only_super_small">
+            <span class="footer normal_font noprint">
+                <a href="/privacy_policy" class="non_underline">Privacy Policy</a>
+            </span>
+            <br class="mobile_only">
+            <span class="footer normal_font noprint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-video3" viewBox="0 0 16 16">
+                    <title>Unique visitors this month</title>
+                    <path d="M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2"/>
+                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783Q16 12.312 16 12V4a2 2 0 0 0-2-2z"/>
+                </svg>
+                <span title="Unique visitors this month">1084</span>
+            </span>
+            <br class="mobile_only_super_small">
+            <span class="footer normal_font noprint">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-video3" viewBox="0 0 16 16">
+                    <title>Unique visitors</title>
+                    <path d="m 10.243137,13.45098 c 0,0 -0.5856199,0 -0.5856199,-0.607842 0,-0.607845 0.5856199,-2.431374 2.9281039,-2.431374 2.342483,0 2.928104,1.823529 2.928104,2.431374 0,0.607842 -0.585621,0.607842 -0.585621,0.607842 z m 2.342484,-3.64706 a 1.7568627,1.8235295 0 1 0 0,-3.6470572 1.7568627,1.8235295 0 0 0 0,3.6470572 M 9.1983901,13.45098 A 1.3117909,1.3615687 0 0 1 9.0718944,12.843138 c 0,-0.823629 0.398223,-1.67157 1.1337626,-2.261178 A 3.6894118,3.8294116 0 0 0 9.0718944,10.411764 c -2.342483,0 -2.9281038,1.823529 -2.9281038,2.431374 0,0.607842 0.5856208,0.607842 0.5856208,0.607842 z M 8.7790848,9.80392 a 1.4640522,1.5196078 0 1 0 0,-3.039214 1.4640522,1.5196078 0 0 0 0,3.039214"/>
+                    <path d="M 2,-2.7724731e-8 C 0.8954305,-2.7724731e-8 0,0.89543047 0,2 v 8 c 0,1.104569 0.8954305,2 2,2 h 3.4652222 c 0.122,-0.326 0.5250654,-0.668 0.7560654,-1 H 2 C 1.4477153,11 1,10.552285 1,10 V 2 C 1,1.4477153 1.4477153,0.99999997 2,0.99999997 h 12 c 0.552285,0 1,0.44771533 1,1.00000003 v 7.81 c 0.353,0.23 0.656,0.496 0.91,0.783 C 15.97,10.405667 16,10.208 16,10 V 2 C 16,0.89543047 15.104569,-2.7724731e-8 14,-2.7724731e-8 Z"/>
+                </svg>
+                <span title="Unique visitors">5192</span>
+            </span>
+            <br class="mobile_only_small">
+            
+                <span class="footer small_font">Copyright &copy; Sergejs Bure, 2026</span>
+            
+        </div>
+        <!-- Cookie warning -->
+        <div class="cc-cookies" id="cookieNotice" style="display: none;">
+            <div class="cc-cookie">
+                <div class="cc-msg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cookie" viewBox="0 0 16 16">
+                        <path d="M6 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m4.5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3m-.5 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                        <path d="M8 0a7.96 7.96 0 0 0-4.075 1.114q-.245.102-.437.28A8 8 0 1 0 8 0m3.25 14.201a1.5 1.5 0 0 0-2.13.71A7 7 0 0 1 8 15a6.97 6.97 0 0 1-3.845-1.15 1.5 1.5 0 1 0-2.005-2.005A6.97 6.97 0 0 1 1 8c0-1.953.8-3.719 2.09-4.989a1.5 1.5 0 1 0 2.469-1.574A7 7 0 0 1 8 1c1.42 0 2.742.423 3.845 1.15a1.5 1.5 0 1 0 2.005 2.005A6.97 6.97 0 0 1 15 8c0 .596-.074 1.174-.214 1.727a1.5 1.5 0 1 0-1.025 2.25 7 7 0 0 1-2.51 2.224Z"/>
+                    </svg>
+                    Respecting your privacy, we inform you that this website uses cookies on purpose to provide you the best experience when you are on the website and using it.
+                </div>
+                <a href="" class="cc-cookie-accept" onclick="acceptCookieConsent();">I agree.</a>
+            </div>
+        </div>
+    </body>
+</html>

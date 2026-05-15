@@ -1,0 +1,443 @@
+{
+  "summary": {
+    "files": 14,
+    "with_config": 14,
+    "zero_output_items": 14
+  },
+  "reports": [
+    {
+      "file": "src/alibris_uk_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Alibris UK",
+      "territory": "United Kingdom",
+      "base_url": "https://www.alibris.co.uk",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/alibris uk_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/alibris uk",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/awesomebooks_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "AwesomeBooks",
+      "territory": "United Kingdom",
+      "base_url": "https://www.awesomebooks.com",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/awesomebooks_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/awesomebooks",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/biblio_es_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Biblio.es",
+      "territory": "Spain",
+      "base_url": "https://biblio.es",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/biblio_es_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/biblio_es",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/biblio_greece_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Biblio.com Greece",
+      "territory": "Greece",
+      "base_url": "https://www.biblio.com",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/biblio_com greece_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/biblio_com greece",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/biblio_ie_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Biblio.ie",
+      "territory": "Ireland",
+      "base_url": "https://biblio.ie",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/biblio_ie_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/biblio_ie",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/biblio_uk_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Biblio UK",
+      "territory": "United Kingdom",
+      "base_url": "https://biblio.co.uk",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/biblio uk_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/biblio uk",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/bookloop_uk_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Bookloop UK",
+      "territory": "United Kingdom",
+      "base_url": "https://bookloop.webuybooks.co.uk",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/bookloop uk_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/bookloop uk",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/comprovendolibri_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "ComproVendoLibri.it",
+      "territory": "Italy",
+      "base_url": "https://www.comprovendolibri.it",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/comprovendolibri_it_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/comprovendolibri_it",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/fnac_pt_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "FNAC Portugal Marketplace",
+      "territory": "Portugal",
+      "base_url": "https://www.fnac.pt",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/fnac portugal marketplace_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/fnac portugal marketplace",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/portal_dos_livreiros_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Portal dos Livreiros",
+      "territory": "Brazil",
+      "base_url": "https://www.portaldoslivreiros.com.br",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/portal dos livreiros_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/portal dos livreiros",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/recyclivre_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Recyclivre",
+      "territory": "France",
+      "base_url": "https://www.recyclivre.com",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/recyclivre_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/recyclivre",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/sellitback_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "SellitBack",
+      "territory": "United Kingdom",
+      "base_url": "https://sellitback.com",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/sellitback_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/sellitback",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/webuybooks_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "WeBuyBooks",
+      "territory": "United Kingdom",
+      "base_url": "https://www.webuybooks.co.uk",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/webuybooks_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/webuybooks",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    },
+    {
+      "file": "src/zapper_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "Zapper",
+      "territory": "United Kingdom",
+      "base_url": "https://www.zapper.co.uk",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/zapper_listings.jsonl",
+        "exists": false,
+        "items": 0,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/zapper",
+        "exists": true,
+        "html_files": 0,
+        "meta_files": 0,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    }
+  ]
+}

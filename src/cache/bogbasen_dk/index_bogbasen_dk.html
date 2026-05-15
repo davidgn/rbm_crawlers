@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="da" dir="ltr">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2553425-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-2553425-1');
+</script>
+<meta charset="utf-8">
+<title>Bogbasen.dk - Danmarks største portal for køb og salg af brugte bøger</title><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Danmarks største portal for køb og salg af brugte bøger.">
+<meta name="keywords" content="bog, boeger, salg, køb, brugt, brugte, bøger, antikvar, antikvariat, studiebøger, bogbasen, bogbase">
+<meta name="author" content="bogbasen.dk">
+<meta name="copyright" content="Bogbasen.dk 2003-2026">
+<meta name="generator" content="bogbasen">
+<script src="//bogbasen.dk/js/jquery.min.js"></script>
+<script src="//bogbasen.dk/js/bootstrap.min.js"></script>
+	<link rel="preconnect" href="//bogbasen.dk/">
+	<link rel="icon" href="//bogbasen.dk/img/favicon.ico" type="image/ico">
+	 <link rel="preload" href="https://bogbasen.dk/css/bootstrap.min.css?lm=202209261349" as="style"> 	<link rel="stylesheet" href="https://bogbasen.dk/css/bootstrap.min.css?lm=202209261349">
+		 <link rel="preload" href="https://bogbasen.dk/css/styles.min.css?lm=202301221829" as="style"> 	<link rel="stylesheet" href="https://bogbasen.dk/css/styles.min.css?lm=202301221829">
+		 <link rel="preload" href="https://bogbasen.dk/css/font-awesome.min.css?lm=202203152051" as="style"> 	<link rel="stylesheet" href="https://bogbasen.dk/css/font-awesome.min.css?lm=202203152051">
+	</head>
+<body>
+<div class="container-fluid preheader hiddenNO">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<ul class="list-inline text-center">
+					<li><i class="fa fa-book" aria-hidden="true"></i> Danmarks største udvalg af brugte bøger</li>
+					<li class="hidden-xs"><i class="fa fa-envira" aria-hidden="true"></i> Genbrug er godt for miljøet!</li>
+					<li class="hidden-xs"><i class="fa fa-truck" aria-hidden="true"></i> Levering med PostNord</li>
+					<li class="hidden-xs">
+						<a href="mailto:support@bogbasen.dk"><i class="fa fa-envelope" aria-hidden="true"></i> support@bogbasen.dk</a>
+					</li>
+					<li class="hidden-xs">
+						<a href="tel:004540143366"><i class="fa fa-phone" aria-hidden="true"></i> 40143366</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row" id="topheader">
+		<div class="col-xs-12 col-sm-4 navbarlogo">
+							<a class="navbar-brand" href="/">
+				<img id="toplogo" src="//bogbasen.dk/img/redlogo.png" class="img-responsive" width="380" height="70" alt="Bogbasen.dk - Danmarks største portal for køb og salg af brugte bøger" title="Bogbasen.dk - Danmarks største portal for køb og salg af brugte bøger">
+				
+			</a>
+		</div>
+		<div class="col-xs-12 col-sm-6 topsearch">
+			<form action="/search" method="get" autocomplete="off">
+				<div class="input-group ">
+					<input type="text" value="" class="form-control search-autocomplete" name="titel" placeholder="Søg efter bog titel hurtigt her" autocomplete="off" required="">
+					<input type="hidden" name="metode" value="salg">
+					<input type="hidden" name="forfatter" value="">
+					<input type="hidden" name="isbn" value="">
+					<input type="hidden" name="kategori" value="">
+					<input type="hidden" name="soeg" value="true">
+					<span class="input-group-btn"> <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button> </span>                  
+				</div>
+			</form>            
+		</div>
+		<div class="col-xs-12 col-sm-2 topbasket hidden-xs ">
+			<a href="//bogbasen.dk/basket" class="pull-right">
+				<span style="position: relative;bottom: 0.5em;">Indkøbskurv</span>
+				<span class="glyphicon glyphicon-shopping-cart"></span>
+			</a>
+		</div>
+	</div>
+</div>
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/" class="hidden visible-xs navbar-quicklink active" aria-label="Forsiden"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
+			<a href="/basket" class="hidden visible-xs navbar-quicklink " aria-label="Indkøbskurven"><i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i></a>
+			<a href="/category" class="hidden visible-xs navbar-quicklink " aria-label="Kategorier"><i class="fa fa-book fa-lg" aria-hidden="true"></i></a>
+							<a href="/login" class="hidden visible-xs navbar-quicklink " aria-label="Log ind"><i class="fa fa-user-circle fa-lg" aria-hidden="true"></i></a>
+					</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active text-uppercase hidden-xs"><a href="/" aria-label="Forsiden"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+				<li class=" text-uppercase"><a href="search" aria-label="Søg efter bog">Søg efter bog</a></li>
+				<li class=" text-uppercase"><a href="sellBooks" aria-label="Sælg dine bøger">Sælg dine bøger</a></li>
+				<li class=" text-uppercase"><a href="/wantBook" aria-label="Efterlys bøger">Efterlys bøger</a></li>
+				<li class=" text-uppercase hidden-sm"><a href="antiqueStores" aria-label="Antikvariater">Antikvariater</a></li>
+				<li class=" text-uppercase hidden-xs"><a href="basket" aria-label="Indkøbskurv">Indkøbskurv</a></li>
+				<li class=" text-uppercase"><a class="btn" href="/blog" aria-label="Blog" style="border: 1px solid; padding: .5em 1em;margin: .5em;">Læs vores blog her</a></li>
+			</ul>
+					</div>
+	</div>
+</nav><div class="container">
+  <div class="row content">
+<div class="col-sm-4 col-md-3 col-lg-3 leftside hidden-xs">
+  <div class="panel panel-default">
+  <div class="panel-heading">Efterlyste bøger</div>
+  <div class="panel-body">
+    <p>Se de bøger andre brugere efterlyser</p>
+  <div class="col-lg-12">
+	<form method="get" action="search">
+    <div class="input-group">
+			<input type="hidden" name="metode" value="koeb">
+      <input type="text" name="searchWord" class="form-control" placeholder="Søg efter bøger">
+      <span class="input-group-btn">
+       	<button class="btn btn-primary" type="button" onClick="submit()">
+        	<span class="glyphicon glyphicon-search"></span>
+      	</button>
+      </span>
+    </div><!-- /input-group -->
+		</form>
+  </div><!-- /.col-lg-12 -->
+  <div class="col-lg-12">
+  	<ul>
+  		<li><a href="search?metode=koeb">Udvidet søgning</a></li>
+      <li><a href="wantedBooksRecent">Efterlyste bøger for de sidste 14 dage</a></li>
+  	</ul>
+  </div>
+  </div>
+</div>  	<div class="panel panel-default">
+		<div class="panel-heading">Log ind</div>
+		<div class="panel-body">
+			<ul>
+				<li><a href="login">Log ind</a></li>
+				<li><a href="newUser">Ny bruger</a></li>
+			</ul>
+		</div>
+	</div>
+	    <div class="panel panel-default">
+  <div class="panel-heading">Quicklinks</div>
+  <div class="panel-body">
+  	<ul>
+      <li><a href="category">Oversigt over alle kategorier</a></li>
+            <li><a href="sellBooks">Sælg bøger</a></li>
+  		<li><a href="terms">Betingelser</a></li>
+  		<li><a href="faq">Spørgsmål/svar</a></li>
+     	<li><a href="contact">Kontakt</a></li>
+      <li><a href="antiqueStores">Antikvariater</a></li>
+     	<li><a href="blog">Blog</a></li>
+  	</ul>
+  </div>
+</div>  <div class="panel panel-default">
+  <div class="panel-heading">Nyeste bøger</div>
+  <div class="panel-body"><a href="/showBook?id=4666055-dobbelt-forraederi-"><b>Per Wahlöö</b><br>Dobbelt forræderi **</a><br style="clear:both;"><hr><a href="/showBook?id=3616473-drommen-om-byen-bag-murene-"><b>Lisa Huang Fleischman</b><br>Drømmen om byen bag murene  **</a><br style="clear:both;"><hr><a href="/showBook?id=3615588-dronningen-af-saba-kong-salomon-"><b>Anne Lise Marstrand-Jørgensen</b><br>Dronningen af Saba -Kong Salomon. **</a><br style="clear:both;"><hr><a href="/showBook?id=3612434-dronning-leonas-mystiske-flamme-"><b>Umberto Eco</b><br>Dronning Leonas mystiske flamme.  **</a><br style="clear:both;"><hr><a href="/showBook?id=3611715-djaevelens-o-"><b>Einar Karason</b><br>Djævelens ø. **</a><br style="clear:both;"><hr><a href="/showBook?id=4819129-dodens-kobmand"><b>Yoichi Nagashima</b><br>Dødens Købmand</a><br style="clear:both;"><hr><a href="/showBook?id=4729160-ragnhilds-saga-"><b>Lone Mikkelsen</b><br>Ragnhilds saga **</a><br style="clear:both;"><hr>  </div>
+</div>  <br/>
+
+ <div class="leftads deferred-loading">
+  </div>
+</div><style>
+	.book-view
+	{
+		position: relative;
+	}
+		.book-view .title {
+			white-space: nowrap;
+			width: calc(100% - 1em);
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		.book-view .caption{
+			padding: 1em;
+		}
+		.book-view .caption p.concate{
+			height: 4.5em;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		.book-view .price
+		{
+			position: absolute;
+			bottom: 3em;
+			left: 0;
+			padding: 1em;
+		}
+		.book-view .buttons
+		{
+			/*position: absolute;*/
+			padding: 0.5em;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+		}
+</style>
+<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+	<br>
+	<figure class="row" id="frontImage">
+		<img src="/img/frontpageImage2000x1333.jpg" alt="Danmarks største bog portal">
+		<figcaption>
+			<h1>Velkommen til <u>Danmarks største portal</u> for køb & salg af brugte bøger</h1>
+		</figcaption>
+	</figure>
+	<hr>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default" id="quickLinks">
+				<div class="panel-heading">Quicklinks - Hurtige genveje til det du søger efter</div>
+				<div class="panel-body">
+					<div class="col-xs-12">
+						<ul >
+							<li><a href="category">Oversigt over alle kategorier</a></li>
+							<li><a href="category?ID=Studiebøger">Studiebøger</a></li>
+							<li><a href="category?ID=Børnebøger">Børnebøger</a></li>
+							<li><a href="category?ID=Skønlitteratur">Skønlitteratur</a></li>
+							<li><a href="category?ID=Faglitteratur">Faglitteratur</a></li>
+							<li><a href="search">Søg efter bøger</a></li>
+							<li><a href="sellBooks">Sælg dine bøger</a></li>
+							<li><a href="wantBook">Efterlys en bog</a></li>
+							<li class="filler"><a>&nbsp;</a></li>
+							<li><a href="antiqueStores">Find nærmeste Antikvariat</a></li>
+							<li><a href="faq">Hjælp til brug af siden</a></li>
+							<li class="filler"><a>&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="hidden visible-lg">
+		<section class="row">
+			<div class="col-sm-11" style="margin: 0 calc(100% / 24);">
+				<h2 class="text-center" style="font-size: 1.6em; padding: 1em">Nye bøger</h2>
+				<div id="newBookCarousel" class="carousel slide">
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="row">
+									<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819129_250_250.jpg" class="img-responsive img-frontpage" alt="Dødens Købmand">
+			<figcaption class="caption">
+				<h4 class="title" title="Dødens Købmand">Dødens Købmand</h4>
+				<p class="concate">Balthazar Münter - Leverandør til det Kejserlige Japanske Hof.
+Heftet bind, meget...</p>
+				<b class="price">120 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819129-dodens-kobmand" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819129" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819128_250_250.jpg" class="img-responsive img-frontpage" alt="For Danmarks ære">
+			<figcaption class="caption">
+				<h4 class="title" title="For Danmarks ære">For Danmarks ære</h4>
+				<p class="concate">Danskere i allieret krigstjeneste 1939-45.
+Hardback bind, fin og velholdt stand. 1....</p>
+				<b class="price">120 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819128-for-danmarks-aere" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819128" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819127_250_250.jpg" class="img-responsive img-frontpage" alt="Personerne (1. udgaven)">
+			<figcaption class="caption">
+				<h4 class="title" title="Personerne (1. udgaven)">Personerne (1. udgaven)</h4>
+				<p class="concate">Heftet bind, fin og velholdt stand. 1. udgaven-1. oplag. Indeholder mange sort/hvid...</p>
+				<b class="price">295 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819127-personerne-1-udgaven-" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819127" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819126_250_250.jpg" class="img-responsive img-frontpage" alt="Kilden og flammen">
+			<figcaption class="caption">
+				<h4 class="title" title="Kilden og flammen">Kilden og flammen</h4>
+				<p class="concate">En bog til Thorkild Bjørnvig 2. februar 1988.
+Heftet bind, fin og velholdt stand....</p>
+				<b class="price">90 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819126-kilden-og-flammen" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819126" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+	</div></div><div class="item"><div class="row">	<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819125_250_250.jpg" class="img-responsive img-frontpage" alt="Søren Abildgaard (1718-1791)">
+			<figcaption class="caption">
+				<h4 class="title" title="Søren Abildgaard (1718-1791)">Søren Abildgaard (1718-1791)</h4>
+				<p class="concate">Fortiden på tegnebrættet.
+Hardback bind, stort format 22x28 cm. Fin og velholdt...</p>
+				<b class="price">150 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819125-soren-abildgaard-1718-1791-" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819125" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819124_250_250.jpg" class="img-responsive img-frontpage" alt="Sharp (1. udgaven)">
+			<figcaption class="caption">
+				<h4 class="title" title="Sharp (1. udgaven)">Sharp (1. udgaven)</h4>
+				<p class="concate">Hardback bind incl. smudsbind. Stort format 31,5x31,5 cm. Fin og velholdt stand....</p>
+				<b class="price">270 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819124-sharp-1-udgaven-" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819124" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819123_250_250.jpg" class="img-responsive img-frontpage" alt="Hjælpen kom fra luften ">
+			<figcaption class="caption">
+				<h4 class="title" title="Hjælpen kom fra luften ">Hjælpen kom fra luften </h4>
+				<p class="concate">Heft. 159 sider. 
+Herlige og sjove beretninger fra Hans Venningbo’s
+mange ture...</p>
+				<b class="price">100 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819123-hjaelpen-kom-fra-luften" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819123" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819122_250_250.jpg" class="img-responsive img-frontpage" alt="Søren Kierkegaard. Værker i udvalg I-IV">
+			<figcaption class="caption">
+				<h4 class="title" title="Søren Kierkegaard. Værker i udvalg I-IV">Søren Kierkegaard. Værker i udvalg I-IV</h4>
+				<p class="concate">4 bind. Halvlæderbind med rygtitel i guld. Lidt slid ved ryg.</p>
+				<b class="price">170 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819122-soren-kierkegaard-vaerker-i-udvalg-i-iv" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819122" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+	</div></div><div class="item"><div class="row">	<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819120_250_250.jpg" class="img-responsive img-frontpage" alt="SEJL MED HYRET BÅD   j">
+			<figcaption class="caption">
+				<h4 class="title" title="SEJL MED HYRET BÅD   j">SEJL MED HYRET BÅD   j</h4>
+				<p class="concate">SEJL MED HYRET BÅD   Ole Kofoed-Olsen
+Hft. 112 sider, Wisby & Wilkens  2001
+Ill....</p>
+				<b class="price">100 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819120-sejl-med-hyret-bad-j" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819120" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819119_250_250.jpg" class="img-responsive img-frontpage" alt="Gud til ære Kiercken til zirat. Peder Jenssøn Koldings Prædikestol i Vor Frelsers Kirke i Horsens 1670">
+			<figcaption class="caption">
+				<h4 class="title" title="Gud til ære Kiercken til zirat. Peder Jenssøn Koldings Prædikestol i Vor Frelsers Kirke i Horsens 1670">Gud til ære Kiercken til zirat. Peder Jenssøn Koldings Prædikestol i Vor Frelsers Kirke i Horsens 1670</h4>
+				<p class="concate">Hæftet.</p>
+				<b class="price">100 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819119-gud-til-aere-kiercken-til-zirat-peder-jensson-koldings-praedikestol-i-vor-frelsers-kirke-i-horsens-1670" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819119" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819118_250_250.jpg" class="img-responsive img-frontpage" alt="Harmoni i blåt - P.S. Krøyers stemningsmaleri i 1890'erne">
+			<figcaption class="caption">
+				<h4 class="title" title="Harmoni i blåt - P.S. Krøyers stemningsmaleri i 1890'erne">Harmoni i blåt - P.S. Krøyers stemningsmaleri i 1890'erne</h4>
+				<p class="concate">Hæftet med smudsomslag. Om maleren P.S. Krøyer og hans dialog med de aktuelle...</p>
+				<b class="price">100 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819118-harmoni-i-blat-p-s-kroyers-stemningsmaleri-i-1890erne" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819118" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+		<div class="col-md-3">
+		<figure class="thumbnail frontpagethumbnail book-view">
+			<img src="//bogbasen.dk/images/4819117_250_250.jpg" class="img-responsive img-frontpage" alt="Alternative therapy 1 +2 ">
+			<figcaption class="caption">
+				<h4 class="title" title="Alternative therapy 1 +2 ">Alternative therapy 1 +2 </h4>
+				<p class="concate">Bind 1; Contributions from the Nordic Countries. Bind 2: Body and Nature.
+Hæftet.</p>
+				<b class="price">120 DKK</b>
+				<p class="buttons">
+				<a href="/showBook?id=4819117-alternative-therapy-1-2" class="btn btn-default pull-left" role="button">Læs mere</a>
+				<a href="/basket?bogid=4819117" class="btn btn-default pull-right" role="button">Køb nu</a>
+			</p>
+			</figcaption>
+		</figure>
+	</div>
+								</div>
+						</div>
+					</div>
+					<a class="left carousel-control hidden-xs" href="#newBookCarousel" data-slide="prev"><i class="fa fa-chevron-left fa-2x"></i></a>
+					<a class="right carousel-control hidden-xs" href="#newBookCarousel" data-slide="next"><i class="fa fa-chevron-right fa-2x"></i></a>
+				</div>
+			</div>
+		</section>
+			</div>
+</div></div>
+</div>
+	<div class="footer-container-fluid">
+		<footer class="container">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+			<h4 class="text-uppercase">Om Bogbasen.dk</h4>
+			<p>Bogbasen er Danmarks største markedsplads for køb og salg af brugte bøger.</p>
+			<p>Her kan både private og antikvariater købe og sælge køber.<br>Vi har nemlig gjort det simpelt for dig hvad end du skal købe eller sælge bøger. Det hele foregår nemlig igennem vores platform der automatisk sørger for afregning af bogsælger, fragtlabels, tracking m.v.</p>
+			<p>På den måde skal du blot koncentrer dig om enten at købe bøger eller sælge de bøger du er færdig med at læse</p>
+			<p class="font-weight-bold">Vi er stolte af at have leveret bøger til danskerne siden 2004!</p>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-2 col-lg-offset-1">
+				<h4 class="text-uppercase">Informationssider</h4>
+			  <ul>
+			  	<li><a href="terms">Betingelser</a></li>
+			  	<li><a href="faq">Spørgsmål & svar</a></li>
+			  	<li><a href="antiqueStores" target="_blank">Antikvariater</a></li>
+			  	<li><a href="blog" target="_blank">Blog</a></li>
+			  	<li><a href="sitemap.html" target="_blank">Sitemap</a></li>
+			  	<li><a href="contact">Kontakt os</a></li>
+			  </ul>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 col-md-offset-4 col-lg-offset-2">
+			<h4 class="text-uppercase">Kontakt os</h4>
+			 <p><strong>Bogbasen ApS</strong><br>
+			 Torupvej 6<br>5485 Skamby</p>	
+			  <p>E-mail: <a href="mailto:support@bogbasen.dk"><span class="font-weight-bold">support@bogbasen.dk</span></a><br>
+			  Telefon: <a href="tel:004540143366">+45 <span class="font-weight-bold">40143366</span></a><br>
+			  CVR: <a href="https://datacvr.virk.dk/data/visenhed?enhedstype=virksomhed&id=39508737&soeg=39508737&language=da">39508737</a>
+			  </p>	
+			</div>
+		</footer>
+<script type="application/ld+json">
+    { "@context": "http://schema.org", "@type": "WebPage", "url": "https://bogbasen.dk", "name": "Bogbasen.dk" }
+</script>
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://bogbasen.dk",
+        "name": "Bogbasen.dk",
+        "potentialAction": { "@type": "SearchAction", "target": "https://bogbasen.dk/search?metode=salg&forfatter=&isbn=&kategori=&soeg=true&titel={search_term_string}", "query-input": "required name=search_term_string" }
+    }
+</script>
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "https://bogbasen.dk/",
+        "logo": "https://bogbasen.dk/img/redlogo.png",
+        "name": "Bogbasen.dk",
+        "address": { "streetAddress": "Torupvej 6", "postalCode": "5485", "addressLocality": "Skamby", "addressCountry": "Denmark", "email": "support@bogbasen.dk" },
+        "contactPoint": [{ "@type": "ContactPoint", "email": "support@bogbasen.dk", "contactType": "customer service", "availableLanguage": ["English", "Danish"] }]
+    }
+</script>
+
+<button onclick="topFunction()" id="scrolltotop" title="Gå til top">&nbsp;<i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>&nbsp;</button>
+	</div>
+	<div class="container-fluid subfooter">
+		<div class="container">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-9 text-left copyright">
+			<p>© 2003 - 2026 | Bogbasen.dk - All rights reserved/Alle rettigheder er reserveret</p>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+			<img src="https://bogbasen.dk/img/logos.png" width="255" height="82" class="img-responsive" alt="betalings kort" title="betalingskort">
+		</div>
+	</div>
+	</div>
+<script src="//bogbasen.dk/js/listgrid.js"></script>
+<script src="//bogbasen.dk/js/scrollToTop.js"></script>
+</body>
+</html>

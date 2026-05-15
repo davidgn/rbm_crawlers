@@ -1,0 +1,2607 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ar">
+<head id="Head1">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R7LWKC9WSC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-R7LWKC9WSC');
+    </script>
+    
+
+    <!-- Facebook Pixel Code -->
+    <div id="divFacebookViewContent">
+        <script>
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1966050217016159');
+            fbq('init', '1326517644445207');
+            fbq('track', 'PageView', {
+                eventID: '67fdad23-e763-4ad5-957a-dd2bab0a3c5c'
+            });
+        </script>
+    </div>
+    <noscript>
+        <img height="1" width="1"
+            src="https://www.facebook.com/tr?id=1966050217016159&ev=PageView
+    &noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "hcgn53chj2");
+    </script>
+    
+
+    
+    
+    
+
+    
+    <link rel="manifest" href="/manifest.json" />
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script type="text/javascript" src='https://www.gstatic.com/firebasejs/7.14.2/firebase-messaging.js'></script>
+    <script type="text/javascript">
+        var firebaseConfig = {
+            apiKey: "AIzaSyDMguibJ2VEv4DeTVtnrrIr7wJWcaqppyA",
+            authDomain: "shoroukbookstores-web.firebaseapp.com",
+            databaseURL: "https://shoroukbookstores-web.firebaseio.com",
+            projectId: "shoroukbookstores-web",
+            storageBucket: "shoroukbookstores-web.appspot.com",
+            messagingSenderId: "884674141648",
+            appId: "1:884674141648:web:5d68dea744e72262e92dd5",
+            measurementId: "G-R7LWKC9WSC"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const messaging = firebase.messaging();
+        messaging.usePublicVapidKey('BD9ts39mXzCbXmntmiUqbfEBTcGvft8dWcYLQ-BQSWU21rS1YsrdXNp2zFaTgwUZFlkPwggxFl4r2oRot-Fm2ds');
+        messaging.onMessage(function (payload) {
+            const notificationTitle = payload.notification.title;
+            if (!("Notification" in window)) {
+                console.log("This browser does not support system notifications");
+            }
+            // Let's check whether notification permissions have already been granted
+            else if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                var notification = new Notification(notificationTitle, payload.notification);
+                notification.onclick = function (event) {
+                    event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                    if (payload.fcmOptions != null)
+                        window.open(payload.fcmOptions.link, '_blank');
+                    notification.close();
+                }
+            }
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/firebase-messaging-sw.js')
+                    .then(registration => {
+                        //Confirm user permission for notification
+                        Notification.requestPermission()
+                            .then(permission => {
+                                if (permission === 'granted') {
+                                    messaging.getToken().then(
+                                        token => {
+
+                                            if (!isTokenSentToServer()) {
+
+                                                var body = "شكرا للاشتراك في الخدمة، سنرسل لك أحدث الكتب والعروض قريبا";
+                                                var title = "مكتبات الشروق";
+                                                //If notification is allowed
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: '/_Services/WebNotificationService.asmx/PushNotificationMessage',
+                                                    data: "{'registrationToken': '" + token + "','body':'" + body + "','title':'" + title + "'}",
+                                                    contentType: "application/json; charset=utf-8",
+                                                    dataType: "json",
+                                                    success: function (response) {
+
+                                                        sendTokenToServer(token);
+                                                    },
+                                                    error: function (xhr, textStatus, errorThrown) {
+                                                        console.log("Error :" + textStatus);
+                                                    },
+                                                    //complete event
+                                                    complete: function () {
+
+                                                    }
+                                                });
+                                            }
+                                            else
+                                                console.log("Token already sent to server");
+
+                                        });
+
+                                } else {
+                                    //If notification is not allowed
+                                    console.log(permission)
+                                }
+
+
+                            })
+                    })
+            })
+        }
+        // Add a message to the messages element.
+        function appendMessage(payload) {
+            const messagesElement = document.querySelector('#messages');
+            const dataHeaderELement = document.createElement('h5');
+            const dataElement = document.createElement('pre');
+            dataElement.style = 'overflow-x:hidden;';
+            dataHeaderELement.textContent = 'Received message:';
+            dataElement.textContent = JSON.stringify(payload, null, 2);
+            messagesElement.appendChild(dataHeaderELement);
+            messagesElement.appendChild(dataElement);
+        }
+        function setTokenSentToServer(sent) {
+            window.localStorage.setItem('sentToServer', sent ? '1' : '0');
+        }
+        function isTokenSentToServer() {
+            return window.localStorage.getItem('sentToServer') === '1';
+        }
+        function sendTokenToServer(currentToken) {
+            if (!isTokenSentToServer()) {
+                console.log('Sending token to server...');
+                // TODO(developer): Send the current token to your server.
+                setTokenSentToServer(true);
+            } else {
+                console.log('Token already sent to server so won\'t send it again ' +
+                    'unless it changes');
+            }
+
+        }
+
+    </script>
+
+    
+
+    
+    
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta id="MetaFBImage" property="og:image" content="https://www.shoroukbookstores.com/images/Books/original/6221102025744.jpg" /><meta id="MetaFBTitle" property="og:title" content="Sunset Osasis - بهاء طاهر -  مكتبات الشروق" /><meta id="MetaFBDescription" property="og:description" content="هذه الرواية حاصلة على الجائزة العالمية للرواية العربية (جائزة البوكر) 2008، وقد طبع منها 3 طبعات خلال سنة . يعود &amp;laquo; بهاء طاهر&amp;raquo; فى روايته الجديدة والبديعة &amp;laquo;واحة الغروب&amp;raquo; والتى لاقت نجاحا جماهيريا واستحسانا نقديا كبيرا، إلى نهايات القرن التاسع عشر، وبداية الاحتلال البريطانى لمصر، حيث يُرسل ضابط البوليس المصرى محمود عبدالظاهر، إلى واحة سيوة لشك السلطات فى تعاطفه مع الأفكار الثورية لجمال الدين الأفغانى وأحمد عرابى، فيصطحب زوجته الأيرلندية &amp;laquo;كاثرين&amp;raquo; الشغوفة بالآثار، والتى تبحث عن مقبرة الإسكندر الأكبر، لينغمسا فى عالم جديد شديد الثراء والخصوصية يجبرهما وأهل الواحة على مواجهة أنفسهم فى زمن اختلطت فيه الانتهازية والخيانة والرغبة بالحب والبطولة. تعكس أحداث الرواية أيضا مزجا إبداعيا بين الماضى والحاضر والموضوعى والتاريخ والواقع يعبر عن هموم الوطن كما يقدم تجربة العلاقة بين الشرق والغرب على المستويين الإنسانى والحضارى بما فيها من صراع وتوافق." /><meta id="MetaFBImageType" property="og:image:type" content="image/jpg" /><meta id="MetaFBImageWidth" property="og:image:width" content="200" /><meta id="MetaFBImageHeight" property="og:image:height" content="288" /><meta id="MetaUrl_Og" property="og:url" content="https://www.shoroukbookstores.com/books/view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b" /><link id="MetaUrl_Canonical" rel="canonical" href="https://www.shoroukbookstores.com/books/view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b" /><meta id="MetaType" property="og:type" content="website" /><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><meta property="fb:app_id" content="989794667754851" />
+    
+    <script src='/_responsive/jquery-3.1.1.min.js' type="text/javascript"></script>
+    
+    <script src='/_Scripts/_JavaScript/Basket.js' type="text/javascript"></script>
+    <script src='/_Scripts/_JavaScript/jquery.isloading.js' type="text/javascript"></script>
+
+    
+
+    <link rel="stylesheet" href="/_responsive/animate.css" /><link rel="stylesheet" media="screen" href="/_responsive/bootstrap.min.css?v=5" /><link rel="stylesheet" href="/_responsive/swiper.min.css" /><link rel="stylesheet" href="/_responsive/font-awesome.min.css" /><link rel="stylesheet" href="/_responsive/custom-style.css?v=12" /><link rel="stylesheet" href="/_responsive/blog.css?v=14" />
+    
+
+    <script src='/_responsive/bootstrap.min.js'> </script>
+    <script src='/_responsive/swiper.jquery.min.js?v=6'></script>
+    <script src='/_responsive/custom-scripts.js?v=13' defer="defer"></script>
+    
+
+
+    
+
+    
+    <script type="text/javascript">
+        var userName = '';
+    </script>
+
+
+    
+    
+    <div id="fb-root"></div>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '989794667754851',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: 'v8.0'           // Use this Graph API version for this call.
+            });
+        }
+    </script>
+
+    <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/ar_AR/sdk/xfbml.customerchat.js#xfbml=1&version=v7.0&appId=989794667754851";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+
+
+
+    
+    <!-- Add structured data for books -->
+    <script type="application/ld+json">
+[
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "@id": "https://www.shoroukbookstores.com/books/view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b#product",
+    "name": "Sunset Osasis",
+    "url": "https://www.shoroukbookstores.com/books/view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b",
+    "description": "هذه الرواية حاصلة على الجائزة العالمية للرواية العربية (جائزة البوكر) 2008، وقد طبع منها 3 طبعات خلال سنة . يعود &laquo; بهاء طاهر&raquo; فى روايته الجديدة والبديعة &laquo;واحة الغروب&raquo; والتى لاقت نجاحا جماهيريا واستحسانا نقديا كبيرا، إلى نهايات القرن التاسع عشر، وبداية الاحتلال البريطانى لمصر، حيث يُرسل ضابط البوليس المصرى محمود عبدالظاهر، إلى واحة سيوة لشك السلطات فى تعاطفه مع الأفكار الثورية لجمال الدين الأفغانى وأحمد عرابى، فيصطحب زوجته الأيرلندية &laquo;كاثرين&raquo; الشغوفة بالآثار، والتى تبحث عن مقبرة الإسكندر الأكبر، لينغمسا فى عالم جديد شديد الثراء والخصوصية يجبرهما وأهل الواحة على مواجهة أنفسهم فى زمن اختلطت فيه الانتهازية والخيانة والرغبة بالحب والبطولة. تعكس أحداث الرواية أيضا مزجا إبداعيا بين الماضى والحاضر والموضوعى والتاريخ والواقع يعبر عن هموم الوطن كما يقدم تجربة العلاقة بين الشرق والغرب على المستويين الإنسانى والحضارى بما فيها من صراع وتوافق.",
+    "image": "https://www.shoroukbookstores.com/images/Books/original/6221102025744.jpg?random=639144316657310518",
+    "sku": "6221102025744",
+    "offers": [
+        {
+            "@type": "Offer",
+            "priceSpecification": [
+                {
+                    "@type": "UnitPriceSpecification",
+                    "price": "178.5",
+                    "priceCurrency": "EGP",
+                    "valueAddedTaxIncluded": true,
+                    "validThrough": "2026-06-15"
+                }
+            ],
+            "priceValidUntil": "2026-06-15",
+            "availability": "http://schema.org/InStock",
+            "url": "https://www.shoroukbookstores.com/books/view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b",
+            "seller": {
+                "@type": "Organization",
+                "name": "مكتبات الشروق",
+                "url": "https://www.shoroukbookstores.com"
+            }
+        }
+    ]
+},
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "مكتبات الشروق",
+            "item": "https://www.shoroukbookstores.com"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "كتب عربية",
+            "item": "https://www.shoroukbookstores.com/books/arabic"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sunset Osasis"
+        }
+    ]
+}
+]
+    </script>
+    
+
+    <!-- JSON-LD markup generated by Google Structured Data Markup Helper. -->
+    
+    
+    <script src="../_Scripts/_JavaScript/jquery.aw-showcase.js" type="text/javascript"></script>
+    <script src="../_Scripts/_JavaScript/jquery.expander.js" type="text/javascript"></script>
+
+    
+    <meta id="head_MetaDescription" name="description" content="هذه الرواية حاصلة على الجائزة العالمية للرواية العربية (جائزة البوكر) 2008، وقد طبع منها 3 طبعات خلال سنة . يعود &amp;laquo; بهاء طاهر&amp;raquo; فى روايته"></meta>
+    <meta id="head_MetaKeywords" name="keywords" content="Sunset Osasis,بهاء طاهر,دار الشروق,مكتبات الشروق"></meta>
+    <meta id="head_MetaImage" name="thumbnail" content="https://www.shoroukbookstores.com/images/Books/original/6221102025744.jpg?random=639144316653873647"></meta>
+    <meta name="robots" content="INDEX,FOLLOW" />
+
+    <!-- Open Graph Metadata (=============== WILL BE SET FROM MASTER ====================) -->
+    
+
+
+
+    <link id="head_lnkImage" rel="image_src" href="https://www.shoroukbookstores.com/images/Books/original/6221102025744.jpg?random=639144316653873647"></link>
+
+    <meta id="head_MetaBrand" property="product:brand" content="مكتبات الشروق"></meta>
+    <meta id="head_MetaAvailability" property="product:availability" content="instock"></meta>
+    <meta id="head_MetaCondition" property="product:condition" content="new"></meta>
+
+    <meta id="head_MetaAmount" property="product:price:amount" content="210"></meta>
+    <meta id="head_MetaCurrency" property="product:price:currency" content="EGP"></meta>
+    
+
+    <meta id="head_MetaSaleAmount" property="product:sale_price:amount" content="178.5"></meta>
+    <meta id="head_MetaSaleCurrency" property="product:sale_price:currency" content="EGP"></meta>
+    
+
+    <meta property="product:internal_label" content="['PublishingYear_2009','PercentageDiscount_15']"></meta>
+    <meta property="product:product_tags" content="['2009','15']" />
+    <meta property="product:internal_label" content="15" />
+
+    <meta id="head_MetaId" property="product:retailer_item_id" content="81939ba9-5072-4893-9740-4e7e249dcc0b"></meta>
+    <meta id="head_MetaPCategory" property="product:category" content="Media > Books"></meta>
+    <meta id="head_MetaFBIsbn" property="product:isbn" content="6221102025744"></meta>
+    
+    <meta id="head_MetaAuthorName" property="product:custom_label_0" content="بهاء طاهر"></meta>
+    <meta id="head_MetaPublishingHouse" property="product:custom_label_1" content="دار الشروق"></meta>
+    <meta id="head_MetaCreationDate" property="product:custom_label_2" content="13-10-2019"></meta>
+    <meta id="head_MetaBookTags" property="product:custom_label_3" content="روايات,روايات تاريخية"></meta>
+    <meta id="head_MetaCategory" property="product:custom_label_4" content="أدب"></meta>
+
+    <meta id="head_MetaPercentageDiscount" property="product:custom_number_0" content="15"></meta>
+    <!-- End Open Graph Metadata -->
+    <pagemap style="display: none;">
+        <attribute name="title">Sunset Osasis</attribute>
+        <attribute name="author">بهاء طاهر</attribute>
+        <attribute name="description">هذه الرواية حاصلة على الجائزة العالمية للرواية العربية (جائزة البوكر) 2008، وقد طبع منها 3 طبعات خلال سنة . يعود &laquo; بهاء طاهر&raquo; فى روايته </attribute>
+        <attribute name="last_update">2026-04-09 </attribute>
+        <dataobject type="thumbnail">
+            <attribute id="head_thumb" name="src" value="https://www.shoroukbookstores.com/images/Books/original/6221102025744.jpg?random=639144316653873647"></attribute>
+            <attribute name="width" value="132"></attribute>
+            <attribute name="height" value="181"></attribute>
+        </dataobject>
+    </pagemap>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(function () {
+                $('div#summary').expander({
+                    slicePoint: 200,
+                    expandText: 'أقرأ المزيد',
+                    userCollapseText: ''
+                });
+            });
+
+            $("#showcase").awShowcase({
+                content_width: 199,
+                content_height: 300,
+                fit_to_parent: false,
+                auto: false,
+                interval: 3000,
+                continuous: false,
+                loading: true,
+                tooltip_width: 200,
+                tooltip_icon_width: 32,
+                tooltip_icon_height: 32,
+                tooltip_offsetx: 18,
+                tooltip_offsety: 0,
+                arrows: true,
+                buttons: true,
+                btn_numbers: true,
+                keybord_keys: true,
+                mousetrace: false, /* Trace x and y coordinates for the mouse */
+                pauseonover: true,
+                stoponclick: true,
+                transition: 'hslide', /* hslide/vslide/fade */
+                transition_delay: 300,
+                transition_speed: 500,
+                show_caption: 'show', /* onload/onhover/show */
+                thumbnails: true,
+                thumbnails_position: 'outside-last', /* outside-last/outside-first/inside-last/inside-first */
+                thumbnails_direction: 'horizontal', /* vertical/horizontal */
+                thumbnails_slidex: 0, /* 0 = auto / 1 = slide one thumbnail / 2 = slide two thumbnails / etc. */
+                dynamic_height: false, /* For dynamic height to work in webkit you need to set the width and height of images in the source. Usually works to only set the dimension of the first slide in the showcase. */
+                speed_change: false, /* Set to true to prevent users from swithing more then one slide at once. */
+                viewline: false /* If set to true content_width, thumbnails, transition and dynamic_height will be disabled. As for dynamic height you need to set the width and height of images in the source. */
+            });
+        });
+    </script>
+    
+    <!-- Event snippet for pageviewads conversion page -->
+    
+    
+<link href="../App_Themes/Site_Green/chosen.min.css" type="text/css" rel="stylesheet" /><link href="../App_Themes/Site_Green/jquery-ui.css" type="text/css" rel="stylesheet" /><link href="../App_Themes/Site_Green/main37.css" type="text/css" rel="stylesheet" /><link href="../App_Themes/Site_Green/print1.css" type="text/css" rel="stylesheet" /><link href="../App_Themes/Site_Green/slick.css" type="text/css" rel="stylesheet" /><title>
+	Sunset Osasis - بهاء طاهر -  مكتبات الشروق
+</title></head>
+
+<body>
+    <form method="post" action="./view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTc3MDg0OTIyOA9kFgJmD2QWBAIBD2QWJAIEDxUBPi9fU2VydmljZXMvV2ViTm90aWZpY2F0aW9uU2VydmljZS5hc214L1B1c2hOb3RpZmljYXRpb25NZXNzYWdlZAIHDxYCHgdjb250ZW50BUlodHRwczovL3d3dy5zaG9yb3VrYm9va3N0b3Jlcy5jb20vaW1hZ2VzL0Jvb2tzL29yaWdpbmFsLzYyMjExMDIwMjU3NDQuanBnZAIIDxYCHwAFPlN1bnNldCBPc2FzaXMgLSDYqNmH2KfYoSDYt9in2YfYsSAtICDZhdmD2KrYqNin2Kog2KfZhNi02LHZiNmCZAIJDxYCHwAFogzZh9iw2Ycg2KfZhNix2YjYp9mK2Kkg2K3Yp9i12YTYqSDYudmE2Ykg2KfZhNis2KfYptiy2Kkg2KfZhNi52KfZhNmF2YrYqSDZhNmE2LHZiNin2YrYqSDYp9mE2LnYsdio2YrYqSAo2KzYp9im2LLYqSDYp9mE2KjZiNmD2LEpIDIwMDjYjCDZiNmC2K8g2LfYqNi5INmF2YbZh9inIDMg2LfYqNi52KfYqiDYrtmE2KfZhCDYs9mG2KkgLiDZiti52YjYryAmbGFxdW87INio2YfYp9ihINi32KfZh9ixJnJhcXVvOyDZgdmJINix2YjYp9mK2KrZhyDYp9mE2KzYr9mK2K/YqSDZiNin2YTYqNiv2YrYudipICZsYXF1bzvZiNin2K3YqSDYp9mE2LrYsdmI2KgmcmFxdW87INmI2KfZhNiq2Ykg2YTYp9mC2Kog2YbYrNin2K3YpyDYrNmF2KfZh9mK2LHZitinINmI2KfYs9iq2K3Ys9in2YbYpyDZhtmC2K/ZitinINmD2KjZitix2KfYjCDYpdmE2Ykg2YbZh9in2YrYp9iqINin2YTZgtix2YYg2KfZhNiq2KfYs9i5INi52LTYsdiMINmI2KjYr9in2YrYqSDYp9mE2KfYrdiq2YTYp9mEINin2YTYqNix2YrYt9in2YbZiSDZhNmF2LXYsdiMINit2YrYqyDZitmP2LHYs9mEINi22KfYqNi3INin2YTYqNmI2YTZitizINin2YTZhdi12LHZiSDZhdit2YXZiNivINi52KjYr9in2YTYuNin2YfYsdiMINil2YTZiSDZiNin2K3YqSDYs9mK2YjYqSDZhNi02YMg2KfZhNiz2YTYt9in2Kog2YHZiSDYqti52KfYt9mB2Ycg2YXYuSDYp9mE2KPZgdmD2KfYsSDYp9mE2KvZiNix2YrYqSDZhNis2YXYp9mEINin2YTYr9mK2YYg2KfZhNij2YHYutin2YbZiSDZiNij2K3ZhdivINi52LHYp9io2YnYjCDZgdmK2LXYt9it2Kgg2LLZiNis2KrZhyDYp9mE2KPZitix2YTZhtiv2YrYqSAmbGFxdW872YPYp9ir2LHZitmGJnJhcXVvOyDYp9mE2LTYutmI2YHYqSDYqNin2YTYotir2KfYsdiMINmI2KfZhNiq2Ykg2KrYqNit2Ksg2LnZhiDZhdmC2KjYsdipINin2YTYpdiz2YPZhtiv2LEg2KfZhNij2YPYqNix2Iwg2YTZitmG2LrZhdiz2Kcg2YHZiSDYudin2YTZhSDYrNiv2YrYryDYtNiv2YrYryDYp9mE2KvYsdin2KEg2YjYp9mE2K7YtdmI2LXZitipINmK2KzYqNix2YfZhdinINmI2KPZh9mEINin2YTZiNin2K3YqSDYudmE2Ykg2YXZiNin2KzZh9ipINij2YbZgdiz2YfZhSDZgdmJINiy2YXZhiDYp9iu2KrZhNi32Kog2YHZitmHINin2YTYp9mG2KrZh9in2LLZitipINmI2KfZhNiu2YrYp9mG2Kkg2YjYp9mE2LHYutio2Kkg2KjYp9mE2K3YqCDZiNin2YTYqNi32YjZhNipLiDYqti52YPYsyDYo9it2K/Yp9irINin2YTYsdmI2KfZitipINij2YrYttinINmF2LLYrNinINil2KjYr9in2LnZitinINio2YrZhiDYp9mE2YXYp9i22Ykg2YjYp9mE2K3Yp9i22LEg2YjYp9mE2YXZiNi22YjYudmJINmI2KfZhNiq2KfYsdmK2K4g2YjYp9mE2YjYp9mC2Lkg2YrYudio2LEg2LnZhiDZh9mF2YjZhSDYp9mE2YjYt9mGINmD2YXYpyDZitmC2K/ZhSDYqtis2LHYqNipINin2YTYudmE2KfZgtipINio2YrZhiDYp9mE2LTYsdmCINmI2KfZhNi62LHYqCDYudmE2Ykg2KfZhNmF2LPYqtmI2YrZitmGINin2YTYpdmG2LPYp9mG2Ykg2YjYp9mE2K3Yttin2LHZiSDYqNmF2Kcg2YHZitmH2Kcg2YXZhiDYtdix2KfYuSDZiNiq2YjYp9mB2YIuZAILDxYCHwAFAzIwMGQCDA8WAh8ABQMyODhkAg0PFgIfAAVZaHR0cHM6Ly93d3cuc2hvcm91a2Jvb2tzdG9yZXMuY29tL2Jvb2tzL3ZpZXcuYXNweD9pZD04MTkzOWJhOS01MDcyLTQ4OTMtOTc0MC00ZTdlMjQ5ZGNjMGJkAg4PFgIeBGhyZWYFWWh0dHBzOi8vd3d3LnNob3JvdWtib29rc3RvcmVzLmNvbS9ib29rcy92aWV3LmFzcHg/aWQ9ODE5MzliYTktNTA3Mi00ODkzLTk3NDAtNGU3ZTI0OWRjYzBiZAIQDxYCHwEFDC9mYXZpY29uLmljb2QCEg8VAyAvX3Jlc3BvbnNpdmUvanF1ZXJ5LTMuMS4xLm1pbi5qcx8vX1NjcmlwdHMvX0phdmFTY3JpcHQvQmFza2V0LmpzKS9fU2NyaXB0cy9fSmF2YVNjcmlwdC9qcXVlcnkuaXNsb2FkaW5nLmpzZAITDxYCHwEFGC9fcmVzcG9uc2l2ZS9hbmltYXRlLmNzc2QCFA8WAh8BBSIvX3Jlc3BvbnNpdmUvYm9vdHN0cmFwLm1pbi5jc3M/dj01ZAIVDxYCHwEFGy9fcmVzcG9uc2l2ZS9zd2lwZXIubWluLmNzc2QCFg8WAh8BBSEvX3Jlc3BvbnNpdmUvZm9udC1hd2Vzb21lLm1pbi5jc3NkAhcPFgIfAQUiL19yZXNwb25zaXZlL2N1c3RvbS1zdHlsZS5jc3M/dj0xMmQCGA8WAh8BBRovX3Jlc3BvbnNpdmUvYmxvZy5jc3M/dj0xNGQCGQ8VBB0vX3Jlc3BvbnNpdmUvYm9vdHN0cmFwLm1pbi5qcyUvX3Jlc3BvbnNpdmUvc3dpcGVyLmpxdWVyeS5taW4uanM/dj02Iy9fcmVzcG9uc2l2ZS9jdXN0b20tc2NyaXB0cy5qcz92PTEzAGQCGg9kFiJmDxYCHwAF+AHZh9iw2Ycg2KfZhNix2YjYp9mK2Kkg2K3Yp9i12YTYqSDYudmE2Ykg2KfZhNis2KfYptiy2Kkg2KfZhNi52KfZhNmF2YrYqSDZhNmE2LHZiNin2YrYqSDYp9mE2LnYsdio2YrYqSAo2KzYp9im2LLYqSDYp9mE2KjZiNmD2LEpIDIwMDjYjCDZiNmC2K8g2LfYqNi5INmF2YbZh9inIDMg2LfYqNi52KfYqiDYrtmE2KfZhCDYs9mG2KkgLiDZiti52YjYryAmbGFxdW87INio2YfYp9ihINi32KfZh9ixJnJhcXVvOyDZgdmJINix2YjYp9mK2KrZh2QCAQ8WAh8ABU1TdW5zZXQgT3Nhc2lzLNio2YfYp9ihINi32KfZh9ixLNiv2KfYsSDYp9mE2LTYsdmI2YIs2YXZg9iq2KjYp9iqINin2YTYtNix2YjZgmQCAg8WAh8ABWNodHRwczovL3d3dy5zaG9yb3VrYm9va3N0b3Jlcy5jb20vaW1hZ2VzL0Jvb2tzL29yaWdpbmFsLzYyMjExMDIwMjU3NDQuanBnP3JhbmRvbT02MzkxNDQzMTY2NTM4NzM2NDdkAgMPFgIfAQVjaHR0cHM6Ly93d3cuc2hvcm91a2Jvb2tzdG9yZXMuY29tL2ltYWdlcy9Cb29rcy9vcmlnaW5hbC82MjIxMTAyMDI1NzQ0LmpwZz9yYW5kb209NjM5MTQ0MzE2NjUzODczNjQ3ZAIFDxYCHwAFB2luc3RvY2tkAgcPFgIfAAUDMjEwZAIJDxYCHwAFBTE3OC41ZAILDxUEE1B1Ymxpc2hpbmdZZWFyXzIwMDkVUGVyY2VudGFnZURpc2NvdW50XzE1DVsnMjAwOScsJzE1J10CMTVkAgwPFgIfAAUkODE5MzliYTktNTA3Mi00ODkzLTk3NDAtNGU3ZTI0OWRjYzBiZAIODxYCHwAFDTYyMjExMDIwMjU3NDRkAg8PFgIfAAUR2KjZh9in2KEg2LfYp9mH2LFkAhAPFgIfAAUT2K/Yp9ixINin2YTYtNix2YjZgmQCEQ8WAh8ABQoxMy0xMC0yMDE5ZAISDxYCHwAFKNix2YjYp9mK2KfYqizYsdmI2KfZitin2Kog2KrYp9ix2YrYrtmK2KlkAhMPFgIfAAUG2KPYr9ioZAIUDxYCHwAFAjE1ZAIVDxYCHgV2YWx1ZQVjaHR0cHM6Ly93d3cuc2hvcm91a2Jvb2tzdG9yZXMuY29tL2ltYWdlcy9Cb29rcy9vcmlnaW5hbC82MjIxMTAyMDI1NzQ0LmpwZz9yYW5kb209NjM5MTQ0MzE2NjUzODczNjQ3ZAIDD2QWHAIBDw8WAh4LTmF2aWdhdGVVcmwFCy91c2VyL2xvZ2luZGQCAg8PFgIeB1Zpc2libGVoZGQCAw9kFgICAg9kFgJmD2QWAgIBDxYCHwEFGC90b29scy9zaG9wcGluZ2NhcnQuYXNweBYCAgEPFgIeBFRleHRlZAIEDw8WAh8DBTcvdXNlci9sb2dpbi9kZWZhdWx0LmFzcHg/cmV0dXJuVXJsPX4vdXNlci93aXNobGlzdC5hc3B4ZGQCBQ8PFgIfBGhkZAIGD2QWAmYPZBYCAgMPD2QWAh4Kb25rZXlwcmVzcwVCamF2YXNjcmlwdDpyZXR1cm4gY2xpY2tCdXR0b24oZXZlbnQsJ1NlYXJjaENvbnRyb2wyX2xidG5fU2VhcmNoJyk7ZAIHDxYCHgtfIUl0ZW1Db3VudAIDFgZmD2QWBGYPFQYNL2Jvb2tzL2FyYWJpYxHZg9iq2Kgg2LnYsdio2YrYqQ0vYm9va3MvYXJhYmljGC9ib29rcy9hcmFiaWMvYmVzdHNlbGxlchQvYm9va3MvYXJhYmljL2xhdGVzdBkvYm9va3MvYXJhYmljL3JlY29tbWVuZGVkZAIBDxYCHwcCDBYYZg9kFgJmDxUCIC9ib29rcy9hcmFiaWMvbGl0ZXJhdHVyZS1maWN0aW9uBtij2K/YqGQCAQ9kFgJmDxUCHi9ib29rcy9hcmFiaWMvYnVzaW5lc3MtZWNvbm9teSTYpdmC2KrYtdin2K8g2YjYpdiv2KfYsdipINij2LnZhdin2YRkAgIPZBYCZg8VAhovYm9va3MvYXJhYmljL2Nvb2tpbmctZm9vZArYp9mE2LfYqNiuZAIDD2QWAmYPFQIcL2Jvb2tzL2FyYWJpYy9zY2llbmNlLW5hdHVyZR3Yp9mE2LnZhNmI2YUg2YjYp9mE2LfYqNmK2LnYqWQCBA9kFgJmDxUCJC9ib29rcy9hcmFiaWMvd29tYW4tcGFyZW50aW5nLWZhbWlseR3Yp9mE2YXYsdij2Kkg2YjYp9mE2LnYp9im2YTYqWQCBQ9kFgJmDxUCKS9ib29rcy9hcmFiaWMvaGlzdG9yeS1iaW9ncmFwaGllcy1tZW1vaXJzINiq2KfYsdmK2K4gLSDYs9mK2LEg2YjYqtix2KfYrNmFZAIGD2QWAmYPFQIXL2Jvb2tzL2FyYWJpYy9zZWxmLWhlbHAk2KrZhtmF2YrYqSDYsNin2KrZitipINmI2YfZiNin2YrYp9iqZAIHD2QWAmYPFQImL2Jvb2tzL2FyYWJpYy9odW1hbml0eS1zb2NpYWwtc2NpZW5jZXMo2K/Ysdin2LPYp9iqINil2YbYs9in2YbZitipINmI2YHZg9ix2YrYqWQCCA9kFgJmDxUCHC9ib29rcy9hcmFiaWMvaGVhbHRoLWZpdG5lc3Ml2LXYrdipINi52KfZhdipINmI2YbYuNin2YUg2LrYsNin2KbZiWQCCQ9kFgJmDxUCEi9ib29rcy9hcmFiaWMvYXJ0cwjZgdmG2YjZhmQCCg9kFgJmDxUCES9ib29rcy9hcmFiaWMvbGF3CtmC2KfZhtmI2YZkAgsPZBYCZg8VAiUvYm9va3MvYXJhYmljL3JlZmVyZW5jZXMtZW5jeWNsb3BlZGlhG9mF2LHYp9is2Lkg2YjZhdmI2LPZiNi52KfYqmQCAQ9kFgRmDxUGDi9ib29rcy9lbmdsaXNoK9mD2KrYqCDYpdmG2KzZhNmK2LLZitipINmI2YTYutin2Kog2KPYrtix2YkOL2Jvb2tzL2VuZ2xpc2gZL2Jvb2tzL2VuZ2xpc2gvYmVzdHNlbGxlchUvYm9va3MvZW5nbGlzaC9sYXRlc3QaL2Jvb2tzL2VuZ2xpc2gvcmVjb21tZW5kZWRkAgEPFgIfBwIUFihmD2QWAmYPFQIrL2Jvb2tzL2VuZ2xpc2gvYXJjaGl0ZWN0dXJlLWludGVyaW9yLWRlc2lnbh5BcmNoaXRlY3R1cmUgLCBJbnRlcmlvciBEZXNpZ25kAgEPZBYCZg8VAhIvYm9va3MvZW5nbGlzaC9hcnQDQXJ0ZAICD2QWAmYPFQIiL2Jvb2tzL2VuZ2xpc2gvYmlvZ3JhcGhpZXMtbWVtb2lycxVCaW9ncmFwaGllcyAsIE1lbW9pcnNkAgMPZBYCZg8VAh8vYm9va3MvZW5nbGlzaC9idXNpbmVzcy1maW5hbmNlEkJ1c2luZXNzICwgRmluYW5jZWQCBA9kFgJmDxUCJS9ib29rcy9lbmdsaXNoL2Nvb2tpbmctZm9vZC1iZXZlcmFnZXMaQ29va2luZyAsIEZvb2QgLCBCZXZlcmFnZXNkAgUPZBYCZg8VAhgvYm9va3MvZW5nbGlzaC9lZHVjYXRpb24JRWR1Y2F0aW9uZAIGD2QWAmYPFQIZL2Jvb2tzL2VuZ2xpc2gvZWd5cHRvbG9neQpFZ3lwdG9sb2d5ZAIHD2QWAmYPFQIhL2Jvb2tzL2VuZ2xpc2gvZmljdGlvbi1saXRlcmF0dXJlFEZpY3Rpb24gLCBMaXRlcmF0dXJlZAIID2QWAmYPFQIVL2Jvb2tzL2VuZ2xpc2gvaGVhbHRoEEhlYWx0aCAsIEZpdG5lc3NkAgkPZBYCZg8VAhYvYm9va3MvZW5nbGlzaC9oaXN0b3J5B0hpc3RvcnlkAgoPZBYCZg8VAhgvYm9va3MvZW5nbGlzaC9yZWZlcmVuY2UJUmVmZXJlbmNlZAILD2QWAmYPFQIhL2Jvb2tzL2VuZ2xpc2gvcGFyZW50aW5nLWZhbWlsaWVzFlBhcmVudGluZyBhbmQgRmFtaWxpZXNkAgwPZBYCZg8VAicvYm9va3MvZW5nbGlzaC9wb2xpdGljcy1jdXJyZW50LWFmZmFpcnMaUG9saXRpY3MgLCBDdXJyZW50IEFmZmFpcnNkAg0PZBYCZg8VAiUvYm9va3MvZW5nbGlzaC9yZWxpZ2lvbnMtc3Bpcml0dWFsaXR5F1JlbGlnaW9uICwgU3Bpcml0dWFsaXR5ZAIOD2QWAmYPFQIeL2Jvb2tzL2VuZ2xpc2gvc2NpZW5jZXMtbmF0dXJlEFNjaWVuY2UgLCBOYXR1cmVkAg8PZBYCZg8VAiYvYm9va3MvZW5nbGlzaC9zZWxmLWhlbHAtcmVsYXRpb25zaGlwcxlTZWxmLUhlbHAgLCBSZWxhdGlvbnNoaXBzZAIQD2QWAmYPFQIeL2Jvb2tzL2VuZ2xpc2gvc29jaWFsLXNjaWVuY2VzD1NvY2lhbCBTY2llbmNlc2QCEQ9kFgJmDxUCFS9ib29rcy9lbmdsaXNoL3RyYXZlbAZUcmF2ZWxkAhIPZBYCZg8VAhsvYm9va3MvZW5nbGlzaC95b3VuZy1hZHVsdHMMWW91bmcgQWR1bHRzZAITD2QWAmYPFQIWL2Jvb2tzL2VuZ2xpc2gvZmFzaGlvbgdGYXNoaW9uZAICD2QWBGYPFQYLL2Jvb2tzL2tpZHMR2YPYqtioINij2LfZgdin2YQLL2Jvb2tzL2tpZHMWL2Jvb2tzL2tpZHMvYmVzdHNlbGxlchIvYm9va3Mva2lkcy9sYXRlc3QXL2Jvb2tzL2tpZHMvcmVjb21tZW5kZWRkAgEPFgIfBwICFgRmD2QWAmYPFQIiL2Jvb2tzL2tpZHMvZW5nbGlzaC1jaGlsZHJlbi1ib29rcxZFbmdsaXNoIENoaWxkcmVuIEJvb2tzZAIBD2QWAmYPFQIhL2Jvb2tzL2tpZHMvYXJhYmljLWNoaWxkcmVuLWJvb2tzGtmD2KrYqCDYo9i32YHYp9mEINi52LHYqNmJZAIIDxYCHwcCAxYGZg9kFgJmDxUCHS9ibG9nL9mD2KrYp9ioLdmI2YXYqNiv2LnZiNmGG9mD2Y/YqtmR2KfYqCDZiNmF2KjYr9i52YjZhmQCAQ9kFgJmDxUCGS9ibG9nL9i52KfZhNmFLdin2YTZg9iq2KgT2LnYp9mE2YUg2KfZhNmD2KrYqGQCAg9kFgJmDxUCGS9ibG9nL9io2YrZhi3Yp9mE2LPYt9mI2LET2KjZitmGINin2YTYs9i32YjYsWQCCQ8WAh8HAgMWBmYPZBYCZg8VAjgvb2ZmZXJzLz9Cb29rVHlwZUlEPWI3ZjNiYzc2LTY1NGItNDNlZC1iYjg4LWQ4OWZhYjlmM2RlMxHZg9iq2Kgg2LnYsdio2YrYqWQCAQ9kFgJmDxUCOC9vZmZlcnMvP0Jvb2tUeXBlSUQ9NjZmZDVlZDYtNzY3NS00MzI3LTg3NmItZmIwNmE1YjBjMWQ3K9mD2KrYqCDYpdmG2KzZhNmK2LLZitipINmI2YTYutin2Kog2KPYrtix2YlkAgIPZBYCZg8VAjgvb2ZmZXJzLz9Cb29rVHlwZUlEPTRiODhhMmExLWFlNGEtNDM0Ny05NmQ3LTZjZWE4ZjE0ODhlZBHZg9iq2Kgg2KPYt9mB2KfZhGQCCg8WAh8HAgMWBmYPZBYGZg8VARHZg9iq2Kgg2LnYsdio2YrYqWQCAQ8WAh8HAgwWGGYPZBYCZg8VAiAvYm9va3MvYXJhYmljL2xpdGVyYXR1cmUtZmljdGlvbgbYo9iv2KhkAgEPZBYCZg8VAh4vYm9va3MvYXJhYmljL2J1c2luZXNzLWVjb25vbXkk2KXZgtiq2LXYp9ivINmI2KXYr9in2LHYqSDYo9i52YXYp9mEZAICD2QWAmYPFQIaL2Jvb2tzL2FyYWJpYy9jb29raW5nLWZvb2QK2KfZhNi32KjYrmQCAw9kFgJmDxUCHC9ib29rcy9hcmFiaWMvc2NpZW5jZS1uYXR1cmUd2KfZhNi52YTZiNmFINmI2KfZhNi32KjZiti52KlkAgQPZBYCZg8VAiQvYm9va3MvYXJhYmljL3dvbWFuLXBhcmVudGluZy1mYW1pbHkd2KfZhNmF2LHYo9ipINmI2KfZhNi52KfYptmE2KlkAgUPZBYCZg8VAikvYm9va3MvYXJhYmljL2hpc3RvcnktYmlvZ3JhcGhpZXMtbWVtb2lycyDYqtin2LHZitiuIC0g2LPZitixINmI2KrYsdin2KzZhWQCBg9kFgJmDxUCFy9ib29rcy9hcmFiaWMvc2VsZi1oZWxwJNiq2YbZhdmK2Kkg2LDYp9iq2YrYqSDZiNmH2YjYp9mK2KfYqmQCBw9kFgJmDxUCJi9ib29rcy9hcmFiaWMvaHVtYW5pdHktc29jaWFsLXNjaWVuY2VzKNiv2LHYp9iz2KfYqiDYpdmG2LPYp9mG2YrYqSDZiNmB2YPYsdmK2KlkAggPZBYCZg8VAhwvYm9va3MvYXJhYmljL2hlYWx0aC1maXRuZXNzJdi12K3YqSDYudin2YXYqSDZiNmG2LjYp9mFINi62LDYp9im2YlkAgkPZBYCZg8VAhIvYm9va3MvYXJhYmljL2FydHMI2YHZhtmI2YZkAgoPZBYCZg8VAhEvYm9va3MvYXJhYmljL2xhdwrZgtin2YbZiNmGZAILD2QWAmYPFQIlL2Jvb2tzL2FyYWJpYy9yZWZlcmVuY2VzLWVuY3ljbG9wZWRpYRvZhdix2KfYrNi5INmI2YXZiNiz2YjYudin2KpkAgIPFQQNL2Jvb2tzL2FyYWJpYxgvYm9va3MvYXJhYmljL2Jlc3RzZWxsZXIUL2Jvb2tzL2FyYWJpYy9sYXRlc3QZL2Jvb2tzL2FyYWJpYy9yZWNvbW1lbmRlZGQCAQ9kFgZmDxUBK9mD2KrYqCDYpdmG2KzZhNmK2LLZitipINmI2YTYutin2Kog2KPYrtix2YlkAgEPFgIfBwIUFihmD2QWAmYPFQIrL2Jvb2tzL2VuZ2xpc2gvYXJjaGl0ZWN0dXJlLWludGVyaW9yLWRlc2lnbh5BcmNoaXRlY3R1cmUgLCBJbnRlcmlvciBEZXNpZ25kAgEPZBYCZg8VAhIvYm9va3MvZW5nbGlzaC9hcnQDQXJ0ZAICD2QWAmYPFQIiL2Jvb2tzL2VuZ2xpc2gvYmlvZ3JhcGhpZXMtbWVtb2lycxVCaW9ncmFwaGllcyAsIE1lbW9pcnNkAgMPZBYCZg8VAh8vYm9va3MvZW5nbGlzaC9idXNpbmVzcy1maW5hbmNlEkJ1c2luZXNzICwgRmluYW5jZWQCBA9kFgJmDxUCJS9ib29rcy9lbmdsaXNoL2Nvb2tpbmctZm9vZC1iZXZlcmFnZXMaQ29va2luZyAsIEZvb2QgLCBCZXZlcmFnZXNkAgUPZBYCZg8VAhgvYm9va3MvZW5nbGlzaC9lZHVjYXRpb24JRWR1Y2F0aW9uZAIGD2QWAmYPFQIZL2Jvb2tzL2VuZ2xpc2gvZWd5cHRvbG9neQpFZ3lwdG9sb2d5ZAIHD2QWAmYPFQIhL2Jvb2tzL2VuZ2xpc2gvZmljdGlvbi1saXRlcmF0dXJlFEZpY3Rpb24gLCBMaXRlcmF0dXJlZAIID2QWAmYPFQIVL2Jvb2tzL2VuZ2xpc2gvaGVhbHRoEEhlYWx0aCAsIEZpdG5lc3NkAgkPZBYCZg8VAhYvYm9va3MvZW5nbGlzaC9oaXN0b3J5B0hpc3RvcnlkAgoPZBYCZg8VAhgvYm9va3MvZW5nbGlzaC9yZWZlcmVuY2UJUmVmZXJlbmNlZAILD2QWAmYPFQIhL2Jvb2tzL2VuZ2xpc2gvcGFyZW50aW5nLWZhbWlsaWVzFlBhcmVudGluZyBhbmQgRmFtaWxpZXNkAgwPZBYCZg8VAicvYm9va3MvZW5nbGlzaC9wb2xpdGljcy1jdXJyZW50LWFmZmFpcnMaUG9saXRpY3MgLCBDdXJyZW50IEFmZmFpcnNkAg0PZBYCZg8VAiUvYm9va3MvZW5nbGlzaC9yZWxpZ2lvbnMtc3Bpcml0dWFsaXR5F1JlbGlnaW9uICwgU3Bpcml0dWFsaXR5ZAIOD2QWAmYPFQIeL2Jvb2tzL2VuZ2xpc2gvc2NpZW5jZXMtbmF0dXJlEFNjaWVuY2UgLCBOYXR1cmVkAg8PZBYCZg8VAiYvYm9va3MvZW5nbGlzaC9zZWxmLWhlbHAtcmVsYXRpb25zaGlwcxlTZWxmLUhlbHAgLCBSZWxhdGlvbnNoaXBzZAIQD2QWAmYPFQIeL2Jvb2tzL2VuZ2xpc2gvc29jaWFsLXNjaWVuY2VzD1NvY2lhbCBTY2llbmNlc2QCEQ9kFgJmDxUCFS9ib29rcy9lbmdsaXNoL3RyYXZlbAZUcmF2ZWxkAhIPZBYCZg8VAhsvYm9va3MvZW5nbGlzaC95b3VuZy1hZHVsdHMMWW91bmcgQWR1bHRzZAITD2QWAmYPFQIWL2Jvb2tzL2VuZ2xpc2gvZmFzaGlvbgdGYXNoaW9uZAICDxUEDi9ib29rcy9lbmdsaXNoGS9ib29rcy9lbmdsaXNoL2Jlc3RzZWxsZXIVL2Jvb2tzL2VuZ2xpc2gvbGF0ZXN0Gi9ib29rcy9lbmdsaXNoL3JlY29tbWVuZGVkZAICD2QWBmYPFQER2YPYqtioINij2LfZgdin2YRkAgEPFgIfBwICFgRmD2QWAmYPFQIiL2Jvb2tzL2tpZHMvZW5nbGlzaC1jaGlsZHJlbi1ib29rcxZFbmdsaXNoIENoaWxkcmVuIEJvb2tzZAIBD2QWAmYPFQIhL2Jvb2tzL2tpZHMvYXJhYmljLWNoaWxkcmVuLWJvb2tzGtmD2KrYqCDYo9i32YHYp9mEINi52LHYqNmJZAICDxUECy9ib29rcy9raWRzFi9ib29rcy9raWRzL2Jlc3RzZWxsZXISL2Jvb2tzL2tpZHMvbGF0ZXN0Fy9ib29rcy9raWRzL3JlY29tbWVuZGVkZAILDxYCHwcCAxYGZg9kFgJmDxUCHS9ibG9nL9mD2KrYp9ioLdmI2YXYqNiv2LnZiNmGG9mD2Y/YqtmR2KfYqCDZiNmF2KjYr9i52YjZhmQCAQ9kFgJmDxUCGS9ibG9nL9i52KfZhNmFLdin2YTZg9iq2KgT2LnYp9mE2YUg2KfZhNmD2KrYqGQCAg9kFgJmDxUCGS9ibG9nL9io2YrZhi3Yp9mE2LPYt9mI2LET2KjZitmGINin2YTYs9i32YjYsWQCDA8WAh8HAgMWBmYPZBYCZg8VAjgvb2ZmZXJzLz9Cb29rVHlwZUlEPWI3ZjNiYzc2LTY1NGItNDNlZC1iYjg4LWQ4OWZhYjlmM2RlMxHZg9iq2Kgg2LnYsdio2YrYqWQCAQ9kFgJmDxUCOC9vZmZlcnMvP0Jvb2tUeXBlSUQ9NjZmZDVlZDYtNzY3NS00MzI3LTg3NmItZmIwNmE1YjBjMWQ3K9mD2KrYqCDYpdmG2KzZhNmK2LLZitipINmI2YTYutin2Kog2KPYrtix2YlkAgIPZBYCZg8VAjgvb2ZmZXJzLz9Cb29rVHlwZUlEPTRiODhhMmExLWFlNGEtNDM0Ny05NmQ3LTZjZWE4ZjE0ODhlZBHZg9iq2Kgg2KPYt9mB2KfZhGQCDg9kFgoCAw8WAh8HAgEWAmYPZBYCZg8VAjovYm9va3MvYXV0aG9yLmFzcHg/aWQ9MzVmMDQ2OWYtMDZiZi00M2RmLTgyZTItY2U2ZTE3NjZlMjA3Edio2YfYp9ihINi32KfZh9ixZAIFD2QWAgIBDxYCHwcCARYCZg9kFgJmDxUCIC9ib29rcy9hcmFiaWMvbGl0ZXJhdHVyZS1maWN0aW9uBtij2K/YqGQCBg9kFgICAQ8WAh8HAgIWBGYPZBYCZg8VAjcvYm9va3MvdGFnLmFzcHg/aWQ9NjI2YzI5MzAtNTQ5My00YzlkLWFmMzUtNWViNmYzZGFiOWJjDNix2YjYp9mK2KfYqmQCAg9kFgJmDxUCNy9ib29rcy90YWcuYXNweD9pZD03MjFiYzM4NC02YTQ2LTQ1ZjItYmNhMi04ZDAzYmFjYzk1YmEb2LHZiNin2YrYp9iqINiq2KfYsdmK2K7ZitipZAIKDxYCHwRoZAILD2QWAgIBDxYCHwcCBhYMZg9kFgICAQ9kFgJmDxUcKWJvb2stY2E4YmVjMmQtYmE2Ny00YzhkLWFiMmYtMTY2MTRlYjQ3ZTAzIi9vZmZlcnMvZGVmYXVsdC5hc3B4P3BlcmNlbnRhZ2U9MTAAAjEwBGhpZGUEaGlkZRJ2aXNpYmlsaXR5IDpub3JtYWwKaGVhcnQtaWNvbiRjYThiZWMyZC1iYTY3LTRjOGQtYWIyZi0xNjYxNGViNDdlMDMkY2E4YmVjMmQtYmE2Ny00YzhkLWFiMmYtMTY2MTRlYjQ3ZTAzOC9ib29rcy92aWV3LmFzcHg/aWQ9Y2E4YmVjMmQtYmE2Ny00YzhkLWFiMmYtMTY2MTRlYjQ3ZTAzAEZodHRwczovL3d3dy5zaG9yb3VrYm9va3N0b3Jlcy5jb20vaW1hZ2VzL0Jvb2tzL3RodW1iLzk3ODk3Nzg1ODI1MDUuanBnADgvYm9va3Mvdmlldy5hc3B4P2lkPWNhOGJlYzJkLWJhNjctNGM4ZC1hYjJmLTE2NjE0ZWI0N2UwMxnYp9mE2YTYqNin2YYg2KfZhNiz2K3YsdmKOi9ib29rcy9hdXRob3IuYXNweD9pZD04MjhiN2M2Yi1hNDkzLTQ3ZTAtODAwZi05ODMyYTcwYzliMGQP2LHZitmFINis2YXZitmEABJ2aXNpYmlsaXR5IDpub3JtYWwGMTIuNSAkBzExLjI1ICQAEGJ0biBidG5BZGR0b0NhcnRaamF2YXNjcmlwdDphZGRDb29raWUodXNlck5hbWUrJ1Nob3BwaW5nQ2FydCcsJ2NhOGJlYzJkLWJhNjctNGM4ZC1hYjJmLTE2NjE0ZWI0N2UwMycsZmFsc2UpDG5vdEF2YWxpYWJsZQxkaXNwbGF5Om5vbmUR2LrZitixINmF2KrZiNmB2LFkAgEPZBYCAgEPZBYCZg8VHClib29rLTNmZTQxYWRhLWJkYjctNDExMS1iYjE5LTlhMzJiYjc1MTNkZCIvb2ZmZXJzL2RlZmF1bHQuYXNweD9wZXJjZW50YWdlPTEwAAIxMARoaWRlBGhpZGUSdmlzaWJpbGl0eSA6bm9ybWFsCmhlYXJ0LWljb24kM2ZlNDFhZGEtYmRiNy00MTExLWJiMTktOWEzMmJiNzUxM2RkJDNmZTQxYWRhLWJkYjctNDExMS1iYjE5LTlhMzJiYjc1MTNkZDgvYm9va3Mvdmlldy5hc3B4P2lkPTNmZTQxYWRhLWJkYjctNDExMS1iYjE5LTlhMzJiYjc1MTNkZABGaHR0cHM6Ly93d3cuc2hvcm91a2Jvb2tzdG9yZXMuY29tL2ltYWdlcy9Cb29rcy90aHVtYi85Nzg2MDM4NDAzMjk3LmpwZwA4L2Jvb2tzL3ZpZXcuYXNweD9pZD0zZmU0MWFkYS1iZGI3LTQxMTEtYmIxOS05YTMyYmI3NTEzZGQI2KLYsdiz2LM6L2Jvb2tzL2F1dGhvci5hc3B4P2lkPTc5ZjE2MTc2LTg5MjQtNDUxNy1iMzAyLWY3NDdlN2Q2NjI4ZRjYo9it2YXYryDYotmEINit2YXYr9in2YYAEnZpc2liaWxpdHkgOm5vcm1hbAYxNy41ICQHMTUuNzUgJAAQYnRuIGJ0bkFkZHRvQ2FydFpqYXZhc2NyaXB0OmFkZENvb2tpZSh1c2VyTmFtZSsnU2hvcHBpbmdDYXJ0JywnM2ZlNDFhZGEtYmRiNy00MTExLWJiMTktOWEzMmJiNzUxM2RkJyxmYWxzZSkMbm90QXZhbGlhYmxlDGRpc3BsYXk6bm9uZRHYutmK2LEg2YXYqtmI2YHYsWQCAg9kFgICAQ9kFgJmDxUcKWJvb2stNTg5MThlNDQtM2Y4MC00ZWJiLWI3NzItYTJjNzRhYzZiZDZlIi9vZmZlcnMvZGVmYXVsdC5hc3B4P3BlcmNlbnRhZ2U9MTAAAjEwBGhpZGUEaGlkZRJ2aXNpYmlsaXR5IDpub3JtYWwKaGVhcnQtaWNvbiQ1ODkxOGU0NC0zZjgwLTRlYmItYjc3Mi1hMmM3NGFjNmJkNmUkNTg5MThlNDQtM2Y4MC00ZWJiLWI3NzItYTJjNzRhYzZiZDZlOC9ib29rcy92aWV3LmFzcHg/aWQ9NTg5MThlNDQtM2Y4MC00ZWJiLWI3NzItYTJjNzRhYzZiZDZlAEZodHRwczovL3d3dy5zaG9yb3VrYm9va3N0b3Jlcy5jb20vaW1hZ2VzL0Jvb2tzL3RodW1iLzk3ODk3NzgwNjUzMjkuanBnADgvYm9va3Mvdmlldy5hc3B4P2lkPTU4OTE4ZTQ0LTNmODAtNGViYi1iNzcyLWEyYzc0YWM2YmQ2ZRXYo9io2YbYp9ihINin2YTZhNmK2YQ6L2Jvb2tzL2F1dGhvci5hc3B4P2lkPTRkMWEyODdiLTZmZWUtNGIzNi1iYjhiLTJhZmE0MDQwODI2YxHZhdix2YjZiSDYrNmI2YfYsQASdmlzaWJpbGl0eSA6bm9ybWFsBDE2ICQGMTQuNCAkABBidG4gYnRuQWRkdG9DYXJ0WmphdmFzY3JpcHQ6YWRkQ29va2llKHVzZXJOYW1lKydTaG9wcGluZ0NhcnQnLCc1ODkxOGU0NC0zZjgwLTRlYmItYjc3Mi1hMmM3NGFjNmJkNmUnLGZhbHNlKQxub3RBdmFsaWFibGUMZGlzcGxheTpub25lEdi62YrYsSDZhdiq2YjZgdixZAIDD2QWAgIBD2QWAmYPFRwpYm9vay1mODYyY2EyOC0yYjdkLTRjN2YtODMyNi0yYzA4ZTNhN2YwMmYiL29mZmVycy9kZWZhdWx0LmFzcHg/cGVyY2VudGFnZT0xMAACMTAEaGlkZQRoaWRlEnZpc2liaWxpdHkgOm5vcm1hbApoZWFydC1pY29uJGY4NjJjYTI4LTJiN2QtNGM3Zi04MzI2LTJjMDhlM2E3ZjAyZiRmODYyY2EyOC0yYjdkLTRjN2YtODMyNi0yYzA4ZTNhN2YwMmY4L2Jvb2tzL3ZpZXcuYXNweD9pZD1mODYyY2EyOC0yYjdkLTRjN2YtODMyNi0yYzA4ZTNhN2YwMmYARmh0dHBzOi8vd3d3LnNob3JvdWtib29rc3RvcmVzLmNvbS9pbWFnZXMvQm9va3MvdGh1bWIvOTc4OTc3ODg5Njg0OC5qcGcAOC9ib29rcy92aWV3LmFzcHg/aWQ9Zjg2MmNhMjgtMmI3ZC00YzdmLTgzMjYtMmMwOGUzYTdmMDJmF9mE2LnZhtipINin2YTYsdiz2KfYptmEOi9ib29rcy9hdXRob3IuYXNweD9pZD0yMjBjY2Q2Zi1iYTlmLTRhZGYtODdlOC1lNDMzOTIyNjIxM2UT2KPYutixINin2YTYrNmF2KfZhAASdmlzaWJpbGl0eSA6bm9ybWFsBDEyICQGMTAuOCAkABBidG4gYnRuQWRkdG9DYXJ0WmphdmFzY3JpcHQ6YWRkQ29va2llKHVzZXJOYW1lKydTaG9wcGluZ0NhcnQnLCdmODYyY2EyOC0yYjdkLTRjN2YtODMyNi0yYzA4ZTNhN2YwMmYnLGZhbHNlKQxub3RBdmFsaWFibGUMZGlzcGxheTpub25lEdi62YrYsSDZhdiq2YjZgdixZAIED2QWAgIBD2QWAmYPFRwpYm9vay01MDI3ZDMyMS1iNGMyLTRlMmEtODg5NS05MjE3NzA5NDZhMmEiL29mZmVycy9kZWZhdWx0LmFzcHg/cGVyY2VudGFnZT0xMAACMTAEaGlkZQRoaWRlEnZpc2liaWxpdHkgOm5vcm1hbApoZWFydC1pY29uJDUwMjdkMzIxLWI0YzItNGUyYS04ODk1LTkyMTc3MDk0NmEyYSQ1MDI3ZDMyMS1iNGMyLTRlMmEtODg5NS05MjE3NzA5NDZhMmE4L2Jvb2tzL3ZpZXcuYXNweD9pZD01MDI3ZDMyMS1iNGMyLTRlMmEtODg5NS05MjE3NzA5NDZhMmEAR2h0dHBzOi8vd3d3LnNob3JvdWtib29rc3RvcmVzLmNvbS9pbWFnZXMvQm9va3MvdGh1bWIvOTc4OTc3ODI0MzU5OC5qcGVnADgvYm9va3Mvdmlldy5hc3B4P2lkPTUwMjdkMzIxLWI0YzItNGUyYS04ODk1LTkyMTc3MDk0NmEyYSjYo9mG2Kog2KrYudmK2LQg2YXYsdipINmI2KfYrdiv2Kkg2YHZgti3Oi9ib29rcy9hdXRob3IuYXNweD9pZD03NjM2NGNmOC1hMDIxLTQ3MzUtYmM0Mi0zY2ViZWRmYmQxMjIR2YXYsdmK2YUg2YrZiNiz2YEAEnZpc2liaWxpdHkgOm5vcm1hbAQxNCAkBjEyLjYgJAAQYnRuIGJ0bkFkZHRvQ2FydFpqYXZhc2NyaXB0OmFkZENvb2tpZSh1c2VyTmFtZSsnU2hvcHBpbmdDYXJ0JywnNTAyN2QzMjEtYjRjMi00ZTJhLTg4OTUtOTIxNzcwOTQ2YTJhJyxmYWxzZSkMbm90QXZhbGlhYmxlDGRpc3BsYXk6bm9uZRHYutmK2LEg2YXYqtmI2YHYsWQCBQ9kFgICAQ9kFgJmDxUcKWJvb2stMDYyY2RmYWMtYjUxMi00YWFmLWE3NmUtODBiOTZhZTJhMzlkIi9vZmZlcnMvZGVmYXVsdC5hc3B4P3BlcmNlbnRhZ2U9MTAAAjEwBGhpZGUEaGlkZRJ2aXNpYmlsaXR5IDpub3JtYWwKaGVhcnQtaWNvbiQwNjJjZGZhYy1iNTEyLTRhYWYtYTc2ZS04MGI5NmFlMmEzOWQkMDYyY2RmYWMtYjUxMi00YWFmLWE3NmUtODBiOTZhZTJhMzlkOC9ib29rcy92aWV3LmFzcHg/aWQ9MDYyY2RmYWMtYjUxMi00YWFmLWE3NmUtODBiOTZhZTJhMzlkAEZodHRwczovL3d3dy5zaG9yb3VrYm9va3N0b3Jlcy5jb20vaW1hZ2VzL0Jvb2tzL3RodW1iLzk3ODk3Nzk5MjA2NTguanBnADgvYm9va3Mvdmlldy5hc3B4P2lkPTA2MmNkZmFjLWI1MTItNGFhZi1hNzZlLTgwYjk2YWUyYTM5ZBXZhNmK2LfZhdim2YYg2YLZhNio2Yo6L2Jvb2tzL2F1dGhvci5hc3B4P2lkPWQ2NDUxOTU4LTY3MjQtNGYzZC1hZmRjLTBjNTA2ZjIwNjcwNRXYo9iv2YfZhSDYtNix2YLYp9mI2YoAEnZpc2liaWxpdHkgOm5vcm1hbAYyNC41ICQHMjIuMDUgJAAQYnRuIGJ0bkFkZHRvQ2FydFpqYXZhc2NyaXB0OmFkZENvb2tpZSh1c2VyTmFtZSsnU2hvcHBpbmdDYXJ0JywnMDYyY2RmYWMtYjUxMi00YWFmLWE3NmUtODBiOTZhZTJhMzlkJyxmYWxzZSkMbm90QXZhbGlhYmxlDGRpc3BsYXk6bm9uZRHYutmK2LEg2YXYqtmI2YHYsWQCDw8WAh8HAgMWBmYPZBYCZg8VAg0vYm9va3MvYXJhYmljEdmD2KrYqCDYudix2KjZitipZAIBD2QWAmYPFQIOL2Jvb2tzL2VuZ2xpc2gr2YPYqtioINil2YbYrNmE2YrYstmK2Kkg2YjZhNi62KfYqiDYo9iu2LHZiWQCAg9kFgJmDxUCCy9ib29rcy9raWRzEdmD2KrYqCDYo9i32YHYp9mEZGRABOOustmFqWsMB/zbXkrhTrQ6zyVaKrMvJd1Y+BJ6Ig==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=J7uBtDC8L_dK6ONIKqXBJiYWZxpxj24W4kYBPiVb2OwH3nROZBe7GK5eH4rB6mjKuUjgTjHtdPfrAHzi2BSImpMazcHnrXivERwYcrSEZ7o1&amp;t=638994993279471658" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=qZ4kDnZjKDdfuDpM6WWFElQPpZTMHSymIcE_NNnhj8OWstG1MduQ3pYsOcHiEKZcSuvNf8klfdsLSSDLjg3GHvYX_3TNaqX2kdzbdumeWveuWptCgrN-LQj_VriKW0IyX_pfAxR-vg8pHzcuMSfHyQ2&amp;t=f2cd5c5" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=2_IdlyqW39vOtKibrRmFB5U9Jaj5mwwjeHkfsFGUL1V9ZXhpXjixp3uukUR-uevcfItl31xEENPc-v-IEVOv3RwSv8_6b1R8qEAlDYFMry6mpKt7avm_-QL3LLFFiUWrPJ87987OPYYRFnYQdESvzg2&amp;t=f2cd5c5" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var PageMethods = function() {
+PageMethods.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+PageMethods.prototype = {
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return PageMethods._staticInstance.get_path();},
+likeComment:function(bookID,succeededCallback, failedCallback, userContext) {
+/// <param name="bookID" type="String">System.Guid</param>
+/// <param name="succeededCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="failedCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="userContext" optional="true" mayBeNull="true"></param>
+return this._invoke(this._get_path(), 'likeComment',false,{bookID:bookID},succeededCallback,failedCallback,userContext); },
+unlikeComment:function(bookID,succeededCallback, failedCallback, userContext) {
+/// <param name="bookID" type="String">System.Guid</param>
+/// <param name="succeededCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="failedCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="userContext" optional="true" mayBeNull="true"></param>
+return this._invoke(this._get_path(), 'unlikeComment',false,{bookID:bookID},succeededCallback,failedCallback,userContext); }}
+PageMethods.registerClass('PageMethods',Sys.Net.WebServiceProxy);
+PageMethods._staticInstance = new PageMethods();
+PageMethods.set_path = function(value) {
+PageMethods._staticInstance.set_path(value); }
+PageMethods.get_path = function() { 
+/// <value type="String" mayBeNull="true">The service url.</value>
+return PageMethods._staticInstance.get_path();}
+PageMethods.set_timeout = function(value) {
+PageMethods._staticInstance.set_timeout(value); }
+PageMethods.get_timeout = function() { 
+/// <value type="Number">The service timeout.</value>
+return PageMethods._staticInstance.get_timeout(); }
+PageMethods.set_defaultUserContext = function(value) { 
+PageMethods._staticInstance.set_defaultUserContext(value); }
+PageMethods.get_defaultUserContext = function() { 
+/// <value mayBeNull="true">The service default user context.</value>
+return PageMethods._staticInstance.get_defaultUserContext(); }
+PageMethods.set_defaultSucceededCallback = function(value) { 
+ PageMethods._staticInstance.set_defaultSucceededCallback(value); }
+PageMethods.get_defaultSucceededCallback = function() { 
+/// <value type="Function" mayBeNull="true">The service default succeeded callback.</value>
+return PageMethods._staticInstance.get_defaultSucceededCallback(); }
+PageMethods.set_defaultFailedCallback = function(value) { 
+PageMethods._staticInstance.set_defaultFailedCallback(value); }
+PageMethods.get_defaultFailedCallback = function() { 
+/// <value type="Function" mayBeNull="true">The service default failed callback.</value>
+return PageMethods._staticInstance.get_defaultFailedCallback(); }
+PageMethods.set_enableJsonp = function(value) { PageMethods._staticInstance.set_enableJsonp(value); }
+PageMethods.get_enableJsonp = function() { 
+/// <value type="Boolean">Specifies whether the service supports JSONP for cross domain calling.</value>
+return PageMethods._staticInstance.get_enableJsonp(); }
+PageMethods.set_jsonpCallbackParameter = function(value) { PageMethods._staticInstance.set_jsonpCallbackParameter(value); }
+PageMethods.get_jsonpCallbackParameter = function() { 
+/// <value type="String">Specifies the parameter name that contains the callback function name for a JSONP request.</value>
+return PageMethods._staticInstance.get_jsonpCallbackParameter(); }
+PageMethods.set_path("view.aspx");
+PageMethods.likeComment= function(bookID,onSuccess,onFailed,userContext) {
+/// <param name="bookID" type="String">System.Guid</param>
+/// <param name="succeededCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="failedCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="userContext" optional="true" mayBeNull="true"></param>
+PageMethods._staticInstance.likeComment(bookID,onSuccess,onFailed,userContext); }
+PageMethods.unlikeComment= function(bookID,onSuccess,onFailed,userContext) {
+/// <param name="bookID" type="String">System.Guid</param>
+/// <param name="succeededCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="failedCallback" type="Function" optional="true" mayBeNull="true"></param>
+/// <param name="userContext" optional="true" mayBeNull="true"></param>
+PageMethods._staticInstance.unlikeComment(bookID,onSuccess,onFailed,userContext); }
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E28820F6" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAmY3yW6FJyZTl9+RWB9FK62AMCTv+9Da4qVZneytrUEcZjL8HyYir3TNEvjwbhtI6SusDhkDF0O5mO8XXABSW0GtM83SmfVReT4SVoKVymhci6hZWap4WB58kqdD5b1AzKbELdgYzkoJiu3ggCpyZcS0179zIZv694WtPIE51O/hzA70gObyKYKmGeYx3WFNyzJ4xnXwLNHNCwc1qYP9MIPng70AnU46YqoEhw4pDxr4Q==" />
+</div>
+
+        <input type="hidden" name="ctl00$HfFacebookPixelEventID" id="HfFacebookPixelEventID" value="67fdad23-e763-4ad5-957a-dd2bab0a3c5c" />
+
+        <!--Header-->
+        <div class="header" id="header-sroll">
+
+            <div class="headerTop  row margin-zero">
+                <div class="container">
+
+                    <div class="col-sm-9 col-xs-12 padding-zero">
+                        <div class="headIcons">
+                            
+
+                            <div>
+                                <a id="HlLogin" class="login" href="/user/login">تسجيل الدخول</a>
+                            </div>
+
+                            <div class="logoutButton">
+                                
+                            </div>
+
+                            
+                            <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$CartControl1$ScriptManager1', 'form1', ['tctl00$CartControl1$Up1','CartControl1_Up1','tctl00$Body$UpdatePanel1','Body_UpdatePanel1','tctl00$Body$UpdatePanelWish','Body_UpdatePanelWish'], ['ctl00$Body$HLWish','Body_HLWish'], [], 90, 'ctl00');
+//]]>
+</script>
+
+<div id="CartControl1_Up1">
+	
+<a href="/tools/shoppingcart.aspx" id="CartControl1_AncCart" class="basket" rel="Cart">المشتريات 
+    </a>
+
+</div>
+
+                            <div class="hidden-xs">
+                                <a id="HLWishList" class="wishList" href="/user/login/default.aspx?returnUrl=~/user/wishlist.aspx">قائمة الرغبات</a>
+                            </div>
+
+                            <div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 hidden-xs padding-zero">
+                        <div class="socialIcons">
+                            <ul>
+                                <li><a href='https://wa.me/201011810881' target="_blank" class="whatsappIcon"></a></li>
+                                <li><a href='https://twitter.com/ShoroukBStores' target="_blank" class="twitterIcon"></a></li>
+                                <li><a href="https://www.facebook.com/shoroukbookstore/" target="_blank" class="facebookIcon"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="header-mobile animated fadeInBig">
+                <div class="headerMid row margin-zero">
+                    <div class="container">
+
+                        <div class="col-md-4 col-sm-4 col-xs-12 padding-zero">
+                            <div class="headerLogo">
+                                <a href='/'>
+                                    <img src='/_responsive/logo.png' alt="" class="img-responsive" />
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="search">
+                                
+
+
+<script type="text/javascript">
+    function clickButton(e, buttonid) {
+        //    debugger;
+        var bt = document.getElementById(buttonid);
+        if (typeof (bt) == 'object') {
+            if (navigator.appName.indexOf("Netscape") > -1) {
+                if (e.keyCode == 13) {
+                    if (bt && typeof (bt.click) == 'undefined') {
+                        bt.click = addClickFunction1(bt);
+                    }
+                }
+            }
+            if (navigator.appName.indexOf("Microsoft Internet Explorer") > -1) {
+                if (event.keyCode == 13) {
+                    bt.click();
+                    return false;
+                }
+            }
+        }
+    }
+
+    function addClickFunction1(bt) {
+        //    debugger;
+        var result = true;
+        if (bt.onclick) result = bt.onclick();
+        if (typeof (result) == 'undefined' || result) {
+            eval(bt.href);
+        }
+    }
+  
+  function sanitizeInput() {
+                    var txt = document.getElementById('SearchControl2_searchTxt');
+                    txt.value = txt.value.replace(/</g, '').replace(/>/g, '');
+                 }
+
+</script>
+<div id="SearchControl2_Panel1" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;SearchControl2_lbtn_Search&#39;)">
+	
+    <input type="submit" name="ctl00$SearchControl2$lbtn_Search" value="" onclick="sanitizeInput();" id="SearchControl2_lbtn_Search" class="searchBtn" />
+    <input name="ctl00$SearchControl2$searchTxt" type="text" id="SearchControl2_searchTxt" class="searchTxt" onkeypress="javascript:return clickButton(event,&#39;SearchControl2_lbtn_Search&#39;);" />
+
+</div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 hidden-xs padding-zero">
+                            <div class="stores">
+                                <a href='/branches'>فروع مكتبات الشروق <i>
+                                    <img src='/App_Themes/Images/location-ico.png' alt="" /></i></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <!--Category Menu-->
+                <div class="row margin-zero category-menu hidden-sm hidden-xs">
+                    <div class="container ">
+                        <ul class="exo-menu">
+                            
+                                    <!--mega menu-->
+                                    <li class="mega-drop-down">
+                                        <a class="menuLink itemArrow" href='/books/arabic'>
+                                            <h2><i class="fa fa-sort-down"></i>كتب عربية</h2>
+                                        </a>
+                                        <div class="animated fadeIn mega-menu">
+                                            <div class="mega-menu-wrap">
+                                                <div class="row margin0">
+                                                    <div class="col-md-4 menu-static-links float-left">
+                                                        <ul>
+                                                            <li><a href='/books/arabic'>جميع الكتب</a></li>
+                                                            <li><a href='/books/arabic/bestseller'>الأكثر مبيعًا</a></li>
+                                                            <li><a href='/books/arabic/latest'>أحدث الإصدارات</a></li>
+                                                            <li><a href='/books/arabic/recommended'>ترشيحات الشروق</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--Repeat link-->
+                                                    <div class="col-md-8">
+                                                        <ul class="description row margin-zero">
+                                                            
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/literature-fiction'>
+                                                                            <h3>أدب</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/business-economy'>
+                                                                            <h3>إقتصاد وإدارة أعمال</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/cooking-food'>
+                                                                            <h3>الطبخ</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/science-nature'>
+                                                                            <h3>العلوم والطبيعة</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/woman-parenting-family'>
+                                                                            <h3>المرأة والعائلة</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/history-biographies-memoirs'>
+                                                                            <h3>تاريخ - سير وتراجم</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/self-help'>
+                                                                            <h3>تنمية ذاتية وهوايات</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/humanity-social-sciences'>
+                                                                            <h3>دراسات إنسانية وفكرية</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/health-fitness'>
+                                                                            <h3>صحة عامة ونظام غذائى</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/arts'>
+                                                                            <h3>فنون</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/law'>
+                                                                            <h3>قانون</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/arabic/references-encyclopedia'>
+                                                                            <h3>مراجع وموسوعات</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <!--mega menu-->
+                                    <li class="mega-drop-down">
+                                        <a class="menuLink itemArrow" href='/books/english'>
+                                            <h2><i class="fa fa-sort-down"></i>كتب إنجليزية ولغات أخرى</h2>
+                                        </a>
+                                        <div class="animated fadeIn mega-menu">
+                                            <div class="mega-menu-wrap">
+                                                <div class="row margin0">
+                                                    <div class="col-md-4 menu-static-links float-left">
+                                                        <ul>
+                                                            <li><a href='/books/english'>جميع الكتب</a></li>
+                                                            <li><a href='/books/english/bestseller'>الأكثر مبيعًا</a></li>
+                                                            <li><a href='/books/english/latest'>أحدث الإصدارات</a></li>
+                                                            <li><a href='/books/english/recommended'>ترشيحات الشروق</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--Repeat link-->
+                                                    <div class="col-md-8">
+                                                        <ul class="description row margin-zero">
+                                                            
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/architecture-interior-design'>
+                                                                            <h3>Architecture , Interior Design</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/art'>
+                                                                            <h3>Art</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/biographies-memoirs'>
+                                                                            <h3>Biographies , Memoirs</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/business-finance'>
+                                                                            <h3>Business , Finance</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/cooking-food-beverages'>
+                                                                            <h3>Cooking , Food , Beverages</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/education'>
+                                                                            <h3>Education</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/egyptology'>
+                                                                            <h3>Egyptology</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/fiction-literature'>
+                                                                            <h3>Fiction , Literature</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/health'>
+                                                                            <h3>Health , Fitness</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/history'>
+                                                                            <h3>History</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/reference'>
+                                                                            <h3>Reference</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/parenting-families'>
+                                                                            <h3>Parenting and Families</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/politics-current-affairs'>
+                                                                            <h3>Politics , Current Affairs</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/religions-spirituality'>
+                                                                            <h3>Religion , Spirituality</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/sciences-nature'>
+                                                                            <h3>Science , Nature</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/self-help-relationships'>
+                                                                            <h3>Self-Help , Relationships</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/social-sciences'>
+                                                                            <h3>Social Sciences</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/travel'>
+                                                                            <h3>Travel</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/young-adults'>
+                                                                            <h3>Young Adults</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/english/fashion'>
+                                                                            <h3>Fashion</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                                    <!--mega menu-->
+                                    <li class="mega-drop-down">
+                                        <a class="menuLink itemArrow" href='/books/kids'>
+                                            <h2><i class="fa fa-sort-down"></i>كتب أطفال</h2>
+                                        </a>
+                                        <div class="animated fadeIn mega-menu">
+                                            <div class="mega-menu-wrap">
+                                                <div class="row margin0">
+                                                    <div class="col-md-4 menu-static-links float-left">
+                                                        <ul>
+                                                            <li><a href='/books/kids'>جميع الكتب</a></li>
+                                                            <li><a href='/books/kids/bestseller'>الأكثر مبيعًا</a></li>
+                                                            <li><a href='/books/kids/latest'>أحدث الإصدارات</a></li>
+                                                            <li><a href='/books/kids/recommended'>ترشيحات الشروق</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--Repeat link-->
+                                                    <div class="col-md-8">
+                                                        <ul class="description row margin-zero">
+                                                            
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/kids/english-children-books'>
+                                                                            <h3>English Children Books</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                                    <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                        <a href='/books/kids/arabic-children-books'>
+                                                                            <h3>كتب أطفال عربى</h3>
+                                                                        </a>
+                                                                    </li>
+                                                                
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+                            <li class="mega-drop-down">
+                                <a class="menuLink itemArrow" href='/blog'>
+                                    <h2><i class="fa fa-sort-down"></i>مدونة</h2>
+                                </a>
+                                <div class="animated fadeIn mega-menu">
+                                    <div class="mega-menu-wrap">
+                                        <div class="row margin0">
+                                            <div class="col-md-4 menu-static-links float-left">
+                                                <ul>
+                                                    <li><a href='/blog'>الرئيسية</a></li>
+                                                </ul>
+                                            </div>
+                                            <!--Repeat link-->
+                                            <div class="col-md-8">
+                                                <ul class="description row margin-zero">
+                                                    
+                                                            <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                <a href='/blog/كتاب-ومبدعون'>
+                                                                    <h3>كُتّاب ومبدعون</h3>
+                                                                </a>
+                                                            </li>
+                                                        
+                                                            <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                <a href='/blog/عالم-الكتب'>
+                                                                    <h3>عالم الكتب</h3>
+                                                                </a>
+                                                            </li>
+                                                        
+                                                            <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                <a href='/blog/بين-السطور'>
+                                                                    <h3>بين السطور</h3>
+                                                                </a>
+                                                            </li>
+                                                        
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="mega-drop-down">
+                                <a class="menuLink" href='/offers'>
+                                    <h2><i class="fa fa-sort-down"></i>عروض وخصومات</h2>
+                                </a>
+                                <div class="animated fadeIn mega-menu">
+                                    <div class="mega-menu-wrap">
+                                        <div class="row margin0">
+
+                                            <!--links-->
+                                            <div class="col-md-12">
+                                                <ul class="description row margin-zero">
+                                                    
+                                                            <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                <a href='/offers/?BookTypeID=b7f3bc76-654b-43ed-bb88-d89fab9f3de3'>
+                                                                    <h3>كتب عربية</h3>
+                                                                </a>
+                                                            </li>
+                                                        
+                                                            <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                <a href='/offers/?BookTypeID=66fd5ed6-7675-4327-876b-fb06a5b0c1d7'>
+                                                                    <h3>كتب إنجليزية ولغات أخرى</h3>
+                                                                </a>
+                                                            </li>
+                                                        
+                                                            <li class="col-md-4 col-sm-4 col-xs-6">
+                                                                <a href='/offers/?BookTypeID=4b88a2a1-ae4a-4347-96d7-6cea8f1488ed'>
+                                                                    <h3>كتب أطفال</h3>
+                                                                </a>
+                                                            </li>
+                                                        
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li><a href='/events'>
+                                <h2>فعاليات</h2>
+                            </a></li>
+
+                            <li><a href='/about'>
+                                <h2>عن مكتبات الشروق</h2>
+                            </a></li>
+
+                            <li><a href='/contact'>
+                                <h2>اتصل بنا</h2>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <!--Mobile Menu-->
+                <div class="row margin-zero mobile-menu hidden-lg hidden-md">
+                    <div id="menu-container">
+                        <div id="menu-wrapper">
+                            <div id="hamburger-menu"><span></span><span></span><span></span></div>
+                            <!-- hamburger-menu -->
+                        </div>
+                        <!-- menu-wrapper -->
+                        <ul class="menu-list accordion">
+                            
+
+                                    <li id="nav1" class="toggle accordion-toggle">
+                                        <span class="icon-plus"></span>
+                                        <a class="menu-link" href="#">كتب عربية</a>
+                                    </li>
+                                    <!-- accordion-toggle -->
+                                    <ul class="menu-submenu accordion-content">
+                                        
+                                                <li>
+                                                    <a class="head" href='/books/arabic/literature-fiction'>
+                                                        <i class="fa fa-minus"></i>أدب
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/business-economy'>
+                                                        <i class="fa fa-minus"></i>إقتصاد وإدارة أعمال
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/cooking-food'>
+                                                        <i class="fa fa-minus"></i>الطبخ
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/science-nature'>
+                                                        <i class="fa fa-minus"></i>العلوم والطبيعة
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/woman-parenting-family'>
+                                                        <i class="fa fa-minus"></i>المرأة والعائلة
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/history-biographies-memoirs'>
+                                                        <i class="fa fa-minus"></i>تاريخ - سير وتراجم
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/self-help'>
+                                                        <i class="fa fa-minus"></i>تنمية ذاتية وهوايات
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/humanity-social-sciences'>
+                                                        <i class="fa fa-minus"></i>دراسات إنسانية وفكرية
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/health-fitness'>
+                                                        <i class="fa fa-minus"></i>صحة عامة ونظام غذائى
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/arts'>
+                                                        <i class="fa fa-minus"></i>فنون
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/law'>
+                                                        <i class="fa fa-minus"></i>قانون
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/arabic/references-encyclopedia'>
+                                                        <i class="fa fa-minus"></i>مراجع وموسوعات
+                                                    </a>
+                                                </li>
+                                            
+                                        <li>
+                                            <div class="menu-static-links">
+                                                <ul>
+                                                    <li><a href='/books/arabic'>جميع الكتب</a></li>
+                                                    <li><a href='/books/arabic/bestseller'>الأكثر مبيعًا</a></li>
+                                                    <li><a href='/books/arabic/latest'>أحدث الإصدارات</a></li>
+                                                    <li><a href='/books/arabic/recommended'>ترشيحات الشروق</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                
+
+                                    <li id="nav1" class="toggle accordion-toggle">
+                                        <span class="icon-plus"></span>
+                                        <a class="menu-link" href="#">كتب إنجليزية ولغات أخرى</a>
+                                    </li>
+                                    <!-- accordion-toggle -->
+                                    <ul class="menu-submenu accordion-content">
+                                        
+                                                <li>
+                                                    <a class="head" href='/books/english/architecture-interior-design'>
+                                                        <i class="fa fa-minus"></i>Architecture , Interior Design
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/art'>
+                                                        <i class="fa fa-minus"></i>Art
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/biographies-memoirs'>
+                                                        <i class="fa fa-minus"></i>Biographies , Memoirs
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/business-finance'>
+                                                        <i class="fa fa-minus"></i>Business , Finance
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/cooking-food-beverages'>
+                                                        <i class="fa fa-minus"></i>Cooking , Food , Beverages
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/education'>
+                                                        <i class="fa fa-minus"></i>Education
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/egyptology'>
+                                                        <i class="fa fa-minus"></i>Egyptology
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/fiction-literature'>
+                                                        <i class="fa fa-minus"></i>Fiction , Literature
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/health'>
+                                                        <i class="fa fa-minus"></i>Health , Fitness
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/history'>
+                                                        <i class="fa fa-minus"></i>History
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/reference'>
+                                                        <i class="fa fa-minus"></i>Reference
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/parenting-families'>
+                                                        <i class="fa fa-minus"></i>Parenting and Families
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/politics-current-affairs'>
+                                                        <i class="fa fa-minus"></i>Politics , Current Affairs
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/religions-spirituality'>
+                                                        <i class="fa fa-minus"></i>Religion , Spirituality
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/sciences-nature'>
+                                                        <i class="fa fa-minus"></i>Science , Nature
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/self-help-relationships'>
+                                                        <i class="fa fa-minus"></i>Self-Help , Relationships
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/social-sciences'>
+                                                        <i class="fa fa-minus"></i>Social Sciences
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/travel'>
+                                                        <i class="fa fa-minus"></i>Travel
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/young-adults'>
+                                                        <i class="fa fa-minus"></i>Young Adults
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/english/fashion'>
+                                                        <i class="fa fa-minus"></i>Fashion
+                                                    </a>
+                                                </li>
+                                            
+                                        <li>
+                                            <div class="menu-static-links">
+                                                <ul>
+                                                    <li><a href='/books/english'>جميع الكتب</a></li>
+                                                    <li><a href='/books/english/bestseller'>الأكثر مبيعًا</a></li>
+                                                    <li><a href='/books/english/latest'>أحدث الإصدارات</a></li>
+                                                    <li><a href='/books/english/recommended'>ترشيحات الشروق</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                
+
+                                    <li id="nav1" class="toggle accordion-toggle">
+                                        <span class="icon-plus"></span>
+                                        <a class="menu-link" href="#">كتب أطفال</a>
+                                    </li>
+                                    <!-- accordion-toggle -->
+                                    <ul class="menu-submenu accordion-content">
+                                        
+                                                <li>
+                                                    <a class="head" href='/books/kids/english-children-books'>
+                                                        <i class="fa fa-minus"></i>English Children Books
+                                                    </a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a class="head" href='/books/kids/arabic-children-books'>
+                                                        <i class="fa fa-minus"></i>كتب أطفال عربى
+                                                    </a>
+                                                </li>
+                                            
+                                        <li>
+                                            <div class="menu-static-links">
+                                                <ul>
+                                                    <li><a href='/books/kids'>جميع الكتب</a></li>
+                                                    <li><a href='/books/kids/bestseller'>الأكثر مبيعًا</a></li>
+                                                    <li><a href='/books/kids/latest'>أحدث الإصدارات</a></li>
+                                                    <li><a href='/books/kids/recommended'>ترشيحات الشروق</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                
+                            <li id="nav1" class="toggle accordion-toggle">
+                                <span class="icon-plus"></span>
+                                <a class="menu-link" href="#">مدونة</a>
+                            </li>
+                            <ul class="menu-submenu accordion-content">
+                                
+                                        <li>
+                                            <a class="head" href='/blog/كتاب-ومبدعون'>
+                                                <i class="fa fa-minus"></i>كُتّاب ومبدعون
+                                            </a>
+                                        </li>
+                                    
+                                        <li>
+                                            <a class="head" href='/blog/عالم-الكتب'>
+                                                <i class="fa fa-minus"></i>عالم الكتب
+                                            </a>
+                                        </li>
+                                    
+                                        <li>
+                                            <a class="head" href='/blog/بين-السطور'>
+                                                <i class="fa fa-minus"></i>بين السطور
+                                            </a>
+                                        </li>
+                                    
+                                <li>
+                                    <div class="menu-static-links">
+                                        <ul>
+                                            <li><a href='/blog'>الرئيسية</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            
+
+
+
+
+                            
+
+                            <!-- menu-submenu accordon-content-->
+                            <li id="nav3" class="toggle accordion-toggle">
+                                <span class="icon-plus"></span>
+                                <a class="menu-link" href="#">عروض وخصومات</a>
+                            </li>
+                            <!-- accordion-toggle -->
+                            <ul class="menu-submenu accordion-content">
+                                
+                                        <li>
+                                            <a class="head" href='/offers/?BookTypeID=b7f3bc76-654b-43ed-bb88-d89fab9f3de3'>
+                                                <i class="fa fa-minus"></i>كتب عربية 
+                                            </a>
+                                        </li>
+                                    
+                                        <li>
+                                            <a class="head" href='/offers/?BookTypeID=66fd5ed6-7675-4327-876b-fb06a5b0c1d7'>
+                                                <i class="fa fa-minus"></i>كتب إنجليزية ولغات أخرى 
+                                            </a>
+                                        </li>
+                                    
+                                        <li>
+                                            <a class="head" href='/offers/?BookTypeID=4b88a2a1-ae4a-4347-96d7-6cea8f1488ed'>
+                                                <i class="fa fa-minus"></i>كتب أطفال 
+                                            </a>
+                                        </li>
+                                    
+                            </ul>
+
+                            <li class="single-link">
+                                <a href='/events'>فعاليات</a>
+                            </li>
+
+                            <li class="single-link">
+                                <a href='/about'>عن مكتبات الشروق </a>
+                            </li>
+
+                            <li class="single-link">
+                                <a href='/branches'>فروع مكتبات الشروق</a>
+                            </li>
+
+                            <li class="single-link">
+                                <a href='/contact'>اتصل بنا</a>
+                            </li>
+
+
+                            <!-- menu-submenu accordon-content-->
+                        </ul>
+                        <!-- menu-list accordion-->
+                    </div>
+                    <!-- menu-container -->
+                </div>
+
+            </div>
+            <div class="wrapper">
+                <div class="clear"></div>
+
+            </div>
+
+        </div>
+        <!--Header-->
+
+        
+        
+
+        <div class="container padding-15 main-contaier">
+
+            
+    <input type="hidden" name="ctl00$Body$HfFacebookPixelEventID" id="Body_HfFacebookPixelEventID" value="6d150ce5-e2cc-4135-b45c-2398ce8c28c4" />
+
+    <div id="Body_divFacebookViewContent">
+        <script type="text/javascript">
+            fbq('track', 'ViewContent', {
+                eventID: '6d150ce5-e2cc-4135-b45c-2398ce8c28c4',
+                content_name: 'Sunset Osasis',
+                content_category: 'أدب',
+                content_ids: ['81939ba9-5072-4893-9740-4e7e249dcc0b'],
+                content_type: 'product',
+                value: 178.5,
+                currency: 'EGP',
+                custom_author: 'بهاء طاهر',
+                custom_data: {
+                    custom_number_0: 15
+                }
+            });
+        </script>
+    </div>
+    
+    
+    
+
+    <div class="content">
+        <div class="breadCrumb row margin-zero">
+            <ul>
+                <li><a href='/'>مكتبات الشروق</a> </li>
+                <li class="current"><a href='/books/arabic'>كتب عربية</a> </li>
+                
+            </ul>
+        </div>
+        <div class="row margin-zero position-rel">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="bookInnerRight row margin-zero">
+                    <div id="Body_rightCover" class="rightCover col-md-3 col-sm-4 col-xs-7">
+                        <div id="showcase" class="showcase">
+
+                            
+                        </div>
+                    <img src="https://www.shoroukbookstores.com/images/Books/original/6221102025744.jpg?random=639144316654028773" alt="Sunset Osasis" style="height:287px;width:199px;" /></div>
+                    <div class="bookInnercontent col-md-9 col-sm-8 col-xs-5">
+                        <div class="top">
+                            <div class="right">
+                                <h1 style='direction:ltr;'>Sunset Osasis</h1>
+                                <span>تأليف:
+                                    
+                                            <a href='/books/author.aspx?id=35f0469f-06bf-43df-82e2-ce6e1766e207'>بهاء طاهر</a>
+                                        
+                                </span>
+                                <br />
+                                <span style='display:none'></span>
+                                <span class="hasAuthorSign" style='display:none'>بتوقيع المؤلف</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom">
+                            <div style=''>
+                                
+                                <div class='price priceNone'>
+                                    السعر :   10.5 $
+                                </div>
+
+                                <span class="price"></span>
+
+                                <div id="Body_DvPriceAfterDiscount" class="discountPrice">
+                                    بعد التخفيض
+                                     8.93 $
+                                </div>
+                                <div class="clear"></div>
+                                
+                            </div>
+                            <div class="soonBadge" style='display:none'>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 bookInnerRight">
+                        <div class="bookInnercontent">
+                            <div class="btn-mobile-cart hidden-lg hidden-md" style=''>
+                                <br />
+                                <a class='add2Basket add2Basket2 btnAddtoCart' href="javascript:addBook();">
+                                    <span>أضف إلى سلة الشراء </span>
+                                    <strong></strong>
+                                </a>
+                            </div>
+                            <div class="notAvaliable" style='display:none'>
+
+
+
+                                
+                            </div>
+                            
+                            <div class="bookDesc" id="summary" style='visibility:visible'>
+                                <p style=''><p>هذه الرواية حاصلة على الجائزة العالمية للرواية العربية (جائزة البوكر) 2008، وقد طبع منها 3 طبعات خلال سنة . يعود &laquo; بهاء طاهر&raquo; فى روايته الجديدة والبديعة &laquo;واحة الغروب&raquo; والتى لاقت نجاحا جماهيريا واستحسانا نقديا كبيرا، إلى نهايات القرن التاسع عشر، وبداية الاحتلال البريطانى لمصر، حيث يُرسل ضابط البوليس المصرى محمود عبدالظاهر، إلى واحة سيوة لشك السلطات فى تعاطفه مع الأفكار الثورية لجمال الدين الأفغانى وأحمد عرابى، فيصطحب زوجته الأيرلندية &laquo;كاثرين&raquo; الشغوفة بالآثار، والتى تبحث عن مقبرة الإسكندر الأكبر، لينغمسا فى عالم جديد شديد الثراء والخصوصية يجبرهما وأهل الواحة على مواجهة أنفسهم فى زمن اختلطت فيه الانتهازية والخيانة والرغبة بالحب والبطولة. تعكس أحداث الرواية أيضا مزجا إبداعيا بين الماضى والحاضر والموضوعى والتاريخ والواقع يعبر عن هموم الوطن كما يقدم تجربة العلاقة بين الشرق والغرب على المستويين الإنسانى والحضارى بما فيها من صراع وتوافق.</p></p>
+                            </div>
+                            <div class="bookDesc">
+                                <div class="bookCr">
+                                    <ul>
+                                        <li id="Body_LICategories">
+                                            <div class="right">تصنيفات</div>
+                                            <div class="left">
+                                                
+                                                        <a href='/books/arabic/literature-fiction'>أدب</a>
+                                                    
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li id="Body_LITags">
+                                            <div class="right">الوسوم</div>
+                                            <div class="left">
+                                                
+                                                        <a href='/books/tag.aspx?id=626c2930-5493-4c9d-af35-5eb6f3dab9bc'>روايات</a>
+                                                    
+                                                        -
+                                                    
+                                                        <a href='/books/tag.aspx?id=721bc384-6a46-45f2-bca2-8d03bacc95ba'>روايات تاريخية</a>
+                                                    
+                                            </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li>
+                                            <div class="right">دار النشر</div>
+                                            <div class="left"><a href='publishing-house.aspx?id=429c2704-5fa3-43b0-9ad7-c2ec9062beb3'>دار الشروق</a></div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style=''>
+                                            <div class="right">الشكل</div>
+                                            <div class="left">مجلد </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style=''>
+                                            <div class="right">ISBN</div>
+                                            <div class="left">6221102025744 </div>
+                                            <div class="clear"></div>
+                                        </li>
+
+                                        <li style='display:none'>
+                                            <div class="right">السلسلة</div>
+                                            
+                                            <div class="left"><a href=''></a></div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style=''>
+                                            <div class="right">سنة النشر</div>
+                                            <div class="left">2009 </div>
+                                            <div class="clear"></div>
+                                        </li>
+
+                                        <li style=''>
+                                            <div class="right">أحدث طبعة</div>
+                                            <div class="left">2010 </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style=''>
+                                            <div class="right">عدد الصفحات</div>
+                                            <div class="left">315 </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style='display:none'>
+                                            
+                                            <div class="right"><a href='' target="_blank">رابط الموقع الإليكتروني</a> </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style='display:none'>
+                                            
+                                            <div class="right"><a href='' target="_blank">رابط جود ريدز</a> </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                        <li style='display:none'>
+                                            
+                                            <div class="right"><a href='' target="_blank">رابط الفيسبوك</a> </div>
+                                            <div class="clear"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="padding-top: 15px; float: right;">
+                                
+
+<div class="sharing">
+    <div class="col-md-12 col-sm-12 col-xs-12 postShares" style="margin-bottom: 10px;">
+        <a href="#" onclick="return share_click(400, 300)">
+            <img src="../App_Themes/Images/tw-share.png" class="img-responsive" /></a>
+         <a href="#" onclick="return share_click(400, 300,'F')">
+            <img src="../App_Themes/Images/fb-share.png" class="img-responsive" /></a>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function share_click(width, height, FT) {
+        var leftPosition, topPosition;
+        //Allow for borders.
+        leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+        //Allow for title and status bars.
+        topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+        var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+        u = location.href;
+        t = document.title;
+        if (FT == "F") {
+            FB.ui({
+                method: 'share',
+                href: 'https://www.shoroukbookstores.com/books/view.aspx?cdate=13102019&id=81939ba9-5072-4893-9740-4e7e249dcc0b'
+            });
+        }
+        else
+            window.open('https://twitter.com/share?url=' + encodeURIComponent(u) + '&text=' + encodeURIComponent(t.substr(0, 100) + "..."), 'sharer', windowFeatures);
+        return false;
+    }
+</script>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="bookInnerLeft">
+                    <div class="cartGadget" style=''>
+                        <div class="top">
+                            <strong>عدد النسخ</strong>
+                            <div class="select">
+                                <select class="" name="copiesSelectName" tabindex="3" id="copiesSelect">
+                                    <option selected="selected" value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bottom">
+                            <a class='add2Basket btnAddtoCart' href="javascript:addBook();">
+                                <span>أضف إلى سلة الشراء </span>
+                                <strong></strong>
+                            </a>
+                            <div class="basketSlogen">يمكنك الدفع بالبطاقة الائتمانية أو عند الاستلام</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="notAvaliable" style='display:none'>
+                        غير متوفر حاليا
+                    </div>
+
+                    <div class="avaliableSoonList" style='display:none'>
+                        <div id="Body_UpdatePanel1">
+	
+                                <a id="Body_LBNotifyMe" class="wishInnerAdd" href="javascript:__doPostBack(&#39;ctl00$Body$LBNotifyMe&#39;,&#39;&#39;)">أبلغني عند توفره للشراء<input type="hidden" name="ctl00$Body$HFNotifyList" id="Body_HFNotifyList" /></a>
+
+                            
+</div>
+                    </div>
+                    
+                    <div class="wishList">
+                        <div id="Body_UpdatePanelWish">
+	
+                                <a id="Body_HLWish" class="wishInnerAdd" href="javascript:__doPostBack(&#39;ctl00$Body$HLWish&#39;,&#39;&#39;)">أضف إلى قائمة الرغبات<input type="hidden" name="ctl00$Body$HFaddToWishList" id="Body_HFaddToWishList" /></a>
+                            
+</div>
+                    </div>
+
+                    
+                    
+
+                    <div style='display:none'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="26px" color="#793149" stroke-width="1.5" stroke="currentColor" class="flex-shrink-0 rtl:ml-2 ltr:mr-2 w-5 h-5 text-primaryRed-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"></path>
+                        </svg>
+                        <h1 style="padding-right: 5px; color: #fff; font-size: 13px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); text-align: center;">شحن مجانى بقيمة 0 جنيها
+                        </h1>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--googleoff: all-->
+        <div class="nocontent" data-nosnippet>
+            <div id="Body_DvRelated" class="relatedBlock">
+                <h2>كتب قد تعجبك من هذه الفئة</h2>
+                <div class="content">
+                    <ul class="row margin-zero">
+                        
+                                <li class="col-md-2 col-sm-3 col-xs-6">
+                                    <div class="bookListItem">
+                                        
+<div itemid="bookItem " id='book-ca8bec2d-ba67-4c8d-ab2f-16614eb47e03'>
+    <div class="bookItem">
+
+        <a class="discount" href='/offers/default.aspx?percentage=10' style=''>خصم
+        10
+        %
+        </a>
+        <div class='hide'>
+            حجز مسبق
+        </div>
+        <div class='hide'>
+            بتوقيع المؤلف
+        </div>
+
+        <!-- Wishlist Heart Icon -->
+        <div class="wishlist-container" style='visibility :normal'>
+            <a href="javascript:void(0);"
+                class='heart-icon'
+                onclick="toggleWishlist('ca8bec2d-ba67-4c8d-ab2f-16614eb47e03', this)"
+                data-book-id='ca8bec2d-ba67-4c8d-ab2f-16614eb47e03'>
+                <i class="fa fa-heart"></i>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="image">
+            <a href='/books/view.aspx?id=ca8bec2d-ba67-4c8d-ab2f-16614eb47e03'>
+                <img
+                    alt=""
+                    class="img-responsive"
+                    data-lazy-img-src=''
+                    src='https://www.shoroukbookstores.com/images/Books/thumb/9789778582505.jpg' />
+            </a>
+        </div>
+        <div class="bookData">
+            <strong style=''><a href='/books/view.aspx?id=ca8bec2d-ba67-4c8d-ab2f-16614eb47e03'>
+                اللبان السحري</a> </strong><span><a href='/books/author.aspx?id=828b7c6b-a493-47e0-800f-9832a70c9b0d'>
+                    ريم جميل</a> </span>
+        </div>
+        <div class="tabPrice">
+            <div class="priceLined" style=''>
+                <span class='priceDisc' style='visibility :normal'>
+                    12.5 $
+                </span>
+                <span class="oriPrice">
+                    11.25 $
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="load-overlay" class="tabBuy" style=''>
+            <a class='btn btnAddtoCart' href="javascript:addCookie(userName+'ShoppingCart','ca8bec2d-ba67-4c8d-ab2f-16614eb47e03',false)"></a>
+        </div>
+        <div id="load-overlay" class='notAvaliable' style='display:none'>
+            غير متوفر
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+                                    </div>
+                                </li>
+                            
+                                <li class="col-md-2 col-sm-3 col-xs-6">
+                                    <div class="bookListItem">
+                                        
+<div itemid="bookItem " id='book-3fe41ada-bdb7-4111-bb19-9a32bb7513dd'>
+    <div class="bookItem">
+
+        <a class="discount" href='/offers/default.aspx?percentage=10' style=''>خصم
+        10
+        %
+        </a>
+        <div class='hide'>
+            حجز مسبق
+        </div>
+        <div class='hide'>
+            بتوقيع المؤلف
+        </div>
+
+        <!-- Wishlist Heart Icon -->
+        <div class="wishlist-container" style='visibility :normal'>
+            <a href="javascript:void(0);"
+                class='heart-icon'
+                onclick="toggleWishlist('3fe41ada-bdb7-4111-bb19-9a32bb7513dd', this)"
+                data-book-id='3fe41ada-bdb7-4111-bb19-9a32bb7513dd'>
+                <i class="fa fa-heart"></i>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="image">
+            <a href='/books/view.aspx?id=3fe41ada-bdb7-4111-bb19-9a32bb7513dd'>
+                <img
+                    alt=""
+                    class="img-responsive"
+                    data-lazy-img-src=''
+                    src='https://www.shoroukbookstores.com/images/Books/thumb/9786038403297.jpg' />
+            </a>
+        </div>
+        <div class="bookData">
+            <strong style=''><a href='/books/view.aspx?id=3fe41ada-bdb7-4111-bb19-9a32bb7513dd'>
+                آرسس</a> </strong><span><a href='/books/author.aspx?id=79f16176-8924-4517-b302-f747e7d6628e'>
+                    أحمد آل حمدان</a> </span>
+        </div>
+        <div class="tabPrice">
+            <div class="priceLined" style=''>
+                <span class='priceDisc' style='visibility :normal'>
+                    17.5 $
+                </span>
+                <span class="oriPrice">
+                    15.75 $
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="load-overlay" class="tabBuy" style=''>
+            <a class='btn btnAddtoCart' href="javascript:addCookie(userName+'ShoppingCart','3fe41ada-bdb7-4111-bb19-9a32bb7513dd',false)"></a>
+        </div>
+        <div id="load-overlay" class='notAvaliable' style='display:none'>
+            غير متوفر
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+                                    </div>
+                                </li>
+                            
+                                <li class="col-md-2 col-sm-3 col-xs-6">
+                                    <div class="bookListItem">
+                                        
+<div itemid="bookItem " id='book-58918e44-3f80-4ebb-b772-a2c74ac6bd6e'>
+    <div class="bookItem">
+
+        <a class="discount" href='/offers/default.aspx?percentage=10' style=''>خصم
+        10
+        %
+        </a>
+        <div class='hide'>
+            حجز مسبق
+        </div>
+        <div class='hide'>
+            بتوقيع المؤلف
+        </div>
+
+        <!-- Wishlist Heart Icon -->
+        <div class="wishlist-container" style='visibility :normal'>
+            <a href="javascript:void(0);"
+                class='heart-icon'
+                onclick="toggleWishlist('58918e44-3f80-4ebb-b772-a2c74ac6bd6e', this)"
+                data-book-id='58918e44-3f80-4ebb-b772-a2c74ac6bd6e'>
+                <i class="fa fa-heart"></i>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="image">
+            <a href='/books/view.aspx?id=58918e44-3f80-4ebb-b772-a2c74ac6bd6e'>
+                <img
+                    alt=""
+                    class="img-responsive"
+                    data-lazy-img-src=''
+                    src='https://www.shoroukbookstores.com/images/Books/thumb/9789778065329.jpg' />
+            </a>
+        </div>
+        <div class="bookData">
+            <strong style=''><a href='/books/view.aspx?id=58918e44-3f80-4ebb-b772-a2c74ac6bd6e'>
+                أبناء الليل</a> </strong><span><a href='/books/author.aspx?id=4d1a287b-6fee-4b36-bb8b-2afa4040826c'>
+                    مروى جوهر</a> </span>
+        </div>
+        <div class="tabPrice">
+            <div class="priceLined" style=''>
+                <span class='priceDisc' style='visibility :normal'>
+                    16 $
+                </span>
+                <span class="oriPrice">
+                    14.4 $
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="load-overlay" class="tabBuy" style=''>
+            <a class='btn btnAddtoCart' href="javascript:addCookie(userName+'ShoppingCart','58918e44-3f80-4ebb-b772-a2c74ac6bd6e',false)"></a>
+        </div>
+        <div id="load-overlay" class='notAvaliable' style='display:none'>
+            غير متوفر
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+                                    </div>
+                                </li>
+                            
+                                <li class="col-md-2 col-sm-3 col-xs-6">
+                                    <div class="bookListItem">
+                                        
+<div itemid="bookItem " id='book-f862ca28-2b7d-4c7f-8326-2c08e3a7f02f'>
+    <div class="bookItem">
+
+        <a class="discount" href='/offers/default.aspx?percentage=10' style=''>خصم
+        10
+        %
+        </a>
+        <div class='hide'>
+            حجز مسبق
+        </div>
+        <div class='hide'>
+            بتوقيع المؤلف
+        </div>
+
+        <!-- Wishlist Heart Icon -->
+        <div class="wishlist-container" style='visibility :normal'>
+            <a href="javascript:void(0);"
+                class='heart-icon'
+                onclick="toggleWishlist('f862ca28-2b7d-4c7f-8326-2c08e3a7f02f', this)"
+                data-book-id='f862ca28-2b7d-4c7f-8326-2c08e3a7f02f'>
+                <i class="fa fa-heart"></i>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="image">
+            <a href='/books/view.aspx?id=f862ca28-2b7d-4c7f-8326-2c08e3a7f02f'>
+                <img
+                    alt=""
+                    class="img-responsive"
+                    data-lazy-img-src=''
+                    src='https://www.shoroukbookstores.com/images/Books/thumb/9789778896848.jpg' />
+            </a>
+        </div>
+        <div class="bookData">
+            <strong style=''><a href='/books/view.aspx?id=f862ca28-2b7d-4c7f-8326-2c08e3a7f02f'>
+                لعنة الرسائل</a> </strong><span><a href='/books/author.aspx?id=220ccd6f-ba9f-4adf-87e8-e4339226213e'>
+                    أغر الجمال</a> </span>
+        </div>
+        <div class="tabPrice">
+            <div class="priceLined" style=''>
+                <span class='priceDisc' style='visibility :normal'>
+                    12 $
+                </span>
+                <span class="oriPrice">
+                    10.8 $
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="load-overlay" class="tabBuy" style=''>
+            <a class='btn btnAddtoCart' href="javascript:addCookie(userName+'ShoppingCart','f862ca28-2b7d-4c7f-8326-2c08e3a7f02f',false)"></a>
+        </div>
+        <div id="load-overlay" class='notAvaliable' style='display:none'>
+            غير متوفر
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+                                    </div>
+                                </li>
+                            
+                                <li class="col-md-2 col-sm-3 col-xs-6">
+                                    <div class="bookListItem">
+                                        
+<div itemid="bookItem " id='book-5027d321-b4c2-4e2a-8895-921770946a2a'>
+    <div class="bookItem">
+
+        <a class="discount" href='/offers/default.aspx?percentage=10' style=''>خصم
+        10
+        %
+        </a>
+        <div class='hide'>
+            حجز مسبق
+        </div>
+        <div class='hide'>
+            بتوقيع المؤلف
+        </div>
+
+        <!-- Wishlist Heart Icon -->
+        <div class="wishlist-container" style='visibility :normal'>
+            <a href="javascript:void(0);"
+                class='heart-icon'
+                onclick="toggleWishlist('5027d321-b4c2-4e2a-8895-921770946a2a', this)"
+                data-book-id='5027d321-b4c2-4e2a-8895-921770946a2a'>
+                <i class="fa fa-heart"></i>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="image">
+            <a href='/books/view.aspx?id=5027d321-b4c2-4e2a-8895-921770946a2a'>
+                <img
+                    alt=""
+                    class="img-responsive"
+                    data-lazy-img-src=''
+                    src='https://www.shoroukbookstores.com/images/Books/thumb/9789778243598.jpeg' />
+            </a>
+        </div>
+        <div class="bookData">
+            <strong style=''><a href='/books/view.aspx?id=5027d321-b4c2-4e2a-8895-921770946a2a'>
+                أنت تعيش مرة واحدة فقط</a> </strong><span><a href='/books/author.aspx?id=76364cf8-a021-4735-bc42-3cebedfbd122'>
+                    مريم يوسف</a> </span>
+        </div>
+        <div class="tabPrice">
+            <div class="priceLined" style=''>
+                <span class='priceDisc' style='visibility :normal'>
+                    14 $
+                </span>
+                <span class="oriPrice">
+                    12.6 $
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="load-overlay" class="tabBuy" style=''>
+            <a class='btn btnAddtoCart' href="javascript:addCookie(userName+'ShoppingCart','5027d321-b4c2-4e2a-8895-921770946a2a',false)"></a>
+        </div>
+        <div id="load-overlay" class='notAvaliable' style='display:none'>
+            غير متوفر
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+                                    </div>
+                                </li>
+                            
+                                <li class="col-md-2 col-sm-3 col-xs-6">
+                                    <div class="bookListItem">
+                                        
+<div itemid="bookItem " id='book-062cdfac-b512-4aaf-a76e-80b96ae2a39d'>
+    <div class="bookItem">
+
+        <a class="discount" href='/offers/default.aspx?percentage=10' style=''>خصم
+        10
+        %
+        </a>
+        <div class='hide'>
+            حجز مسبق
+        </div>
+        <div class='hide'>
+            بتوقيع المؤلف
+        </div>
+
+        <!-- Wishlist Heart Icon -->
+        <div class="wishlist-container" style='visibility :normal'>
+            <a href="javascript:void(0);"
+                class='heart-icon'
+                onclick="toggleWishlist('062cdfac-b512-4aaf-a76e-80b96ae2a39d', this)"
+                data-book-id='062cdfac-b512-4aaf-a76e-80b96ae2a39d'>
+                <i class="fa fa-heart"></i>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="image">
+            <a href='/books/view.aspx?id=062cdfac-b512-4aaf-a76e-80b96ae2a39d'>
+                <img
+                    alt=""
+                    class="img-responsive"
+                    data-lazy-img-src=''
+                    src='https://www.shoroukbookstores.com/images/Books/thumb/9789779920658.jpg' />
+            </a>
+        </div>
+        <div class="bookData">
+            <strong style=''><a href='/books/view.aspx?id=062cdfac-b512-4aaf-a76e-80b96ae2a39d'>
+                ليطمئن قلبي</a> </strong><span><a href='/books/author.aspx?id=d6451958-6724-4f3d-afdc-0c506f206705'>
+                    أدهم شرقاوي</a> </span>
+        </div>
+        <div class="tabPrice">
+            <div class="priceLined" style=''>
+                <span class='priceDisc' style='visibility :normal'>
+                    24.5 $
+                </span>
+                <span class="oriPrice">
+                    22.05 $
+                </span>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div id="load-overlay" class="tabBuy" style=''>
+            <a class='btn btnAddtoCart' href="javascript:addCookie(userName+'ShoppingCart','062cdfac-b512-4aaf-a76e-80b96ae2a39d',false)"></a>
+        </div>
+        <div id="load-overlay" class='notAvaliable' style='display:none'>
+            غير متوفر
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+                                    </div>
+                                </li>
+                            
+
+                    </ul>
+                    
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            
+            <!-- Comments -->
+            <a name="Comments" id="Comments"></a>
+            <div class="commenterBox" style=''>
+                <div id="Body_DivComments">
+                    <!-- do not delete start -->
+                    <a name="Commenter"></a>
+                    <!-- do not delete end -->
+                    <div class="title">شارك بتعليقك</div>
+                    <div class="commenterContent">
+                        <fb:comments href='https://www.shoroukbookstores.com/books/view.aspx?id=81939ba9-5072-4893-9740-4e7e249dcc0b'
+                            width="100%" num_posts='10'>
+                        </fb:comments>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--googleoon: all-->
+    </div>
+
+
+            <!--Content-->
+            
+
+            <div class="clear"></div>
+        </div>
+
+
+        <!--Footer-->
+        <div class="footer row margin-zero">
+            <div class="container">
+                <div class="col-md-7 col-sm-6 hidden-xs padding-zero">
+                    <div class="footer-menu">
+                        <ul>
+                            
+                                    <li><a href='/books/arabic'><i class="fa fa-circle-o"></i>كتب عربية</a> </li>
+                                
+                                    <li><a href='/books/english'><i class="fa fa-circle-o"></i>كتب إنجليزية ولغات أخرى</a> </li>
+                                
+                                    <li><a href='/books/kids'><i class="fa fa-circle-o"></i>كتب أطفال</a> </li>
+                                
+                            
+                            <li><a href='/blog'><i class="fa fa-circle-o"></i>مدونة</a> </li>
+                            <li><a href='/offers'><i class="fa fa-circle-o"></i>عروض وخصومات</a> </li>
+
+                            <li><a href='/events'><i class="fa fa-circle-o"></i>فعاليات</a> </li>
+                            <li><a href='/about'><i class="fa fa-circle-o"></i>عن مكتبات الشروق</a> </li>
+                            <li><a href='/contact'><i class="fa fa-circle-o"></i>اتصل بنا</a> </li>
+                            <li><a href='/terms'><i class="fa fa-circle-o"></i>سياسة الاستخدام</a> </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-3 col-xs-12">
+                    <div class="footerLogo">
+                        <a href='/'>
+                            <img src='/App_Themes/images/logo.png' alt="الشروق" class="img-responsive" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-12 padding-zero">
+                    <div class="social">
+                        <a class="footerFB" href="https://www.facebook.com/shoroukbookstore/" target="_blank"></a>
+                        <a class="footerTW" href='https://twitter.com/ShoroukBStores' target="_blank"></a>
+                        <a class="footerWA" href='https://wa.me/201011810881' target="_blank"></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="logos">
+                        <div>
+                            <img src='/App_Themes/images/arabiLogo.jpg' alt="" />
+                        </div>
+                        <div>
+                            <img src='/App_Themes/images/visaLogo.jpg' alt="" />
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="footerBottom row margin-zero">
+
+            <div class="container">
+                <div class="col-sm-6 col-xs-12  padding-zero">
+                    <div class="cr">
+                        <span class="cr">جميع الحقوق محفوظة - مكتبات الشروق
+							2026
+                        </span>
+                        &nbsp;	
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-12 text-copy padding-zero">
+                    <div class="clip">
+                        <a href="http://clipsolutions.com/" target="_blank">تصميم وتطوير
+                         <br />
+                            CLIP Solutions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Back to top-->
+        <div class="topTop animated fadeInLeft">
+            <a id="ma_link" href=".header" rel="nofollow">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+
+        <!--Footer-->
+
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var baseUrl = "/";
+                $(".btnPreorder").click(function () {
+                    setTimeout(function () {
+                        document.location = baseUrl + "tools/shoppingcart.aspx";
+                    }, 1500);
+
+                })
+                // Action on Click
+                $(".btnAddtoCart").click(function () {
+                    //change text
+                    $.isLoading({ text: "تم إضافة الكتاب إلى سلة المشتريات </br></br> <a style='color: Blue;' href='" + baseUrl + "tools/shoppingcart.aspx" + "'>اذهب لسلة المشتريات</a> أو <a style='color: Blue;' href=javascript:void(0); onclick=$.isLoading(" + "'hide'" + ");> أضف كتب أخرى </a>" });
+
+                    // Setup Loading plugin
+                    $("#load-overlay .demo p").removeClass("alert-success");
+
+                    // Re-enabling event
+                    setTimeout(function () {
+                        $.isLoading("hide");
+                        $("#load-overlay .demo p").html("Content Loaded")
+                            .addClass("alert-success");
+                    }, 15000);
+                });
+
+
+            });
+
+            function toggleWishlist(bookId, element) {
+                var heartIcon = $(element);
+                var spinner = heartIcon.find('.loading-spinner');
+                var heartIconElement = heartIcon.find('.fa-heart');
+
+                // Show loading spinner
+                spinner.show();
+                heartIconElement.hide();
+
+                // Determine if we're adding or removing from wishlist
+                var isCurrentlyFavorited = heartIcon.hasClass('favorited');
+                var action = isCurrentlyFavorited ? 'remove' : 'add';
+
+                $.ajax({
+                    type: "POST",
+                    url:'/_Handlers/BookWishlistHandler.ashx',
+                    data: {
+                        bookId: bookId,
+                        action: action
+                    },
+                    success: function (response) {
+                        if (response === 'success') {
+                            // Toggle the favorited class
+                            if (isCurrentlyFavorited) {
+                                heartIcon.removeClass('favorited');
+                                // Show remove success message
+                              //  showWishlistRemove();
+                            } else {
+                                heartIcon.addClass('favorited');
+                                // Show add success message
+                                showWishlistSuccess();
+                            }
+                        } else {
+                            if (response === 'unauthorized') {
+                                // Store the book ID for later use and show login popup
+                                currentBookIdForLogin = bookId;
+                                var currentUrl = window.location.href;
+                                var loginUrl = "/user/login/default.aspx?returnurl=" + encodeURIComponent(currentUrl);
+                                loginUrl += encodeURIComponent("#") + "book-" + bookId;
+
+                                $.isLoading({ text: "يجب تسجيل الدخول لتتمكن من استخدام الإضافة لقائمة الرغبات </br></br> <a style='color: Blue;' href='" + loginUrl + "'>تسجيل الدخول</a> أو <a style='color: Blue;' href=javascript:void(0); onclick=$.isLoading(" + "'hide'" + ");> إلغاء </a>" });
+
+                                // Setup Loading plugin
+                                $("#load-overlay .demo p").removeClass("alert-success");
+
+                                // Re-enabling event
+                                setTimeout(function () {
+                                    $.isLoading("hide");
+                                    $("#load-overlay .demo p").html("Content Loaded")
+                                        .addClass("alert-success");
+                                }, 15000);
+                            } else {
+                                // Show error message for other failures
+                                showWishlistError('حدث خطأ أثناء تحديث المفضلة. يرجى المحاولة مرة أخرى.');
+                            }
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        // Show error message for AJAX failures
+                        if (jqXHR.status === 404) {
+                            showWishlistError('لم يتم العثور على المورد المطلوب.');
+                        } else if (jqXHR.status === 500) {
+                            showWishlistError('خطأ في الخادم الداخلي. يرجى المحاولة لاحقاً.');
+                        } else if (jqXHR.status === 0) {
+                            showWishlistError('تحقق من اتصالك بالإنترنت وحاول مرة أخرى.');
+                        } else {
+                            showWishlistError('حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
+                        }
+                    },
+                    complete: function () {
+                        // Hide loading spinner and show heart icon
+                        spinner.hide();
+                        heartIconElement.show();
+                    }
+                });
+            }
+
+            // Enhanced book highlighting functionality
+            function handleBookHighlight() {
+
+                // Check if there's a hash in the URL that targets a book
+                const hash = window.location.hash;
+                if (hash && hash.startsWith('#book-')) {
+                    var bookId = hash.substring(6, hash.length);
+                    toggleWishlist(bookId, document.querySelector(`a[data-book-id="${bookId}"]`));
+                    setTimeout(() => {
+                        const targetBook = document.querySelector(hash);
+                        if (targetBook) {
+                            // Ensure the book is visible
+                            targetBook.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center',
+                                inline: 'nearest'
+                            });
+
+                            //   const targetBook1 = document.querySelector(hash  .substring(1, hash.length - 1));
+                            // Add a temporary highlight class for extra emphasis
+                            targetBook.classList.add('book-targeted');
+
+                            // Remove the temporary class after animation completes
+                            setTimeout(() => {
+                                targetBook.classList.remove('book-targeted');
+                            }, 3000);
+                        }
+                    }, 100); // Small delay to ensure DOM is ready
+                }
+            }
+
+            // Call on page load
+            document.addEventListener('DOMContentLoaded', handleBookHighlight);
+
+        </script>
+        
+
+        
+    <script type="text/javascript">
+        function addBook() {
+            var selectCopies = document.getElementById('copiesSelect');
+            var strUser = selectCopies.options[selectCopies.selectedIndex].value;
+            for (var x = 0; x < strUser; x++) {
+                if (x == strUser - 1)
+                    addCookie(userName + 'ShoppingCart', '81939ba9-5072-4893-9740-4e7e249dcc0b');
+                else
+                    addCookie(userName + 'ShoppingCart', '81939ba9-5072-4893-9740-4e7e249dcc0b');
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function scrollSmoothTo(elementId) {
+            var elementPosition = document.getElementById(elementId).offsetTop;
+            window.scrollTo({
+                top: elementPosition - 100, // to handel header style offset in mobile 
+                behavior: "smooth"  //Smooth transition to roll
+            });
+        }
+
+        var bookID = '81939ba9-5072-4893-9740-4e7e249dcc0b';
+        window.fbAsyncInit = function () {
+            FB.Event.subscribe('edge.create',
+                function (response) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/books/view.aspx/likeComment',
+                        data: "{'bookID':'" + bookID + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+
+                        }
+                    });
+
+                }
+            );
+            FB.Event.subscribe('edge.remove',
+                function (response) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/books/view.aspx/unlikeComment',
+                        data: "{'bookID':'" + bookID + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+
+                        }
+                    });
+
+                }
+            );
+
+
+
+            // here is where fb.init() code was
+        };
+    </script>
+
+
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('img[data-lazy-img-src]').each(function () {
+                    if ($(this).attr('data-lazy-img-src') && !$(this).attr('src'))
+                        $(this).attr('src', $(this).attr('data-lazy-img-src'));
+                });
+            });
+        </script>
+        
+
+        <!-- Google Adsence -->
+        
+        <!-- End Google Adsence -->
+
+    </form>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+
+    var currentBookIdForLogin = null;
+
+    // Show success message when adding to favorites
+    function showWishlistSuccess() {
+        // Remove any existing messages first
+        removeExistingMessages();
+
+        const message = document.createElement('div');
+        message.className = 'wishlist-success-message';
+        message.innerHTML = `
+            <i class="fa fa-info"></i>
+            <span class="message-text">تم إضافة الكتاب إلى المفضلة بنجاح</span>
+            <button class="close-btn" onclick="closeMessage(this)">&times;</button>
+        `;
+
+        document.body.appendChild(message);
+
+        // Trigger show animation
+        setTimeout(() => message.classList.add('show'), 10);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+            if (message && message.parentNode) {
+                message.classList.add('hide');
+                setTimeout(() => {
+                    if (message && message.parentNode) {
+                        message.remove();
+                    }
+                }, 400);
+            }
+        }, 3000);
+    }
+
+    // Show remove message when removing from favorites
+    function showWishlistRemove() {
+        // Remove any existing messages first
+        removeExistingMessages();
+
+        const message = document.createElement('div');
+        message.className = 'wishlist-remove-message';
+        message.innerHTML = `
+            <i class="fa fa-heart-broken"></i>
+            <span class="message-text">تم إزالة الكتاب من المفضلة</span>
+            <button class="close-btn" onclick="closeMessage(this)">&times;</button>
+        `;
+
+        document.body.appendChild(message);
+
+        setTimeout(() => message.classList.add('show'), 10);
+
+        setTimeout(() => {
+            if (message && message.parentNode) {
+                message.classList.add('hide');
+                setTimeout(() => {
+                    if (message && message.parentNode) {
+                        message.remove();
+                    }
+                }, 400);
+            }
+        }, 3000);
+    }
+
+    // Show error message for failures
+    function showWishlistError(errorText) {
+        // Remove any existing messages first
+        removeExistingMessages();
+
+        const message = document.createElement('div');
+        message.className = 'wishlist-error-message';
+        message.innerHTML = `
+            <i class="fa fa-exclamation-triangle"></i>
+            <span class="message-text">${errorText}</span>
+            <button class="close-btn" onclick="closeMessage(this)">&times;</button>
+        `;
+
+        document.body.appendChild(message);
+
+        setTimeout(() => message.classList.add('show'), 10);
+
+        // Auto remove after 5 seconds (longer for error messages)
+        setTimeout(() => {
+            if (message && message.parentNode) {
+                message.classList.add('hide');
+                setTimeout(() => {
+                    if (message && message.parentNode) {
+                        message.remove();
+                    }
+                }, 400);
+            }
+        }, 5000);
+    }
+
+    // Helper function to close message manually
+    function closeMessage(button) {
+        const message = button.parentElement;
+        if (message) {
+            message.classList.add('hide');
+            setTimeout(() => {
+                if (message && message.parentNode) {
+                    message.remove();
+                }
+            }, 400);
+        }
+    }
+
+    // Helper function to remove existing messages before showing new ones
+    function removeExistingMessages() {
+        const existingMessages = document.querySelectorAll('.wishlist-success-message, .wishlist-remove-message, .wishlist-error-message');
+        existingMessages.forEach(msg => {
+            if (msg && msg.parentNode) {
+                msg.classList.add('hide');
+                setTimeout(() => {
+                    if (msg && msg.parentNode) {
+                        msg.remove();
+                    }
+                }, 200);
+            }
+        });
+    }
+
+</script>

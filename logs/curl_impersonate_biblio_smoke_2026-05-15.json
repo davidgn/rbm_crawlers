@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 2,
+    "timeouts": 0,
+    "zero_added": 2,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/biblio_greece_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "No module named 'pydantic'"
+    },
+    {
+      "file": "src/biblio_uk_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "No module named 'pydantic'"
+    }
+  ]
+}

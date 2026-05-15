@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/libex_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 19.08,
+      "platform_name": "LibeX",
+      "territory": "Russia",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:22:46,341 [INFO] ConfigurableMarketplaceSpider: Starting LibeX harvest. limit_pages=1 limit_items=2\n2026-05-15 00:22:47,721 [INFO] httpx: HTTP Request: GET https://www.libex.ru/ \"HTTP/1.1 200 OK\"\n2026-05-15 00:22:48,122 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=0 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:48,942 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=1 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:49,760 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=2 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:50,482 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=3 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:51,197 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=4 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:51,909 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=5 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:52,724 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=6 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:53,447 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=10 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:54,115 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=48459 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:54,862 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254132.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:55,597 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254131.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:56,448 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254130.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:57,138 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254129.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:57,812 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254128.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:58,673 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254127.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:22:59,491 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254126.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:00,208 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254125.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:00,929 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254124.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:01,640 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254123.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:02,381 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254122.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:03,202 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254119.html \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:03,942 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=0 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:04,104 [INFO] httpx: HTTP Request: GET https://www.libex.ru/?pg=1 \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 00:23:04,105 [INFO] ConfigurableMarketplaceSpider: Finished LibeX harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 1,
+      "cache_html_added": 1
+    }
+  ]
+}

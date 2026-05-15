@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Добавить книгу на сайт / Форма добавления книги в книжную базу данных</title>
+<meta http-equiv='Content-Type' content='text/html; charset=windows-1251'>
+<meta name='description' content='На этой странице вы можете самостоятельно добавить свою книгу на наш сайт (при условии, что этой книги у нас нет). Далее вы можете выставить книгу на продажу или оставить на нее заявку' lang='ru'>
+<meta name='robots' content='index,follow'>
+<meta name='revisit-after' content='1'>
+<meta name='google-site-verification' content='J76WOWaeaDF3KeXORPNj0a2EkrJyml9i9JQf8OML8x4'>
+<meta name='yandex-verification' content='2fa8870ca12fa70b'>
+<link type='image/x-icon' href='/favicon.ico' rel='icon'>
+<link type='text/css' href='/css?main' rel='stylesheet'>
+<link type='text/css' href='/css?design/default/' rel='stylesheet'>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js'></script>
+<script type='text/javascript' src='/java?main'></script>
+<script type='text/javascript' src='/java?design/default/'></script>
+</head>
+
+<body>
+<div id='main'>
+	<div id='slide'>
+		<div class='logo'><a href='/'><img src='/images/logo.jpg' alt='ofeni.ru - сайт продажи книг'></a></div>
+		<div class='addbook'><span><a href='/book/'>книг: 101 807</a></span><br><a href='/book/?add'>Добавить книгу</a></div>
+		<div class='search'>
+			<div><label><input type='checkbox' name='sale' value=''><span></span>в продаже</label><label><input type='checkbox' name='buy' value=''><span></span>заявки</label><span class='smore'><a href='/search'>расширенный поиск</a></span></div>
+			<input class='inpt' type='text' name='search' value='' placeholder='isbn, название, автор, серия, издательство'><span>&times;</span><span class='inpb' onclick='go_search()'>поиск</span>
+		</div>
+		<div id='fpan'></div>
+	</div>
+	<nav id='nav'>
+		<span class='social'>Наша группа <a target='_blank' href='https://vk.com/ofeni_ru'><img src='/images/social/vk.jpg' alt=''></a></span><span class='navbut'><a href='/theme/'>Каталог</a><a href='/author/'>Авторы</a><a href='/series/'>Серии</a><a href='/izdat/'>Издательства</a><a href='/need/'>Полезное</a></span>
+	</nav>
+	<table class='w10'><tr>
+	<td id='panel'>
+		<div id='user'>
+<div class='center t20 b5'>
+	<div class='mainimg'><img src='/images/user_img.jpg' alt=''></div>
+</div>
+<div class='login'>
+	<input type='email' name='mail' value='' placeholder='e-mail' autocomplete='off' class='inpt' title='e-mail'><br>
+	<input type='password' name='pass' value='' placeholder='пароль' class='inpt' title='пароль'><br>
+	<label><input type='checkbox' name='check' value=''><span></span>чужой компьютер</label><br>
+	<input type='button' name='go' value='вход' class='inpb'><br>
+	<span id='registr' class='lit'>регистрация</span><br>
+	<span id='remind' class='lit'>восстановление</span><br>
+	<span id='active' class='lit'>активация</span>
+</div>
+</div>
+	</td><td id='content'>
+<!--[if lte IE 9]>
+<div class='iewarn'><p>Ваш браузер устарел. Мы не занимаемся поддержкой Internet Explorer версии 9 и ниже.</p></div>
+<![endif]-->
+		<div id='container'>
+<h1>Добавление книги в базу сайта</h1><div class='page_area'>
+	<div class='text'>
+		<h2>Уважаемые пользователи!</h2>
+		<p class='red'>Информация о книге, которая добавляется в базу сайта, будет использоваться всеми пользователями сайта. Они смогут выставить книгу на продажу, оставить заявку на покупку, добавлять книгу в свою библиотеку и пр.</p>
+		<p class='red'>Убедительно просим Вас добавлять книги внимательно, предоставлять информацию наиболее полно, прикреплять изображения без рекламных водяных знаков и т.д. Спасибо!</p>
+		<p>Добавляемые в базу книги проходят модерацию. Перед добавлением проверьте, что книга отсутствует на сайте. Если добавляемая книга уже есть в базе, то она удаляется модератором. До тех пор, пока книгу не проверил модератор вы можете внести в ней исправления. После проверки модератором изменения вносятся со страницы книги через форму "Ошибка в описании".</p>
+		<p>Книги, у которых заполнено менее 20% полей и не указан ISBN (для книг старше 1991 года выпуска), будут удаляться. Пожалуйста, устанавливайте изображение, это поможет при модерации.</p><br>
+		<h2>Кратко:</h2>
+		<p class='f18' style='line-height:120%;padding-bottom:4px;'>Дубликаты удаляются (чтобы собрать все предложения в одной книге).</p>
+		<p class='f18' style='line-height:120%;'>На сайт не принимаются электронные варианты книг, газеты, журналы…</p><br><br>
+		<input class='inpb' type='button' name='go' value='Согласен, добавить книгу!' onclick='act("book","form",0)'>
+	</div>
+</div>
+<div class='more_area'></div>
+
+		</div>
+	</td></tr></table>
+	<div id='footer'>
+		<div class='fnav'>
+<div><p>Офени.ру</p>
+	<a href='/ofeni' title='Статья: кто такие офени'>кто такие офени</a><br>
+	<a href='/rules' title='правила проекта'>правила</a><br>
+
+</div>
+<div><p>Разделы</p>
+	<a href='/theme/' title='книги по темам (жанрам)' rel='nofollow'>каталог</a><br>
+	<a href='/author/' title='книги по авторам' rel='nofollow'>авторы</a><br>
+	<a href='/series/' title='книги по сериям' rel='nofollow'>серии</a><br>
+	<a href='/izdat/' title='книги по издательствам' rel='nofollow'>издательства</a>
+</div>
+<div><p>Партнерство</p>
+	<a href='/co/shop' title='Сотрудничество с магазинами'>магазинам</a><br>
+</div>
+<div><p>Поддержка</p>
+	<span class='lit' onclick='act("user","msgsend",1)'>сообщение администратору</span><br>
+	<span>e-mail: </span><a class='nobind' href='mailto:support@ofeni.ru'>support@ofeni.ru</a>
+</div>
+		</div>
+		<div class='copy'>© 2010-2026 ofeni.ru - Все права защищены. <a href='/privacy_policy'>Политика конфиденциальности</a><script type='text/javascript'>
+function updLICounter(){
+	var a='b56013ff87e0b8a9fb902ef4a07a6990',s=6,d=window.location.protocol+'//'+document.location.host+'/',r=document.referrer,u=document.URL;
+	if(!window.ref)window.ref=(md5((r+'/').substr(d.length,s))!=a)?r:'';
+	if(md5((u+'/').substr(d.length,s))!=a){
+		new Image().src = "//counter.yadro.ru/hit?r"+
+		escape(window.ref)+((typeof(screen)=="undefined")?"":
+		";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+		screen.colorDepth:screen.pixelDepth))+";u"+escape(u)+
+		";h"+escape(document.title.substring(0,80))+
+		";"+Math.random();
+		window.ref=u;
+	}
+}
+$(document).ready(function(){$('#bscmd').change(function(){updLICounter();});});
+updLICounter();
+</script>
+</div>
+	</div>
+</div>
+<div id='notice'></div><!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter39398810 = new Ya.Metrika({
+                    id:39398810,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/39398810" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body>
+</html>

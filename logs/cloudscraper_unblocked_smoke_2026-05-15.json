@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 4,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/alibris_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.83,
+      "platform_name": "Alibris UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:28:53,984 [INFO] ConfigurableMarketplaceSpider: Starting Alibris UK harvest. limit_pages=1 limit_items=2\n2026-05-15 00:28:57,208 [INFO] ConfigurableMarketplaceSpider: Finished Alibris UK harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/awesomebooks_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 7.55,
+      "platform_name": "AwesomeBooks",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:28:51,736 [INFO] ConfigurableMarketplaceSpider: Starting AwesomeBooks harvest. limit_pages=1 limit_items=2\n2026-05-15 00:28:55,032 [INFO] ConfigurableMarketplaceSpider: Finished AwesomeBooks harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/recyclivre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.34,
+      "platform_name": "Recyclivre",
+      "territory": "France",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:28:58,233 [INFO] ConfigurableMarketplaceSpider: Starting Recyclivre harvest. limit_pages=1 limit_items=2\n2026-05-15 00:29:00,502 [INFO] ConfigurableMarketplaceSpider: Finished Recyclivre harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/webuybooks_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.11,
+      "platform_name": "WeBuyBooks",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:29:01,563 [INFO] ConfigurableMarketplaceSpider: Starting WeBuyBooks harvest. limit_pages=1 limit_items=2\n2026-05-15 00:29:02,968 [INFO] ConfigurableMarketplaceSpider: Finished WeBuyBooks harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    }
+  ]
+}

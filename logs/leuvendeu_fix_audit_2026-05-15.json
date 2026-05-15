@@ -1,0 +1,39 @@
+{
+  "summary": {
+    "files": 1,
+    "with_config": 1
+  },
+  "reports": [
+    {
+      "file": "src/leuvendeu_spider.py",
+      "errors": [],
+      "has_config": true,
+      "platform_name": "LeuVendeu",
+      "territory": "Brazil",
+      "base_url": "https://leuvendeu.com.br",
+      "social_profile": false,
+      "output": {
+        "path": "src/data/leuvendeu_listings.jsonl",
+        "exists": true,
+        "items": 2,
+        "empty_titles": 0,
+        "missing_listing_urls": 0,
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "index_fallback_items": 0,
+        "profile_fallback_items": 0,
+        "invalid_json": 0
+      },
+      "cache": {
+        "path": "src/cache/leuvendeu",
+        "exists": true,
+        "html_files": 3,
+        "meta_files": 3,
+        "missing_meta": [],
+        "bad_signal_urls": [],
+        "host_mismatches": [],
+        "invalid_meta_json": 0
+      }
+    }
+  ]
+}

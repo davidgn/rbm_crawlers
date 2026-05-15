@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 2
+  },
+  "reports": [
+    {
+      "file": "src/buscalibre_cr_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.52,
+      "platform_name": "Buscalibre Costa Rica",
+      "territory": "Costa Rica",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:35:48,697 [INFO] ConfigurableMarketplaceSpider: Starting Buscalibre Costa Rica harvest. limit_pages=1 limit_items=2\n2026-05-15 00:35:49,544 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cr/libros/search?q=usado \"HTTP/1.1 200 OK\"\n2026-05-15 00:35:50,033 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cr/libro-paper-towns-usado/9780142414934/p/2715656 \"HTTP/1.1 200 OK\"\n2026-05-15 00:35:51,155 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cr/libro-eldest-usado/9780375826702/p/1699358 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/buscalibre_ec_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 32.06,
+      "platform_name": "Buscalibre Ecuador",
+      "territory": "Ecuador",
+      "stdout_tail": "",
+      "stderr_tail": "bre.ec/libro-producciones-kim-jong-il-presenta-la-increible-historia-verdadera-de-corea-del-norte-y-del-secuestro-mas-osado-de-todos-los-tiempos/9788416354368/p/46979104 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:11,281 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-guia-de-aditivos-usados-en-alimentacion-4-ed/9788483525265/p/27275040 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:11,822 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-atrevidas-mujeres-que-han-osado/9786079409159/p/46547345 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:12,546 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-historia-de-las-crisis-argentinas-1880-1982-un-sacrificio-inutil-usado/9789500770170/p/55903365 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:13,362 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-energia-fotovoltaica-de-la-luz-solar-a-la-electricidad-usando-celulas-solares/9788420009797/p/1363707 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:14,151 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-toda-la-carne-al-asador/9789500763707/p/52159390 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:14,871 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-pedid-que-ya-se-os-ha-dado-meditaciones-para-adquirir-riqueza-salud-y-amor-usando-el-poder-de-la-mente-subconsciente/9781607964339/p/5464018 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:15,583 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-besame-ed-mcbain-atlantida-usado/9789500812771/p/55684378 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:16,323 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-fundamentos-de-programacion-usando-c/9786124435591/p/54600916 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:17,048 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-bhagavad-gita-la-ciencia-suprema-usado/9789584454195/p/64199544 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:17,823 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-el-poder-de-tu-mente-subconsciente-usando-el-poder-de-tu-mente-puedes-alcanzar-una-prosperidad-una-felicidad-y-una-paz-mental-sin-limites/9788496111769/p/2965164 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:18,778 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-los-suenos-de-la-luciernaga-de-jenny-jones-usado/9789500286060/p/54926377 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:19,519 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-concentracion-y-extranjerizacion-la-argentina-en-la-posconvertibilidad-libro-usado/9789876143349/p/7666182 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:20,092 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-la-mirada-complice-retratos-de-arquitectos-usado/9788493340391/p/55725670 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:20,642 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-como-predicar-de-cristo-usando-toda-la-biblia/9780980629378/p/52674538 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:21,333 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-como-hacer-el-mejor-asado/9789879097519/p/4923664 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:21,985 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-aprenda-practicando-visual-basic-usando-visual-studio-2012/9788426720849/p/35449994 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:22,550 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-el-osado-negro-juan-valiente/9788477375180/p/47430870 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:23,208 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-guia-de-los-aditivos-usados-en-alimentacion/9788495052322/p/2871464 \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:23,867 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libros \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:24,027 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libros-usados \"HTTP/1.1 202 Accepted\"\n2026-05-15 00:36:24,027 [INFO] ConfigurableMarketplaceSpider: Finished Buscalibre Ecuador harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 1,
+      "cache_html_added": 1
+    }
+  ]
+}

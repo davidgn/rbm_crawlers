@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 3,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/biblio_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.0,
+      "platform_name": "Biblio UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-14 13:39:57,015 [INFO] ConfigurableMarketplaceSpider: Starting Biblio UK harvest. limit_pages=1 limit_items=1\n2026-05-14 13:39:59,070 [INFO] ConfigurableMarketplaceSpider: Finished Biblio UK harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/fnac_pt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.04,
+      "platform_name": "FNAC Portugal Marketplace",
+      "territory": "Portugal",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-14 13:39:57,313 [INFO] ConfigurableMarketplaceSpider: Starting FNAC Portugal Marketplace harvest. limit_pages=1 limit_items=1\n2026-05-14 13:39:59,234 [INFO] ConfigurableMarketplaceSpider: Finished FNAC Portugal Marketplace harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/zapper_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.26,
+      "platform_name": "Zapper",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-14 13:39:57,321 [INFO] ConfigurableMarketplaceSpider: Starting Zapper harvest. limit_pages=1 limit_items=1\n2026-05-14 13:39:59,554 [INFO] ConfigurableMarketplaceSpider: Finished Zapper harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    }
+  ]
+}

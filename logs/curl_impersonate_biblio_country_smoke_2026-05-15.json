@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 2
+  },
+  "reports": [
+    {
+      "file": "src/biblio_es_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.36,
+      "platform_name": "Biblio.es",
+      "territory": "Spain",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:49:45,518 [INFO] ConfigurableMarketplaceSpider: Starting Biblio.es harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/biblio_ie_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.69,
+      "platform_name": "Biblio.ie",
+      "territory": "Ireland",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:49:49,451 [INFO] ConfigurableMarketplaceSpider: Starting Biblio.ie harvest. limit_pages=1 limit_items=2\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    }
+  ]
+}

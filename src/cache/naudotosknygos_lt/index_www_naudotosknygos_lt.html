@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <meta name="csrf-token" content="VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB">
+    <title>NaudotosKnygos.lt</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+            <meta name='description' itemprop='description' content='Knygos - pirk, parduok, mainyk!' />
+<meta name='keywords' content='Knygos, pigios knygos, naudotos knygos, zero waste, knygos pigiau' />
+<meta property="og:description" content="Knygos pigiau - pirk, parduok, mainyk!" />
+<meta property="og:title" content="Knygos - pirk, parduok, mainyk!" />
+<meta property="og:url" content="https://www.naudotosknygos.lt" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="NaudotosKnygos.lt" />
+<meta property="og:image" content="https://www.naudotosknygos.lt/images/Apie-mus-knygos.jpg" />
+<meta property="og:image:url" content="https://www.naudotosknygos.lt/images/Apie-mus-knygos.jpg" />
+<meta property="og:image:size" content="500" />
+        
+        
+    <link rel="preload" as="style" href="https://www.naudotosknygos.lt/build/assets/app-a43a07d0.css" /><link rel="modulepreload" href="https://www.naudotosknygos.lt/build/assets/app-facf679b.js" /><link rel="stylesheet" href="https://www.naudotosknygos.lt/build/assets/app-a43a07d0.css" /><script type="module" src="https://www.naudotosknygos.lt/build/assets/app-facf679b.js"></script>    <!-- CSS for searching  -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.naudotosknygos.lt/css/style1.css">
+        
+    <script>
+        window.Laravel = {"csrfToken":"VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB"};
+    </script>
+            
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<style>
+    /* pagrindinis popup */
+    .cc-window {
+        border-radius: 0.75rem;
+        /* kaip Bootstrap */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+        font-family: var(--bs-font-sans-serif);
+        max-width: 420px;
+        padding: 1rem 1.25rem;
+    }
+
+    /* tekstas */
+    .cc-message {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+
+    /* mygtukų container */
+    .cc-compliance {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+
+    /* mygtukai → Bootstrap look */
+    .cc-btn {
+        border-radius: 0.5rem;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+    }
+
+    /* Sutinku (primary) */
+    .cc-allow {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+
+    .cc-allow:hover {
+        background-color: #0b5ed7;
+    }
+
+    /* Nesutinku (secondary) */
+    .cc-deny {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .cc-deny:hover {
+        background-color: #5c636a;
+    }
+
+    /* link kaip Bootstrap */
+    .cc-link {
+        color: #0d6efd;
+        text-decoration: none;
+    }
+
+    .cc-link:hover {
+        text-decoration: underline;
+    }
+
+    /* mobile optimizacija */
+    @media (max-width: 576px) {
+        .cc-window {
+            left: 1rem !important;
+            right: 1rem !important;
+            bottom: 1rem !important;
+            max-width: none;
+        }
+
+        .cc-compliance {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .cc-btn {
+            width: 100%;
+        }
+
+        /* Papildomas saugiklis mobiliems */
+        @media (max-width: 576px) {
+            .cc-revoke {
+                display: none !important;
+            }
+        }
+
+    }
+</style>
+
+<script>
+    window.GA_ID = "G-5ME3GGE16E";
+    let ccInstance = null;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        ccInstance = window.cookieconsent.initialise({
+            type: "opt-in",
+            position: "bottom-right",
+           theme: "classic",
+            palette: {
+                popup: {
+                    background: "#fff",
+                    text: "#212529"
+                },
+                button: {
+                    background: "#0d6efd",
+                    text: "#fff"
+                }
+            },
+
+            content: {
+                message: "🍪 Naudojame slapukus, kad pagerintume jūsų naršymo patirtį.",
+                allow: "Sutinku",
+                deny: "Nesutinku",
+                policy: "Slapukai",
+                link: "Privatumo politika",
+                href: "/privatumas"
+            },
+
+            onInitialise: function(status) {
+                if (status === 'allow' || this.hasConsented()) {
+                    loadAnalytics();
+                } else {
+                    disableAnalytics();
+                }
+            },
+
+            onStatusChange: function(status, previousStatus) {
+                console.log('Cookie consent pakeistas į:', status);
+                if (status === 'allow') {
+                    loadAnalytics();
+                } else {
+                    disableAnalytics();
+                }
+            }
+        });
+    });
+
+    // === Analytics įkėlimas ===
+    function loadAnalytics() {
+        if (window.gaLoaded || !window.GA_ID) return;
+        window.gaLoaded = true;
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_ID;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+
+        gtag('js', new Date());
+        gtag('config', window.GA_ID, {
+            'cookie_domain': location.hostname,
+            'cookie_flags': 'SameSite=None;Secure' // jei naudoji HTTPS
+        });
+
+        console.log("✅ Google Analytics įjungtas");
+    }
+
+    // === Išjungimas + priverstinis ištrynimas ===
+    function disableAnalytics() {
+        if (!window.GA_ID) return;
+
+        // 1. Disable GA tracking
+        window['ga-disable-' + window.GA_ID] = true;
+
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'denied'
+            });
+        }
+
+        // 2. Priverstinai ištriname visus GA slapukus (patobulinta funkcija)
+        deleteAllGACookies();
+
+        console.log("❌ Analytics išjungtas ir visi _ga slapukai ištrinti");
+    }
+
+    function deleteAllGACookies() {
+        const prefixes = ['_ga', '_gid', '_gat', '_gac_', 'AMP_TOKEN'];
+
+        document.cookie.split(";").forEach(cookie => {
+            const name = cookie.split("=")[0].trim();
+
+            if (prefixes.some(prefix => name.startsWith(prefix))) {
+                deleteCookie(name);
+            }
+        });
+
+        // Papildomas saugus variantas su visais galimais domain/path
+        const hostname = location.hostname;
+        const domains = [hostname, '.' + hostname, location.host];
+        const paths = ['/', ''];
+
+        prefixes.forEach(prefix => {
+            domains.forEach(domain => {
+                paths.forEach(path => {
+                    // Ištrina su įvairiais variantais
+                    document.cookie = `${prefix}=; Max-Age=0; path=${path}; domain=${domain};`;
+                    document.cookie =
+                        `${prefix}=; Max-Age=0; path=${path}; domain=${domain}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+                });
+            });
+        });
+    }
+
+    function deleteCookie(name) {
+        const hostname = location.hostname;
+        const domains = [hostname, '.' + hostname];
+        const paths = ['/', ''];
+
+        domains.forEach(domain => {
+            paths.forEach(path => {
+                document.cookie =
+                    `${name}=; Max-Age=0; path=${path}; domain=${domain}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+            });
+        });
+    }
+
+    // Funkcija slapukų nustatymams atidaryti (footeryje)
+    window.openCookieSettings = function() {
+        if (ccInstance) {
+            ccInstance.showSettings ? ccInstance.showSettings() : location.reload();
+        } else {
+            document.cookie = "cookieconsent_status=; path=/; Max-Age=0";
+            location.reload();
+        }
+    };
+</script>
+        <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="manifest" href="https://www.naudotosknygos.lt/manifest.json">
+
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- Navbar  Desctop-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
+    <!-- Container wrapper -->
+    <div class="container mb-2 mt-2">
+        <a class="navbar-brand " href="/">
+            <img src="/images/naudotosknygos.png" alt="" width="136" height="34">
+        </a>
+        <!-- Right elements -->
+        <!--  seaarch desktop -->
+        <div class=" w-100 me-3 ms-3 " id="select2-desctop">
+            <select class="form-control select2-search" id="select2-desctopd"></select>
+        </div>
+        <!--// seaarch desktop -->
+        
+        <ul class="navbar-nav me-auto0 me-3 ms-3  ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMano" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-book-open"></i> Mano </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMano">
+                    <a class="dropdown-item" href="/knyga/mano"><i class="fas fa-book-open"></i> Parduodu knygas</a>
+                    <a class="dropdown-item" href="/knyga/parduota"><i class="fas fa-shopping-bag"></i> Parduotos knygos</a>
+                    <a class="dropdown-item" href="/knyga/pirkiniai"><i class="fas fa-shopping-cart"></i> Mano
+                        pirkiniai</a>
+                    <a class="dropdown-item" href="/ieskau-knygu/show"><i class="fas fa-heart"></i> Mano norai</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="/finansai"><i class="fas fa-euro-sign"></i> Finansai</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="/duk"><i class="fas fa-info-circle"></i> DUK</a>
+                    <a class="dropdown-item" href="/kontaktai"><i class="fas fa-question-circle"></i> Kontaktai -
+                        pagalba</a>
+                </div>
+            </li>
+        </ul>
+        <!-- // Mano links -->
+        <!-- Right elements -->
+        <div class="">
+            <div class="d-flex   align-items-center ">
+                <a class="btn btn-danger me-3" href="/parduok-knyga">Parduoti</a>
+                <!-- Icon -->
+                <a class="text-reset me-3" href="/knyga/pirkiniai">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a class="text-reset me-3" href="/finansai">
+                    <i class="fas fa-euro-sign"></i>
+                </a>
+                <!-- Notifications -->
+                <a class="text-reset me-3" href="/kontaktai"><i class="fas fa-question-circle"></i></a>
+
+                <a class="text-reset me-3" target="_blank" href="https://www.facebook.com/NaudotosKnygos.lt"><i class="fab fa-facebook"></i></a>
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user text-danger"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                                                <li>
+                            <a class="dropdown-item" href="https://www.naudotosknygos.lt/login">Prisijungti</a>
+                        </li>
+                                                <li>
+                            <a class="dropdown-item"
+                                href="https://www.naudotosknygos.lt/register">Registruotis</a>
+                        </li>
+                                                                    <hr class="dropdown-divider">
+                     <a class="dropdown-item" href="/knyga/mano"><i class="fas fa-book-open"></i> Parduodu knygas</a>
+                    <a class="dropdown-item" href="/knyga/parduota"><i class="fas fa-shopping-bag"></i> Parduotos knygos</a>
+                    <a class="dropdown-item" href="/knyga/pirkiniai"><i class="fas fa-shopping-cart"></i> Mano
+                        pirkiniai</a>
+                    <a class="dropdown-item" href="/ieskau-knygu/show"><i class="fas fa-heart"></i> Mano norai</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="/finansai"><i class="fas fa-euro-sign"></i> Finansai</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- // Right elements -->
+    </div>
+ </nav>
+   <div class="clearfix mb-3 d-none d-lg-block"></div>
+<!-- Navbar Mobile-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-block d-lg-none">
+    <!-- Container wrapper -->
+    <div class="container-fluid mt-2">
+        <a class="navbar-brand " href="/">
+            <img src="/images/NK.png" alt="" height="34">
+        </a>
+        <!-- Right elements -->
+                <div class="d-flex align-items-center ">
+            <a class="btn btn-outline-danger me-3 fw-bold" href="https://www.naudotosknygos.lt/login"> <i class="fas fa-user fa-lg text-danger"></i> Prisijungti</a>
+        </div>
+                <!-- Right elements -->
+    </div>
+</nav>
+<!-- Search mobile -->
+<div class="container-fluid mb-3  mt-3  d-block  d-lg-none " id="select2-search-mob">
+    <div class="row">
+        <div class="col">
+            <div class="d-block w-100  ">
+                <select class="form-control select2-search" id="select2-searchmob"></select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--// Search mobile -->
+        <main class=" ">
+            <div class="container">
+                <div class="row">
+                                    </div>
+            </div>
+            <!-- Masthead-->
+<div class="container">
+    <header class="masthead mb-3 mt-1">
+        <div class="container position-relative">
+            <div class="row text-start">
+                <div class="col-6">
+                    <div class="text-start text-white">
+                        <!-- Page heading-->
+                        <h1 class="mb-6"> Pirk<br>
+                            Parduok<br>
+                            Skaityk!</h1>
+                        <div class="mt-5 "><a class="btn btn-danger h5" href="/register"> Pradėti </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-center align-items-center py-3 gap-2 gap-md-3">
+                <div class="border-start ps-2 ps-md-3">
+            <a href="/kategorija/grozine-literatura" class="text-decoration-none small">
+                Grožinė literatūra
+            </a>
+        </div>
+                <div class="border-start ps-2 ps-md-3">
+            <a href="/kategorija/populiarioji-psichologija" class="text-decoration-none small">
+                Populiarioji psichologija
+            </a>
+        </div>
+                <div class="border-start ps-2 ps-md-3">
+            <a href="/kategorija/literatura-vaikams-ir-jaunimui" class="text-decoration-none small">
+                Literatūra vaikams ir jaunimui
+            </a>
+        </div>
+                <div class="border-start ps-2 ps-md-3">
+            <a href="/kategorija/pomegiai" class="text-decoration-none small">
+                Pomėgiai
+            </a>
+        </div>
+                <div class="border-start ps-2 ps-md-3">
+            <a href="/kategorija/vadoveliai-ir-pratybos" class="text-decoration-none small">
+                Vadovėliai ir pratybos
+            </a>
+        </div>
+                <div class="border-start ps-2 ps-md-3">
+            <a href="/kategorija/dalykine-literatura" class="text-decoration-none small">
+                Dalykinė literatūra
+            </a>
+        </div>
+            </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center text-center py-3">
+        <div class="col-auto">
+            <h4> Naujienos [ <a href="/ieskau-knygu"><i class="fas fa-search"></i> Ieškomos</a>]</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/moteris-ezere" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/11/moteris-ezere.jpg"
+                        class="scaled-image"
+                        alt="Moteris ežere"
+                        title="Moteris ežere"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    4.29 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/laura-lippman"
+                        class="text-decoration-none text-muted">
+                        Laura Lippman
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/moteris-ezere"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Moteris ežere</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/ikaite" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/53/ikaite.jpg"
+                        class="scaled-image"
+                        alt="Įkaitė"
+                        title="Įkaitė"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    5.39 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/clare-mackintosh"
+                        class="text-decoration-none text-muted">
+                        Clare Mackintosh
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/ikaite"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Įkaitė</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/psichoterapeute" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202206/29/psichoterapeute.png"
+                        class="scaled-image"
+                        alt="Psichoterapeutė"
+                        title="Psichoterapeutė"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    5.06 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/helene-flood"
+                        class="text-decoration-none text-muted">
+                        Helene Flood
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/psichoterapeute"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Psichoterapeutė</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/neatplestas-laiskas" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/09/neatplestas-laiskas.jpg"
+                        class="scaled-image"
+                        alt="Neatplėštas laiškas"
+                        title="Neatplėštas laiškas"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    2.29 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/jean-claude-mourlevat"
+                        class="text-decoration-none text-muted">
+                        Jean-Claude Mourlevat,
+                    </a>
+                                        <a href="https://www.naudotosknygos.lt/autorius/anne-laure-bondoux"
+                        class="text-decoration-none text-muted">
+                        Anne-Laure Bondoux
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/neatplestas-laiskas"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Neatplėštas laiškas</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/zmogaus-paskirtis" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/24/zmogaus-paskirtis.png"
+                        class="scaled-image"
+                        alt="Žmogaus paskirtis"
+                        title="Žmogaus paskirtis"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    11.99 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/johann-gottlieb-fichte"
+                        class="text-decoration-none text-muted">
+                        Johann Gottlieb Fichte
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/zmogaus-paskirtis"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Žmogaus paskirtis</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/popierine-mergina" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/18/popierine-mergina.jpg"
+                        class="scaled-image"
+                        alt="Popierinė mergina"
+                        title="Popierinė mergina"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    6.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/guillaume-musso"
+                        class="text-decoration-none text-muted">
+                        Guillaume Musso
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/popierine-mergina"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Popierinė mergina</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/laisve-lokiams" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/36/laisve-lokiams.jpg"
+                        class="scaled-image"
+                        alt="Laisvę lokiams!"
+                        title="Laisvę lokiams!"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    1.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/john-irving"
+                        class="text-decoration-none text-muted">
+                        John Irving
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/laisve-lokiams"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Laisvę lokiams!</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/nuzudyk-mane-dar-karta" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202202/17/nuzudyk-mane-dar-karta.jpg"
+                        class="scaled-image"
+                        alt="Nužudyk mane dar kartą"
+                        title="Nužudyk mane dar kartą"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    6.22 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/rachel-abbott"
+                        class="text-decoration-none text-muted">
+                        Rachel Abbott
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/nuzudyk-mane-dar-karta"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Nužudyk mane dar kartą</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/sinchronine-gamyba-paciu-laiku-budas-visai-imonei" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202203/56/sinchronine-gamyba-paciu-laiku-budas-visai-imonei.jpg"
+                        class="scaled-image"
+                        alt="Sinchroninė gamyba: „Pačiu laiku“ būdas visai įmonei"
+                        title="Sinchroninė gamyba: „Pačiu laiku“ būdas visai įmonei"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    110.99 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/hitoshi-takeda"
+                        class="text-decoration-none text-muted">
+                        Hitoshi Takeda
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/sinchronine-gamyba-paciu-laiku-budas-visai-imonei"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Sinchroninė gamyba: „Pačiu laiku“ būdas visai įmonei</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/knyga-apie-ypac-tyra-pirmasis-lietuviskas-alyvuogiu-aliejaus-vadovelis" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202203/36/knyga-apie-ypac-tyra-pirmasis-lietuviskas-alyvuogiu-aliejaus-vadovelis.jpg"
+                        class="scaled-image"
+                        alt="Knyga apie ypač tyrą. Pirmasis lietuviškas alyvuogių aliejaus vadovėlis"
+                        title="Knyga apie ypač tyrą. Pirmasis lietuviškas alyvuogių aliejaus vadovėlis"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    11.99 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/paulius-jurkevicius"
+                        class="text-decoration-none text-muted">
+                        Paulius Jurkevičius
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/knyga-apie-ypac-tyra-pirmasis-lietuviskas-alyvuogiu-aliejaus-vadovelis"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Knyga apie ypač tyrą. Pirmasis lietuviškas alyvuogių aliejaus vadovėlis</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/sviesos-sukurti-profesija" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202206/12/sviesos-sukurti-profesija.jpg"
+                        class="scaled-image"
+                        alt="Šviesos sukurti. Profesija"
+                        title="Šviesos sukurti. Profesija"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    1.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/saulius-macaitis"
+                        class="text-decoration-none text-muted">
+                        Saulius Macaitis
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/sviesos-sukurti-profesija"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Šviesos sukurti. Profesija</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/fear-and-loathing-in-las-vegas" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202212/31/fear-and-loathing-in-las-vegas.png"
+                        class="scaled-image"
+                        alt="Fear and Loathing in Las Vegas"
+                        title="Fear and Loathing in Las Vegas"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    1.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/hunter-s-thompson"
+                        class="text-decoration-none text-muted">
+                        Hunter S. Thompson
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/fear-and-loathing-in-las-vegas"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Fear and Loathing in Las Vegas</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/bevarde-mergina" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202309/00/bevarde-mergina.jpg"
+                        class="scaled-image"
+                        alt="Bevardė mergina"
+                        title="Bevardė mergina"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    6.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/lisa-regan"
+                        class="text-decoration-none text-muted">
+                        Lisa Regan
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/bevarde-mergina"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Bevardė mergina</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/itale-brukline" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202309/09/itale-brukline.jpg"
+                        class="scaled-image"
+                        alt="Italė Brukline"
+                        title="Italė Brukline"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    6.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/santa-montefiore"
+                        class="text-decoration-none text-muted">
+                        Santa Montefiore
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/itale-brukline"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Italė Brukline</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/ledlauzis" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202309/40/ledlauzis.jpg"
+                        class="scaled-image"
+                        alt="Ledlaužis"
+                        title="Ledlaužis"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    8.80 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/kristina-ohlsson"
+                        class="text-decoration-none text-muted">
+                        Kristina Ohlsson
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/ledlauzis"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Ledlaužis</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/kinrozes-ziedas" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202407/38/kinrozes-ziedas.jpg"
+                        class="scaled-image"
+                        alt="Kinrožės žiedas"
+                        title="Kinrožės žiedas"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    13.09 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/chimamanda-ngozi-adichie"
+                        class="text-decoration-none text-muted">
+                        Chimamanda Ngozi Adichie
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/kinrozes-ziedas"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Kinrožės žiedas</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/lietuvos-respublikos-civilinis-kodeksas-2022-09-01" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202309/47/lietuvos-respublikos-civilinis-kodeksas-2022-09-01.jpg"
+                        class="scaled-image"
+                        alt="Lietuvos Respublikos civilinis kodeksas (2022-09-01)"
+                        title="Lietuvos Respublikos civilinis kodeksas (2022-09-01)"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    22.99 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/nera"
+                        class="text-decoration-none text-muted">
+                        Nėra
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/lietuvos-respublikos-civilinis-kodeksas-2022-09-01"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Lietuvos Respublikos civilinis kodeksas (2022-09-01)</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/buhalterines-apskaitos-pagrindai-1996" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202309/50/buhalterines-apskaitos-pagrindai-1996.jpg"
+                        class="scaled-image"
+                        alt="Buhalterinės apskaitos pagrindai (1996)"
+                        title="Buhalterinės apskaitos pagrindai (1996)"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    6.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/gediminas-kalcinskas"
+                        class="text-decoration-none text-muted">
+                        Gediminas Kalčinskas
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/buhalterines-apskaitos-pagrindai-1996"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Buhalterinės apskaitos pagrindai (1996)</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/vaikystes-fenomenas" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202310/31/vaikystes-fenomenas.jpg"
+                        class="scaled-image"
+                        alt="Vaikystės fenomenas"
+                        title="Vaikystės fenomenas"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    21.89 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/audrone-juodaityte"
+                        class="text-decoration-none text-muted">
+                        Audronė Juodaitytė
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/vaikystes-fenomenas"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Vaikystės fenomenas</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/saltinelis-elementorius" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202402/41/saltinelis-elementorius.jpg"
+                        class="scaled-image"
+                        alt="Šaltinėlis. Elementorius"
+                        title="Šaltinėlis. Elementorius"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    49.39 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/elena-marcelioniene"
+                        class="text-decoration-none text-muted">
+                        Elena Marcelionienė
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/saltinelis-elementorius"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Šaltinėlis. Elementorius</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/motinos-kapas" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202405/14/motinos-kapas.jpg"
+                        class="scaled-image"
+                        alt="Motinos kapas"
+                        title="Motinos kapas"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    6.55 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/lisa-regan"
+                        class="text-decoration-none text-muted">
+                        Lisa Regan
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/motinos-kapas"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Motinos kapas</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/in-fine" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202405/07/in-fine.jpg"
+                        class="scaled-image"
+                        alt="In fine"
+                        title="In fine"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    1.49 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/leonardas-gutauskas"
+                        class="text-decoration-none text-muted">
+                        Leonardas Gutauskas
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/in-fine"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">In fine</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/monos-akys" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202601/40/monos-akys.webp"
+                        class="scaled-image"
+                        alt="Monos Akys"
+                        title="Monos Akys"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    11.99 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/thomas-schlesser"
+                        class="text-decoration-none text-muted">
+                        Thomas Schlesser
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/monos-akys"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Monos Akys</h2>
+                </a>
+            </div>
+        </div>
+                <div class="col d-flex flex-column">
+            <!-- Nuotraukos blokas su tinkamu masteliu -->
+            <div class="image-container bg-light rounded overflow-hidden mb-2">
+                <a href="https://www.naudotosknygos.lt/knygos/robinzonas-kruzas-1994" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                    <img src="/upload/202603/33/robinzonas-kruzas-1994.webp"
+                        class="scaled-image"
+                        alt="Robinzonas Kruzas"
+                        title="Robinzonas Kruzas"
+                        loading="lazy"
+                        onerror="this.onerror=null;this.src='/images/Knyga-NaudotosKnygos.lt.png'">
+                </a>
+            </div>
+
+            <!-- Turinio blokas -->
+            <div class="content-wrapper d-flex flex-column mb-auto">
+                <div class="h5 fw-bold text-center mt-2">
+                    55.99 €
+                </div>
+                <!-- Autoriai -->
+                <div class="text-muted small mb-2 text-center">
+                                        <a href="https://www.naudotosknygos.lt/autorius/d-defoe"
+                        class="text-decoration-none text-muted">
+                        D. Defoe
+                    </a>
+                                    </div>
+                <!-- Knygos pavadinimas -->
+                <a href="https://www.naudotosknygos.lt/knygos/robinzonas-kruzas-1994"
+                    class="text-decoration-none text-dark text-center 00mb-1">
+                    <h2 class="h6 line-clamp-2">Robinzonas Kruzas</h2>
+                </a>
+            </div>
+        </div>
+            </div>
+    
+        <div class="d-flex justify-content-center mt-4">
+        <ul class="pagination">
+        
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        
+        
+                    
+            
+            
+                                                                        <li class="page-item active"><span class="page-link">1</span></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://www.naudotosknygos.lt?page=2">2</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://www.naudotosknygos.lt?page=3">3</a></li>
+                                                                                <li class="page-item"><a class="page-link" href="https://www.naudotosknygos.lt?page=4">4</a></li>
+                                                                                                                                                                                                                                                                                            
+                            <li class="page-item disabled"><span class="page-link">...</span></li>
+            
+            
+                                
+            
+            
+                                                                                                                        
+        
+                    <li class="page-item"><a class="page-link" href="https://www.naudotosknygos.lt?page=2" rel="next">&raquo;</a></li>
+            </ul>
+
+    </div>
+    </div>
+
+<!-- Įmonės info -->
+<div class="bg-light py-2">
+    <div class="container">
+        <div class="row text-center text-sm-start">
+            <div class="col-sm-10 small">
+                UAB Kvadratukai 305329885, Draugystės pr. 4-5, Šiauliai<br>
+                tel.: +37060038339, el.paštas: info@ naudotosknygos.lt
+            </div>
+            <div class="col-sm-2 text-sm-end text-center mt-2 mt-sm-0">
+                <img src="/images/Visa.png" height="24" class="me-1" />
+                <img src="/images/Mc.png" height="34" />
+            </div>
+        </div>
+    </div>
+</div>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <div class=" d-none d-lg-inline">
+        <footer class="footer bg-dark text-white mt-3 py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <ul class="list-inline mb-2 small flex-wrap d-flex justify-content-center">
+                            <li class="list-inline-item px-2"><a href="/apie-mus" class="text-white">Apie</a></li>
+                            <li class="list-inline-item px-2"><a href="/duk" class="text-white">DUK</a></li>
+                            <li class="list-inline-item px-2"><a href="/kontaktai" class="text-white">Kontaktai</a></li>
+                            <li class="list-inline-item px-2"><a href="/taisykles" class="text-white">Taisyklės</a></li>
+                            <li class="list-inline-item px-2"><a href="/privatumas" class="text-white">Privatumo
+                                    politika</a></li>
+                            <li class="list-inline-item px-2" onclick="openCookieSettings()" class="text-white"><a
+                                    href="#">Slapukų nustatymai</a></li>
+                            <li class="list-inline-item px-2"><a href="/knyga/pigios-knygos-iki-2-euru"
+                                    class="text-white">Knygos iki 2 €</a></li>
+                            <li class="list-inline-item px-2"><a href="/apie-knygas/" class="text-white">Apie knygas</a>
+                            </li>
+                        </ul>
+                        <p class="small mb-0">&copy; NaudotosKnygos.lt 2006 - 2026 Visos teisės
+                            saugomos</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="mt-5 pb-4 d-lg-none"></div>
+    <!-- Fixed mobile bottom menu -->
+    <nav class="fixed-bottom bg-light py-2 border-top d-lg-none" aria-label="Mobili navigacija">
+        <div class="container-fluid px-1">
+            <div class="d-flex justify-content-around text-center">
+                <a href="/" class="flex-fill" aria-label="Pradžia">
+                    <div><i class="fas fa-lg fa-home text-danger"></i></div>
+                    <small class="d-block">Pradžia</small>
+                </a>
+                <a href="/finansai" class="flex-fill" aria-label="Finansai">
+                    <div><i class="fas fa-euro-sign fa-lg text-danger"></i></div>
+                    <small class="d-block">Finansai</small>
+                </a>
+                <a href="/knyga/pirkiniai" class="flex-fill" aria-label="Pirkiniai">
+                    <div><i class="fas fa-shopping-cart fa-lg text-danger"></i></div>
+                    <small class="d-block">Pirkiniai</small>
+                </a>
+                <a href="/kontaktai" class="flex-fill" aria-label="Pagalba">
+                    <div><i class="fas fa-question-circle fa-lg text-danger"></i></div>
+                    <small class="d-block">Pagalba</small>
+                </a>
+                <a href="https://www.naudotosknygos.lt/paskyra" class="flex-fill" aria-label="Paskyra">
+                    <div><i class="fas fa-user fa-lg text-danger"></i></div>
+                    <small class="d-block">Paskyra</small>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- <script src="https://www.naudotosknygos.lt/js/app.js?v=1"></script>
+  JS for searching            https://select2.org/data-sources/formats  -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="/sw.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            window.jQuery(document).on('select2:open', e => {
+                const id = e.target.id;
+                const target = document.querySelector(`[aria-controls=select2-${id}-results]`);
+                target.focus();
+            });
+
+            $('.select2-search').select2({
+                minimumInputLength: 2, // Require at least 2 characters
+                placeholder: 'Paieška pagal pavadinimą ARBA autorių',
+                language: {
+                    inputTooShort: function() {
+                        return 'Įrašykite daugiau raidžių';
+                    }
+                },
+                ajax: {
+                    url: '/select',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function(data, params) {
+                        if (data && data.current_page && data.data) {
+                            var options = [];
+
+                            $.each(data.data, function(index, book) {
+                                var text = book.name + ' - ';
+                                $.each(book.authors, function(index, author) {
+                                    if (index > 0) {
+                                        text += ', ';
+                                    }
+                                    text += author.fname;
+                                });
+
+                                var option = {
+                                    id: book.id,
+                                    text: text,
+                                    slug: book.slug,
+                                    image: book.image // Image URL (if available)
+                                };
+
+                                options.push(option);
+                            });
+                            // Paspaudus ant knygos pavadinimo ar paveiksliuko, atidaromas puslapis pagal data.slug
+                            $('.select2-search').on('select2:select', function(e) {
+                                var data = e.params.data;
+                                if (data.slug) {
+                                    var url = '/knygos/' + data
+                                        .slug; // Pridėkite jūsų puslapio URL pradžią
+                                    window.location.href = url;
+                                }
+                            });
+                            // Neradome
+                            if (data.total === 0) {
+                                var showMoreUrl = '/knygos/create'; //
+
+                                // Įtraukiame naują parinktį su nuoroda
+                                options.push({
+                                    id: '__nera__',
+                                    text: ' Nieko neradome. Paskelbkite savo parduodamą knygą.',
+                                    nera: true,
+                                    action: showMoreUrl
+                                });
+
+
+                                $('.select2-search').on('select2:select', function(e) {
+                                    var data = e.params.data;
+                                    if (data.nera) {
+                                        window.location.href = data.action;
+                                    }
+                                });
+                            }
+                            // Check if there's a "more results" page
+                            if (data.next_page_url) {
+                                var showMoreUrl = '/search?search=' + encodeURIComponent(params.term);
+                                // Įtraukiame naują parinktį su nuoroda
+                                options.push({
+                                    id: '__more__',
+                                    text: '______ Rodyti daugiau ...',
+                                    more: true,
+                                    action: showMoreUrl // Saugome nuorodos adresą šiame lauke
+                                });
+
+                                $('.select2-search').on('select2:select', function(e) {
+                                    var data = e.params.data;
+                                    if (data.more) {
+                                        window.location.href = data.action;
+                                    }
+                                });
+                            }
+                            return {
+                                results: options
+                            };
+
+                        }
+                    },
+                    cache: true
+                },
+                templateResult: function(data) {
+                    if (!data.id) {
+                        return data.text;
+                    }
+                    if (data.image) {
+                        var $image = $('<img>', {
+                            class: 'book-image',
+                            src: 'https://www.naudotosknygos.lt' + data
+                                .image, // Image URL (if available)
+                            width: 50,
+                            height: 60
+                        });
+                    }
+                    var $span = $('<span>', {
+                        text: data.text
+                    });
+                    var $container = $('<div>').append($image, $span);
+
+                    return $container;
+                },
+            });
+
+        });
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            let isSubscribed = true; // Pradinė būsena (numatoma, kad prenumeruota)
+            let isInstalled = true; // Pradinė būsena (numatoma, kad įdiegta)
+            let isLoggedIn = false;
+
+            navigator.serviceWorker.register('/sw.js').then(function(swReg) {
+                console.log('Service Worker registruotas:', swReg);
+                // Tikriname, ar vartotojas jau užsiprenumeravęs
+                swReg.pushManager.getSubscription().then(function(subscription) {
+                    if (subscription === null && isLoggedIn) {
+                        // Vartotojas yra prisijungęs ir nėra prenumeratos, prašome leidimo
+                        console.log('subscription === null && isLoggedIn');
+                        if (!sessionStorage.getItem('subscriptionPromptShown')) {
+                            // Parodome prenumeratos pasiūlymą ir įrašome į sesiją
+                            askForPermission();
+                            sessionStorage.setItem('subscriptionPromptShown', 'true');
+                            console.log('askForPermission +');
+                        }
+
+
+                        //    if (subscription === null) {
+                        const subscriptionPrompt = document.getElementById('subscription-prompt');
+                        if (subscriptionPrompt) {
+                            subscriptionPrompt.style.display = 'block';
+                            isSubscribed = false; // Nėra prenumeratos
+                        }
+                    } else {
+                        isSubscribed = true; // Prenumerata aktyvuota
+                    }
+                    checkInstallPromptVisibility();
+                });
+            }).catch(function(error) {
+                console.error('Service Worker registracija nepavyko:', error);
+            });
+
+            // Tikriname įdiegimo būseną
+            let deferredPrompt;
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                isInstalled = false; // Nėra įdiegta
+                const installButton = document.getElementById('install-button');
+                if (installButton) {
+                    installButton.style.display = 'block';
+                    document.getElementById("install-button").addEventListener("click", () => {
+                        deferredPrompt.prompt();
+                        deferredPrompt.userChoice.then((choiceResult) => {
+                            deferredPrompt = null;
+                            if (choiceResult.outcome === 'accepted') {
+                                isInstalled = true;
+                                document.getElementById("install-button").style.display = "none";
+                            }
+                            checkInstallPromptVisibility();
+                        });
+                    });
+                }
+
+                checkInstallPromptVisibility();
+            });
+
+            window.addEventListener("appinstalled", () => {
+                isInstalled = true;
+                checkInstallPromptVisibility();
+            });
+
+            // Funkcija, rodanti #install-all, jei bent viena funkcija neaktyvuota
+            function checkInstallPromptVisibility() {
+                const installPrompt = document.getElementById("install-all");
+                if (installPrompt) {
+                    if (!isSubscribed || !isInstalled) {
+                        installPrompt.style.display = "block";
+                    } else {
+                        installPrompt.style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+        function askForPermission() {
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                    // get service worker
+                    navigator.serviceWorker.ready.then((sw) => {
+                        // subscribe
+                        sw.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: "BEw1FUTQ6AyIdnKkohASAbWrZbAk232qxqDS3CZggrHUtS3HdI6Q7NBXZ9WzTGER61A8N9ubMSJSC3zqGeHHwsI"
+                        }).then((subscription) => {
+                            console.log(JSON.stringify(subscription));
+                            saveSub(JSON.stringify(subscription));
+                        });
+                    });
+                }
+            });
+        }
+
+        function saveSub(sub) {
+            $.ajax({
+                type: 'post',
+                url: '/save-push-notification-sub',
+                data: {
+                    '_token': "VPV1oF5FjXKc5y2VzmPrdkkwRKhU5RKcHR8KcqmB",
+                    'sub': sub
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+        </body>
+
+</html>

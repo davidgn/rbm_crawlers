@@ -1,0 +1,877 @@
+{
+  "reports": [
+    {
+      "file": "src/alibris_uk_spider.py",
+      "platform": "Alibris UK",
+      "base_url": "https://www.alibris.co.uk",
+      "paths": [
+        {
+          "url": "https://www.alibris.co.uk/search/books",
+          "status": 403,
+          "final_url": "https://www.alibris.co.uk/search/books",
+          "len": 5593,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.alibris.co.uk/",
+          "status": 403,
+          "final_url": "https://www.alibris.co.uk/",
+          "len": 5557,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.alibris.co.uk/used-books",
+          "status": 403,
+          "final_url": "https://www.alibris.co.uk/used-books",
+          "len": 5587,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/awesomebooks_spider.py",
+      "platform": "AwesomeBooks",
+      "base_url": "https://www.awesomebooks.com",
+      "paths": [
+        {
+          "url": "https://www.awesomebooks.com/collections/books",
+          "status": 403,
+          "final_url": "https://www.awesomebooks.com/collections/books",
+          "len": 5654,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.awesomebooks.com/",
+          "status": 403,
+          "final_url": "https://www.awesomebooks.com/",
+          "len": 5582,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.awesomebooks.com/search?q=books",
+          "status": 403,
+          "final_url": "https://www.awesomebooks.com/search?q=books",
+          "len": 5624,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/biblio_es_spider.py",
+      "platform": "Biblio.es",
+      "base_url": "https://biblio.es",
+      "paths": [
+        {
+          "url": "https://biblio.es/",
+          "status": 403,
+          "final_url": "https://biblio.es/",
+          "len": 5570,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://biblio.es/search.php",
+          "status": 403,
+          "final_url": "https://biblio.es/search.php",
+          "len": 5622,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://biblio.es/books",
+          "status": 403,
+          "final_url": "https://biblio.es/books",
+          "len": 5585,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/biblio_greece_spider.py",
+      "platform": "Biblio.com Greece",
+      "base_url": "https://www.biblio.com",
+      "paths": [
+        {
+          "url": "https://www.biblio.com/bookstores/Greece/%20none/Athens",
+          "status": 403,
+          "final_url": "https://www.biblio.com/bookstores/Greece/%20none/Athens",
+          "len": 5735,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.biblio.com/search.php",
+          "status": 403,
+          "final_url": "https://www.biblio.com/search.php",
+          "len": 5648,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/biblio_ie_spider.py",
+      "platform": "Biblio.ie",
+      "base_url": "https://biblio.ie",
+      "paths": [
+        {
+          "url": "https://biblio.ie/",
+          "status": 403,
+          "final_url": "https://biblio.ie/",
+          "len": 5549,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://biblio.ie/search.php",
+          "status": 403,
+          "final_url": "https://biblio.ie/search.php",
+          "len": 5622,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://biblio.ie/books",
+          "status": 403,
+          "final_url": "https://biblio.ie/books",
+          "len": 5585,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/biblio_uk_spider.py",
+      "platform": "Biblio UK",
+      "base_url": "https://biblio.co.uk",
+      "paths": [
+        {
+          "url": "https://biblio.co.uk/",
+          "status": 403,
+          "final_url": "https://biblio.co.uk/",
+          "len": 5552,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://biblio.co.uk/search.php",
+          "status": 403,
+          "final_url": "https://biblio.co.uk/search.php",
+          "len": 5604,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://biblio.co.uk/books",
+          "status": 403,
+          "final_url": "https://biblio.co.uk/books",
+          "len": 5589,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/bookloop_uk_spider.py",
+      "platform": "Bookloop UK",
+      "base_url": "https://bookloop.webuybooks.co.uk",
+      "paths": [
+        {
+          "url": "https://bookloop.webuybooks.co.uk/",
+          "status": 403,
+          "final_url": "https://bookloop.webuybooks.co.uk/",
+          "len": 5587,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://bookloop.webuybooks.co.uk/sell-books",
+          "status": 403,
+          "final_url": "https://bookloop.webuybooks.co.uk/sell-books",
+          "len": 5617,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://bookloop.webuybooks.co.uk/books",
+          "status": 403,
+          "final_url": "https://bookloop.webuybooks.co.uk/books",
+          "len": 5602,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/buscalibre_co_spider.py",
+      "platform": "Buscalibre Colombia",
+      "base_url": "https://www.buscalibre.com.co",
+      "paths": [
+        {
+          "url": "https://www.buscalibre.com.co/libros/search?q=usado",
+          "status": 200,
+          "final_url": "https://www.buscalibre.com.co/libros/search?q=usado",
+          "len": 436936,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Buscalibre Colombia - Búsqueda de Libros - Usado",
+          "signals": [
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.buscalibre.com.co/libros",
+          "status": 200,
+          "final_url": "https://www.buscalibre.com.co/libros",
+          "len": 444993,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Ofertas de Libros en Buscalibre. Comprar Libros con descuento.",
+          "signals": [
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.buscalibre.com.co/libros-usados",
+          "status": 404,
+          "final_url": "https://www.buscalibre.com.co/libros-usados",
+          "len": 9890,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Pagina No disponible",
+          "signals": []
+        }
+      ]
+    },
+    {
+      "file": "src/buscalibre_cr_spider.py",
+      "platform": "Buscalibre Costa Rica",
+      "base_url": "https://www.buscalibre.cr",
+      "paths": [
+        {
+          "url": "https://www.buscalibre.cr/libros/search?q=usado",
+          "status": 200,
+          "final_url": "https://www.buscalibre.cr/libros/search?q=usado",
+          "len": 436857,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Buscalibre Costa Rica - Búsqueda de Libros - Usado",
+          "signals": [
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.buscalibre.cr/libros",
+          "status": 200,
+          "final_url": "https://www.buscalibre.cr/libros",
+          "len": 446814,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Ofertas de Libros en Buscalibre. Comprar Libros con descuento.",
+          "signals": [
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.buscalibre.cr/libros-usados",
+          "status": 404,
+          "final_url": "https://www.buscalibre.cr/libros-usados",
+          "len": 9890,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Pagina No disponible",
+          "signals": []
+        }
+      ]
+    },
+    {
+      "file": "src/buscalibre_ec_spider.py",
+      "platform": "Buscalibre Ecuador",
+      "base_url": "https://www.buscalibre.ec",
+      "paths": [
+        {
+          "url": "https://www.buscalibre.ec/libros/search?q=usado",
+          "status": 200,
+          "final_url": "https://www.buscalibre.ec/libros/search?q=usado",
+          "len": 419483,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Buscalibre Ecuador - Búsqueda de Libros - Usado",
+          "signals": [
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.buscalibre.ec/libros",
+          "status": 202,
+          "final_url": "https://www.buscalibre.ec/libros",
+          "len": 0,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "",
+          "signals": []
+        },
+        {
+          "url": "https://www.buscalibre.ec/libros-usados",
+          "status": 202,
+          "final_url": "https://www.buscalibre.ec/libros-usados",
+          "len": 0,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "",
+          "signals": []
+        }
+      ]
+    },
+    {
+      "file": "src/comprovendolibri_spider.py",
+      "platform": "ComproVendoLibri.it",
+      "base_url": "https://www.comprovendolibri.it",
+      "paths": [
+        {
+          "url": "https://www.comprovendolibri.it/",
+          "status": 403,
+          "final_url": "https://www.comprovendolibri.it/",
+          "len": 5652,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.comprovendolibri.it/libri",
+          "status": 403,
+          "final_url": "https://www.comprovendolibri.it/libri",
+          "len": 5667,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.comprovendolibri.it/cerca.asp",
+          "status": 403,
+          "final_url": "https://www.comprovendolibri.it/cerca.asp",
+          "len": 5679,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/fnac_pt_spider.py",
+      "platform": "FNAC Portugal Marketplace",
+      "base_url": "https://www.fnac.pt",
+      "paths": [
+        {
+          "url": "https://www.fnac.pt/livros",
+          "status": 403,
+          "final_url": "https://www.fnac.pt/livros",
+          "len": 0,
+          "ctype": "text/html",
+          "title": "",
+          "signals": []
+        },
+        {
+          "url": "https://www.fnac.pt/marketplace",
+          "status": 403,
+          "final_url": "https://www.fnac.pt/marketplace",
+          "len": 0,
+          "ctype": "text/html",
+          "title": "",
+          "signals": []
+        },
+        {
+          "url": "https://www.fnac.pt/Bookbot/srefDC883EC5-E4EA-8B79-507E-DA0C19B75658",
+          "status": 403,
+          "final_url": "https://www.fnac.pt/Bookbot/srefDC883EC5-E4EA-8B79-507E-DA0C19B75658",
+          "len": 0,
+          "ctype": "text/html",
+          "title": "",
+          "signals": []
+        }
+      ]
+    },
+    {
+      "file": "src/leuvendeu_spider.py",
+      "platform": "LeuVendeu",
+      "base_url": "https://www.leuvende.com.br",
+      "paths": [
+        {
+          "url": "https://www.leuvende.com.br/",
+          "error": "ConnectError: [Errno -2] Name or service not known"
+        },
+        {
+          "url": "https://www.leuvende.com.br/livro",
+          "error": "ConnectError: [Errno -2] Name or service not known"
+        },
+        {
+          "url": "https://www.leuvende.com.br/loja",
+          "error": "ConnectError: [Errno -2] Name or service not known"
+        }
+      ]
+    },
+    {
+      "file": "src/libex_spider.py",
+      "platform": "LibeX",
+      "base_url": "https://new.libex.ru",
+      "paths": [
+        {
+          "url": "https://new.libex.ru/",
+          "error": "ConnectError: [Errno 111] Connection refused"
+        },
+        {
+          "url": "https://new.libex.ru/?pg=49084",
+          "error": "ConnectError: [Errno 111] Connection refused"
+        },
+        {
+          "url": "https://new.libex.ru/books",
+          "error": "ConnectError: [Errno 111] Connection refused"
+        }
+      ]
+    },
+    {
+      "file": "src/matchbook_cl_spider.py",
+      "platform": "Matchbook Chile",
+      "base_url": "https://matchbook.cl",
+      "paths": [
+        {
+          "url": "https://matchbook.cl/",
+          "error": "ConnectError: [Errno -5] No address associated with hostname"
+        },
+        {
+          "url": "https://matchbook.cl/books",
+          "error": "ConnectError: [Errno -5] No address associated with hostname"
+        },
+        {
+          "url": "https://matchbook.cl/libros",
+          "error": "ConnectError: [Errno -5] No address associated with hostname"
+        }
+      ]
+    },
+    {
+      "file": "src/olx_id_spider.py",
+      "platform": "OLX Indonesia Books",
+      "base_url": "https://www.olx.co.id",
+      "paths": [
+        {
+          "url": "https://www.olx.co.id/buku-cetak-digital_c220/q-buku-bekas",
+          "error": "ReadTimeout: The read operation timed out"
+        },
+        {
+          "url": "https://www.olx.co.id/buku-cetak-digital_c220",
+          "error": "ReadTimeout: The read operation timed out"
+        }
+      ]
+    },
+    {
+      "file": "src/p2pbookstore_spider.py",
+      "platform": "P2P Bookstore",
+      "base_url": "https://p2pbookstore.com",
+      "paths": [
+        {
+          "url": "https://p2pbookstore.com/",
+          "error": "ConnectError: [Errno -2] Name or service not known"
+        },
+        {
+          "url": "https://p2pbookstore.com/libros",
+          "error": "ConnectError: [Errno -2] Name or service not known"
+        },
+        {
+          "url": "https://p2pbookstore.com/comprar",
+          "error": "ConnectError: [Errno -2] Name or service not known"
+        }
+      ]
+    },
+    {
+      "file": "src/portal_dos_livreiros_spider.py",
+      "platform": "Portal dos Livreiros",
+      "base_url": "https://www.portaldoslivreiros.com.br",
+      "paths": [
+        {
+          "url": "https://www.portaldoslivreiros.com.br/",
+          "status": 403,
+          "final_url": "https://www.portaldoslivreiros.com.br/",
+          "len": 5633,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.portaldoslivreiros.com.br/busca.asp",
+          "status": 403,
+          "final_url": "https://www.portaldoslivreiros.com.br/busca.asp",
+          "len": 5702,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.portaldoslivreiros.com.br/livros",
+          "status": 403,
+          "final_url": "https://www.portaldoslivreiros.com.br/livros",
+          "len": 5672,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/recyclivre_spider.py",
+      "platform": "Recyclivre",
+      "base_url": "https://www.recyclivre.com",
+      "paths": [
+        {
+          "url": "https://www.recyclivre.com/",
+          "status": 403,
+          "final_url": "https://www.recyclivre.com/",
+          "len": 5579,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.recyclivre.com/shop",
+          "status": 403,
+          "final_url": "https://www.recyclivre.com/shop",
+          "len": 5613,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.recyclivre.com/products",
+          "status": 403,
+          "final_url": "https://www.recyclivre.com/products",
+          "len": 5625,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/sellitback_spider.py",
+      "platform": "SellitBack",
+      "base_url": "https://sellitback.com",
+      "paths": [
+        {
+          "url": "https://sellitback.com/",
+          "status": 403,
+          "final_url": "https://sellitback.com/",
+          "len": 5493,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Attention Required! | Cloudflare",
+          "signals": [
+            "captcha",
+            "cloudflare",
+            "blocked",
+            "robot",
+            "please enable cookies"
+          ]
+        },
+        {
+          "url": "https://sellitback.com/sell-books",
+          "status": 403,
+          "final_url": "https://sellitback.com/sell-books",
+          "len": 5493,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Attention Required! | Cloudflare",
+          "signals": [
+            "captcha",
+            "cloudflare",
+            "blocked",
+            "robot",
+            "please enable cookies"
+          ]
+        },
+        {
+          "url": "https://sellitback.com/books",
+          "status": 403,
+          "final_url": "https://sellitback.com/books",
+          "len": 5493,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Attention Required! | Cloudflare",
+          "signals": [
+            "captcha",
+            "cloudflare",
+            "blocked",
+            "robot",
+            "please enable cookies"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/todostuslibros_spider.py",
+      "platform": "TodosTusLibros",
+      "base_url": "https://www.todostuslibros.com",
+      "paths": [
+        {
+          "url": "https://www.todostuslibros.com/",
+          "status": 403,
+          "final_url": "https://www.todostuslibros.com/",
+          "len": 94,
+          "ctype": "text/html",
+          "title": "",
+          "signals": [
+            "forbidden"
+          ]
+        },
+        {
+          "url": "https://www.todostuslibros.com/libros",
+          "status": 403,
+          "final_url": "https://www.todostuslibros.com/libros",
+          "len": 94,
+          "ctype": "text/html",
+          "title": "",
+          "signals": [
+            "forbidden"
+          ]
+        },
+        {
+          "url": "https://www.todostuslibros.com/mas_vendidos",
+          "status": 403,
+          "final_url": "https://www.todostuslibros.com/mas_vendidos",
+          "len": 94,
+          "ctype": "text/html",
+          "title": "",
+          "signals": [
+            "forbidden"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/valuebooks_jp_spider.py",
+      "platform": "ValueBooks Japan",
+      "base_url": "https://www.valuebooks.jp",
+      "paths": [
+        {
+          "url": "https://www.valuebooks.jp/",
+          "status": 403,
+          "final_url": "https://www.valuebooks.jp/",
+          "len": 520,
+          "ctype": "text/html",
+          "title": "403 Forbidden",
+          "signals": [
+            "forbidden"
+          ]
+        },
+        {
+          "url": "https://www.valuebooks.jp/search",
+          "status": 403,
+          "final_url": "https://www.valuebooks.jp/search",
+          "len": 520,
+          "ctype": "text/html",
+          "title": "403 Forbidden",
+          "signals": [
+            "forbidden"
+          ]
+        },
+        {
+          "url": "https://www.valuebooks.jp/sell",
+          "status": 403,
+          "final_url": "https://www.valuebooks.jp/sell",
+          "len": 520,
+          "ctype": "text/html",
+          "title": "403 Forbidden",
+          "signals": [
+            "forbidden"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/webuybooks_spider.py",
+      "platform": "WeBuyBooks",
+      "base_url": "https://www.webuybooks.co.uk",
+      "paths": [
+        {
+          "url": "https://www.webuybooks.co.uk/sell-books/",
+          "status": 403,
+          "final_url": "https://www.webuybooks.co.uk/sell-books/",
+          "len": 5615,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.webuybooks.co.uk/",
+          "status": 403,
+          "final_url": "https://www.webuybooks.co.uk/",
+          "len": 5582,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.webuybooks.co.uk/books",
+          "status": 403,
+          "final_url": "https://www.webuybooks.co.uk/books",
+          "len": 5597,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "src/zapper_spider.py",
+      "platform": "Zapper",
+      "base_url": "https://www.zapper.co.uk",
+      "paths": [
+        {
+          "url": "https://www.zapper.co.uk/",
+          "status": 403,
+          "final_url": "https://www.zapper.co.uk/",
+          "len": 5556,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.zapper.co.uk/sell-books",
+          "status": 403,
+          "final_url": "https://www.zapper.co.uk/sell-books",
+          "len": 5608,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        },
+        {
+          "url": "https://www.zapper.co.uk/books",
+          "status": 403,
+          "final_url": "https://www.zapper.co.uk/books",
+          "len": 5571,
+          "ctype": "text/html; charset=UTF-8",
+          "title": "Just a moment...",
+          "signals": [
+            "cloudflare",
+            "robot"
+          ]
+        }
+      ]
+    }
+  ]
+}

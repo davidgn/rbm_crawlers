@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/bookloop_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.01,
+      "platform_name": "Bookloop UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-14 13:36:10,738 [INFO] ConfigurableMarketplaceSpider: Starting Bookloop UK harvest. limit_pages=1 limit_items=1\n2026-05-14 13:36:11,508 [INFO] ConfigurableMarketplaceSpider: Finished Bookloop UK harvest. Saved 0 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 0,
+      "output_items_added": 0,
+      "cache_html_before": 0,
+      "cache_html_after": 0,
+      "cache_html_added": 0
+    }
+  ]
+}

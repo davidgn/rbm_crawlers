@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/buscalibre_ec_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.31,
+      "platform_name": "Buscalibre Ecuador",
+      "territory": "Ecuador",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:58:27,070 [INFO] ConfigurableMarketplaceSpider: Starting Buscalibre Ecuador harvest. limit_pages=1 limit_items=2\n2026-05-15 00:58:28,184 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libros/search?q=usado \"HTTP/1.1 200 OK\"\n2026-05-15 00:58:28,751 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-paper-towns-usado/9780142414934/p/2715656 \"HTTP/1.1 200 OK\"\n2026-05-15 00:58:29,571 [INFO] httpx: HTTP Request: GET https://www.buscalibre.ec/libro-el-heredero-usado/9788466608503/p/1742236 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 1,
+      "cache_html_after": 3,
+      "cache_html_added": 2
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/leuvendeu_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.85,
+      "platform_name": "LeuVendeu",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 00:21:00,663 [INFO] ConfigurableMarketplaceSpider: Starting LeuVendeu harvest. limit_pages=1 limit_items=2\n2026-05-15 00:21:03,573 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/home/ \"HTTP/1.1 200 OK\"\n2026-05-15 00:21:05,626 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/livro/asiaticos-podres-de-ricos/ \"HTTP/1.1 200 OK\"\n2026-05-15 00:21:08,907 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/livro/o-juramento-dos-vayuputras-trilogia-shiva-3/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 3,
+      "cache_html_added": 3
+    }
+  ]
+}
