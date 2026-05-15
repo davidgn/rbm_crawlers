@@ -3,6 +3,7 @@ import re
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
+from playwright_stealth import Stealth
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -25,6 +26,7 @@ class PlaywrightSearchSpider(BaseSpider):
         with sync_playwright() as p:
             browser, context = self.get_playwright_stealth_config(p)
             page_ctx = context.new_page()
+            Stealth().apply_stealth_sync(page_ctx)
             
             for page_num in range(1, self.limit_pages + 1):
                 url = f"{self.base_url}/{self.search_path}".format(query=search_term.replace(' ', '+'), page=page_num)
