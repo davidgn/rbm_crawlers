@@ -23,14 +23,12 @@ class RakutenBooksSpider(BaseSpider):
 
     # Start directly in the books section — /book/ is the canonical entry point
     BROWSE_CANDIDATES = [
-        "/book/",
-        "/book/search/",
-        "/book/list/",
-        "/books",
-        "/search",
+        "/search/?sitem=%E5%B0%8F%E8%AA%AC&g=001",
+        "/search/?sitem=%E6%9C%AC&g=001",
+        "/book/list/genre/001/",
         "",
     ]
-    DETAIL_SIGNALS = ["/book/", "/product/", "/item/"]
+    DETAIL_SIGNALS = ["/rb/"]
 
     HEADERS = {
         "User-Agent": (
@@ -110,34 +108,27 @@ class RakutenBooksSpider(BaseSpider):
                 if resp.status_code == 200:
                     soup = BeautifulSoup(resp.text, "html.parser")
                     hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
-                    # Rakuten detail pages are like /book/XXXXXXXXXX/ (10+ digit ISBN-style)
-                    if any(
-                        re.search(r"/book/\d{10,}", h or "")
-                        or any(sig in (h or "") for sig in ["/product/", "/item/"])
-                        for h in hrefs
-                    ):
+                    if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
                         self.logger.info(f"Browse URL confirmed: {candidate}")
                         return candidate
             except Exception as e:
                 self.logger.debug(f"Candidate {path} failed: {e}")
-        self.logger.warning("No browse path matched — using /book/.")
-        return self.BASE_URL + "/book/"
+        self.logger.warning("No browse path matched — using search fallback.")
+        return self.BASE_URL + "/search/?sitem=%E6%9C%AC&g=001"
 
     def _extract_links(self, soup: BeautifulSoup, seen: set) -> list[str]:
         links = []
         for a in soup.find_all("a", href=True):
             href = urljoin(self.BASE_URL, a["href"])
-            # Rakuten book detail pages: /book/<10+-digit-code>/
-            if (
-                self.BASE_URL in href
-                and re.search(r"/book/\d{10,}", href)
-                and href not in seen
-            ):
-                links.append(href)
+            if self.BASE_URL in href and any(sig in href for sig in self.DETAIL_SIGNALS):
+                # Normalize: strip query params and fragments from product URLs
+                clean = href.split("?")[0].split("#")[0].rstrip("/") + "/"
+                if clean not in seen:
+                    links.append(clean)
         return list(dict.fromkeys(links))
 
     def _harvest_item(self, url: str):
-        m = re.search(r"/book/(\d{10,})", url)
+        m = re.search(r"/rb/(\d+)", url)
         item_id = m.group(1) if m else re.sub(
             r"[^a-zA-Z0-9_-]", "_",
             next((s for s in reversed(url.rstrip("/").split("/")) if s), str(int(time.time())))
