@@ -19,7 +19,7 @@ class ShopifyAPISpider(BaseSpider):
         self.logger.info(f"Starting Shopify API crawler for {self.platform_name}. Limit: {self.limit_pages} pages.")
         
         for page in range(1, self.limit_pages + 1):
-            url = f"{self.api_endpoint}?page={{page}}&limit=250"
+            url = f"{self.api_endpoint}?page={page}&limit=250"
             self.logger.info(f"Fetching page {page}: {url}")
             
             try:

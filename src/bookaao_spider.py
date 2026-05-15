@@ -1,16 +1,16 @@
-from playwright_search_spider import PlaywrightSearchSpider
+from html_search_spider import HTMLSearchSpider
 
-class BookaaoSpider(PlaywrightSearchSpider):
+class BookaaoSpider(HTMLSearchSpider):
     def __init__(self, limit_pages=50):
         super().__init__(
             platform_name="Bookaao",
             base_url="https://bookaao.com",
             search_path="search_results.php?q={query}",
             selectors={
-                'container': 'div.product-card, .col-md-3, .item', 
-                'title': 'h4, .product-name',
-                'link': 'a',
-                'price': '.price',
+                'container': 'div.product-card', 
+                'title': 'h3.product-title',
+                'link': 'a.product-link',
+                'price': '.price-display',
             },
             limit_pages=limit_pages
         )
