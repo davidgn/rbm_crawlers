@@ -22,14 +22,11 @@ class BookendsAESpider(BaseSpider):
     BASE_URL = "https://bookends.ae"
 
     BROWSE_CANDIDATES = [
-        "/product-category/books",
-        "/books",
-        "/shop",
-        "/catalog",
         "/collections/all",
+        "/shop",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/books/", "/collections/"]
+    DETAIL_SIGNALS = ["/collections/all/products/", "/products/"]
 
     HEADERS = {
         "User-Agent": (

@@ -22,14 +22,13 @@ class GabonLivreSpider(BaseSpider):
     BASE_URL = "https://www.gabonlivre.com"
 
     BROWSE_CANDIDATES = [
-        "/product-category/livres",
-        "/livres",
         "/boutique",
+        "/categorie-produit/roman",
+        "/categorie-produit/essai",
         "/shop",
-        "/tous-les-produits",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/produit/", "/livre/", "/book/", "/item/"]
+    DETAIL_SIGNALS = ["/produit/", "/product/"]
 
     HEADERS = {
         "User-Agent": (
