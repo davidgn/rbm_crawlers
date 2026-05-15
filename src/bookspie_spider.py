@@ -8,7 +8,7 @@ from typing import Any
 import httpx
 
 from base_spider import BaseSpider
-from isbn_utils import normalize_isbn
+from isbn_utils import normalize_isbn, isbn_from_text
 from models import BookListing
 
 
@@ -251,8 +251,12 @@ class BooksPieSpider(BaseSpider):
         return str(value)
 
     def _isbn_from_source(self, source: dict[str, Any]) -> str | None:
-        for key in ("isbn", "isbn13", "book_isbn", "book_description", "book_title"):
+        for key in ("isbn", "isbn13", "book_isbn"):
             isbn = normalize_isbn(source.get(key))
+            if isbn:
+                return isbn
+        for key in ("book_description", "book_title"):
+            isbn = isbn_from_text(source.get(key))
             if isbn:
                 return isbn
         return None

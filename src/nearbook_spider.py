@@ -45,23 +45,48 @@ class NearBookSpider(BaseSpider):
 
     def _harvest_item(self, book_id, list_book_data):
         detail_url = f"{self.base_url}/getBookDetail?bookId={book_id}&locationId=0"
-        
         try:
             resp = self.client.get(detail_url)
-            if resp.status_code == 200:
-                # CACHE JSON as pseudo-HTML
-                self.cache_html(str(book_id), resp.text)
-                
-                item = BookListing(
-                    territory=self.territory,
-                    platform=self.platform_name,
-                    title=list_book_data.get("name") or "Cached API Item",
-                    listing_url=f"https://nearbook.app/book/{book_id}",
-                    condition="Cached API for extraction"
-                )
-                self.save_item(item)
+            if resp.status_code != 200:
+                return
+            data = resp.json()
         except Exception as e:
             self.logger.error(f"Error fetching detail {book_id}: {e}")
+            return
+
+        book = data.get("book") or {}
+        title = book.get("name") or list_book_data.get("name") or "Untitled NearBook listing"
+        author = book.get("author") or None
+        publisher = book.get("publisher") or None
+        edition = book.get("edition") or None
+        price_raw = book.get("price")
+        price = f"₹{price_raw}" if price_raw else None
+        mrp_raw = book.get("mrp")
+        if mrp_raw and price and str(mrp_raw) != str(price_raw):
+            price = f"{price} (MRP ₹{mrp_raw})"
+        condition_val = book.get("condition")
+        condition_map = {0: "Used", 1: "Like New", 2: "Good", 3: "Fair"}
+        condition_text = condition_map.get(condition_val, None)
+        desc = book.get("desc") or None
+        image = book.get("image") or None
+        parts = []
+        if desc:
+            parts.append(f"desc={desc}")
+        if image:
+            parts.append(f"image={image}")
+        item = BookListing(
+            territory=self.territory,
+            platform=self.platform_name,
+            title=title,
+            author=author,
+            publisher=publisher,
+            edition=edition,
+            price=price,
+            condition=condition_text,
+            seller_comments="; ".join(parts) if parts else None,
+            listing_url=f"https://nearbook.app/book/{book_id}",
+        )
+        self.save_item(item)
 
 if __name__ == "__main__":
     import argparse

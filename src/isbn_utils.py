@@ -43,6 +43,36 @@ def extract_isbn(soup: BeautifulSoup) -> str | None:
     return None
 
 
+def isbn_from_text(text: str | None) -> str | None:
+    """Extract ISBN from free-form text only when safely indicated.
+
+    Requires either a visible ISBN-13 prefix (978/979 not preceded by another digit)
+    or an explicit 'ISBN' label in the text.  Avoids false positives from arbitrary
+    digit sequences in descriptions, locations, or timestamps.
+    """
+    if not text:
+        return None
+    t = str(text)
+    has_978 = bool(re.search(r"(?<![0-9])97[89]", t))
+    has_label = bool(re.search(r"\bISBN\b", t, re.I))
+    if not has_978 and not has_label:
+        return None
+    # After an explicit ISBN label
+    for match in re.finditer(
+        r"(?i)\bISBN(?:[-\s]?1[03])?\b[^0-9Xx]{0,15}([0-9Xx][\d Xx.\-]{8,20})",
+        t,
+    ):
+        isbn = normalize_isbn(match.group(1))
+        if isbn:
+            return isbn
+    # Bare ISBN-13 with visible 978/979 prefix
+    for match in re.finditer(r"(?<![0-9])97[89][\d][\d\- ._]{8,14}", t):
+        isbn = normalize_isbn(match.group(0))
+        if isbn:
+            return isbn
+    return None
+
+
 def isbn_from_url(url: str | None) -> str | None:
     """Extract ISBN from a URL only when '978' or '979' is visually present in the raw URL.
 
