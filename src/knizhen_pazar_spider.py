@@ -144,6 +144,117 @@ class KnizhenPazarSpider(BaseSpider):
         )
 
 
+def _isbn10_to_isbn13(isbn10: str) -> str | None:
+    """Convert an ISBN-10 to ISBN-13; return None if conversion fails."""
+    digits = re.sub(r"\D", "", isbn10)
+    if len(digits) == 10:
+        digits = digits[:9]  # drop old check digit
+    elif len(digits) == 9:
+        pass  # already the root
+    else:
+        return None
+    root = "978" + digits
+    total = sum(int(d) * (1 if i % 2 == 0 else 3) for i, d in enumerate(root))
+    check = (10 - (total % 10)) % 10
+    return root + str(check)
+
+
+def _extract_edition(soup) -> dict:
+    """Parse the edition metadata row from a KnizhenPazar detail page."""
+    result: dict = {}
+    import re as _re
+    for row in soup.find_all(class_=_re.compile(r"row|pair|attr")):
+        text = row.get_text(" ", strip=True)
+        if "Издателство" not in text and "Година" not in text:
+            continue
+        # publisher
+        m = _re.search(r"Издателство\s+(.+?)(?:Град|Година|Език|Страници|$)", text)
+        if m:
+            result["publisher"] = m.group(1).strip()
+        # year
+        m = _re.search(r"Година\s+(\d{4})", text)
+        if m:
+            result["publication_year"] = m.group(1)
+        # language
+        m = _re.search(r"Език\s+(\S+)", text)
+        if m:
+            result["language"] = m.group(1).strip()
+        # pages
+        m = _re.search(r"Страници\s+(\d+)", text)
+        if m:
+            result["pages"] = m.group(1)
+        # binding (Корици)
+        m = _re.search(r"Корици\s+(\S+)", text)
+        if m:
+            result["binding"] = m.group(1).strip()
+        # ISBN (may be 10-digit)
+        m = _re.search(r"ISBN\s+([\dX]+)", text)
+        if m:
+            raw_isbn = m.group(1).strip()
+            if _re.match(r"97[89]\d{10}$", raw_isbn):
+                result["isbn"] = raw_isbn
+            elif len(raw_isbn) in (9, 10):
+                result["isbn"] = _isbn10_to_isbn13(raw_isbn)
+        break  # first matching row is enough
+    return result
+
+
+def _backfill_detail_pages(delay: float = 0.3):
+    """Fetch detail pages for existing KnizhenPazar records and enrich with edition data."""
+    import json as _json
+    import time as _time
+
+    spider = KnizhenPazarSpider.__new__(KnizhenPazarSpider)
+    BaseSpider.__init__(spider, "KnizhenPazar", "Bulgaria")
+    data_file = spider.output_file
+
+    if not data_file.exists():
+        print("No data file found.")
+        return
+
+    existing: dict[str, dict] = {}
+    with data_file.open(encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if line:
+                try:
+                    d = _json.loads(line)
+                    existing[d["listing_url"]] = d
+                except Exception:
+                    pass
+
+    print(f"Backfilling {len(existing)} KnizhenPazar detail pages…")
+    client = httpx.Client(
+        timeout=30.0, follow_redirects=True,
+        headers={"User-Agent": "Mozilla/5.0 Chrome/124", "Accept-Language": "bg-BG,bg;q=0.9,en;q=0.8"}
+    )
+    updated = 0
+    for i, (url, rec) in enumerate(existing.items(), 1):
+        if not url.startswith("https://knizhen-pazar.net/products/books/"):
+            continue
+        try:
+            resp = client.get(url)
+            if resp.status_code != 200:
+                continue
+            soup = BeautifulSoup(resp.text, "html.parser")
+            edition = _extract_edition(soup)
+            if edition:
+                rec.update({k: v for k, v in edition.items() if v and not rec.get(k)})
+                updated += 1
+        except Exception as e:
+            print(f"  Error {url}: {e}")
+        if i % 100 == 0:
+            print(f"  {i}/{len(existing)} processed, {updated} enriched")
+        _time.sleep(delay)
+
+    tmp = data_file.with_suffix(".jsonl.tmp")
+    with tmp.open("w", encoding="utf-8") as fh:
+        for record in existing.values():
+            fh.write(_json.dumps(record) + "\n")
+    tmp.replace(data_file)
+    print(f"Done. Enriched {updated}/{len(existing)} records.")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Knizhen Pazar Bulgaria HTML spider")
     parser.add_argument(
@@ -154,8 +265,15 @@ def main():
         "--max-pages", type=int, default=20000,
         help="Max pages per category",
     )
+    parser.add_argument(
+        "--backfill", action="store_true",
+        help="Enrich existing records with detail-page edition data",
+    )
     args = parser.parse_args()
-    KnizhenPazarSpider(delay=args.delay, max_pages=args.max_pages).run()
+    if args.backfill:
+        _backfill_detail_pages(delay=args.delay)
+    else:
+        KnizhenPazarSpider(delay=args.delay, max_pages=args.max_pages).run()
 
 
 if __name__ == "__main__":

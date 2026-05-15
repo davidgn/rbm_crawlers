@@ -10,6 +10,7 @@ import httpx
 from bs4 import BeautifulSoup
 
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn, normalize_isbn
 from models import BookListing
 
 
@@ -339,11 +340,13 @@ class ConfigurableMarketplaceSpider(BaseSpider):
             platform=self.platform_name,
             title=title,
             author=self._person_text(data.get("author")),
-            isbn=self._pick_text(data, "isbn", "gtin13", "gtin"),
+            isbn=self._isbn_from_soup(soup, data),
             publisher=self._person_text(data.get("publisher")),
             publication_year=self._pick_text(data, "datePublished"),
-            binding=self._pick_text(data, "bookFormat"),
-            condition=self._pick_text(offers, "itemCondition") or self._meta_content(soup, "product:condition"),
+            binding=self._normalize_schema_value(self._pick_text(data, "bookFormat")),
+            condition=self._normalize_schema_value(
+                self._pick_text(offers, "itemCondition") or self._meta_content(soup, "product:condition")
+            ),
             price=price or self._meta_content(soup, "product:price:amount"),
             listing_url=url,
             seller_comments=self._pick_text(data, "description"),
@@ -395,6 +398,49 @@ class ConfigurableMarketplaceSpider(BaseSpider):
             return None
         value = node.get("content")
         return value.strip() if isinstance(value, str) and value.strip() else None
+
+    def _isbn_from_soup(self, soup: BeautifulSoup, data: dict[str, Any]) -> str | None:
+        candidates = [
+            self._pick_text(data, "isbn", "isbn13", "isbn10", "gtin13", "gtin"),
+            self._meta_content(soup, "book:isbn"),
+            self._meta_content(soup, "product:isbn"),
+            soup.find("link", rel="canonical").get("href") if soup.find("link", rel="canonical") else None,
+        ]
+        for selector in (
+            "[itemprop='isbn']",
+            "[itemprop='gtin13']",
+            "[itemprop='sku']",
+            "meta[name='isbn']",
+            "meta[property='isbn']",
+        ):
+            node = soup.select_one(selector)
+            if node:
+                candidates.append(node.get("content") if node.name == "meta" else node.get_text(" ", strip=True))
+
+        for candidate in candidates:
+            isbn = normalize_isbn(candidate)
+            if isbn:
+                return isbn
+        return extract_isbn(soup)
+
+    # Maps trailing fragment of schema.org condition/binding URLs to readable labels
+    _SCHEMA_LABELS: dict[str, str] = {
+        "usedcondition": "Used",
+        "newcondition": "New",
+        "refurbishedcondition": "Refurbished",
+        "damagedcondition": "Damaged",
+        "hardcover": "Hardcover",
+        "paperback": "Paperback",
+        "ebook": "eBook",
+        "audiobook": "Audiobook",
+        "graphicnovel": "Graphic Novel",
+    }
+
+    def _normalize_schema_value(self, value: str | None) -> str | None:
+        if not value:
+            return None
+        key = value.rstrip("/").rsplit("/", 1)[-1].lower()
+        return self._SCHEMA_LABELS.get(key, value)
 
     def _pick_text(self, data: dict[str, Any], *keys: str) -> str | None:
         for key in keys:

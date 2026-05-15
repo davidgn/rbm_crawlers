@@ -3,9 +3,14 @@ import re
 import time
 import httpx
 from bs4 import BeautifulSoup
+from types import SimpleNamespace
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
+
+
+CONFIG = SimpleNamespace(platform_name="Shorouk", territory="Egypt")
 
 
 class ShoroukSpider(BaseSpider):
@@ -40,9 +45,10 @@ class ShoroukSpider(BaseSpider):
         "Accept-Language": "ar,en;q=0.9",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="Shorouk", territory="Egypt")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -92,6 +98,8 @@ class ShoroukSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.items_scraped >= self.limit_items:
+                        return
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.7)
@@ -153,6 +161,7 @@ class ShoroukSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=extract_isbn(soup),
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
@@ -163,5 +172,7 @@ class ShoroukSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Shorouk Bookstores Egypt cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int, default=50)
     args = parser.parse_args()
-    ShoroukSpider(limit_pages=args.limit).run()
+    ShoroukSpider(limit_pages=args.limit_pages or args.limit, limit_items=args.limit_items).run()

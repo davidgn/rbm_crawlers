@@ -1,10 +1,13 @@
 import argparse
-import time
+import json
 import re
+import time
+from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import normalize_isbn
 
 class NaiinSpider(BaseSpider):
     def __init__(self, limit_pages=50):
@@ -85,9 +88,81 @@ class NaiinSpider(BaseSpider):
         )
         self.save_item(item)
 
+    def _extract(self, html: str, url: str) -> BookListing | None:
+        soup = BeautifulSoup(html, "html.parser")
+        title_tag = soup.title
+        title = re.sub(r"\s*Books\s*$", "", title_tag.get_text(strip=True).split("|")[0].strip()) if title_tag else ""
+        if not title:
+            return None
+
+        author_el = soup.find("a", class_=re.compile(r"author-name"))
+        author = author_el.get_text(strip=True) if author_el else None
+
+        price_el = soup.find("div", class_="price")
+        price_text = price_el.get_text(strip=True) if price_el else ""
+        price_m = re.search(r"([\d,.]+)\s*บาท", price_text)
+        price = f"THB {price_m.group(1).replace(',', '')}" if price_m else None
+
+        isbn = normalize_isbn(soup.get_text(" "))
+
+        return BookListing(
+            territory=self.territory,
+            platform=self.platform_name,
+            title=title,
+            author=author,
+            isbn=isbn,
+            price=price,
+            listing_url=url,
+        )
+
+
+def _backfill_cached():
+    import json as _json
+
+    spider = NaiinSpider.__new__(NaiinSpider)
+    BaseSpider.__init__(spider, "Naiin", "Thailand")
+    data_file = spider.output_file
+
+    existing: dict[str, dict] = {}
+    if data_file.exists():
+        with data_file.open(encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if line:
+                    try:
+                        d = _json.loads(line)
+                        existing[d.get("listing_url", "")] = d
+                    except Exception:
+                        pass
+
+    cache_dir = spider.cache_dir
+    html_files = [f for f in cache_dir.glob("*.html")] if cache_dir.exists() else []
+    print(f"Backfilling {len(html_files)} cached NAIIN pages…")
+
+    updated = 0
+    for html_file in html_files:
+        item_id = html_file.stem
+        url = f"https://www.naiin.com/product/detail/{item_id}"
+        html = html_file.read_text(encoding="utf-8", errors="ignore")
+        listing = spider._extract(html, url)
+        if listing:
+            existing[url] = listing.to_dict()
+            updated += 1
+
+    tmp = data_file.with_suffix(".jsonl.tmp")
+    with tmp.open("w", encoding="utf-8") as fh:
+        for record in existing.values():
+            fh.write(_json.dumps(record) + "\n")
+    tmp.replace(data_file)
+    print(f"Updated {updated} records. Total: {len(existing)}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--backfill", action="store_true")
     args = parser.parse_args()
-    spider = NaiinSpider(limit_pages=args.limit)
-    spider.run()
+    if args.backfill:
+        _backfill_cached()
+    else:
+        NaiinSpider(limit_pages=args.limit).run()

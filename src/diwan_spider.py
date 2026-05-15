@@ -3,9 +3,14 @@ import re
 import time
 import httpx
 from bs4 import BeautifulSoup
+from types import SimpleNamespace
 from urllib.parse import urljoin
-from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
+from models import BookListing
+
+
+CONFIG = SimpleNamespace(platform_name="Diwan", territory="Egypt")
 
 
 class DiwanSpider(BaseSpider):
@@ -42,9 +47,10 @@ class DiwanSpider(BaseSpider):
         "Accept-Language": "ar,en;q=0.9",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="Diwan", territory="Egypt")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -94,6 +100,8 @@ class DiwanSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.items_scraped >= self.limit_items:
+                        return
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.7)
@@ -155,6 +163,7 @@ class DiwanSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=extract_isbn(soup),
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
@@ -162,8 +171,74 @@ class DiwanSpider(BaseSpider):
             self.logger.error(f"Error harvesting {url}: {e}")
 
 
+def _backfill_cached():
+    import json as _json
+    spider = DiwanSpider.__new__(DiwanSpider)
+    BaseSpider.__init__(spider, "Diwan", "Egypt")
+    data_file = spider.output_file
+    cache_dir = spider.cache_dir
+
+    existing: dict[str, dict] = {}
+    if data_file.exists():
+        with data_file.open(encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if line:
+                    try:
+                        d = _json.loads(line)
+                        existing[d.get("listing_url", "")] = d
+                    except Exception:
+                        pass
+
+    html_files = list(cache_dir.glob("*.html")) if cache_dir.exists() else []
+    print(f"Backfilling {len(html_files)} cached Diwan pages…")
+
+    updated = 0
+    for html_file in html_files:
+        html = html_file.read_text(encoding="utf-8", errors="ignore")
+        soup = BeautifulSoup(html, "html.parser")
+        h1 = soup.find("h1")
+        title = h1.get_text(strip=True) if h1 else ""
+        if not title or title == "Cached Item":
+            continue
+
+        isbn = extract_isbn(soup)
+
+        # Try to get URL from existing record matching by title
+        url = None
+        for rec_url, rec in existing.items():
+            if rec.get("title", "") == title:
+                url = rec_url
+                break
+        if not url:
+            slug = re.sub(r"[^a-z0-9-]", "-", title.lower())[:80]
+            url = f"https://diwanegypt.com/product/{slug}"
+
+        existing[url] = {
+            "territory": "Egypt",
+            "platform": "Diwan",
+            "title": title,
+            "isbn": isbn,
+            "listing_url": url,
+        }
+        updated += 1
+
+    tmp = data_file.with_suffix(".jsonl.tmp")
+    with tmp.open("w", encoding="utf-8") as fh:
+        for record in existing.values():
+            fh.write(_json.dumps(record) + "\n")
+    tmp.replace(data_file)
+    print(f"Updated {updated} records. Total: {len(existing)}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Diwan Egypt cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int, default=50)
+    parser.add_argument("--backfill", action="store_true")
     args = parser.parse_args()
-    DiwanSpider(limit_pages=args.limit).run()
+    if args.backfill:
+        _backfill_cached()
+    else:
+        DiwanSpider(limit_pages=args.limit_pages or args.limit, limit_items=args.limit_items).run()
