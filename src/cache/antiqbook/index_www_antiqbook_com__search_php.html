@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<!--
+<meta name="robots" content="noimageclick">
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="css/reset.css" rel="stylesheet" type="text/css">
+<link href="css/mobilenav.css" rel="stylesheet" type="text/css">
+<link href="css/reststyles.css" rel="stylesheet" type="text/css">
+<title>Books found</title>
+<script type="text/javascript" src="https://www.antiqbook.com/highslide/highslide-with-html.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.antiqbook.com/highslide/highslide.css">
+<script type="text/javascript">
+    // override Highslide settings here
+    // instead of editing the highslide.js file
+    hs.graphicsDir = '/highslide/graphics/';
+</script>
+
+<script type="text/javascript">
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+    // override Highslide settings here
+    // instead of editing the highslide.js file
+    hs.graphicsDir = '/highslide/graphics/';
+</script>
+
+<script language="javascript">
+function toggle() {
+        var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "<b>more</b>";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "<b>less</b>";
+	}
+}
+</script>
+<STYLE TYPE="TEXT/CSS">
+<!--
+ A:text {color:#000099}
+ A{text-decoration:none}
+ A:hover {color: #cc0000}
+ A:hover {text-decoration: underline}
+
+ -->
+#footer {
+	background: #eee none repeat scroll 0 0;
+	border: 1px solid #ccc;
+	clear: both;
+	font-size: 0.9em;
+	margin: 0;
+	text-align: center;
+	}
+#box {
+	background-color: #EEEEEE;
+	border: 1px solid #A71930;
+	color: #333333;
+	display: block;
+	margin: 0;
+	padding: 10px;
+	font-size: 0.9em;
+	}
+</STYLE>
+<STYLE TYPE="TEXT/CSS">
+@viewport {
+	width		: device-width;
+	}
+td {
+	font-weight: bold;
+	text-align: left;
+	vertical-align:top;
+	}
+
+ A:text {color:#000099}
+ A{text-decoration:none}
+ A:hover {color: #cc0000}
+ A:hover {text-decoration: underline}
+
+/* specifieke stylen voor de wervingstekst popup */
+
+a#formexample {color:#00007F; font-weight:bold;}
+a#formexample:hover b {
+	display:inline;
+	position:relative;
+	}
+a#formexample span {display:none;}
+a#formexample:hover {color:#000; cursor:hand; cursor:pointer;}
+
+
+a#formexample:hover #popboxklant {
+	display:block;
+	position: absolute;
+	top:20px; left:-200px;
+	width:350px;
+/*	height:320px;  */
+	background	: #fff;
+	color		: #000;
+	border		: 1px solid #00007F;
+	text-align	: left;
+	text-decoration:none;
+	font-family:verdana;
+	font-size:11px;
+	padding:6px;
+	line-height:20px;
+	z-index:2000;
+	}
+
+#right {
+	float		: right;
+	width	: 30%;
+	overflow	: hidden;
+	border	: 0px solid black;
+	padding	: 15px 5px;
+	}
+#bottom {
+	clear:both;
+	}
+#center {
+	float			: left;
+	width		: 70%;
+	border		: 0px solid black;
+	}
+aside {
+	float		: right;
+
+	}
+aside img {
+	margin: 1px 0;
+	}
+.box {
+	background-color: #EEEEEE;
+	border: 1px solid #A71930;
+	color: #333333;
+	display: block;
+	margin: 0;
+	padding: 10px;
+	font-size: 0.9em;
+	}
+/* This is the logo link clickable area */
+#logo-zone {
+position: absolute;
+top: 5px;
+left: 5px;
+height: 90px;
+width: 105px;
+background-color: transparent;
+}
+
+</STYLE>
+
+
+<link href="css/mediascreen.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- wrapper div om content-body heen -->
+<div id="bodycontent">
+<!-- hier begint de header -->
+	<header class="wrap" style="position:relative;height:94px">
+		<div id=header>
+			<a id="logo-zone" href="https://www.antiqbook.com?l=en"></a>
+			<div id=linkjes>
+Choose language: <a href='/search.php?l=de&o='><img border=0 src='https://www.antiqbook.com/books/flags/de.gif'><font size='-2' face='verdana, arial, helvetica'></font></a>&nbsp;<a href='/search.php?l=fr&o='><img border=0 src='https://www.antiqbook.com/books/flags/fr.gif'><font size='-2' face='verdana, arial, helvetica'></font></a>&nbsp;<a href='/search.php?l=nl&o='><img border=0 src='https://www.antiqbook.com/books/flags/nl.gif'><font size='-2' face='verdana, arial, helvetica'></font></a>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.antiqbook.com/orders/orders.php?l=en&amp;actie=tonen&amp;searchform="><img src="https://www.antiqbook.com/gif/ww.jpg" alt="ww" border="0"> </a>			</div>
+			<div id=mobilinkjes>
+				<span id="lang_link"><a href='/search.php?l=de&o='><img border=0 src='https://www.antiqbook.com/books/flags/de.gif'><font size='-2' face='verdana, arial, helvetica'></font></a>&nbsp;<a href='/search.php?l=fr&o='><img border=0 src='https://www.antiqbook.com/books/flags/fr.gif'><font size='-2' face='verdana, arial, helvetica'></font></a>&nbsp;<a href='/search.php?l=nl&o='><img border=0 src='https://www.antiqbook.com/books/flags/nl.gif'><font size='-2' face='verdana, arial, helvetica'></font></a>&nbsp;</span>
+				<span id="ww_link"><a href="https://www.antiqbook.com/orders/orders.php?l=en&amp;actie=tonen&amp;searchform="><img src="https://www.antiqbook.com/gif/ww.jpg" alt="ww" border="0"> </a></span>
+			</div>
+		</div>
+	</header>
+
+	<nav>
+		<div id="navsite" align="right"  class="wrap">
+			<ul>
+				<li><a href="searchhelp.php?l=en">Help</a></li>
+				<li><a href="/index.php?l=en&o=?l=en&o=&full=&catalog=&author=&first_ed=&signed=&title=&description=&binding=&year=&century=&dustjacket=&keyword=&since=&country=">Edit search</a></li>
+				<li><a href="/index.php?l=en&o=">New search</a></li>
+				<li><a href="books/authors/">Author finder</a></li>
+			</ul>
+		</div>  <!-- navsite -->
+	</nav>
+<!-- hier eindigt de header en begint de content -->
+	<div id="middenstuk" class="wrap">
+		<div id="innerwrap">
+
+			<div id="center" class="">
+				<div id="centerwrap" class="clear">
+
+<br /><div id="zoekdiv"  style="overflow:hidden;padding-top:15px;"><div class=box style=""><form method="get" action="search.php">
+		<input type="hidden" name="action" value="search">
+		<input type="hidden" name="l" value="en">
+		<input type="hidden" name="owner_id" value="">
+
+		<input type="text" name="full" placeholder="enter your search terms: author, title, publisher, isbn etc." value="" style="font-size:16px;padding:3px;width:85%;">
+		<input type="submit" value= "search" " style="font-size:16px;padding:3px;"/>
+	</form></div></div>
+			</div>	<!-- centerwrap -->
+		</div>	<!-- center -->
+
+		<div id="right">
+			<div id="rightwrap">
+				<aside>
+<div style="float: right;">
+			<form method="get" action="search.php">
+			<input type="hidden" name="action" value="search">
+			<input type="hidden" name="l" value="en">
+			<input type="hidden" name="owner_id" value="">
+			<input type="hidden" name="full" value="">
+			<input type="hidden" name="catalog" value="">
+			<input type="hidden" name="author" value="">
+			<input type="hidden" name="first_ed" value="">
+			<input type="hidden" name="title" value="">
+			<input type="hidden" name="signed" value="">
+			<input type="hidden" name="description" value="">
+			<input type="hidden" name="binding" value="">
+			<input type="hidden" name="year" value="">
+			<input type="hidden" name="century" value="">
+			<input type="hidden" name="dustjacket" value="">
+			<input type="hidden" name="keyword" value="">
+			<input type="hidden" name="since" value="">
+			<input type="hidden" name="country" value="">
+			<input type="hidden" name="page_num" value="1">
+<!--
+			<input type="hidden" name="searchform" value="/index.php?l=en&o=">
+-->
+
+			<select name="sort_order">
+				<option value="default" selected>Author/Title
+				<option value="usd_price" >Price
+				<option value="country" >Country
+				<option value="entered" >Added
+
+			</select><br>
+
+			<INPUT TYPE="radio" NAME="sort_type" VALUE="asc" checked><font size="-1">ascending</font><br />
+			<INPUT TYPE="radio" NAME="sort_type" VALUE="desc" ><font size="-1">descending<br /></font>
+			<input type="submit" NAME="submit" value= "Sort now" "style="font-size:16px;padding:3px;"/>
+			</form></div>
+			</div>				</aside>
+			</div>
+		</div>
+
+		<div id="result" class="wrap">
+			<div id="centerwrap" class="clear">
+
+<div style="width:100%;padding:20px;"><tr><td><ul>Your search did not result in any finds. Possible causes:
+<li>Did you enter any search term?
+<li>There is no book that corresponds to your search terms.
+<li>Maybe you made a typing error. Please try again.
+<li>Perhaps your search is too exact. Try again with less words
+</ul></div>			</div>
+		</div><!-- einde result -->
+	</div><!-- einde middenstuk  -->
+	<section class="clear">
+		<div class="wrapx">
+
+<div align="center">
+<a href="/index.php?l=en&o=">New search</a>&nbsp; - &nbsp;
+<a href="/index.php?l=en&o=?l=en&o=&full=&catalog=&author=&first_ed=&signed=&title=&description=&binding=&year=&century=&dustjacket=&keyword=&since=&country=">Edit search</a><br /><br />
+
+
+</div>
+		</div>
+	</section>
+<!-- hier eindigt de content en begint de footer -->
+	<footer class="clear">
+		<div class="wrapx">
+			<div id="footer">
+&copy; ANTIQBOOK and respective booksellers 1996-2026
+			</div>
+		</div>
+	</footer>
+<br>
+<br>
+</div> <!-- body_content -->
+
+</body></html>

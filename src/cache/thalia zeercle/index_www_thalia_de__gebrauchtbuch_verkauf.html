@@ -489,7 +489,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Sprungmarken -->
     <style>html {scroll-behavior: smooth;}</style>
 <script type="module" src="https://app.usercentrics.eu/browser-ui/3.102.0/index.module.js"></script><script src="https://ecdn.novomind.com/rules/la/nm.rules.js" type="text/javascript" async=""></script></head>
-<body data-thalia-app="" style="padding-top: 468px;">
+<body data-thalia-app="">
         <dl-pageview seitentyp="content"></dl-pageview>
 
 
@@ -503,7 +503,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         
     
-<header-prime component="header-prime" data-cs-override-id="header-prime" style="position: absolute; top: 0px; z-index: 100; left: 0px; right: 0px;">
+<header-prime component="header-prime" data-cs-override-id="header-prime">
     <script type="module" src="https://assets.thalia.media/red/cms/components/header-prime/src/main.module.60a7ad326a2476d510e1.js" defer=""></script>
     <script nomodule="" src="https://assets.thalia.media/red/cms/components/header-prime/src/main.nomodule.b3bce989b138b81727e9.js" defer=""></script>
     <link rel="stylesheet" href="https://assets.thalia.media/red/cms/components/header-prime/style.d6910ea9bea878554c71.thalia.css">
@@ -753,10 +753,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </ul>
         </form>
     </dialog>
-</login-overlay><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fc0019eeffeb713',t:'MTc3ODgyNTcwNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></header-global-login>
+</login-overlay><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fc1417d0f0daa30',t:'MTc3ODgzODgwOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></header-global-login>
 
         <header-global-merkzettel>
-            <a href="/shop/home/merkliste/" class="element-link-header-icon icon-merkzettel" interaction="link-merkzettel" aria-label="Merkzettel:  Artikel" data-text="Merkzettel: ## Artikel" count=""><span class="caption">Merkzettel</span></a>
+            <a href="/shop/home/merkliste/" class="element-link-header-icon icon-merkzettel" interaction="link-merkzettel" aria-label="Merkzettel" data-text="Merkzettel: ## Artikel"><span class="caption">Merkzettel</span></a>
         </header-global-merkzettel>
 
         <header-global-warenkorb>
@@ -786,7 +786,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     <div class="komponente-container komponente-container--mobile">
-        <div class="abtest-dimension"><dl-pageview ab-test="Navi-Default"></dl-pageview></div>
+        <div class="abtest-dimension">
+            <!-- Hier kommt das dl-pageview Element hin -->
+        </div>
         <button class="element-button-icon open-navi-overlay" aria-haspopup="dialog" open-overlay="">
             <span class="element-icon-hamburger" size="xlarge"></span>
             Navigation öffnen
@@ -1024,15 +1026,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             </a>
                     </li>
             </ul>
-            <ul class="controls" active="">
+            <ul class="controls">
                 <li>
-                    <button class="element-button-secondary-small-icon prev" caption="prev" tabindex="-1" aria-hidden="true" style="display: inline-flex;">
+                    <button class="element-button-secondary-small-icon prev" caption="prev" tabindex="-1" aria-hidden="true">
                         <span class="element-icon-chevron-links" data-size="medium"></span>
                         Zurück
                     </button>
                 </li>
                 <li>
-                    <button class="element-button-secondary-small-icon next" caption="next" tabindex="-1" aria-hidden="true" style="display: inline-flex;">
+                    <button class="element-button-secondary-small-icon next" caption="next" tabindex="-1" aria-hidden="true">
                         <span class="element-icon-chevron-rechts" data-size="medium"></span>
                         Weiter
                     </button>
@@ -2137,40 +2139,17 @@ Wir zeigen Ihnen den einfachen Prozess zum Verkauf Ihrer gebrauchten Bücher.
 
     </footer>
 
-</layout-marginal>
+</layout-marginal><sentry-config project-name="heimdall" project-dsn="4de45a9289468d24c6955827664580b7" project-id="69" project-files=".*ocsassets/heimdall.*js" release-version="0-SNAPSHOT"></sentry-config>
 
 
     <!-- ba96c6590e11402f606d4b35016d875b -->
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;235ccb45741c439eb3c6f7c5095d1f11&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fc001691c2db713',t:'MTc3ODgyNTY5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fc14133df22aa30',t:'MTc3ODgzODc5Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;235ccb45741c439eb3c6f7c5095d1f11&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
 
-<div aria-hidden="true" id="usercentrics-root" data-created-at="1778825706791" style="visibility: hidden;"></div>
+
+<div aria-hidden="true" id="usercentrics-root" data-created-at="1778838808191" style="visibility: hidden;"></div>
     <sentry-config project-name="merkur" project-dsn="6c7a52cfe061cbb2efc5a589fc0b0462" project-id="74" project-files=".*merkur\/resources.*\.js" release-version=""></sentry-config>
 
     <sentry-config project-name="datalayer" project-dsn="b15bbc4242155ece469aa408bab45484" project-id="75" project-files=".*merkur\/resources\/data-layer.*\.js" release-version=""></sentry-config>
 <affiliate-header-script></affiliate-header-script>
     <sentry-config project-name="affiliate" project-dsn="1e58d7051735771042237b9d53522b95" project-id="23" project-files=".*/affiliate/resources/.*js" release-version="1.0.0"></sentry-config>
-<club-status club-status="KEIN_MITGLIED"></club-status><kundenfiliale-zuordnung component="kundenfiliale-zuordnung"></kundenfiliale-zuordnung><dl-pageview kundensegmente=""></dl-pageview>
-    <merkzettel-limit-hinweis component="merkzettel-limit-hinweis">
-        <link rel="stylesheet" href="https://assets.thalia.media/ocsassets/merkzettel/merkzettel-assets/merkzettel-limit-hinweis/style.8d582b5dd9a3280b561f.thalia.css">
-        <dialog class="element-overlay-slide-in" id="sbe-merkzettel-limit-hinweis">
-            <header>
-                <h2 class="element-headline-medium">
-                    Merkzettel leider zu voll
-                </h2>
-                <button class="element-button-primary-close" command="close" commandfor="sbe-merkzettel-limit-hinweis" cta="close">
-                    Hinweis schliessen
-                </button>
-            </header>
-            <main class="content">
-                <p class="element-text-standard">Um weitere Artikel auf den Merkzettel zu legen und alle Vorteile zu nutzen!</p>
-                <a href="https://www.thalia.de/shop/home/login/login/?source=%2Fgebrauchtbuch%2Fverkauf" class="element-button-primary" interaction="konto-anlegen">Jetzt Konto anlegen</a>
-                <p class="element-text-standard">Haben Sie bereits ein Konto?</p>
-                <a href="https://www.thalia.de/shop/home/login/login/?source=%2Fgebrauchtbuch%2Fverkauf" class="element-link-standard-variant-strong" interaction="anmelden">
-                    jetzt anmelden
-                    <span class="element-icon-chevron-rechts" size="small" spacing="inline-start"></span>
-                </a>
-            </main>
-        </dialog>
-    </merkzettel-limit-hinweis>
-<hinzugefuegt-overlay component="hinzugefuegt-overlay"><dialog class="element-overlay-slide-in step0overlay" dl-name="step-0-overlay"></dialog></hinzugefuegt-overlay><kundeninteressen-loader data-load-url="/kundeninteressen/include/abfragen"></kundeninteressen-loader><abodaten-loader data-abodaten-url="/abokaufen/api/rest/abodaten"></abodaten-loader><leseexemplar-loginstatus></leseexemplar-loginstatus><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe><dl-event name="experience_impression" exp_variant_string="THALIA-Navi-Default" test="Navi" variant="Default" experiment-id="Navi" variant-id="Default"></dl-event><div id="nm_chat"></div></body></html>
+<club-status club-status="KEIN_MITGLIED"></club-status><kundenfiliale-zuordnung component="kundenfiliale-zuordnung"></kundenfiliale-zuordnung><dl-pageview kundensegmente=""></dl-pageview><hinzugefuegt-overlay component="hinzugefuegt-overlay"><dialog class="element-overlay-slide-in step0overlay" dl-name="step-0-overlay"></dialog></hinzugefuegt-overlay><kundeninteressen-loader data-load-url="/kundeninteressen/include/abfragen"></kundeninteressen-loader><abodaten-loader data-abodaten-url="/abokaufen/api/rest/abodaten"></abodaten-loader><leseexemplar-loginstatus></leseexemplar-loginstatus><div id="nm_chat"></div><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe></body></html>

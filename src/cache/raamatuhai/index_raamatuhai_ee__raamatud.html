@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
+    />
+    <title data-rh="true">Raamatuhai | Eesti nutikaim online raamatupood</title>
+    <meta
+      data-rh="true"  
+      name="description"
+      content="Avasta tuhandeid raamatuid Eesti nutikaimas online raamatutpoes. Osta, müü ja vaheta raamatuid teiste huvilistega."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:url" content="https://raamatuhai.ee/" />
+    <meta
+      data-rh="true"
+      property="og:title"
+      content="Raamatuhai | Eesti nutikaim online raamatupood"
+    />
+    <meta
+      data-rh="true"
+      property="og:description"
+      content="Avasta tuhandeid raamatuid Eesti nutikaimas online raamatutpoes. Osta, müü ja vaheta raamatuid teiste huvilistega."
+    />
+    <meta
+      data-rh="true"
+      property="og:image"
+      content="https://raamatuhai.ee/og-image.png"
+    />
+    <meta data-rh="true" property="og:image:width" content="1531" />
+    <meta data-rh="true" property="og:image:height" content="758" />
+    <meta data-rh="true" property="og:site_name" content="Raamatuhai" />
+    <meta data-rh="true" property="og:locale" content="et_EE" />
+    <meta data-rh="true" property="fb:app_id" content="876566438393770" />
+
+    <!-- Twitter -->
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" property="twitter:domain" content="raamatuhai.ee" />
+    <meta data-rh="true" name="twitter:url" content="https://raamatuhai.ee/" />
+    <meta
+      data-rh="true"
+      name="twitter:title"
+      content="Raamatuhai | Eesti nutikaim online raamatupood"
+    />
+    <meta
+      data-rh="true"
+      name="twitter:description"
+      content="Avasta tuhandeid raamatuid Eesti nutikaimas online raamatutpoes. Osta, müü ja vaheta raamatuid teiste huvilistega."
+    />
+    <meta 
+      data-rh="true"
+      name="twitter:image"
+      content="https://raamatuhai.ee/og-image.png" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="permissions-policy" content="camera=*, microphone=()" />
+
+    
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans+Flex:wght@400;500&family=Inter:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans+Flex:wght@400;500&family=Inter:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <link rel="preconnect" href="https://auth.privy.io" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://explorer-api.walletconnect.com"
+      crossorigin
+    />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://scripts.clarity.ms" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Preload logo -->
+    <link
+      rel="preload"
+      as="image"
+      href="/responsive/logo.svg"
+      type="image/svg+xml"
+      fetchpriority="high"
+    />
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: #e5e7eb;
+      }
+
+      *::before,
+      *::after {
+        --tw-content: "";
+      }
+
+      html {
+        line-height: 1.5;
+        -webkit-text-size-adjust: 100%;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+           tab-size: 4;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          "Noto Sans",
+          sans-serif;
+        font-feature-settings: normal;
+        font-variation-settings: normal;
+      }
+
+      body {
+        margin: 0;
+        line-height: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: inherit;
+        font-weight: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-feature-settings: inherit;
+        font-variation-settings: inherit;
+        font-size: 100%;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+        padding: 0;
+      }
+
+      button,
+      select {
+        text-transform: none;
+      }
+
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+        background-color: transparent;
+        background-image: none;
+      }
+
+      .bg-white {
+        background-color: #fff;
+      }
+
+      .text-gray-900 {
+        color: #111827;
+      }
+
+      .min-h-screen {
+        min-height: 100vh;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .p-4 {
+        padding: 1rem;
+      }
+
+      .animate-spin {
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .w-8 {
+        width: 2rem;
+      }
+
+      .h-8 {
+        height: 2rem;
+      }
+
+      .text-blue-600 {
+        color: #2563eb;
+      }
+
+      .font-medium {
+        font-weight: 500;
+      }
+
+      .ml-2 {
+        margin-left: 0.5rem;
+      }
+
+      .font-loading {
+        font-display: swap;
+      }
+    </style>
+    <!-- Google Tag Manager -->
+    <script src="/gtm.js" defer></script>
+    <!-- End Google Tag Manager -->
+    <script type="module" crossorigin src="/assets/index-DTXNge6X.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BzntYoZk.css">
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TVDS3FND"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="root"></div>
+  </body>
+</html>
+
