@@ -55,7 +55,7 @@ class BooksPieSpider(BaseSpider):
             self.limit_items,
         )
 
-        seen: set[str] = set()
+        seen: set[str] = self._load_existing_ids()
         try:
             self._load_categories()
             page = 1
@@ -87,6 +87,26 @@ class BooksPieSpider(BaseSpider):
             self.client.close()
 
         self.logger.info("Finished BooksPie harvest. Saved %s items.", self.items_scraped)
+
+    def _load_existing_ids(self) -> set[str]:
+        seen: set[str] = set()
+        if not self.output_file.exists():
+            return seen
+        with open(self.output_file, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    d = json.loads(line)
+                    url = d.get("listing_url", "")
+                    book_id = url.rsplit("#", 1)[-1] if "#" in url else ""
+                    if book_id:
+                        seen.add(book_id)
+                except Exception:
+                    pass
+        self.logger.info("Pre-loaded %d existing IDs from %s", len(seen), self.output_file.name)
+        return seen
 
     def _load_categories(self):
         try:

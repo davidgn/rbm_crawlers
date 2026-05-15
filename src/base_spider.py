@@ -28,6 +28,7 @@ class BaseSpider:
         
         self.output_file = self.output_dir / f"{self.platform_name.lower().replace('.', '_')}_listings.jsonl"
         self.items_scraped = 0
+        self._seen_urls: set[str] = self._load_seen_urls()
         self.user_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -48,10 +49,34 @@ class BaseSpider:
         }
         return headers
 
+    def _load_seen_urls(self) -> set[str]:
+        seen: set[str] = set()
+        if not self.output_file.exists():
+            return seen
+        with open(self.output_file, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    url = json.loads(line).get("listing_url") or ""
+                    if url:
+                        seen.add(url)
+                except Exception:
+                    pass
+        if seen:
+            self.logger.info("Restart-safe: pre-loaded %d existing URLs from %s", len(seen), self.output_file.name)
+        return seen
+
     def save_item(self, item: BookListing):
-        """Append an item to the JSON Lines file."""
+        """Append an item to the JSON Lines file, skipping duplicates by listing_url."""
+        url = item.listing_url or ""
+        if url and url in self._seen_urls:
+            return
         with open(self.output_file, 'a', encoding='utf-8') as f:
             f.write(json.dumps(item.to_dict()) + '\n')
+        if url:
+            self._seen_urls.add(url)
         self.items_scraped += 1
 
     def cache_html(self, item_id: str, html_content: str, url: str | None = None):
