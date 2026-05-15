@@ -2,12 +2,17 @@ import argparse
 import copy
 import json
 import time
+from types import SimpleNamespace
 from typing import Any
 
 import httpx
 
 from base_spider import BaseSpider
+from isbn_utils import normalize_isbn
 from models import BookListing
+
+
+CONFIG = SimpleNamespace(platform_name="BooksPie", territory="India")
 
 
 class BooksPieSpider(BaseSpider):
@@ -150,12 +155,14 @@ class BooksPieSpider(BaseSpider):
 
     def _save_listing(self, book_id: str, source: dict[str, Any]):
         title = self._string_or_none(source.get("book_title")) or "Untitled BooksPie listing"
+        isbn = self._isbn_from_source(source)
         item = BookListing(
             territory=self.territory,
             platform=self.platform_name,
             seller_id=self._string_or_none(source.get("user_id")),
             title=title,
             author=self._string_or_none(source.get("author_name")),
+            isbn=isbn,
             publisher=self._string_or_none(source.get("book_publisher")),
             edition=self._string_or_none(source.get("book_edition")),
             category=self._category(source),
@@ -223,16 +230,25 @@ class BooksPieSpider(BaseSpider):
             return None
         return str(value)
 
+    def _isbn_from_source(self, source: dict[str, Any]) -> str | None:
+        for key in ("isbn", "isbn13", "book_isbn", "book_description", "book_title"):
+            isbn = normalize_isbn(source.get(key))
+            if isbn:
+                return isbn
+        return None
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="BooksPie public old-books API spider")
     parser.add_argument("--pages", type=int, default=1, help="Maximum API pages to query")
     parser.add_argument("--limit", type=int, default=None, help="Maximum listings to save")
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int)
     parser.add_argument("--delay", type=float, default=0.5, help="Delay between page requests")
     args = parser.parse_args()
 
     BooksPieSpider(
-        max_pages=args.pages,
-        limit_items=args.limit,
+        max_pages=args.limit_pages or args.pages,
+        limit_items=args.limit_items if args.limit_items is not None else args.limit,
         delay=args.delay,
     ).run()

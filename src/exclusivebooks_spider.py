@@ -4,6 +4,7 @@ import time
 import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from isbn_utils import normalize_isbn
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -154,6 +155,7 @@ class ExclusiveBooksSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=normalize_isbn(url),
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))

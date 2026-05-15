@@ -302,6 +302,7 @@ class ConfigurableMarketplaceSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=normalize_isbn(url),
                 listing_url=url,
                 condition="Detail fetch failed; listing URL discovered from index",
             )
@@ -340,7 +341,7 @@ class ConfigurableMarketplaceSpider(BaseSpider):
             platform=self.platform_name,
             title=title,
             author=self._person_text(data.get("author")),
-            isbn=self._isbn_from_soup(soup, data),
+            isbn=self._isbn_from_soup(soup, data) or normalize_isbn(url),
             publisher=self._person_text(data.get("publisher")),
             publication_year=self._pick_text(data, "datePublished"),
             binding=self._normalize_schema_value(self._pick_text(data, "bookFormat")),

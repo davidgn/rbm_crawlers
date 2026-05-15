@@ -94,11 +94,15 @@ class UsedBooksFactorySpider(BaseSpider):
                 if match:
                     price_val = "INR " + match.group(0).replace(",", "")
 
+        isbn_match = re.search(r'(97[89]\d{10})', listing_url)
+        isbn = isbn_match.group(1) if isbn_match else None
+
         item = BookListing(
             territory=self.territory,
             platform=self.platform_name,
             title=title,
             author=author,
+            isbn=isbn,
             price=price_val,
             listing_url=listing_url,
         )

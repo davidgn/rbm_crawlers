@@ -120,7 +120,7 @@ class ZVABSwitzerlandSpider(BaseSpider):
                 "term=%-25s start=%5d: %2d new  (total %d)",
                 repr(term), start, new_count, self.items_scraped,
             )
-            if len(items) < PER_PAGE:
+            if len(items) < PER_PAGE or new_count == 0:
                 break
             time.sleep(self.delay)
 
