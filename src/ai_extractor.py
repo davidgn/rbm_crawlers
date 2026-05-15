@@ -13,7 +13,7 @@ def deep_extract(html_content):
     try:
         # Use a pipe to send HTML content directly to the gemini CLI
         # --skip-trust is used to bypass the interactive trust prompt in non-interactive mode.
-        cmd = ["gemini", "--skip-trust", "@bibliographic-parser", "-p", ""]
+        cmd = ["gemini", "--skip-trust", "@flash-preview-3", "-p", "Extract structured bibliographic data from the following HTML. Return JSON only."]
         process = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         stdout, stderr = process.communicate(input=html_content)
         
