@@ -109,7 +109,7 @@ class AbeBooksDESpider(BaseSpider):
                 listing = self._listing_from_item(item, base_url)
                 if listing is None:
                     continue
-                item_id = item.get("id", "")
+                item_id = item.get("data-csa-c-item-id", "") or listing.listing_url
                 if item_id in seen_ids:
                     continue
                 seen_ids.add(item_id)
@@ -135,17 +135,19 @@ class AbeBooksDESpider(BaseSpider):
         if not title:
             return None
 
-        # Listing URL from the first <a> with a usable href
+        # Listing URL: first <a> on the item (title link has format /Title/ID/bd)
         url = None
+        listing_id = item.get("data-csa-c-item-id", "")
         for a in item.find_all("a", href=True):
             href = a["href"]
-            if "/book/" in href or "/buch/" in href or base_url in href:
+            if listing_id and listing_id in href:
+                url = href if href.startswith("http") else base_url + href
+                break
+            if re.search(r"/\d{10,}/bd$", href):
                 url = href if href.startswith("http") else base_url + href
                 break
         if not url:
-            # Fall back to item id
-            item_id = item.get("data-csa-c-item-id", "")
-            url = f"{base_url}/buch/seller/{item_id}" if item_id else base_url
+            url = f"{base_url}/{listing_id}/bd" if listing_id else base_url
 
         price_str = metas.get("price")
         currency = metas.get("priceCurrency", "EUR")

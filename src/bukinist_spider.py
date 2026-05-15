@@ -5,12 +5,15 @@ CakePHP SSR site (XHTML 1.0 Strict). Note: the bare domain times out;
 use www.bukinist.in.ua throughout.
 
 Site structure:
-  - Listing pages: /books/last/{N}  (10 books per page, N starts at 1)
-  - Book pages: /books/view/{id}
-  - ~56K books historically, active subset unknown
+  - Latest-listing page: /books/last/1 (10 books, stateless — same 10 regardless of N)
+  - Book pages: /books/view/{id}  (IDs are sequential, max ~56K)
 
-Each book page has title+year+binding in a <b> tag, then labeled fields
-(Category, Rubric, Place of origin, Description), a seller link (/id{N}),
+Pagination via /books/last/N does not work statlessly — every page number
+returns the same 10 most-recent books. We instead discover the current
+max ID from /books/last/1, then iterate IDs downward, skipping 404s.
+
+Each book page has title in a <b> tag, year+binding on the following line,
+then labeled fields (Category, Rubric, Description), a seller link (/id{N}),
 and price in UAH (грн).
 """
 import re
@@ -22,7 +25,6 @@ from base_spider import BaseSpider
 
 
 BASE_URL = "https://www.bukinist.in.ua"
-ITEMS_PER_PAGE = 10
 
 
 class BukinistSpider(BaseSpider):
@@ -34,61 +36,54 @@ class BukinistSpider(BaseSpider):
         "Accept-Language": "uk-UA,uk;q=0.9,ru;q=0.8,en;q=0.7",
     }
 
-    def __init__(self, delay: float = 0.5, max_pages: int = 6000):
+    def __init__(self, delay: float = 0.3, max_id: int = 0, min_id: int = 1):
         super().__init__(platform_name="Bukinist", territory="Ukraine")
         self.delay = delay
-        self.max_pages = max_pages
+        self.max_id = max_id  # 0 = auto-discover from /books/last/1
+        self.min_id = min_id
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
-        seen: set[str] = set()
-        for page_num in range(1, self.max_pages + 1):
-            url = f"{BASE_URL}/books/last/{page_num}"
-            try:
-                resp = self.client.get(url)
-                if resp.status_code in (404, 410):
-                    break
-                resp.raise_for_status()
-            except Exception as e:
-                self.logger.error("page=%d error: %s", page_num, e)
-                break
+        max_id = self.max_id or self._discover_max_id()
+        if not max_id:
+            self.logger.error("Could not determine max book ID — aborting")
+            return
+        self.logger.info("Crawling IDs %d → %d", max_id, self.min_id)
 
-            soup = BeautifulSoup(resp.text, "html.parser")
-            book_links = self._extract_book_links(soup)
-            if not book_links:
-                self.logger.info("page=%d: no books — done", page_num)
-                break
-
-            new_count = 0
-            for link in book_links:
-                if link in seen:
-                    continue
-                seen.add(link)
-                new_count += 1
-                listing = self._fetch_book(link)
-                if listing:
-                    self.save_item(listing)
-                time.sleep(self.delay)
-
-            self.logger.info("page %4d: %2d new  (total %d)", page_num, new_count, self.items_scraped)
-            if len(book_links) < ITEMS_PER_PAGE:
-                break
+        for book_id in range(max_id, self.min_id - 1, -1):
+            url = f"{BASE_URL}/books/view/{book_id}"
+            listing = self._fetch_book(url)
+            if listing:
+                self.save_item(listing)
+            if book_id % 500 == 0:
+                self.logger.info("id=%d  (total %d)", book_id, self.items_scraped)
+            time.sleep(self.delay)
 
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
 
-    def _extract_book_links(self, soup: BeautifulSoup) -> list[str]:
-        links = []
+    def _discover_max_id(self) -> int:
+        try:
+            resp = self.client.get(f"{BASE_URL}/books/last/1")
+            resp.raise_for_status()
+        except Exception as e:
+            self.logger.error("Could not fetch /books/last/1: %s", e)
+            return 0
+        soup = BeautifulSoup(resp.text, "html.parser")
+        ids = []
         for a in soup.find_all("a", href=True):
-            href = a["href"]
-            if re.search(r"/books/view/\d+", href):
-                full = href if href.startswith("http") else BASE_URL + href
-                links.append(full)
-        return list(dict.fromkeys(links))
+            m = re.search(r"/books/view/(\d+)", a["href"])
+            if m:
+                ids.append(int(m.group(1)))
+        max_id = max(ids) if ids else 0
+        self.logger.info("Discovered max book ID: %d", max_id)
+        return max_id
 
     def _fetch_book(self, book_url: str) -> BookListing | None:
         try:
             resp = self.client.get(book_url)
+            if resp.status_code in (404, 410):
+                return None
             resp.raise_for_status()
         except Exception as e:
             self.logger.warning("book fetch failed %s: %s", book_url, e)
@@ -98,57 +93,52 @@ class BukinistSpider(BaseSpider):
         return self._parse_book_page(soup, book_url)
 
     def _parse_book_page(self, soup: BeautifulSoup, book_url: str) -> BookListing | None:
-        # Title is in the first <b> tag in the main content area.
-        # Format: "Author Title Year binding type: Type."
+        # Title is in the first <b> tag; clean internal whitespace
         title_el = soup.find("b")
         if not title_el:
             return None
-        raw_title = title_el.get_text(strip=True)
-        if not raw_title:
+        title = re.sub(r"\s+", " ", title_el.get_text()).strip()
+        if not title:
             return None
 
-        # Peel year and binding from the end of the raw title line.
-        # Pattern: "...Title YYYY binding type: Тип."
+        # Year and binding appear on the line immediately after the <b> tag:
+        # "1977 binding type: hardcover."
         year = None
         binding = None
-        title = raw_title
+        next_text = ""
+        for sibling in title_el.next_siblings:
+            text = sibling.get_text() if hasattr(sibling, "get_text") else str(sibling)
+            text = text.strip()
+            if text:
+                next_text = text
+                break
 
-        year_m = re.search(r"\b(1[89]\d{2}|20[012]\d)\b", raw_title)
+        year_m = re.search(r"\b(1[89]\d{2}|20[012]\d)\b", next_text)
         if year_m:
             year = year_m.group(1)
-            title = raw_title[:year_m.start()].strip(" ,.")
 
-        binding_m = re.search(r"binding type[:\s]+([^.]+)", raw_title, re.IGNORECASE)
+        binding_m = re.search(r"binding type[:\s]+([^.\n]+)", next_text, re.IGNORECASE)
         if not binding_m:
-            # Ukrainian label
-            binding_m = re.search(r"палітурка[:\s]+([^.]+)", raw_title, re.IGNORECASE)
+            binding_m = re.search(r"палітурка[:\s]+([^.\n]+)", next_text, re.IGNORECASE)
         if binding_m:
             binding = binding_m.group(1).strip(" .") or None
 
-        # Labeled fields are plain text nodes in the page, e.g.:
-        # "Category: Book, journal, almanac"
-        # "Rubric: Biographies, memoirs"
-        # "Place of origin: Азія"
-        # "Description: ..."
         page_text = soup.get_text(separator="\n")
         category = self._extract_label(page_text, ["Category", "Категорія"])
         rubric = self._extract_label(page_text, ["Rubric", "Рубрика"])
         description = self._extract_label(page_text, ["Description", "Опис"])
 
-        # Combine rubric into category if no category
         if rubric and not category:
             category = rubric
         elif rubric and category:
             category = f"{category} / {rubric}"
 
-        # Price: look for pattern like "50,00 грн" or "50.00 UAH"
         price_m = re.search(r"(\d[\d\s,.']*(?:грн|UAH|₴))", page_text, re.IGNORECASE)
         price = price_m.group(1).strip() if price_m else None
 
-        # Seller: link matching /id\d+
         seller_id = None
         for a in soup.find_all("a", href=True):
-            if re.match(r"^/id\d+$", a["href"]) or re.match(r".*/id\d+$", a["href"]):
+            if re.search(r"/id\d+$", a["href"]):
                 seller_id = a.get_text(strip=True) or None
                 if seller_id:
                     break
@@ -172,7 +162,6 @@ class BukinistSpider(BaseSpider):
             m = re.search(rf"{re.escape(label)}\s*:\s*(.+)", text, re.IGNORECASE)
             if m:
                 value = m.group(1).strip()
-                # Trim at next label-like line or blank line
                 value = re.split(r"\n\s*\n|\n[A-ZІЇЄА-Я][^:]{0,30}:", value)[0].strip()
                 return value or None
         return None
@@ -181,10 +170,13 @@ class BukinistSpider(BaseSpider):
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Bukinist Ukraine used-book spider")
-    parser.add_argument("--delay", type=float, default=0.5)
-    parser.add_argument("--max-pages", type=int, default=6000)
+    parser.add_argument("--delay", type=float, default=0.3)
+    parser.add_argument("--max-id", type=int, default=0,
+                        help="Highest book ID to fetch (0 = auto-discover)")
+    parser.add_argument("--min-id", type=int, default=1,
+                        help="Lowest book ID to fetch")
     args = parser.parse_args()
-    BukinistSpider(delay=args.delay, max_pages=args.max_pages).run()
+    BukinistSpider(delay=args.delay, max_id=args.max_id, min_id=args.min_id).run()
 
 
 if __name__ == "__main__":
