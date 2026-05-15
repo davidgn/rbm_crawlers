@@ -31,7 +31,7 @@ class MedadSpider(BaseSpider):
                 self.logger.info(f"Fetching page {page}: {url}")
                 
                 try:
-                    response = self.client.get(url, headers=self.user_agents[0])
+                    response = self.client.get(url, headers={"User-Agent": self.user_agents[0]})
                     if response.status_code == 404:
                         break
                     response.raise_for_status()
@@ -60,7 +60,7 @@ class MedadSpider(BaseSpider):
         item_id = url.split("/")[-1].replace(".html", "")
 
         try:
-            resp = self.client.get(url, headers=self.user_agents[0])
+            resp = self.client.get(url, headers={"User-Agent": self.user_agents[0]})
             if resp.status_code == 200:
                 # CACHE FIRST: Dump raw HTML for AI batch processing
                 self.cache_html(item_id, resp.text)

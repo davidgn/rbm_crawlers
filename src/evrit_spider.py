@@ -22,14 +22,15 @@ class EvritSpider(BaseSpider):
     BASE_URL = "https://www.e-vrit.co.il"
 
     BROWSE_CANDIDATES = [
+        # Category pages have /Product/ links — confirm from any of these
+        "/Category/10/%D7%A4%D7%A8%D7%95%D7%96%D7%94_%D7%9E%D7%A7%D7%95%D7%A8",  # fiction
+        "/Category/33/%D7%A4%D7%A8%D7%95%D7%96%D7%94_%D7%AA%D7%A8%D7%92%D7%95%D7%9D",  # translated
+        "/Category/4/%D7%A2%D7%99%D7%95%D7%9F",  # non-fiction
         "/books",
-        "/ספרים",
         "/catalog",
-        "/shop",
-        "/all-books",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/books/", "/p/"]
+    DETAIL_SIGNALS = ["/Product/", "/product/", "/book/", "/item/", "/books/", "/p/"]
 
     HEADERS = {
         "User-Agent": (

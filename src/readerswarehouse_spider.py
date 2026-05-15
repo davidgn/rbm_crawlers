@@ -20,17 +20,16 @@ class ReadersWarehouseSpider(BaseSpider):
     Browse paths probed at startup.  Pagination: WooCommerce /page/N/ then ?page=N.
     """
 
-    BASE_URL = "https://www.readerswarehouse.co.za"
+    BASE_URL = "https://www.readerswarehouse.us"
 
     BROWSE_CANDIDATES = [
-        "/product-category/books",
-        "/books",
-        "/shop",
-        "/all-books",
-        "/categories/books",
+        "/collections/all",
+        "/collections/fiction",
+        "/collections/non-fiction",
+        "/collections/children",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/books/"]
+    DETAIL_SIGNALS = ["/products/", "/product/", "/book/", "/item/"]
 
     HEADERS = {
         "User-Agent": (

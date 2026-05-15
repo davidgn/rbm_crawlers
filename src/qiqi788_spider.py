@@ -23,13 +23,11 @@ class Qiqi788Spider(BaseSpider):
     BASE_URL = "https://7788js.7788.com"
 
     BROWSE_CANDIDATES = [
-        "/list/",
-        "/category/",
-        "/shop/",
-        "/goods/",
+        "/all_1/",
+        "/show_1/",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/goods/", "/show/", "/item/", "/detail/"]
+    DETAIL_SIGNALS = ["/pr/item_", "/pr/history_", "/product/", "/goods/", "/show/"]
 
     HEADERS = {
         "User-Agent": (
@@ -122,7 +120,7 @@ class Qiqi788Spider(BaseSpider):
         for a in soup.find_all("a", href=True):
             href = urljoin(self.BASE_URL, a["href"])
             if (
-                self.BASE_URL in href
+                "7788.com" in href  # allow store.7788.com and other subdomains
                 and any(sig in href for sig in self.DETAIL_SIGNALS)
                 and href not in seen
             ):

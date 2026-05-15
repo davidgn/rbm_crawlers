@@ -22,15 +22,13 @@ class WizeBooksSpider(BaseSpider):
 
     BASE_URL = "https://secondhand.wizebooks.co.za"
 
+    # Site uses /Product/Category/{slug}/{page}/{size} and /Product/Buy/{isbn}
     BROWSE_CANDIDATES = [
-        "/product-category/books",
-        "/books",
-        "/shop",
-        "/all-books",
-        "/secondhand",
-        "",
+        "/Product/Category/school-books/1/26",
+        "/Product/Category/south-africas-best-sellers/1/26",
+        "/Product/Category/best-sellers-university-books/1/26",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/books/"]
+    DETAIL_SIGNALS = ["/Product/Buy/", "/product/buy/"]
 
     HEADERS = {
         "User-Agent": (
@@ -48,6 +46,16 @@ class WizeBooksSpider(BaseSpider):
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
 
+    def _page_url(self, browse_url: str, pg_num: int) -> str:
+        # Replace the page-number slot in /Product/Category/{slug}/{page}/{size}
+        import re as _re
+        new_url = _re.sub(r'(/Product/Category/[^/]+)/\d+(/\d+)', rf'\g<1>/{pg_num}\2', browse_url)
+        if new_url != browse_url:
+            return new_url
+        # Fallback
+        sep = "&" if "?" in browse_url else "?"
+        return f"{browse_url}{sep}page={pg_num}"
+
     def run(self):
         self.logger.info(
             f"Starting Wize Books Secondhand harvest (cache-first). limit_pages={self.limit_pages}"
@@ -59,10 +67,7 @@ class WizeBooksSpider(BaseSpider):
 
             for pg_num in range(1, self.limit_pages + 1):
                 urls_to_try = (
-                    [
-                        f"{browse_url.rstrip('/')}/page/{pg_num}/",
-                        f"{browse_url}{'&' if '?' in browse_url else '?'}page={pg_num}",
-                    ]
+                    [self._page_url(browse_url, pg_num)]
                     if pg_num > 1
                     else [browse_url]
                 )

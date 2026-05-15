@@ -23,14 +23,14 @@ class AucEgyptSpider(BaseSpider):
     BASE_URL = "https://aucbookstores.com"
 
     BROWSE_CANDIDATES = [
+        "/collections/all",
+        "/collections/books",
         "/product-category/books",
         "/books",
         "/shop",
-        "/store",
-        "/catalog",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/books/", "/shop/"]
+    DETAIL_SIGNALS = ["/products/", "/product/", "/book/", "/item/", "/books/", "/shop/"]
 
     HEADERS = {
         "User-Agent": (

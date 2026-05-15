@@ -22,14 +22,14 @@ class LiberiaBookStoreSpider(BaseSpider):
     BASE_URL = "https://liberiabookstore.com"
 
     BROWSE_CANDIDATES = [
+        "/collections/all",
+        "/collections/books",
         "/product-category/books",
         "/books",
         "/shop",
-        "/catalog",
-        "/all-products",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/books/"]
+    DETAIL_SIGNALS = ["/products/", "/product/", "/book/", "/item/", "/books/"]
 
     HEADERS = {
         "User-Agent": (

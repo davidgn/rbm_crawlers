@@ -22,12 +22,12 @@ class BookconektSpider(BaseSpider):
     BASE_URL = "https://bookconekt.com"
 
     BROWSE_CANDIDATES = [
-        "/product-category/books",
-        "/books",
+        "/product-category/livres-beninois/",
+        "/product-category/romans/",
+        "/product-category/ouvrages-pratiques/",
+        "/product-category/manuels-scolaires/",
+        "/product-category/autres-genres-litteraires/",
         "/shop",
-        "/listings",
-        "/browse",
-        "/boutique",
         "",
     ]
     DETAIL_SIGNALS = ["/product/", "/book/", "/listing/", "/item/", "/books/"]

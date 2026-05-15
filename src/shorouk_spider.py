@@ -22,15 +22,14 @@ class ShoroukSpider(BaseSpider):
     BASE_URL = "https://www.shoroukbookstores.com"
 
     BROWSE_CANDIDATES = [
-        "/product-category/books",
-        "/books",
-        "/shop",
-        "/store",
-        "/catalog",
-        "/products",
+        "/books/arabic/literature-fiction",
+        "/books/arabic/bestseller",
+        "/books/arabic/latest",
+        "/books/english/bestseller",
+        "/books/arabic",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/shop/"]
+    DETAIL_SIGNALS = ["/books/view.aspx", "/products/", "/product/"]
 
     HEADERS = {
         "User-Agent": (

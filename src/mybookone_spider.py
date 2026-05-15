@@ -23,15 +23,12 @@ class MyBookOneSpider(BaseSpider):
     BASE_URL = "https://www.mybookone.com.hk"
 
     BROWSE_CANDIDATES = [
-        "/product-category/books",
-        "/books",
-        "/shop",
-        "/listings",
-        "/browse",
-        "/all-books",
+        "/static/new_list_w/list.html",
+        "/static/bestseller_w/list.html",
+        "/static/secondhand_w/list.html",
         "",
     ]
-    DETAIL_SIGNALS = ["/product/", "/book/", "/listing/", "/item/", "/books/"]
+    DETAIL_SIGNALS = ["/page/detail_w/", "/products/", "/product/", "/book/", "/listing/", "/item/"]
 
     HEADERS = {
         "User-Agent": (
