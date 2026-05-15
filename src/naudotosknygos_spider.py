@@ -7,6 +7,7 @@ CONFIG = MarketplaceConfig(
     base_url="https://www.naudotosknygos.lt",
     browse_paths=("/", "/knygos", "/paieska"),
     detail_signals=("/knyga/", "/knygos/", "/book/", "/item/"),
+    exclude_signals=("/knyga/mano", "/knyga/parduota", "/knyga/pirkiniai", "/login"),
     headers={"Accept-Language": "lt-LT,lt;q=0.9,en;q=0.8"},
 )
 

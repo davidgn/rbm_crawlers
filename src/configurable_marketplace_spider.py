@@ -325,6 +325,8 @@ class ConfigurableMarketplaceSpider(BaseSpider):
 
     def _listing_from_html(self, html: str, url: str) -> BookListing | None:
         soup = BeautifulSoup(html, "html.parser")
+        if self._blocked_page(soup):
+            return None
         data = self._jsonld_book_or_product(soup)
         title = self._pick_text(data, "name", "headline") or self._title_from_soup(soup)
         if not title:
@@ -384,7 +386,7 @@ class ConfigurableMarketplaceSpider(BaseSpider):
         return self._title_from_soup(BeautifulSoup(html, "html.parser"))
 
     def _title_from_soup(self, soup: BeautifulSoup) -> str | None:
-        for selector in ("h1", "[property='og:title']", "title"):
+        for selector in ("h1", ".title.float-left", ".product-title", ".book-title", "[property='og:title']", "title"):
             for node in soup.select(selector):
                 text = node.get("content") if node.name == "meta" else node.get_text(" ", strip=True)
                 title = self._clean_title(text)
@@ -401,10 +403,19 @@ class ConfigurableMarketplaceSpider(BaseSpider):
         generic = {
             "välkommen till sveriges största bokhandel",
             "compre e venda na maior rede de livreiros do brasil",
+            "trocadelivros",
+            "troca de livros",
         }
         if title.lower() in generic:
             return None
         return title
+
+    def _blocked_page(self, soup: BeautifulSoup) -> bool:
+        title = self._clean_title(soup.title.get_text(" ", strip=True) if soup.title else None)
+        if title and "seems like you have been blocked" in title.lower():
+            return True
+        body = soup.get_text(" ", strip=True)[:1000].lower()
+        return "seems like you have been blocked" in body
 
     def _meta_content(self, soup: BeautifulSoup, prop: str) -> str | None:
         node = soup.find("meta", attrs={"property": prop}) or soup.find("meta", attrs={"name": prop})
