@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import re
 from urllib.parse import urljoin
+from isbn_utils import isbn_from_url
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -94,8 +95,7 @@ class UsedBooksFactorySpider(BaseSpider):
                 if match:
                     price_val = "INR " + match.group(0).replace(",", "")
 
-        isbn_match = re.search(r'(97[89]\d{10})', listing_url)
-        isbn = isbn_match.group(1) if isbn_match else None
+        isbn = isbn_from_url(listing_url)
 
         item = BookListing(
             territory=self.territory,

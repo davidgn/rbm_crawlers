@@ -1,10 +1,16 @@
 import argparse
 import re
 import time
+from types import SimpleNamespace
+
 import httpx
 from bs4 import BeautifulSoup
-from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
+from models import BookListing
+
+
+CONFIG = SimpleNamespace(platform_name="Aladin", territory="South Korea")
 
 
 class AladinSpider(BaseSpider):
@@ -51,9 +57,10 @@ class AladinSpider(BaseSpider):
         "Referer": "https://www.aladin.co.kr/",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="Aladin", territory="South Korea")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -66,6 +73,8 @@ class AladinSpider(BaseSpider):
 
         try:
             for cat in self.CATEGORIES:
+                if self.items_scraped >= self.limit_items:
+                    break
                 self.logger.info(f"=== Category: {cat['name']} (id={cat['cat_id']}) ===")
                 for pg_num in range(self.limit_pages):
                     start = pg_num * self.PAGE_SIZE
@@ -88,6 +97,8 @@ class AladinSpider(BaseSpider):
 
                     self.logger.info(f"Found {len(detail_links)} new listings.")
                     for link in detail_links:
+                        if self.items_scraped >= self.limit_items:
+                            return
                         seen.add(link)
                         self._harvest_item(link)
                         time.sleep(0.6)
@@ -123,22 +134,35 @@ class AladinSpider(BaseSpider):
 
             soup = BeautifulSoup(resp.text, "html.parser")
             h1 = soup.find("h1") or soup.find("div", class_=re.compile(r"title|book_name", re.I))
-            title = h1.get_text(strip=True) if h1 else "Cached Item"
+            title = self._title_from_soup(soup) or (h1.get_text(" ", strip=True) if h1 else None) or "Cached Item"
 
             self.save_item(BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=extract_isbn(soup),
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")
 
+    def _title_from_soup(self, soup: BeautifulSoup) -> str | None:
+        for selector in ("meta[property='og:title']", "meta[name='title']", "title"):
+            node = soup.select_one(selector)
+            if not node:
+                continue
+            text = node.get("content") if node.name == "meta" else node.get_text(" ", strip=True)
+            if text:
+                return re.sub(r"\s+", " ", text).strip()
+        return None
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Aladin 알라딘 (South Korea) cache-first spider")
     parser.add_argument("--limit", type=int, default=100,
                         help="Max listing pages per category (default: 100)")
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int, default=50)
     args = parser.parse_args()
-    AladinSpider(limit_pages=args.limit).run()
+    AladinSpider(limit_pages=args.limit_pages or args.limit, limit_items=args.limit_items).run()

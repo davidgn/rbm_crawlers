@@ -43,6 +43,17 @@ def extract_isbn(soup: BeautifulSoup) -> str | None:
     return None
 
 
+def isbn_from_url(url: str | None) -> str | None:
+    """Extract ISBN from a URL only when '978' or '979' is visually present in the raw URL.
+
+    Guards against false positives from numeric product IDs, hex fragment IDs, or
+    Unix timestamps that accidentally pass ISBN-10/13 checksums after digit-stripping.
+    """
+    if not url or not re.search(r"(?<![0-9])97[89]", url):
+        return None
+    return normalize_isbn(url)
+
+
 def normalize_isbn(value: Any) -> str | None:
     """
     Convert any ISBN string (10 or 13 digits, any separators) to a clean ISBN-13.

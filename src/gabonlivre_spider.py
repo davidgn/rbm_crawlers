@@ -1,11 +1,17 @@
 import argparse
 import re
 import time
+from types import SimpleNamespace
+from urllib.parse import urljoin
+
 import httpx
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
+from models import BookListing
+
+
+CONFIG = SimpleNamespace(platform_name="Gabon Livre", territory="Gabon")
 
 
 class GabonLivreSpider(BaseSpider):
@@ -39,9 +45,10 @@ class GabonLivreSpider(BaseSpider):
         "Accept-Language": "fr-GA,fr;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="Gabon Livre", territory="Gabon")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -91,6 +98,8 @@ class GabonLivreSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.items_scraped >= self.limit_items:
+                        return
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.7)
@@ -152,6 +161,7 @@ class GabonLivreSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=extract_isbn(soup),
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
@@ -162,5 +172,7 @@ class GabonLivreSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Gabon Livre cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int, default=50)
     args = parser.parse_args()
-    GabonLivreSpider(limit_pages=args.limit).run()
+    GabonLivreSpider(limit_pages=args.limit_pages or args.limit, limit_items=args.limit_items).run()

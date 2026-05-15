@@ -10,7 +10,7 @@ import httpx
 from bs4 import BeautifulSoup
 
 from base_spider import BaseSpider
-from isbn_utils import extract_isbn, normalize_isbn
+from isbn_utils import extract_isbn, normalize_isbn, isbn_from_url
 from models import BookListing
 
 
@@ -302,7 +302,7 @@ class ConfigurableMarketplaceSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
-                isbn=normalize_isbn(url),
+                isbn=isbn_from_url(url),
                 listing_url=url,
                 condition="Detail fetch failed; listing URL discovered from index",
             )
@@ -341,7 +341,7 @@ class ConfigurableMarketplaceSpider(BaseSpider):
             platform=self.platform_name,
             title=title,
             author=self._person_text(data.get("author")),
-            isbn=self._isbn_from_soup(soup, data) or normalize_isbn(url),
+            isbn=self._isbn_from_soup(soup, data) or isbn_from_url(url),
             publisher=self._person_text(data.get("publisher")),
             publication_year=self._pick_text(data, "datePublished"),
             binding=self._normalize_schema_value(self._pick_text(data, "bookFormat")),
@@ -385,13 +385,26 @@ class ConfigurableMarketplaceSpider(BaseSpider):
 
     def _title_from_soup(self, soup: BeautifulSoup) -> str | None:
         for selector in ("h1", "[property='og:title']", "title"):
-            node = soup.select_one(selector)
-            if not node:
-                continue
-            text = node.get("content") if node.name == "meta" else node.get_text(" ", strip=True)
-            if text:
-                return re.sub(r"\s+", " ", text).strip()
+            for node in soup.select(selector):
+                text = node.get("content") if node.name == "meta" else node.get_text(" ", strip=True)
+                title = self._clean_title(text)
+                if title:
+                    return title
         return None
+
+    def _clean_title(self, value: str | None) -> str | None:
+        if not value:
+            return None
+        title = re.sub(r"\s+", " ", value).strip()
+        if not title:
+            return None
+        generic = {
+            "välkommen till sveriges största bokhandel",
+            "compre e venda na maior rede de livreiros do brasil",
+        }
+        if title.lower() in generic:
+            return None
+        return title
 
     def _meta_content(self, soup: BeautifulSoup, prop: str) -> str | None:
         node = soup.find("meta", attrs={"property": prop}) or soup.find("meta", attrs={"name": prop})

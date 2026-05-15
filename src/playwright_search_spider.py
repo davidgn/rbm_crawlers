@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
-from isbn_utils import normalize_isbn
+from isbn_utils import normalize_isbn, isbn_from_url
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -104,7 +104,7 @@ class PlaywrightSearchSpider(BaseSpider):
             if author_el:
                 author = author_el.text.strip().replace("By ", "").strip()
 
-        isbn = normalize_isbn(listing_url) if listing_url else None
+        isbn = isbn_from_url(listing_url) if listing_url else None
 
         book = BookListing(
             territory=self.territory,

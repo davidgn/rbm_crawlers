@@ -8,6 +8,7 @@ CONFIG = MarketplaceConfig(
     browse_paths=("/", "/books", "/sell-books"),
     detail_signals=("/books/", "/book/", "/products/"),
     headers={"Accept-Language": "en-GB,en;q=0.9"},
+    curl_impersonate="chrome124",
 )
 
 

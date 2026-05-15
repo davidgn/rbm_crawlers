@@ -1,10 +1,17 @@
 import argparse
 import re
 import time
+from types import SimpleNamespace
+
+from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
-from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
+from models import BookListing
+
+
+CONFIG = SimpleNamespace(platform_name="2ndhandbooks.lk", territory="Sri Lanka")
 
 
 class SecondHandBooksLkSpider(BaseSpider):
@@ -29,9 +36,10 @@ class SecondHandBooksLkSpider(BaseSpider):
     ]
     DETAIL_SIGNALS = ["/book/", "/listing/", "/product/", "/item/", "/books/"]
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="2ndhandbooks.lk", territory="Sri Lanka")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://2ndhandbooks.lk"
 
     def run(self):
@@ -52,6 +60,8 @@ class SecondHandBooksLkSpider(BaseSpider):
                 browse_url = self._find_browse_url(page)
 
                 for pg_num in range(1, self.limit_pages + 1):
+                    if self.items_scraped >= self.limit_items:
+                        break
                     url = browse_url if pg_num == 1 else f"{browse_url}?page={pg_num}"
                     self.logger.info(f"Index page {pg_num}: {url}")
 
@@ -69,6 +79,8 @@ class SecondHandBooksLkSpider(BaseSpider):
 
                     self.logger.info(f"Found {len(book_links)} new links.")
                     for link in book_links:
+                        if self.items_scraped >= self.limit_items:
+                            break
                         seen.add(link)
                         self._harvest_item(page, link)
                         page.wait_for_timeout(700)
@@ -102,10 +114,10 @@ class SecondHandBooksLkSpider(BaseSpider):
             "() => Array.from(document.querySelectorAll('a[href]')).map(a => a.href)"
         )
         return [
-            l for l in dict.fromkeys(all_links)
-            if self.base_url in l
-            and any(sig in l for sig in self.DETAIL_SIGNALS)
-            and l not in seen
+            link for link in dict.fromkeys(all_links)
+            if self.base_url in link
+            and any(sig in link for sig in self.DETAIL_SIGNALS)
+            and link not in seen
         ]
 
     def _harvest_item(self, page, url: str):
@@ -134,6 +146,7 @@ class SecondHandBooksLkSpider(BaseSpider):
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=extract_isbn(BeautifulSoup(html, "html.parser")),
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
@@ -144,5 +157,7 @@ class SecondHandBooksLkSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="2ndhandbooks.lk (Sri Lanka) cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int, default=50)
     args = parser.parse_args()
-    SecondHandBooksLkSpider(limit_pages=args.limit).run()
+    SecondHandBooksLkSpider(limit_pages=args.limit_pages or args.limit, limit_items=args.limit_items).run()
