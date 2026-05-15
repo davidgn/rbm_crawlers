@@ -5,9 +5,11 @@ CONFIG = MarketplaceConfig(
     platform_name="CompartirLibros",
     territory="Panama",
     base_url="https://www.compartirlibros.com",
-    browse_paths=("/", "/libros", "/books", "/productos"),
-    detail_signals=("/libro/", "/books/", "/product/", "/producto/"),
+    browse_paths=("/bestsellers", "/categoria", "/"),
+    detail_signals=("/libro/",),
     headers={"Accept-Language": "es-PA,es;q=0.9,en;q=0.8"},
+    rendered=True,
+    render_wait_ms=3000,
 )
 
 
