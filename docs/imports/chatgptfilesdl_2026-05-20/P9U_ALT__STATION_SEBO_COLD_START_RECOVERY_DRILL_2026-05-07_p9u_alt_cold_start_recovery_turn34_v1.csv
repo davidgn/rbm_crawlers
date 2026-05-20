@@ -1,0 +1,32 @@
+check_id,check_class,check,result,observed,notes
+P9U-001,parent_zip_present,Parent P9T terminal ZIP exists in /mnt/data,PASS,station_sebo_checkpoint_handoff_2026-05-07_post_p9t_alt_terminal_freeze_turn33_v1.zip,Use P9T as sole parent authority.
+P9U-002,parent_zip_flat,Parent P9T ZIP contains no nested paths/folders,PASS,128,Flat bundle verified.
+P9U-003,parent_zip_no_nested_zips,Parent P9T ZIP contains no nested ZIPs,PASS,0,No archive recursion needed.
+P9U-004,parent_hash_recorded,Parent P9T ZIP SHA256 recorded,PASS,7b76bca74a1e67b4bd086089ae08a4f6dc4b9de9d3e940ea8c42900dad452e5d,Fingerprint captured for future comparison.
+P9U-005,snapshot_present,P9T current state snapshot present,PASS,CURRENT_STATE_SNAPSHOT_2026-05-07_post_p9t_alt_terminal_freeze_turn33_v1.json,Snapshot loaded for zero-memory reconstruction.
+P9U-006,stopline_reconstructed,Authoritative stopline reconstructs from snapshot,PASS,P9T-alt terminal freeze / checksum pack / Turn 33,"P9U supersedes only as recovery-drill layer, not candidate facts."
+P9U-007,main_board_count_reconstructed,Main board row count reconstructed as 74,PASS,74,No board mutation.
+P9U-008,execution_ledger_count_reconstructed,Deferred-contact execution ledger count reconstructed as 38,PASS,38,No contact executed.
+P9U-009,command_packet_count_reconstructed,Parked no-contact command packet count reconstructed as 16,PASS,16,Command packet unchanged.
+P9U-010,command_core_count_reconstructed,Terminal command core count reconstructed as 6,PASS,snapshot=6; list=6,Command core loaded from snapshot.
+P9U-011,microgap_quarantine_reconstructed,Phone/private-contact microgaps reconstructed as 10,PASS,10,Quarantine preserved.
+P9U-012,verification_queue_zero,Verification queue reconstructed as zero,PASS,0,No unresolved P9 verification rows.
+P9U-013,broad_crawl_disabled,Broad crawl remains disabled,PASS,no_broad_crawl=True; broad_crawl_needed=0,Do not reopen broad discovery by default.
+P9U-014,contact_deferred,Contact remains deferred and unexecuted,PASS,contact_deferred=True; executed=0,Do not claim calls/WhatsApps/messages.
+P9U-015,live_refresh_disabled,Live listing refresh remains disabled,PASS,True,No live refresh in P9U.
+P9U-016,required_parent_artifact,terminal_state_ledger present,PASS,P9Q_ALT__STATION_SEBO_TERMINAL_STATE_LEDGER_2026-05-07_p9q_alt_terminal_handoff_turn30_v1.csv; rows=17,Cold-start resume depends on this file.
+P9U-017,required_parent_artifact,terminal_command_core_summary present,PASS,P9Q_ALT__STATION_SEBO_TERMINAL_COMMAND_CORE_SUMMARY_2026-05-07_p9q_alt_terminal_handoff_turn30_v1.csv; rows=6,Cold-start resume depends on this file.
+P9U-018,required_parent_artifact,terminal_reopen_playbook present,PASS,P9Q_ALT__STATION_SEBO_TERMINAL_REOPEN_PLAYBOOK_2026-05-07_p9q_alt_terminal_handoff_turn30_v1.csv; rows=7,Cold-start resume depends on this file.
+P9U-019,required_parent_artifact,terminal_integrity_audit present,PASS,P9R_ALT__STATION_SEBO_TERMINAL_INTEGRITY_AUDIT_2026-05-07_p9r_alt_integrity_audit_turn31_v1.csv; rows=36,Cold-start resume depends on this file.
+P9U-020,required_parent_artifact,parked_state_summary present,PASS,P9S_ALT__STATION_SEBO_PARKED_STATE_SUMMARY_2026-05-07_post_p9s_alt_parked_state_maintenance_turn32_v1.csv; rows=10,Cold-start resume depends on this file.
+P9U-021,required_parent_artifact,zero_state_reopen_protocol present,PASS,P9T_ALT__STATION_SEBO_ZERO_STATE_REOPEN_PROTOCOL_2026-05-07_p9t_alt_terminal_freeze_turn33_v1.csv; rows=8,Cold-start resume depends on this file.
+P9U-022,required_parent_artifact,terminal_freeze_audit present,PASS,P9T_ALT__STATION_SEBO_TERMINAL_FREEZE_AUDIT_2026-05-07_p9t_alt_terminal_freeze_turn33_v1.csv; rows=14,Cold-start resume depends on this file.
+P9U-023,required_parent_artifact,artifact_hash_ledger present,PASS,P9T_ALT__STATION_SEBO_ARTIFACT_HASH_LEDGER_2026-05-07_p9t_alt_terminal_freeze_turn33_v1.csv; rows=128,Cold-start resume depends on this file.
+P9U-024,required_parent_artifact,bundle_inventory present,PASS,P9T_ALT__STATION_SEBO_BUNDLE_INVENTORY_2026-05-07_p9t_alt_terminal_freeze_turn33_v1.csv; rows=128,Cold-start resume depends on this file.
+P9U-025,required_parent_artifact,p9t_resume_prompt present,PASS,RESUME_PROMPT_2026-05-07_post_p9t_alt_terminal_freeze_turn33_v1.md,Cold-start resume depends on this file.
+P9U-CORE-1,command_core_reconstruction,Core rank 1 reconstructs,PASS,P3-026 | Santos | 2D commercial | score=80.95,climate/damp/building-condition gate
+P9U-CORE-2,command_core_reconstruction,Core rank 2 reconstructs,PASS,P3-041 | Belo Horizonte | 2A commercial | score=76.24,availability/address/use gate
+P9U-CORE-3,command_core_reconstruction,Core rank 3 reconstructs,PASS,P3-027 | Brasília | 2A | score=75.90,climate/damp/building-condition gate
+P9U-CORE-4,command_core_reconstruction,Core rank 4 reconstructs,PASS,P3-024 | Santos | 2A | score=75.81,availability/address/use gate
+P9U-CORE-5,command_core_reconstruction,Core rank 5 reconstructs,PASS,P3-028 | Brasília | 2B AC | score=71.43,AC scope or install-permission gate
+P9U-CORE-6,command_core_reconstruction,Core rank 6 reconstructs,PASS,P3-014 | Rio de Janeiro | 2B/2C live-in | score=70.56,climate/damp/building-condition gate

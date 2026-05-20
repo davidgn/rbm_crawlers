@@ -1,0 +1,8 @@
+surface,stoplight,meaning
+main_board,GREEN,74-row board preserved; no queue left.
+contact_state,YELLOW,Contact deferred; no row transaction-ready.
+currentness,YELLOW,Frozen evidence; refresh/contact required before action.
+broad_crawl,GREEN,Off by default; not needed.
+phone_microgaps,YELLOW,Quarantined; not promoted.
+resume_safety,GREEN,Branch launch cards and read orders included.
+listing_volatility,YELLOW,Listings can disappear or change fees quickly.

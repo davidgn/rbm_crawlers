@@ -1,0 +1,9 @@
+gate_id,gate,required_action,allowed,notes
+P9T-G01,Resume from terminal bundle first,"Read P9T read-first handoff, current snapshot, freeze audit, hash ledger, and command-core summary before any substantive work.",yes,"The P9T bundle is a freeze, not a discovery seed."
+P9T-G02,No broad crawl by default,Do not run new portal-wide searches unless a new user constraint explicitly reopens discovery.,no_default,Verification queue remains 0.
+P9T-G03,No contact while deferred,Do not draft/contact/call agents unless user explicitly lifts contact deferral.,no_default,"P9J execution ledger is ready, but no contact has been executed."
+P9T-G04,Narrow refresh only when stale or selected,Use P9O/P9S aging gates before any live refresh. Refresh selected rows/cities only.,conditional,Stale-for-action date remains 2026-06-06.
+P9T-G05,Phone-only quarantine,Do not promote phone/private-contact microgaps without direct current evidence.,conditional,10 microgaps remain quarantined.
+P9T-G06,Transaction readiness,"Require availability, all-in cost, exact unit/block, AC scope, condition/access, and permitted use before action.",conditional,No row is transaction-ready in this freeze.
+P9T-G07,Scenario-first reopening,"Reopen by selected scenario/city/row, not by board-wide expansion.",preferred,"Command-core paths: Santos, Belo Horizonte, Brasília, Rio."
+P9T-G08,Checksum validation,Use P9T hash ledger and manifest to confirm bundle integrity before resuming in a new chat.,yes,This is the main new P9T value-add.
