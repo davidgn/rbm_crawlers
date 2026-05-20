@@ -91,7 +91,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 <script>
   window.Shopify = window.Shopify || {};
   if (!window.Shopify.featureAssets) window.Shopify.featureAssets = {};
-  window.Shopify.featureAssets['shop-js'] = {"init-windoid":["modules/v2/loader.init-windoid.en.esm.js"],"shop-toast-manager":["modules/v2/loader.shop-toast-manager.en.esm.js"],"init-shop-user-recognition":["modules/v2/loader.init-shop-user-recognition.en.esm.js"],"shop-cash-offers":["modules/v2/loader.shop-cash-offers.en.esm.js"],"init-fed-cm":["modules/v2/loader.init-fed-cm.en.esm.js"],"shop-button":["modules/v2/loader.shop-button.en.esm.js"],"init-shop-email-lookup-coordinator":["modules/v2/loader.init-shop-email-lookup-coordinator.en.esm.js"],"init-shop-cart-sync":["modules/v2/loader.init-shop-cart-sync.en.esm.js"],"avatar":["modules/v2/loader.avatar.en.esm.js"],"init-customer-accounts-sign-up":["modules/v2/loader.init-customer-accounts-sign-up.en.esm.js"],"init-shop-for-new-customer-accounts":["modules/v2/loader.init-shop-for-new-customer-accounts.en.esm.js"],"checkout-modal":["modules/v2/loader.checkout-modal.en.esm.js"],"shop-login-button":["modules/v2/loader.shop-login-button.en.esm.js"],"init-customer-accounts":["modules/v2/loader.init-customer-accounts.en.esm.js"],"shop-cart-sync":["modules/v2/loader.shop-cart-sync.en.esm.js"],"shop-user-recognition":["modules/v2/loader.shop-user-recognition.en.esm.js"],"pay-button":["modules/v2/loader.pay-button.en.esm.js"],"shop-login":["modules/v2/loader.shop-login.en.esm.js"],"shop-follow-button":["modules/v2/loader.shop-follow-button.en.esm.js"],"lead-capture":["modules/v2/loader.lead-capture.en.esm.js"],"payment-terms":["modules/v2/loader.payment-terms.en.esm.js"]};
+  window.Shopify.featureAssets['shop-js'] = {"shop-toast-manager":["modules/v2/loader.shop-toast-manager.en.esm.js"],"shop-cash-offers":["modules/v2/loader.shop-cash-offers.en.esm.js"],"init-shop-user-recognition":["modules/v2/loader.init-shop-user-recognition.en.esm.js"],"init-windoid":["modules/v2/loader.init-windoid.en.esm.js"],"init-shop-email-lookup-coordinator":["modules/v2/loader.init-shop-email-lookup-coordinator.en.esm.js"],"init-fed-cm":["modules/v2/loader.init-fed-cm.en.esm.js"],"avatar":["modules/v2/loader.avatar.en.esm.js"],"shop-button":["modules/v2/loader.shop-button.en.esm.js"],"init-shop-cart-sync":["modules/v2/loader.init-shop-cart-sync.en.esm.js"],"checkout-modal":["modules/v2/loader.checkout-modal.en.esm.js"],"shop-login-button":["modules/v2/loader.shop-login-button.en.esm.js"],"init-customer-accounts-sign-up":["modules/v2/loader.init-customer-accounts-sign-up.en.esm.js"],"init-customer-accounts":["modules/v2/loader.init-customer-accounts.en.esm.js"],"init-shop-for-new-customer-accounts":["modules/v2/loader.init-shop-for-new-customer-accounts.en.esm.js"],"shop-cart-sync":["modules/v2/loader.shop-cart-sync.en.esm.js"],"shop-user-recognition":["modules/v2/loader.shop-user-recognition.en.esm.js"],"shop-login":["modules/v2/loader.shop-login.en.esm.js"],"pay-button":["modules/v2/loader.pay-button.en.esm.js"],"shop-follow-button":["modules/v2/loader.shop-follow-button.en.esm.js"],"lead-capture":["modules/v2/loader.lead-capture.en.esm.js"],"payment-terms":["modules/v2/loader.payment-terms.en.esm.js"]};
 </script>
 <script>(function() {
   var isLoaded = false;
@@ -114,7 +114,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
     window.addEventListener('load', asyncLoad, false);
   }
 })();</script>
-<script id="__st">var __st={"a":68007461170,"offset":0,"reqid":"c903b7c6-fafb-4305-b07c-ed51fcc30e59-1778825418","pageurl":"cityreadsbookstore.com\/products\/12-rules-for-life","u":"7f44e26211f1","p":"product","rtyp":"product","rid":10133100560690};</script>
+<script id="__st">var __st={"a":68007461170,"offset":0,"reqid":"a6a54fd9-83e8-4475-9b90-bfa8bca82db2-1778904500","pageurl":"cityreadsbookstore.com\/products\/12-rules-for-life","u":"a70e2da96106","p":"product","rtyp":"product","rid":10133100560690};</script>
 <script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
 <script id="captcha-bootstrap">!function(){'use strict';const t='contact',e='account',n='new_comment',o=[[t,t],['blogs',n],['comments',n],[t,'customer']],c=[[e,'customer_login'],[e,'guest_login'],[e,'recover_customer_password'],[e,'create_customer']],r=t=>t.map((([t,e])=>`form[action*='/${t}']:not([data-nocaptcha='true']) input[name='form_type'][value='${e}']`)).join(','),a=t=>()=>t?[...document.querySelectorAll(t)].map((t=>t.form)):[];function s(){const t=[...o],e=r(t);return a(e)}const i='password',u='form_key',d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response',i],f=()=>{try{return window.sessionStorage}catch{return}},m='__shopify_v',_=t=>t.elements[u];function p(t,e,n=!1){try{const o=window.sessionStorage,c=JSON.parse(o.getItem(e)),{data:r}=function(t){const{data:e,action:n}=t;return t[m]||n?{data:e,action:n}:{data:t,action:n}}(c);for(const[e,n]of Object.entries(r))t.elements[e]&&(t.elements[e].value=n);n&&o.removeItem(e)}catch(o){console.error('form repopulation failed',{error:o})}}const l='form_type',E='cptcha';function T(t){t.dataset[E]=!0}const w=window,h=w.document,L='Shopify',v='ce_forms',y='captcha';let A=!1;((t,e)=>{const n=(g='f06e6c50-85a8-45c8-87d0-21a2b65856fe',I='https://cdn.shopify.com/shopifycloud/storefront-forms-hcaptcha/ce_storefront_forms_captcha_hcaptcha.v1.5.2.iife.js',D={infoText:'Protected by hCaptcha',privacyText:'Privacy',termsText:'Terms'},(t,e,n)=>{const o=w[L][v],c=o.bindForm;if(c)return c(t,g,e,D).then(n);var r;o.q.push([[t,g,e,D],n]),r=I,A||(h.body.append(Object.assign(h.createElement('script'),{id:'captcha-provider',async:!0,src:r})),A=!0)});var g,I,D;w[L]=w[L]||{},w[L][v]=w[L][v]||{},w[L][v].q=[],w[L][y]=w[L][y]||{},w[L][y].protect=function(t,e){n(t,void 0,e),T(t)},Object.freeze(w[L][y]),function(t,e,n,w,h,L){const[v,y,A,g]=function(t,e,n){const i=e?o:[],u=t?c:[],d=[...i,...u],f=r(d),m=r(i),_=r(d.filter((([t,e])=>n.includes(e))));return[a(f),a(m),a(_),s()]}(w,h,L),I=t=>{const e=t.target;return e instanceof HTMLFormElement?e:e&&e.form},D=t=>v().includes(t);t.addEventListener('submit',(t=>{const e=I(t);if(!e)return;const n=D(e)&&!e.dataset.hcaptchaBound&&!e.dataset.recaptchaBound,o=_(e),c=g().includes(e)&&(!o||!o.value);(n||c)&&t.preventDefault(),c&&!n&&(function(t){try{if(!f())return;!function(t){const e=f();if(!e)return;const n=_(t);if(!n)return;const o=n.value;o&&e.removeItem(o)}(t);const e=Array.from(Array(32),(()=>Math.random().toString(36)[2])).join('');!function(t,e){_(t)||t.append(Object.assign(document.createElement('input'),{type:'hidden',name:u})),t.elements[u].value=e}(t,e),function(t,e){const n=f();if(!n)return;const o=[...t.querySelectorAll(`input[type='${i}']`)].map((({name:t})=>t)),c=[...d,...o],r={};for(const[a,s]of new FormData(t).entries())c.includes(a)||(r[a]=s);n.setItem(e,JSON.stringify({[m]:1,action:t.action,data:r}))}(t,e)}catch(e){console.error('failed to persist form',e)}}(e),e.submit())}));const S=(t,e)=>{t&&!t.dataset[E]&&(n(t,e.some((e=>e===t))),T(t))};for(const o of['focusin','change'])t.addEventListener(o,(t=>{const e=I(t);D(e)&&S(e,y())}));const B=e.get('form_key'),M=e.get(l),P=B&&M;t.addEventListener('DOMContentLoaded',(()=>{const t=y();if(P)for(const e of t)e.elements[l].value===M&&p(e,B);[...new Set([...A(),...v().filter((t=>'true'===t.dataset.shopifyCaptcha))])].forEach((e=>S(e,t)))}))}(h,new URLSearchParams(w.location.search),n,t,e,['guest_login'])})(!0,!0)}();</script>
 <script integrity="sha256-JjoPp5ZfB1sSAs5SQaol1x1GgvveM+BgmRzyDexInEQ=" data-source-attribution="shopify.loadfeatures" defer="defer" src="//cityreadsbookstore.com/cdn/shopifycloud/storefront/assets/storefront/load_feature-1bd60354.js" crossorigin="anonymous"></script>
@@ -555,115 +555,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  <!-- BEGIN app block: shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507 -->
-
-
-
-
-
-
-
-
-
-
-
-
-  <script async src="https://static.klaviyo.com/onsite/js/RwMTUK/klaviyo.js?company_id=RwMTUK"></script>
-  <script>!function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();</script>
-
-  
-    <script id="viewed_product">
-      if (item == null) {
-        var _learnq = _learnq || [];
-
-        var MetafieldReviews = null
-        var MetafieldYotpoRating = null
-        var MetafieldYotpoCount = null
-        var MetafieldLooxRating = null
-        var MetafieldLooxCount = null
-        var okendoProduct = null
-        var okendoProductReviewCount = null
-        var okendoProductReviewAverageValue = null
-        try {
-          // The following fields are used for Customer Hub recently viewed in order to add reviews.
-          // This information is not part of __kla_viewed. Instead, it is part of __kla_viewed_reviewed_items
-          MetafieldReviews = {};
-          MetafieldYotpoRating = null
-          MetafieldYotpoCount = null
-          MetafieldLooxRating = null
-          MetafieldLooxCount = null
-
-          okendoProduct = null
-          // If the okendo metafield is not legacy, it will error, which then requires the new json formatted data
-          if (okendoProduct && 'error' in okendoProduct) {
-            okendoProduct = null
-          }
-          okendoProductReviewCount = okendoProduct ? okendoProduct.reviewCount : null
-          okendoProductReviewAverageValue = okendoProduct ? okendoProduct.reviewAverageValue : null
-        } catch (error) {
-          console.error('Error in Klaviyo onsite reviews tracking:', error);
-        }
-
-        var item = {
-          Name: "12 Rules for Life",
-          ProductID: 10133100560690,
-          Categories: ["Books Below  GH₵ 100","In stock","Non-Fiction","Self Help"],
-          ImageURL: "https://cityreadsbookstore.com/cdn/shop/files/12_rules_for_life_23ece6bc-736d-4202-ba11-b46e38f9c3fb_grande.png?v=1773684247",
-          URL: "https://cityreadsbookstore.com/products/12-rules-for-life",
-          Brand: "City Reads Bookstore",
-          Price: "GH₵70.00",
-          Value: "70.00",
-          CompareAtPrice: "GH₵0.00"
-        };
-        _learnq.push(['track', 'Viewed Product', item]);
-        _learnq.push(['trackViewedItem', {
-          Title: item.Name,
-          ItemId: item.ProductID,
-          Categories: item.Categories,
-          ImageUrl: item.ImageURL,
-          Url: item.URL,
-          Metadata: {
-            Brand: item.Brand,
-            Price: item.Price,
-            Value: item.Value,
-            CompareAtPrice: item.CompareAtPrice
-          },
-          metafields:{
-            reviews: MetafieldReviews,
-            yotpo:{
-              rating: MetafieldYotpoRating,
-              count: MetafieldYotpoCount,
-            },
-            loox:{
-              rating: MetafieldLooxRating,
-              count: MetafieldLooxCount,
-            },
-            okendo: {
-              rating: okendoProductReviewAverageValue,
-              count: okendoProductReviewCount,
-            }
-          }
-        }]);
-      }
-    </script>
-  
-
-
-
-
-  <script>
-    window.klaviyoReviewsProductDesignMode = false
-  </script>
-
-
-
-
-
-
-
-
-
-<!-- END app block --><!-- BEGIN app block: shopify://apps/wrapped/blocks/app-embed/1714fc7d-e525-4a14-8c3e-1b6ed95734c5 --><script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
+  <!-- BEGIN app block: shopify://apps/wrapped/blocks/app-embed/1714fc7d-e525-4a14-8c3e-1b6ed95734c5 --><script type="module" src="https://cdn.shopify.com/storefront/web-components.js"></script>
 <!-- BEGIN app snippet: app-embed.settings --><script type="text/javascript">
   window.Wrapped = { ...window.Wrapped };
   window.Wrapped.options = {"order":{"settings":{"optionMode":"advanced","visibilityTag":"wrapped:blocks:hide","giftMessage":true,"giftMessageMaxChars":500,"giftSender":true,"giftReceiver":true,"giftMessageRequired":false,"giftSenderRequired":false,"giftReceiverRequired":false,"giftMessageEmoji":true,"giftSenderEmoji":true,"giftReceiverEmoji":true,"giftOptionLabels":{"primary":"Select a gift option"},"giftCheckboxLabels":{"primary":"Make it a gift"},"giftMessageLabels":{"primary":"Message"},"giftMessagePlaceholderLabels":{"primary":"Write your message here..."},"giftSenderLabels":{"primary":"From"},"giftSenderPlaceholderLabels":{"primary":"Sender name"},"giftReceiverLabels":{"primary":"To"},"giftReceiverPlaceholderLabels":{"primary":"Receiver name"},"saveLabels":{"primary":"Save"},"removeLabels":{"primary":"Remove"},"unavailableLabels":{"primary":"Unavailable"},"visibilityHelperLabels":{"primary":"Unavailable for one or more items in your cart"},"requiredFieldLabels":{"primary":"Please fill out this field."},"emojiFieldLabels":{"primary":"Emoji characters are not permitted."},"ordersLimitReached":false,"multipleGiftVariants":true},"datafields":{"checkbox":"Gifting","message":"Gift Message","sender":"Gift Sender","receiver":"Gift Receiver","variant":"Gift Option"},"product":{"handle":"wrapped-gift-blocks-gifting-for-products","image":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/wrapped-new-gifting-experience-0aa11efd2677158adcbb6e926d15d84a61bc602213f4d65bdd9f04dfce376589_600x600.png?v=1760082745","priceMode":"order","hiddenInventory":false,"hiddenVisibility":false,"variantPricingPaid":true,"variantPricingFree":true,"bundles":false,"id":10000301687090,"gid":"gid:\/\/shopify\/Product\/10000301687090","variants":[{"availableForSale":true,"title":"Wrapping Paper","price":30.0,"id":50500718231858,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/wrapped-new-gifting-experience-0aa11efd2677158adcbb6e926d15d84a61bc602213f4d65bdd9f04dfce376589_400x400.png?v=1760082745","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Gift Box with a bow","price":40.0,"id":50500721180978,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/wrapped-new-gifting-experience-0aa11efd2677158adcbb6e926d15d84a61bc602213f4d65bdd9f04dfce376589_400x400.png?v=1760082745","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Mystery Style Wrapping(wrapped with bookmarks)","price":40.0,"id":50670332051762,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/rn-image_picker_lib_temp_45da7437-c3cc-4c05-b91f-962c0028becd_400x400.jpg?v=1776673690","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Luxury Gift box (Medium)","price":85.0,"id":50965420015922,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/rn-image_picker_lib_temp_cfe08ccb-1145-4899-a037-fb426c07ac4b_400x400.jpg?v=1773162613","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Luxury Gift box (Large)","price":120.0,"id":50965420048690,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/rn-image_picker_lib_temp_cfe08ccb-1145-4899-a037-fb426c07ac4b_400x400.jpg?v=1773162613","boxItemLimit":null,"boxWeightLimit":null}]},"blocks":[{"id":"1cab6961-3763-4a51-b5fe-b322027e7333","blockType":"cart_drawer","modal":true,"pricing":true,"refresh":false,"primaryCheckbox":true,"previewImage":false,"variantAppearance":"images-modern","labels":{"primary":null},"targets":{"180213776690":{"id":"2b0973f6-1874-444e-b028-930ebceccc17","selector":"cart-drawer div.drawer__inner div.drawer__footer div.cart-drawer__footer, cart-notification div.cart-notification__links a[href*=\"\/cart\"]","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167325368626":{"id":"0581a8c6-b11a-477c-9722-1b5463b8592f","selector":"cart-drawer div#CartDrawer div.drawer__inner div.drawer__footer div.cart-drawer__footer, cart-notification div.cart-notification__links a[href*=\"\/cart\"]","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167352860978":{"id":"3e851558-f531-4517-8b98-1b14422a38be","selector":"#CartDrawer div.drawer__footer div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":"CartDrawer-Form"},"138587013426":{"id":"44284cdd-528c-41de-b233-d026e4ea54d5","selector":"cart-drawer div.cart__footer div.cart__blocks div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138192257330":{"id":"f9bb83ee-9bf1-44c4-b86b-9a3ae4c6b821","selector":"cart-drawer div#CartDrawer div.drawer__inner div.drawer__footer div.cart-drawer__footer","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167354958130":{"id":"829274d8-0cb4-4378-bf1a-3d7a3ab7c098","selector":"cart-drawer div#CartDrawer div.drawer__inner div.drawer__footer div.cart-drawer__footer, cart-notification div.cart-notification__links a[href*=\"\/cart\"]","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138588979506":{"id":"9fb35c43-8a93-42f9-bb57-ccff1dc2a75a","selector":"cart-drawer div.cart__footer div.cart__blocks div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null}}},{"id":"51a46ea3-289a-468e-9673-5f792c9fb9e8","blockType":"cart_page","modal":true,"pricing":true,"refresh":false,"primaryCheckbox":true,"previewImage":false,"variantAppearance":"images-modern","labels":{"primary":null},"targets":{"180213776690":{"id":"2b0973f6-1874-444e-b028-930ebceccc17","selector":"main div.cart__footer div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167325368626":{"id":"0581a8c6-b11a-477c-9722-1b5463b8592f","selector":"main div.cart__footer div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167352860978":{"id":"3e851558-f531-4517-8b98-1b14422a38be","selector":"#MainContent div.cart__footer div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":"cart"},"138587013426":{"id":"44284cdd-528c-41de-b233-d026e4ea54d5","selector":"main div.cart__footer div.cart__blocks div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138192257330":{"id":"f9bb83ee-9bf1-44c4-b86b-9a3ae4c6b821","selector":"main div.cart__footer div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167354958130":{"id":"829274d8-0cb4-4378-bf1a-3d7a3ab7c098","selector":"main div.cart__footer div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138588979506":{"id":"9fb35c43-8a93-42f9-bb57-ccff1dc2a75a","selector":"main div.cart__footer div.cart__blocks div.cart__ctas","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null}}}]},"product":{"settings":{"optionMode":"advanced","visibilityTag":"wrapped:blocks:hide","giftMessage":true,"giftMessageMaxChars":255,"giftSender":false,"giftReceiver":false,"giftMessageRequired":false,"giftSenderRequired":false,"giftReceiverRequired":false,"giftMessageEmoji":true,"giftSenderEmoji":true,"giftReceiverEmoji":true,"giftOptionLabels":{"primary":"Select a gift option"},"giftCheckboxLabels":{"primary":"Make it a gift"},"giftMessageLabels":{"primary":"Message"},"giftMessagePlaceholderLabels":{"primary":"Write your message here..."},"giftSenderLabels":{"primary":"From"},"giftSenderPlaceholderLabels":{"primary":"Sender name"},"giftReceiverLabels":{"primary":"To"},"giftReceiverPlaceholderLabels":{"primary":"Receiver name"},"saveLabels":{"primary":"Save"},"removeLabels":{"primary":"Remove"},"unavailableLabels":{"primary":"Unavailable"},"visibilityHelperLabels":{"primary":"Unavailable for one or more items in your cart"},"requiredFieldLabels":{"primary":"Please fill out this field."},"emojiFieldLabels":{"primary":"Emoji characters are not permitted."},"ordersLimitReached":false,"multipleGiftVariants":true},"datafields":{"checkbox":"Gifting","message":"Gift Message","sender":"Gift Sender","receiver":"Gift Receiver","variant":"Gift Option"},"product":{"handle":"wrapped-gift-blocks-gifting-for-products","image":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/wrapped-new-gifting-experience-0aa11efd2677158adcbb6e926d15d84a61bc602213f4d65bdd9f04dfce376589_600x600.png?v=1760082745","priceMode":"quantity","hiddenInventory":false,"hiddenVisibility":false,"variantPricingPaid":true,"variantPricingFree":true,"bundles":false,"id":10000301687090,"gid":"gid:\/\/shopify\/Product\/10000301687090","variants":[{"availableForSale":true,"title":"Wrapping Paper","price":30.0,"id":50500718231858,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/wrapped-new-gifting-experience-0aa11efd2677158adcbb6e926d15d84a61bc602213f4d65bdd9f04dfce376589_400x400.png?v=1760082745","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Gift Box with a bow","price":40.0,"id":50500721180978,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/wrapped-new-gifting-experience-0aa11efd2677158adcbb6e926d15d84a61bc602213f4d65bdd9f04dfce376589_400x400.png?v=1760082745","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Mystery Style Wrapping(wrapped with bookmarks)","price":40.0,"id":50670332051762,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/rn-image_picker_lib_temp_45da7437-c3cc-4c05-b91f-962c0028becd_400x400.jpg?v=1776673690","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Luxury Gift box (Medium)","price":85.0,"id":50965420015922,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/rn-image_picker_lib_temp_cfe08ccb-1145-4899-a037-fb426c07ac4b_400x400.jpg?v=1773162613","boxItemLimit":null,"boxWeightLimit":null},{"availableForSale":true,"title":"Luxury Gift box (Large)","price":120.0,"id":50965420048690,"imageSrc":"https:\/\/cdn.shopify.com\/s\/files\/1\/0680\/0746\/1170\/files\/rn-image_picker_lib_temp_cfe08ccb-1145-4899-a037-fb426c07ac4b_400x400.jpg?v=1773162613","boxItemLimit":null,"boxWeightLimit":null}]},"blocks":[{"id":"b470838f-8581-403b-9959-1712eb3c3d70","blockType":"cart_drawer","modal":true,"pricing":true,"refresh":false,"primaryCheckbox":true,"previewImage":false,"variantAppearance":"images-modern","labels":{"primary":null},"targets":{"180213776690":{"id":"2b0973f6-1874-444e-b028-930ebceccc17","selector":"cart-drawer form[action*=\"\/cart\"] table.cart-items tr.cart-item td.cart-item__details, cart-notification div.cart-notification-product \u003e div:has(.cart-notification-product__name)","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167325368626":{"id":"0581a8c6-b11a-477c-9722-1b5463b8592f","selector":"cart-drawer form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167352860978":{"id":"3e851558-f531-4517-8b98-1b14422a38be","selector":"#CartDrawer form[action*=\"\/cart\"] tr.cart-item td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138587013426":{"id":"44284cdd-528c-41de-b233-d026e4ea54d5","selector":"cart-drawer form[action*=\"\/cart\"] table.cart-items tr.cart-item td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138192257330":{"id":"f9bb83ee-9bf1-44c4-b86b-9a3ae4c6b821","selector":"div#CartDrawer form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167354958130":{"id":"829274d8-0cb4-4378-bf1a-3d7a3ab7c098","selector":"cart-drawer form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138588979506":{"id":"9fb35c43-8a93-42f9-bb57-ccff1dc2a75a","selector":"cart-drawer form[action*=\"\/cart\"] table.cart-items tr.cart-item td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null}}},{"id":"6326e290-d05e-4642-85e3-e7a5d29d43c1","blockType":"cart_page","modal":true,"pricing":true,"refresh":false,"primaryCheckbox":true,"previewImage":false,"variantAppearance":"images-modern","labels":{"primary":null},"targets":{"180213776690":{"id":"2b0973f6-1874-444e-b028-930ebceccc17","selector":"main form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167325368626":{"id":"0581a8c6-b11a-477c-9722-1b5463b8592f","selector":"main form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167352860978":{"id":"3e851558-f531-4517-8b98-1b14422a38be","selector":"#MainContent form[action*=\"\/cart\"] tr.cart-item td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138587013426":{"id":"44284cdd-528c-41de-b233-d026e4ea54d5","selector":"main form[action*=\"\/cart\"] table.cart-items tr.cart-item td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138192257330":{"id":"f9bb83ee-9bf1-44c4-b86b-9a3ae4c6b821","selector":"main form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"167354958130":{"id":"829274d8-0cb4-4378-bf1a-3d7a3ab7c098","selector":"main form[action*=\"\/cart\"] td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null},"138588979506":{"id":"9fb35c43-8a93-42f9-bb57-ccff1dc2a75a","selector":"main form[action*=\"\/cart\"] table.cart-items tr.cart-item td.cart-item__details","repositionedByDeveloper":false,"position":"beforeend","action":null,"actionDeveloper":null,"actionType":"reload","actionTypeDeveloper":null,"formTarget":null}}},{"id":"1400f4d6-fd67-4bf2-aab5-28cf0bd8fda1","blockType":"product_page","modal":true,"pricing":true,"refresh":false,"primaryCheckbox":true,"previewImage":false,"variantAppearance":"images-modern","labels":{"primary":null},"targets":{"180213776690":{"id":"2b0973f6-1874-444e-b028-930ebceccc17","selector":"main form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"afterbegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null},"167325368626":{"id":"0581a8c6-b11a-477c-9722-1b5463b8592f","selector":"main form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"afterbegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null},"167352860978":{"id":"3e851558-f531-4517-8b98-1b14422a38be","selector":"form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null},"138587013426":{"id":"44284cdd-528c-41de-b233-d026e4ea54d5","selector":"main form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null},"138192257330":{"id":"f9bb83ee-9bf1-44c4-b86b-9a3ae4c6b821","selector":"main form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null},"167354958130":{"id":"829274d8-0cb4-4378-bf1a-3d7a3ab7c098","selector":"main form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"afterbegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null},"138588979506":{"id":"9fb35c43-8a93-42f9-bb57-ccff1dc2a75a","selector":"form[action*=\"\/cart\/add\"] div.product-form__buttons","repositionedByDeveloper":false,"position":"beforebegin","action":null,"actionDeveloper":null,"actionType":null,"actionTypeDeveloper":null,"formTarget":null}}}]}};
@@ -2553,20 +2445,128 @@ shopify-variant-selector::part(label) {
 <!-- END app snippet -->
 
 
-<!-- END app block --><script src="https://cdn.shopify.com/extensions/1f805629-c1d3-44c5-afa0-f2ef641295ef/booster-page-speed-optimizer-1/assets/speed-embed.js" type="text/javascript" defer="defer"></script>
-<script src="https://cdn.shopify.com/extensions/a91f9cd9-7693-4b55-b0f8-a47f69a8cb0c/inbox-1267/assets/inbox-chat-loader.js" type="text/javascript" defer="defer"></script>
+<!-- END app block --><!-- BEGIN app block: shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507 -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <script async src="https://static.klaviyo.com/onsite/js/RwMTUK/klaviyo.js?company_id=RwMTUK"></script>
+  <script>!function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();</script>
+
+  
+    <script id="viewed_product">
+      if (item == null) {
+        var _learnq = _learnq || [];
+
+        var MetafieldReviews = null
+        var MetafieldYotpoRating = null
+        var MetafieldYotpoCount = null
+        var MetafieldLooxRating = null
+        var MetafieldLooxCount = null
+        var okendoProduct = null
+        var okendoProductReviewCount = null
+        var okendoProductReviewAverageValue = null
+        try {
+          // The following fields are used for Customer Hub recently viewed in order to add reviews.
+          // This information is not part of __kla_viewed. Instead, it is part of __kla_viewed_reviewed_items
+          MetafieldReviews = {};
+          MetafieldYotpoRating = null
+          MetafieldYotpoCount = null
+          MetafieldLooxRating = null
+          MetafieldLooxCount = null
+
+          okendoProduct = null
+          // If the okendo metafield is not legacy, it will error, which then requires the new json formatted data
+          if (okendoProduct && 'error' in okendoProduct) {
+            okendoProduct = null
+          }
+          okendoProductReviewCount = okendoProduct ? okendoProduct.reviewCount : null
+          okendoProductReviewAverageValue = okendoProduct ? okendoProduct.reviewAverageValue : null
+        } catch (error) {
+          console.error('Error in Klaviyo onsite reviews tracking:', error);
+        }
+
+        var item = {
+          Name: "12 Rules for Life",
+          ProductID: 10133100560690,
+          Categories: ["Books Below  GH₵ 100","In stock","Non-Fiction","Self Help"],
+          ImageURL: "https://cityreadsbookstore.com/cdn/shop/files/12_rules_for_life_23ece6bc-736d-4202-ba11-b46e38f9c3fb_grande.png?v=1773684247",
+          URL: "https://cityreadsbookstore.com/products/12-rules-for-life",
+          Brand: "City Reads Bookstore",
+          Price: "GH₵70.00",
+          Value: "70.00",
+          CompareAtPrice: "GH₵0.00"
+        };
+        _learnq.push(['track', 'Viewed Product', item]);
+        _learnq.push(['trackViewedItem', {
+          Title: item.Name,
+          ItemId: item.ProductID,
+          Categories: item.Categories,
+          ImageUrl: item.ImageURL,
+          Url: item.URL,
+          Metadata: {
+            Brand: item.Brand,
+            Price: item.Price,
+            Value: item.Value,
+            CompareAtPrice: item.CompareAtPrice
+          },
+          metafields:{
+            reviews: MetafieldReviews,
+            yotpo:{
+              rating: MetafieldYotpoRating,
+              count: MetafieldYotpoCount,
+            },
+            loox:{
+              rating: MetafieldLooxRating,
+              count: MetafieldLooxCount,
+            },
+            okendo: {
+              rating: okendoProductReviewAverageValue,
+              count: okendoProductReviewCount,
+            }
+          }
+        }]);
+      }
+    </script>
+  
+
+
+
+
+  <script>
+    window.klaviyoReviewsProductDesignMode = false
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- END app block --><script src="https://cdn.shopify.com/extensions/019e2da5-d4bc-78d8-9049-2b4672335c60/wrapped-1842/assets/wrapped-app-embed.js" type="text/javascript" defer="defer"></script>
 <script src="https://cdn.shopify.com/extensions/37fab0bb-08bf-4724-85d8-0dc56286c371/forms-2394/assets/shopify-forms-loader.js" type="text/javascript" defer="defer"></script>
-<script src="https://cdn.shopify.com/extensions/019e26f7-de58-7bec-b607-31a2bbf612d5/wrapped-1840/assets/wrapped-app-embed.js" type="text/javascript" defer="defer"></script>
+<script src="https://cdn.shopify.com/extensions/1f805629-c1d3-44c5-afa0-f2ef641295ef/booster-page-speed-optimizer-1/assets/speed-embed.js" type="text/javascript" defer="defer"></script>
+<script src="https://cdn.shopify.com/extensions/a91f9cd9-7693-4b55-b0f8-a47f69a8cb0c/inbox-1267/assets/inbox-chat-loader.js" type="text/javascript" defer="defer"></script>
 <link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">
 <script>(function(){if ("sendBeacon" in navigator && "performance" in window) {try {var session_token_from_headers = performance.getEntriesByType('navigation')[0].serverTiming.find(x => x.name == '_s').description;} catch {var session_token_from_headers = undefined;}var session_cookie_matches = document.cookie.match(/_shopify_s=([^;]*)/);var session_token_from_cookie = session_cookie_matches && session_cookie_matches.length === 2 ? session_cookie_matches[1] : "";var session_token = session_token_from_headers || session_token_from_cookie || "";function handle_abandonment_event(e) {var entries = performance.getEntries().filter(function(entry) {return /monorail-edge.shopifysvc.com/.test(entry.name);});if (!window.abandonment_tracked && entries.length === 0) {window.abandonment_tracked = true;var currentMs = Date.now();var navigation_start = performance.timing.navigationStart;var payload = {shop_id: 68007461170,url: window.location.href,navigation_start,duration: currentMs - navigation_start,session_token,page_type: "product"};window.navigator.sendBeacon("https://monorail-edge.shopifysvc.com/v1/produce", JSON.stringify({schema_id: "online_store_buyer_site_abandonment/1.1",payload: payload,metadata: {event_created_at_ms: currentMs,event_sent_at_ms: currentMs}}));}}window.addEventListener('pagehide', handle_abandonment_event);}}());</script>
 <script>
   window.__TREKKIE_SHIM_QUEUE = window.__TREKKIE_SHIM_QUEUE || [];
 </script>
-<script id="web-pixels-manager-setup">(function(){var wpmLoader=function(){"use strict";return function(e,d,r,n){var o=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};if(!Boolean(null==(i=null==(a=window.Shopify)?void 0:a.analytics)?void 0:i.replayQueue)){var a,i;window.Shopify=window.Shopify||{};var t=window.Shopify;t.analytics=t.analytics||{};var s=t.analytics;s.replayQueue=[],s.publish=function(e,d,r){return s.replayQueue.push([e,d,r]),!0};try{self.performance.mark("wpm:start")}catch(e){}var l,u,c,m,p,f,h,g,y,w,v,b,S,P=(u=(l={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(13[5-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(13[5-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,c=l.legacy,(m=navigator.userAgent).match(u)?"modern":m.match(c)?"legacy":"unknown"),C="modern"===P?"modern":"legacy",_=(null!=n?n:{modern:"",legacy:""})[C],O=[(p={baseUrl:d,hashVersion:r,buildTarget:C}).baseUrl,"/wpm","/b",p.hashVersion,"modern"===p.buildTarget?"m":"l",".js"].join(""),U=(f={version:r,bundleTarget:P,surface:e.surface,pageUrl:self.location.href,monorailEndpoint:e.monorailEndpoint},h=f.version,g=f.bundleTarget,y=f.surface,w=f.pageUrl,v=f.monorailEndpoint,{emit:function(e){var d=e.status,r=e.errorMsg,n=(new Date).getTime(),o=JSON.stringify({metadata:{event_sent_at_ms:n},events:[{schema_id:"web_pixels_manager_load/3.1",payload:{version:h,bundle_target:g,page_url:w,status:d,surface:y,error_msg:r},metadata:{event_created_at_ms:n}}]});if(!v)return console&&console.warn&&console.warn("[Web Pixels Manager] No Monorail endpoint provided, skipping logging."),!1;try{return self.navigator.sendBeacon.bind(self.navigator)(v,o)}catch(e){}var a=new XMLHttpRequest;try{return a.open("POST",v,!0),a.setRequestHeader("Content-Type","text/plain"),a.send(o),!0}catch(e){return console&&console.warn&&console.warn("[Web Pixels Manager] Got an unhandled error while logging to Monorail."),!1}}});try{o.browserTarget=P,function(e){var d=e.src,r=e.async,n=void 0===r||r,o=e.onload,a=e.onerror,i=e.sri,t=e.scriptDataAttributes,s=void 0===t?{}:t,l=document.createElement("script"),u=document.querySelector("head"),c=document.querySelector("body");if(l.async=n,l.src=d,i&&(l.integrity=i,l.crossOrigin="anonymous"),s)for(var m in s)if(Object.prototype.hasOwnProperty.call(s,m))try{l.dataset[m]=s[m]}catch(e){}if(o&&l.addEventListener("load",o),a&&l.addEventListener("error",a),u)u.appendChild(l);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(l)}}({src:O,async:!0,onload:function(){if(!function(){var e,d;return Boolean(null==(d=null==(e=window.Shopify)?void 0:e.analytics)?void 0:d.initialized)}()){var d=window.webPixelsManager.init(e)||void 0;if(d){var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var r=e[0],n=e[1],o=e[2];d.publishCustomEvent(r,n,o)}),r.replayQueue=[],r.publish=d.publishCustomEvent,r.visitor=d.visitor,r.initialized=!0}}},onerror:function(){return U.emit({status:"failed",errorMsg:"".concat(O," has failed to load")})},sri:(b=_,S=/^sha384-[A-Za-z0-9+/=]+$/,"string"==typeof b&&S.test(b)?_:""),scriptDataAttributes:o}),U.emit({status:"loading"})}catch(e){U.emit({status:"failed",errorMsg:(null==e?void 0:e.message)||"Unknown error"})}}}}();wpmLoader({shopId: 68007461170,storefrontBaseUrl: "https://cityreadsbookstore.com",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://monorail-edge.shopifysvc.com/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["2dca8a86","d5bdd5d0","5acaffe6"],webPixelsConfigList: [{"id":"2150990130","configuration":"{\"config\":\"{\\\"google_tag_ids\\\":[\\\"G-HBW7M4LWBS\\\",\\\"GT-5R43FB7K\\\",\\\"GT-KVMBNX7P\\\"],\\\"target_country\\\":\\\"GH\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-RBVPR4PRDP\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-RBVPR4PRDP\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-RBVPR4PRDP\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"f15305aac1e98c5c26a7c80e7bc37bde","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"1328152882","configuration":"{\"hashed_organization_id\":\"4095ccfd45ef4883b419814edc6b26df_v1\",\"app_key\":\"1355d8\",\"allow_collect_personal_data\":\"true\"}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"157ed43b9391d46b60258842c8487fbe","type":"APP","apiClientId":2814809,"privacyPurposes":["ANALYTICS","MARKETING","SALE_OF_DATA"],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized"},{"id":"321421618","configuration":"{\"pixel_id\":\"615857487985922\",\"pixel_type\":\"facebook_pixel\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"d72ab942028ee4f6bccc581083be605e","type":"APP","apiClientId":2329312,"privacyPurposes":["ANALYTICS","MARKETING","SALE_OF_DATA"],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0460","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0460","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"City Reads Books and Stationery","paymentSettings":{"currencyCode":"GHS"},"myshopifyDomain":"1355d8.myshopify.com","countryCode":"GH","storefrontUrl":"https:\/\/cityreadsbookstore.com"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":70.0,"currencyCode":"GHS"},"product":{"title":"12 Rules for Life","vendor":"City Reads Bookstore","id":"10133100560690","untranslatedTitle":"12 Rules for Life","url":"\/products\/12-rules-for-life","type":"Non-fiction"},"id":"50980531077426","image":{"src":"\/\/cityreadsbookstore.com\/cdn\/shop\/files\/12_rules_for_life_23ece6bc-736d-4202-ba11-b46e38f9c3fb.png?v=1773684247"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}],"products":null,"purchasingCompany":null,"page":null},},"https://cityreadsbookstore.com/cdn","d72c09dcwc0753d3dp859706c6m0d8d4fdd",{"modern":"","legacy":""},{"trekkieShim":true,"pageType":"product","resourceId":"10133100560690","shopId":"68007461170","storefrontBaseUrl":"https:\/\/cityreadsbookstore.com","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"2dca8a86\", \"d5bdd5d0\", \"5acaffe6\"]","isMerchantRequest":"false","hashVersion":"d72c09dcwc0753d3dp859706c6m0d8d4fdd","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":70.0,\"currencyCode\":\"GHS\"},\"product\":{\"title\":\"12 Rules for Life\",\"vendor\":\"City Reads Bookstore\",\"id\":\"10133100560690\",\"untranslatedTitle\":\"12 Rules for Life\",\"url\":\"\/products\/12-rules-for-life\",\"type\":\"Non-fiction\"},\"id\":\"50980531077426\",\"image\":{\"src\":\"\/\/cityreadsbookstore.com\/cdn\/shop\/files\/12_rules_for_life_23ece6bc-736d-4202-ba11-b46e38f9c3fb.png?v=1773684247\"},\"sku\":null,\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
+<script id="web-pixels-manager-setup">(function(){var wpmLoader=function(){"use strict";return function(e,d,r,n){var o=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};if(!Boolean(null==(i=null==(a=window.Shopify)?void 0:a.analytics)?void 0:i.replayQueue)){var a,i;window.Shopify=window.Shopify||{};var t=window.Shopify;t.analytics=t.analytics||{};var s=t.analytics;s.replayQueue=[],s.publish=function(e,d,r){return s.replayQueue.push([e,d,r]),!0};try{self.performance.mark("wpm:start")}catch(e){}var l,u,c,m,p,f,h,g,y,w,v,b,S,P=(u=(l={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(13[5-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(13[5-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(13[3-9]|1[4-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,c=l.legacy,(m=navigator.userAgent).match(u)?"modern":m.match(c)?"legacy":"unknown"),C="modern"===P?"modern":"legacy",_=(null!=n?n:{modern:"",legacy:""})[C],O=[(p={baseUrl:d,hashVersion:r,buildTarget:C}).baseUrl,"/wpm","/b",p.hashVersion,"modern"===p.buildTarget?"m":"l",".js"].join(""),U=(f={version:r,bundleTarget:P,surface:e.surface,pageUrl:self.location.href,monorailEndpoint:e.monorailEndpoint},h=f.version,g=f.bundleTarget,y=f.surface,w=f.pageUrl,v=f.monorailEndpoint,{emit:function(e){var d=e.status,r=e.errorMsg,n=(new Date).getTime(),o=JSON.stringify({metadata:{event_sent_at_ms:n},events:[{schema_id:"web_pixels_manager_load/3.1",payload:{version:h,bundle_target:g,page_url:w,status:d,surface:y,error_msg:r},metadata:{event_created_at_ms:n}}]});if(!v)return console&&console.warn&&console.warn("[Web Pixels Manager] No Monorail endpoint provided, skipping logging."),!1;try{return self.navigator.sendBeacon.bind(self.navigator)(v,o)}catch(e){}var a=new XMLHttpRequest;try{return a.open("POST",v,!0),a.setRequestHeader("Content-Type","text/plain"),a.send(o),!0}catch(e){return console&&console.warn&&console.warn("[Web Pixels Manager] Got an unhandled error while logging to Monorail."),!1}}});try{o.browserTarget=P,function(e){var d=e.src,r=e.async,n=void 0===r||r,o=e.onload,a=e.onerror,i=e.sri,t=e.scriptDataAttributes,s=void 0===t?{}:t,l=document.createElement("script"),u=document.querySelector("head"),c=document.querySelector("body");if(l.async=n,l.src=d,i&&(l.integrity=i,l.crossOrigin="anonymous"),s)for(var m in s)if(Object.prototype.hasOwnProperty.call(s,m))try{l.dataset[m]=s[m]}catch(e){}if(o&&l.addEventListener("load",o),a&&l.addEventListener("error",a),u)u.appendChild(l);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(l)}}({src:O,async:!0,onload:function(){if(!function(){var e,d;return Boolean(null==(d=null==(e=window.Shopify)?void 0:e.analytics)?void 0:d.initialized)}()){var d=window.webPixelsManager.init(e)||void 0;if(d){var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var r=e[0],n=e[1],o=e[2];d.publishCustomEvent(r,n,o)}),r.replayQueue=[],r.publish=d.publishCustomEvent,r.visitor=d.visitor,r.initialized=!0}}},onerror:function(){return U.emit({status:"failed",errorMsg:"".concat(O," has failed to load")})},sri:(b=_,S=/^sha384-[A-Za-z0-9+/=]+$/,"string"==typeof b&&S.test(b)?_:""),scriptDataAttributes:o}),U.emit({status:"loading"})}catch(e){U.emit({status:"failed",errorMsg:(null==e?void 0:e.message)||"Unknown error"})}}}}();wpmLoader({shopId: 68007461170,storefrontBaseUrl: "https://cityreadsbookstore.com",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://monorail-edge.shopifysvc.com/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["2dca8a86","d5bdd5d0","5acaffe6"],webPixelsConfigList: [{"id":"2150990130","configuration":"{\"config\":\"{\\\"google_tag_ids\\\":[\\\"G-HBW7M4LWBS\\\",\\\"GT-5R43FB7K\\\",\\\"GT-KVMBNX7P\\\"],\\\"target_country\\\":\\\"GH\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-RBVPR4PRDP\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-RBVPR4PRDP\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-RBVPR4PRDP\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":[\\\"G-HBW7M4LWBS\\\",\\\"MC-TCJNCJ48M2\\\"]}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"f15305aac1e98c5c26a7c80e7bc37bde","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"1328152882","configuration":"{\"hashed_organization_id\":\"4095ccfd45ef4883b419814edc6b26df_v1\",\"app_key\":\"1355d8\",\"allow_collect_personal_data\":\"true\"}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"157ed43b9391d46b60258842c8487fbe","type":"APP","apiClientId":2814809,"privacyPurposes":["ANALYTICS","MARKETING","SALE_OF_DATA"],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized"},{"id":"321421618","configuration":"{\"pixel_id\":\"615857487985922\",\"pixel_type\":\"facebook_pixel\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"d72ab942028ee4f6bccc581083be605e","type":"APP","apiClientId":2329312,"privacyPurposes":["ANALYTICS","MARKETING","SALE_OF_DATA"],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0460","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0460","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"City Reads Books and Stationery","paymentSettings":{"currencyCode":"GHS"},"myshopifyDomain":"1355d8.myshopify.com","countryCode":"GH","storefrontUrl":"https:\/\/cityreadsbookstore.com"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":70.0,"currencyCode":"GHS"},"product":{"title":"12 Rules for Life","vendor":"City Reads Bookstore","id":"10133100560690","untranslatedTitle":"12 Rules for Life","url":"\/products\/12-rules-for-life","type":"Non-fiction"},"id":"50980531077426","image":{"src":"\/\/cityreadsbookstore.com\/cdn\/shop\/files\/12_rules_for_life_23ece6bc-736d-4202-ba11-b46e38f9c3fb.png?v=1773684247"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}],"products":null,"purchasingCompany":null,"page":null},},"https://cityreadsbookstore.com/cdn","7a919571w0b784b64p16d009bem0237e62e",{"modern":"","legacy":""},{"trekkieShim":true,"pageType":"product","resourceId":"10133100560690","shopId":"68007461170","storefrontBaseUrl":"https:\/\/cityreadsbookstore.com","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"2dca8a86\", \"d5bdd5d0\", \"5acaffe6\"]","isMerchantRequest":"false","hashVersion":"7a919571w0b784b64p16d009bem0237e62e","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":70.0,\"currencyCode\":\"GHS\"},\"product\":{\"title\":\"12 Rules for Life\",\"vendor\":\"City Reads Bookstore\",\"id\":\"10133100560690\",\"untranslatedTitle\":\"12 Rules for Life\",\"url\":\"\/products\/12-rules-for-life\",\"type\":\"Non-fiction\"},\"id\":\"50980531077426\",\"image\":{\"src\":\"\/\/cityreadsbookstore.com\/cdn\/shop\/files\/12_rules_for_life_23ece6bc-736d-4202-ba11-b46e38f9c3fb.png?v=1773684247\"},\"sku\":null,\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
   window.ShopifyAnalytics = window.ShopifyAnalytics || {};
   window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
   window.ShopifyAnalytics.meta.currency = 'GHS';
-  var meta = {"product":{"id":10133100560690,"gid":"gid:\/\/shopify\/Product\/10133100560690","vendor":"City Reads Bookstore","type":"Non-fiction","handle":"12-rules-for-life","variants":[{"id":50980531077426,"price":7000,"name":"12 Rules for Life","public_title":null,"sku":null}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":10133100560690,"requestId":"c903b7c6-fafb-4305-b07c-ed51fcc30e59-1778825418"}};
+  var meta = {"product":{"id":10133100560690,"gid":"gid:\/\/shopify\/Product\/10133100560690","vendor":"City Reads Bookstore","type":"Non-fiction","handle":"12-rules-for-life","variants":[{"id":50980531077426,"price":7000,"name":"12 Rules for Life","public_title":null,"sku":null}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":10133100560690,"requestId":"a6a54fd9-83e8-4475-9b90-bfa8bca82db2-1778904500"}};
   for (var attr in meta) {
     window.ShopifyAnalytics.meta[attr] = meta[attr];
   }
@@ -2710,7 +2710,7 @@ first.parentNode.insertBefore(script, first);
 
     };
     trekkie.load(
-      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":68007461170,"isMerchantRequest":null,"themeId":180213776690,"themeCityHash":"16264590061471281400","contentLanguage":"en","currency":"GHS","eventMetadataId":"5082e3f6-f3a6-4857-94ca-92ff65fbd9ab"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["b5387b81","d5bdd5d0"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":true,"source":"trekkie-storefront-renderer","apiClientId":580111}}
+      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":68007461170,"isMerchantRequest":null,"themeId":180213776690,"themeCityHash":"16264590061471281400","contentLanguage":"en","currency":"GHS","eventMetadataId":"2c3d39dd-f631-41ee-93fb-61f4a427c0f0"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["b5387b81","d5bdd5d0"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":true,"source":"trekkie-storefront-renderer","apiClientId":580111}}
     );
 
     var loaded = false;
@@ -2725,7 +2725,7 @@ first.parentNode.insertBefore(script, first);
       try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
       document.write = originalDocumentWrite;
 
-      window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":10133100560690,"requestId":"c903b7c6-fafb-4305-b07c-ed51fcc30e59-1778825418","shopifyEmitted":true});
+      window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":10133100560690,"requestId":"a6a54fd9-83e8-4475-9b90-bfa8bca82db2-1778904500","shopifyEmitted":true});
 
       var match = window.location.pathname.match(/checkouts\/(.+)\/(thank_you|post_purchase)/)
       var token = match? match[1]: undefined;
@@ -2746,7 +2746,7 @@ first.parentNode.insertBefore(script, first);
   src="https://cityreadsbookstore.com/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.3.1.min.js"
   data-application="storefront-renderer"
   data-shop-id="68007461170"
-  data-render-region="gcp-us-east1"
+  data-render-region="gcp-us-central1"
   data-page-type="product"
   data-theme-instance-id="180213776690"
   data-theme-name="Dawn"
@@ -5395,7 +5395,7 @@ first.parentNode.insertBefore(script, first);
                                 description: "What are the most valuable things that everyone should know?Acclaimed clinical psychologist Jordan B Peterson has influenced the modern understanding of personality, and now he has become one of the world&#39;s most popular public thinkers, with his lectures on topics from the Bible to romantic relationships to mythology drawing tens of millions of viewers. In an era of unprecedented change and polarizing politics, his frank and refreshing message about the value of individual responsibility and ancient wisdom has resonated around the world.In this book, he provides twelve profound and practical principles for how to live a meaningful life, from setting your house in order before criticizing others to comparing yourself to who you were yesterday, not someone else today. Happiness is a pointless goal, he shows us. Instead we must search for meaning, not for its own sake, but as a defence against the suffering that is intrinsic to our existence.Drawing on vivid examples from the author&#39;s clinical practice and personal life, cutting-edge psychology and philosophy, and lessons from humanity&#39;s oldest myths and stories, 12 Rules for Life offers a deeply rewarding antidote to the chaos in our lives: eternal truths applied to our modern problems.",
                             
 
-                            priceValidUntil: "2027-05-15"
+                            priceValidUntil: "2027-05-16"
                         }],
                     
 
@@ -5883,7 +5883,35 @@ first.parentNode.insertBefore(script, first);
         recipientFormCollapsed: `Gift card recipient form collapsed`,
         countrySelectorSearchCount: `[count] countries/regions found`,
       };
-    </script><script src="//cityreadsbookstore.com/cdn/shop/t/8/assets/predictive-search.js?v=57209189334897115771757306912" defer="defer"></script><script src="//cityreadsbookstore.com/cdn/shop/t/8/assets/cart-drawer.js?v=169981311261118214701757306910" defer="defer"></script><div id="shopify-block-ANEZ6YUIrWjB2bzZUU__11068332061543699368" class="shopify-block shopify-app-block">
+    </script><script src="//cityreadsbookstore.com/cdn/shop/t/8/assets/predictive-search.js?v=57209189334897115771757306912" defer="defer"></script><script src="//cityreadsbookstore.com/cdn/shop/t/8/assets/cart-drawer.js?v=169981311261118214701757306910" defer="defer"></script><div id="shopify-block-AMVRacTJYQmt2RDBQY__16274361319697914395" class="shopify-block shopify-app-block">
+
+
+
+<reviewsio-floating data-id="AMVRacTJYQmt2RDBQY__16274361319697914395">
+
+  
+  
+
+  
+
+</reviewsio-floating>
+
+</div><div id="shopify-block-AcTRuQ2NGbmVqaUhWZ__10025992882218306672" class="shopify-block shopify-app-block">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" class="sp-whatsapp-embed"/>
+
+<link rel="stylesheet" href="https://cdn.shopify.com/extensions/019dd761-485f-751e-8ff6-d8ba53ed958d/ctx-whatsapp-chat-marketing-30/assets/whatsapp-sharing.css" class="sp-whatsapp-embed"/>
+
+<script type="text/javascript" src="https://cdn.shopify.com/extensions/019dd761-485f-751e-8ff6-d8ba53ed958d/ctx-whatsapp-chat-marketing-30/assets/whatsapp-sharing.js" defer class="sp-whatsapp-embed"></script>
+
+</div><div id="shopify-block-AZFd6aGFnS21FS1hVa__13768625480086291342" class="shopify-block shopify-app-block"><script>
+  window['ShopifyForms'] = {
+    ...window['ShopifyForms'],
+    currentPageType: "product"
+  };
+</script>
+
+
+</div><div id="shopify-block-ANEZ6YUIrWjB2bzZUU__11068332061543699368" class="shopify-block shopify-app-block">
 </div><div id="shopify-block-Aajk0TllTV2lJZTdoT__15683396631634586217" class="shopify-block shopify-app-block"><script
   id="chat-button-container"
   data-horizontal-position=bottom_right
@@ -5903,77 +5931,6 @@ first.parentNode.insertBefore(script, first);
 >
 </script>
 
-
-</div><div id="shopify-block-AcTRuQ2NGbmVqaUhWZ__10025992882218306672" class="shopify-block shopify-app-block">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" class="sp-whatsapp-embed"/>
-
-<link rel="stylesheet" href="https://cdn.shopify.com/extensions/019dd761-485f-751e-8ff6-d8ba53ed958d/ctx-whatsapp-chat-marketing-30/assets/whatsapp-sharing.css" class="sp-whatsapp-embed"/>
-
-<script type="text/javascript" src="https://cdn.shopify.com/extensions/019dd761-485f-751e-8ff6-d8ba53ed958d/ctx-whatsapp-chat-marketing-30/assets/whatsapp-sharing.js" defer class="sp-whatsapp-embed"></script>
-
-</div><div id="shopify-block-AZFd6aGFnS21FS1hVa__13768625480086291342" class="shopify-block shopify-app-block"><script>
-  window['ShopifyForms'] = {
-    ...window['ShopifyForms'],
-    currentPageType: "product"
-  };
-</script>
-
-
-</div><div id="shopify-block-AbmZNMkJoZTRRcUIvb__10830403595879607806" class="shopify-block shopify-app-block"><style>
-  .rio-withoutBranding .FloatingWidget .R-Logo,
-  .rio-withoutBranding .CarouselWidget .R-ReviewsioLogo,
-  .rio-withoutBranding .ElementsWidget .footer__reviewsLogo-container,
-  .rio-withoutBranding .QnaWidget .footer__reviewsLogo-container,
-  .rio-withoutBranding .MediaGalleryWidget-prefix .R-ReviewsioLogo,
-  .rio-withoutBranding .RatingBarWidget .R-PlatformIcon {
-    display: none !important;
-  }
-</style>
-<script>
-  window.__REVIEWS_EDITOR__ = false;
-  window.__REVIEWS_DEMO_CONFIG__ = {
-    store: 'ecommerce-demo-store',
-    sku: 'bunch_of_flowers_sku;blue_flowers_sku;white_flowers_sku;pastel_flowers_sku;summer_selection_sku',
-    widgetIds: {
-      nuggets: 'W10cpKyjl72VtHv6',
-      ugc: '7sG9C5qNeKpvhykZ',
-      floating: 'GBvqmKV1Zy9H4Mpd',
-      ratingBar: 'pxNMXi7FTlODgr8Q',
-      survey: 'uLJcD7bFpGMf1Z0C'
-    },
-    surveyCampaignId: '392'
-  };
-
-  
-    var reviewsIoStore = '1355d8.myshopify.com';
-  
-
-  var reviewsIoEnableSyndication = false;
-
-  
-    
-      
-      var reviewsIoLang = 'en';
-    
-  
-</script>
-
-<script defer src="https://cdn.shopify.com/extensions/019e16d8-aeb8-76ea-93d8-0a64ba966db9/reviews-co-uk-product-and-merchant-review-collection-57/assets/reviewsio-preview.js"></script>
-
-
-
-</div><div id="shopify-block-AMVRacTJYQmt2RDBQY__16274361319697914395" class="shopify-block shopify-app-block">
-
-
-
-<reviewsio-floating data-id="AMVRacTJYQmt2RDBQY__16274361319697914395">
-
-  
-  
-
-  
-
-</reviewsio-floating>
 
 </div><div id="shopify-block-AQm9TRHFSWXVWZkxWc__15316669992541710076" class="shopify-block shopify-app-block"><script defer src="https://widget.reviews.io/rating-snippet/dist.js"></script>
 <link rel="stylesheet" href="https://widget.reviews.io/rating-snippet/dist.css" />
@@ -6037,6 +5994,49 @@ first.parentNode.insertBefore(script, first);
       window.addEventListener('load', tick);
     })();
 </script>
+
+
+</div><div id="shopify-block-AbmZNMkJoZTRRcUIvb__10830403595879607806" class="shopify-block shopify-app-block"><style>
+  .rio-withoutBranding .FloatingWidget .R-Logo,
+  .rio-withoutBranding .CarouselWidget .R-ReviewsioLogo,
+  .rio-withoutBranding .ElementsWidget .footer__reviewsLogo-container,
+  .rio-withoutBranding .QnaWidget .footer__reviewsLogo-container,
+  .rio-withoutBranding .MediaGalleryWidget-prefix .R-ReviewsioLogo,
+  .rio-withoutBranding .RatingBarWidget .R-PlatformIcon {
+    display: none !important;
+  }
+</style>
+<script>
+  window.__REVIEWS_EDITOR__ = false;
+  window.__REVIEWS_DEMO_CONFIG__ = {
+    store: 'ecommerce-demo-store',
+    sku: 'bunch_of_flowers_sku;blue_flowers_sku;white_flowers_sku;pastel_flowers_sku;summer_selection_sku',
+    widgetIds: {
+      nuggets: 'W10cpKyjl72VtHv6',
+      ugc: '7sG9C5qNeKpvhykZ',
+      floating: 'GBvqmKV1Zy9H4Mpd',
+      ratingBar: 'pxNMXi7FTlODgr8Q',
+      survey: 'uLJcD7bFpGMf1Z0C'
+    },
+    surveyCampaignId: '392'
+  };
+
+  
+    var reviewsIoStore = '1355d8.myshopify.com';
+  
+
+  var reviewsIoEnableSyndication = false;
+
+  
+    
+      
+      var reviewsIoLang = 'en';
+    
+  
+</script>
+
+<script defer src="https://cdn.shopify.com/extensions/019e16d8-aeb8-76ea-93d8-0a64ba966db9/reviews-co-uk-product-and-merchant-review-collection-57/assets/reviewsio-preview.js"></script>
+
 
 
 </div></body>

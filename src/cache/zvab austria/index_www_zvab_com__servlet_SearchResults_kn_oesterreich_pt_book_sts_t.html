@@ -110,7 +110,7 @@
 
        
   
-  <div class="modal fade" id="shopping-basket-modal" tabindex="-1" role="dialog" aria-label="Zum Warenkorb hinzugefügt" data-uuid="47717e6b-ff51-4e86-be0c-ff9b39ae3c03">
+  <div class="modal fade" id="shopping-basket-modal" tabindex="-1" role="dialog" aria-label="Zum Warenkorb hinzugefügt" data-uuid="22bcdba5-b4a9-4b87-be2c-69146db39619">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <button id="shopping-basket-modal-close-button" type="button" class="close" data-dismiss="modal"
@@ -159,8 +159,15 @@
   </div>
 <div id="pageHeader" class="search-heading">
     <div class="search-heading">
-                  <h1 class="search-results-heading" data-test-id="page-title">Bücher, oesterreich <span class="result-count">(Mehr als <b id="topbar-search-result-count">298.000</b> Ergebnisse)</span></h1>
-                                    <div id="searchterm-crumbs" class="m-xs-t cf">
+                  <h1 class="showing-results-for">Ergebnisse werden angezeigt für:
+          <span class="query-text">Oesterreich</span>
+          <span class="result-count">(Mehr als <b id="topbar-search-result-count">298.000</b> Ergebnisse)</span>
+        </h1>
+                    <div id="filters-applied">
+      Filter angewandt:
+      <span class="filters-applied-values" data-test-id="filters-applied-values">Bücher</span>
+    </div>
+                      <div id="searchterm-crumbs" class="m-xs-t cf">
                   <div class="search-crumb">
           <b>Stichwörter:</b>
           <a
@@ -392,8 +399,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&rollup=on&sortby=20"
-                             aria-label="Nach Bücher filtern (298,611 Treffer) (ausgewählt)"
-      ><span class="icon" aria-hidden="true"></span>Bücher&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-book-count">(298.611)</span></a>
+                             aria-label="Nach Bücher filtern (298,266 Treffer) (ausgewählt)"
+      ><span class="icon" aria-hidden="true"></span>Bücher&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-book-count">(298.266)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-product-type-mag" id="refinement-product-type-mag"
@@ -444,8 +451,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&pt=book%20art&rollup=on&sortby=20"
-                             aria-label="Nach Kunst, Grafik & Poster filtern (14,293 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Kunst, Grafik & Poster&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-art-count">(14.293)</span></a>
+                             aria-label="Nach Kunst, Grafik & Poster filtern (14,038 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Kunst, Grafik & Poster&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-art-count">(14.038)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-product-type-photo" id="refinement-product-type-photo"
@@ -470,8 +477,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&pt=book%20map&rollup=on&sortby=20"
-                             aria-label="Nach Karten filtern (5,497 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Karten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-map-count">(5.497)</span></a>
+                             aria-label="Nach Karten filtern (5,494 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Karten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-map-count">(5.494)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-product-type-ms" id="refinement-product-type-ms"
@@ -483,8 +490,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&pt=book%20ms&rollup=on&sortby=20"
-                             aria-label="Nach Manuskripte & Papierantiquitäten filtern (340,950 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Manuskripte & Papierantiquitäten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-ms-count">(340.950)</span></a>
+                             aria-label="Nach Manuskripte & Papierantiquitäten filtern (340,941 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Manuskripte & Papierantiquitäten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-ms-count">(340.941)</span></a>
       </li>
                   </ul>
       </div>
@@ -503,8 +510,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=new&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Neu filtern (60,696 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Neu&nbsp;<span style="color:#000;" data-test-id="refinement-condition-new-count">(60.696)</span></a>
+                   aria-label="Nach Neu filtern (60,642 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Neu&nbsp;<span style="color:#000;" data-test-id="refinement-condition-new-count">(60.642)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-an-fine-nf" id="refinement-condition-an-fine-nf"
@@ -517,8 +524,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=fine%20an%20nf&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Wie Neu, Sehr Gut oder Gut Bis Sehr Gut filtern (21,663 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Wie Neu, Sehr Gut oder Gut Bis Sehr Gut&nbsp;<span style="color:#000;" data-test-id="refinement-condition-an-fine-nf-count">(21.663)</span></a>
+                   aria-label="Nach Wie Neu, Sehr Gut oder Gut Bis Sehr Gut filtern (21,660 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Wie Neu, Sehr Gut oder Gut Bis Sehr Gut&nbsp;<span style="color:#000;" data-test-id="refinement-condition-an-fine-nf-count">(21.660)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-vg-good" id="refinement-condition-vg-good"
@@ -531,8 +538,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=vg%20good&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Gut oder Befriedigend filtern (49,409 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Gut oder Befriedigend&nbsp;<span style="color:#000;" data-test-id="refinement-condition-vg-good-count">(49.409)</span></a>
+                   aria-label="Nach Gut oder Befriedigend filtern (49,406 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Gut oder Befriedigend&nbsp;<span style="color:#000;" data-test-id="refinement-condition-vg-good-count">(49.406)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-fair-poor" id="refinement-condition-fair-poor"
@@ -559,8 +566,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=uns&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Wie beschrieben filtern (166,034 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Wie beschrieben&nbsp;<span style="color:#000;" data-test-id="refinement-condition-uns-count">(166.034)</span></a>
+                   aria-label="Nach Wie beschrieben filtern (165,749 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Wie beschrieben&nbsp;<span style="color:#000;" data-test-id="refinement-condition-uns-count">(165.749)</span></a>
       </li>
                   </ul>
       </div>
@@ -593,8 +600,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=hc&bi=h&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Hardcover filtern (133,486 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Hardcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-hc-count">(133.486)</span></a>
+                   aria-label="Nach Hardcover filtern (133,350 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Hardcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-hc-count">(133.350)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-binding-sc" id="refinement-binding-sc"
@@ -607,8 +614,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=sc&bi=s&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Softcover filtern (119,414 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Softcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-sc-count">(119.414)</span></a>
+                   aria-label="Nach Softcover filtern (119,297 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Softcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-sc-count">(119.297)</span></a>
       </li>
                   </ul>
       </div>
@@ -626,8 +633,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=fe&ds=30&dym=on&fe=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
-                             aria-label="Nach Erstausgabe filtern (55,326 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Erstausgabe&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-fe-count">(55.326)</span></a>
+                             aria-label="Nach Erstausgabe filtern (55,305 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Erstausgabe&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-fe-count">(55.305)</span></a>
       </li>
                              
     <li class="none" data-test-id="refinement-collectible-attribute-sgnd" id="refinement-collectible-attribute-sgnd"
@@ -639,8 +646,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=sgnd&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sgnd=on&sortby=20"
-                             aria-label="Nach Signiert filtern (10,530 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Signiert&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-sgnd-count">(10.530)</span></a>
+                             aria-label="Nach Signiert filtern (10,531 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Signiert&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-sgnd-count">(10.531)</span></a>
       </li>
                              
     <li class="none" data-test-id="refinement-collectible-attribute-dj" id="refinement-collectible-attribute-dj"
@@ -653,8 +660,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=dj&dj=on&ds=30&dym=on&kn=oesterreich&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Schutzumschlag filtern (48,019 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Schutzumschlag&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-dj-count">(48.019)</span></a>
+                   aria-label="Nach Schutzumschlag filtern (47,982 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Schutzumschlag&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-dj-count">(47.982)</span></a>
       </li>
                              
     <li class="none" data-test-id="refinement-collectible-attribute-pics" id="refinement-collectible-attribute-pics"
@@ -667,8 +674,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=pics&ds=30&dym=on&kn=oesterreich&pics=on&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Angebotsfoto filtern (159,761 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Angebotsfoto&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-pics-count">(159.761)</span></a>
+                   aria-label="Nach Angebotsfoto filtern (159,711 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Angebotsfoto&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-pics-count">(159.711)</span></a>
       </li>
                    </ul>
       </div>
@@ -829,8 +836,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&msr=2&n=100090007&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 2 Sterne und höher filtern (298,340 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>2 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-2-count">(298.340)</span></a>
+                   aria-label="Nach 2 Sterne und höher filtern (297,995 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>2 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-2-count">(297.995)</span></a>
       </li>
                               
     <li class="ratingthreestar none" data-test-id="refinement-seller-rating-3" id="refinement-seller-rating-3"
@@ -843,8 +850,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&msr=3&n=100090008&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 3 Sterne und höher filtern (296,033 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>3 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-3-count">(296.033)</span></a>
+                   aria-label="Nach 3 Sterne und höher filtern (295,688 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>3 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-3-count">(295.688)</span></a>
       </li>
                               
     <li class="ratingfourstar none" data-test-id="refinement-seller-rating-4" id="refinement-seller-rating-4"
@@ -857,8 +864,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&msr=4&n=100090009&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 4 Sterne und höher filtern (291,437 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>4 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-4-count">(291.437)</span></a>
+                   aria-label="Nach 4 Sterne und höher filtern (291,089 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>4 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-4-count">(291.089)</span></a>
       </li>
                               
     <li class="ratingfivestar none" data-test-id="refinement-seller-rating-5" id="refinement-seller-rating-5"
@@ -871,8 +878,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=oesterreich&msr=5&n=100090010&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 5 Sterne filtern (242,019 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>5 Sterne&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-5-count">(242.019)</span></a>
+                   aria-label="Nach 5 Sterne filtern (241,671 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>5 Sterne&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-5-count">(241.671)</span></a>
       </li>
                       </ul>
         </div>
@@ -3294,285 +3301,9 @@
     <li data-test-id="listing-item"
       id="book-11"
       data-csa-c-type="item"
-      data-csa-c-item-id="30430838664"
-      data-csa-c-item-type="book"
-      data-csa-c-pos="11,1"
-     class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
-          <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783411049851" />
-        <meta itemprop="name" content="Österreichisches Deutsch: Wörterbuch der Gegenwartssprache in Österreich (Duden - Spezialwörterbücher)" />
-        <meta data-test-id="item-author-meta-tag" itemprop="author" content="Ebner, Jakob" />
-        <meta data-test-id="item-about-meta-tag" itemprop="about" content="Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. " />
-        <meta data-test-id="item-publisher-meta-tag" itemprop="publisher" content="Bibliograph. Instit. GmbH" />
-         <meta data-test-id="item-date-published-meta-tag" itemprop="datePublished" content="2019" />
-          <meta itemprop="bookFormat" itemtype="http://schema.org/Paperback" content="Paperback" />
-  
-  <div class="result-image col-xs-12 col-sm-3 text-center"
-       data-csa-c-type="uxElement"
-       data-csa-c-action="navigate"
-       data-csa-c-navigate="bdp"
-       data-csa-c-navigate-identifier="30430838664"
-           data-csa-c-element-type="stock-image"
-      >
-                      <script type="text/javascript">
-                var images11 = [
-                      'https://pictures.abebooks.com/isbn/9783411049851-de.jpg'                  ];
-      </script>
-
-      <a id="listing_11"
-         href="/%C3%96sterreichisches-Deutsch-W%C3%B6rterbuch-Gegenwartssprache-%C3%96sterreich-Duden/30430838664/bd"
-         class="srp-image-link thumbnail" title="Österreichisches Deutsch: Wörterbuch der Gegenwartssprache in Österreich: Ebner, Jakob"  aria-label="Artikeldetails für Österreichisches Deutsch: Wörterbuch der Gegenwartssprache in Österreich (Duden - Spezialwörterbücher) zum Verkauf von medimops">
-        <script type="text/javascript">
-          var searchImage11 = new SearchImage(images11, document.getElementById('listing_11'), document.getElementById('imagetype_11'), 11, "searchResults", false, "Beispielbild für diese ISBN", false);
-        </script>
-                  <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage11, false)" onerror="srpImageLoader.onImageError(searchImage11, false)" src="https://pictures.abebooks.com/isbn/9783411049851-de-300.jpg" alt="Beispielbild für Österreichisches Deutsch: Wörterbuch der Gegenwartssprache in Österreich (Duden - Spezialwörterbücher) zum Verkauf von medimops">
-                            </div>
-        </a>
-      
-                  <div id="imagetype_11" class="photo-type" style="display:none;">
-          <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
-      </div>
-
-            </div>
-  <div class="result-data col-xs-12 col-sm-9 cf">
-    <div class="cf">
-      <div class="result-detail col-xs-12 col-sm-8">
-        <h2 class="title" itemprop="offers" itemscope  itemtype="http://schema.org/Offer">
-                      <meta itemprop="price" content="14.99" />
-            <meta itemprop="priceCurrency" content="EUR" />
-            <meta itemprop="itemCondition" content="UsedCondition" />
-            <meta itemprop="availability" content="InStock" />
-                    <a itemprop="url"              href="/%C3%96sterreichisches-Deutsch-W%C3%B6rterbuch-Gegenwartssprache-%C3%96sterreich-Duden/30430838664/bd"
-              data-csa-c-type="action"
-              data-csa-c-action="navigate"
-              data-csa-c-navigate="bdp"
-              data-csa-c-navigate-identifier="30430838664"
-              ><span data-test-id="listing-title">Österreichisches Deutsch: Wörterbuch der Gegenwartssprache in Österreich (Duden - Spezialwörterbücher)</span></a>
-        </h2>
-                          <p class="author" data-test-id="listing-author">
-          
-          <a  aria-label="Details zu den mitwirkenden Personen anzeigen für Jakob Ebner"                 href="/autor/b00455y1me/jakob-ebner?ref_=nav_alk_srp"
-                data-csa-c-type="action"
-                data-csa-c-action="navigate"
-                data-csa-c-navigate="srp"
-                data-csa-c-navigate-identifier="author"><strong>Ebner, Jakob</strong></a>          </p>
-        
-                
-                <div class="publisher-isbn-language-container">
-                                  <p class="text-secondary" data-test-id="listing-language">
-                Sprache: Deutsch
-              </p>
-          
-                      <p class="text-secondary" data-test-id="listing-publisher">
-                              <span class="opt-published-by">Verlag:</span>
-                <span class="opt-publisher">Bibliograph. Instit. GmbH, </span>
-                                                            <span class="opt-publish-date">2019</span>
-                          </p>
-          
-                      <p class="text-secondary">
-                                            ISBN&nbsp;10:
-                <a href="/9783411049851/%C3%96sterreichisches-Deutsch-W%C3%B6rterbuch-Gegenwartssprache-%C3%96sterreich-3411049855/plp"
-                   class="link-primary"
-                   data-test-id="listing-isbn-link"
-                   data-csa-c-type="action"
-                   data-csa-c-action="navigate"
-                   data-csa-c-navigate="plp"
-                   data-csa-c-navigate-identifier="ISBN10-9783411049851"><span data-test-id="listing-isbn-10">3411049855</span></a>
-                <span class="muted" aria-hidden="true">/</span>
-                            ISBN&nbsp;13:
-              <a href="/9783411049851/%C3%96sterreichisches-Deutsch-W%C3%B6rterbuch-Gegenwartssprache-%C3%96sterreich-3411049855/plp"
-                 class="link-primary"
-                 data-test-id="listing-isbn-link"
-                 data-csa-c-type="action"
-                 data-csa-c-action="navigate"
-                 data-csa-c-navigate="plp"
-                 data-csa-c-navigate-identifier="ISBN13-9783411049851"><span data-test-id="listing-isbn-13">9783411049851</span></a>
-            </p>
-                  </div>
-        
-                <div class="bookseller-info">
-                    <p class="text-secondary">
-            Anbieter:
-            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf11"
-               data-test-id="listing-seller-link"
-               class="srp-seller-link"
-               title="Verkäuferseite von medimops besuchen"
-               data-csa-c-type="action"
-               data-csa-c-action="navigate"
-               data-csa-c-navigate="sellerstorefront"
-               data-csa-c-navigate-identifier="55410863"
-            ><span data-test-id="listing-seller-name">medimops</span></a>, <span data-test-id="listing-seller-location">Berlin, Deutschland</span>
-          </p>
-
-                    
-                    <p class="bookseller-rating" data-test-id="listing-seller-rating">  <span class="bookseller-rating" data-test-id="bookseller-rating" aria-hidden="true">(Verkäufer mit 5 Sternen)</span>
-  <span class="sr-only">Verkäuferbewertung 5 von 5 Sternen</span>
-      <a rel="nofollow"
-       href="javascript:openNewWindow('/servlet/FrameBase?content=%2Fservlet%2FViewSellerRatingsHelp',500, 550,'yes');"
-       data-csa-c-type="action"
-       data-csa-c-action="info"
-       data-csa-c-info="seller-rating"
-    >
-        <img
-            src="//assets.prod.abebookscdn.com/cdn/shared/images/Shared/css/seller-rating/fivestar.png"
-            alt="5 Sterne, Erfahren Sie mehr über Verkäufer-Bewertungen"
-            width="80"
-            height="16"
-            style="position:relative;top:2px;"
-        />
-    </a>
-</p>
-
-                                <p>
-              <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30430838664&cm_sp=snippet-_-srp0-_-atbaq11"
-                 data-test-id="listing-contact-seller"
-                 title="medimops eine Frage zu diesem Artikel stellen"
-                 class="link-primary"
-                 data-csa-c-type="action"
-                 data-csa-c-action="navigate"
-                 data-csa-c-navigate="askbooksellerquestion"
-                 data-csa-c-navigate-identifier="55410863"
-              >Verkäufer kontaktieren</a>
-            </p>
-          
-                  </div>
-        
-        <p class="opt-bsa-pod-pills">
-                              
-          
-          
-                  </p>
-              </div>
-
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-11">                 <p class="item-meta-data">
-          <b>
-                          <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
-                      </b>
-                      <br/>
-            <span class="opt-subcondition"  data-test-id="listing-optional-condition">Zustand: Gut</span>
-                  </p>
-        
-                <div class="item-price-group">
-                                        <p class="item-price" id="item-price-11" data-test-id="item-price">EUR 14,99</p>
-                                                    </div>
-        
-                <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-11">
-              EUR 10,00 Versand <button
-  class="meridian-popover-trigger"
-  data-test-id="listing-shipping-rate-popover"
-  data-csa-c-type="action"
-  data-csa-c-action="info"
-  data-csa-c-info="shipping-rates-popover"
-  data-toggle="popover"
-  data-content="Die Versandzeiten werden von den Verkäuferinnen und Verkäufern festgelegt. Sie variieren je nach Versanddienstleister und Standort. Sendungen, die den Zoll passieren, können Verzögerungen unterliegen. Eventuell anfallende Abgaben oder Gebühren sind von der Käuferin bzw. dem Käufer zu tragen. Die Verkäuferin bzw. der Verkäufer kann Sie bezüglich zusätzlicher Versandkosten kontaktieren, um einen möglichen Anstieg der Versandkosten für Ihre Artikel auszugleichen."
-  data-show-close
-  data-close-aria-label="Schließen"
-  data-placement="bottom"><span class="sr-only">Weitere Informationen zu Versandkosten</span>
-</button>
-                          </span>
-                        <br/>
-      Versand von Deutschland nach USA
-  
-                  </div>
-        
-                                  <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
-        
-        <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-11"
-           data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30430838664&srimage=stock&isbn13=9783411049851&cm_sp=add-_-srp0-_-11&ref=bs_srp"
-            
-           data-isbn13="9783411049851"
-           data-listingid="30430838664"
-           data-ref-override="bs_mod_srp"            data-should-refresh="true"
-           role="button"
-           data-csa-c-type="action"
-           data-csa-c-action="add-to-basket"
-           data-csa-c-item-id="30430838664"
-           data-csa-c-purchase-currency="EUR"
-           data-csa-c-cost="14.99"
-           data-csa-c-shipping-cost="10.0"
-                      data-csa-c-item-condition="gebraucht"
-                              >In den Warenkorb</a>
-      </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 11">
-        Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. 
-      </p>
-      <div class="m-md-t">
-                
-                      </div>
-    </div>
-              
-  <section class="clear-all roll-up-data small-plus"
-           aria-describedby="30430838664"
-           data-csa-c-type="widget"
-           data-csa-c-component="more-buying-options"
-           data-csa-c-painter="filtered-search">
-    <hr class="divider" />
-    <div class="inline-block">
-      <p id="30430838664" class="text-secondary">Mehr Angebote von anderen Verkäufern bei ZVAB</p>
-
-          <p class="offers-link">
-                  <a rel="nofollow"
-             data-test-id="listing-rollup-new" href="/servlet/SearchResults?cm_sp=mbc_srp_new&attrs=new&amp;ds=30&amp;dym=on&amp;isbn=9783411049851&amp;kn=oesterreich&amp;n=100121501&amp;pt=book&amp;rollup=on&amp;sortby=20"
-             data-csa-c-type="action"
-             data-csa-c-action="navigate"
-             data-csa-c-navigate="srp"
-             data-csa-c-navigate-identifier="new"
-             data-csa-c-purchase-currency="EUR"
-             data-csa-c-cost="EUR 39,33"
-          >Neu ab <b>EUR 39,33</b></a>
-        
-                  oder
-        
-                  <a rel="nofollow" data-test-id="listing-rollup-used" href="/servlet/SearchResults?cm_sp=mbc_srp_used&attrs=used&amp;ds=30&amp;dym=on&amp;isbn=9783411049851&amp;kn=oesterreich&amp;n=100121503&amp;pt=book&amp;rollup=on&amp;sortby=20"
-             data-csa-c-type="action"
-             data-csa-c-action="navigate"
-             data-csa-c-navigate="srp"
-             data-csa-c-navigate-identifier="new"
-             data-csa-c-purchase-currency="EUR"
-             data-csa-c-cost="EUR 24,99"
-          >Gebraucht ab <b>EUR 24,99</b></a>
-              </p>
-    
-
-
-          <p class="also-find" aria-labelledby="find-30430838664">
-        <span class="text-500" id="find-30430838664">Mehr entdecken</span>
-                              <a class="comma link-primary" rel="nofollow" href="/servlet/SearchResults?cm_sp=mbc_srp_sc&attrs=sc&amp;bi=s&amp;ds=30&amp;dym=on&amp;isbn=9783411049851&amp;kn=oesterreich&amp;pt=book&amp;rollup=on&amp;sortby=20"
-             data-csa-c-type="action"
-             data-csa-c-action="navigate"
-             data-csa-c-navigate="srp"
-             data-csa-c-navigate-identifier="softcover"
-          >Softcover</a>
-                                    </p>
-        </div>
-  </section>
-      </div>
-
-    </li>
-          
-                                          
-                
-    
-    
-            
-    
-  
-    
-                    
-                                                                          
-                      
-  
-    
-    <li data-test-id="listing-item"
-      id="book-12"
-      data-csa-c-type="item"
       data-csa-c-item-id="30735796091"
       data-csa-c-item-type="book"
-      data-csa-c-pos="12,1"
+      data-csa-c-pos="11,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9780243913022" />
         <meta itemprop="name" content="Beschreibung Des Cabinets Von Gem?hlden Verschiedener Ber?hmten Mahler, Des Herrn Johann Gottlieb Stein (Classic Reprint)" />
@@ -3590,22 +3321,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images12 = [
+                var images11 = [
                       'https://pictures.abebooks.com/isbn/9780243913022-de.jpg'                  ];
       </script>
 
-      <a id="listing_12"
+      <a id="listing_11"
          href="/Beschreibung-Cabinets-Gemhlden-Verschiedener-Berhmten-Mahler/30735796091/bd"
          class="srp-image-link thumbnail" title="Beschreibung Des Cabinets Von Gem?hlden Verschiedener Ber?hmten: Matthias Oesterreich"  aria-label="Artikeldetails für Beschreibung Des Cabinets Von Gem?hlden Verschiedener Ber?hmten Mahler, Des Herrn Johann Gottlieb Stein (Classic Reprint) zum Verkauf von PBShop.store US">
         <script type="text/javascript">
-          var searchImage12 = new SearchImage(images12, document.getElementById('listing_12'), document.getElementById('imagetype_12'), 12, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage11 = new SearchImage(images11, document.getElementById('listing_11'), document.getElementById('imagetype_11'), 11, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage12, false)" onerror="srpImageLoader.onImageError(searchImage12, false)" src="https://pictures.abebooks.com/isbn/9780243913022-de-300.jpg" alt="Beispielbild für Beschreibung Des Cabinets Von Gem?hlden Verschiedener Ber?hmten Mahler, Des Herrn Johann Gottlieb Stein (Classic Reprint) zum Verkauf von PBShop.store US">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage11, false)" onerror="srpImageLoader.onImageError(searchImage11, false)" src="https://pictures.abebooks.com/isbn/9780243913022-de-300.jpg" alt="Beispielbild für Beschreibung Des Cabinets Von Gem?hlden Verschiedener Ber?hmten Mahler, Des Herrn Johann Gottlieb Stein (Classic Reprint) zum Verkauf von PBShop.store US">
                             </div>
         </a>
       
-                  <div id="imagetype_12" class="photo-type" style="display:none;">
+                  <div id="imagetype_11" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -3669,7 +3400,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf12"
+            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf11"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von PBShop.store US besuchen"
@@ -3701,7 +3432,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30735796091&cm_sp=snippet-_-srp0-_-atbaq12"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30735796091&cm_sp=snippet-_-srp0-_-atbaq11"
                  data-test-id="listing-contact-seller"
                  title="PBShop.store US eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -3721,7 +3452,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-12">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-11">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Neu - Softcover</span>
                       </b>
@@ -3730,11 +3461,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-12" data-test-id="item-price">EUR 23,94</p>
+                                        <p class="item-price" id="item-price-11" data-test-id="item-price">EUR 23,94</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span class="free-shipping" id="item-shipping-price-12">
+                      <span class="free-shipping" id="item-shipping-price-11">
               Versand gratis <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -3756,9 +3487,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 15 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-12"
+           rel="nofollow" id="add-to-basket-link-11"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30735796091&srimage=stock&isbn13=9780243913022&cm_sp=add-_-srp0-_-12&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=30735796091&srimage=stock&isbn13=9780243913022&cm_sp=add-_-srp0-_-11&ref=bs_srp"
             
            data-isbn13="9780243913022"
            data-listingid="30735796091"
@@ -3773,7 +3504,7 @@
                       data-csa-c-item-condition="neu"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 12">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 11">
         PAP. Zustand: New. New Book. Shipped from UK. Established seller since 2000. 
       </p>
       <div class="m-md-t">
@@ -3835,11 +3566,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-13"
+      id="book-12"
       data-csa-c-type="item"
       data-csa-c-item-id="32372025338"
       data-csa-c-item-type="book"
-      data-csa-c-pos="13,1"
+      data-csa-c-pos="12,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783902873958" />
         <meta itemprop="name" content="Kreuzwege: Lebensbild der Jesuiten P. Johann Schwingshackl und P. Johann Steinmayr" />
@@ -3857,22 +3588,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images13 = [
+                var images12 = [
                       'https://pictures.abebooks.com/isbn/9783902873958-de.jpg'                  ];
       </script>
 
-      <a id="listing_13"
+      <a id="listing_12"
          href="/Kreuzwege-Lebensbild-Jesuiten-Johann-Schwingshackl-Steinmayr/32372025338/bd"
          class="srp-image-link thumbnail" title="Kreuzwege: Lebensbild der Jesuiten P. Johann Schwingshackl: Kolozs, Martin"  aria-label="Artikeldetails für Kreuzwege: Lebensbild der Jesuiten P. Johann Schwingshackl und P. Johann Steinmayr zum Verkauf von medimops">
         <script type="text/javascript">
-          var searchImage13 = new SearchImage(images13, document.getElementById('listing_13'), document.getElementById('imagetype_13'), 13, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage12 = new SearchImage(images12, document.getElementById('listing_12'), document.getElementById('imagetype_12'), 12, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage13, false)" onerror="srpImageLoader.onImageError(searchImage13, false)" src="https://pictures.abebooks.com/isbn/9783902873958-de-300.jpg" alt="Beispielbild für Kreuzwege: Lebensbild der Jesuiten P. Johann Schwingshackl und P. Johann Steinmayr zum Verkauf von medimops">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage12, false)" onerror="srpImageLoader.onImageError(searchImage12, false)" src="https://pictures.abebooks.com/isbn/9783902873958-de-300.jpg" alt="Beispielbild für Kreuzwege: Lebensbild der Jesuiten P. Johann Schwingshackl und P. Johann Steinmayr zum Verkauf von medimops">
                             </div>
         </a>
       
-                  <div id="imagetype_13" class="photo-type" style="display:none;">
+                  <div id="imagetype_12" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -3933,7 +3664,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf13"
+            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf12"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von medimops besuchen"
@@ -3965,7 +3696,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32372025338&cm_sp=snippet-_-srp0-_-atbaq13"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32372025338&cm_sp=snippet-_-srp0-_-atbaq12"
                  data-test-id="listing-contact-seller"
                  title="medimops eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -3985,7 +3716,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-13">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-12">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -3994,11 +3725,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-13" data-test-id="item-price">EUR 4,36</p>
+                                        <p class="item-price" id="item-price-12" data-test-id="item-price">EUR 4,36</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-13">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-12">
               EUR 10,00 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -4020,9 +3751,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-13"
+           rel="nofollow" id="add-to-basket-link-12"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32372025338&srimage=stock&isbn13=9783902873958&cm_sp=add-_-srp0-_-13&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32372025338&srimage=stock&isbn13=9783902873958&cm_sp=add-_-srp0-_-12&ref=bs_srp"
             
            data-isbn13="9783902873958"
            data-listingid="32372025338"
@@ -4037,7 +3768,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 13">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 12">
         Zustand: acceptable. Ausreichend/Acceptable: Exemplar mit vollständigem Text und sämtlichen Abbildungen oder Karten. Schmutztitel oder Vorsatz können fehlen. Einband bzw. Schutzumschlag weisen unter Umständen starke Gebrauchsspuren auf. / Describes a book or dust jacket that has the complete text pages (including those with maps or plates) but may lack endpapers, half-title, etc. (which must be noted). Binding, dust jacket (if any), etc may also be worn. 
       </p>
       <div class="m-md-t">
@@ -4062,11 +3793,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-14"
+      id="book-13"
       data-csa-c-type="item"
       data-csa-c-item-id="30839336340"
       data-csa-c-item-type="book"
-      data-csa-c-pos="14,1"
+      data-csa-c-pos="13,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9780282471132" />
         <meta itemprop="name" content="Description des Tableaux de la Galerie Royale Et du Cabinet de Sans-Souci (Classic Reprint)" />
@@ -4084,22 +3815,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images14 = [
+                var images13 = [
                       'https://pictures.abebooks.com/isbn/9780282471132-de.jpg'                  ];
       </script>
 
-      <a id="listing_14"
+      <a id="listing_13"
          href="/Description-Tableaux-Galerie-Royale-Cabinet-Sans-Souci/30839336340/bd"
          class="srp-image-link thumbnail" title="Description des Tableaux de la Galerie Royale: Matthias Oesterreich"  aria-label="Artikeldetails für Description des Tableaux de la Galerie Royale Et du Cabinet de Sans-Souci (Classic Reprint) zum Verkauf von PBShop.store US">
         <script type="text/javascript">
-          var searchImage14 = new SearchImage(images14, document.getElementById('listing_14'), document.getElementById('imagetype_14'), 14, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage13 = new SearchImage(images13, document.getElementById('listing_13'), document.getElementById('imagetype_13'), 13, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage14, false)" onerror="srpImageLoader.onImageError(searchImage14, false)" src="https://pictures.abebooks.com/isbn/9780282471132-de-300.jpg" alt="Beispielbild für Description des Tableaux de la Galerie Royale Et du Cabinet de Sans-Souci (Classic Reprint) zum Verkauf von PBShop.store US">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage13, false)" onerror="srpImageLoader.onImageError(searchImage13, false)" src="https://pictures.abebooks.com/isbn/9780282471132-de-300.jpg" alt="Beispielbild für Description des Tableaux de la Galerie Royale Et du Cabinet de Sans-Souci (Classic Reprint) zum Verkauf von PBShop.store US">
                             </div>
         </a>
       
-                  <div id="imagetype_14" class="photo-type" style="display:none;">
+                  <div id="imagetype_13" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -4163,7 +3894,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf14"
+            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf13"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von PBShop.store US besuchen"
@@ -4195,7 +3926,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30839336340&cm_sp=snippet-_-srp0-_-atbaq14"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30839336340&cm_sp=snippet-_-srp0-_-atbaq13"
                  data-test-id="listing-contact-seller"
                  title="PBShop.store US eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -4215,7 +3946,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-14">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-13">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Neu - Softcover</span>
                       </b>
@@ -4224,11 +3955,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-14" data-test-id="item-price">EUR 24,52</p>
+                                        <p class="item-price" id="item-price-13" data-test-id="item-price">EUR 24,52</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span class="free-shipping" id="item-shipping-price-14">
+                      <span class="free-shipping" id="item-shipping-price-13">
               Versand gratis <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -4250,9 +3981,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 15 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-14"
+           rel="nofollow" id="add-to-basket-link-13"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30839336340&srimage=stock&isbn13=9780282471132&cm_sp=add-_-srp0-_-14&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=30839336340&srimage=stock&isbn13=9780282471132&cm_sp=add-_-srp0-_-13&ref=bs_srp"
             
            data-isbn13="9780282471132"
            data-listingid="30839336340"
@@ -4267,7 +3998,7 @@
                       data-csa-c-item-condition="neu"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 14">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 13">
         PAP. Zustand: New. New Book. Shipped from UK. Established seller since 2000. 
       </p>
       <div class="m-md-t">
@@ -4329,11 +4060,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-15"
+      id="book-14"
       data-csa-c-type="item"
       data-csa-c-item-id="32294363840"
       data-csa-c-item-type="unknown"
-      data-csa-c-pos="15,1"
+      data-csa-c-pos="14,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
             <meta itemprop="name" content="Franz Joseph I. An der Wende vom alten zum neuen Europa." />
         <meta data-test-id="item-author-meta-tag" itemprop="author" content="Franz Joseph I. von Österreich - Novotny, Alexander." />
@@ -4350,9 +4081,9 @@
            data-csa-c-element-type="stock-image"
       >
           <a href="/Franz-Joseph-Wende-alten-neuen-Europa/32294363840/bd"
-        class="srp-image-link thumbnail" id="srp-image-link-15" aria-label="Artikeldetails für Franz Joseph I. An der Wende vom alten zum neuen Europa. zum Verkauf von Antiquariat Les-art">
+        class="srp-image-link thumbnail" id="srp-image-link-14" aria-label="Artikeldetails für Franz Joseph I. An der Wende vom alten zum neuen Europa. zum Verkauf von Antiquariat Les-art">
         <div class="srp-image-holder" data-test-id="listing-image">
-          <img id="img-not-available15" src="//assets.prod.abebookscdn.com/cdn/zvab/images/servlets/shared/search/no-image.gif" alt="" class="srp-item-image no-book-image" />
+          <img id="img-not-available14" src="//assets.prod.abebookscdn.com/cdn/zvab/images/servlets/shared/search/no-image.gif" alt="" class="srp-item-image no-book-image" />
                         </div>
       </a>
       </div>
@@ -4397,7 +4128,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/Antiquariat-Les-art-Burgstetten/61633597/sf?cm_sp=snippet-_-srp0-_-sf15"
+            <a href="/Antiquariat-Les-art-Burgstetten/61633597/sf?cm_sp=snippet-_-srp0-_-sf14"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von Antiquariat Les-art besuchen"
@@ -4429,7 +4160,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32294363840&cm_sp=snippet-_-srp0-_-atbaq15"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32294363840&cm_sp=snippet-_-srp0-_-atbaq14"
                  data-test-id="listing-contact-seller"
                  title="Antiquariat Les-art eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -4449,18 +4180,18 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-15">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-14">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-15" data-test-id="item-price">EUR 7,50</p>
+                                        <p class="item-price" id="item-price-14" data-test-id="item-price">EUR 7,50</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-15">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-14">
               EUR 8,00 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -4482,9 +4213,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-15"
+           rel="nofollow" id="add-to-basket-link-14"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32294363840&srimage=none&cm_sp=add-_-srp0-_-15&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32294363840&srimage=none&cm_sp=add-_-srp0-_-14&ref=bs_srp"
             
            data-isbn13=""
            data-listingid="32294363840"
@@ -4499,7 +4230,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 15">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 14">
         8°. 103 S. und 8 Portraittafeln. Illustrierter Okart. Persönlichkeit und Geschichte Band 46 Sprache: de. 
       </p>
       <div class="m-md-t">
@@ -4524,11 +4255,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-16"
+      id="book-15"
       data-csa-c-type="item"
       data-csa-c-item-id="32206537014"
       data-csa-c-item-type="book"
-      data-csa-c-pos="16,1"
+      data-csa-c-pos="15,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783965580732" />
         <meta itemprop="name" content="Branching Out: Botanical Metaphors and Worlding Art History from the &#39;Tropics&#39;" />
@@ -4546,22 +4277,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images16 = [
+                var images15 = [
                       'https://pictures.abebooks.com/isbn/9783965580732-de.jpg'                  ];
       </script>
 
-      <a id="listing_16"
+      <a id="listing_15"
          href="/Branching-Out-Botanical-Metaphors-Worlding-Art/32206537014/bd"
          class="srp-image-link thumbnail" title="Branching Out: Botanical Metaphors and Worlding Art: Oesterreich, Miriam (Author)"  aria-label="Artikeldetails für Branching Out: Botanical Metaphors and Worlding Art History from the &#39;Tropics&#39; zum Verkauf von Revaluation Books">
         <script type="text/javascript">
-          var searchImage16 = new SearchImage(images16, document.getElementById('listing_16'), document.getElementById('imagetype_16'), 16, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage15 = new SearchImage(images15, document.getElementById('listing_15'), document.getElementById('imagetype_15'), 15, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage16, false)" onerror="srpImageLoader.onImageError(searchImage16, false)" src="https://pictures.abebooks.com/isbn/9783965580732-de-300.jpg" alt="Beispielbild für Branching Out: Botanical Metaphors and Worlding Art History from the &#39;Tropics&#39; zum Verkauf von Revaluation Books">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage15, false)" onerror="srpImageLoader.onImageError(searchImage15, false)" src="https://pictures.abebooks.com/isbn/9783965580732-de-300.jpg" alt="Beispielbild für Branching Out: Botanical Metaphors and Worlding Art History from the &#39;Tropics&#39; zum Verkauf von Revaluation Books">
                             </div>
         </a>
       
-                  <div id="imagetype_16" class="photo-type" style="display:none;">
+                  <div id="imagetype_15" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -4625,7 +4356,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/Revaluation-Books-Exeter/2134736/sf?cm_sp=snippet-_-srp0-_-sf16"
+            <a href="/Revaluation-Books-Exeter/2134736/sf?cm_sp=snippet-_-srp0-_-sf15"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von Revaluation Books besuchen"
@@ -4657,7 +4388,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32206537014&cm_sp=snippet-_-srp0-_-atbaq16"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32206537014&cm_sp=snippet-_-srp0-_-atbaq15"
                  data-test-id="listing-contact-seller"
                  title="Revaluation Books eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -4677,7 +4408,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-16">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-15">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Neu - Softcover</span>
                       </b>
@@ -4686,11 +4417,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-16" data-test-id="item-price">EUR 13,19</p>
+                                        <p class="item-price" id="item-price-15" data-test-id="item-price">EUR 13,19</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-16">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-15">
               EUR 11,48 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -4712,9 +4443,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 2 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-16"
+           rel="nofollow" id="add-to-basket-link-15"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32206537014&srimage=stock&isbn13=9783965580732&cm_sp=add-_-srp0-_-16&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32206537014&srimage=stock&isbn13=9783965580732&cm_sp=add-_-srp0-_-15&ref=bs_srp"
             
            data-isbn13="9783965580732"
            data-listingid="32206537014"
@@ -4729,7 +4460,7 @@
                       data-csa-c-item-condition="neu"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 16">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 15">
         Paperback. Zustand: Brand New. 92 pages. 5.00x0.25x7.00 inches. In Stock. 
       </p>
       <div class="m-md-t">
@@ -4754,11 +4485,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-17"
+      id="book-16"
       data-csa-c-type="item"
       data-csa-c-item-id="31480573020"
       data-csa-c-item-type="book"
-      data-csa-c-pos="17,1"
+      data-csa-c-pos="16,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783936636147" />
         <meta itemprop="name" content="Installation" />
@@ -4776,22 +4507,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images17 = [
+                var images16 = [
                       'https://pictures.abebooks.com/isbn/9783936636147-de.jpg'                  ];
       </script>
 
-      <a id="listing_17"
+      <a id="listing_16"
          href="/Installation-Bacht-Michael-Kehrer-Verlag-Heidelberg/31480573020/bd"
          class="srp-image-link thumbnail" title="Installation: Bacht, Michael"  aria-label="Artikeldetails für Installation zum Verkauf von Hylaila - Online-Antiquariat">
         <script type="text/javascript">
-          var searchImage17 = new SearchImage(images17, document.getElementById('listing_17'), document.getElementById('imagetype_17'), 17, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage16 = new SearchImage(images16, document.getElementById('listing_16'), document.getElementById('imagetype_16'), 16, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage17, false)" onerror="srpImageLoader.onImageError(searchImage17, false)" src="https://pictures.abebooks.com/isbn/9783936636147-de-300.jpg" alt="Beispielbild für Installation zum Verkauf von Hylaila - Online-Antiquariat">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage16, false)" onerror="srpImageLoader.onImageError(searchImage16, false)" src="https://pictures.abebooks.com/isbn/9783936636147-de-300.jpg" alt="Beispielbild für Installation zum Verkauf von Hylaila - Online-Antiquariat">
                             </div>
         </a>
       
-                  <div id="imagetype_17" class="photo-type" style="display:none;">
+                  <div id="imagetype_16" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -4855,7 +4586,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/Hylaila-Online-Antiquariat-Wiesbaden/1047600/sf?cm_sp=snippet-_-srp0-_-sf17"
+            <a href="/Hylaila-Online-Antiquariat-Wiesbaden/1047600/sf?cm_sp=snippet-_-srp0-_-sf16"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von Hylaila - Online-Antiquariat besuchen"
@@ -4887,7 +4618,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31480573020&cm_sp=snippet-_-srp0-_-atbaq17"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31480573020&cm_sp=snippet-_-srp0-_-atbaq16"
                  data-test-id="listing-contact-seller"
                  title="Hylaila - Online-Antiquariat eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -4907,7 +4638,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-17">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-16">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Hardcover</span>
                       </b>
@@ -4916,11 +4647,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-17" data-test-id="item-price">EUR 5,00</p>
+                                        <p class="item-price" id="item-price-16" data-test-id="item-price">EUR 5,00</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-17">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-16">
               EUR 6,00 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -4942,9 +4673,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-17"
+           rel="nofollow" id="add-to-basket-link-16"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=31480573020&srimage=stock&isbn13=9783936636147&cm_sp=add-_-srp0-_-17&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=31480573020&srimage=stock&isbn13=9783936636147&cm_sp=add-_-srp0-_-16&ref=bs_srp"
             
            data-isbn13="9783936636147"
            data-listingid="31480573020"
@@ -4959,7 +4690,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 17">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 16">
         Zustand: Sehr gut. Zustand des Schutzumschlags: Kein Schutzumschlag. 0 63 S. miz ein- und mehrfarbigen Abbildungen, unbenutzt, E-6 . Aufgrund der EPR-Gebühren kein Versand nach Frankreich und Österreich möglich. 
       </p>
       <div class="m-md-t">
@@ -4984,11 +4715,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-18"
+      id="book-17"
       data-csa-c-type="item"
       data-csa-c-item-id="32411238659"
       data-csa-c-item-type="book"
-      data-csa-c-pos="18,1"
+      data-csa-c-pos="17,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783525603567" />
         <meta itemprop="name" content="Schriftgutordnung mit Aktenplan für Kirchengemeinden, Kirchenkreise, Dekanate, Propsteien u. Verb. sowie landeskirchl. Einrichtungen in d. Evang. Kirche." />
@@ -5006,22 +4737,22 @@
            data-csa-c-element-type="bookseller-image"
       >
                       <script type="text/javascript">
-                var images18 = [
+                var images17 = [
                       'https://pictures.abebooks.com/inventory/32411238659.jpg'                  ];
       </script>
 
-      <a id="listing_18"
+      <a id="listing_17"
          href="/Schriftgutordnung-Aktenplan-Kirchengemeinden-Kirchenkreise-Dekanate-Propsteien/32411238659/bd"
          class="srp-image-link thumbnail" title="Schriftgutordnung mit Aktenplan für Kirchengemeinden, Kirchenkreise, Dekanate,: Evangelische Kirche in"  aria-label="Artikeldetails für Schriftgutordnung mit Aktenplan für Kirchengemeinden, Kirchenkreise, Dekanate, Propsteien u. Verb. sowie landeskirchl. Einrichtungen in d. Evang. Kirche. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
         <script type="text/javascript">
-          var searchImage18 = new SearchImage(images18, document.getElementById('listing_18'), document.getElementById('imagetype_18'), 18, "searchResults", false, "Beispielbild für diese ISBN", true);
+          var searchImage17 = new SearchImage(images17, document.getElementById('listing_17'), document.getElementById('imagetype_17'), 17, "searchResults", false, "Beispielbild für diese ISBN", true);
         </script>
                               <div class="srp-image-holder" data-test-id="listing-image">
-                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage18, false)" onerror="srpImageLoader.onImageError(searchImage18, false)" src="https://pictures.abebooks.com/inventory/md/md32411238659.jpg" alt="Bild des Verkäufers für Schriftgutordnung mit Aktenplan für Kirchengemeinden, Kirchenkreise, Dekanate, Propsteien u. Verb. sowie landeskirchl. Einrichtungen in d. Evang. Kirche. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
+                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage17, false)" onerror="srpImageLoader.onImageError(searchImage17, false)" src="https://pictures.abebooks.com/inventory/md/md32411238659.jpg" alt="Bild des Verkäufers für Schriftgutordnung mit Aktenplan für Kirchengemeinden, Kirchenkreise, Dekanate, Propsteien u. Verb. sowie landeskirchl. Einrichtungen in d. Evang. Kirche. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
                                               </div>
             </a>
                   
-                  <div id="sellerImageCopy_18" class="photo-type" style="display:none;">
+                  <div id="sellerImageCopy_17" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Foto des Verkäufers</span>
       </div>
 
@@ -5085,7 +4816,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf18"
+            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf17"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) besuchen"
@@ -5117,7 +4848,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32411238659&cm_sp=snippet-_-srp0-_-atbaq18"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32411238659&cm_sp=snippet-_-srp0-_-atbaq17"
                  data-test-id="listing-contact-seller"
                  title="books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -5137,7 +4868,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-18">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-17">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -5146,11 +4877,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-18" data-test-id="item-price">EUR 2,95</p>
+                                        <p class="item-price" id="item-price-17" data-test-id="item-price">EUR 2,95</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-18">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-17">
               EUR 9,95 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -5172,9 +4903,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-18"
+           rel="nofollow" id="add-to-basket-link-17"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32411238659&srimage=bseller&isbn13=9783525603567&cm_sp=add-_-srp0-_-18&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32411238659&srimage=bseller&isbn13=9783525603567&cm_sp=add-_-srp0-_-17&ref=bs_srp"
             
            data-isbn13="9783525603567"
            data-listingid="32411238659"
@@ -5189,7 +4920,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 18">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 17">
         Broschiert. Zustand: Gut. 133 Seiten; Das hier angebotene Buch stammt aus einer teilaufgelösten Bibliothek und kann die entsprechenden Kennzeichnungen aufweisen (Rückenschild, Instituts-Stempel.); der Buchzustand ist ansonsten ordentlich und dem Alter entsprechend gut. Einband folienkaschiert. Sprache: Deutsch Gewicht in Gramm: 265. 
       </p>
       <div class="m-md-t">
@@ -5214,11 +4945,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-19"
+      id="book-18"
       data-csa-c-type="item"
       data-csa-c-item-id="31021029242"
       data-csa-c-item-type="book"
-      data-csa-c-pos="19,1"
+      data-csa-c-pos="18,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783494020556" />
         <meta itemprop="name" content="Psychiatrie des Alterns" />
@@ -5236,22 +4967,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images19 = [
+                var images18 = [
                       'https://pictures.abebooks.com/isbn/9783494020556-de.jpg'                  ];
       </script>
 
-      <a id="listing_19"
+      <a id="listing_18"
          href="/Psychiatrie-Alterns-Oesterreich-Klaus-Meyer-1975/31021029242/bd"
          class="srp-image-link thumbnail" title="Psychiatrie des Alterns: Oesterreich, Klaus"  aria-label="Artikeldetails für Psychiatrie des Alterns zum Verkauf von Antiquariat Walter Nowak">
         <script type="text/javascript">
-          var searchImage19 = new SearchImage(images19, document.getElementById('listing_19'), document.getElementById('imagetype_19'), 19, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage18 = new SearchImage(images18, document.getElementById('listing_18'), document.getElementById('imagetype_18'), 18, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage19, false)" onerror="srpImageLoader.onImageError(searchImage19, false)" src="https://pictures.abebooks.com/isbn/9783494020556-de-300.jpg" alt="Beispielbild für Psychiatrie des Alterns zum Verkauf von Antiquariat Walter Nowak">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage18, false)" onerror="srpImageLoader.onImageError(searchImage18, false)" src="https://pictures.abebooks.com/isbn/9783494020556-de-300.jpg" alt="Beispielbild für Psychiatrie des Alterns zum Verkauf von Antiquariat Walter Nowak">
                             </div>
         </a>
       
-                  <div id="imagetype_19" class="photo-type" style="display:none;">
+                  <div id="imagetype_18" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -5315,7 +5046,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/Antiquariat-Walter-Nowak-g%C3%B6ttingen/1047826/sf?cm_sp=snippet-_-srp0-_-sf19"
+            <a href="/Antiquariat-Walter-Nowak-g%C3%B6ttingen/1047826/sf?cm_sp=snippet-_-srp0-_-sf18"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von Antiquariat Walter Nowak besuchen"
@@ -5347,7 +5078,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31021029242&cm_sp=snippet-_-srp0-_-atbaq19"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31021029242&cm_sp=snippet-_-srp0-_-atbaq18"
                  data-test-id="listing-contact-seller"
                  title="Antiquariat Walter Nowak eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -5367,18 +5098,18 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-19">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-18">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-19" data-test-id="item-price">EUR 3,00</p>
+                                        <p class="item-price" id="item-price-18" data-test-id="item-price">EUR 3,00</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-19">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-18">
               EUR 9,90 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -5400,9 +5131,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-19"
+           rel="nofollow" id="add-to-basket-link-18"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=31021029242&srimage=stock&isbn13=9783494020556&cm_sp=add-_-srp0-_-19&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=31021029242&srimage=stock&isbn13=9783494020556&cm_sp=add-_-srp0-_-18&ref=bs_srp"
             
            data-isbn13="9783494020556"
            data-listingid="31021029242"
@@ -5417,7 +5148,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 19">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 18">
         Grundlagen, Diagnostik, Therapie Gewicht in Gramm: 550 geringe äußere Gebrauchsspuren, Vorsatzblatt fehlt, Namenseintrag, vordere Seiten mit zahlreichen farbigen Anstreichungen. 
       </p>
       <div class="m-md-t">
@@ -5442,11 +5173,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-20"
+      id="book-19"
       data-csa-c-type="item"
       data-csa-c-item-id="30898329269"
       data-csa-c-item-type="book"
-      data-csa-c-pos="20,1"
+      data-csa-c-pos="19,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9780365350637" />
         <meta itemprop="name" content="Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint" />
@@ -5464,22 +5195,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images20 = [
+                var images19 = [
                       'https://pictures.abebooks.com/isbn/9780365350637-de.jpg'                  ];
       </script>
 
-      <a id="listing_20"
+      <a id="listing_19"
          href="/Jahrhundert-Grillparzers-Literaturund-Lebensbilder-Oesterreich-Classic/30898329269/bd"
          class="srp-image-link thumbnail" title="Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich: Literatur-und Lebensbilder Aus"  aria-label="Artikeldetails für Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint zum Verkauf von PBShop.store US">
         <script type="text/javascript">
-          var searchImage20 = new SearchImage(images20, document.getElementById('listing_20'), document.getElementById('imagetype_20'), 20, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage19 = new SearchImage(images19, document.getElementById('listing_19'), document.getElementById('imagetype_19'), 19, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage20, false)" onerror="srpImageLoader.onImageError(searchImage20, false)" src="https://pictures.abebooks.com/isbn/9780365350637-de-300.jpg" alt="Beispielbild für Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint zum Verkauf von PBShop.store US">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage19, false)" onerror="srpImageLoader.onImageError(searchImage19, false)" src="https://pictures.abebooks.com/isbn/9780365350637-de-300.jpg" alt="Beispielbild für Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint zum Verkauf von PBShop.store US">
                             </div>
         </a>
       
-                  <div id="imagetype_20" class="photo-type" style="display:none;">
+                  <div id="imagetype_19" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -5543,7 +5274,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf20"
+            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf19"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von PBShop.store US besuchen"
@@ -5575,7 +5306,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30898329269&cm_sp=snippet-_-srp0-_-atbaq20"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30898329269&cm_sp=snippet-_-srp0-_-atbaq19"
                  data-test-id="listing-contact-seller"
                  title="PBShop.store US eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -5595,7 +5326,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-20">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-19">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Neu - Softcover</span>
                       </b>
@@ -5604,11 +5335,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-20" data-test-id="item-price">EUR 25,90</p>
+                                        <p class="item-price" id="item-price-19" data-test-id="item-price">EUR 25,90</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span class="free-shipping" id="item-shipping-price-20">
+                      <span class="free-shipping" id="item-shipping-price-19">
               Versand gratis <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -5630,9 +5361,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 15 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-20"
+           rel="nofollow" id="add-to-basket-link-19"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30898329269&srimage=stock&isbn13=9780365350637&cm_sp=add-_-srp0-_-20&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=30898329269&srimage=stock&isbn13=9780365350637&cm_sp=add-_-srp0-_-19&ref=bs_srp"
             
            data-isbn13="9780365350637"
            data-listingid="30898329269"
@@ -5647,7 +5378,7 @@
                       data-csa-c-item-condition="neu"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 20">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 19">
         PAP. Zustand: New. New Book. Shipped from UK. Established seller since 2000. 
       </p>
       <div class="m-md-t">
@@ -5709,11 +5440,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-21"
+      id="book-20"
       data-csa-c-type="item"
       data-csa-c-item-id="31758879398"
       data-csa-c-item-type="book"
-      data-csa-c-pos="21,1"
+      data-csa-c-pos="20,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783950186987" />
         <meta itemprop="name" content="Eine Minute vor zwölf! : warum wir eine neue Weltordnung brauchen ; Ö1-Features: Visionäre im Gespräch mit Johannes Kaup und Michael Kerbler. Ökosoziales Forum Europa ; Ökosoziales Forum Österreich" />
@@ -5731,22 +5462,22 @@
            data-csa-c-element-type="bookseller-image"
       >
                       <script type="text/javascript">
-                var images21 = [
+                var images20 = [
                       'https://pictures.abebooks.com/inventory/31758879398.jpg'                  ];
       </script>
 
-      <a id="listing_21"
+      <a id="listing_20"
          href="/Minute-zw%C3%B6lf-neue-Weltordnung-brauchen-%C3%961-Features/31758879398/bd"
          class="srp-image-link thumbnail" title="Eine Minute vor zwölf! : warum wir: Kaup, Johannes and"  aria-label="Artikeldetails für Eine Minute vor zwölf! : warum wir eine neue Weltordnung brauchen ; Ö1-Features: Visionäre im Gespräch mit Johannes Kaup und Michael Kerbler. Ökosoziales Forum Europa ; Ökosoziales Forum Österreich zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
         <script type="text/javascript">
-          var searchImage21 = new SearchImage(images21, document.getElementById('listing_21'), document.getElementById('imagetype_21'), 21, "searchResults", false, "Beispielbild für diese ISBN", true);
+          var searchImage20 = new SearchImage(images20, document.getElementById('listing_20'), document.getElementById('imagetype_20'), 20, "searchResults", false, "Beispielbild für diese ISBN", true);
         </script>
                               <div class="srp-image-holder" data-test-id="listing-image">
-                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage21, false)" onerror="srpImageLoader.onImageError(searchImage21, false)" src="https://pictures.abebooks.com/inventory/md/md31758879398.jpg" alt="Bild des Verkäufers für Eine Minute vor zwölf! : warum wir eine neue Weltordnung brauchen ; Ö1-Features: Visionäre im Gespräch mit Johannes Kaup und Michael Kerbler. Ökosoziales Forum Europa ; Ökosoziales Forum Österreich zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
+                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage20, false)" onerror="srpImageLoader.onImageError(searchImage20, false)" src="https://pictures.abebooks.com/inventory/md/md31758879398.jpg" alt="Bild des Verkäufers für Eine Minute vor zwölf! : warum wir eine neue Weltordnung brauchen ; Ö1-Features: Visionäre im Gespräch mit Johannes Kaup und Michael Kerbler. Ökosoziales Forum Europa ; Ökosoziales Forum Österreich zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
                                               </div>
             </a>
                   
-                  <div id="sellerImageCopy_21" class="photo-type" style="display:none;">
+                  <div id="sellerImageCopy_20" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Foto des Verkäufers</span>
       </div>
 
@@ -5810,7 +5541,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf21"
+            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf20"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) besuchen"
@@ -5842,7 +5573,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31758879398&cm_sp=snippet-_-srp0-_-atbaq21"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31758879398&cm_sp=snippet-_-srp0-_-atbaq20"
                  data-test-id="listing-contact-seller"
                  title="books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -5862,7 +5593,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-21">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-20">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -5871,11 +5602,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-21" data-test-id="item-price">EUR 1,45</p>
+                                        <p class="item-price" id="item-price-20" data-test-id="item-price">EUR 1,45</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-21">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-20">
               EUR 9,95 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -5897,9 +5628,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-21"
+           rel="nofollow" id="add-to-basket-link-20"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=31758879398&srimage=bseller&isbn13=9783950186987&cm_sp=add-_-srp0-_-21&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=31758879398&srimage=bseller&isbn13=9783950186987&cm_sp=add-_-srp0-_-20&ref=bs_srp"
             
            data-isbn13="9783950186987"
            data-listingid="31758879398"
@@ -5914,7 +5645,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 21">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 20">
         Taschenbuch. Zustand: Gut. 169 Seiten; Das Buch befindet sich in einem ordentlich erhaltenen Zustand. Sprache: Englisch Gewicht in Gramm: 300. 
       </p>
       <div class="m-md-t">
@@ -5975,11 +5706,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-22"
+      id="book-21"
       data-csa-c-type="item"
       data-csa-c-item-id="31986696276"
       data-csa-c-item-type="book"
-      data-csa-c-pos="22,1"
+      data-csa-c-pos="21,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783800310609" />
         <meta itemprop="name" content="Spreewald (Stürtz Regio)" />
@@ -5997,22 +5728,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images22 = [
+                var images21 = [
                       'https://pictures.abebooks.com/isbn/9783800310609-de.jpg'                  ];
       </script>
 
-      <a id="listing_22"
+      <a id="listing_21"
          href="/Spreewald-St%C3%BCrtz-Regio-Oesterreich-Volker-Uthoff/31986696276/bd"
          class="srp-image-link thumbnail" title="Spreewald (Stürtz Regio): Oesterreich, Volker; Uthoff,"  aria-label="Artikeldetails für Spreewald (Stürtz Regio) zum Verkauf von medimops">
         <script type="text/javascript">
-          var searchImage22 = new SearchImage(images22, document.getElementById('listing_22'), document.getElementById('imagetype_22'), 22, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage21 = new SearchImage(images21, document.getElementById('listing_21'), document.getElementById('imagetype_21'), 21, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage22, false)" onerror="srpImageLoader.onImageError(searchImage22, false)" src="https://pictures.abebooks.com/isbn/9783800310609-de-300.jpg" alt="Beispielbild für Spreewald (Stürtz Regio) zum Verkauf von medimops">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage21, false)" onerror="srpImageLoader.onImageError(searchImage21, false)" src="https://pictures.abebooks.com/isbn/9783800310609-de-300.jpg" alt="Beispielbild für Spreewald (Stürtz Regio) zum Verkauf von medimops">
                             </div>
         </a>
       
-                  <div id="imagetype_22" class="photo-type" style="display:none;">
+                  <div id="imagetype_21" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -6080,7 +5811,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf22"
+            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf21"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von medimops besuchen"
@@ -6112,7 +5843,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31986696276&cm_sp=snippet-_-srp0-_-atbaq22"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31986696276&cm_sp=snippet-_-srp0-_-atbaq21"
                  data-test-id="listing-contact-seller"
                  title="medimops eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -6132,7 +5863,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-22">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-21">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Hardcover</span>
                       </b>
@@ -6141,11 +5872,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-22" data-test-id="item-price">EUR 3,38</p>
+                                        <p class="item-price" id="item-price-21" data-test-id="item-price">EUR 3,38</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-22">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-21">
               EUR 10,00 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -6167,9 +5898,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-22"
+           rel="nofollow" id="add-to-basket-link-21"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=31986696276&srimage=stock&isbn13=9783800310609&cm_sp=add-_-srp0-_-22&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=31986696276&srimage=stock&isbn13=9783800310609&cm_sp=add-_-srp0-_-21&ref=bs_srp"
             
            data-isbn13="9783800310609"
            data-listingid="31986696276"
@@ -6184,7 +5915,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 22">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 21">
         Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. 
       </p>
       <div class="m-md-t">
@@ -6209,11 +5940,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-23"
+      id="book-22"
       data-csa-c-type="item"
       data-csa-c-item-id="32119584143"
       data-csa-c-item-type="book"
-      data-csa-c-pos="23,1"
+      data-csa-c-pos="22,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783534121106" />
         <meta itemprop="name" content="Philosophen als politische Lehrer : Beispiele öffentlichen Vernunftgebrauchs." />
@@ -6231,22 +5962,22 @@
            data-csa-c-element-type="bookseller-image"
       >
                       <script type="text/javascript">
-                var images23 = [
+                var images22 = [
                       'https://pictures.abebooks.com/inventory/32119584143.jpg'                  ];
       </script>
 
-      <a id="listing_23"
+      <a id="listing_22"
          href="/Philosophen-politische-Lehrer-Beispiele-%C3%B6ffentlichen-Vernunftgebrauchs/32119584143/bd"
          class="srp-image-link thumbnail" title="Philosophen als politische Lehrer : Beispiele öffentlichen: Oesterreich, Peter L.:"  aria-label="Artikeldetails für Philosophen als politische Lehrer : Beispiele öffentlichen Vernunftgebrauchs. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
         <script type="text/javascript">
-          var searchImage23 = new SearchImage(images23, document.getElementById('listing_23'), document.getElementById('imagetype_23'), 23, "searchResults", false, "Beispielbild für diese ISBN", true);
+          var searchImage22 = new SearchImage(images22, document.getElementById('listing_22'), document.getElementById('imagetype_22'), 22, "searchResults", false, "Beispielbild für diese ISBN", true);
         </script>
                               <div class="srp-image-holder" data-test-id="listing-image">
-                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage23, false)" onerror="srpImageLoader.onImageError(searchImage23, false)" src="https://pictures.abebooks.com/inventory/md/md32119584143.jpg" alt="Bild des Verkäufers für Philosophen als politische Lehrer : Beispiele öffentlichen Vernunftgebrauchs. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
+                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage22, false)" onerror="srpImageLoader.onImageError(searchImage22, false)" src="https://pictures.abebooks.com/inventory/md/md32119584143.jpg" alt="Bild des Verkäufers für Philosophen als politische Lehrer : Beispiele öffentlichen Vernunftgebrauchs. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
                                               </div>
             </a>
                   
-                  <div id="sellerImageCopy_23" class="photo-type" style="display:none;">
+                  <div id="sellerImageCopy_22" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Foto des Verkäufers</span>
       </div>
 
@@ -6310,7 +6041,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf23"
+            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf22"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) besuchen"
@@ -6342,7 +6073,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32119584143&cm_sp=snippet-_-srp0-_-atbaq23"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32119584143&cm_sp=snippet-_-srp0-_-atbaq22"
                  data-test-id="listing-contact-seller"
                  title="books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -6362,7 +6093,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-23">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-22">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -6371,11 +6102,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-23" data-test-id="item-price">EUR 3,45</p>
+                                        <p class="item-price" id="item-price-22" data-test-id="item-price">EUR 3,45</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-23">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-22">
               EUR 9,95 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -6397,9 +6128,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-23"
+           rel="nofollow" id="add-to-basket-link-22"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32119584143&srimage=bseller&isbn13=9783534121106&cm_sp=add-_-srp0-_-23&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32119584143&srimage=bseller&isbn13=9783534121106&cm_sp=add-_-srp0-_-22&ref=bs_srp"
             
            data-isbn13="9783534121106"
            data-listingid="32119584143"
@@ -6414,7 +6145,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 23">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 22">
         Broschiert. Zustand: Gut. 206 Seiten; Das Buch ist in einem neuwertigen Zustand. Sprache: Deutsch Gewicht in Gramm: 305. 
       </p>
       <div class="m-md-t">
@@ -6439,11 +6170,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-24"
+      id="book-23"
       data-csa-c-type="item"
       data-csa-c-item-id="32112894941"
       data-csa-c-item-type="book"
-      data-csa-c-pos="24,1"
+      data-csa-c-pos="23,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783950145847" />
         <meta itemprop="name" content="Humanae vitae : der Glanz der Wahrheit." />
@@ -6461,22 +6192,22 @@
            data-csa-c-element-type="bookseller-image"
       >
                       <script type="text/javascript">
-                var images24 = [
+                var images23 = [
                       'https://pictures.abebooks.com/inventory/32112894941.jpg'                  ];
       </script>
 
-      <a id="listing_24"
+      <a id="listing_23"
          href="/Humanae-vitae-Glanz-Wahrheit-Human-Life/32112894941/bd"
          class="srp-image-link thumbnail" title="Humanae vitae : der Glanz der Wahrheit.: Human Life International"  aria-label="Artikeldetails für Humanae vitae : der Glanz der Wahrheit. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
         <script type="text/javascript">
-          var searchImage24 = new SearchImage(images24, document.getElementById('listing_24'), document.getElementById('imagetype_24'), 24, "searchResults", false, "Beispielbild für diese ISBN", true);
+          var searchImage23 = new SearchImage(images23, document.getElementById('listing_23'), document.getElementById('imagetype_23'), 23, "searchResults", false, "Beispielbild für diese ISBN", true);
         </script>
                               <div class="srp-image-holder" data-test-id="listing-image">
-                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage24, false)" onerror="srpImageLoader.onImageError(searchImage24, false)" src="https://pictures.abebooks.com/inventory/md/md32112894941.jpg" alt="Bild des Verkäufers für Humanae vitae : der Glanz der Wahrheit. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
+                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage23, false)" onerror="srpImageLoader.onImageError(searchImage23, false)" src="https://pictures.abebooks.com/inventory/md/md32112894941.jpg" alt="Bild des Verkäufers für Humanae vitae : der Glanz der Wahrheit. zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
                                               </div>
             </a>
                   
-                  <div id="sellerImageCopy_24" class="photo-type" style="display:none;">
+                  <div id="sellerImageCopy_23" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Foto des Verkäufers</span>
       </div>
 
@@ -6540,7 +6271,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf24"
+            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf23"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) besuchen"
@@ -6572,7 +6303,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32112894941&cm_sp=snippet-_-srp0-_-atbaq24"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32112894941&cm_sp=snippet-_-srp0-_-atbaq23"
                  data-test-id="listing-contact-seller"
                  title="books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -6592,7 +6323,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-24">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-23">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -6601,11 +6332,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-24" data-test-id="item-price">EUR 3,45</p>
+                                        <p class="item-price" id="item-price-23" data-test-id="item-price">EUR 3,45</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-24">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-23">
               EUR 9,95 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -6627,9 +6358,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-24"
+           rel="nofollow" id="add-to-basket-link-23"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32112894941&srimage=bseller&isbn13=9783950145847&cm_sp=add-_-srp0-_-24&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32112894941&srimage=bseller&isbn13=9783950145847&cm_sp=add-_-srp0-_-23&ref=bs_srp"
             
            data-isbn13="9783950145847"
            data-listingid="32112894941"
@@ -6644,7 +6375,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 24">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 23">
         Taschenbuch; Zustand: Gut. 124 Seiten. Das Buch befindet sich in einem gut erhaltenen Zustand. Sprache: Deutsch Gewicht in Gramm: 150. 
       </p>
       <div class="m-md-t">
@@ -6669,11 +6400,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-25"
+      id="book-24"
       data-csa-c-type="item"
       data-csa-c-item-id="30868151816"
       data-csa-c-item-type="book"
-      data-csa-c-pos="25,1"
+      data-csa-c-pos="24,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9780656585847" />
         <meta itemprop="name" content="Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint" />
@@ -6691,22 +6422,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images25 = [
+                var images24 = [
                       'https://pictures.abebooks.com/isbn/9780656585847-de.jpg'                  ];
       </script>
 
-      <a id="listing_25"
+      <a id="listing_24"
          href="/Jahrhundert-Grillparzers-Literaturund-Lebensbilder-Oesterreich-Classic/30868151816/bd"
          class="srp-image-link thumbnail" title="Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich: Literatur-und Lebensbilder Aus"  aria-label="Artikeldetails für Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint zum Verkauf von PBShop.store US">
         <script type="text/javascript">
-          var searchImage25 = new SearchImage(images25, document.getElementById('listing_25'), document.getElementById('imagetype_25'), 25, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage24 = new SearchImage(images24, document.getElementById('listing_24'), document.getElementById('imagetype_24'), 24, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage25, false)" onerror="srpImageLoader.onImageError(searchImage25, false)" src="https://pictures.abebooks.com/isbn/9780656585847-de-300.jpg" alt="Beispielbild für Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint zum Verkauf von PBShop.store US">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage24, false)" onerror="srpImageLoader.onImageError(searchImage24, false)" src="https://pictures.abebooks.com/isbn/9780656585847-de-300.jpg" alt="Beispielbild für Im Jahrhundert Grillparzers Literaturund Lebensbilder aus Oesterreich Classic Reprint zum Verkauf von PBShop.store US">
                             </div>
         </a>
       
-                  <div id="imagetype_25" class="photo-type" style="display:none;">
+                  <div id="imagetype_24" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -6770,7 +6501,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf25"
+            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf24"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von PBShop.store US besuchen"
@@ -6802,7 +6533,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30868151816&cm_sp=snippet-_-srp0-_-atbaq25"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30868151816&cm_sp=snippet-_-srp0-_-atbaq24"
                  data-test-id="listing-contact-seller"
                  title="PBShop.store US eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -6822,7 +6553,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-25">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-24">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Neu - Softcover</span>
                       </b>
@@ -6831,11 +6562,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-25" data-test-id="item-price">EUR 26,24</p>
+                                        <p class="item-price" id="item-price-24" data-test-id="item-price">EUR 26,24</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span class="free-shipping" id="item-shipping-price-25">
+                      <span class="free-shipping" id="item-shipping-price-24">
               Versand gratis <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -6857,9 +6588,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 15 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-25"
+           rel="nofollow" id="add-to-basket-link-24"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30868151816&srimage=stock&isbn13=9780656585847&cm_sp=add-_-srp0-_-25&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=30868151816&srimage=stock&isbn13=9780656585847&cm_sp=add-_-srp0-_-24&ref=bs_srp"
             
            data-isbn13="9780656585847"
            data-listingid="30868151816"
@@ -6874,7 +6605,7 @@
                       data-csa-c-item-condition="neu"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 25">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 24">
         PAP. Zustand: New. New Book. Shipped from UK. Established seller since 2000. 
       </p>
       <div class="m-md-t">
@@ -6936,11 +6667,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-26"
+      id="book-25"
       data-csa-c-type="item"
       data-csa-c-item-id="30329797576"
       data-csa-c-item-type="book"
-      data-csa-c-pos="26,1"
+      data-csa-c-pos="25,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783800314300" />
         <meta itemprop="name" content="Uckermark und Schorfheide (Stürtz Regio)" />
@@ -6958,22 +6689,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images26 = [
+                var images25 = [
                       'https://pictures.abebooks.com/isbn/9783800314300-de.jpg'                  ];
       </script>
 
-      <a id="listing_26"
+      <a id="listing_25"
          href="/Uckermark-Schorfheide-St%C3%BCrtz-Regio-Oesterreich-Volker/30329797576/bd"
          class="srp-image-link thumbnail" title="Uckermark und Schorfheide (Stürtz Regio): Oesterreich, Volker; Uthoff,"  aria-label="Artikeldetails für Uckermark und Schorfheide (Stürtz Regio) zum Verkauf von medimops">
         <script type="text/javascript">
-          var searchImage26 = new SearchImage(images26, document.getElementById('listing_26'), document.getElementById('imagetype_26'), 26, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage25 = new SearchImage(images25, document.getElementById('listing_25'), document.getElementById('imagetype_25'), 25, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage26, false)" onerror="srpImageLoader.onImageError(searchImage26, false)" src="https://pictures.abebooks.com/isbn/9783800314300-de-300.jpg" alt="Beispielbild für Uckermark und Schorfheide (Stürtz Regio) zum Verkauf von medimops">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage25, false)" onerror="srpImageLoader.onImageError(searchImage25, false)" src="https://pictures.abebooks.com/isbn/9783800314300-de-300.jpg" alt="Beispielbild für Uckermark und Schorfheide (Stürtz Regio) zum Verkauf von medimops">
                             </div>
         </a>
       
-                  <div id="imagetype_26" class="photo-type" style="display:none;">
+                  <div id="imagetype_25" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -7041,7 +6772,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf26"
+            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf25"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von medimops besuchen"
@@ -7073,7 +6804,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30329797576&cm_sp=snippet-_-srp0-_-atbaq26"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30329797576&cm_sp=snippet-_-srp0-_-atbaq25"
                  data-test-id="listing-contact-seller"
                  title="medimops eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -7093,7 +6824,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-26">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-25">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Hardcover</span>
                       </b>
@@ -7102,11 +6833,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-26" data-test-id="item-price">EUR 3,37</p>
+                                        <p class="item-price" id="item-price-25" data-test-id="item-price">EUR 3,37</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-26">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-25">
               EUR 10,00 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -7128,9 +6859,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 2 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-26"
+           rel="nofollow" id="add-to-basket-link-25"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30329797576&srimage=stock&isbn13=9783800314300&cm_sp=add-_-srp0-_-26&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=30329797576&srimage=stock&isbn13=9783800314300&cm_sp=add-_-srp0-_-25&ref=bs_srp"
             
            data-isbn13="9783800314300"
            data-listingid="30329797576"
@@ -7145,7 +6876,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 26">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 25">
         Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. 
       </p>
       <div class="m-md-t">
@@ -7206,11 +6937,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-27"
+      id="book-26"
       data-csa-c-type="item"
       data-csa-c-item-id="30839335362"
       data-csa-c-item-type="book"
-      data-csa-c-pos="27,1"
+      data-csa-c-pos="26,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9780282533342" />
         <meta itemprop="name" content="Ausgleich und &#34;Verfassungstreue&#34; 1871-1873: Zur L?sung der Gegenw?rtigen Verfassungs-Krisis in Oesterreich (Classic Reprint)" />
@@ -7228,22 +6959,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images27 = [
+                var images26 = [
                       'https://pictures.abebooks.com/isbn/9780282533342-de.jpg'                  ];
       </script>
 
-      <a id="listing_27"
+      <a id="listing_26"
          href="/Ausgleich-Verfassungstreue-1871-1873-Lsung-Gegenwrtigen-Verfassungs-Krisis/30839335362/bd"
          class="srp-image-link thumbnail" title="Ausgleich und &#34;Verfassungstreue&#34; 1871-1873: Zur L?sung der: Zur Lösung Der"  aria-label="Artikeldetails für Ausgleich und &#34;Verfassungstreue&#34; 1871-1873: Zur L?sung der Gegenw?rtigen Verfassungs-Krisis in Oesterreich (Classic Reprint) zum Verkauf von PBShop.store US">
         <script type="text/javascript">
-          var searchImage27 = new SearchImage(images27, document.getElementById('listing_27'), document.getElementById('imagetype_27'), 27, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage26 = new SearchImage(images26, document.getElementById('listing_26'), document.getElementById('imagetype_26'), 26, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage27, false)" onerror="srpImageLoader.onImageError(searchImage27, false)" src="https://pictures.abebooks.com/isbn/9780282533342-de-300.jpg" alt="Beispielbild für Ausgleich und &#34;Verfassungstreue&#34; 1871-1873: Zur L?sung der Gegenw?rtigen Verfassungs-Krisis in Oesterreich (Classic Reprint) zum Verkauf von PBShop.store US">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage26, false)" onerror="srpImageLoader.onImageError(searchImage26, false)" src="https://pictures.abebooks.com/isbn/9780282533342-de-300.jpg" alt="Beispielbild für Ausgleich und &#34;Verfassungstreue&#34; 1871-1873: Zur L?sung der Gegenw?rtigen Verfassungs-Krisis in Oesterreich (Classic Reprint) zum Verkauf von PBShop.store US">
                             </div>
         </a>
       
-                  <div id="imagetype_27" class="photo-type" style="display:none;">
+                  <div id="imagetype_26" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -7307,7 +7038,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf27"
+            <a href="/PBShop.store-US-Wood-Dale-IL-U.S.A/8408184/sf?cm_sp=snippet-_-srp0-_-sf26"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von PBShop.store US besuchen"
@@ -7339,7 +7070,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30839335362&cm_sp=snippet-_-srp0-_-atbaq27"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=30839335362&cm_sp=snippet-_-srp0-_-atbaq26"
                  data-test-id="listing-contact-seller"
                  title="PBShop.store US eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -7359,7 +7090,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-27">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-26">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Neu - Softcover</span>
                       </b>
@@ -7368,11 +7099,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-27" data-test-id="item-price">EUR 26,71</p>
+                                        <p class="item-price" id="item-price-26" data-test-id="item-price">EUR 26,71</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span class="free-shipping" id="item-shipping-price-27">
+                      <span class="free-shipping" id="item-shipping-price-26">
               Versand gratis <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -7394,9 +7125,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 15 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-27"
+           rel="nofollow" id="add-to-basket-link-26"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=30839335362&srimage=stock&isbn13=9780282533342&cm_sp=add-_-srp0-_-27&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=30839335362&srimage=stock&isbn13=9780282533342&cm_sp=add-_-srp0-_-26&ref=bs_srp"
             
            data-isbn13="9780282533342"
            data-listingid="30839335362"
@@ -7411,7 +7142,7 @@
                       data-csa-c-item-condition="neu"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 27">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 26">
         PAP. Zustand: New. New Book. Shipped from UK. Established seller since 2000. 
       </p>
       <div class="m-md-t">
@@ -7473,11 +7204,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-28"
+      id="book-27"
       data-csa-c-type="item"
       data-csa-c-item-id="32018837180"
       data-csa-c-item-type="book"
-      data-csa-c-pos="28,1"
+      data-csa-c-pos="27,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783211824603" />
         <meta itemprop="name" content="Manual der gynäkologischen Onkologie" />
@@ -7495,22 +7226,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images28 = [
+                var images27 = [
                       'https://pictures.abebooks.com/isbn/9783211824603-de.jpg'                  ];
       </script>
 
-      <a id="listing_28"
+      <a id="listing_27"
          href="/Manual-gyn%C3%A4kologischen-Onkologie-Erich-Burghardt-Springer/32018837180/bd"
          class="srp-image-link thumbnail" title="Manual der gynäkologischen Onkologie: Erich Burghardt"  aria-label="Artikeldetails für Manual der gynäkologischen Onkologie zum Verkauf von medimops">
         <script type="text/javascript">
-          var searchImage28 = new SearchImage(images28, document.getElementById('listing_28'), document.getElementById('imagetype_28'), 28, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage27 = new SearchImage(images27, document.getElementById('listing_27'), document.getElementById('imagetype_27'), 27, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage28, false)" onerror="srpImageLoader.onImageError(searchImage28, false)" src="https://pictures.abebooks.com/isbn/9783211824603-de-300.jpg" alt="Beispielbild für Manual der gynäkologischen Onkologie zum Verkauf von medimops">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage27, false)" onerror="srpImageLoader.onImageError(searchImage27, false)" src="https://pictures.abebooks.com/isbn/9783211824603-de-300.jpg" alt="Beispielbild für Manual der gynäkologischen Onkologie zum Verkauf von medimops">
                             </div>
         </a>
       
-                  <div id="imagetype_28" class="photo-type" style="display:none;">
+                  <div id="imagetype_27" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -7574,7 +7305,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf28"
+            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf27"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von medimops besuchen"
@@ -7606,7 +7337,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32018837180&cm_sp=snippet-_-srp0-_-atbaq28"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=32018837180&cm_sp=snippet-_-srp0-_-atbaq27"
                  data-test-id="listing-contact-seller"
                  title="medimops eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -7626,7 +7357,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-28">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-27">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -7635,11 +7366,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-28" data-test-id="item-price">EUR 4,06</p>
+                                        <p class="item-price" id="item-price-27" data-test-id="item-price">EUR 4,06</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-28">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-27">
               EUR 10,00 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -7661,9 +7392,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-28"
+           rel="nofollow" id="add-to-basket-link-27"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=32018837180&srimage=stock&isbn13=9783211824603&cm_sp=add-_-srp0-_-28&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=32018837180&srimage=stock&isbn13=9783211824603&cm_sp=add-_-srp0-_-27&ref=bs_srp"
             
            data-isbn13="9783211824603"
            data-listingid="32018837180"
@@ -7678,7 +7409,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 28">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 27">
         Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. 
       </p>
       <div class="m-md-t">
@@ -7703,11 +7434,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-29"
+      id="book-28"
       data-csa-c-type="item"
       data-csa-c-item-id="31008881209"
       data-csa-c-item-type="book"
-      data-csa-c-pos="29,1"
+      data-csa-c-pos="28,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783902250131" />
         <meta itemprop="name" content="The Austrian contribution; 11th Triennale India New Delhi 2005;" />
@@ -7725,22 +7456,22 @@
            data-csa-c-element-type="bookseller-image"
       >
                       <script type="text/javascript">
-                var images29 = [
+                var images28 = [
                       'https://pictures.abebooks.com/inventory/31008881209.jpg'                  ];
       </script>
 
-      <a id="listing_29"
+      <a id="listing_28"
          href="/Austrian-contribution-11th-Triennale-India-New/31008881209/bd"
          class="srp-image-link thumbnail" title="The Austrian contribution; 11th Triennale India New: Aigner, Carl:"  aria-label="Artikeldetails für The Austrian contribution; 11th Triennale India New Delhi 2005; zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
         <script type="text/javascript">
-          var searchImage29 = new SearchImage(images29, document.getElementById('listing_29'), document.getElementById('imagetype_29'), 29, "searchResults", false, "Beispielbild für diese ISBN", true);
+          var searchImage28 = new SearchImage(images28, document.getElementById('listing_28'), document.getElementById('imagetype_28'), 28, "searchResults", false, "Beispielbild für diese ISBN", true);
         </script>
                               <div class="srp-image-holder" data-test-id="listing-image">
-                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage29, false)" onerror="srpImageLoader.onImageError(searchImage29, false)" src="https://pictures.abebooks.com/inventory/md/md31008881209.jpg" alt="Bild des Verkäufers für The Austrian contribution; 11th Triennale India New Delhi 2005; zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
+                            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage28, false)" onerror="srpImageLoader.onImageError(searchImage28, false)" src="https://pictures.abebooks.com/inventory/md/md31008881209.jpg" alt="Bild des Verkäufers für The Austrian contribution; 11th Triennale India New Delhi 2005; zum Verkauf von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG)">
                                               </div>
             </a>
                   
-                  <div id="sellerImageCopy_29" class="photo-type" style="display:none;">
+                  <div id="sellerImageCopy_28" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Foto des Verkäufers</span>
       </div>
 
@@ -7804,7 +7535,7 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
-            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf29"
+            <a href="/books4less-Versandantiquariat-Petra-Gros-GmbH-KG/1048006/sf?cm_sp=snippet-_-srp0-_-sf28"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
                title="Verkäuferseite von books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) besuchen"
@@ -7836,7 +7567,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31008881209&cm_sp=snippet-_-srp0-_-atbaq29"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31008881209&cm_sp=snippet-_-srp0-_-atbaq28"
                  data-test-id="listing-contact-seller"
                  title="books4less (Versandantiquariat Petra Gros GmbH &amp; Co. KG) eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -7856,7 +7587,7 @@
                   </p>
               </div>
 
-      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-29">                 <p class="item-meta-data">
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-28">                 <p class="item-meta-data">
           <b>
                           <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
                       </b>
@@ -7865,11 +7596,11 @@
                   </p>
         
                 <div class="item-price-group">
-                                        <p class="item-price" id="item-price-29" data-test-id="item-price">EUR 2,45</p>
+                                        <p class="item-price" id="item-price-28" data-test-id="item-price">EUR 2,45</p>
                                                     </div>
         
                 <div class="item-price-group">
-                      <span data-test-id="shipping-detail" id="item-shipping-price-29">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-28">
               EUR 9,95 Versand <button
   class="meridian-popover-trigger"
   data-test-id="listing-shipping-rate-popover"
@@ -7891,9 +7622,9 @@
                                   <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
-           rel="nofollow" id="add-to-basket-link-29"
+           rel="nofollow" id="add-to-basket-link-28"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=31008881209&srimage=bseller&isbn13=9783902250131&cm_sp=add-_-srp0-_-29&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=31008881209&srimage=bseller&isbn13=9783902250131&cm_sp=add-_-srp0-_-28&ref=bs_srp"
             
            data-isbn13="9783902250131"
            data-listingid="31008881209"
@@ -7908,7 +7639,7 @@
                       data-csa-c-item-condition="gebraucht"
                               >In den Warenkorb</a>
       </div>     </div>
-    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 29">
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 28">
         Broschiert. Zustand: Gut. 75 Seiten; Das Buch befindet sich in einem gut erhaltenen Zustand. In ENGLISCHER und DEUTSCHER Sprache. Sprache: Englisch Gewicht in Gramm: 330. 
       </p>
       <div class="m-md-t">
@@ -7933,11 +7664,11 @@
   
     
     <li data-test-id="listing-item"
-      id="book-30"
+      id="book-29"
       data-csa-c-type="item"
       data-csa-c-item-id="31385921102"
       data-csa-c-item-type="book"
-      data-csa-c-pos="30,1"
+      data-csa-c-pos="29,1"
      class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
           <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783788614720" />
         <meta itemprop="name" content="Was ist Was. Quizblock Stadt, Land, Fluss - Österreich: 180 Fragen und Antworten" />
@@ -7955,22 +7686,22 @@
            data-csa-c-element-type="stock-image"
       >
                       <script type="text/javascript">
-                var images30 = [
+                var images29 = [
                       'https://pictures.abebooks.com/isbn/9783788614720-de.jpg'                  ];
       </script>
 
-      <a id="listing_30"
+      <a id="listing_29"
          href="/Was-Quizblock-Stadt-Land-Fluss-%C3%96sterreich/31385921102/bd"
          class="srp-image-link thumbnail" title="Was ist Was. Quizblock Stadt, Land, Fluss: Österreich"  aria-label="Artikeldetails für Was ist Was. Quizblock Stadt, Land, Fluss - Österreich: 180 Fragen und Antworten zum Verkauf von medimops">
         <script type="text/javascript">
-          var searchImage30 = new SearchImage(images30, document.getElementById('listing_30'), document.getElementById('imagetype_30'), 30, "searchResults", false, "Beispielbild für diese ISBN", false);
+          var searchImage29 = new SearchImage(images29, document.getElementById('listing_29'), document.getElementById('imagetype_29'), 29, "searchResults", false, "Beispielbild für diese ISBN", false);
         </script>
                   <div class="srp-image-holder" data-test-id="listing-image">
-            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage30, false)" onerror="srpImageLoader.onImageError(searchImage30, false)" src="https://pictures.abebooks.com/isbn/9783788614720-de-300.jpg" alt="Beispielbild für Was ist Was. Quizblock Stadt, Land, Fluss - Österreich: 180 Fragen und Antworten zum Verkauf von medimops">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage29, false)" onerror="srpImageLoader.onImageError(searchImage29, false)" src="https://pictures.abebooks.com/isbn/9783788614720-de-300.jpg" alt="Beispielbild für Was ist Was. Quizblock Stadt, Land, Fluss - Österreich: 180 Fragen und Antworten zum Verkauf von medimops">
                             </div>
         </a>
       
-                  <div id="imagetype_30" class="photo-type" style="display:none;">
+                  <div id="imagetype_29" class="photo-type" style="display:none;">
           <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
       </div>
 
@@ -8034,6 +7765,236 @@
                 <div class="bookseller-info">
                     <p class="text-secondary">
             Anbieter:
+            <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf29"
+               data-test-id="listing-seller-link"
+               class="srp-seller-link"
+               title="Verkäuferseite von medimops besuchen"
+               data-csa-c-type="action"
+               data-csa-c-action="navigate"
+               data-csa-c-navigate="sellerstorefront"
+               data-csa-c-navigate-identifier="55410863"
+            ><span data-test-id="listing-seller-name">medimops</span></a>, <span data-test-id="listing-seller-location">Berlin, Deutschland</span>
+          </p>
+
+                    
+                    <p class="bookseller-rating" data-test-id="listing-seller-rating">  <span class="bookseller-rating" data-test-id="bookseller-rating" aria-hidden="true">(Verkäufer mit 5 Sternen)</span>
+  <span class="sr-only">Verkäuferbewertung 5 von 5 Sternen</span>
+      <a rel="nofollow"
+       href="javascript:openNewWindow('/servlet/FrameBase?content=%2Fservlet%2FViewSellerRatingsHelp',500, 550,'yes');"
+       data-csa-c-type="action"
+       data-csa-c-action="info"
+       data-csa-c-info="seller-rating"
+    >
+        <img
+            src="//assets.prod.abebookscdn.com/cdn/shared/images/Shared/css/seller-rating/fivestar.png"
+            alt="5 Sterne, Erfahren Sie mehr über Verkäufer-Bewertungen"
+            width="80"
+            height="16"
+            style="position:relative;top:2px;"
+        />
+    </a>
+</p>
+
+                                <p>
+              <a rel="nofollow"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31385921102&cm_sp=snippet-_-srp0-_-atbaq29"
+                 data-test-id="listing-contact-seller"
+                 title="medimops eine Frage zu diesem Artikel stellen"
+                 class="link-primary"
+                 data-csa-c-type="action"
+                 data-csa-c-action="navigate"
+                 data-csa-c-navigate="askbooksellerquestion"
+                 data-csa-c-navigate-identifier="55410863"
+              >Verkäufer kontaktieren</a>
+            </p>
+          
+                  </div>
+        
+        <p class="opt-bsa-pod-pills">
+                              
+          
+          
+                  </p>
+              </div>
+
+      <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-29">                 <p class="item-meta-data">
+          <b>
+                          <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
+                      </b>
+                      <br/>
+            <span class="opt-subcondition"  data-test-id="listing-optional-condition">Zustand: Befriedigend</span>
+                  </p>
+        
+                <div class="item-price-group">
+                                        <p class="item-price" id="item-price-29" data-test-id="item-price">EUR 4,36</p>
+                                                    </div>
+        
+                <div class="item-price-group">
+                      <span data-test-id="shipping-detail" id="item-shipping-price-29">
+              EUR 10,00 Versand <button
+  class="meridian-popover-trigger"
+  data-test-id="listing-shipping-rate-popover"
+  data-csa-c-type="action"
+  data-csa-c-action="info"
+  data-csa-c-info="shipping-rates-popover"
+  data-toggle="popover"
+  data-content="Die Versandzeiten werden von den Verkäuferinnen und Verkäufern festgelegt. Sie variieren je nach Versanddienstleister und Standort. Sendungen, die den Zoll passieren, können Verzögerungen unterliegen. Eventuell anfallende Abgaben oder Gebühren sind von der Käuferin bzw. dem Käufer zu tragen. Die Verkäuferin bzw. der Verkäufer kann Sie bezüglich zusätzlicher Versandkosten kontaktieren, um einen möglichen Anstieg der Versandkosten für Ihre Artikel auszugleichen."
+  data-show-close
+  data-close-aria-label="Schließen"
+  data-placement="bottom"><span class="sr-only">Weitere Informationen zu Versandkosten</span>
+</button>
+                          </span>
+                        <br/>
+      Versand von Deutschland nach USA
+  
+                  </div>
+        
+                                  <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
+        
+        <a class="btn-abebooks btn-add-to-basket"
+           rel="nofollow" id="add-to-basket-link-29"
+           data-test-id="listing-add-to-basket"
+           href="/checkout/basket?ac=a&it=1&ik=31385921102&srimage=stock&isbn13=9783788614720&cm_sp=add-_-srp0-_-29&ref=bs_srp"
+            
+           data-isbn13="9783788614720"
+           data-listingid="31385921102"
+           data-ref-override="bs_mod_srp"            data-should-refresh="true"
+           role="button"
+           data-csa-c-type="action"
+           data-csa-c-action="add-to-basket"
+           data-csa-c-item-id="31385921102"
+           data-csa-c-purchase-currency="EUR"
+           data-csa-c-cost="4.36"
+           data-csa-c-shipping-cost="10.0"
+                      data-csa-c-item-condition="gebraucht"
+                              >In den Warenkorb</a>
+      </div>     </div>
+    <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 29">
+        Zustand: good. Befriedigend/Good: Durchschnittlich erhaltenes Buch bzw. Schutzumschlag mit Gebrauchsspuren, aber vollständigen Seiten. / Describes the average WORN book or dust jacket that has all the pages present. 
+      </p>
+      <div class="m-md-t">
+                
+                      </div>
+    </div>
+      </div>
+
+    </li>
+          
+                                          
+                
+    
+    
+            
+    
+  
+    
+                    
+                                                                          
+                      
+  
+    
+    <li data-test-id="listing-item"
+      id="book-30"
+      data-csa-c-type="item"
+      data-csa-c-item-id="31324906803"
+      data-csa-c-item-type="book"
+      data-csa-c-pos="30,1"
+     class="cf result-item"    itemscope itemtype="http://schema.org/Book"  >
+          <meta data-test-id="item-isbn-meta-tag" itemprop="isbn" content="9783704689702" />
+        <meta itemprop="name" content="Entscheidungen des Obersten Gerichtshofes in Zivilsachen: Band 2020, 2. Halbjahr" />
+        <meta data-test-id="item-author-meta-tag" itemprop="author" content="Verlag Österreich" />
+        <meta data-test-id="item-about-meta-tag" itemprop="about" content="Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. " />
+        <meta data-test-id="item-publisher-meta-tag" itemprop="publisher" content="Verlag Österreich" />
+         <meta data-test-id="item-date-published-meta-tag" itemprop="datePublished" content="2022" />
+          <meta itemprop="bookFormat" itemtype="http://schema.org/Hardcover" content="Hardcover" />
+  
+  <div class="result-image col-xs-12 col-sm-3 text-center"
+       data-csa-c-type="uxElement"
+       data-csa-c-action="navigate"
+       data-csa-c-navigate="bdp"
+       data-csa-c-navigate-identifier="31324906803"
+           data-csa-c-element-type="stock-image"
+      >
+                      <script type="text/javascript">
+                var images30 = [
+                      'https://pictures.abebooks.com/isbn/9783704689702-de.jpg'                  ];
+      </script>
+
+      <a id="listing_30"
+         href="/Entscheidungen-Obersten-Gerichtshofes-Zivilsachen-Band-2020/31324906803/bd"
+         class="srp-image-link thumbnail" title="Entscheidungen des Obersten Gerichtshofes in Zivilsachen: Band: Verlag Österreich"  aria-label="Artikeldetails für Entscheidungen des Obersten Gerichtshofes in Zivilsachen: Band 2020, 2. Halbjahr zum Verkauf von medimops">
+        <script type="text/javascript">
+          var searchImage30 = new SearchImage(images30, document.getElementById('listing_30'), document.getElementById('imagetype_30'), 30, "searchResults", false, "Beispielbild für diese ISBN", false);
+        </script>
+                  <div class="srp-image-holder" data-test-id="listing-image">
+            <img class="srp-item-image" onload="srpImageLoader.onImageLoad(searchImage30, false)" onerror="srpImageLoader.onImageError(searchImage30, false)" src="https://pictures.abebooks.com/isbn/9783704689702-de-300.jpg" alt="Beispielbild für Entscheidungen des Obersten Gerichtshofes in Zivilsachen: Band 2020, 2. Halbjahr zum Verkauf von medimops">
+                            </div>
+        </a>
+      
+                  <div id="imagetype_30" class="photo-type" style="display:none;">
+          <span data-test-id="listing-image-type">Beispielbild für diese ISBN</span>
+      </div>
+
+            </div>
+  <div class="result-data col-xs-12 col-sm-9 cf">
+    <div class="cf">
+      <div class="result-detail col-xs-12 col-sm-8">
+        <h2 class="title" itemprop="offers" itemscope  itemtype="http://schema.org/Offer">
+                      <meta itemprop="price" content="4.36" />
+            <meta itemprop="priceCurrency" content="EUR" />
+            <meta itemprop="itemCondition" content="UsedCondition" />
+            <meta itemprop="availability" content="InStock" />
+                    <a itemprop="url"              href="/Entscheidungen-Obersten-Gerichtshofes-Zivilsachen-Band-2020/31324906803/bd"
+              data-csa-c-type="action"
+              data-csa-c-action="navigate"
+              data-csa-c-navigate="bdp"
+              data-csa-c-navigate-identifier="31324906803"
+              ><span data-test-id="listing-title">Entscheidungen des Obersten Gerichtshofes in Zivilsachen: Band 2020, 2. Halbjahr</span></a>
+        </h2>
+                          <p class="author" data-test-id="listing-author">
+          
+          <a                 href="/buch-suchen/autor/verlag-%F6sterreich/"
+                data-csa-c-type="action"
+                data-csa-c-action="navigate"
+                data-csa-c-navigate="srp"
+                data-csa-c-navigate-identifier="author"><strong>Verlag Österreich</strong></a>          </p>
+        
+                
+                <div class="publisher-isbn-language-container">
+                                  <p class="text-secondary" data-test-id="listing-language">
+                Sprache: Deutsch
+              </p>
+          
+                      <p class="text-secondary" data-test-id="listing-publisher">
+                              <span class="opt-published-by">Verlag:</span>
+                <span class="opt-publisher">Verlag Österreich, </span>
+                                                            <span class="opt-publish-date">2022</span>
+                          </p>
+          
+                      <p class="text-secondary">
+                                            ISBN&nbsp;10:
+                <a href="/9783704689702/Entscheidungen-Obersten-Gerichtshofes-Zivilsachen-Band-370468970X/plp"
+                   class="link-primary"
+                   data-test-id="listing-isbn-link"
+                   data-csa-c-type="action"
+                   data-csa-c-action="navigate"
+                   data-csa-c-navigate="plp"
+                   data-csa-c-navigate-identifier="ISBN10-9783704689702"><span data-test-id="listing-isbn-10">370468970X</span></a>
+                <span class="muted" aria-hidden="true">/</span>
+                            ISBN&nbsp;13:
+              <a href="/9783704689702/Entscheidungen-Obersten-Gerichtshofes-Zivilsachen-Band-370468970X/plp"
+                 class="link-primary"
+                 data-test-id="listing-isbn-link"
+                 data-csa-c-type="action"
+                 data-csa-c-action="navigate"
+                 data-csa-c-navigate="plp"
+                 data-csa-c-navigate-identifier="ISBN13-9783704689702"><span data-test-id="listing-isbn-13">9783704689702</span></a>
+            </p>
+                  </div>
+        
+                <div class="bookseller-info">
+                    <p class="text-secondary">
+            Anbieter:
             <a href="/medimops-Berlin/55410863/sf?cm_sp=snippet-_-srp0-_-sf30"
                data-test-id="listing-seller-link"
                class="srp-seller-link"
@@ -8066,7 +8027,7 @@
 
                                 <p>
               <a rel="nofollow"
-                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31385921102&cm_sp=snippet-_-srp0-_-atbaq30"
+                 href="/servlet/AskBooksellerQuestion?reftype=B&refnum=31324906803&cm_sp=snippet-_-srp0-_-atbaq30"
                  data-test-id="listing-contact-seller"
                  title="medimops eine Frage zu diesem Artikel stellen"
                  class="link-primary"
@@ -8088,10 +8049,10 @@
 
       <div class="buy-box-data col-xs-12 col-sm-4" data-test-id="buy-box-data-30">                 <p class="item-meta-data">
           <b>
-                          <span data-test-id="listing-book-condition">Gebraucht - Softcover</span>
+                          <span data-test-id="listing-book-condition">Gebraucht - Hardcover</span>
                       </b>
                       <br/>
-            <span class="opt-subcondition"  data-test-id="listing-optional-condition">Zustand: Befriedigend</span>
+            <span class="opt-subcondition"  data-test-id="listing-optional-condition">Zustand: Gut</span>
                   </p>
         
                 <div class="item-price-group">
@@ -8118,20 +8079,20 @@
   
                   </div>
         
-                                  <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 1 verfügbar</span></p>
+                                  <p><span class="opt-quantity" data-test-id="listing-quantity">Anzahl: 2 verfügbar</span></p>
         
         <a class="btn-abebooks btn-add-to-basket"
            rel="nofollow" id="add-to-basket-link-30"
            data-test-id="listing-add-to-basket"
-           href="/checkout/basket?ac=a&it=1&ik=31385921102&srimage=stock&isbn13=9783788614720&cm_sp=add-_-srp0-_-30&ref=bs_srp"
+           href="/checkout/basket?ac=a&it=1&ik=31324906803&srimage=stock&isbn13=9783704689702&cm_sp=add-_-srp0-_-30&ref=bs_srp"
             
-           data-isbn13="9783788614720"
-           data-listingid="31385921102"
+           data-isbn13="9783704689702"
+           data-listingid="31324906803"
            data-ref-override="bs_mod_srp"            data-should-refresh="true"
            role="button"
            data-csa-c-type="action"
            data-csa-c-action="add-to-basket"
-           data-csa-c-item-id="31385921102"
+           data-csa-c-item-id="31324906803"
            data-csa-c-purchase-currency="EUR"
            data-csa-c-cost="4.36"
            data-csa-c-shipping-cost="10.0"
@@ -8139,7 +8100,7 @@
                               >In den Warenkorb</a>
       </div>     </div>
     <div class="desc-container">       <p class="readmore-toggle" data-test-id="listing-description" aria-label="Beschreibung 30">
-        Zustand: good. Befriedigend/Good: Durchschnittlich erhaltenes Buch bzw. Schutzumschlag mit Gebrauchsspuren, aber vollständigen Seiten. / Describes the average WORN book or dust jacket that has all the pages present. 
+        Zustand: very good. Gut/Very good: Buch bzw. Schutzumschlag mit wenigen Gebrauchsspuren an Einband, Schutzumschlag oder Seiten. / Describes a book or dust jacket that does show some signs of wear on either the binding, dust jacket or pages. 
       </p>
       <div class="m-md-t">
                 
@@ -8297,7 +8258,7 @@
                 "pageTypeId": ""             },
 
             "request": {
-                "requestId": "4A93K2XDBC6HRMNG30CV",
+                "requestId": "11TNPNCR1YQAVK02ZJ4T",
                 "sessionId": ""
             },
             
@@ -8305,7 +8266,7 @@
                 "deviceType": "DESKTOP"
             }
             
-                        ,"searchResults": {"quFilters":"false","distinct":"26","languagesCount":"53","quBoosts":"false","results":"298611","rewrittenParams":"{\"ds\":\"30\",\"dym\":\"on\",\"kn\":\"oesterreich\",\"pt\":\"book\",\"rollup\":\"on\",\"sortby\":\"20\"}","superQuery":"true","quNoop":"false"}
+                        ,"searchResults": {"quFilters":"false","distinct":"26","languagesCount":"53","quBoosts":"false","results":"298266","rewrittenParams":"{\"ds\":\"30\",\"dym\":\"on\",\"kn\":\"oesterreich\",\"pt\":\"book\",\"rollup\":\"on\",\"sortby\":\"20\"}","superQuery":"true","quNoop":"true"}
                         
                     }
     </script>
@@ -8400,7 +8361,7 @@ function openWindow(linkURL, menubar, toolbar, location, status, scrollbars, res
 
         <script defer type="text/javascript" src="//assets.prod.abebookscdn.com/cdn/zvab/scripts/vendor/react-autosuggest.bundle-a9c3023f03.js"></script>
       <script>
-          window["autoSuggestLanguageNamesList"] = ["Englisch [6.729]","Französisch [1.520]","Deutsch [148.826]","Italienisch [284]","Spanisch [196]","Keine Angabe der Sprache [140.121]","Abchasisch [1]","Afrikaans [5]","Albanisch [6]","Altenglisch [1]","Altgriechisch [2]","Arabisch [10]","Armenisch [1]","Bosnisch [11]","Bretonisch [3]","Bulgarisch [6]","Chinesisch [28]","Delaware-Sprache [2]","Dänisch [28]","Esperanto [1]","Finnisch [4]","Friesisch [1]","Hebräisch [9]","Japanisch [15]","Jiddisch [1]","Katalanisch [7]","Kroatisch [6]","Laotisch [1]","Latein [160]","Lettisch [2]","Luxemburgisch [1]","Maledivisch [1]","Maori-Sprache [2]","Neugriechisch [4]","Niederländisch [112]","Norwegisch [9]","Persisch [1]","Polnisch [24]","Portugiesisch [85]","Rumänisch [4]","Russisch [83]","Schwedisch [24]","Serbisch [1]","Slowakisch [1]","Slowenisch [16]","Tschechisch [60]","Tschetschenisch [2]","Tsonga-Sprache (Tsonga) [1]","Türkisch [11]","Ukrainisch [3]","Ungarisch [93]","Usbekisch [2]","mehrsprachig [84]"];
+          window["autoSuggestLanguageNamesList"] = ["Englisch [6.725]","Französisch [1.519]","Deutsch [148.740]","Italienisch [284]","Spanisch [196]","Keine Angabe der Sprache [139.870]","Abchasisch [1]","Afrikaans [5]","Albanisch [6]","Altenglisch [1]","Altgriechisch [2]","Arabisch [10]","Armenisch [1]","Bosnisch [11]","Bretonisch [3]","Bulgarisch [6]","Chinesisch [28]","Delaware-Sprache [2]","Dänisch [28]","Esperanto [1]","Finnisch [4]","Friesisch [1]","Hebräisch [9]","Japanisch [15]","Jiddisch [1]","Katalanisch [7]","Kroatisch [6]","Laotisch [1]","Latein [160]","Lettisch [2]","Luxemburgisch [1]","Maledivisch [1]","Maori-Sprache [2]","Neugriechisch [4]","Niederländisch [112]","Norwegisch [9]","Persisch [1]","Polnisch [24]","Portugiesisch [82]","Rumänisch [4]","Russisch [83]","Schwedisch [24]","Serbisch [1]","Slowakisch [1]","Slowenisch [16]","Tschechisch [60]","Tschetschenisch [2]","Tsonga-Sprache (Tsonga) [1]","Türkisch [11]","Ukrainisch [3]","Ungarisch [93]","Usbekisch [2]","mehrsprachig [84]"];
 
           window["autoSuggestLanguageNameToSearchLanguageMap"] = {"Arapaho-Sprache":"ARP","Salish-Sprache":"SAL","Lingala":"LIN","Niederländisch":"NLD","Nkole-Sprache":"NYN","Neumelanesisch":"TPI","Ainu":"AIN","Kaschmiri":"KAS","Kannada":"KAN","Kaschubisch":"CSB","Altprovenzalisch":"PRO","Skolt-Sami":"SMS","Fon-Sprache":"FON","Awadhi":"AWA","Lahnda":"LAH","Tswana-Sprache":"TSN","Isländisch":"ISL","Urdu":"URD","Adangme":"ADA","Miao-Sprachen":"HMN","Syrisch":"SYR","Ijo-Sprache":"IJO","Sranan-Tongo":"SRN","Ewe-Sprache":"EWE","Rumänisch":"RON","Armenisch":"HYE","Samaritanisch":"SAM","Joruba-Sprache (Yoruba-Sprache)":"YOR","Romanische Sprachen (andere)":"ROA","Sinotibetische Sprachen (andere)":"SIT","Kirchenslawisch":"CHU","Neapolitan":"NAP","Kunstsprache":"ART","Elamisch":"ELX","Ponapeanisch":"PON","Indogermanische Sprachen (andere)":"INE","Ganda-Sprache":"LUG","Sotho-Sprache (Nord)":"NSO","Kabylisch":"KAB","Kreolische Sprachen (andere)":"CRP","Banda-Sprache":"BAD","Friulisch":"FUR","Ingush":"INH","Altjavanisch":"KAW","Süd-Sotho-Sprache":"SOT","Zuni-Sprache":"ZUN","Maya-Sprachen":"MYN","Neugriechisch":"ELL","Maduresisch":"MAD","Makassarisch":"MAK","Vai-Sprache":"VAI","Semitische Sprachen (andere)":"SEM","Usbekisch":"UZB","Braj-Bhakha":"BRA","Bicol":"BIK","Zapotekisch":"ZAP","Tamil":"TAM","Jiddisch":"YID","Slowenisch":"SLV","Sukuma-Sprache":"SUK","Kamba":"KAM","Französisch":"FRA","Australische Sprachen":"AUS","Fidschi-Sprache":"FIJ","Zaza":"ZZA","Finnisch":"FIN","Burjatisch":"BUA","Tadschikisch":"TGK","Korsisch":"COS","Moksha":"MDF","Tongaisch":"TON","Luba-Sprache":"LUA","Luxemburgisch":"LTZ","Sango-Sprache":"SAG","Hindi":"HIN","Herero-Sprache":"HER","Moldauisch":"MOL","Mongo":"LOL","Tumbuka-Sprache":"TUM","Abchasisch":"ABK","Interlingue":"ILE","Afghanisch (Paschtu)":"PUS","Karakalpakisch":"KAA","Albanisch":"SQI","Kreolisch-Portugiesisch (andere)":"CPP","Bulgarisch":"BUL","Jüdisch-Arabisch":"JRB","Caddo-Sprachen":"CAD","Zigeunersprache":"ROM","Rwanda-Sprache":"KIN","Mongondou":"GOR","Bosnisch":"BOS","Low German":"NDS","Krio":"CPE","Phönikisch":"PHN","Irisch":"GLE","Türkisch":"TUR","Interlingua":"INA","Mohawk-Sprache":"MOH","Altirisch":"SGA","Mende":"MEN","Gälisch-Schottisch":"GLA","Akan-Sprache (Akan)":"AKA","Meithei":"MNI","Tamaseq":"TMH","Wakash-Sprachen":"WAK","Konkani":"KOK","Batak (Indonesien)":"BTK","Trukesisch":"CHK","Tsonga-Sprache (Tsonga)":"TSO","Tscheremissisch":"CHM","Rundi-Sprache":"RUN","Okzitanisch":"OCI","Tigrinja-Sprache":"TIR","Slave (Athapaskische Sprachen)":"DEN","Ga":"GAA","Altäthiopisch":"GEZ","Ojibwa-Sprache":"OJI","Austronesische Sprachen (andere)":"MAP","Komi-Sprachen":"KOM","Kymrisch":"CYM","Athapaskische Sprachen":"ATH","Bemba-Sprache":"BEM","Khmer-Sprache":"KHM","Baltische Sprachen (andere)":"BAT","Afrihili":"AFH","Tetum":"TET","Erzya":"MYV","Luiseno-Sprache":"LUI","Chibcha-Sprachen":"CHB","Italienisch":"ITA","Nigerkordofanische Sprachen":"NIC","Kru-Sprachen":"KRO","Kwanyama":"KUA","Hawaiisch":"HAW","Luo-Sprache":"LUO","Swahili":"SWA","Kachin-Sprache":"KAC","Kuschitische Sprachen (andere)":"CUS","Gujarati-Sprache":"GUJ","Deutsch":"DEU","Mittelpersisch":"PAL","Oraon-Sprache":"KRU","Elliceanisch":"TVL","Banjari":"LAM","Bhodschpuri":"BHO","Asturian":"AST","Haussa-Sprache":"HAU","Aleutisch":"ALE","Nynorsk-Norwegisch":"NNO","Tlingit-Sprache":"TLI","Maledivisch":"DIV","Beach-la-Mar":"BIS","Cree":"CRE","Mittelhochdeutsch":"GMH","Latein":"LAT","Mittelenglisch":"ENM","Sardisch":"SRD","Esperanto":"EPO","Classical Syriac":"SYC","Ful":"FUL","Indoarische Sprachen":"INC","Gondi-Sprache":"GON","Persisch":"FAS","Sundanesisch":"SUN","Inuktitut":"IKU","Hamitosemitische Sprachen":"AFA","Lappisch":"SMI","Manding-Sprache":"MAN","Delaware-Sprache":"DEL","Mittelirisch":"MGA","Palau":"PAU","Samoanisch":"SMO","Somali":"SOM","Karatschai-Balkarisch":"KRC","Guaraní-Sprache":"GRN","Aromanian":"RUP","Pangwe-Sprache":"FAN","Efik":"EFI","Kreolisch-Französisch (andere)":"CPF","Zeichensprache":"SGN","Ostfriesisch":"FRS","Kongo":"KON","Chinesisch":"ZHO","Walloon":"WLN","Niue":"NIU","Karibische Sprachen":"CAR","Aragonese":"ARG","Kanuri-Sprache":"KAU","Ketchua (Quechua-Sprache)":"QUE","Estnisch":"EST","Hebräisch":"HEB","Norwegisch":"NOR","Nyoro":"NYO","Akkadisch":"AKK","Sogdisch":"SOG","Friesisch":"FRY","Pini":"BIN","Aymará-Sprache":"AYM","Awarisch":"AVA","Chewa-Sprache":"NYA","Einzelne andere Sprachen":"MIS","Xhosa-Sprache":"XHO","Belutschisch":"BAL","Afrikaans":"AFR","Uigurisch":"UIG","Kroatisch":"HRV","Papuasprachen (andere)":"PAA","Ägyptisch":"EGY","Sidamo":"SID","Ndebele-Sprache (Süd)":"NBL","Bachkir":"BAK","Nubische Sprachen":"NUB","Manchu":"MNC","Schottisch":"SCO","Balinesisch":"BAN","Altaische Sprachen (andere)":"TUT","Yao-Sprache":"YAO","Koptisch":"COP","Mittelfranzösisch":"FRM","Mbundu-Sprache (Kimbundu)":"KMB","Danakil-Sprache":"AAR","Tiv-Sprache":"TIV","Weißrussisch":"BEL","Limburgan":"LIM","Lesgisch":"LEZ","Waray":"WAR","Osmanisch":"OTA","Altpersisch":"PEO","Marwari":"MWR","Oriya-Sprache":"ORI","Bambara-Sprache":"BAM","Darginisch":"DAR","Santali":"SAT","Arawak-Sprachen":"ARW","Tibetisch":"BOD","Pandschabi-Sprache":"PAN","Sakisch":"KHO","Zulu":"ZUL","Himachali":"HIM","Indianersprachen (Nordamerika) (andere)":"NAI","Tatarisch":"TAT","Schweizerdeutsch":"GSW","Zhuang":"ZHA","Chamorro-Sprache":"CHA","Minangkabau-Sprache":"MIN","Koreanisch":"KOR","Cherokee":"CHR","Twi":"TWI","Kurdisch":"KUR","mehrsprachig":"MUL","Blackfoot-Sprache":"BLA","Eskimoisch (Grönländisch)":"KAL","Tsimshian":"TSI","Nko":"NQO","Hiligaynon-Sprache":"HIL","Newari":"NEW","Thaisprachen (andere)":"TAI","Nilosaharanische Sprachen":"SSA","Dzongkha":"DZO","Yap":"YAP","Assamesisch":"ASM","Tschetschenisch":"CHE","Färöisch":"FAO","Aceh-Sprache":"ACE","Althochdeutsch":"GOH","Chinook":"CHN","Serbokroatisch":"HBS","Portugiesisch":"POR","Ugaritisch":"UGA","Manx":"GLV","Laotisch":"LAO","Rotse-Sprache":"LOZ","Kornisch":"COR","Lettisch":"LAV","Litauisch":"LIT","Slowakisch":"SLK","Karelian":"KRL","Volapük":"VOL","Galizisch":"GLG","Ossetisch":"OSS","Klingonisch":"TLH","Judenspanisch":"LAD","Bretonisch":"BRE","Aramäisch":"ARC","Tschechisch":"CES","Temne":"TEM","Drawidische Sprachen (andere)":"DRA","Iranische Sprachen (andere)":"IRA","Javanisch":"JAV","Swazi":"SSW","Karenisch":"KAR","Apachen-Sprache":"APA","Ido":"IDO","Bahasa Indonesia":"IND","Basaa-Sprache":"BAS","Grebo":"GRB","Amharisch":"AMH","Tschagataisch":"CHG","Gotisch":"GOT","Bamileke-Sprache":"BAI","Marschallesisch":"MAH","Keine Angabe der Sprache":"N","Adygeisch":"ADY","Gilbertesisch":"GIL","Krimtatarisch":"CRH","Ukrainisch":"UKR","Kutenai-Sprache":"KUT","Hethitisch":"HIT","Haida-Sprache":"HAI","Provenzalisch":"FRP","Yupik Languages":"YPK","Tschuwaschisch":"CHV","Sioux-Sprachen":"SIO","Schwedisch":"SWE","Bugi-Sprache":"BUG","Serbisch":"SRP","Polnisch":"POL","Rätoromanisch":"ROH","Selkupisch":"SEL","Papiamento":"PAP","Irokesische Sprachen":"IRO","Sassak":"SAS","Turkmenisch":"TUK","Kutchin":"GWI","Mbundu-Sprache (Umbundu)":"UMB","Mossi-Sprache":"MOS","Upper Sorbian":"HSB","Georgisch (Grusinisch)":"KAT","Kpelle-Sprache":"KPE","Ibo-Sprache":"IBO","Tigre":"TIG","Walamo-Sprache":"WAL","Germanische Sprachen (andere)":"GEM","Nordfriesisch":"FRR","Tupi Languages":"TUP","Tereno-Sprache":"TER","Duala-Sprachen":"DUA","Pampanggan-Sprache":"PAM","Ndonga":"NDO","Keltische Sprachen (andere)":"CEL","Fanti-Sprache":"FAT","Tokelauanisch":"TKL","Iban":"IBA","Slawische Sprachen (andere)":"SLA","Singhalesisch":"SIN","Birmanisch":"MYA","Tsonga-Sprache (Tonga)":"TOG","Schan-Sprache":"SHN","Altnordisch":"NON","Northern Sami":"SME","Ungarisch":"HUN","Finnougrische Sprachen (andere)":"FIU","Baskisch":"EUS","Altfranzösisch":"FRO","Kirgisisch":"KIR","Pangasinan":"PAG","Bantusprachen (andere)":"BNT","Rajasthani":"RAJ","Dänisch":"DAN","Maithili":"MAI","Kikuyu-Sprache":"KIK","Dakota-Sprache":"DAK","Sindhi":"SND","Bengali":"BEN","Micmac-Sprache":"MIC","Cheyenne":"CHY","Berbersprachen":"BER","Sizilianisch":"SCN","Dinka-Sprache":"DIN","Mittelniederländisch":"DUM","Chipewyan":"CHP","Bedauye":"BEJ","Aserbaidschanisch":"AZE","Osterinsel-Sprache":"RAP","Bihari":"BIH","Sorbisch":"WEN","Telugu":"TEL","Filipino":"FIL","Jüdisch-Persisch":"JPR","Indianersprachen (Zentralamerika) (andere)":"CAI","Galla-Sprache":"ORM","Tagalog":"TGL","Nepali":"NEP","Bokmål-Norwegisch":"NOB","Kosraeanisch":"KOS","Cebuano":"CEB","Altenglisch":"ANG","Malayalam":"MAL","Schona-Sprache":"SNA","Ilokano":"ILO","Otomian Languages":"OTO","Sichuan Yi":"III","Maasai":"MAS","Katalanisch":"CAT","Khoisan-Sprachen (andere)":"KHI","Pali":"PLI","Japanisch":"JPN","Sonhai-Sprache":"SON","Avestisch":"AVE","Serer-Sprache":"SRR","Sanskrit":"SAN","Mandaresisch":"MDR","Marathi":"MAR","Philippinen-Austronesisch (andere)":"PHI","Kasachisch":"KAZ","Luba":"LUB","Russisch":"RUS","Arabisch":"ARA","Mon-Khmer-Sprachen":"MKH","Mongolisch":"MON","Haitian":"HAT","Muskogee-Sprachen":"MUS","Dogri":"DOI","Makedonisch":"MKD","Soninke-Sprache":"SNK","Algonkin-Sprachen":"ALG","Altgriechisch":"GRC","Jakutisch":"SAH","Kabardian":"KBD","Lower Sorbian":"DSB","Indianersprachen (Südamerika) (andere)":"SAI","Hiri-Motu":"HMO","Wotisch":"VOT","Inupiaq":"IPK","Dajak":"DAY","Wolof-Sprache":"WOL","Ndebele-Sprache (Nord)":"NDE","Acholi-Sprache":"ACH","Aztekisch (Nahuatl)":"NAH","Nzema":"NZI","Nauruanisch":"NAU","Navajo-Sprache":"NAV","Maltesisch":"MLT","Khasi-Sprache":"KHA","Sumerisch":"SUX","Prakrit":"PRA","Vietnamesisch":"VIE","Mundasprachen":"MUN","Kaukasische Sprachen (andere)":"CAU","Malagassi-Sprache":"MLG","Tuwinisch":"TYV","Khotta":"MAG","Arauka-Sprachen":"ARN","Malaiisch":"MSA","Venda-Sprache":"VEN","Maori-Sprache":"MRI","Rarotonganisch":"RAR","Thailändisch":"THA","Choctaw":"CHO","Englisch":"ENG","Spanisch":"SPA","Tahitisch":"TAH","Udmurtisch":"UDM"};
 

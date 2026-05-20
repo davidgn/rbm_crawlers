@@ -110,7 +110,7 @@
 
        
   
-  <div class="modal fade" id="shopping-basket-modal" tabindex="-1" role="dialog" aria-label="Zum Warenkorb hinzugefügt" data-uuid="948f07e3-20ae-4acc-90bd-707134c93550">
+  <div class="modal fade" id="shopping-basket-modal" tabindex="-1" role="dialog" aria-label="Zum Warenkorb hinzugefügt" data-uuid="b671a5ea-f9c1-4122-ac96-4912698ee055">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <button id="shopping-basket-modal-close-button" type="button" class="close" data-dismiss="modal"
@@ -159,8 +159,15 @@
   </div>
 <div id="pageHeader" class="search-heading">
     <div class="search-heading">
-                  <h1 class="search-results-heading" data-test-id="page-title">Bücher, schweiz <span class="result-count">(Mehr als <b id="topbar-search-result-count">185.000</b> Ergebnisse)</span></h1>
-                                    <div id="searchterm-crumbs" class="m-xs-t cf">
+                  <h1 class="showing-results-for">Ergebnisse werden angezeigt für:
+          <span class="query-text">Schweiz</span>
+          <span class="result-count">(Mehr als <b id="topbar-search-result-count">185.000</b> Ergebnisse)</span>
+        </h1>
+                    <div id="filters-applied">
+      Filter angewandt:
+      <span class="filters-applied-values" data-test-id="filters-applied-values">Bücher</span>
+    </div>
+                      <div id="searchterm-crumbs" class="m-xs-t cf">
                   <div class="search-crumb">
           <b>Stichwörter:</b>
           <a
@@ -392,8 +399,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&rollup=on&sortby=20"
-                             aria-label="Nach Bücher filtern (185,668 Treffer) (ausgewählt)"
-      ><span class="icon" aria-hidden="true"></span>Bücher&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-book-count">(185.668)</span></a>
+                             aria-label="Nach Bücher filtern (185,356 Treffer) (ausgewählt)"
+      ><span class="icon" aria-hidden="true"></span>Bücher&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-book-count">(185.356)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-product-type-mag" id="refinement-product-type-mag"
@@ -404,7 +411,7 @@
         data-csa-c-pos="3,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=mag%20book&rollup=on&sortby=20"
+                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=book%20mag&rollup=on&sortby=20"
                              aria-label="Nach Magazine & Zeitschriften filtern (1,370 Treffer)"
       ><span class="icon" aria-hidden="true"></span>Magazine & Zeitschriften&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-mag-count">(1.370)</span></a>
       </li>
@@ -417,7 +424,7 @@
         data-csa-c-pos="4,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=comic%20book&rollup=on&sortby=20"
+                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=book%20comic&rollup=on&sortby=20"
                              aria-label="Nach Comics filtern (220 Treffer)"
       ><span class="icon" aria-hidden="true"></span>Comics&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-comic-count">(220)</span></a>
       </li>
@@ -430,7 +437,7 @@
         data-csa-c-pos="5,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=music%20book&rollup=on&sortby=20"
+                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=book%20music&rollup=on&sortby=20"
                              aria-label="Nach Noten filtern (69 Treffer)"
       ><span class="icon" aria-hidden="true"></span>Noten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-music-count">(69)</span></a>
       </li>
@@ -443,9 +450,9 @@
         data-csa-c-pos="6,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=art%20book&rollup=on&sortby=20"
-                             aria-label="Nach Kunst, Grafik & Poster filtern (11,478 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Kunst, Grafik & Poster&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-art-count">(11.478)</span></a>
+                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=book%20art&rollup=on&sortby=20"
+                             aria-label="Nach Kunst, Grafik & Poster filtern (11,330 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Kunst, Grafik & Poster&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-art-count">(11.330)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-product-type-photo" id="refinement-product-type-photo"
@@ -470,8 +477,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=book%20map&rollup=on&sortby=20"
-                             aria-label="Nach Karten filtern (1,569 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Karten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-map-count">(1.569)</span></a>
+                             aria-label="Nach Karten filtern (1,568 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Karten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-map-count">(1.568)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-product-type-ms" id="refinement-product-type-ms"
@@ -482,9 +489,9 @@
         data-csa-c-pos="9,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=ms%20book&rollup=on&sortby=20"
-                             aria-label="Nach Manuskripte & Papierantiquitäten filtern (385,007 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Manuskripte & Papierantiquitäten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-ms-count">(385.007)</span></a>
+                   href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&pt=book%20ms&rollup=on&sortby=20"
+                             aria-label="Nach Manuskripte & Papierantiquitäten filtern (384,998 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Manuskripte & Papierantiquitäten&nbsp;<span style="color:#000;" data-test-id="refinement-product-type-ms-count">(384.998)</span></a>
       </li>
                   </ul>
       </div>
@@ -503,8 +510,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=new&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Neu filtern (39,132 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Neu&nbsp;<span style="color:#000;" data-test-id="refinement-condition-new-count">(39.132)</span></a>
+                   aria-label="Nach Neu filtern (39,095 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Neu&nbsp;<span style="color:#000;" data-test-id="refinement-condition-new-count">(39.095)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-an-fine-nf" id="refinement-condition-an-fine-nf"
@@ -515,10 +522,10 @@
         data-csa-c-pos="2,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?cond=nf%20fine%20an&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
+                   href="/servlet/SearchResults?cond=fine%20an%20nf&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Wie Neu, Sehr Gut oder Gut Bis Sehr Gut filtern (24,826 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Wie Neu, Sehr Gut oder Gut Bis Sehr Gut&nbsp;<span style="color:#000;" data-test-id="refinement-condition-an-fine-nf-count">(24.826)</span></a>
+                   aria-label="Nach Wie Neu, Sehr Gut oder Gut Bis Sehr Gut filtern (24,821 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Wie Neu, Sehr Gut oder Gut Bis Sehr Gut&nbsp;<span style="color:#000;" data-test-id="refinement-condition-an-fine-nf-count">(24.821)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-vg-good" id="refinement-condition-vg-good"
@@ -531,8 +538,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=vg%20good&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Gut oder Befriedigend filtern (40,886 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Gut oder Befriedigend&nbsp;<span style="color:#000;" data-test-id="refinement-condition-vg-good-count">(40.886)</span></a>
+                   aria-label="Nach Gut oder Befriedigend filtern (40,884 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Gut oder Befriedigend&nbsp;<span style="color:#000;" data-test-id="refinement-condition-vg-good-count">(40.884)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-fair-poor" id="refinement-condition-fair-poor"
@@ -543,10 +550,10 @@
         data-csa-c-pos="4,1"
           >
           <a class="refinement-link"
-                   href="/servlet/SearchResults?cond=poor%20fair&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
+                   href="/servlet/SearchResults?cond=fair%20poor&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Ausreichend oder Schlecht filtern (755 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Ausreichend oder Schlecht&nbsp;<span style="color:#000;" data-test-id="refinement-condition-fair-poor-count">(755)</span></a>
+                   aria-label="Nach Ausreichend oder Schlecht filtern (757 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Ausreichend oder Schlecht&nbsp;<span style="color:#000;" data-test-id="refinement-condition-fair-poor-count">(757)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-condition-uns" id="refinement-condition-uns"
@@ -559,8 +566,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?cond=uns&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Wie beschrieben filtern (80,069 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Wie beschrieben&nbsp;<span style="color:#000;" data-test-id="refinement-condition-uns-count">(80.069)</span></a>
+                   aria-label="Nach Wie beschrieben filtern (79,799 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Wie beschrieben&nbsp;<span style="color:#000;" data-test-id="refinement-condition-uns-count">(79.799)</span></a>
       </li>
                   </ul>
       </div>
@@ -593,8 +600,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=hc&bi=h&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Hardcover filtern (61,772 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Hardcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-hc-count">(61.772)</span></a>
+                   aria-label="Nach Hardcover filtern (61,657 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Hardcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-hc-count">(61.657)</span></a>
       </li>
                           
     <li class="none" data-test-id="refinement-binding-sc" id="refinement-binding-sc"
@@ -607,8 +614,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=sc&bi=s&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Softcover filtern (77,180 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Softcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-sc-count">(77.180)</span></a>
+                   aria-label="Nach Softcover filtern (77,075 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Softcover&nbsp;<span style="color:#000;" data-test-id="refinement-binding-sc-count">(77.075)</span></a>
       </li>
                   </ul>
       </div>
@@ -626,8 +633,8 @@
           >
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=fe&ds=30&dym=on&fe=on&kn=schweiz&pt=book&rollup=on&sortby=20"
-                             aria-label="Nach Erstausgabe filtern (18,056 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Erstausgabe&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-fe-count">(18.056)</span></a>
+                             aria-label="Nach Erstausgabe filtern (18,045 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Erstausgabe&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-fe-count">(18.045)</span></a>
       </li>
                              
     <li class="none" data-test-id="refinement-collectible-attribute-sgnd" id="refinement-collectible-attribute-sgnd"
@@ -653,8 +660,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=dj&dj=on&ds=30&dym=on&kn=schweiz&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Schutzumschlag filtern (13,582 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Schutzumschlag&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-dj-count">(13.582)</span></a>
+                   aria-label="Nach Schutzumschlag filtern (13,540 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Schutzumschlag&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-dj-count">(13.540)</span></a>
       </li>
                              
     <li class="none" data-test-id="refinement-collectible-attribute-pics" id="refinement-collectible-attribute-pics"
@@ -667,8 +674,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?attrs=pics&ds=30&dym=on&kn=schweiz&pics=on&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Angebotsfoto filtern (122,997 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Angebotsfoto&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-pics-count">(122.997)</span></a>
+                   aria-label="Nach Angebotsfoto filtern (122,967 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Angebotsfoto&nbsp;<span style="color:#000;" data-test-id="refinement-collectible-attribute-pics-count">(122.967)</span></a>
       </li>
                    </ul>
       </div>
@@ -787,8 +794,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&fs=us&kn=schweiz&n=100046078&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach Kostenloser Versand nach USA filtern (1,523 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>Kostenloser Versand nach USA&nbsp;<span style="color:#000;" data-test-id="refinement-free-shipping-usa-count">(1.523)</span></a>
+                   aria-label="Nach Kostenloser Versand nach USA filtern (1,521 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>Kostenloser Versand nach USA&nbsp;<span style="color:#000;" data-test-id="refinement-free-shipping-usa-count">(1.521)</span></a>
       </li>
                       </ul>
         </div>
@@ -829,8 +836,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&msr=2&n=100090007&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 2 Sterne und höher filtern (183,459 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>2 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-2-count">(183.459)</span></a>
+                   aria-label="Nach 2 Sterne und höher filtern (183,147 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>2 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-2-count">(183.147)</span></a>
       </li>
                               
     <li class="ratingthreestar none" data-test-id="refinement-seller-rating-3" id="refinement-seller-rating-3"
@@ -843,8 +850,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&msr=3&n=100090008&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 3 Sterne und höher filtern (180,957 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>3 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-3-count">(180.957)</span></a>
+                   aria-label="Nach 3 Sterne und höher filtern (180,645 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>3 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-3-count">(180.645)</span></a>
       </li>
                               
     <li class="ratingfourstar none" data-test-id="refinement-seller-rating-4" id="refinement-seller-rating-4"
@@ -857,8 +864,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&msr=4&n=100090009&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 4 Sterne und höher filtern (176,074 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>4 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-4-count">(176.074)</span></a>
+                   aria-label="Nach 4 Sterne und höher filtern (175,765 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>4 Sterne und höher&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-4-count">(175.765)</span></a>
       </li>
                               
     <li class="ratingfivestar none" data-test-id="refinement-seller-rating-5" id="refinement-seller-rating-5"
@@ -871,8 +878,8 @@
           <a class="refinement-link"
                    href="/servlet/SearchResults?ds=30&dym=on&kn=schweiz&msr=5&n=100090010&pt=book&rollup=on&sortby=20"
                              rel="nofollow"
-                   aria-label="Nach 5 Sterne filtern (141,270 Treffer)"
-      ><span class="icon" aria-hidden="true"></span>5 Sterne&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-5-count">(141.270)</span></a>
+                   aria-label="Nach 5 Sterne filtern (140,964 Treffer)"
+      ><span class="icon" aria-hidden="true"></span>5 Sterne&nbsp;<span style="color:#000;" data-test-id="refinement-seller-rating-5-count">(140.964)</span></a>
       </li>
                       </ul>
         </div>
@@ -8298,7 +8305,7 @@
                 "pageTypeId": ""             },
 
             "request": {
-                "requestId": "JDMEYVS3S5MYH3HTPR99",
+                "requestId": "WMCSN64EXBTCYZW9EFTR",
                 "sessionId": ""
             },
             
@@ -8306,7 +8313,7 @@
                 "deviceType": "DESKTOP"
             }
             
-                        ,"searchResults": {"quFilters":"false","distinct":"24","languagesCount":"41","quBoosts":"false","results":"185668","rewrittenParams":"{\"ds\":\"30\",\"dym\":\"on\",\"kn\":\"schweiz\",\"pt\":\"book\",\"rollup\":\"on\",\"sortby\":\"20\"}","superQuery":"true","quNoop":"false"}
+                        ,"searchResults": {"quFilters":"false","distinct":"24","languagesCount":"41","quBoosts":"false","results":"185356","rewrittenParams":"{\"ds\":\"30\",\"dym\":\"on\",\"kn\":\"schweiz\",\"pt\":\"book\",\"rollup\":\"on\",\"sortby\":\"20\"}","superQuery":"true","quNoop":"true"}
                         
                     }
     </script>
@@ -8401,9 +8408,9 @@ function openWindow(linkURL, menubar, toolbar, location, status, scrollbars, res
 
         <script defer type="text/javascript" src="//assets.prod.abebookscdn.com/cdn/zvab/scripts/vendor/react-autosuggest.bundle-a9c3023f03.js"></script>
       <script>
-          window["autoSuggestLanguageNamesList"] = ["Englisch [5.460]","Französisch [3.215]","Deutsch [114.851]","Italienisch [384]","Spanisch [115]","Keine Angabe der Sprache [60.436]","Afrikaans [6]","Albanisch [4]","Altgriechisch [2]","Arabisch [7]","Baskisch [1]","Bokmål-Norwegisch [2]","Bosnisch [1]","Bretonisch [2]","Bulgarisch [3]","Chinesisch [10]","Dänisch [14]","Einzelne andere Sprachen [1]","Esperanto [1]","Finnisch [6]","Germanische Sprachen (andere) [3]","Hebräisch [1]","Japanisch [11]","Latein [122]","Mittelhochdeutsch [1]","Niederländisch [56]","Persisch [1]","Polnisch [19]","Portugiesisch [90]","Romanische Sprachen (andere) [2]","Russisch [66]","Rätoromanisch [7]","Schwedisch [9]","Schweizerdeutsch [79]","Tschechisch [16]","Türkisch [2]","Udmurtisch [1]","Ukrainisch [3]","Ungarisch [3]","Usbekisch [3]","mehrsprachig [652]"];
+          window["autoSuggestLanguageNamesList"] = ["Englisch [5.455]","Französisch [3.211]","Deutsch [114.794]","Italienisch [382]","Spanisch [115]","Keine Angabe der Sprache [60.195]","Afrikaans [6]","Albanisch [4]","Altgriechisch [2]","Arabisch [7]","Baskisch [1]","Bokmål-Norwegisch [2]","Bosnisch [1]","Bretonisch [2]","Bulgarisch [3]","Chinesisch [10]","Dänisch [14]","Einzelne andere Sprachen [1]","Esperanto [1]","Finnisch [6]","Germanische Sprachen (andere) [3]","Hebräisch [1]","Japanisch [11]","Latein [122]","Mittelhochdeutsch [1]","Niederländisch [56]","Persisch [1]","Polnisch [19]","Portugiesisch [87]","Romanische Sprachen (andere) [2]","Russisch [66]","Rätoromanisch [7]","Schwedisch [9]","Schweizerdeutsch [79]","Tschechisch [16]","Türkisch [2]","Udmurtisch [1]","Ukrainisch [3]","Ungarisch [3]","Usbekisch [3]","mehrsprachig [652]"];
 
-          window["autoSuggestLanguageNameToSearchLanguageMap"] = {"Arapaho-Sprache":"ARP","Salish-Sprache":"SAL","Lingala":"LIN","Niederländisch":"NLD","Nkole-Sprache":"NYN","Neumelanesisch":"TPI","Ainu":"AIN","Kaschmiri":"KAS","Kannada":"KAN","Kaschubisch":"CSB","Altprovenzalisch":"PRO","Skolt-Sami":"SMS","Fon-Sprache":"FON","Awadhi":"AWA","Lahnda":"LAH","Tswana-Sprache":"TSN","Isländisch":"ISL","Urdu":"URD","Adangme":"ADA","Miao-Sprachen":"HMN","Syrisch":"SYR","Ijo-Sprache":"IJO","Ewe-Sprache":"EWE","Sranan-Tongo":"SRN","Rumänisch":"RON","Armenisch":"HYE","Samaritanisch":"SAM","Joruba-Sprache (Yoruba-Sprache)":"YOR","Romanische Sprachen (andere)":"ROA","Sinotibetische Sprachen (andere)":"SIT","Neapolitan":"NAP","Kirchenslawisch":"CHU","Kunstsprache":"ART","Elamisch":"ELX","Ponapeanisch":"PON","Indogermanische Sprachen (andere)":"INE","Ganda-Sprache":"LUG","Sotho-Sprache (Nord)":"NSO","Kabylisch":"KAB","Kreolische Sprachen (andere)":"CRP","Banda-Sprache":"BAD","Friulisch":"FUR","Altjavanisch":"KAW","Ingush":"INH","Süd-Sotho-Sprache":"SOT","Zuni-Sprache":"ZUN","Maya-Sprachen":"MYN","Neugriechisch":"ELL","Maduresisch":"MAD","Makassarisch":"MAK","Vai-Sprache":"VAI","Semitische Sprachen (andere)":"SEM","Usbekisch":"UZB","Braj-Bhakha":"BRA","Bicol":"BIK","Zapotekisch":"ZAP","Tamil":"TAM","Jiddisch":"YID","Slowenisch":"SLV","Sukuma-Sprache":"SUK","Kamba":"KAM","Französisch":"FRA","Australische Sprachen":"AUS","Fidschi-Sprache":"FIJ","Zaza":"ZZA","Finnisch":"FIN","Burjatisch":"BUA","Tadschikisch":"TGK","Korsisch":"COS","Moksha":"MDF","Tongaisch":"TON","Luba-Sprache":"LUA","Luxemburgisch":"LTZ","Sango-Sprache":"SAG","Hindi":"HIN","Herero-Sprache":"HER","Moldauisch":"MOL","Mongo":"LOL","Tumbuka-Sprache":"TUM","Abchasisch":"ABK","Interlingue":"ILE","Afghanisch (Paschtu)":"PUS","Karakalpakisch":"KAA","Albanisch":"SQI","Kreolisch-Portugiesisch (andere)":"CPP","Bulgarisch":"BUL","Jüdisch-Arabisch":"JRB","Caddo-Sprachen":"CAD","Zigeunersprache":"ROM","Rwanda-Sprache":"KIN","Mongondou":"GOR","Bosnisch":"BOS","Low German":"NDS","Krio":"CPE","Phönikisch":"PHN","Irisch":"GLE","Türkisch":"TUR","Mohawk-Sprache":"MOH","Interlingua":"INA","Altirisch":"SGA","Gälisch-Schottisch":"GLA","Mende":"MEN","Akan-Sprache (Akan)":"AKA","Meithei":"MNI","Tamaseq":"TMH","Wakash-Sprachen":"WAK","Konkani":"KOK","Batak (Indonesien)":"BTK","Trukesisch":"CHK","Tscheremissisch":"CHM","Tsonga-Sprache (Tsonga)":"TSO","Rundi-Sprache":"RUN","Okzitanisch":"OCI","Tigrinja-Sprache":"TIR","Slave (Athapaskische Sprachen)":"DEN","Altäthiopisch":"GEZ","Ga":"GAA","Ojibwa-Sprache":"OJI","Austronesische Sprachen (andere)":"MAP","Komi-Sprachen":"KOM","Kymrisch":"CYM","Athapaskische Sprachen":"ATH","Bemba-Sprache":"BEM","Khmer-Sprache":"KHM","Baltische Sprachen (andere)":"BAT","Afrihili":"AFH","Tetum":"TET","Erzya":"MYV","Luiseno-Sprache":"LUI","Chibcha-Sprachen":"CHB","Italienisch":"ITA","Nigerkordofanische Sprachen":"NIC","Kru-Sprachen":"KRO","Kwanyama":"KUA","Hawaiisch":"HAW","Luo-Sprache":"LUO","Swahili":"SWA","Kachin-Sprache":"KAC","Kuschitische Sprachen (andere)":"CUS","Gujarati-Sprache":"GUJ","Deutsch":"DEU","Oraon-Sprache":"KRU","Mittelpersisch":"PAL","Elliceanisch":"TVL","Banjari":"LAM","Bhodschpuri":"BHO","Asturian":"AST","Haussa-Sprache":"HAU","Aleutisch":"ALE","Nynorsk-Norwegisch":"NNO","Tlingit-Sprache":"TLI","Maledivisch":"DIV","Beach-la-Mar":"BIS","Cree":"CRE","Mittelhochdeutsch":"GMH","Mittelenglisch":"ENM","Latein":"LAT","Sardisch":"SRD","Esperanto":"EPO","Classical Syriac":"SYC","Ful":"FUL","Indoarische Sprachen":"INC","Gondi-Sprache":"GON","Persisch":"FAS","Sundanesisch":"SUN","Inuktitut":"IKU","Hamitosemitische Sprachen":"AFA","Manding-Sprache":"MAN","Lappisch":"SMI","Delaware-Sprache":"DEL","Mittelirisch":"MGA","Palau":"PAU","Samoanisch":"SMO","Karatschai-Balkarisch":"KRC","Somali":"SOM","Guaraní-Sprache":"GRN","Aromanian":"RUP","Pangwe-Sprache":"FAN","Efik":"EFI","Kreolisch-Französisch (andere)":"CPF","Zeichensprache":"SGN","Kongo":"KON","Ostfriesisch":"FRS","Chinesisch":"ZHO","Walloon":"WLN","Niue":"NIU","Karibische Sprachen":"CAR","Aragonese":"ARG","Kanuri-Sprache":"KAU","Ketchua (Quechua-Sprache)":"QUE","Estnisch":"EST","Hebräisch":"HEB","Norwegisch":"NOR","Akkadisch":"AKK","Nyoro":"NYO","Sogdisch":"SOG","Friesisch":"FRY","Pini":"BIN","Aymará-Sprache":"AYM","Awarisch":"AVA","Chewa-Sprache":"NYA","Einzelne andere Sprachen":"MIS","Xhosa-Sprache":"XHO","Belutschisch":"BAL","Afrikaans":"AFR","Uigurisch":"UIG","Kroatisch":"HRV","Ägyptisch":"EGY","Papuasprachen (andere)":"PAA","Sidamo":"SID","Ndebele-Sprache (Süd)":"NBL","Nubische Sprachen":"NUB","Bachkir":"BAK","Manchu":"MNC","Schottisch":"SCO","Balinesisch":"BAN","Yao-Sprache":"YAO","Altaische Sprachen (andere)":"TUT","Koptisch":"COP","Mittelfranzösisch":"FRM","Mbundu-Sprache (Kimbundu)":"KMB","Tiv-Sprache":"TIV","Danakil-Sprache":"AAR","Weißrussisch":"BEL","Limburgan":"LIM","Lesgisch":"LEZ","Waray":"WAR","Osmanisch":"OTA","Altpersisch":"PEO","Oriya-Sprache":"ORI","Marwari":"MWR","Bambara-Sprache":"BAM","Darginisch":"DAR","Santali":"SAT","Arawak-Sprachen":"ARW","Tibetisch":"BOD","Pandschabi-Sprache":"PAN","Sakisch":"KHO","Zulu":"ZUL","Himachali":"HIM","Tatarisch":"TAT","Indianersprachen (Nordamerika) (andere)":"NAI","Schweizerdeutsch":"GSW","Zhuang":"ZHA","Chamorro-Sprache":"CHA","Minangkabau-Sprache":"MIN","Koreanisch":"KOR","Cherokee":"CHR","Twi":"TWI","Kurdisch":"KUR","Blackfoot-Sprache":"BLA","mehrsprachig":"MUL","Eskimoisch (Grönländisch)":"KAL","Tsimshian":"TSI","Nko":"NQO","Hiligaynon-Sprache":"HIL","Newari":"NEW","Thaisprachen (andere)":"TAI","Dzongkha":"DZO","Nilosaharanische Sprachen":"SSA","Yap":"YAP","Assamesisch":"ASM","Tschetschenisch":"CHE","Färöisch":"FAO","Aceh-Sprache":"ACE","Althochdeutsch":"GOH","Chinook":"CHN","Serbokroatisch":"HBS","Portugiesisch":"POR","Ugaritisch":"UGA","Rotse-Sprache":"LOZ","Manx":"GLV","Laotisch":"LAO","Lettisch":"LAV","Kornisch":"COR","Litauisch":"LIT","Slowakisch":"SLK","Karelian":"KRL","Volapük":"VOL","Galizisch":"GLG","Ossetisch":"OSS","Klingonisch":"TLH","Judenspanisch":"LAD","Bretonisch":"BRE","Aramäisch":"ARC","Tschechisch":"CES","Temne":"TEM","Drawidische Sprachen (andere)":"DRA","Iranische Sprachen (andere)":"IRA","Javanisch":"JAV","Swazi":"SSW","Karenisch":"KAR","Apachen-Sprache":"APA","Ido":"IDO","Bahasa Indonesia":"IND","Basaa-Sprache":"BAS","Grebo":"GRB","Amharisch":"AMH","Tschagataisch":"CHG","Gotisch":"GOT","Bamileke-Sprache":"BAI","Marschallesisch":"MAH","Keine Angabe der Sprache":"N","Adygeisch":"ADY","Gilbertesisch":"GIL","Krimtatarisch":"CRH","Ukrainisch":"UKR","Hethitisch":"HIT","Kutenai-Sprache":"KUT","Haida-Sprache":"HAI","Provenzalisch":"FRP","Yupik Languages":"YPK","Sioux-Sprachen":"SIO","Tschuwaschisch":"CHV","Schwedisch":"SWE","Bugi-Sprache":"BUG","Serbisch":"SRP","Polnisch":"POL","Rätoromanisch":"ROH","Selkupisch":"SEL","Papiamento":"PAP","Irokesische Sprachen":"IRO","Sassak":"SAS","Turkmenisch":"TUK","Kutchin":"GWI","Mbundu-Sprache (Umbundu)":"UMB","Mossi-Sprache":"MOS","Georgisch (Grusinisch)":"KAT","Upper Sorbian":"HSB","Kpelle-Sprache":"KPE","Ibo-Sprache":"IBO","Walamo-Sprache":"WAL","Tigre":"TIG","Germanische Sprachen (andere)":"GEM","Nordfriesisch":"FRR","Tupi Languages":"TUP","Tereno-Sprache":"TER","Duala-Sprachen":"DUA","Pampanggan-Sprache":"PAM","Ndonga":"NDO","Keltische Sprachen (andere)":"CEL","Fanti-Sprache":"FAT","Tokelauanisch":"TKL","Iban":"IBA","Slawische Sprachen (andere)":"SLA","Singhalesisch":"SIN","Birmanisch":"MYA","Tsonga-Sprache (Tonga)":"TOG","Schan-Sprache":"SHN","Northern Sami":"SME","Altnordisch":"NON","Ungarisch":"HUN","Finnougrische Sprachen (andere)":"FIU","Baskisch":"EUS","Altfranzösisch":"FRO","Kirgisisch":"KIR","Pangasinan":"PAG","Bantusprachen (andere)":"BNT","Dänisch":"DAN","Rajasthani":"RAJ","Maithili":"MAI","Kikuyu-Sprache":"KIK","Dakota-Sprache":"DAK","Sindhi":"SND","Micmac-Sprache":"MIC","Bengali":"BEN","Cheyenne":"CHY","Berbersprachen":"BER","Sizilianisch":"SCN","Dinka-Sprache":"DIN","Mittelniederländisch":"DUM","Chipewyan":"CHP","Bedauye":"BEJ","Aserbaidschanisch":"AZE","Osterinsel-Sprache":"RAP","Bihari":"BIH","Sorbisch":"WEN","Telugu":"TEL","Filipino":"FIL","Jüdisch-Persisch":"JPR","Galla-Sprache":"ORM","Indianersprachen (Zentralamerika) (andere)":"CAI","Tagalog":"TGL","Nepali":"NEP","Bokmål-Norwegisch":"NOB","Kosraeanisch":"KOS","Cebuano":"CEB","Altenglisch":"ANG","Malayalam":"MAL","Schona-Sprache":"SNA","Ilokano":"ILO","Otomian Languages":"OTO","Maasai":"MAS","Sichuan Yi":"III","Khoisan-Sprachen (andere)":"KHI","Katalanisch":"CAT","Pali":"PLI","Japanisch":"JPN","Sonhai-Sprache":"SON","Avestisch":"AVE","Serer-Sprache":"SRR","Sanskrit":"SAN","Mandaresisch":"MDR","Marathi":"MAR","Philippinen-Austronesisch (andere)":"PHI","Kasachisch":"KAZ","Luba":"LUB","Russisch":"RUS","Arabisch":"ARA","Mongolisch":"MON","Mon-Khmer-Sprachen":"MKH","Haitian":"HAT","Muskogee-Sprachen":"MUS","Dogri":"DOI","Makedonisch":"MKD","Soninke-Sprache":"SNK","Algonkin-Sprachen":"ALG","Altgriechisch":"GRC","Jakutisch":"SAH","Lower Sorbian":"DSB","Kabardian":"KBD","Indianersprachen (Südamerika) (andere)":"SAI","Hiri-Motu":"HMO","Wotisch":"VOT","Inupiaq":"IPK","Dajak":"DAY","Wolof-Sprache":"WOL","Ndebele-Sprache (Nord)":"NDE","Acholi-Sprache":"ACH","Aztekisch (Nahuatl)":"NAH","Nzema":"NZI","Nauruanisch":"NAU","Navajo-Sprache":"NAV","Maltesisch":"MLT","Khasi-Sprache":"KHA","Sumerisch":"SUX","Prakrit":"PRA","Vietnamesisch":"VIE","Mundasprachen":"MUN","Malagassi-Sprache":"MLG","Kaukasische Sprachen (andere)":"CAU","Tuwinisch":"TYV","Khotta":"MAG","Arauka-Sprachen":"ARN","Malaiisch":"MSA","Venda-Sprache":"VEN","Rarotonganisch":"RAR","Maori-Sprache":"MRI","Thailändisch":"THA","Choctaw":"CHO","Englisch":"ENG","Spanisch":"SPA","Tahitisch":"TAH","Udmurtisch":"UDM"};
+          window["autoSuggestLanguageNameToSearchLanguageMap"] = {"Arapaho-Sprache":"ARP","Salish-Sprache":"SAL","Lingala":"LIN","Niederländisch":"NLD","Nkole-Sprache":"NYN","Neumelanesisch":"TPI","Ainu":"AIN","Kaschmiri":"KAS","Kannada":"KAN","Kaschubisch":"CSB","Altprovenzalisch":"PRO","Skolt-Sami":"SMS","Fon-Sprache":"FON","Awadhi":"AWA","Lahnda":"LAH","Tswana-Sprache":"TSN","Isländisch":"ISL","Urdu":"URD","Adangme":"ADA","Miao-Sprachen":"HMN","Syrisch":"SYR","Ijo-Sprache":"IJO","Sranan-Tongo":"SRN","Ewe-Sprache":"EWE","Rumänisch":"RON","Armenisch":"HYE","Samaritanisch":"SAM","Joruba-Sprache (Yoruba-Sprache)":"YOR","Romanische Sprachen (andere)":"ROA","Sinotibetische Sprachen (andere)":"SIT","Kirchenslawisch":"CHU","Neapolitan":"NAP","Kunstsprache":"ART","Elamisch":"ELX","Ponapeanisch":"PON","Indogermanische Sprachen (andere)":"INE","Ganda-Sprache":"LUG","Sotho-Sprache (Nord)":"NSO","Kabylisch":"KAB","Kreolische Sprachen (andere)":"CRP","Banda-Sprache":"BAD","Friulisch":"FUR","Ingush":"INH","Altjavanisch":"KAW","Süd-Sotho-Sprache":"SOT","Zuni-Sprache":"ZUN","Maya-Sprachen":"MYN","Neugriechisch":"ELL","Maduresisch":"MAD","Makassarisch":"MAK","Vai-Sprache":"VAI","Semitische Sprachen (andere)":"SEM","Usbekisch":"UZB","Braj-Bhakha":"BRA","Bicol":"BIK","Zapotekisch":"ZAP","Tamil":"TAM","Jiddisch":"YID","Slowenisch":"SLV","Sukuma-Sprache":"SUK","Kamba":"KAM","Französisch":"FRA","Australische Sprachen":"AUS","Fidschi-Sprache":"FIJ","Zaza":"ZZA","Finnisch":"FIN","Burjatisch":"BUA","Tadschikisch":"TGK","Korsisch":"COS","Moksha":"MDF","Tongaisch":"TON","Luba-Sprache":"LUA","Luxemburgisch":"LTZ","Sango-Sprache":"SAG","Hindi":"HIN","Herero-Sprache":"HER","Moldauisch":"MOL","Mongo":"LOL","Tumbuka-Sprache":"TUM","Abchasisch":"ABK","Interlingue":"ILE","Afghanisch (Paschtu)":"PUS","Karakalpakisch":"KAA","Albanisch":"SQI","Kreolisch-Portugiesisch (andere)":"CPP","Bulgarisch":"BUL","Jüdisch-Arabisch":"JRB","Caddo-Sprachen":"CAD","Zigeunersprache":"ROM","Rwanda-Sprache":"KIN","Mongondou":"GOR","Bosnisch":"BOS","Low German":"NDS","Krio":"CPE","Phönikisch":"PHN","Irisch":"GLE","Türkisch":"TUR","Interlingua":"INA","Mohawk-Sprache":"MOH","Altirisch":"SGA","Mende":"MEN","Gälisch-Schottisch":"GLA","Akan-Sprache (Akan)":"AKA","Meithei":"MNI","Tamaseq":"TMH","Wakash-Sprachen":"WAK","Konkani":"KOK","Batak (Indonesien)":"BTK","Trukesisch":"CHK","Tsonga-Sprache (Tsonga)":"TSO","Tscheremissisch":"CHM","Rundi-Sprache":"RUN","Okzitanisch":"OCI","Tigrinja-Sprache":"TIR","Slave (Athapaskische Sprachen)":"DEN","Ga":"GAA","Altäthiopisch":"GEZ","Ojibwa-Sprache":"OJI","Austronesische Sprachen (andere)":"MAP","Komi-Sprachen":"KOM","Kymrisch":"CYM","Athapaskische Sprachen":"ATH","Bemba-Sprache":"BEM","Khmer-Sprache":"KHM","Baltische Sprachen (andere)":"BAT","Afrihili":"AFH","Tetum":"TET","Erzya":"MYV","Luiseno-Sprache":"LUI","Chibcha-Sprachen":"CHB","Italienisch":"ITA","Nigerkordofanische Sprachen":"NIC","Kru-Sprachen":"KRO","Kwanyama":"KUA","Hawaiisch":"HAW","Luo-Sprache":"LUO","Swahili":"SWA","Kachin-Sprache":"KAC","Kuschitische Sprachen (andere)":"CUS","Gujarati-Sprache":"GUJ","Deutsch":"DEU","Mittelpersisch":"PAL","Oraon-Sprache":"KRU","Elliceanisch":"TVL","Banjari":"LAM","Bhodschpuri":"BHO","Asturian":"AST","Haussa-Sprache":"HAU","Aleutisch":"ALE","Nynorsk-Norwegisch":"NNO","Tlingit-Sprache":"TLI","Maledivisch":"DIV","Beach-la-Mar":"BIS","Cree":"CRE","Mittelhochdeutsch":"GMH","Latein":"LAT","Mittelenglisch":"ENM","Sardisch":"SRD","Esperanto":"EPO","Classical Syriac":"SYC","Ful":"FUL","Indoarische Sprachen":"INC","Gondi-Sprache":"GON","Persisch":"FAS","Sundanesisch":"SUN","Inuktitut":"IKU","Hamitosemitische Sprachen":"AFA","Lappisch":"SMI","Manding-Sprache":"MAN","Delaware-Sprache":"DEL","Mittelirisch":"MGA","Palau":"PAU","Samoanisch":"SMO","Somali":"SOM","Karatschai-Balkarisch":"KRC","Guaraní-Sprache":"GRN","Aromanian":"RUP","Pangwe-Sprache":"FAN","Efik":"EFI","Kreolisch-Französisch (andere)":"CPF","Zeichensprache":"SGN","Ostfriesisch":"FRS","Kongo":"KON","Chinesisch":"ZHO","Walloon":"WLN","Niue":"NIU","Karibische Sprachen":"CAR","Aragonese":"ARG","Kanuri-Sprache":"KAU","Ketchua (Quechua-Sprache)":"QUE","Estnisch":"EST","Hebräisch":"HEB","Norwegisch":"NOR","Nyoro":"NYO","Akkadisch":"AKK","Sogdisch":"SOG","Friesisch":"FRY","Pini":"BIN","Aymará-Sprache":"AYM","Awarisch":"AVA","Chewa-Sprache":"NYA","Einzelne andere Sprachen":"MIS","Xhosa-Sprache":"XHO","Belutschisch":"BAL","Afrikaans":"AFR","Uigurisch":"UIG","Kroatisch":"HRV","Papuasprachen (andere)":"PAA","Ägyptisch":"EGY","Sidamo":"SID","Ndebele-Sprache (Süd)":"NBL","Bachkir":"BAK","Nubische Sprachen":"NUB","Manchu":"MNC","Schottisch":"SCO","Balinesisch":"BAN","Altaische Sprachen (andere)":"TUT","Yao-Sprache":"YAO","Koptisch":"COP","Mittelfranzösisch":"FRM","Mbundu-Sprache (Kimbundu)":"KMB","Danakil-Sprache":"AAR","Tiv-Sprache":"TIV","Weißrussisch":"BEL","Limburgan":"LIM","Lesgisch":"LEZ","Waray":"WAR","Osmanisch":"OTA","Altpersisch":"PEO","Marwari":"MWR","Oriya-Sprache":"ORI","Bambara-Sprache":"BAM","Darginisch":"DAR","Santali":"SAT","Arawak-Sprachen":"ARW","Tibetisch":"BOD","Pandschabi-Sprache":"PAN","Sakisch":"KHO","Zulu":"ZUL","Himachali":"HIM","Indianersprachen (Nordamerika) (andere)":"NAI","Tatarisch":"TAT","Schweizerdeutsch":"GSW","Zhuang":"ZHA","Chamorro-Sprache":"CHA","Minangkabau-Sprache":"MIN","Koreanisch":"KOR","Cherokee":"CHR","Twi":"TWI","Kurdisch":"KUR","mehrsprachig":"MUL","Blackfoot-Sprache":"BLA","Eskimoisch (Grönländisch)":"KAL","Tsimshian":"TSI","Nko":"NQO","Hiligaynon-Sprache":"HIL","Newari":"NEW","Thaisprachen (andere)":"TAI","Nilosaharanische Sprachen":"SSA","Dzongkha":"DZO","Yap":"YAP","Assamesisch":"ASM","Tschetschenisch":"CHE","Färöisch":"FAO","Aceh-Sprache":"ACE","Althochdeutsch":"GOH","Chinook":"CHN","Serbokroatisch":"HBS","Portugiesisch":"POR","Ugaritisch":"UGA","Manx":"GLV","Laotisch":"LAO","Rotse-Sprache":"LOZ","Kornisch":"COR","Lettisch":"LAV","Litauisch":"LIT","Slowakisch":"SLK","Karelian":"KRL","Volapük":"VOL","Galizisch":"GLG","Ossetisch":"OSS","Klingonisch":"TLH","Judenspanisch":"LAD","Bretonisch":"BRE","Aramäisch":"ARC","Tschechisch":"CES","Temne":"TEM","Drawidische Sprachen (andere)":"DRA","Iranische Sprachen (andere)":"IRA","Javanisch":"JAV","Swazi":"SSW","Karenisch":"KAR","Apachen-Sprache":"APA","Ido":"IDO","Bahasa Indonesia":"IND","Basaa-Sprache":"BAS","Grebo":"GRB","Amharisch":"AMH","Tschagataisch":"CHG","Gotisch":"GOT","Bamileke-Sprache":"BAI","Marschallesisch":"MAH","Keine Angabe der Sprache":"N","Adygeisch":"ADY","Gilbertesisch":"GIL","Krimtatarisch":"CRH","Ukrainisch":"UKR","Kutenai-Sprache":"KUT","Hethitisch":"HIT","Haida-Sprache":"HAI","Provenzalisch":"FRP","Yupik Languages":"YPK","Tschuwaschisch":"CHV","Sioux-Sprachen":"SIO","Schwedisch":"SWE","Bugi-Sprache":"BUG","Serbisch":"SRP","Polnisch":"POL","Rätoromanisch":"ROH","Selkupisch":"SEL","Papiamento":"PAP","Irokesische Sprachen":"IRO","Sassak":"SAS","Turkmenisch":"TUK","Kutchin":"GWI","Mbundu-Sprache (Umbundu)":"UMB","Mossi-Sprache":"MOS","Upper Sorbian":"HSB","Georgisch (Grusinisch)":"KAT","Kpelle-Sprache":"KPE","Ibo-Sprache":"IBO","Tigre":"TIG","Walamo-Sprache":"WAL","Germanische Sprachen (andere)":"GEM","Nordfriesisch":"FRR","Tupi Languages":"TUP","Tereno-Sprache":"TER","Duala-Sprachen":"DUA","Pampanggan-Sprache":"PAM","Ndonga":"NDO","Keltische Sprachen (andere)":"CEL","Fanti-Sprache":"FAT","Tokelauanisch":"TKL","Iban":"IBA","Slawische Sprachen (andere)":"SLA","Singhalesisch":"SIN","Birmanisch":"MYA","Tsonga-Sprache (Tonga)":"TOG","Schan-Sprache":"SHN","Altnordisch":"NON","Northern Sami":"SME","Ungarisch":"HUN","Finnougrische Sprachen (andere)":"FIU","Baskisch":"EUS","Altfranzösisch":"FRO","Kirgisisch":"KIR","Pangasinan":"PAG","Bantusprachen (andere)":"BNT","Rajasthani":"RAJ","Dänisch":"DAN","Maithili":"MAI","Kikuyu-Sprache":"KIK","Dakota-Sprache":"DAK","Sindhi":"SND","Bengali":"BEN","Micmac-Sprache":"MIC","Cheyenne":"CHY","Berbersprachen":"BER","Sizilianisch":"SCN","Dinka-Sprache":"DIN","Mittelniederländisch":"DUM","Chipewyan":"CHP","Bedauye":"BEJ","Aserbaidschanisch":"AZE","Osterinsel-Sprache":"RAP","Bihari":"BIH","Sorbisch":"WEN","Telugu":"TEL","Filipino":"FIL","Jüdisch-Persisch":"JPR","Indianersprachen (Zentralamerika) (andere)":"CAI","Galla-Sprache":"ORM","Tagalog":"TGL","Nepali":"NEP","Bokmål-Norwegisch":"NOB","Kosraeanisch":"KOS","Cebuano":"CEB","Altenglisch":"ANG","Malayalam":"MAL","Schona-Sprache":"SNA","Ilokano":"ILO","Otomian Languages":"OTO","Sichuan Yi":"III","Maasai":"MAS","Katalanisch":"CAT","Khoisan-Sprachen (andere)":"KHI","Pali":"PLI","Japanisch":"JPN","Sonhai-Sprache":"SON","Avestisch":"AVE","Serer-Sprache":"SRR","Sanskrit":"SAN","Mandaresisch":"MDR","Marathi":"MAR","Philippinen-Austronesisch (andere)":"PHI","Kasachisch":"KAZ","Luba":"LUB","Russisch":"RUS","Arabisch":"ARA","Mon-Khmer-Sprachen":"MKH","Mongolisch":"MON","Haitian":"HAT","Muskogee-Sprachen":"MUS","Dogri":"DOI","Makedonisch":"MKD","Soninke-Sprache":"SNK","Algonkin-Sprachen":"ALG","Altgriechisch":"GRC","Jakutisch":"SAH","Kabardian":"KBD","Lower Sorbian":"DSB","Indianersprachen (Südamerika) (andere)":"SAI","Hiri-Motu":"HMO","Wotisch":"VOT","Inupiaq":"IPK","Dajak":"DAY","Wolof-Sprache":"WOL","Ndebele-Sprache (Nord)":"NDE","Acholi-Sprache":"ACH","Aztekisch (Nahuatl)":"NAH","Nzema":"NZI","Nauruanisch":"NAU","Navajo-Sprache":"NAV","Maltesisch":"MLT","Khasi-Sprache":"KHA","Sumerisch":"SUX","Prakrit":"PRA","Vietnamesisch":"VIE","Mundasprachen":"MUN","Kaukasische Sprachen (andere)":"CAU","Malagassi-Sprache":"MLG","Tuwinisch":"TYV","Khotta":"MAG","Arauka-Sprachen":"ARN","Malaiisch":"MSA","Venda-Sprache":"VEN","Maori-Sprache":"MRI","Rarotonganisch":"RAR","Thailändisch":"THA","Choctaw":"CHO","Englisch":"ENG","Spanisch":"SPA","Tahitisch":"TAH","Udmurtisch":"UDM"};
 
           window["languageFilterTranslationsMap"] = {"language-open-edit-panel":"Andere Sprachen auswählen","language-all":"Alle Sprachen","language-apply-filters":"Anwenden","language-pill-remove-aria":"Sprachfilter für {languageName} entfernen","language-clear":"Sprachen entfernen","language-limit-info":"Sie können bis zu 5 Sprachen auswählen","language-cancel-edit":"Abbrechen","language-unspecified":"Keine Angabe der Sprache","language-autosuggest-placeholder":"Sprache eingeben","language-apply-filters-accessible-text":"Sprachfilter anwenden","language":"Sprache","language-limit-warning":"Sie haben die maximale Anzahl von 5 Sprachen bereits ausgewählt. Sie können keine weiteren Sprachen mehr hinzufügen."};
 

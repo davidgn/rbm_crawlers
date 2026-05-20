@@ -1,14 +1,17 @@
 """
 TAAZE.tw spider — Taiwan's largest used book marketplace.
 
-Crawls /gift_index.html category pages to find used-book listings, then visits
-individual product pages to extract metadata from JSON-LD (Book @type).
+Uses the official sitemap files (used-a.txt through used-d.txt) to enumerate
+~177K used-book OIDs, then fetches each product page to extract metadata via
+JSON-LD (Book @type) with ISBN, title, author, and publisher.
+
+Sitemap: https://taaze.tw/sitemap.xml → used-{a,b,c,d}.txt
+Product pages: https://www.taaze.tw/products/{oid}.html
 """
 import argparse
 import json
 import re
 import time
-from urllib.parse import urljoin
 
 import httpx
 from bs4 import BeautifulSoup
@@ -17,11 +20,11 @@ from base_spider import BaseSpider
 from models import BookListing
 
 
-CATEGORIES = [
-    {"name": "Used Foreign", "params": "t=11&k=03&d=13"},
-    {"name": "Used Simplified", "params": "t=11&k=03&d=12"},
-    {"name": "Used Japanese", "params": "t=11&k=03&d=24"},
-    {"name": "Used Chinese", "params": "t=11&k=03&d=00"},
+SITEMAP_FILES = [
+    "https://taaze.tw/sitemap/used-a.txt",
+    "https://taaze.tw/sitemap/used-b.txt",
+    "https://taaze.tw/sitemap/used-c.txt",
+    "https://taaze.tw/sitemap/used-d.txt",
 ]
 
 HEADERS = {
@@ -35,49 +38,77 @@ HEADERS = {
 class TaazeSpider(BaseSpider):
     BASE_URL = "https://www.taaze.tw"
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit: int = 0, delay: float = 0.5):
         super().__init__(platform_name="TAAZE.tw", territory="Taiwan")
-        self.limit_pages = limit_pages
+        self.limit = limit
+        self.delay = delay
         self.client = httpx.Client(timeout=30.0, verify=False, follow_redirects=True, headers=HEADERS)
 
-    def run(self):
-        self.logger.info("Starting TAAZE harvest. limit_pages=%s", self.limit_pages)
-        for cat in CATEGORIES:
-            self.logger.info("Category: %s", cat["name"])
-            for page in range(1, self.limit_pages + 1):
-                url = f"{self.BASE_URL}/gift_index.html?{cat['params']}&cp={page}&ps=30&cl=1"
-                try:
-                    resp = self.client.get(url)
-                    soup = BeautifulSoup(resp.text, "html.parser")
-                    paths = list({a["href"] for a in soup.find_all("a", href=True) if "products/" in a["href"]})
-                    if not paths:
-                        break
-                    for path in paths:
-                        abs_url = urljoin(self.BASE_URL, path)
-                        try:
-                            self._harvest_item(abs_url, cat["name"])
-                        except Exception as e:
-                            self.logger.error("Item error %s: %s", abs_url, e)
-                        time.sleep(0.5)
-                except Exception as e:
-                    self.logger.error("Page error: %s", e)
-                    break
-        self.logger.info("Done: %d items", self.items_scraped)
+    def _load_oids(self) -> list[str]:
+        """Download sitemap files and extract OIDs from usedList URLs."""
+        oids = []
+        seen = set()
+        for sitemap_url in SITEMAP_FILES:
+            try:
+                resp = self.client.get(sitemap_url, timeout=30.0)
+                if resp.status_code != 200:
+                    self.logger.warning("Sitemap %s returned %d", sitemap_url, resp.status_code)
+                    continue
+                for line in resp.text.splitlines():
+                    line = line.strip()
+                    m = re.search(r'oid=(\d+)', line)
+                    if m:
+                        oid = m.group(1)
+                        if oid not in seen:
+                            seen.add(oid)
+                            oids.append(oid)
+                self.logger.info("Sitemap %s: %d OIDs so far", sitemap_url.split('/')[-1], len(oids))
+            except Exception as e:
+                self.logger.error("Failed to fetch sitemap %s: %s", sitemap_url, e)
+        return oids
 
-    def _harvest_item(self, url: str, category: str):
-        item_id = url.split("/")[-1].split(".")[0]
+    def run(self):
+        self.logger.info("Loading OIDs from sitemap files…")
+        all_oids = self._load_oids()
+        self.logger.info("Total OIDs from sitemaps: %d", len(all_oids))
+
+        # Filter out already-scraped OIDs
+        to_scrape = [
+            oid for oid in all_oids
+            if f"{self.BASE_URL}/products/{oid}.html" not in self._seen_urls
+        ]
+        self.logger.info("OIDs to scrape (new): %d", len(to_scrape))
+
+        if self.limit:
+            to_scrape = to_scrape[:self.limit]
+            self.logger.info("Limiting to %d", self.limit)
+
+        for i, oid in enumerate(to_scrape, 1):
+            if i % 1000 == 0:
+                self.logger.info("[%d/%d] scraped=%d", i, len(to_scrape), self.items_scraped)
+            url = f"{self.BASE_URL}/products/{oid}.html"
+            try:
+                self._harvest_item(url)
+            except Exception as e:
+                self.logger.error("Item error %s: %s", url, e)
+            time.sleep(self.delay)
+
+        self.logger.info("Done: %d items scraped", self.items_scraped)
+        self.client.close()
+
+    def _harvest_item(self, url: str):
         try:
             resp = self.client.get(url)
             if resp.status_code != 200:
                 return
-            self.cache_html(item_id, resp.text, url=url)
-            listing = self._extract(resp.text, url, category)
+            self.cache_html(url.split("/")[-1].split(".")[0], resp.text, url=url)
+            listing = self._extract(resp.text, url)
             if listing:
                 self.save_item(listing)
         except Exception as e:
             self.logger.error("Fetch error %s: %s", url, e)
 
-    def _extract(self, html: str, url: str, category: str = "") -> BookListing | None:
+    def _extract(self, html: str, url: str) -> BookListing | None:
         soup = BeautifulSoup(html, "html.parser")
 
         # JSON-LD Book node
@@ -106,6 +137,14 @@ class TaazeSpider(BaseSpider):
         isbn_clean = re.sub(r"\D", "", isbn_raw)
         isbn = isbn_clean if re.match(r"97[89]\d{10}$", isbn_clean) else None
 
+        # Fallback: parse ISBN from meta description
+        if not isbn:
+            meta_desc = soup.find("meta", attrs={"name": "description"})
+            if meta_desc:
+                m = re.search(r'ISBN[：:]?\s*(97[89]\d{10})', meta_desc.get("content", ""))
+                if m:
+                    isbn = m.group(1)
+
         author_raw = data.get("author", "")
         if isinstance(author_raw, list):
             author = ", ".join(
@@ -124,17 +163,13 @@ class TaazeSpider(BaseSpider):
 
         pub_year = (data.get("datePublished") or "")[:4] or None
 
-        # Price from page
-        price = None
         price_el = soup.select_one("[class*='price'], [itemprop='price']")
+        price = None
         if price_el:
             price_text = price_el.get_text(strip=True)
             price_m = re.search(r"[\d,]+", price_text)
             if price_m:
                 price = f"TWD {price_m.group().replace(',', '')}"
-
-        # Condition
-        condition = "Used"
 
         return BookListing(
             territory=self.territory,
@@ -144,9 +179,8 @@ class TaazeSpider(BaseSpider):
             isbn=isbn,
             publisher=publisher,
             publication_year=pub_year,
-            condition=condition,
+            condition="Used",
             price=price,
-            category=category or None,
             listing_url=url,
         )
 
@@ -177,7 +211,6 @@ def _backfill_cached(delay: float = 0.5):
                 except Exception:
                     pass
 
-    # Records that are stubs (title == "Cached Item" or no isbn/author)
     stubs = {url: rec for url, rec in existing.items()
              if rec.get("title") == "Cached Item" or not (rec.get("isbn") or rec.get("author"))}
     print(f"Re-fetching {len(stubs)} TAAZE stub records…")
@@ -190,8 +223,7 @@ def _backfill_cached(delay: float = 0.5):
             resp = client.get(url)
             if resp.status_code != 200:
                 continue
-            cat = rec.get("category", "")
-            listing = spider._extract(resp.text, url, cat)
+            listing = spider._extract(resp.text, url)
             if listing and (listing.isbn or listing.author):
                 existing[url] = listing.to_dict()
                 enriched += 1
@@ -211,11 +243,11 @@ def _backfill_cached(delay: float = 0.5):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=50)
+    parser.add_argument("--limit", type=int, default=0, help="Max OIDs to scrape (0=all)")
     parser.add_argument("--backfill", action="store_true", help="Re-fetch stubs and extract data")
     parser.add_argument("--delay", type=float, default=0.5)
     args = parser.parse_args()
     if args.backfill:
         _backfill_cached(delay=args.delay)
     else:
-        TaazeSpider(limit_pages=args.limit).run()
+        TaazeSpider(limit=args.limit, delay=args.delay).run()

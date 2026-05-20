@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn, isbn_from_url
 
 
 class ReadersWarehouseSpider(BaseSpider):
@@ -20,7 +21,7 @@ class ReadersWarehouseSpider(BaseSpider):
     Browse paths probed at startup.  Pagination: WooCommerce /page/N/ then ?page=N.
     """
 
-    BASE_URL = "https://www.readerswarehouse.us"
+    BASE_URL = "https://www.readerswarehouse.co.za"
 
     BROWSE_CANDIDATES = [
         "/collections/all",
@@ -148,13 +149,15 @@ class ReadersWarehouseSpider(BaseSpider):
             soup = BeautifulSoup(resp.text, "html.parser")
             h1 = soup.find("h1")
             title = h1.get_text(strip=True) if h1 else "Cached Item"
+            isbn = isbn_from_url(url) or extract_isbn(soup)
 
             self.save_item(BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                isbn=isbn,
                 listing_url=url,
-                condition="Cached for AI extraction",
+                condition="New",
             ))
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")

@@ -39,7 +39,7 @@
 <meta name="twitter:image" content="https://image.yes24.com/goods/189116661/xl" />
 
 <meta property="books:isbn" content="9791124038413"/>
-<meta property="books:rating:value" content="0"/>
+<meta property="books:rating:value" content="10"/>
 <meta property="books:rating:scale" content="10"/>
 <meta property="books:rating:normalized_value" content="0"/>
 
@@ -56,7 +56,7 @@
 	<script type="text/javascript" charset="euc-kr" src="https://www.yes24.com/JavaScript/Yes_header.js?v=20250613"></script>
 	<script type="text/javascript" src="https://www.yes24.com/JavaScript/hiveSlide.js?v=20250618"></script>
 	<script type="text/javascript" src="https://image.yes24.com/static/common/jqueryExtendsPC.min.js?v=20250618"></script>
-	<script type="text/javascript" src="https://www.yes24.com/JavaScript/recentviewgoods.js?v=20260515"></script>
+	<script type="text/javascript" src="https://www.yes24.com/JavaScript/recentviewgoods.js?v=20260515_a"></script>
     <script type="text/javascript" src="https://image.yes24.com/static/common/bulletSearch.js?v=20260107"></script>
 	<script type="text/javascript" src="https://www.yes24.com/24/Scripts/YES24.Common-1.6.js?v=20251201"></script>
 	<script type="text/javascript" src="https://image.yes24.com/static/common/RedirectWebSiteList.min.js?v=20251111_1"></script>
@@ -181,6 +181,13 @@
         "numberOfPages": 402,
             "inLanguage": "ko-KR",
         "url": "https://www.yes24.com/product/goods/189116661",
+    "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 10.0,
+          "reviewCount": 2,
+          "bestRating": 10.0,
+          "worstRating": 0.0
+        },
     "author": {"@type":"Person","@id":"https://www.yes24.com/product/author/531131","url":"https://www.yes24.com/product/author/531131","name":"김진"},"creditText": "김진 저",        "publisher": {
             "@type":"Organization",
             "name":"북플레저"
@@ -1266,7 +1273,7 @@
     $(document).ready(function () {
         
 
-        var MEM_AGE = "SessionID:k3xzm3ki5nrujj0lk4askzin/MEM_ID:/MEM_NO:0/MEM_NM:/";
+        var MEM_AGE = "SessionID:nlspc4wobuar1d1la4dhqaiq/MEM_ID:/MEM_NO:0/MEM_NM:/";
     });
 </script>
 
@@ -2108,9 +2115,27 @@
 </span>
 
     <span class="gd_ratingArea">
+            <span id="spanGdRating" class="gd_rating">
+                <a href="javascript:void(0);" onclick="wiseLog('Pcode','003_005');goGD_bot(1);" class="gd_lnkRate"><span class="bgGD total_rating total_rating_10">리뷰 총점</span><em class="yes_b">10.0</em></a>
+                <span class="moreRatingArea">
+                    <span class="moreRatingBtn">
+                            <a href="javascript:void(0);" onclick="openToggle(this,$('.gd_infoTop'),event,'Pcode','003_005');" class="bgYUI">정보 더 보기/감추기</a>
+                    </span>
+                    <span class="moreRatingLi">
+                        <span class="moreRatingLiRow">
+                            <ul class="yesAlertLi">
+                                <li><em class="bl_dot bgYUI">&nbsp;</em>종이책 리뷰 (1건)</li>
+                                <li><em class="bl_dot bgYUI">&nbsp;</em>eBook 리뷰 (0건)</li>
+                                <li><em class="bl_dot bgYUI">&nbsp;</em>종이책 한줄평 (1건)</li>
+                                <li><em class="bl_dot bgYUI">&nbsp;</em>eBook 한줄평 (0건)</li>
+                            </ul>
+                        </span>
+                    </span>
+                </span>
+            </span>
 
             <span class="gd_reviewCount">
-                <a href="javascript:void(0);" onclick="fnFirstReview();">첫번째 리뷰어가 되어주세요.</a>
+                <a href="javascript:wiseLog('Pcode','003_006');goGD_bot(1);">회원리뷰(<em class="txC_blue">2</em>건)</a>
             </span>
                         <span class="gd_sellNum">
                     <em class="divi">|</em>
@@ -2334,12 +2359,12 @@
 
 <div id="deliveryInfo" class="gd_infoTb bdr_top">
     <script type="text/javascript" src="/Product/Scripts/Common/address_new.js?v=20250910"></script>
-        <table id="deliInfoWrap" summary="배송안내">
+        <table summary="배송안내_예약판매">
             <colgroup>
                 <col width="110">
                 <col width="*">
             </colgroup>
-            <caption>배송안내</caption>
+            <caption>배송안내_예약판매</caption>
             <tbody>
                 <tr>
                     <th scope="row">
@@ -2347,25 +2372,11 @@
                         <a href="https://www.yes24.com/notice/FirstClass/InfoQuickDlv.aspx" target="_blank" class="bgYUI ico_comm ico_go">바로가기</a>
                     </th>
                     <td>
-                        <p id="gdDeliAddr" class="gd_deliAddr"></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="gd_deliBoxGrp">
-                <div id="deliBoxWrap" class="gd_deliBox" style="display:none;">
-                    <div class="quickDeli_row" style="display:none;">
-                        <div class="quickDeli">
-                            <span class="qDeli_txt">저녁특급으로 주문하면 <br><strong class="txC_dBlue">오늘 받을 수 있어요!</strong></span>
-                            <span class="qDeli_btn"><a href="javascript:void(0);" onclick="$(this).closest('.quickDeli_row').hide();">닫기</a></span>
-                        </div>
-                    </div>
-                    
-                    <div id="deliveryDate" class="deliBox_row"></div>
-                    <input type="hidden" id="hdDeilveryDate" />
-                </div>
-            <ul id="deliFeeWrap" class="yesAlertLi">
-                <!-- 배송비 문구 영역 시작 -->
+                        <p class="gd_deliDate">
+                            5/18(월) 발송예정(예약판매)
+                        </p>
+                        <ul id="deliFeeWrap" class="gd_deliLi">
+                            <!-- 배송비 문구 영역 시작 -->
 
 
 
@@ -2374,290 +2385,13 @@
         <em class="bgYUI bl_dot">&nbsp;</em>배송비 : 무료
         <a href="javascript:void(0)" onclick="showGoodsDetailPopup('deliveryFee', this, true, 350);" class="bgYUI ico_comm ico_help">배송비 안내</a>
     </li>
-<!-- 배송정보 //-->                <!-- 배송비 문구 영역 끝 -->
-            </ul>
-        </div>
-        <input type="hidden" name="hdnDelvGap" id="hdnDelvGap" value="" />
-        <input type="hidden" id="hdnDelvText" value="" />
-        <script type="text/javascript">
-            // 도로명 사용 변수
-            var EventJson = null;
-            var doroCnt = 0;
-            var jibunCnt = 0;
-
-            // 도로명 / 지번 주소 선택시 마지막 선택값
-            var selectedAddrItem = null;
-            var isDetailFirstAlert = true;
-            var isDoro = false;
-            var _useSaseham = true;
-            var isUsedGoods = "False";
-            var isC2CUsedGoods = "False";
-            var isC2BUsedGoods = "False";
-            var goodsStateType = "01";
-            var saleWillDate = parseInt(1);
-            var isGoodsSale = "True";
-            var delvGb = "02";
-            var addrText = "서울특별시 영등포구 은행로 11(여의도동,일신빌딩)";
-            var partbookseq = "";
-            memRecentZipCd = "07237";
-
-            _isDevEnvironment = false;
-
-            $(document).ready(function () {
-                setExpectedDeliveryDateV2();    //V2 로 전환
-            });
-
-            // 배송예정일 조회(결제API 호출)
-            function setExpectedDeliveryDateV2() {
-                var goodsSeq = 1;
-                var ordCountList = $("*[name='ORD_GOODS_CNT']");
-                var goodsOptList = $("*[name='ORD_GOODS_OPT']");
-
-                if (goodsOptList.length > 0) {
-                    var goods = $.parseJSON($(goodsOptList[0]).val());
-                    goodsSeq = goods.goods_seq;
-                }
-
-                var goodsNo = goods_no;
-                // 분철일 경우
-                if ($("#optTotWrap div.gd_optRow[partbookyn='Y']").length > 0) {
-                    goodsNo = $("#optTotWrap div.gd_optRow[partbookyn='Y']").data().goodsno;
-                }
-
-                ordCount = $(ordCountList[0]).val();
-                var data = GetRequestData(goodsNo, goodsSeq, Number(ordCount));
-
-                // 배송예정일 API 조회 V2
-                checkDelvDateV2(data, function (isSuccess, result) {
-                    if (isSuccess) {
-                        var data = result[0];
-                        if (data.IsSuccess && data.DelvGap != undefined && data.DelvGap != null) {
-                            var delvGap = data.DelvGap;
-                            var deliBoxRowFullText = data.deliBoxRowFullText;
-                            var deliBoxRowText1 = data.deliBoxRowText1;     // 배송구분 값
-                            var deliBoxRowText2 = data.deliBoxRowText2;     // 아침/당일/하루배송 가능 시간표기 값
-                            var deliBoxRowText3 = data.deliBoxRowText3;     // 배송일자 표기 값
-                            var deliBoxRowText4 = data.deliBoxRowText4;     // 도착/출고예정 표기 값
-                            var dawnDelvYn = data.dawnDelvYn;               // 아침배송 여부
-                            var todayDelvYn = data.todayDelvYn;             // 당일배송 여부
-                            var tomorrowDelvYn = data.tomorrowDelvYn;       // 하루배송 여부
-                            var sundayDelvYn = data.sundayDelvYn;           // 일요배송 여부
-                            var normalDelvYn = data.normalDelvYn;           // 일반배송 여부
-                            var eveningExpressYn = data.eveningExpressYn;   // 저녁특급 여부
-                            var delvStartDate = (data.delvStartDate != null ? new Date(data.delvStartDate) : "");
-                            var delvEndDate = (data.delvEndDate != null ? new Date(data.delvEndDate) : "");
-                            var dawnDelvStartDate = "";
-                            var dawnDelvEndDate = "";
-                            $("#hdDeilveryDate").val(delvEndDate);
-
-                            if (dawnDelvYn == "Y") {
-                                dawnDelvStartDate = (data.dawnDelvStartDate != null ? new Date(data.dawnDelvStartDate) : "");
-                                dawnDelvEndDate = (data.dawnDelvEndDate != null ? new Date(data.dawnDelvEndDate) : "");
-                            }
-
-                            $('#hdnDelvText').val(deliBoxRowFullText);
-
-                            htmlGoodsDelivertyDateV2(delvGap, deliBoxRowText1, deliBoxRowText2, deliBoxRowText3, deliBoxRowText4
-                                , dawnDelvYn, todayDelvYn, tomorrowDelvYn, sundayDelvYn, normalDelvYn, delvStartDate, delvEndDate, dawnDelvStartDate, dawnDelvEndDate, eveningExpressYn);
-
-                            // 분철일 경우
-                            if ($("#optTotWrap div.gd_optRow[partbookyn='Y']").length > 0) {
-                                var obj = $("#optTotWrap div.gd_optRow[partbookyn='Y']");
-                                $.each(obj, function (i, data){
-                                    $(data).find("p").text(deliBoxRowFullText + ", 해외배송 및 환불/반품 불가");
-                                });
-                            }
-                        }
-                    }
-                });
-            }
-
-            // 미사용
-            function PostalCodeCheckWindowForDetail(url, obj, useSaseham) {
-                try {
-                    wiseLog('Pcode', '006_013');
-                } catch (e) { }
-
-                if (useSaseham != undefined && useSaseham != null) {
-                    _useSaseham = useSaseham
-                }
-
-                // 변수 초기화
-                isDetailFirstAlert = true;
-                isDoro = false;
-                $.yesPop('dPop_addr', obj, { posTChg: true, posTGap: Math.floor($('#gd_actions .gd_actionContGrp').offset().top - $('#gd_actions').offset().top), cock: true, mask: false, pWidth: 478, baseWidth: $('#yDetailTopWrap').width(), ajaxURL: url });
-            }
-
-            function goodsPageAddressPopupCallback(data) {
-                addrText = data.simpleDoro == '' ? data.simpleJibun : data.simpleDoro;
-                $("#gdDeliAddr .deli_addr").text(addrText); 
-                setExpectedDeliveryDateV2();
-            }
-
-            function deliDatePopup(obj, dawnYN) {
-                if (dawnYN == 'Y') {
-                    $("#dawnDelvDatePop").show();
-                    $("#delvDatePop").hide();
-
-                } else {
-                    $("#dawnDelvDatePop").hide();
-                    $("#delvDatePop").show();
-                }
-                $.yesPop('dPop_deliDate', obj, { posTChg: true, posTGap: Math.floor($('#gd_actions .gd_actionContGrp').offset().top - $('#gd_actions').offset().top), cock: true, mask: false, pWidth: 420, baseWidth: $('#yDetailTopWrap').width() });
-            }
-
-            /**
-             * 각 배송 조건별 배송 예정/도착일 정보 노출 V2
-             * @param delvGap {number} - 배송 지연일
-             * @param deliBoxRowText1 {string} - 배송구분 값
-             * @param deliBoxRowText2 {string} - 아침/당일/하루배송 가능 시간표기 값
-             * @param deliBoxRowText3 {string} - 배송일자 표기 값
-             * @param deliBoxRowText4 {string} - 도착/출고예정 표기 값
-             * @param dawnDelvYn {string} - 아침배송 여부
-             * @param todayDelvYn {string} - 당일배송 여부
-             * @param tomorrowDelvYn {string} - 하루배송 여부
-             * @param sundayDelvYn {string} - 일요배송 여부
-             * @param normalDelvYn {string} - 일반배송 여부
-             * @param delvStartDate {string}
-             * @param delvEndDate {string}
-             * @param dawnDelvStartDate {string}
-             * @param dawnDelvEndDate {string}
-             * @param eveningExpressYn {string}
-             */
-            function htmlGoodsDelivertyDateV2(delvGap, deliBoxRowText1, deliBoxRowText2, deliBoxRowText3, deliBoxRowText4
-                , dawnDelvYn, todayDelvYn, tomorrowDelvYn, sundayDelvYn, normalDelvYn, delvStartDate, delvEndDate, dawnDelvStartDate, dawnDelvEndDate, eveningExpressYn) {
-                var html = '';
-                var gdDeliAddr = '';
-                var delvMsg = '';
-
-                // 도착/출고일
-                const month_options = { month: 'numeric', day: 'numeric' };
-                const weekday_options = { weekday: 'short' };
-                var date = new Date();
-
-                if (isUsedGoods == "True" && isC2CUsedGoods == "True") { //중고
-                    var c2cUsedGoodsDeliveryGap = parseInt("0");
-                    date.setDate(date.getDate() + c2cUsedGoodsDeliveryGap);
-                    delvDate = date.toLocaleDateString('en-US', month_options) + ', ' + date.toLocaleDateString('ko-KR', weekday_options);
-
-                    html = html + "<span class=\"iconC ico_deliNor\"><em class=\"txt\">" + deliBoxRowText1 + "</em></span> ";
-                    html = html + " <a class=\"lnk_deli\" href=\"javascript:void(0);\" onclick=\"showGoodsDetailPopup('yesDeliGuide',this,true,378,3);\">";
-                    html = html + deliBoxRowText3 + "</a> " + deliBoxRowText4;
-                    html = html + " <a href=\"javascript:void(0);\" onclick=\"showGoodsDetailPopup('yesDeliGuide',this,true,378,3);\" class=\"bgYUI ico_comm ico_help\">출고예상일과 상품수령 안내</a>";
-
-                    delvMsg = "<li class=\"deli_etc\"><em class=\"bgYUI bl_dot\">&nbsp;</em>출고 이후 1~2일 이내 수령</li>";
-
-                    $('#deliveryDate').html('');
-                    $('#delvReadyStart').html('');
-                    $('#delvCompleteStart').html('');
-                    $('#delvEnd').html('');
-                    $('#hdnDelvGap').val(delvGap);
-                    $("#deliBoxWrap").show();
-                } else {
-                    if (goodsStateType == "01" && saleWillDate < 0) { //예약발송
-                        $('#gdDeliAddr').remove();
-                        var willdate = '5/15';
-                        var dayLabel = getInputDayLabel('2026-05-15');
-
-                        html = html + "<p class=\"gd_deliDate\">" + deliBoxRowText3 + " " + deliBoxRowText4 + "</p>";
-                        $('#hdnDelvGap').val(delvGap);
-                    } else if (isGoodsSale == "True") {
-                        date.setDate(date.getDate() + delvGap);
-                        delvDate = date.toLocaleDateString('en-US', month_options) + ', ' + date.toLocaleDateString('ko-KR', weekday_options);
-
-                        if (delvGb != "01") {
-                            if (addrText != '') {
-                                gdDeliAddr = gdDeliAddr + "<span class=\"deli_addr\">";
-                                gdDeliAddr = gdDeliAddr + addrText;
-                                gdDeliAddr = gdDeliAddr + "    <a href=\"javascript:void(0);\" onclick=\"PostalCodeCheckWindowCommon(this, goodsPageAddressPopupCallback, { Page: 'detail', UseSaseham: false, LogName: 'Pcode', LogNo: '006_013' });\" class=\"btn_addr txC_blue\">지역변경<em class=\"bgYUI ico_arr\"></em></a>"
-                                gdDeliAddr = gdDeliAddr + "</span>";
-                            }
-                        } else if (delvGb == "01") { 
-                            delvMsg += "<li class=\"deli_etc\"><em class=\"bgYUI bl_dot\">&nbsp;</em>출고 이후 1~2일 이내 수령</li>";
-                            delvMsg += "<li class=\"deli_etc\"><em class=\"bgYUI bl_dot\">&nbsp;</em>판매자가 설정한 날짜를 기준으로 출고예정일 정보를 제공하고 있습니다.</li>";
-                            delvMsg += "<li class=\"deli_etc\"><em class=\"bgYUI bl_dot\">&nbsp;</em>판매자의 사정으로 출고예정일이 변경되거나 상품이 품절될 수 있습니다.</li>";
-                        }
-
-                        if (isUsedGoods == "True" && isC2BUsedGoods == "True") { // PRJ-481 중고직배송 출고예정 -> 도착예정 노출로 변경
-                            html += '<span class="iconC ico_deliNor"><em class="txt">' + deliBoxRowText1 + '</em></span> ';
-                            html += '<strong class="txC_black">'
-                                + deliBoxRowText3
-                                + "</strong> " + deliBoxRowText4;
-                        } else if (dawnDelvYn == "Y" || todayDelvYn == "Y" || tomorrowDelvYn == "Y" || sundayDelvYn == "Y") {    // 아침/당일/하루/일욜배송일 경우
-                            var className = "";
-                            if (dawnDelvYn == "Y") {
-                                className = " ico_deliDawn";
-                            } else if (todayDelvYn == "Y") {
-                                className = " ico_deliShot";
-                            } else if (tomorrowDelvYn == "Y") {
-                                className = " ico_deliDay";
-                            } else if (sundayDelvYn == "Y") {
-                                className = " ico_deliSun";
-                            }
-                            html = '<span class="iconC' + className + '"><em class="txt">' + deliBoxRowText1 + '</em></span> ';
-                            html += '<span class="deli_des">' + deliBoxRowText2 + ' </span> ';
-                            html += '<strong class="txC_black">' + deliBoxRowText3 + '</strong> ' + deliBoxRowText4;
-                        } else {
-                            //일반배송일 경우
-                            html += "<span class=\"iconC ico_deliNor\"><em class=\"txt\">" + deliBoxRowText1 + "</em></span> ";
-                            if (deliBoxRowText2.trim() != "") {
-                                html += " <span class='deli_des'>" + deliBoxRowText2 + "</span> ";
-                            }
-                            //html += " <a class=\"lnk_deli\" href=\"javascript:void(0);\" onclick=\"deliDatePopup(this)\">";
-                            html += "<strong class=\"txC_black\">" + deliBoxRowText3 + "</strong> " + deliBoxRowText4;
-                            html += " <a href=\"javascript:void(0);\" onclick=\"showGoodsDetailPopup('yesDeliGuide',this,true,378,3);\" class=\"bgYUI ico_comm ico_help\">출고예상일과 상품수령 안내</a>";
-                        }
-
-                        $('#deliveryDate').html('');
-                        $('#delvReadyStart').html('');
-                        $('#delvCompleteStart').html('');
-                        $('#delvEnd').html('');
-                        var start = '';
-                        var end = '';
-                        var dawnstart = '';
-                        var dawnend = '';
-                        if (delvStartDate != '') {
-                            start = (delvStartDate.getMonth() + 1) + "/" + delvStartDate.getDate();
-                            end = (delvEndDate.getMonth() + 1) + "/" + delvEndDate.getDate();
-                        }
-                        if (dawnDelvStartDate != '') {
-                            dawnstart = (dawnDelvStartDate.getMonth() + 1) + "/" + dawnDelvStartDate.getDate();
-                            dawnend = (dawnDelvEndDate.getMonth() + 1) + "/" + dawnDelvEndDate.getDate() + " 아침 7시 전";
-                        }
-                        $(document).ready(function () {
-                            $('#delvReadyStart').html(start);
-                            $('#delvCompleteStart').html(start);
-                            $('#delvEnd').html(end);
-                            $('#hdnDelvGap').val(delvGap);
-
-                            $('#dawnDelvReadyStart').html(dawnstart);
-                            $('#dawnDelvCompleteStart').html(dawnstart);
-                            $('#dawnDelvEnd').html(dawnend);
-
-                            if (html.length > 0) {
-                                $("#deliBoxWrap").show();
-
-                                // 저녁특급 배너
-                                if (eveningExpressYn == 'Y') {
-                                    $(".quickDeli_row").show();    
-                                } else {
-                                    $(".quickDeli_row").hide();
-                                }
-                            } else {
-                                $("#deliBoxWrap").hide();
-                            }
-                        });
-                    }
-                }
-                $('#deliveryDate').html(html);
-                if (gdDeliAddr.length > 1) {
-                    $('#gdDeliAddr').html(gdDeliAddr);
-                } else {
-                    $('#deliInfoWrap').remove();
-                }
-                $('#deliFeeWrap').append(delvMsg);
-            }
-        </script>
+        <span class="deli_etc">예정일 이후 1~2일 이내 수령</span>
+<!-- 배송정보 //-->                            <!-- 배송비 문구 영역 끝 -->
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </div><!-- 배송일 안내 영역 끝 -->
 
 
@@ -3322,7 +3056,7 @@
         <div class="gd_tabBar">
             <ul class="tabBarLi">
                 <li class="tabOn"><a href="javascript:void(0);" onclick="wiseLog('Pcode', '011_001');goGD_bot(0);"><em class="txt_mnu">도서정보</em></a></li>
-                    <li><a href="javascript:void(0);" onclick="wiseLog('Pcode', '012_001');goGD_bot(1)"><em class="txt_mnu">리뷰/한줄평</em> <em class="txt_num" id="scroll_bar_count" data-review-count="0" data-onecomment-count="0">(0/0)</em></a></li>
+                    <li><a href="javascript:void(0);" onclick="wiseLog('Pcode', '012_001');goGD_bot(1)"><em class="txt_mnu">리뷰/한줄평</em> <em class="txt_num" id="scroll_bar_count" data-review-count="1" data-onecomment-count="1">(1/1)</em></a></li>
                 <li><a href="javascript:void(0);" onclick="wiseLog('Pcode', '013');goGD_bot(2)"><em class="txt_mnu">배송/반품/교환</em></a></li>
             </ul>
             <div class="tabBarBtn">
@@ -4398,7 +4132,7 @@
 
 <div id="infoset_reivew" class="gd_infoSet infoSet_noLine infoSet_review lazy">
     <div class="tm_infoSet">
-        <h4 class="tit_txt">회원리뷰 <em class="txt_des">(0건)</em></h4>
+        <h4 class="tit_txt">회원리뷰 <em class="txt_des">(1건)</em></h4>
         <span class="tit_cmt">
             매주 10건의 우수리뷰를 선정하여 YES포인트 3만원을 드립니다.<br>
             3,000원 이상 구매 후 리뷰 작성 시 <strong class="txC_black">일반회원 300원, 마니아회원 600원</strong>의 YES포인트를 드립니다. <br>
@@ -4411,12 +4145,325 @@
             <a href="javascript:void(0);" class="btnC m_size" onclick="wiseLog('Pcode', '012_002'); OpenReviewFormForDetail('',189116661);"><span class="bWrap"><em class="txt">리뷰쓰기</em><em class="bgYUI ico_arr"></em></span></a>
         </span>
     </div>
-        <div class="gd_noData noData">
-            <p class="txt_tit">등록된 리뷰가 없습니다.</p>
-            <p class="noData_cmt">
-                첫번째 리뷰어가 되어주세요.
-            </p>
+        <div id="infoset_reviewTop" class="gd_reviewTop noAge">
+
+
+
+<!-- ##### 별점 그래프 영역 시작 ##### -->
+<div class="review_starWrap">
+    <p class="gd_reviewTot"><em class="txC_blue">1</em>명의 예스24 회원이 평가한 평균별점</p>
+    <div class="gd_rating">
+        <span class="bgGD total_rating total_rating_10">리뷰 총점</span><em class="yes_b">10.0</em><em class="yes_m">/ 10.0</em>
+    </div>
+    <div id="ratingDetail" class="gd_ratingDetail">
+        
+    </div>
+</div>
+<!-- ##### 별점 그래프 영역 끝 ##### -->
+<!-- ##### 막대 & 연령 그래프 영역 시작 ##### -->
+<div class="review_graphTot">
+    <!-- ((((( 막대 그래프 영역 시작 ㅋ))))) -->
+    <div class="review_graphWrap graphLft">
+        <strong class="graph_tit">별점별로 리뷰를 확인해 보세요.</strong>
+        <div id="starChart" class="rvCmt_starChart">
+            <ul>
+                <li>
+                    <a href="javascript:void(0);" onclick="wiseLog('Pcode','012_003');getScoreReviewList(10,1);">
+                        <em class="bgGD total_rating total_rating_10">평점 9.0 ~ 10점</em>
+                        <span class="barGraphBase"><span class="barGraph innerTxt" style="width:100%;"><em class="barTxt yes_m">100%</em></span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="wiseLog('Pcode','012_003');getScoreReviewList(8,0);">
+                        <em class="bgGD total_rating total_rating_8">평점 7.0 ~ 8.0점</em>
+                        <span class="barGraphBase"><span class="barGraph" style="width:0%;"><em class="barTxt yes_m">0%</em></span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="wiseLog('Pcode','012_003');getScoreReviewList(6,0);">
+                        <em class="bgGD total_rating total_rating_6">평점 5.0 ~ 6.0점</em>
+                        <span class="barGraphBase"><span class="barGraph" style="width:0%;"><em class="barTxt yes_m">0%</em></span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="wiseLog('Pcode','012_003');getScoreReviewList(4,0);">
+                        <em class="bgGD total_rating total_rating_4">평점 3.0 ~ 4.0점</em>
+                        <span class="barGraphBase"><span class="barGraph" style="width:0%;"><em class="barTxt yes_m">0%</em></span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" onclick="wiseLog('Pcode','012_003');getScoreReviewList(2,0);">
+                        <em class="bgGD total_rating total_rating_2">평점 0.0 ~ 2.0점</em>
+                        <span class="barGraphBase"><span class="barGraph" style="width:0%;"><em class="barTxt yes_m">0%</em></span></span>
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
+    <!-- ((((( 막대 그래프 영역 끝 ))))) -->
+    <!-- ((((( 연령 그래프 영역 시작 ))))) -->
+    <!-- ((((( 연령 그래프 영역 끝 ))))) -->
+</div>
+<!-- ##### 막대 & 연령 그래프 영역 끝 ##### -->
+
+        </div>
+
+
+        <div class="yesTab_nor b_size tab_4col" id="infoset_reviewTab">
+            <ul>
+                <li class="on firstCol" id="total" data-review-count="1"><a href="javascript:void(0);" onclick="wiseLog('Pcode','012_004_001');changeReviewTp(this)"><span class="txt">전체 리뷰 <em class="fwN" id="emReviewCountText">(1)</em></span></a></li>
+                <li class="" id="purchase" data-review-count="1"><a href="javascript:void(0);" onclick="wiseLog('Pcode','012_008_001');changeReviewTp(this)"><span class="txt">구매 리뷰 <em class="fwN" id="emPurchaseReviewCountText">(1)</em></span></a></li>
+                <li class="" id="photo" data-review-count="0"><a href="javascript:void(0);" onclick="wiseLog('Pcode','012_005_001');changeReviewTp(this)"><span class="txt">포토/동영상 리뷰 <em class="fwN" id="emPhotoReviewCountText">(0)</em></span></a></li>
+                <li class=" lastCol" id="sarak" data-review-count="0"><a href="javascript:void(0);" onclick="wiseLog('Pcode','012_006_001');changeReviewTp(this)"><span class="txt">이달의 사락 리뷰 <em class="fwN" id="emSarakReviewCountText">(0)</em></span></a></li>
+            </ul>
+        </div>
+        <div id="score_reivew_result" class="reviewRow_sorting" style="display:none">
+            <div class="sorting_txt"><strong id="score_text"></strong> 검색결과 <strong id="current_score_count"></strong></div>
+            <a href="javascript:void(0);" class="sorting_del" onclick="fnCloseSortReview()"><em class="bgYUI">정렬 초기화</em></a>
+        </div>
+        <div id="infoset_reviewContentList" class="infoSetCont_wrap reviewRow_cont tp_tab yesComLoadingArea" style="height:300px">
+            <div id="yesComLoading"></div>
+        </div>
+        <input type="hidden" id="hdnStartScore" />
+        <input type="hidden" id="hdnEndScore" />
+        <input type="hidden" id="hdnScoreYn" />
+        <script>
+            var g_GoodsGb = "01";
+            var _ReviewCount = "1";
+            var dojungAfterBuy = 0;
+
+            var getCookieReviewSortTp = function () {
+                var sort_tp = 2;
+
+                if (getCookie("LAST_REVIEW_TAB") != '') {   //최근 사용한 정렬 조건 조회
+                    sort_tp = getCookie("LAST_REVIEW_TAB");
+                }
+
+                return sort_tp;
+            }
+
+            //별점별 검색결과 상단닫기
+            function fnCloseSortReview() {
+                var sort_tp = getCookieReviewSortTp();
+
+                $('#infoset_reviewContentList').lazyloadHtml("/Product/communityModules/GoodsReviewList/189116661?goodsSetYn=N&Sort="+sort_tp+"&PageNumber=1&Type=ALL",false);
+                $("#infoset_reviewTab").attr("class", "yesTab_nor b_size tab_4col");
+                $("#total").attr("class","on firstCol");
+                $("#score_reivew_result").hide();
+                $("#hdnScoreYn").val("N");
+
+                $("#infoset_photoReviewTop").removeClass("yesTab_nor_hide");
+
+                //리뷰목록 조건 초기화 바인딩
+            }
+
+            //현재탭 조회
+            function getReviewTp(current_tab_id) {
+                var review_tp = "";
+                switch (current_tab_id) {
+                    case "total": review_tp = "ALL"; break;
+                    case "photo": review_tp = "Photo"; break;
+                    case "star": review_tp = "Star"; break;
+                    case "purchase": review_tp = "Purchase"; break;
+                    case "sarak": review_tp = "Sarak"; break;
+                    default: review_tp = "ALL"; break;
+                }
+                return review_tp;
+            }
+
+            //리뷰 정렬조건별 sort_tp
+            var getSortTp = function (current_sorting_id) {
+                var sort_tp = "";
+                switch (current_sorting_id)
+                {
+                    case "review_recent": sort_tp = 1; break;
+                    case "review_recommend": sort_tp = 2; break;
+                    case "review_star_score": sort_tp = 3; break;
+                    default: sort_tp = 1; break;
+                }
+                return sort_tp;
+            }
+
+            //리뷰종류 변경
+            function changeReviewTp(sender) {
+                var current_tab_id = $(sender).parent().attr("id");
+
+                setReviewTpList(current_tab_id, true);
+            }
+
+            //리뷰 조회
+            function setReviewTpList(reviewTabId, isScroll) {
+                $("#" + reviewTabId).siblings().removeClass("on");
+                $("#" + reviewTabId).addClass("on");
+
+                var review_tp = getReviewTp(reviewTabId);
+
+                var check_dojung = 0;
+                var event_tp = "change_review_tp";
+                var sort_tp = getCookieReviewSortTp();
+
+                if (reviewTabId == "purchase") {
+                    check_dojung = 1;
+                }
+
+                goodsReview(event_tp, sort_tp, review_tp, 0, 0, check_dojung);
+
+                if (isScroll) {
+                    var gdreviewTab = $("#infoset_reviewTab");
+                    $("html, body").stop().animate({ scrollTop: gdreviewTab.offset().top - 101 }, 300, 'easeInOutQuart');
+                }
+            }
+
+            //별점별 리뷰 목록 조회
+            function getScoreReviewList(end_score, review_count) {
+                var event_tp = "score_reivew";
+                var current_tab_id = $("#infoset_reviewTab").find(".on").attr("id");
+                var review_tp = getReviewTp(current_tab_id);
+                var check_dojung = 0;
+                var sort_tp = getCookieReviewSortTp();
+
+                score_review_tp = end_score;
+                score_review_count = review_count;
+
+                if($("#chkOrderReviewForReview")[0] != null && $("#chkOrderReviewForReview")[0] != undefined && ($("#chkOrderReviewForReview")[0].checked == true || $("#chkOrderReviewForReview")[0].checked == "checked"))
+                {
+                    check_dojung = 1;
+                }
+
+                goodsReview(event_tp, sort_tp, review_tp, end_score, review_count, check_dojung);
+
+                var score_text = "";
+                var review_count_text = review_count + "건";
+                switch (end_score) {
+                    case 10: score_text = "별 5개(8.1 ~ 10.0점)"; break;
+                    case 8: score_text = "별 4개(6.1 ~ 8.0점)"; break;
+                    case 6: score_text = "별 3개(4.1 ~ 6.0점)"; break;
+                    case 4: score_text = "별 2개(2.1 ~ 4.0점)"; break;
+                    case 2: score_text = "별 1개(0.0 ~ 2.0점)"; break;
+                }
+
+                $("#score_text").text(score_text);
+                $("#current_score_count").text(review_count_text);
+
+                //소정렬 영역 초기화(최근순 정렬 적용)
+                $("#infoset_reviewTab").find(".on").removeClass("on");
+                $("#review_recent").addClass("on");
+
+                //탭 영역 감춤
+                $("#infoset_reviewTab").attr("class", "yesTab_nor_hide b_size tab_3col");
+                $("#score_reivew_result").show();
+                $("#hdnScoreYn").val("Y");
+                $("#infoset_photoReviewTop").addClass("yesTab_nor_hide");
+
+                //포커스 이동
+                var gdreviewStar = $("#score_reivew_result");
+                $("html, body").stop().animate({ scrollTop: gdreviewStar.offset().top - 101 }, 300, 'easeInOutQuart');
+            }
+
+            //리뷰 목록 조회
+            var goodsReview = (function () {
+                var currentPage = 0;                        //페이징을 위한 현재 페이지 정보
+                var last_event_tp = "", last_end_score = 0; //별점별 리뷰조회를 위한 이전 검색 정보
+
+                //현재 페이지 번호 설정
+                function setCurrentPageNo(event_tp) {
+                    if (event_tp == "change_page" || event_tp == undefined) {
+                        currentPage++;
+                    }
+                    else if (event_tp == "change_sort_tp" || event_tp == "change_review_tp" || event_tp == "score_reivew" || event_tp == "check_review_tp") {
+                        currentPage = 1;
+                    }
+                }
+
+                //이전 별점별 조회 정보 초기화(탭 변경 시, 별점별 조회 조건 제거)
+                function setInitializeScore(event_tp) {
+                    if (event_tp == "change_review_tp") {
+                        last_event_tp = "";
+                        last_end_score = "";
+                    }
+                }
+
+                return function (event_tp, sort_tp, review_tp, review_score, review_score_count, check_dojung) {
+                    if (_ReviewCount > 0) {
+                        var actionUri = "";
+
+                        //현재 페이지 번호 설정
+                        setCurrentPageNo(event_tp);
+
+                        //이전 별점별 조회 정보 초기화
+                        setInitializeScore(event_tp);
+
+                        //별점별 리뷰 목록 조회
+                        if (event_tp == "score_reivew" || last_event_tp == "score_reivew" || $("#score_reivew_result").css("display") != "none") {
+                            var end_score = review_score || last_end_score;
+                            var start_score = parseInt(end_score) - 1;
+
+                            //별점별 리뷰 목록 조회는 전체 리뷰를 대상으로만 함
+                            review_tp = "ALL";
+                            actionUri = '/Product/CommunityModules/GoodsScoreReviewList/189116661?goodsSortNo=001014&resourceKeyGb=01&goodsStateGb=01&goodsSetYn=N' + '&start_score=' + start_score + '&end_score=' + end_score + "&goodsGb=" + g_GoodsGb+"&ScoreYn=Y";
+                            last_event_tp = event_tp;
+                            last_end_score = end_score;
+                            $("#hdnStartScore").val(start_score);
+                            $("#hdnEndScore").val(end_score);
+                            $("#hdnScoreYn").val("Y");
+                        }
+                        else {
+                            actionUri = '/Product/CommunityModules/GoodsReviewList/189116661?goodsSortNo=001014&resourceKeyGb=01&goodsStateGb=01&goodsSetYn=N' + "&goodsGb=" + g_GoodsGb;
+                            $("#hdnScoreYn").val("N");
+                        }
+
+                        //$('#infoset_reviewContentList').html('');
+                        loadingShow('infoset_reviewContentList');
+                        loadItem('infoset_reviewContentList', actionUri + "&goodsSetYn=N&Sort=" + sort_tp + "&PageNumber=" + currentPage + "&Type=" + review_tp + "&DojungAfterBuy=" + check_dojung);
+                    }
+                };
+                })();
+
+            function loadPhotoReviewTop() {
+                var goodsNo = '189116661';
+                var loadHtml = "/Product/communityModules/PhotoReviewTop/" + goodsNo;
+
+                $.get(loadHtml, function (data) {
+                    var wrap = $("#infoset_reviewTab");
+
+                    if ($('#infoset_photoReviewTop').length > 0) {
+                        $('#infoset_photoReviewTop').remove();
+                    }
+
+                    var targetElement = $(data).filter('#infoset_photoReviewTop').clone().wrapAll("<div/>").parent().html();
+
+                    if (targetElement) {
+                        $(targetElement).insertBefore(wrap);
+                    }
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    console.error("Error loading content: " + textStatus, errorThrown);
+                });
+            }
+
+            function reviewDataLoad() {
+                var sort_tp = getCookieReviewSortTp();
+                var review_tp = "ALL";
+                var loadHtml = "/Product/communityModules/GoodsReviewList/189116661?goodsSetYn=N&Sort=" + sort_tp + "&PageNumber=1";
+                var isLazy = false;
+
+                    
+                loadHtml += "&DojungAfterBuy=1";
+                review_tp = "Purchase";
+
+                $("#purchase").siblings().removeClass("on");
+                $("#purchase").addClass("on");
+
+                    
+
+                loadHtml += "&Type=" + review_tp;
+
+
+                $('#infoset_reviewContentList').lazyloadHtml(loadHtml, isLazy);
+            }
+
+            $(document).ready(function () {
+            });
+        </script>
 
     
     <script>
@@ -4443,6 +4490,10 @@
                                 if (entryTarget.id == "infoset_reivew") {
                                     if (entryTarget.classList.contains("lazy")) {
                                         entryTarget.classList.remove("lazy");
+                                            
+                                        reviewDataLoad();
+                                        loadPhotoReviewTop();
+                                            
                                                                             }
                                 }
                             }
@@ -4461,7 +4512,7 @@
 
 <div id="infoset_rvCmt" class="gd_infoSet infoSet_noLine infoSet_rvCmt lazy">
     <div class="tm_infoSet">
-        <h4 class="tit_txt">한줄평 <em class="txt_des" id="txtOneCommentCount">(0건)</em></h4>
+        <h4 class="tit_txt">한줄평 <em class="txt_des" id="txtOneCommentCount">(1건)</em></h4>
         <span class="tit_cmt">
             1,000원 이상 구매 후 한줄평 작성 시 <strong class="txC_black">일반회원 50원, 마니아회원 100원</strong>의 YES포인트를 드립니다. <br>
             eBook은 다운로드 후 작성한 리뷰만 YES포인트 지급됩니다.<br/>클래스는 첫번째 회차 주문확정 시점부터 마지막 회차 주문확정 후 30일 이내 작성한 한줄평만 포인트가 지급됩니다.<br/>eBook 페이백, CD/LP, DVD/Blu-ray, 패션 및 판매금지 상품, 예스24 앱스토어 상품 제외됩니다.
@@ -4497,15 +4548,11 @@
         </div>
     </div>
     
-        <div class="gd_noData noData" id="infoset_oneCommentNoData">
-            <p class="txt_tit">등록된 한줄평이 없습니다.</p>
-            <p class="noData_cmt">
-                첫번째 한줄평을 남겨주세요.
-            </p>
+        <div id="infoset_oneCommentList" class="infoSetCont_wrap rvCmtRow_cont clearfix yesComLoadingArea" style="height:300px">
+            <div id="yesComLoading"></div>
         </div>
-        <div id="infoset_oneCommentList"></div>
 <script type="text/javascript">
-        var totalCount = 0;
+        var totalCount = 1;
 
         var getCookieOneCommentSortTp = function () {
             var sort_tp = 2;
@@ -5389,8 +5436,8 @@
                 sale: parseInt(g_GoodsSalePrice),
                 shop: parseInt(g_GoodsShopPrice),
                 point: parseInt('1250'),
-                reviewCount: parseInt('0'),
-                commentCount: parseInt('0'),
+                reviewCount: parseInt('1'),
+                commentCount: parseInt('1'),
                 userGoodsDelvFee: parseInt('0'),
                 delvFee: parseInt(getDelvFee($("#deliFeeWrap li").text())),
             }
@@ -5828,7 +5875,7 @@
                     <area shape="rect" coords="1070,0,1185,88" href="javascript:void(0);" onclick="javascript:markPopupE('2025-EP-R046');" alt="개인정보보호 우수사이트" />
                 </map>
             </div>
-            <div style="position:relative;text-align:left;"><div style="position:absolute;left:50%;top:-20px;color:#dfdfdf;">ATOM</div></div>
+            <div style="position:relative;text-align:left;"><div style="position:absolute;left:50%;top:-20px;color:#dfdfdf;">EQUUS7</div></div>
         </div>
     </div>
     <!-- ########## FOOTER 영역 끝 ########## -->
