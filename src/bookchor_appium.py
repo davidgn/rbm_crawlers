@@ -8,58 +8,64 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger(__name__)
 
 class BookChorAppiumSpider:
-    def __init__(self, apk_path: str):
-        self.apk_path = apk_path
+    def __init__(self, search_query="Harry Potter"):
+        self.username = "davidnye_TwjsmA"
+        self.access_key = "YfPzTnzsNAK8XiPUwguz"
+        self.app_url = "bs://fa0f487aab29be15e1ad9de1e141e2c8db257b94"
+        
         self.options = UiAutomator2Options()
-        self.options.platform_name = 'Android'
-        self.options.automation_name = 'UiAutomator2'
-        self.options.device_name = 'test_avd'
-        self.options.app = self.apk_path
-        self.options.app_package = 'booksfortune.bookchor'
-        self.options.app_activity = 'com.bookchor.MainActivity' # Adjust if different
-        self.options.no_reset = False
+        self.options.platform_name = 'android'
+        self.options.device_name = 'Samsung Galaxy S8'
+        self.options.platform_version = '7.0'
+        self.options.set_capability('app', self.app_url)
+        self.options.set_capability('project', 'RBM India Fleet')
+        self.options.set_capability('build', 'BookChor Cloud Scrape')
+        self.options.set_capability('name', f'Search: {search_query}')
+        
+        self.hub_url = f'http://{self.username}:{self.access_key}@hub-cloud.browserstack.com/wd/hub'
         self.driver = None
 
     def run(self, search_query="Harry Potter"):
-        logger.info("Initializing Appium driver...")
+        logger.info(f"Connecting to BrowserStack Hub for '{search_query}'...")
         try:
-            self.driver = webdriver.Remote('http://127.0.0.1:4723', options=self.options)
-            logger.info("App launched successfully.")
+            self.driver = webdriver.Remote(self.hub_url, options=self.options)
+            logger.info("Session started on BrowserStack.")
             
-            # Wait for app to load and dismiss any tutorials/popups
-            time.sleep(5)
+            # The app is Flutter, so standard Android IDs might not work well.
+            # We'll try common Flutter accessibility labels or generic XPath first.
+            time.sleep(10) # Heavy wait for Flutter engine to warm up
             
-            # Find and click the search bar
-            logger.info(f"Searching for '{search_query}'...")
-            search_icon = self.driver.find_element(AppiumBy.ID, "booksfortune.bookchor:id/action_search")
-            search_icon.click()
-            time.sleep(1)
+            # 1. Try to find search bar (BookChor specific)
+            # In Flutter, we often have to find by description/text if IDs aren't exposed
+            logger.info("Looking for search input...")
             
-            search_input = self.driver.find_element(AppiumBy.ID, "booksfortune.bookchor:id/search_src_text")
-            search_input.send_keys(search_query)
+            # This is a guestimating implementation based on common Flutter patterns
+            # Real production usage would require using Appium's Flutter Driver
+            # or inspecting the app with BrowserStack's UI Inspector.
+            try:
+                # Common pattern: a magnifying glass icon
+                search_btn = self.driver.find_element(AppiumBy.ACCESSIBILITY_ID, "Search")
+                search_btn.click()
+                time.sleep(2)
+            except:
+                logger.warning("Accessibility ID 'Search' not found, trying generic search interaction.")
+
+            # Fallback to coordinate-based or key-event if UI mapping fails
+            # For this deep-drill, let's try to grab the page source to see what's visible
+            source = self.driver.page_source
+            with open("bookchor_app_source.xml", "w") as f:
+                f.write(source)
+            logger.info("Dumped app UI source to bookchor_app_source.xml")
             
-            # Press enter/search on keyboard
-            self.driver.press_keycode(66) # KEYCODE_ENTER
-            time.sleep(5) # Wait for results
-            
-            # Extract results
-            results = self.driver.find_elements(AppiumBy.ID, "booksfortune.bookchor:id/book_title")
-            prices = self.driver.find_elements(AppiumBy.ID, "booksfortune.bookchor:id/book_price")
-            
-            logger.info(f"Found {len(results)} items on first page.")
-            for i in range(len(results)):
-                title = results[i].text
-                price = prices[i].text if i < len(prices) else "N/A"
-                logger.info(f"Scraped -> Title: {title} | Price: {price}")
-                
         except Exception as e:
-            logger.error(f"Appium automation failed: {e}")
+            logger.error(f"BrowserStack automation failed: {e}")
         finally:
             if self.driver:
                 self.driver.quit()
-                logger.info("Driver quit.")
+                logger.info("Session closed.")
+
 
 if __name__ == "__main__":
-    # Assumes Appium server is running on localhost:4723 and an AVD is active
-    spider = BookChorAppiumSpider(apk_path="/home/davidgn/bookchor.apk")
+    # Runs the spider on BrowserStack App Automate
+    spider = BookChorAppiumSpider()
     spider.run()
