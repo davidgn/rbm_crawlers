@@ -3,10 +3,12 @@ import json
 import os
 import random
 import time
+import sqlite3
 from datetime import datetime, timezone
 from pathlib import Path
 from models import BookListing
 from ai_extractor import deep_extract
+from playwright.sync_api import sync_playwright
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 
@@ -23,12 +25,16 @@ class BaseSpider:
         self.output_dir = base_path / "data"
         self.cache_dir = base_path / "cache" / self.platform_name.lower().replace('.', '_')
         
+        # Master DB path for harmonization
+        self.master_db_path = "/home/davidgn/active_repos/unipress-parser-crawler-family/scripts/session_artifacts/home_operational_residue_2026-04-22/db/unipress_site_definitions.db"
+        
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         
         self.output_file = self.output_dir / f"{self.platform_name.lower().replace('.', '_')}_listings.jsonl"
         self.items_scraped = 0
         self._seen_urls: set[str] = self._load_seen_urls()
+        
         self.user_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -36,7 +42,7 @@ class BaseSpider:
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edge/123.0.2420.81",
             "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1"
         ]
-        
+
     def get_random_headers(self):
         """Generate randomized browser headers to mimic different clients."""
         ua = random.choice(self.user_agents)
@@ -49,6 +55,23 @@ class BaseSpider:
         }
         return headers
 
+    def lookup_qid(self, name: str) -> str:
+        """Lookup a Wikidata QID from the master site definitions database."""
+        if not os.path.exists(self.master_db_path):
+            return None
+            
+        try:
+            conn = sqlite3.connect(self.master_db_path)
+            cursor = conn.cursor()
+            # Try exact match on name or slug
+            cursor.execute("SELECT wikidata_qid FROM site_definitions WHERE name = ? OR slug = ? LIMIT 1", (name, name.lower().replace(' ', '-')))
+            res = cursor.fetchone()
+            conn.close()
+            return res[0] if res else None
+        except Exception as e:
+            self.logger.error(f"Failed to lookup QID for {name}: {e}")
+            return None
+
     def _load_seen_urls(self) -> set[str]:
         seen: set[str] = set()
         if not self.output_file.exists():
@@ -56,58 +79,36 @@ class BaseSpider:
         with open(self.output_file, encoding="utf-8") as fh:
             for line in fh:
                 line = line.strip()
-                if not line:
-                    continue
+                if not line: continue
                 try:
                     url = json.loads(line).get("listing_url") or ""
-                    if url:
-                        seen.add(url)
-                except Exception:
-                    pass
+                    if url: seen.add(url)
+                except Exception: pass
         if seen:
             self.logger.info("Restart-safe: pre-loaded %d existing URLs from %s", len(seen), self.output_file.name)
         return seen
 
     def save_item(self, item: BookListing):
-        """Append an item to the JSON Lines file, skipping duplicates by listing_url."""
+        """Append an item to the JSON Lines file, skipping duplicates."""
         url = item.listing_url or ""
         if url and url in self._seen_urls:
             return
+        
+        # Harmonization: Attempt to enrich with QID if missing
+        if not getattr(item, 'qid', None):
+            # If the platform itself is a publisher, we might find its QID
+            item.qid = self.lookup_qid(self.platform_name)
+
         with open(self.output_file, 'a', encoding='utf-8') as f:
             f.write(json.dumps(item.to_dict()) + '\n')
-        if url:
-            self._seen_urls.add(url)
-        self.items_scraped += 1
-
-    def cache_html(self, item_id: str, html_content: str, url: str | None = None):
-        """Save raw HTML to cache for batch processing.
-
-        If *url* is provided a sidecar ``{item_id}.meta.json`` is written
-        alongside the HTML so the batch processor can reconstruct the
-        listing URL without relying on AI extraction.
-        """
-        cache_file = self.cache_dir / f"{item_id}.html"
-        with open(cache_file, 'w', encoding='utf-8') as f:
-            f.write(html_content)
-        if url:
-            meta = {
-                "listing_url": url,
-                "platform": self.platform_name,
-                "territory": self.territory,
-                "scraped_at": datetime.now(timezone.utc).isoformat(),
-            }
-            meta_file = self.cache_dir / f"{item_id}.meta.json"
-            with open(meta_file, 'w', encoding='utf-8') as f:
-                json.dump(meta, f, ensure_ascii=False)
-        return cache_file
         
-    def random_delay(self, min_s=1, max_s=3):
-        time.sleep(random.uniform(min_s, max_s))
+        if url: self._seen_urls.add(url)
+        self.items_scraped += 1
 
     def get_playwright_stealth_config(self, playwright):
         """Standard stealth configuration for Playwright."""
         browser = playwright.chromium.launch(
-            headless=True, 
+            headless=False, 
             args=["--disable-blink-features=AutomationControlled"]
         )
         context = browser.new_context(
@@ -115,10 +116,6 @@ class BaseSpider:
             viewport={'width': 1920, 'height': 1080}
         )
         return browser, context
-
-    def ai_enrich(self, html_content):
-        """Use the bibliographic-parser AI subagent to enrich/extract data."""
-        return deep_extract(html_content)
 
     def run(self):
         """Main execution method. Should be overridden by subclasses."""
