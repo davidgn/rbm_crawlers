@@ -19,6 +19,7 @@ class BookListing(BaseModel):
     category: Optional[str] = Field(None, description="The category or genre of the book.")
     condition: Optional[str] = Field(None, description="The physical condition of the book.")
     price: Optional[str] = Field(None, description="The price of the book (with currency).")
+    qid: Optional[str] = Field(None, description="The Wikidata QID of the publisher or entity.")
     listing_url: str = Field(description="The canonical URL of the listing.")
     timestamp: datetime = Field(default_factory=datetime.utcnow, description="Time of extraction.")
     seller_comments: Optional[str] = Field(None, description="Additional notes from the seller.")
