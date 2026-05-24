@@ -104,17 +104,25 @@ def z3950_query(title: str, author: str = "") -> str:
         "show 1+5\n"
         "quit\n"
     )
-    try:
-        result = subprocess.run(
-            ["yaz-client"],
-            input=batch.encode("utf-8"),
-            capture_output=True,
-            timeout=45,
-        )
-        return result.stdout.decode("utf-8", errors="replace")
-    except Exception as e:
-        print(f"  yaz-client error: {e}")
-        return ""
+    for attempt in range(2):
+        try:
+            result = subprocess.run(
+                ["yaz-client"],
+                input=batch.encode("utf-8"),
+                capture_output=True,
+                timeout=45,
+            )
+            return result.stdout.decode("utf-8", errors="replace")
+        except subprocess.TimeoutExpired:
+            if attempt == 0:
+                time.sleep(3)
+                continue
+            print(f"  yaz-client timeout (skipping)")
+            return ""
+        except Exception as e:
+            print(f"  yaz-client error: {e}")
+            return ""
+    return ""
 
 
 def parse_marc_records(output: str) -> list[dict]:
