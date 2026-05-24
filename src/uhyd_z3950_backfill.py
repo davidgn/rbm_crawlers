@@ -20,6 +20,8 @@ import sys
 import time
 from pathlib import Path
 
+import zstandard
+
 sys.stdout.reconfigure(line_buffering=True)
 
 DATA_DIR = Path("data")
@@ -36,6 +38,19 @@ UHYD_HOST = "igmlnet.uohyd.ac.in:1111/Default"
 ISBN13_RE = re.compile(r"97[89][0-9]{10}")
 YEAR_RE   = re.compile(r"\b(1[89]\d{2}|20\d{2})\b")
 INDIAN_SCRIPT_RE = re.compile(r"[ऀ-ॿ઀-૿଀-୿ఀ-౿ಀ-೿ഀ-ൿ฀-๿؀-ۿ]")
+
+def read_jsonl(path: Path) -> list[dict]:
+    zst = path.with_suffix(path.suffix + ".zst")
+    if not path.exists() and zst.exists():
+        path = zst
+    if path.suffix == ".zst":
+        dctx = zstandard.ZstdDecompressor()
+        raw = dctx.decompress(path.read_bytes(), max_output_size=2 << 30)
+        lines = raw.decode("utf-8").splitlines()
+    else:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    return [json.loads(l) for l in lines if l.strip()]
+
 
 # ── text helpers ──────────────────────────────────────────────────────────────
 
@@ -181,6 +196,10 @@ def is_eligible(rec: dict) -> bool:
         return False
     if INDIAN_SCRIPT_RE.search(title + author):
         return False
+    # Skip titles too short to produce useful Z39.50 results without flooding
+    # the server with huge result sets (e.g. "geography", "Rd sharma", "disha")
+    if len(title) < 15 or len(title.split()) < 3:
+        return False
     return True
 
 
@@ -202,9 +221,10 @@ def main():
 
     for fname in TARGET_FILES:
         fpath = DATA_DIR / fname
-        if not fpath.exists():
+        zst = fpath.with_suffix(fpath.suffix + ".zst")
+        if not fpath.exists() and not zst.exists():
             continue
-        records = [json.loads(l) for l in fpath.read_text(encoding="utf-8").splitlines() if l.strip()]
+        records = read_jsonl(fpath)
         file_records[str(fpath)] = records
         eligible = [r for r in records if is_eligible(r)]
         if eligible:
