@@ -10,8 +10,8 @@ class HTMLSearchSpider(BaseSpider):
     """
     A generic spider for Indian bookstores that parses HTML search result pages.
     """
-    def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict, limit_pages: int = 10):
-        super().__init__(platform_name=platform_name, territory="India")
+    def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict, territory: str = "India", limit_pages: int = 10):
+        super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url.rstrip("/")
         self.search_path = search_path
         self.selectors = selectors

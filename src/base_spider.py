@@ -117,6 +117,16 @@ class BaseSpider:
         )
         return browser, context
 
+    def cache_html(self, item_id: str, html: str, url: str = None):
+        """Cache raw HTML content to the platform's cache directory."""
+        filename = f"{item_id}.html"
+        cache_path = self.cache_dir / filename
+        try:
+            with open(cache_path, "w", encoding="utf-8") as f:
+                f.write(html)
+        except Exception as e:
+            self.logger.error(f"Failed to cache HTML for {item_id}: {e}")
+
     def run(self):
         """Main execution method. Should be overridden by subclasses."""
         raise NotImplementedError("Subclasses must implement run()")
