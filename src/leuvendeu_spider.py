@@ -1,15 +1,25 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="LeuVendeu",
-    territory="Brazil",
-    base_url="https://leuvendeu.com.br",
-    browse_paths=("/home/", "/?s=livro&post_type=product", "/loja"),
-    detail_signals=("/livro/", "/product/", "/produto/"),
-    headers={"Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8"},
-)
-
+class LeuvendeuSpider(HTMLSearchSpider):
+    """
+    Spider for LeuVendeu (Brazil).
+    A marketplace for used books.
+    """
+    def __init__(self, limit_pages: int = 50):
+        super().__init__(
+            platform_name="LeuVendeu",
+            base_url="https://leuvendeu.com.br",
+            search_path="livro/busca/?q={query}",
+            selectors={
+                'container': 'div.product__item, .product-item', 
+                'title': '.product__item__info-title, .title',
+                'link': 'a',
+                'price': '.product__item-price, .price',
+            },
+            limit_pages=limit_pages
+        )
+        self.territory = "Brazil"
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "LeuVendeu Brazil spider")
+    spider = LeuvendeuSpider(limit_pages=1)
+    spider.run()
