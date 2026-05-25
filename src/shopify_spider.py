@@ -8,8 +8,8 @@ class ShopifyAPISpider(BaseSpider):
     A generic spider for Indian bookstores built on Shopify that have the 
     /products.json endpoint exposed.
     """
-    def __init__(self, platform_name: str, base_url: str, limit_pages: int = 10):
-        super().__init__(platform_name=platform_name, territory="India")
+    def __init__(self, platform_name: str, base_url: str, territory: str = "India", limit_pages: int = 10):
+        super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url.rstrip("/")
         self.api_endpoint = f"{self.base_url}/products.json"
         self.limit_pages = limit_pages
