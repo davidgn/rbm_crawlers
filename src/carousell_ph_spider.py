@@ -5,10 +5,10 @@ CONFIG = MarketplaceConfig(
     platform_name="Carousell Philippines Books",
     territory="Philippines",
     base_url="https://www.carousell.ph",
-    browse_paths=("/categories/hobbies-toys-5136/books-magazines-5/", "/books/q/"),
+    browse_paths=("/categories/hobbies-toys-8/books-magazines-10/", "/categories/books-magazines-10/"),
     detail_signals=("/p/", "/listings/", "/books-magazines/"),
     exclude_signals=("/help", "/login", "/sell"),
-    headers={"Accept-Language": "en-PH,en;q=0.9,fil;q=0.8"},
+    headers={"Accept-Language": "en-PH,en;q=0.9"},
     rendered=True,
     render_wait_ms=4500,
 )
