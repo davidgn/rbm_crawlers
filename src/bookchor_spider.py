@@ -13,6 +13,7 @@ class BookChorSpider(PlaywrightSearchSpider):
                 'price': '.price, .selling-price',
                 'author': '.author'
             },
+            territory="India",
             limit_pages=limit_pages
         )
 

@@ -17,6 +17,7 @@ class KitepAppSpider(PlaywrightSearchSpider):
                 'link': 'a',
                 'price': '.text-orange-500, .font-700',
             },
+            territory="Kyrgyzstan",
             limit_pages=limit_pages
         )
 
@@ -40,7 +41,7 @@ class KitepAppSpider(PlaywrightSearchSpider):
 
         from models import BookListing
         book = BookListing(
-            territory="Kyrgyzstan",
+            territory=self.territory,
             platform=self.platform_name,
             title=title,
             author=None,

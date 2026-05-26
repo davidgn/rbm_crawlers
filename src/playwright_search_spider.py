@@ -13,16 +13,15 @@ class PlaywrightSearchSpider(BaseSpider):
     A generic spider for Indian bookstores that uses Playwright to bypass Cloudflare
     and scrape HTML search result pages.
     """
-    def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict, limit_pages: int = 10):
-        super().__init__(platform_name=platform_name, territory="India")
+    def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict, territory: str = "India", limit_pages: int = 10):
+        super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url.rstrip("/")
         self.search_path = search_path
         self.selectors = selectors
         self.limit_pages = limit_pages
 
-    def run(self):
+    def run(self, search_term: str = "Harry Potter"):
         self.logger.info(f"Starting Playwright Search crawler for {self.platform_name}. Limit: {self.limit_pages} pages.")
-        search_term = "Harry Potter" 
         
         with sync_playwright() as p:
             browser, context = self.get_playwright_stealth_config(p)
@@ -61,6 +60,7 @@ class PlaywrightSearchSpider(BaseSpider):
                 items = soup.select(self.selectors['container'])
                 if not items:
                     self.logger.info(f"No items found matching container '{self.selectors['container']}' on page {page_num}. Stopping.")
+                    self.cache_html(f"debug_empty_{self.platform_name}_{page_num}", html)
                     break
 
                 for item in items:

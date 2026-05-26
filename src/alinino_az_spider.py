@@ -7,17 +7,17 @@ class AlininoAzSpider(PlaywrightSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Alinino",
-            territory="Azerbaijan"
+            base_url="https://alinino.az",
+            search_path="search?q={query}&page={page}",
+            selectors={
+                'container': '.product-card', 
+                'title': '.product-card__title',
+                'link': '.product-card__title',
+                'price': '.product-card__price',
+            },
+            territory="Azerbaijan",
+            limit_pages=limit_pages
         )
-        self.base_url = "https://alinino.az"
-        self.search_path = "search?q={query}&page={page}"
-        self.selectors = {
-            'container': '.product-card', 
-            'title': '.product-card__title',
-            'link': '.product-card__title',
-            'price': '.product-card__price',
-        }
-        self.limit_pages = limit_pages
 
 
 if __name__ == "__main__":

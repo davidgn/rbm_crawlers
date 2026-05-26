@@ -15,6 +15,7 @@ class SulakauriSpider(PlaywrightSearchSpider):
                 'link': 'a',
                 'price': '.price',
             },
+            territory="Georgia",
             limit_pages=limit_pages
         )
 

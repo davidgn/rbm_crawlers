@@ -15,9 +15,9 @@ class BookccinoSpider(PlaywrightSearchSpider):
                 'link': 'a',
                 'price': '.s-product-card-price, .price',
             },
+            territory="Saudi Arabia",
             limit_pages=limit_pages
         )
-        self.territory = "Saudi Arabia"
 
 if __name__ == "__main__":
     spider = BookccinoSpider(limit_pages=1)
