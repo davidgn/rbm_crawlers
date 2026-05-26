@@ -16,9 +16,9 @@ class PortalDosLivreirosSpider(HTMLSearchSpider):
                 'link': 'a[href*="livro.asp"]',
                 'price': 'td:nth-last-child(1)', # Usually the last column
             },
+            territory="Brazil",
             limit_pages=limit_pages
         )
-        self.territory = "Brazil"
 
 if __name__ == "__main__":
     spider = PortalDosLivreirosSpider(limit_pages=1)

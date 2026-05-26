@@ -16,9 +16,9 @@ class FlipKzSpider(HTMLSearchSpider):
                 'link': 'a',
                 'price': '.price',
             },
+            territory="Kazakhstan",
             limit_pages=limit_pages
         )
-        self.territory = "Kazakhstan"
 
 if __name__ == "__main__":
     spider = FlipKzSpider(limit_pages=1)

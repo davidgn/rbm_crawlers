@@ -7,18 +7,18 @@ class BookinistAmSpider(HTMLSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Bookinist",
-            territory="Armenia"
+            base_url="https://www.books.am",
+            search_path="am/catalogsearch/result/?q={query}",
+            selectors={
+                'container': '.info_block', 
+                'title': '.product_name a',
+                'link': '.product_name a',
+                'price': '.block_price',
+                'author': '.product_author'
+            },
+            territory="Armenia",
+            limit_pages=limit_pages
         )
-        self.base_url = "https://www.books.am"
-        self.search_path = "am/catalogsearch/result/?q={query}"
-        self.selectors = {
-            'container': '.info_block', 
-            'title': '.product_name a',
-            'link': '.product_name a',
-            'price': '.block_price',
-            'author': '.product_author'
-        }
-        self.limit_pages = limit_pages
 
 
 if __name__ == "__main__":

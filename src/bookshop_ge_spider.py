@@ -16,6 +16,7 @@ class BookshopGeSpider(HTMLSearchSpider):
                 'price': '.price',
                 'author': '.author'
             },
+            territory="Georgia",
             limit_pages=limit_pages
         )
 

@@ -16,9 +16,9 @@ class LeuvendeuSpider(HTMLSearchSpider):
                 'link': 'a',
                 'price': '.product__item-price, .price',
             },
+            territory="Brazil",
             limit_pages=limit_pages
         )
-        self.territory = "Brazil"
 
 if __name__ == "__main__":
     spider = LeuvendeuSpider(limit_pages=1)

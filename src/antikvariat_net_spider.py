@@ -17,9 +17,9 @@ class AntikvariatNetSpider(HTMLSearchSpider):
                 'price': '.price',
                 'author': '.author'
             },
+            territory="Norway",
             limit_pages=limit_pages
         )
-        self.territory = "Norway"
 
     def _parse_item(self, item_soup):
         # Specific tailoring for Antikvariat.net structure

@@ -15,6 +15,7 @@ class AsaxiyUzSpider(HTMLSearchSpider):
                 'link': 'a',
                 'price': '.product__item-price',
             },
+            territory="Uzbekistan",
             limit_pages=limit_pages
         )
 

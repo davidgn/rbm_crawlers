@@ -18,9 +18,9 @@ class FinnNoSpider(HTMLSearchSpider):
                 'link': 'a.sf-search-ad-link',
                 'price': 'span', # Price is usually the first span in the card info div
             },
+            territory="Norway",
             limit_pages=limit_pages
         )
-        self.territory = "Norway"
 
     def _parse_item(self, item_soup):
         title_el = item_soup.select_one('h2')
