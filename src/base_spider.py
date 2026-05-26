@@ -88,6 +88,19 @@ class BaseSpider:
             self.logger.info("Restart-safe: pre-loaded %d existing URLs from %s", len(seen), self.output_file.name)
         return seen
 
+    def cache_html(self, item_id: str, html: str, url: str = "") -> None:
+        """Write {item_id}.html and {item_id}.meta.json to the platform cache directory."""
+        html_path = self.cache_dir / f"{item_id}.html"
+        meta_path = self.cache_dir / f"{item_id}.meta.json"
+        html_path.write_text(html, encoding="utf-8")
+        meta = {
+            "listing_url": url,
+            "platform": self.platform_name,
+            "territory": self.territory,
+            "scraped_at": datetime.now(timezone.utc).isoformat(),
+        }
+        meta_path.write_text(json.dumps(meta), encoding="utf-8")
+
     def save_item(self, item: BookListing):
         """Append an item to the JSON Lines file, skipping duplicates."""
         url = item.listing_url or ""
