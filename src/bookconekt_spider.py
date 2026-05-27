@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
 
 
 class BookconektSpider(BaseSpider):
@@ -41,11 +42,14 @@ class BookconektSpider(BaseSpider):
         "Accept-Language": "fr-BJ,fr;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="Bookconekt", territory="Benin")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.items_attempted = 0
+        timeout = httpx.Timeout(10.0, connect=5.0, read=8.0)
         self.client = httpx.Client(
-            timeout=30.0, follow_redirects=True, headers=self.HEADERS
+            timeout=timeout, follow_redirects=True, headers=self.HEADERS
         )
 
     def run(self):
@@ -58,6 +62,8 @@ class BookconektSpider(BaseSpider):
             browse_url = self._find_browse_url()
 
             for pg_num in range(1, self.limit_pages + 1):
+                if self.items_attempted >= self.limit_items:
+                    break
                 urls_to_try = (
                     [
                         f"{browse_url.rstrip('/')}/page/{pg_num}/",
@@ -93,6 +99,9 @@ class BookconektSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.items_attempted >= self.limit_items:
+                        break
+                    self.items_attempted += 1
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.7)
@@ -103,20 +112,9 @@ class BookconektSpider(BaseSpider):
         self.logger.info(f"Finished. {self.items_scraped} items cached.")
 
     def _find_browse_url(self) -> str:
-        for path in self.BROWSE_CANDIDATES:
-            candidate = self.BASE_URL + path
-            try:
-                resp = self.client.get(candidate)
-                if resp.status_code == 200:
-                    soup = BeautifulSoup(resp.text, "html.parser")
-                    hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
-                    if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
-                        self.logger.info(f"Browse URL confirmed: {candidate}")
-                        return candidate
-            except Exception as e:
-                self.logger.debug(f"Candidate {path} failed: {e}")
-        self.logger.warning("No browse path matched — using homepage.")
-        return self.BASE_URL
+        candidate = self.BASE_URL + self.BROWSE_CANDIDATES[0]
+        self.logger.info(f"Using pinned browse URL: {candidate}")
+        return candidate
 
     def _extract_links(self, soup: BeautifulSoup, seen: set) -> list[str]:
         links = []
@@ -147,22 +145,98 @@ class BookconektSpider(BaseSpider):
             self.cache_html(item_id, resp.text, url=url)
 
             soup = BeautifulSoup(resp.text, "html.parser")
-            h1 = soup.find("h1")
-            title = h1.get_text(strip=True) if h1 else "Cached Item"
+            listing = self._parse_detail(soup, url)
 
-            self.save_item(BookListing(
-                territory=self.territory,
-                platform=self.platform_name,
-                title=title,
-                listing_url=url,
-                condition="Cached for AI extraction",
-            ))
+            self.save_item(listing)
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")
+
+    def _parse_detail(self, soup: BeautifulSoup, url: str) -> BookListing:
+        h1 = soup.find("h1")
+        title = h1.get_text(" ", strip=True) if h1 else "Cached Item"
+
+        fields = self._detail_fields(soup)
+        return BookListing(
+            territory=self.territory,
+            platform=self.platform_name,
+            title=title,
+            author=fields.get("author"),
+            isbn=extract_isbn(soup),
+            publisher=fields.get("publisher"),
+            publication_year=fields.get("publication_year"),
+            category=fields.get("category"),
+            condition=fields.get("condition") or "Cached for AI extraction",
+            price=self._price(soup),
+            listing_url=url,
+            seller_comments=fields.get("seller_comments"),
+        )
+
+    def _detail_fields(self, soup: BeautifulSoup) -> dict[str, str]:
+        text = soup.get_text(" ", strip=True)
+        fields: dict[str, str] = {}
+        labels = {
+            "author": "Auteur|Author",
+            "publisher": "Editeur|Éditeur|Publisher",
+            "publication_year": "Date de publication|Publication|Publié le|Published",
+            "category": "Catégorie|Categorie|Category",
+            "condition": "Etat|État|Condition",
+        }
+        label_stop = "|".join(labels.values()) + "|ISBN|Prix|Price"
+        for key, label in labels.items():
+            value = self._field_after_label(text, label, label_stop)
+            if value:
+                fields[key] = value
+
+        description = soup.select_one(
+            ".woocommerce-product-details__short-description, "
+            ".product-description, .summary .description, #tab-description"
+        )
+        if description:
+            comment = self._clean(description.get_text(" ", strip=True))
+            if comment:
+                fields["seller_comments"] = comment[:500]
+        return fields
+
+    def _field_after_label(self, text: str, label: str, label_stop: str) -> str | None:
+        match = re.search(
+            rf"(?i)(?:{label})\s*:?\s*(.+?)(?=\s+(?:{label_stop})\s*:|$)",
+            text,
+        )
+        return self._clean(match.group(1)) if match else None
+
+    def _price(self, soup: BeautifulSoup) -> str | None:
+        for selector in (
+            ".price .amount",
+            ".woocommerce-Price-amount",
+            "p.price",
+            ".price",
+        ):
+            node = soup.select_one(selector)
+            if not node:
+                continue
+            price = self._price_from_text(node.get_text(" ", strip=True))
+            if price:
+                return price
+        return self._price_from_text(soup.get_text(" ", strip=True))
+
+    def _price_from_text(self, text: str) -> str | None:
+        match = re.search(r"([0-9][0-9\s.,]*)\s*(?:CFA|FCFA|XOF|₣)", text, re.I)
+        if not match:
+            return None
+        amount = re.sub(r"[^\d]", "", match.group(1))
+        return f"XOF {amount}" if amount else None
+
+    def _clean(self, value: str) -> str:
+        return re.sub(r"\s+", " ", value).strip(" :-\u00a0")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Bookconekt Benin cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int)
     args = parser.parse_args()
-    BookconektSpider(limit_pages=args.limit).run()
+    BookconektSpider(
+        limit_pages=args.limit_pages or args.limit,
+        limit_items=args.limit_items or 50,
+    ).run()

@@ -244,7 +244,9 @@ class ConfigurableMarketplaceSpider(BaseSpider):
             *(host.lower().removeprefix("www.") for host in self.config.allowed_hosts),
         }
         for anchor in soup.find_all("a", href=True):
-            href = urljoin(page_url, anchor["href"]).split("#", 1)[0]
+            href = self._anchor_url(anchor, page_url)
+            if not href:
+                continue
             parsed = urlparse(href)
             if parsed.scheme not in ("http", "https"):
                 continue
@@ -260,6 +262,18 @@ class ConfigurableMarketplaceSpider(BaseSpider):
             if any(signal.lower() in href.lower() for signal in self.config.detail_signals):
                 links.append(href)
         return list(dict.fromkeys(links))
+
+    def _anchor_url(self, anchor, page_url: str) -> str | None:
+        href = anchor.get("href", "")
+        if href == "#":
+            onclick = anchor.get("onclick", "") or anchor.get("onClick", "")
+            match = re.search(r"this\.href\s*=\s*['\"]([^'\"]+)['\"]", onclick)
+            if match:
+                href = match.group(1)
+        href = href.split("#", 1)[0]
+        if not href or href.startswith("javascript:"):
+            return None
+        return urljoin(page_url, href)
 
     def _harvest_profile(self):
         html = self._fetch_text(self.config.base_url)
@@ -326,7 +340,17 @@ class ConfigurableMarketplaceSpider(BaseSpider):
     def _listing_from_html(self, html: str, url: str) -> BookListing | None:
         soup = BeautifulSoup(html, "html.parser")
         if self._blocked_page(soup):
-            return None
+            title = self._title_from_url(url)
+            if not title:
+                return None
+            return BookListing(
+                territory=self.territory,
+                platform=self.platform_name,
+                title=title,
+                isbn=isbn_from_url(url),
+                listing_url=url,
+                condition="Detail blocked/login prompt; listing URL discovered from index",
+            )
         data = self._jsonld_book_or_product(soup)
         title = self._pick_text(data, "name", "headline") or self._title_from_soup(soup)
         if not title:
@@ -415,7 +439,10 @@ class ConfigurableMarketplaceSpider(BaseSpider):
         if title and "seems like you have been blocked" in title.lower():
             return True
         body = soup.get_text(" ", strip=True)[:1000].lower()
-        return "seems like you have been blocked" in body
+        return (
+            "seems like you have been blocked" in body
+            or ("立即登录" in body and "返回首页" in body)
+        )
 
     def _meta_content(self, soup: BeautifulSoup, prop: str) -> str | None:
         node = soup.find("meta", attrs={"property": prop}) or soup.find("meta", attrs={"name": prop})

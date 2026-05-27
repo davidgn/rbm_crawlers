@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
-from datetime import datetime
+from datetime import UTC, datetime
 
 class BookListing(BaseModel):
     territory: str = Field(description="The country or region of the marketplace.")
@@ -21,7 +21,7 @@ class BookListing(BaseModel):
     price: Optional[str] = Field(None, description="The price of the book (with currency).")
     qid: Optional[str] = Field(None, description="The Wikidata QID of the publisher or entity.")
     listing_url: str = Field(description="The canonical URL of the listing.")
-    timestamp: datetime = Field(default_factory=datetime.utcnow, description="Time of extraction.")
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(UTC), description="Time of extraction.")
     seller_comments: Optional[str] = Field(None, description="Additional notes from the seller.")
     
     def to_dict(self):

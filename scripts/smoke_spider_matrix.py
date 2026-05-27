@@ -108,6 +108,7 @@ def main() -> int:
     parser.add_argument("--limit-pages", type=int, default=1)
     parser.add_argument("--limit-items", type=int, default=1)
     parser.add_argument("--json-out", required=True)
+    parser.add_argument("--fail-on-nonzero", action="store_true")
     args = parser.parse_args()
 
     reports = []
@@ -134,6 +135,8 @@ def main() -> int:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"summary": summary, "reports": reports}, indent=2, ensure_ascii=False), encoding="utf-8")
     print(json.dumps(summary, indent=2, ensure_ascii=False))
+    if args.fail_on_nonzero and (summary["nonzero"] or summary["timeouts"]):
+        return 1
     return 0
 
 

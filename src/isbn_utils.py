@@ -92,14 +92,16 @@ def normalize_isbn(value: Any) -> str | None:
     if value in (None, ""):
         return None
     raw = re.sub(r"[^0-9Xx]", "", str(value)).upper()
-    # Try all 13-digit substrings first
+    if len(raw) == 13:
+        return raw if valid_isbn13(raw) else None
+    if len(raw) == 10:
+        return isbn10_to_isbn13(raw) if valid_isbn10(raw) else None
+
+    # For longer blobs, accept only explicit valid ISBN-13 substrings. Avoid
+    # converting arbitrary valid-looking ISBN-10 substrings inside invalid EANs.
     for token in re.findall(r"97[89]\d{10}", raw):
         if valid_isbn13(token):
             return token
-    # Then try 10-digit substrings
-    for token in re.findall(r"\d{9}[\dX]", raw):
-        if valid_isbn10(token):
-            return isbn10_to_isbn13(token)
     return None
 
 

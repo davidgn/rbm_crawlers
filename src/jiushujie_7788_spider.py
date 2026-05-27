@@ -3,7 +3,7 @@ from configurable_marketplace_spider import MarketplaceConfig, run_configured_sp
 
 CONFIG = MarketplaceConfig(
     platform_name="7788旧书",
-    territory="China",
+    territory="China (mainland)",
     base_url="https://7788js.7788.com",
     browse_paths=("/", "/pr/", "/sort_0_0_0_0_default_0_1/"),
     detail_signals=("/pr/item_", "/pr/history_"),
