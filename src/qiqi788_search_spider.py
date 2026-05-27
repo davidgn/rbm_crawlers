@@ -1,3 +1,4 @@
+import time
 from playwright_search_spider import PlaywrightSearchSpider
 
 class Qiqi788SearchSpider(PlaywrightSearchSpider):
@@ -24,7 +25,14 @@ class Qiqi788SearchSpider(PlaywrightSearchSpider):
     def run(self, search_term="哈利波特"):
         self.logger.info(f"Starting 7788旧书 Playwright Search. Term: {search_term}")
         
-        with self.start_playwright() as (browser, context, page):
+        from playwright.sync_api import sync_playwright
+        from playwright_stealth import Stealth
+
+        with sync_playwright() as p:
+            browser, context = self.get_playwright_stealth_config(p)
+            page = context.new_page()
+            Stealth().apply_stealth_sync(page)
+            
             try:
                 page.goto(self.base_url, wait_until="networkidle")
                 # Find search input and button
@@ -32,7 +40,6 @@ class Qiqi788SearchSpider(PlaywrightSearchSpider):
                 page.fill('input#s00', search_term)
                 page.click('input[type="submit"]')
                 
-                # 7788 search might open in a new tab or stay in current
                 time.sleep(10)
                 
                 # Check results
@@ -50,11 +57,11 @@ class Qiqi788SearchSpider(PlaywrightSearchSpider):
                     for item in items:
                         self._parse_item(item)
                         
-                    # Handle pagination if necessary
-                    # ...
                     break # For smoke test
             except Exception as e:
                 self.logger.error(f"7788 Search Error: {e}")
+            finally:
+                browser.close()
 
 if __name__ == "__main__":
     spider = Qiqi788SearchSpider(limit_pages=1)

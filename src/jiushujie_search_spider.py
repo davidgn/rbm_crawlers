@@ -9,12 +9,12 @@ class JiushujieSearchSpider(PlaywrightSearchSpider):
         super().__init__(
             platform_name="Jiushujie",
             base_url="http://www.jiushujie.com",
-            search_path="sell?q={query}",
+            search_path="index.php?m=book&a=search&kw={query}",
             selectors={
-                'container': 'div.items .item', 
-                'title': '.book_title, a',
-                'link': 'a',
-                'price': '.book_price',
+                'container': 'ul.sell-list li', 
+                'title': '.book-title',
+                'link': 'a.book-link',
+                'price': '.price',
             },
             territory="China",
             limit_pages=limit_pages
