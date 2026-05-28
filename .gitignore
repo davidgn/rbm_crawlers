@@ -1,6 +1,10 @@
 .venv/
 __pycache__/
 *.log
+.hypothesis/
+.pytest_cache/
+.ruff_cache/
+*.pyc
 research/decompiled/
 research/retained_qid_A14_repo_search_*/
 research/snapshots/

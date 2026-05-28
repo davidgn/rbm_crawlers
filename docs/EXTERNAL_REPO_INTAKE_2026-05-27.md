@@ -14,6 +14,8 @@ Scope reviewed:
 Additional open-source/public sources reviewed after the second prompt:
 
 - <https://github.com/ravila4/abebooks>
+- <https://github.com/rayment/bookfind>
+- <https://github.com/MacFJA/BookRetriever>
 - <https://github.com/xlcnd/isbnlib>
 - <https://www.vialibri.net/content/search-link-api>
 - <https://bookscouter.gitbook.io/bookscouter>
@@ -63,6 +65,13 @@ Classification: **high-value manual valuation routing; not automation targets by
 Useful surfaces found:
 
 - `ravila4/abebooks` demonstrates that AbeBooks Search Web Services can return best-new and best-used pricing fields by ISBN when API access is available.
+- `ravila4/abebooks` also exposes the unauthenticated pricing-service shape observed in older client code:
+  - `POST https://www.abebooks.com/servlet/DWRestService/pricingservice`
+  - form fields: `action=getPricingDataByISBN`, `isbn={ean}`, `container=pricingService-{ean}`
+  - response fields include best-new and best-used pricing blocks when the endpoint is reachable.
+- `rayment/bookfind` documents the BookFinder ISBN search URL shape:
+  - `https://bookfinder.com/search/?keywords={isbn}&currency={currency}&destination={destination}&lang=en&st=sh&ac=qr&submit=`
+  - useful HTML markers include `describe-isbn-title`, `describe-isbn`, `results-table-Logo`, `data-price`, `results-price`, `item-note`, and redirect targets in the `bu` query parameter.
 - viaLibri publishes a Search Link API that supports source, author, title, publisher, all-text, year range, price range, currency, and sort parameters. It explicitly says ISBN can go in `all_text`.
 - viaLibri also explicitly restricts automated searches and states that unauthenticated users are routed through login/register, so it should be treated as a manual deep-link target.
 - AddALL and BookFinder are useful long-running price-comparison portals for used, rare, and out-of-print books; they are better harvested as human-review links unless a documented API/feed is found.
@@ -80,18 +89,49 @@ Implemented RBM action:
 - The script accepts either structured CLI fields or OCR/copied text and emits manual review links for AbeBooks, BookFinder, Biblio, Google Books, Open Library, AddALL, and viaLibri.
 - Generated `logs/rare_book_links_sample_2026-05-27.json`.
 - Added tests for link generation and text-derived rare-book signal handling in `tests/test_external_repo_utilities.py`.
+- Added `scripts/probe_retail_price_endpoints.py` as a bounded probe for the AbeBooks pricing-service and BookFinder ISBN search surfaces. This is a probe, not a fleet spider; it records structured `offer`, `no_offer`, or `error` rows and keeps endpoint volatility visible.
+- Added parser coverage for AbeBooks pricing payloads and BookFinder HTML offer extraction in `tests/test_external_repo_utilities.py`.
+- Live probe evidence for `9780140449136` was written to `logs/retail_price_probe_2026-05-27.json`: AbeBooks returned new/used price signals (`US$ 12.50` and `US$ 6.87`), while BookFinder returned `no_offer` from this environment/parser run.
 
 Why this is the right boundary:
 
 - Rare-book valuation often depends on edition, condition, seller notes, signed/inscribed status, and pre-ISBN context. A direct scraper would create false precision.
 - Manual deep links preserve speed while keeping the human review step where the source itself requires it or where value judgments are subtle.
 - This complements the `BookHunter` text-signal extractor: OCR/copy text can now turn directly into review links.
+- AbeBooks and BookFinder probing is useful for endpoint drift checks, but it should stay bounded and evidence-oriented until rate limits, terms, and sustained productivity are understood.
 
 Sources:
 
 - <https://github.com/ravila4/abebooks>
+- <https://github.com/rayment/bookfind>
 - <https://www.vialibri.net/content/search-link-api>
 - <https://www.addall.com/about.html>
+
+### `MacFJA/BookRetriever`
+
+Classification: **high-value provider universe and PHP parser reference; limited direct endpoint portability**.
+
+Useful behavior found:
+
+- The provider checklist is a compact source-discovery map: AbeBooks, Amazon, AntoineOnline, Archive.org, DigitEyes, eBay, EbooksGratuits, EuroBuch, Eyrolles, FeedBooks, GoodReads, Google Books, ISBNdb, LaLibrairie, LibraryHub, LibraryThing, LOC, OCLC, OpenLibrary, and RandomHouse.
+- The AbeBooks provider builds `https://www.abebooks.com/servlet/SearchResults?...` queries with author/title/ISBN fields and extracts Schema.org `Book` microdata from search results.
+- The eBay provider uses official eBay developer SDK flows, including product/keyword search paths for ISBN/EAN/UPC/EPID identifiers.
+
+Limitations:
+
+- Several providers require API keys, credentials, or official SDK access; this is not a no-key endpoint cache.
+- HTML providers are old enough that selectors must be revalidated before production use.
+- Amazon/eBay-style integrations must be credentialed and terms-aware.
+
+Recommended RBM action:
+
+- Use the provider list as a source-gap checklist for future enrichment and app/API reconnaissance.
+- Prefer already-supported official APIs where credentials exist: OpenLibrary, Google Books, LOC, OCLC/WorldCat where permitted, eBay SDK, and ISBNdb.
+- Treat the AbeBooks Schema.org scraper pattern as a parser idea only; use `scripts/probe_retail_price_endpoints.py` and manual links for bounded current evidence.
+
+Sources:
+
+- <https://github.com/MacFJA/BookRetriever>
 
 ### `flyingfinger1/buyback-scout`
 

@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-05-28T01:09:19Z",
+  "inputs": [
+    "9780140449136"
+  ],
+  "currency": "USD",
+  "destination": "us",
+  "offers": [
+    {
+      "source": "abebooks-pricing",
+      "ean": "9780140449136",
+      "status": "offer",
+      "condition": "new",
+      "price": 12.5,
+      "currency": null,
+      "price_text": "US$ 12.50",
+      "title": null,
+      "publisher": null,
+      "edition": null,
+      "language": null,
+      "listing_url": null,
+      "seller_comments": "AbeBooks pricing key: pricingInfoForBestNew",
+      "error": null
+    },
+    {
+      "source": "abebooks-pricing",
+      "ean": "9780140449136",
+      "status": "offer",
+      "condition": "used",
+      "price": 6.87,
+      "currency": null,
+      "price_text": "US$ 6.87",
+      "title": null,
+      "publisher": null,
+      "edition": null,
+      "language": null,
+      "listing_url": null,
+      "seller_comments": "AbeBooks pricing key: pricingInfoForBestUsed",
+      "error": null
+    },
+    {
+      "source": "bookfinder",
+      "ean": "9780140449136",
+      "status": "no_offer",
+      "condition": null,
+      "price": null,
+      "currency": null,
+      "price_text": null,
+      "title": null,
+      "publisher": null,
+      "edition": null,
+      "language": null,
+      "listing_url": null,
+      "seller_comments": null,
+      "error": null
+    }
+  ]
+}

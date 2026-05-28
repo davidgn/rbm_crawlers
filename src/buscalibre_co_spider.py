@@ -1,15 +1,36 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+import argparse
+
+from html_search_spider import HTMLSearchSpider
 
 
-CONFIG = MarketplaceConfig(
-    platform_name="Buscalibre Colombia",
-    territory="Colombia",
-    base_url="https://www.buscalibre.com.co",
-    browse_paths=("/libros/search?q=usado", "/libros", "/libros-usados"),
-    detail_signals=("/libro-", "/book-", "/producto/", "/products/"),
-    headers={"Accept-Language": "es-CO,es;q=0.9,en;q=0.8"},
-)
+class BuscalibreCoSpider(HTMLSearchSpider):
+    """Spider for Buscalibre Colombia."""
+
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
+        super().__init__(
+            platform_name="Buscalibre Colombia",
+            base_url="https://www.buscalibre.com.co",
+            search_path="libros/search?q={query}&page={page}",
+            selectors={
+                "container": ".producto",
+                "title": "h3.nombre",
+                "link": "a",
+                "price": ".precio",
+            },
+            territory="Colombia",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            price_currency="COP",
+        )
 
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Buscalibre Colombia books spider")
+    parser = argparse.ArgumentParser(description="Buscalibre Colombia books spider")
+    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int)
+    args = parser.parse_args()
+    BuscalibreCoSpider(
+        limit_pages=args.limit_pages or args.limit,
+        limit_items=args.limit_items,
+    ).run()

@@ -19,6 +19,7 @@ class HTMLSearchSpider(BaseSpider):
         territory: str = "India",
         limit_pages: int = 10,
         limit_items: int | None = None,
+        price_currency: str = "INR",
     ):
         super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url.rstrip("/")
@@ -27,6 +28,7 @@ class HTMLSearchSpider(BaseSpider):
         self.limit_pages = limit_pages
         self.limit_items = limit_items
         self.items_attempted = 0
+        self.price_currency = price_currency
         # Adding browser-like headers to bypass simple blocks
         self.client = httpx.Client(
             timeout=30.0, 
@@ -114,7 +116,7 @@ class HTMLSearchSpider(BaseSpider):
                 # Extract numeric value
                 match = re.search(r"[\d,]+(?:\.\d+)?", price_text)
                 if match:
-                    price_val = "INR " + match.group(0).replace(",", "")
+                    price_val = f"{self.price_currency} " + match.group(0).replace(",", "")
 
         # Author (often embedded in title or subtitle)
         author = None

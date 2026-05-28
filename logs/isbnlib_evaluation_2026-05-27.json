@@ -1,0 +1,42 @@
+{
+  "isbnlib_available": true,
+  "comparisons": [
+    {
+      "input": "0-306-40615-2",
+      "local_normalize_isbn": "9780306406157",
+      "isbnlib": {
+        "available": true,
+        "canonical": "0306406152",
+        "is_isbn10": true,
+        "is_isbn13": false,
+        "ean13": "9780306406157"
+      },
+      "same_ean13": true
+    },
+    {
+      "input": "9783442481754",
+      "local_normalize_isbn": null,
+      "isbnlib": {
+        "available": true,
+        "canonical": "9783442481754",
+        "is_isbn10": false,
+        "is_isbn13": false,
+        "ean13": ""
+      },
+      "same_ean13": false
+    },
+    {
+      "input": "9789991915555",
+      "local_normalize_isbn": "9789991915555",
+      "isbnlib": {
+        "available": true,
+        "canonical": "9789991915555",
+        "is_isbn10": false,
+        "is_isbn13": true,
+        "ean13": "9789991915555"
+      },
+      "same_ean13": true
+    }
+  ],
+  "recommendation": "Keep src/isbn_utils.py as the runtime dependency-free canonical helper; use isbnlib as an optional audit/enrichment comparator for batch QA."
+}

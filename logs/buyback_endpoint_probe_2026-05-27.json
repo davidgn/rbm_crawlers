@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-05-27T20:08:48Z",
+  "inputs": [
+    "9783442481754"
+  ],
+  "offers": [
+    {
+      "source": "momox",
+      "ean": "9783442481754",
+      "status": "skipped",
+      "price": null,
+      "currency": "EUR",
+      "title": null,
+      "partner": null,
+      "raw_status": null,
+      "error": "set MOMOX_TOKEN or pass --momox-token"
+    },
+    {
+      "source": "rebuy",
+      "ean": "9783442481754",
+      "status": "error",
+      "price": null,
+      "currency": "EUR",
+      "title": null,
+      "partner": null,
+      "raw_status": null,
+      "error": "Client error '429 Too Many Requests' for url 'https://www.rebuy.de/verkaufen/api/bulk-isbn'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429"
+    },
+    {
+      "source": "bonavendi",
+      "ean": "9783442481754",
+      "status": "error",
+      "price": null,
+      "currency": "EUR",
+      "title": null,
+      "partner": null,
+      "raw_status": null,
+      "error": "Client error '403 Forbidden' for url 'https://api.bonavendi.de/rest/v2/products/9783442481754'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    }
+  ]
+}
