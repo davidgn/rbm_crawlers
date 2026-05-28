@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 1,
+    "timeouts": 1,
+    "zero_added": 4,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/buscalibre_cl_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 36.9,
+      "platform_name": "Buscalibre Chile",
+      "territory": "Chile",
+      "stdout_tail": "",
+      "stderr_tail": "Request: GET https://www.buscalibre.cl/libro-cocina-sabrosa-usado/9788427028623/p/55859671 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:23,226 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-carga-inalambrica-de-vehiculos-electricos-cargando-los-vehiculos-electricos-usando-los-transformadores-de-energia-inductiva-resonante/9786200905482/p/53012350 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:23,765 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-los-suenos-de-la-luciernaga-de-jenny-jones-usado/9789500286060/p/54926377 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:24,304 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-sado/9788461663200/p/35798953 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:24,843 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-aprende-a-interpretar-con-amor-los-mensajes-de-tu-cuerpo/9788411080446/p/54918200 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:25,384 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-tecnicas-prohibidas-de-persuasion-manipulacion-e-influencia-usando-patrones-de-lenguaje-y-tecnicas-de-pnl/9781719587211/p/51670072 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:25,923 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-guia-de-los-aditivos-usados-en-alimentacion/9788495052322/p/2871464 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:26,462 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-producciones-kim-jong-il-presenta-la-increible-historia-verdadera-de-corea-del-norte-y-del-secuestro-mas-osado-de-todos-los-tiempos/9788416354368/p/46979104 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:27,002 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-como-predicar-de-cristo-usando-toda-la-biblia/9780980629378/p/52674538 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:27,543 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-un-aplauso-para-el-asador/9789500764827/p/52993304 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:28,082 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-fallado-y-usado/9789871474578/p/9389934 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:28,621 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-asado-parrillada-argentina/9788419483300/p/54980931 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:29,161 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-programacion-orientada-a-objetos-con-java-una-introduccion-practica-usando-bluej-incluye-cd-3/9788483223505/p/1093199 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:29,700 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-la-educacion-es-otra-historia-usando-la-historia-para-comprender-mejor-la-educacion-actual/9788419788757/p/55840266 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:30,240 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-dilbert-3-en-forma-usando-el-raton/9788475776125/p/1239705 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:30,779 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-persuasion-influencia-y-manipulacion-usando-la-psicologia-humana-y-el-sentido-comun-como-persuadir-influenciar-y-manipular-usando-metodos-indispensables-de-comunicacion-y-persuasion/9781542376693/p/53446219 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:31,320 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-murdle-resuelve-el-crimen-100-acertijos-endiablados-para-solucionar-usando-la-logica-y-el-poder-de-la-deduccion/9786073915830/p/62267121 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:31,859 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libro-aprenda-practicando-visual-basic-usando-visual-studio-2012/9788426720849/p/35449994 \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:32,400 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libros \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:32,438 [INFO] httpx: HTTP Request: GET https://www.buscalibre.cl/libros-usados \"HTTP/1.1 202 Accepted\"\n2026-05-28 02:25:32,439 [INFO] ConfigurableMarketplaceSpider: Finished Buscalibre Chile harvest. Saved 0 items.\n",
+      "output_items_before": 8,
+      "output_items_after": 8,
+      "output_items_added": 0,
+      "cache_html_before": 6,
+      "cache_html_after": 6,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/buscalibre_co_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.86,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:51,272 [INFO] BuscalibreCoSpider: Restart-safe: pre-loaded 52 existing URLs from buscalibre colombia_listings.jsonl\n2026-05-28 02:24:51,511 [INFO] BuscalibreCoSpider: Starting HTML Search crawler for Buscalibre Colombia. Limit: 1 pages.\n2026-05-28 02:24:51,511 [INFO] BuscalibreCoSpider: Fetching page 1: https://www.buscalibre.com.co/libros/search?q=Harry+Potter&page=1\n2026-05-28 02:24:53,024 [INFO] httpx: HTTP Request: GET https://www.buscalibre.com.co/libros/search?q=Harry+Potter&page=1 \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:55,436 [INFO] BuscalibreCoSpider: Finished Buscalibre Colombia. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/buscalibre_pe_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.69,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:50,996 [INFO] BuscalibrePeSpider: Restart-safe: pre-loaded 4 existing URLs from buscalibre peru_listings.jsonl\n2026-05-28 02:24:51,290 [INFO] BuscalibrePeSpider: Starting HTML Search crawler for Buscalibre Peru. Limit: 1 pages.\n2026-05-28 02:24:51,290 [INFO] BuscalibrePeSpider: Fetching page 1: https://www.buscalibre.pe/libros/search?q=Harry+Potter&page=1\n2026-05-28 02:24:52,998 [INFO] httpx: HTTP Request: GET https://www.buscalibre.pe/libros/search?q=Harry+Potter&page=1 \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:55,346 [INFO] BuscalibrePeSpider: Finished Buscalibre Peru. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/buscalibre_uy_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 60.14,
+      "platform_name": "Buscalibre Uruguay",
+      "territory": "Uruguay",
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "output_items_before": 11,
+      "output_items_after": 11,
+      "output_items_added": 0,
+      "cache_html_before": 6,
+      "cache_html_after": 6,
+      "cache_html_added": 0
+    }
+  ]
+}

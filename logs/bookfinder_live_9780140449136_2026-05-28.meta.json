@@ -1,0 +1,10 @@
+{
+  "url": "https://bookfinder.com/search/?keywords=9780140449136&currency=USD&destination=us&lang=en&st=sh&ac=qr&submit=",
+  "final_url": "https://bookfinder.com/search/?keywords=9780140449136&currency=USD&destination=us&lang=en&st=sh&ac=qr&submit=",
+  "status_code": 202,
+  "content_type": "text/html; charset=UTF-8",
+  "bytes": 2023,
+  "contains_results_table_logo": false,
+  "contains_describe_isbn_title": false,
+  "title_snippet": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title></title>\n    <style>\n        body {\n            font-family: \"Arial\";\n        }\n    </style>\n    <script type=\"text/javascript\">\n    window.awsWafCoo"
+}

@@ -51,3 +51,17 @@ Curated logs that may be useful for handoff but should not be mixed into a sourc
 - Latest full pytest count from the QA script: 21 passed.
 - Taiwan smoke: 4 files, 0 nonzero exits, 0 timeouts.
 - Triage smoke: 5 files, 0 nonzero exits, 0 timeouts.
+
+## 2026-05-28 Follow-Up Staging
+
+Keep:
+
+- Compact 2026-05-28 probe/smoke logs.
+- `artifacts/generated_snapshots/generated_crawl_artifacts_2026-05-28.paths`, because it is a small manifest of generated crawl artifacts.
+
+Leave unstaged:
+
+- `artifacts/generated_snapshots/generated_crawl_artifacts_2026-05-28.tar.zst`.
+- `decompiled/**`.
+- `src/cache/**`.
+- bulk `src/data/**`.

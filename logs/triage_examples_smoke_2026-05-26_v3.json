@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 1,
+    "timeouts": 1,
+    "zero_added": 4,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.47,
+      "platform_name": "BeninMarketPlace Livres",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-26 23:58:48,885 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 2 existing URLs from beninmarketplace livres_listings.jsonl\n2026-05-26 23:58:49,126 [INFO] ConfigurableMarketplaceSpider: Starting BeninMarketPlace Livres harvest. limit_pages=1 limit_items=2\n2026-05-26 23:58:50,098 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/ \"HTTP/1.1 301 Moved Permanently\"\n2026-05-26 23:58:50,300 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres \"HTTP/1.1 200 OK\"\n2026-05-26 23:58:50,683 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/enfants \"HTTP/1.1 200 OK\"\n2026-05-26 23:58:51,860 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/histoire \"HTTP/1.1 200 OK\"\n2026-05-26 23:58:52,727 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/jeunesse \"HTTP/1.1 200 OK\"\n2026-05-26 23:58:53,633 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/litterature \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 2,
+      "output_items_after": 4,
+      "output_items_added": 2,
+      "cache_html_before": 3,
+      "cache_html_after": 5,
+      "cache_html_added": 2
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 45.03,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.14,
+      "stdout_tail": "",
+      "stderr_tail": "be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,519 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,519 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,520 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,520 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,521 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,521 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,521 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,522 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,522 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,523 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,523 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,523 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:50,524 [ERROR] ChunghwaHkSpider: Error parsing item: 1 validation error for BookListing\nlisting_url\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type\n2026-05-26 23:58:52,524 [INFO] ChunghwaHkSpider: Finished Chung Hwa. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/jiushujie_7788_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.44,
+      "platform_name": "7788旧书",
+      "territory": "China",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-26 23:58:45,470 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 65 existing URLs from 7788旧书_listings.jsonl\n2026-05-26 23:58:45,723 [INFO] ConfigurableMarketplaceSpider: Starting 7788旧书 harvest. limit_pages=1 limit_items=2\n2026-05-26 23:58:46,462 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/ \"HTTP/1.1 200 OK\"\n2026-05-26 23:58:47,365 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/ \"HTTP/1.1 403 Forbidden\"\n2026-05-26 23:58:47,833 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/sort_0_0_0_0_default_0_1/ \"HTTP/1.1 404 Not Found\"\n2026-05-26 23:58:47,834 [INFO] ConfigurableMarketplaceSpider: Finished 7788旧书 harvest. Saved 0 items.\n",
+      "output_items_before": 124,
+      "output_items_after": 124,
+      "output_items_added": 0,
+      "cache_html_before": 65,
+      "cache_html_after": 65,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/la_friperie_du_livre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.12,
+      "platform_name": "La Friperie du Livre",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-26 23:58:53,723 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 1 existing URLs from la friperie du livre_listings.jsonl\n2026-05-26 23:58:54,002 [INFO] ConfigurableMarketplaceSpider: Starting La Friperie du Livre harvest. limit_pages=1 limit_items=2\n2026-05-26 23:58:54,298 [INFO] httpx: HTTP Request: GET https://www.facebook.com/p/La-Friperie-du-Livre-61576751756556/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 4,
+      "output_items_after": 4,
+      "output_items_added": 0,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    }
+  ]
+}

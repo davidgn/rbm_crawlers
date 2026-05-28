@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 2,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/buscalibre_co_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.71,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:06:31,000 [INFO] BuscalibreCoSpider: Restart-safe: pre-loaded 52 existing URLs from buscalibre colombia_listings.jsonl\n2026-05-27 21:06:31,294 [INFO] BuscalibreCoSpider: Starting HTML Search crawler for Buscalibre Colombia. Limit: 1 pages.\n2026-05-27 21:06:31,294 [INFO] BuscalibreCoSpider: Fetching page 1: https://www.buscalibre.com.co/libros/search?q=Harry+Potter&page=1\n2026-05-27 21:06:31,901 [INFO] httpx: HTTP Request: GET https://www.buscalibre.com.co/libros/search?q=Harry+Potter&page=1 \"HTTP/1.1 200 OK\"\n2026-05-27 21:06:34,265 [INFO] BuscalibreCoSpider: Finished Buscalibre Colombia. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/buscalibre_pe_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 7.55,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:06:30,856 [INFO] BuscalibrePeSpider: Restart-safe: pre-loaded 2 existing URLs from buscalibre peru_listings.jsonl\n2026-05-27 21:06:31,285 [INFO] BuscalibrePeSpider: Starting HTML Search crawler for Buscalibre Peru. Limit: 1 pages.\n2026-05-27 21:06:31,285 [INFO] BuscalibrePeSpider: Fetching page 1: https://www.buscalibre.pe/libros/search?q=Harry+Potter&page=1\n2026-05-27 21:06:33,717 [INFO] httpx: HTTP Request: GET https://www.buscalibre.pe/libros/search?q=Harry+Potter&page=1 \"HTTP/1.1 200 OK\"\n2026-05-27 21:06:36,070 [INFO] BuscalibrePeSpider: Finished Buscalibre Peru. Scraped 2 items.\n"
+    }
+  ]
+}

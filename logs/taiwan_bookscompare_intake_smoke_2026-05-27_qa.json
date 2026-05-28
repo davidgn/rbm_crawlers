@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 4,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/books_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.36,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:24,741 [INFO] BooksTwSpider: Restart-safe: pre-loaded 25 existing URLs from books_com_tw_listings.jsonl\n2026-05-27 21:07:25,146 [INFO] BooksTwSpider: Starting Books.com.tw search harvest. Limit: 1 pages.\n2026-05-27 21:07:25,147 [INFO] BooksTwSpider: Fetching search page: https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/9789573336058\n2026-05-27 21:07:27,066 [INFO] httpx: HTTP Request: GET https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/9789573336058 \"HTTP/1.0 404 Not Found\"\n2026-05-27 21:07:27,068 [INFO] BooksTwSpider: Fetching search page: https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/Harry Potter\n2026-05-27 21:07:29,413 [INFO] httpx: HTTP Request: GET https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/Harry%20Potter \"HTTP/1.1 200 OK\"\n"
+    },
+    {
+      "file": "src/cite_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.74,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:32,095 [INFO] CiteTwSpider: Restart-safe: pre-loaded 20 existing URLs from cite publishing_listings.jsonl\n2026-05-27 21:07:32,361 [INFO] CiteTwSpider: Starting Cite Publishing Taiwan search harvest.\n2026-05-27 21:07:33,687 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=9789573336058 \"HTTP/1.1 302 Found\"\n2026-05-27 21:07:33,936 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=9789573336058&near=1 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:34,495 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:35,566 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=%E6%9D%91%E4%B8%8A%E6%98%A5%E6%A8%B9 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:35,692 [INFO] CiteTwSpider: Finished Cite Publishing. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/eslite_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.19,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:30,219 [INFO] EsliteTwSpider: Restart-safe: pre-loaded 21 existing URLs from eslite online_listings.jsonl\n2026-05-27 21:07:30,577 [INFO] EsliteTwSpider: Starting Eslite Online Taiwan API harvest.\n2026-05-27 21:07:31,483 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=9789573336058 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:32,259 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:34,129 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=%E6%9D%91%E4%B8%8A%E6%98%A5%E6%A8%B9 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:34,213 [INFO] EsliteTwSpider: Finished Eslite Online. Scraped 3 items.\n"
+    },
+    {
+      "file": "src/kingstone_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.42,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:24,686 [INFO] KingstoneSpider: Restart-safe: pre-loaded 107 existing URLs from kingstone_com_tw_listings.jsonl\n2026-05-27 21:07:24,933 [INFO] KingstoneSpider: Starting Kingstone search crawler. Limit: 1 pages.\n2026-05-27 21:07:24,934 [INFO] KingstoneSpider: Fetching search page: https://www.kingstone.com.tw/search/key/9789573336058/dis/list?\n2026-05-27 21:07:27,019 [INFO] httpx: HTTP Request: GET https://www.kingstone.com.tw/search/key/9789573336058/dis/list? \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:27,225 [INFO] KingstoneSpider: Fetching search page: https://www.kingstone.com.tw/search/key/Harry Potter/dis/list?\n2026-05-27 21:07:28,308 [INFO] httpx: HTTP Request: GET https://www.kingstone.com.tw/search/key/Harry%20Potter/dis/list? \"HTTP/1.1 200 OK\"\n"
+    }
+  ]
+}

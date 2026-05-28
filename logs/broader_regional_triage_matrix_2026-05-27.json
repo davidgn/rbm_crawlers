@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "files": 9,
+    "nonzero": 2,
+    "timeouts": 1,
+    "zero_added": 7,
+    "cache_added": 2
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.66,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:45,987 [INFO] BeninMarketPlaceSpider: Restart-safe: pre-loaded 1 existing URLs from beninmarketplace livres_listings.jsonl\n2026-05-27 05:04:46,414 [INFO] BeninMarketPlaceSpider: Starting BeninMarketPlace Livres harvest. limit_pages=1 limit_items=3\n2026-05-27 05:04:48,086 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/products?search=livre \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:48,588 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livre-petit-guide-motivationnel-de-lapprenant-66 \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:49,263 [INFO] BeninMarketPlaceSpider: Finished BeninMarketPlace Livres. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.97,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:50,764 [INFO] BookconektSpider: Restart-safe: pre-loaded 20 existing URLs from bookconekt_listings.jsonl\n2026-05-27 05:04:51,106 [INFO] BookconektSpider: Starting Bookconekt harvest (cache-first). limit_pages=1\n2026-05-27 05:04:51,106 [INFO] BookconektSpider: Using pinned browse URL: https://bookconekt.com/product-category/livres-beninois/\n2026-05-27 05:04:59,265 [INFO] BookconektSpider: No content on page 1 — done.\n2026-05-27 05:04:59,265 [INFO] BookconektSpider: Finished. 0 items cached.\n"
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 75.87,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/dontthrowme_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 11.68,
+      "platform_name": "Dont Throw Me Hong Kong Books",
+      "territory": "Hong Kong",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:27,971 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 4 existing URLs from dont throw me hong kong books_listings.jsonl\n2026-05-27 05:04:28,479 [INFO] ConfigurableMarketplaceSpider: Starting Dont Throw Me Hong Kong Books harvest. limit_pages=1 limit_items=3\n2026-05-27 05:04:30,822 [INFO] httpx: HTTP Request: GET https://dontthrowme.com/en/marketplace/books \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:32,982 [INFO] httpx: HTTP Request: GET https://dontthrowme.com/en/marketplace/books \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:36,622 [INFO] httpx: HTTP Request: GET https://dontthrowme.com/en/marketplace \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:37,006 [INFO] ConfigurableMarketplaceSpider: Finished Dont Throw Me Hong Kong Books harvest. Saved 0 items.\n",
+      "output_items_before": 22,
+      "output_items_after": 22,
+      "output_items_added": 0,
+      "cache_html_before": 7,
+      "cache_html_after": 7,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/gabonlivre_ga_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.82,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:55,760 [INFO] GabonLivreGaSpider: Restart-safe: pre-loaded 40 existing URLs from gabon livre_listings.jsonl\n2026-05-27 05:04:56,077 [INFO] GabonLivreGaSpider: Starting WooCommerce API crawler for Gabon Livre. Limit: 1 pages.\n2026-05-27 05:04:56,077 [INFO] GabonLivreGaSpider: Fetching page 1: https://www.gabonlivre.com/wp-json/wc/store/products?page=1&per_page=20\n2026-05-27 05:04:57,967 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/wp-json/wc/store/products?page=1&per_page=20 \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:59,253 [INFO] GabonLivreGaSpider: Finished Gabon Livre. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/jiushujie_7788_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.8,
+      "platform_name": "7788旧书",
+      "territory": "China",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:38,626 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 68 existing URLs from 7788旧书_listings.jsonl\n2026-05-27 05:04:38,916 [INFO] ConfigurableMarketplaceSpider: Starting 7788旧书 harvest. limit_pages=1 limit_items=3\n2026-05-27 05:04:39,685 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/ \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:40,420 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_64q7wcjYKaRB.html \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:41,245 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_8O21ZMHwmvnA.html \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:42,073 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_LgreB8hrzqjJ.html \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 127,
+      "output_items_after": 130,
+      "output_items_added": 3,
+      "cache_html_before": 68,
+      "cache_html_after": 71,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/la_friperie_du_livre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.75,
+      "platform_name": "La Friperie du Livre",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:53,254 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 1 existing URLs from la friperie du livre_listings.jsonl\n2026-05-27 05:04:53,624 [INFO] ConfigurableMarketplaceSpider: Starting La Friperie du Livre harvest. limit_pages=1 limit_items=3\n2026-05-27 05:04:54,218 [INFO] httpx: HTTP Request: GET https://www.facebook.com/p/La-Friperie-du-Livre-61576751756556/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 4,
+      "output_items_after": 4,
+      "output_items_added": 0,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/qiqi788_spider.py",
+      "returncode": 2,
+      "timeout": false,
+      "duration_s": 1.78,
+      "stdout_tail": "",
+      "stderr_tail": "usage: qiqi788_spider.py [-h] [--limit LIMIT]\nqiqi788_spider.py: error: unrecognized arguments: --limit-pages 1 --limit-items 3\n"
+    },
+    {
+      "file": "src/thryft_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 26.34,
+      "platform_name": "Thryft Hong Kong",
+      "territory": "Hong Kong",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:04:28,302 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 4 existing URLs from thryft hong kong_listings.jsonl\n2026-05-27 05:04:28,604 [INFO] ConfigurableMarketplaceSpider: Starting Thryft Hong Kong harvest. limit_pages=1 limit_items=3\n2026-05-27 05:04:30,285 [INFO] httpx: HTTP Request: GET https://thryft.asia/collections/all \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:32,858 [INFO] httpx: HTTP Request: GET https://thryft.asia/products/thryft-club-membership \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:35,449 [INFO] httpx: HTTP Request: GET https://thryft.asia/collections/all/products/going-places \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 05:04:35,822 [INFO] httpx: HTTP Request: GET https://thryft.asia/products/going-places \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:38,785 [INFO] httpx: HTTP Request: GET https://thryft.asia/collections/all/products/ole-la-guitarra-de-sabicas \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 05:04:39,350 [INFO] httpx: HTTP Request: GET https://thryft.asia/products/ole-la-guitarra-de-sabicas \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:41,860 [INFO] httpx: HTTP Request: GET https://thryft.asia/collections/all/products/alls-well-that-ends-well \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 05:04:42,434 [INFO] httpx: HTTP Request: GET https://thryft.asia/products/alls-well-that-ends-well \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:45,579 [INFO] httpx: HTTP Request: GET https://thryft.asia/collections/all/products/june-2021-vintage-39 \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 05:04:45,970 [INFO] httpx: HTTP Request: GET https://thryft.asia/products/june-2021-vintage-39 \"HTTP/1.1 200 OK\"\n2026-05-27 05:04:48,237 [INFO] httpx: HTTP Request: GET https://thryft.asia/collections/all/products/and-then-tiger-told-the-shark-a-collection-of-the-greatest-true-golf-stories-of-all-time \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 05:04:48,824 [INFO] httpx: HTTP Request: GET https://thryft.asia/products/and-then-tiger-told-the-shark-a-collection-of-the-greatest-true-golf-stories-of-all-time \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 6,
+      "output_items_after": 9,
+      "output_items_added": 3,
+      "cache_html_before": 6,
+      "cache_html_after": 9,
+      "cache_html_added": 3
+    }
+  ]
+}

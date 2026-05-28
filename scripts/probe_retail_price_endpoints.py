@@ -329,6 +329,15 @@ class BookFinderParser(HTMLParser):
 
 
 def parse_bookfinder_html(ean: str, html: str, currency: str, limit: int = 5) -> list[RetailPriceOffer]:
+    if "AwsWafIntegration" in html or "token.awswaf.com" in html:
+        return [
+            RetailPriceOffer(
+                source="bookfinder",
+                ean=ean,
+                status="error",
+                error="AWS WAF JavaScript challenge",
+            )
+        ]
     parser = BookFinderParser(ean, currency)
     parser.feed(html)
     parser.close()

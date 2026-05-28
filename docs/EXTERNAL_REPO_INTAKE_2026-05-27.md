@@ -92,6 +92,9 @@ Implemented RBM action:
 - Added `scripts/probe_retail_price_endpoints.py` as a bounded probe for the AbeBooks pricing-service and BookFinder ISBN search surfaces. This is a probe, not a fleet spider; it records structured `offer`, `no_offer`, or `error` rows and keeps endpoint volatility visible.
 - Added parser coverage for AbeBooks pricing payloads and BookFinder HTML offer extraction in `tests/test_external_repo_utilities.py`.
 - Live probe evidence for `9780140449136` was written to `logs/retail_price_probe_2026-05-27.json`: AbeBooks returned new/used price signals (`US$ 12.50` and `US$ 6.87`), while BookFinder returned `no_offer` from this environment/parser run.
+- Follow-up batch evidence was written to `logs/retail_price_probe_batch_2026-05-28.json` for three ISBNs. AbeBooks returned new/used prices for all three; BookFinder consistently returned an AWS WAF JavaScript challenge.
+- Saved the BookFinder challenge page and metadata to `logs/bookfinder_live_9780140449136_2026-05-28.html` and `.meta.json`; the probe now reports this as `error: AWS WAF JavaScript challenge` instead of a misleading `no_offer`.
+- Added a fixture-backed AbeBooks regression test using `tests/fixtures/abebooks_pricing_9780140449136.json`.
 
 Why this is the right boundary:
 

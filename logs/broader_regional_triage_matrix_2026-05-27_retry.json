@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 2,
+    "timeouts": 2,
+    "zero_added": 2,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 60.94,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/qiqi788_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 60.93,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  ]
+}

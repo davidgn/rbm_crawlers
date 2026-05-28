@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 4,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.59,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:24:54,525 [INFO] BeninMarketPlaceSpider: Restart-safe: pre-loaded 8 existing URLs from beninmarketplace livres_listings.jsonl\n2026-05-27 00:24:54,999 [INFO] BeninMarketPlaceSpider: Starting BeninMarketPlace Livres harvest. limit_pages=1 limit_items=3\n2026-05-27 00:24:56,144 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/products?search=livre \"HTTP/1.1 200 OK\"\n2026-05-27 00:24:56,628 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livre-petit-guide-motivationnel-de-lapprenant-66 \"HTTP/1.1 200 OK\"\n2026-05-27 00:24:57,139 [INFO] BeninMarketPlaceSpider: Finished BeninMarketPlace Livres. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 51.7,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:25:02,007 [INFO] BookconektSpider: Restart-safe: pre-loaded 20 existing URLs from bookconekt_listings.jsonl\n2026-05-27 00:25:02,366 [INFO] BookconektSpider: Starting Bookconekt harvest (cache-first). limit_pages=1\n2026-05-27 00:25:51,521 [INFO] httpx: HTTP Request: GET https://bookconekt.com \"HTTP/1.1 200 OK\"\n2026-05-27 00:25:51,850 [WARNING] BookconektSpider: No browse path matched — using homepage.\n2026-05-27 00:25:51,922 [INFO] httpx: HTTP Request: GET https://bookconekt.com \"HTTP/1.1 200 OK\"\n2026-05-27 00:25:51,962 [INFO] BookconektSpider: Index page 1: https://bookconekt.com\n2026-05-27 00:25:52,242 [INFO] BookconektSpider: No new links on page 1 — done.\n2026-05-27 00:25:52,243 [INFO] BookconektSpider: Finished. 0 items cached.\n"
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.95,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:24:55,137 [INFO] ChunghwaHkSpider: Starting HTML Search crawler for Chung Hwa. Limit: 1 pages.\n2026-05-27 00:24:55,137 [INFO] ChunghwaHkSpider: Fetching page 1: https://www.chunghwabook.com.hk/book/index/page/1\n2026-05-27 00:24:56,438 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/index/page/1 \"HTTP/1.1 200 OK\"\n2026-05-27 00:25:00,293 [INFO] ChunghwaHkSpider: Finished Chung Hwa. Scraped 20 items.\n"
+    },
+    {
+      "file": "src/jiushujie_7788_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.52,
+      "platform_name": "7788旧书",
+      "territory": "China",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:24:58,820 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 65 existing URLs from 7788旧书_listings.jsonl\n2026-05-27 00:24:59,166 [INFO] ConfigurableMarketplaceSpider: Starting 7788旧书 harvest. limit_pages=1 limit_items=3\n2026-05-27 00:25:00,036 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/ \"HTTP/1.1 200 OK\"\n2026-05-27 00:25:01,162 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_GeKdqLSWvwRz.html \"HTTP/1.1 200 OK\"\n2026-05-27 00:25:02,142 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_xyW2q0Cr8n07.html \"HTTP/1.1 200 OK\"\n2026-05-27 00:25:03,019 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_LgeB8hjrzDg9.html \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 124,
+      "output_items_after": 127,
+      "output_items_added": 3,
+      "cache_html_before": 65,
+      "cache_html_after": 68,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/la_friperie_du_livre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.24,
+      "platform_name": "La Friperie du Livre",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:25:05,931 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 1 existing URLs from la friperie du livre_listings.jsonl\n2026-05-27 00:25:06,281 [INFO] ConfigurableMarketplaceSpider: Starting La Friperie du Livre harvest. limit_pages=1 limit_items=3\n2026-05-27 00:25:06,556 [INFO] httpx: HTTP Request: GET https://www.facebook.com/p/La-Friperie-du-Livre-61576751756556/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 4,
+      "output_items_after": 4,
+      "output_items_added": 0,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    }
+  ]
+}

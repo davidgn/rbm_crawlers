@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 4,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/books_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.65,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:58:46,881 [INFO] BooksTwSpider: Restart-safe: pre-loaded 7 existing URLs from books_com_tw_listings.jsonl\n2026-05-27 04:58:47,317 [INFO] BooksTwSpider: Starting Books.com.tw search harvest. Limit: 1 pages.\n2026-05-27 04:58:47,318 [INFO] BooksTwSpider: Fetching search page: https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/9789573336058\n2026-05-27 04:58:49,174 [INFO] httpx: HTTP Request: GET https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/9789573336058 \"HTTP/1.0 404 Not Found\"\n2026-05-27 04:58:49,177 [INFO] BooksTwSpider: Fetching search page: https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/Harry Potter\n2026-05-27 04:58:51,204 [INFO] httpx: HTTP Request: GET https://search.books.com.tw/search/query/cat/all/sort/1/v/0/page/1/spell/3/key/Harry%20Potter \"HTTP/1.1 200 OK\"\n"
+    },
+    {
+      "file": "src/cite_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.23,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:58:54,123 [INFO] CiteTwSpider: Restart-safe: pre-loaded 3 existing URLs from cite publishing_listings.jsonl\n2026-05-27 04:58:54,411 [INFO] CiteTwSpider: Starting Cite Publishing Taiwan search harvest.\n2026-05-27 04:58:55,764 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=9789573336058 \"HTTP/1.1 302 Found\"\n2026-05-27 04:58:56,011 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=9789573336058&near=1 \"HTTP/1.1 200 OK\"\n2026-05-27 04:58:56,458 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-27 04:58:57,020 [INFO] CiteTwSpider: Finished Cite Publishing. Scraped 3 items.\n"
+    },
+    {
+      "file": "src/eslite_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.93,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:58:51,251 [INFO] EsliteTwSpider: Restart-safe: pre-loaded 3 existing URLs from eslite online_listings.jsonl\n2026-05-27 04:58:51,685 [INFO] EsliteTwSpider: Starting Eslite Online Taiwan API harvest.\n2026-05-27 04:58:52,538 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=9789573336058 \"HTTP/1.1 200 OK\"\n2026-05-27 04:58:52,943 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-27 04:58:53,009 [INFO] EsliteTwSpider: Finished Eslite Online. Scraped 3 items.\n"
+    },
+    {
+      "file": "src/kingstone_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.04,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:58:46,815 [INFO] KingstoneSpider: Restart-safe: pre-loaded 89 existing URLs from kingstone_com_tw_listings.jsonl\n2026-05-27 04:58:47,153 [INFO] KingstoneSpider: Starting Kingstone search crawler. Limit: 1 pages.\n2026-05-27 04:58:47,154 [INFO] KingstoneSpider: Fetching search page: https://www.kingstone.com.tw/search/key/9789573336058/dis/list?\n2026-05-27 04:58:48,842 [INFO] httpx: HTTP Request: GET https://www.kingstone.com.tw/search/key/9789573336058/dis/list? \"HTTP/1.1 200 OK\"\n2026-05-27 04:58:49,029 [INFO] KingstoneSpider: Fetching search page: https://www.kingstone.com.tw/search/key/Harry Potter/dis/list?\n2026-05-27 04:58:49,422 [INFO] httpx: HTTP Request: GET https://www.kingstone.com.tw/search/key/Harry%20Potter/dis/list? \"HTTP/1.1 200 OK\"\n"
+    }
+  ]
+}

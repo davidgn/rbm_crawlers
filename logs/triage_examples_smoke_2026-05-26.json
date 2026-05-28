@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 5,
+    "timeouts": 0,
+    "zero_added": 5,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "cannot import name 'MarketplaceConfig' from 'configurable_marketplace_spider' (/home/davidgn/active_repos/rbm_crawlers/src/configurable_marketplace_spider.py)"
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "No module named 'bs4'"
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "No module named 'bs4'"
+    },
+    {
+      "file": "src/jiushujie_7788_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "No module named 'bs4'"
+    },
+    {
+      "file": "src/la_friperie_du_livre_spider.py",
+      "returncode": -998,
+      "timeout": false,
+      "duration_s": null,
+      "import_error": "No module named 'bs4'"
+    }
+  ]
+}

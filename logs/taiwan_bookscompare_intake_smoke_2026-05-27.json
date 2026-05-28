@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 4,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/books_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.34,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:56:37,816 [INFO] BooksTwSpider: Restart-safe: pre-loaded 7 existing URLs from books_com_tw_listings.jsonl\n2026-05-27 04:56:37,816 [INFO] BooksTwSpider: Starting Books.com.tw Harvest (Cache-First). Limit: 1 pages.\n2026-05-27 04:56:43,706 [INFO] BooksTwSpider: Fetching index page 1: https://www.books.com.tw/web/books_n_newbook_02/?o=1&v=1&page=1\n2026-05-27 04:56:49,692 [ERROR] BooksTwSpider: Failed to load https://www.books.com.tw/web/books_n_newbook_02/?o=1&v=1&page=1: Page.wait_for_timeout: Target page, context or browser has been closed\n"
+    },
+    {
+      "file": "src/cite_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.96,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:56:44,887 [INFO] CiteTwSpider: Starting Cite Publishing Taiwan search harvest.\n2026-05-27 04:56:46,351 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=9789573336058 \"HTTP/1.1 302 Found\"\n2026-05-27 04:56:46,599 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=9789573336058&near=1 \"HTTP/1.1 200 OK\"\n2026-05-27 04:56:47,158 [INFO] httpx: HTTP Request: GET https://www.cite.com.tw/search_result?keywords=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-27 04:56:47,923 [INFO] CiteTwSpider: Finished Cite Publishing. Scraped 3 items.\n"
+    },
+    {
+      "file": "src/eslite_tw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.64,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:56:41,947 [INFO] EsliteTwSpider: Starting Eslite Online Taiwan API harvest.\n2026-05-27 04:56:42,835 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=9789573336058 \"HTTP/1.1 200 OK\"\n2026-05-27 04:56:43,295 [INFO] httpx: HTTP Request: GET https://athena.eslite.com/api/v2/search?q=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-27 04:56:43,371 [INFO] EsliteTwSpider: Finished Eslite Online. Scraped 3 items.\n"
+    },
+    {
+      "file": "src/kingstone_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.93,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 04:56:38,266 [INFO] KingstoneSpider: Restart-safe: pre-loaded 89 existing URLs from kingstone_com_tw_listings.jsonl\n2026-05-27 04:56:38,721 [INFO] KingstoneSpider: Starting Kingstone Crawler. Limit: 1 pages.\n2026-05-27 04:56:38,722 [INFO] KingstoneSpider: Fetching page 1: https://www.kingstone.com.tw/new/book/?page=1\n2026-05-27 04:56:40,554 [ERROR] KingstoneSpider: Page fetch failed: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Missing Subject Key Identifier (_ssl.c:1029)\n"
+    }
+  ]
+}

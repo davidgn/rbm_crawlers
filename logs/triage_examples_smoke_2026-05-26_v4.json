@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 1,
+    "timeouts": 1,
+    "zero_added": 2,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.16,
+      "platform_name": "BeninMarketPlace Livres",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:00:14,716 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 4 existing URLs from beninmarketplace livres_listings.jsonl\n2026-05-27 00:00:15,013 [INFO] ConfigurableMarketplaceSpider: Starting BeninMarketPlace Livres harvest. limit_pages=1 limit_items=2\n2026-05-27 00:00:16,500 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/ \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 00:00:16,802 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:17,217 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/enfants \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:18,247 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/histoire \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:19,191 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/jeunesse \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:20,175 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/litterature \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:21,186 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/recettes-de-cuisine \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:22,090 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/romans \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 4,
+      "output_items_after": 6,
+      "output_items_added": 2,
+      "cache_html_before": 5,
+      "cache_html_after": 7,
+      "cache_html_added": 2
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 45.86,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.05,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:00:06,069 [INFO] ChunghwaHkSpider: Starting HTML Search crawler for Chung Hwa. Limit: 1 pages.\n2026-05-27 00:00:06,069 [INFO] ChunghwaHkSpider: Fetching page 1: https://www.chunghwabook.com.hk/search?keyword=Harry+Potter&page=1\n2026-05-27 00:00:10,628 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/search?keyword=Harry+Potter&page=1 \"HTTP/1.1 200 OK\"\n2026-05-27 00:00:13,612 [INFO] ChunghwaHkSpider: Finished Chung Hwa. Scraped 0 items.\n"
+    }
+  ]
+}

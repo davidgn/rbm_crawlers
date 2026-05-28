@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 5,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.26,
+      "platform_name": "BeninMarketPlace Livres",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:03:08,953 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 8 existing URLs from beninmarketplace livres_listings.jsonl\n2026-05-27 00:03:09,343 [INFO] ConfigurableMarketplaceSpider: Starting BeninMarketPlace Livres harvest. limit_pages=1 limit_items=2\n2026-05-27 00:03:09,738 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/ \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 00:03:09,939 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:10,239 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/enfants \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:11,201 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/histoire \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:12,089 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/jeunesse \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:13,090 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/litterature \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:14,112 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/recettes-de-cuisine \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:15,006 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/romans \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:15,976 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/romans-55 \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:16,844 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres/ \"HTTP/1.1 301 Moved Permanently\"\n2026-05-27 00:03:17,048 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livres \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:17,805 [INFO] ConfigurableMarketplaceSpider: Finished BeninMarketPlace Livres harvest. Saved 0 items.\n",
+      "output_items_before": 8,
+      "output_items_after": 8,
+      "output_items_added": 0,
+      "cache_html_before": 9,
+      "cache_html_after": 9,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 26.7,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:02:58,397 [INFO] BookconektSpider: Restart-safe: pre-loaded 20 existing URLs from bookconekt_listings.jsonl\n2026-05-27 00:02:58,668 [INFO] BookconektSpider: Starting Bookconekt harvest (cache-first). limit_pages=1\n2026-05-27 00:03:03,392 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product-category/livres-beninois/ \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:03,796 [INFO] BookconektSpider: Browse URL confirmed: https://bookconekt.com/product-category/livres-beninois/\n2026-05-27 00:03:07,947 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product-category/livres-beninois/ \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:08,003 [INFO] BookconektSpider: Index page 1: https://bookconekt.com/product-category/livres-beninois/\n2026-05-27 00:03:08,559 [INFO] BookconektSpider: Found 20 new links.\n2026-05-27 00:03:08,560 [INFO] BookconektSpider: Harvesting: https://bookconekt.com/product/combat-pour-le-trone/\n2026-05-27 00:03:13,638 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product/combat-pour-le-trone/ \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:14,644 [INFO] BookconektSpider: Harvesting: https://bookconekt.com/product/au-carrefour-des-destins/\n2026-05-27 00:03:19,562 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product/au-carrefour-des-destins/ \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:20,597 [INFO] BookconektSpider: Finished. 0 items cached.\n"
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.52,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:02:58,907 [INFO] ChunghwaHkSpider: Starting HTML Search crawler for Chung Hwa. Limit: 1 pages.\n2026-05-27 00:02:58,908 [INFO] ChunghwaHkSpider: Fetching page 1: https://www.chunghwabook.com.hk/search?keyword=Harry+Potter&page=1\n2026-05-27 00:03:04,472 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/search?keyword=Harry+Potter&page=1 \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:07,488 [INFO] ChunghwaHkSpider: Finished Chung Hwa. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/jiushujie_7788_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.35,
+      "platform_name": "7788旧书",
+      "territory": "China",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:03:19,404 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 65 existing URLs from 7788旧书_listings.jsonl\n2026-05-27 00:03:19,664 [INFO] ConfigurableMarketplaceSpider: Starting 7788旧书 harvest. limit_pages=1 limit_items=2\n2026-05-27 00:03:20,397 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/ \"HTTP/1.1 200 OK\"\n2026-05-27 00:03:21,774 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/ \"HTTP/1.1 403 Forbidden\"\n2026-05-27 00:03:22,018 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/sort_0_0_0_0_default_0_1/ \"HTTP/1.1 404 Not Found\"\n2026-05-27 00:03:22,020 [INFO] ConfigurableMarketplaceSpider: Finished 7788旧书 harvest. Saved 0 items.\n",
+      "output_items_before": 124,
+      "output_items_after": 124,
+      "output_items_added": 0,
+      "cache_html_before": 65,
+      "cache_html_after": 65,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/la_friperie_du_livre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.24,
+      "platform_name": "La Friperie du Livre",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 00:03:22,332 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 1 existing URLs from la friperie du livre_listings.jsonl\n2026-05-27 00:03:22,631 [INFO] ConfigurableMarketplaceSpider: Starting La Friperie du Livre harvest. limit_pages=1 limit_items=2\n2026-05-27 00:03:22,837 [INFO] httpx: HTTP Request: GET https://www.facebook.com/p/La-Friperie-du-Livre-61576751756556/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 4,
+      "output_items_after": 4,
+      "output_items_added": 0,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    }
+  ]
+}

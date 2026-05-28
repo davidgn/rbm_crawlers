@@ -1,9 +1,11 @@
+import json
 import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
+FIXTURES = ROOT / "tests" / "fixtures"
 sys.path.insert(0, str(SCRIPTS))
 
 from extract_book_text_signals import extract_signals  # noqa: E402
@@ -168,6 +170,18 @@ def test_abebooks_pricing_parser_extracts_new_and_used():
     ]
 
 
+def test_abebooks_pricing_parser_accepts_live_observed_shape():
+    payload = json.loads((FIXTURES / "abebooks_pricing_9780140449136.json").read_text())
+
+    offers = parse_abebooks_pricing("9780140449136", payload)
+
+    assert [(offer.condition, offer.price, offer.price_text) for offer in offers] == [
+        ("new", 12.50, "US$ 12.50"),
+        ("used", 6.87, "US$ 6.87"),
+    ]
+    assert all(offer.status == "offer" for offer in offers)
+
+
 def test_bookfinder_url_uses_expected_query_shape():
     url = bookfinder_url("9780140449136", "usd", "us")
 
@@ -209,3 +223,16 @@ def test_bookfinder_parser_extracts_sorted_used_and_new_offers():
     assert offers[0].edition == "Revised"
     assert offers[0].language == "English"
     assert offers[1].listing_url == "https://shop.example/used-b"
+
+
+def test_bookfinder_parser_reports_aws_waf_challenge_as_error():
+    offers = parse_bookfinder_html(
+        "9780140449136",
+        '<script src="https://example.token.awswaf.com/challenge.js"></script>'
+        "<script>AwsWafIntegration.getToken()</script>",
+        "USD",
+    )
+
+    assert len(offers) == 1
+    assert offers[0].status == "error"
+    assert offers[0].error == "AWS WAF JavaScript challenge"

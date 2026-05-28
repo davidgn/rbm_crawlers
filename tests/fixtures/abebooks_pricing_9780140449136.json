@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "pricingInfoForBestNew": {
+    "bestPriceInPurchaseCurrencyWithCurrencySymbol": "US$ 12.50"
+  },
+  "pricingInfoForBestUsed": {
+    "bestPriceInPurchaseCurrencyWithCurrencySymbol": "US$ 6.87"
+  }
+}

@@ -317,6 +317,33 @@ Verification additions:
 - Full networked `scripts/qa_recent_spiders.sh` after the Buscalibre/currency pass: Ruff passed, `py_compile` passed, `pytest` reported **21 passed**, Taiwan smoke reported **4 files, 0 nonzero exits, 0 timeouts**, and triage smoke reported **5 files, 0 nonzero exits, 0 timeouts**.
 - `git diff --check` still reports trailing whitespace in generated cached HTML only; source/test/doc changes are clean.
 
+## 0.6 Follow-Up Execution: Retail Probe, BookFinder Diagnosis, Buscalibre, and Cite Wiring (2026-05-28)
+
+Completed follow-up items 3 through 7 from the 2026-05-28 next-step list; APK disassembly work was explicitly deferred because it is being handled elsewhere.
+
+- Kept non-bulky generated evidence from the artifact churn:
+  - small smoke/probe logs under `logs/`;
+  - `artifacts/generated_snapshots/generated_crawl_artifacts_2026-05-28.paths`.
+  - Left bulky/generated payloads out of source history: `artifacts/generated_snapshots/generated_crawl_artifacts_2026-05-28.tar.zst`, `decompiled/**`, `src/cache/**`, and bulk `src/data/**`.
+- Added fixture-backed AbeBooks pricing parser coverage with `tests/fixtures/abebooks_pricing_9780140449136.json`.
+- Ran a three-ISBN retail probe batch:
+  - Evidence: `logs/retail_price_probe_batch_2026-05-28.json`.
+  - AbeBooks returned new/used price signals for all three ISBNs.
+  - BookFinder returned AWS WAF JavaScript challenge pages for all three ISBNs.
+- Saved the BookFinder live challenge snapshot:
+  - `logs/bookfinder_live_9780140449136_2026-05-28.html`
+  - `logs/bookfinder_live_9780140449136_2026-05-28.meta.json`
+  - Updated `scripts/probe_retail_price_endpoints.py` so these pages report `error: AWS WAF JavaScript challenge` instead of `no_offer`.
+- Rechecked Buscalibre Colombia/Peru:
+  - `logs/buscalibre_co_pe_smoke_2026-05-28.json`: both wrappers exited 0 with no timeouts; Peru parsed 1 restart-safe item, Colombia parsed 0 because the first bounded hits were duplicates.
+  - `logs/buscalibre_co_pe_smoke_limit10_2026-05-28.json`: Peru parsed 7 items; Colombia intermittently received HTTP 202 challenge/no-item HTML.
+  - Selector inspection confirmed live Buscalibre result cards still expose `.producto`, `h3.nombre`, `/libro-...` links, author metadata, and price blocks. Peru rewrite is usable; Colombia should be treated as challenge-prone.
+- Verified Cite / 城邦讀書花園 reconciliation wiring in the sibling `openrefine-reconciliation-service` repo:
+  - `lib/reconcile_dispatch.py` maps `cite-tw` to `strategies_rbm_taiwan.process_rbm_taiwan_query`.
+  - `lib/strategies_rbm_taiwan.py` contains the Cite search config for `https://www.cite.com.tw/search_result?keywords={query}&near=1`.
+  - `lib/schemas/manifest.py` already includes `cite-tw`.
+  - No duplicate registry/reconciler row was added.
+
 This document serves as the master blueprint and handover guide for the completion of the global Saturation Scrape. Over the course of the expansion phase, the fleet has been extended to provide authoritative coverage across **15 distinct global regions**, harmonizing the crawling, identity, and reconciliation layers into a unified ecosystem.
 
 ## 1. Global Fleet Coverage (Achieved)

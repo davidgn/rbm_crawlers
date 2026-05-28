@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 2,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 14.05,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:07:56,300 [INFO] ChunghwaHkSpider: Restart-safe: pre-loaded 20 existing URLs from chung hwa_listings.jsonl\n2026-05-27 05:07:56,591 [INFO] ChunghwaHkSpider: Starting HTML Search crawler for Chung Hwa. Limit: 1 pages.\n2026-05-27 05:07:56,591 [INFO] ChunghwaHkSpider: Fetching page 1: https://www.chunghwabook.com.hk/book/index/page/1\n2026-05-27 05:07:58,922 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/index/page/1 \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:00,779 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/detail/id/1378029545429739068 \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:02,234 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/detail/id/1378029545429739067 \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:04,103 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/detail/id/1378029545429739064 \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:07,231 [INFO] ChunghwaHkSpider: Finished Chung Hwa. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/qiqi788_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.3,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 05:07:56,053 [INFO] Qiqi788Spider: Restart-safe: pre-loaded 123 existing URLs from 7788旧书_listings.jsonl\n2026-05-27 05:07:56,379 [INFO] Qiqi788Spider: Starting 7788旧书 harvest (cache-first). limit_pages=1\n2026-05-27 05:07:57,555 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/all_1/ \"HTTP/1.1 200 OK\"\n2026-05-27 05:07:58,031 [INFO] Qiqi788Spider: Browse URL confirmed: https://7788js.7788.com/all_1/\n2026-05-27 05:07:58,766 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/all_1/ \"HTTP/1.1 200 OK\"\n2026-05-27 05:07:58,794 [INFO] Qiqi788Spider: Index page 1: https://7788js.7788.com/all_1/\n2026-05-27 05:07:59,234 [INFO] Qiqi788Spider: Found 62 new links.\n2026-05-27 05:07:59,234 [INFO] Qiqi788Spider: Harvesting: https://7788js.7788.com/pr/item_auction_RWzwph1EpYl.html\n2026-05-27 05:07:59,633 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_RWzwph1EpYl.html \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:00,364 [INFO] Qiqi788Spider: Harvesting: https://7788js.7788.com/pr/item_j5EvrtBp11E.html\n2026-05-27 05:08:00,695 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_j5EvrtBp11E.html \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:01,423 [INFO] Qiqi788Spider: Harvesting: https://7788js.7788.com/pr/item_auctionz_wyreDvC8bomk.html\n2026-05-27 05:08:01,680 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auctionz_wyreDvC8bomk.html \"HTTP/1.1 200 OK\"\n2026-05-27 05:08:02,520 [INFO] Qiqi788Spider: Finished. 1 items cached.\n"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 6,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 6,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/bookjungle_jm_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.37,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:30,977 [INFO] BookJungleJmSpider: Restart-safe: pre-loaded 20 existing URLs from the book jungle jamaica_listings.jsonl\n2026-05-28 02:24:32,337 [INFO] BookJungleJmSpider: Starting WooCommerce API crawler for The Book Jungle Jamaica. Limit: 1 pages.\n2026-05-28 02:24:32,338 [INFO] BookJungleJmSpider: Fetching page 1: https://bookjunglejamaica.com/wp-json/wc/store/products?page=1&per_page=20\n2026-05-28 02:24:34,045 [INFO] httpx: HTTP Request: GET https://bookjunglejamaica.com/wp-json/wc/store/products?page=1&per_page=20 \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:35,062 [INFO] BookJungleJmSpider: Finished The Book Jungle Jamaica. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/diwan_eg_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.47,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:36,441 [INFO] DiwanEgSpider: Restart-safe: pre-loaded 30 existing URLs from diwan bookstore_listings.jsonl\n2026-05-28 02:24:36,732 [INFO] DiwanEgSpider: Starting HTML Search crawler for Diwan Bookstore. Limit: 1 pages.\n2026-05-28 02:24:36,736 [INFO] DiwanEgSpider: Fetching page 1: https://diwanegypt.com/?s=Harry+Potter&post_type=product\n2026-05-28 02:24:38,443 [INFO] httpx: HTTP Request: GET https://diwanegypt.com/?s=Harry+Potter&post_type=product \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:40,566 [INFO] DiwanEgSpider: Finished Diwan Bookstore. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/fce_gt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 14.82,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:32,338 [INFO] FceGtSpider: Starting HTML Search crawler for Librería del FCE Guatemala. Limit: 1 pages.\n2026-05-28 02:24:32,338 [INFO] FceGtSpider: Fetching page 1: https://fceguatemalaenlinea.com/?s=Harry+Potter\n2026-05-28 02:24:39,501 [INFO] httpx: HTTP Request: GET https://fceguatemalaenlinea.com/?s=Harry+Potter \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:39,531 [INFO] FceGtSpider: No items found matching container 'article, .et_pb_post' on page 1. Stopping.\n2026-05-28 02:24:39,531 [INFO] FceGtSpider: Finished Librería del FCE Guatemala. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/livremoi_ma_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.58,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:37,009 [INFO] LivremoiMaSpider: Restart-safe: pre-loaded 32 existing URLs from livremoi_listings.jsonl\n2026-05-28 02:24:37,239 [INFO] LivremoiMaSpider: Starting HTML Search crawler for LivreMoi. Limit: 1 pages.\n2026-05-28 02:24:37,240 [INFO] LivremoiMaSpider: Fetching page 1: https://www.livremoi.ma/catalogsearch/result/?q=Harry+Potter&p=1\n2026-05-28 02:24:39,394 [INFO] httpx: HTTP Request: GET https://www.livremoi.ma/catalogsearch/result/?q=Harry+Potter&p=1 \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:42,175 [INFO] LivremoiMaSpider: Finished LivreMoi. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/mabooko_ma_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.48,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:40,602 [INFO] MabookoMaSpider: Restart-safe: pre-loaded 20 existing URLs from mabooko_listings.jsonl\n2026-05-28 02:24:40,968 [INFO] MabookoMaSpider: Starting WooCommerce API crawler for Mabooko. Limit: 1 pages.\n2026-05-28 02:24:40,968 [INFO] MabookoMaSpider: Fetching page 1: https://mabooko.com/wp-json/wc/store/products?page=1&per_page=20\n2026-05-28 02:24:41,981 [INFO] httpx: HTTP Request: GET https://mabooko.com/wp-json/wc/store/products?page=1&per_page=20 \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:43,068 [INFO] MabookoMaSpider: Finished Mabooko. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/sophos_gt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.87,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-28 02:24:31,273 [INFO] SophosGtSpider: Restart-safe: pre-loaded 30 existing URLs from librería sophos_listings.jsonl\n2026-05-28 02:24:32,341 [INFO] SophosGtSpider: Starting HTML Search crawler for Librería Sophos. Limit: 1 pages.\n2026-05-28 02:24:32,342 [INFO] SophosGtSpider: Fetching page 1: https://tienda.sophosenlinea.com/busqueda/listaLibros.php?tipoBus=full&palabrasBusqueda=Harry+Potter&pagSel=1\n2026-05-28 02:24:33,182 [INFO] httpx: HTTP Request: GET https://tienda.sophosenlinea.com/busqueda/listaLibros.php?tipoBus=full&palabrasBusqueda=Harry+Potter&pagSel=1 \"HTTP/1.1 200 OK\"\n2026-05-28 02:24:35,434 [INFO] SophosGtSpider: Finished Librería Sophos. Scraped 0 items.\n"
+    }
+  ]
+}

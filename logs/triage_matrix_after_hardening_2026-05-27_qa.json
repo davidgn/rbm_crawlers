@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 4,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/beninmarketplace_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.71,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:38,245 [INFO] BeninMarketPlaceSpider: Restart-safe: pre-loaded 1 existing URLs from beninmarketplace livres_listings.jsonl\n2026-05-27 21:07:38,544 [INFO] BeninMarketPlaceSpider: Starting BeninMarketPlace Livres harvest. limit_pages=1 limit_items=3\n2026-05-27 21:07:39,661 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/products?search=livre \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:39,995 [INFO] httpx: HTTP Request: GET https://beninmarketplace.bj/livre-petit-guide-motivationnel-de-lapprenant-66 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:40,673 [INFO] BeninMarketPlaceSpider: Finished BeninMarketPlace Livres. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bookconekt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 25.79,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:47,996 [INFO] BookconektSpider: Restart-safe: pre-loaded 20 existing URLs from bookconekt_listings.jsonl\n2026-05-27 21:07:48,279 [INFO] BookconektSpider: Starting Bookconekt harvest (cache-first). limit_pages=1\n2026-05-27 21:07:48,279 [INFO] BookconektSpider: Using pinned browse URL: https://bookconekt.com/product-category/livres-beninois/\n2026-05-27 21:07:54,690 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product-category/livres-beninois/ \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:54,738 [INFO] BookconektSpider: Index page 1: https://bookconekt.com/product-category/livres-beninois/\n2026-05-27 21:07:55,124 [INFO] BookconektSpider: Found 20 new links.\n2026-05-27 21:07:55,124 [INFO] BookconektSpider: Harvesting: https://bookconekt.com/product/combat-pour-le-trone/\n2026-05-27 21:07:58,691 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product/combat-pour-le-trone/ \"HTTP/1.1 200 OK\"\n2026-05-27 21:08:00,030 [INFO] BookconektSpider: Harvesting: https://bookconekt.com/product/au-carrefour-des-destins/\n2026-05-27 21:08:05,100 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product/au-carrefour-des-destins/ \"HTTP/1.1 200 OK\"\n2026-05-27 21:08:06,592 [INFO] BookconektSpider: Harvesting: https://bookconekt.com/product/un-plaisir-pour-mille-remords/\n2026-05-27 21:08:11,243 [INFO] httpx: HTTP Request: GET https://bookconekt.com/product/un-plaisir-pour-mille-remords/ \"HTTP/1.1 200 OK\"\n2026-05-27 21:08:12,460 [INFO] BookconektSpider: Finished. 0 items cached.\n"
+    },
+    {
+      "file": "src/chunghwa_hk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.19,
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:38,367 [INFO] ChunghwaHkSpider: Restart-safe: pre-loaded 20 existing URLs from chung hwa_listings.jsonl\n2026-05-27 21:07:38,746 [INFO] ChunghwaHkSpider: Starting HTML Search crawler for Chung Hwa. Limit: 1 pages.\n2026-05-27 21:07:38,746 [INFO] ChunghwaHkSpider: Fetching page 1: https://www.chunghwabook.com.hk/book/index/page/1\n2026-05-27 21:07:41,189 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/index/page/1 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:43,005 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/detail/id/1378029545429739068 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:44,152 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/detail/id/1378029545429739067 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:45,594 [INFO] httpx: HTTP Request: GET https://www.chunghwabook.com.hk/book/detail/id/1378029545429739064 \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:49,135 [INFO] ChunghwaHkSpider: Finished Chung Hwa. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/jiushujie_7788_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.0,
+      "platform_name": "7788旧书",
+      "territory": "China (mainland)",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:42,174 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 144 existing URLs from 7788旧书_listings.jsonl\n2026-05-27 21:07:42,567 [INFO] ConfigurableMarketplaceSpider: Starting 7788旧书 harvest. limit_pages=1 limit_items=3\n2026-05-27 21:07:43,352 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/ \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:44,075 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_zypZACCkqo50.html \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:45,090 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_p4dWOYc0ppg8.html \"HTTP/1.1 200 OK\"\n2026-05-27 21:07:46,035 [INFO] httpx: HTTP Request: GET https://7788js.7788.com/pr/item_auction_64q7wcYKAxK.html \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 144,
+      "output_items_after": 147,
+      "output_items_added": 3,
+      "cache_html_before": 144,
+      "cache_html_after": 147,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/la_friperie_du_livre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 2.12,
+      "platform_name": "La Friperie du Livre",
+      "territory": "Benin",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-27 21:07:50,527 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 1 existing URLs from la friperie du livre_listings.jsonl\n2026-05-27 21:07:50,788 [INFO] ConfigurableMarketplaceSpider: Starting La Friperie du Livre harvest. limit_pages=1 limit_items=3\n2026-05-27 21:07:51,022 [INFO] httpx: HTTP Request: GET https://www.facebook.com/p/La-Friperie-du-Livre-61576751756556/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 1,
+      "output_items_after": 1,
+      "output_items_added": 0,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    }
+  ]
+}
