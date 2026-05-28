@@ -335,5 +335,26 @@ Live DACH endpoint probe evidence:
 Decision:
 
 - The existing DACH probe script is still the right structured tool for Momox/Rebuy/Bonavendi, but current live access is WAF/challenge-limited from this network.
-- The later APK archive entries need a better extraction strategy before more work is spent on them. Practical options are: repack the large archive into an uncompressed/indexable local staging directory once, split the archive by priority group, or extract the remaining APKs outside the interactive turn and then resume bounded string/JADX passes.
+- The later APK archive entries needed a better extraction strategy before more work was spent on them. The selected strategy was to pay the sequential `xz` tar read once and keep a local ignored full-extract workspace for all follow-up APK work.
 - Do not mark Medimops/current Momox/NadirKitap as partially disassembled yet; no APK content was obtained in this pass.
+
+## Continuation: Full APK Archive Extraction
+
+Date: 2026-05-28
+
+Decision: extract `/home/davidgn/Downloads/apks.tar.xz` completely into an ignored local workspace rather than continue one-off member extraction from the compressed tar stream.
+
+Extraction evidence:
+
+- Destination: `/home/davidgn/active_repos/rbm_crawlers/apk_work/full_extract`.
+- Command completed successfully with tar checkpoints through the end of the archive.
+- Extracted workspace size: 3.5G.
+- Remaining `/home/davidgn` filesystem headroom after extraction: approximately 75G free.
+- Top-level mobile artifacts now available locally: 15 `.apk`, 27 `.xapk`, and 3 `.apkm` files.
+- The local workspace includes the previously blocked later entries: `Medimops App_1.1.0_APKPure.xapk`, `momox_ sell books & fashion_5.7.0-release_APKPure.apk`, `rebuy - Kaufen & Verkaufen_2026.05.5297_APKPure.xapk`, `NadirKitap_5.5.84_APKPure.xapk`, and `PangoBooks_ Buy & Sell Books_3.0.7_APKPure.xapk`.
+
+Decision:
+
+- Keep `apk_work/full_extract` as the canonical local source for subsequent APK unpacking and JADX work.
+- Do not commit the extracted APK/XAPK/APKM files; `apk_work/` is ignored and remains a disposable working area.
+- This resolves the compressed archive seek bottleneck. Future passes should unpack from local files in priority order instead of running more targeted `tar -xJf` member pulls.

@@ -10,7 +10,8 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 
 - Total archive entries inventoried: 47.
 - Archive size noted during audit: approximately 2.1G.
-- Current ledger state: inventory complete, archive-wide disassembly not yet complete.
+- Current ledger state: inventory complete, archive fully extracted locally, archive-wide disassembly not yet complete.
+- Full local extraction: `/home/davidgn/active_repos/rbm_crawlers/apk_work/full_extract` (ignored workspace, 3.5G on disk as of 2026-05-28).
 - Default status for entries not named below: `not_checked`.
 
 ## Priority 1: Book-First / Known Blocked Targets
@@ -54,4 +55,4 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 
 ## Next Execution Step
 
-Create one disassembly workspace per priority-1 and priority-2 artifact, record package id/version, run bounded endpoint string extraction, and append endpoint findings here before moving to broad priority-3 marketplaces.
+Create one disassembly workspace per remaining priority-1 and priority-2 artifact from `apk_work/full_extract`, record package id/version, run bounded endpoint string extraction, and append endpoint findings here before moving to broad priority-3 marketplaces. Start with current Momox, Rebuy, Medimops, NadirKitap, PangoBooks, Kongfz, Xianyu, and Huanxiang because those are now locally available without paying the compressed-tar seek cost again.
