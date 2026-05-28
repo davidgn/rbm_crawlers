@@ -6,6 +6,8 @@ __pycache__/
 .ruff_cache/
 *.pyc
 research/decompiled/
+decompiled/
+artifacts/generated_snapshots/
 research/retained_qid_A14_repo_search_*/
 research/snapshots/
 *.zip

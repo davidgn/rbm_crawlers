@@ -17,7 +17,7 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 
 | Artifact | Status | Reason |
 | :--- | :--- | :--- |
-| `BookChor - Online Bookstore_14.10_APKPure.xapk` | `not_disassembled` | India book-first target; likely endpoint value. |
+| `BookChor - Online Bookstore_14.10_APKPure.xapk` | `partially_disassembled` | India book-first target; unpacked workspace exists at `decompiled/BookChor`; first endpoint pass found `www.bookchor.com` deep-link/web routes and Firebase/Razorpay non-inventory endpoints. |
 | `BookLal - Buy_Sell Used Books_3.3.1_APKPure.xapk` | `not_disassembled` | India used-book app; likely endpoint value. |
 | `BookLane - Buy-Sell Used Books_3.1.2_APKPure.xapk` | `not_disassembled` | India used-book app; likely endpoint value. |
 | `BookMamu+-+Used_New+Books_2.2.8_apkcombo.com.xapk` | `not_disassembled` | India book-first target; likely endpoint value. |
@@ -33,7 +33,7 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 
 | Artifact | Status | Reason |
 | :--- | :--- | :--- |
-| `momox - Sell books, CD's, DVD's, games_3.7.5_APKPure.apk` | `not_disassembled` | Directly relevant to Momox buyback endpoint token/header research. |
+| `momox - Sell books, CD's, DVD's, games_3.7.5_APKPure.apk` | `partially_disassembled` | Directly relevant to Momox buyback endpoint token/header research; current unpacked/JADX workspace found `https://api.momox.de` and `media_offer?ean={ean}`. |
 | `momox_ sell books & fashion_5.7.0-release_APKPure.apk` | `not_disassembled` | Current Momox app variant; direct endpoint value. |
 | `rebuy - Kaufen & Verkaufen_2026.05.5297_APKPure.xapk` | `not_disassembled` | Directly relevant to Rebuy buyback endpoint shape/rate-limit research. |
 | `Medimops App_1.1.0_APKPure.xapk` | `not_disassembled` | Momox retail/recommerce adjacent. |
