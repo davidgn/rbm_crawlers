@@ -311,3 +311,29 @@ Decision:
 
 - Treat this first pass as inconclusive for inventory API recovery. The app may hide first-party API constants in obfuscated/native code or derive hosts dynamically.
 - Useful next step is JADX plus targeted native-string extraction around `config.arm64_v8a.apk`, focusing on `dejavu`, `duozhuayu`, OkHttp/Retrofit clients, WebView bridges, mini-program/WeChat routes, and any dynamically decoded host strings.
+
+## Continuation: DACH Recommerce Probe and Archive Bottleneck
+
+Date: 2026-05-28
+
+Decision: attempt the next priority-2 APKs, then fall back to live endpoint probe verification when archive extraction did not reach the later entries quickly enough.
+
+Archive extraction evidence:
+
+- Attempted a focused extraction of `Medimops App_1.1.0_APKPure.xapk`, `momox_ sell books & fashion_5.7.0-release_APKPure.apk`, and `NadirKitap_5.5.84_APKPure.xapk`.
+- Attempted a second single-entry extraction of `Medimops App_1.1.0_APKPure.xapk`.
+- Both attempts spent substantial time walking `/home/davidgn/Downloads/apks.tar.xz` without producing the requested file in `apk_work/extracted/`, so they were stopped rather than left running.
+- No recommerce APK workspace was created from this attempt; the ledger status for Medimops/current Momox/NadirKitap remains `not_disassembled`.
+
+Live DACH endpoint probe evidence:
+
+- Ran `scripts/probe_buyback_endpoints.py` against valid inputs `9780306406157` and `3442481759` (normalized by the script to `9783442481750` for the latter).
+- Momox was skipped by design because no `MOMOX_TOKEN` was provided.
+- Rebuy `POST https://www.rebuy.de/verkaufen/api/bulk-isbn` returned HTTP 429 from this environment with a JavaScript/VDF verification page.
+- Bonavendi `POST https://api.bonavendi.de/rest/v2/products/{ean}` returned HTTP 403 from this environment with a Cloudflare managed challenge.
+
+Decision:
+
+- The existing DACH probe script is still the right structured tool for Momox/Rebuy/Bonavendi, but current live access is WAF/challenge-limited from this network.
+- The later APK archive entries need a better extraction strategy before more work is spent on them. Practical options are: repack the large archive into an uncompressed/indexable local staging directory once, split the archive by priority group, or extract the remaining APKs outside the interactive turn and then resume bounded string/JADX passes.
+- Do not mark Medimops/current Momox/NadirKitap as partially disassembled yet; no APK content was obtained in this pass.
