@@ -2,7 +2,7 @@
 
 Date: 2026-05-27
 
-Archive: `/home/davidgn/Downloads/apks.tar.xz`
+Archive: `/home/davidgn/Downloads/apks.tar.xz` (deleted after successful full extraction on 2026-05-28)
 
 Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 
@@ -35,9 +35,9 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 | Artifact | Status | Reason |
 | :--- | :--- | :--- |
 | `momox - Sell books, CD's, DVD's, games_3.7.5_APKPure.apk` | `partially_disassembled` | Directly relevant to Momox buyback endpoint token/header research; current unpacked/JADX workspace found `https://api.momox.de` and `media_offer?ean={ean}`. |
-| `momox_ sell books & fashion_5.7.0-release_APKPure.apk` | `not_disassembled` | Current Momox app variant; direct endpoint value. |
-| `rebuy - Kaufen & Verkaufen_2026.05.5297_APKPure.xapk` | `not_disassembled` | Directly relevant to Rebuy buyback endpoint shape/rate-limit research. |
-| `Medimops App_1.1.0_APKPure.xapk` | `not_disassembled` | Momox retail/recommerce adjacent. |
+| `momox_ sell books & fashion_5.7.0-release_APKPure.apk` | `partially_disassembled` | Current Momox app variant; unpacked APK contents at `decompiled/MomoxCurrent/apk_unzip`; first raw string pass found current sell/ISBN UI, Firebase, promo, and chat/CDN hosts but no clear current offer API constant. |
+| `rebuy - Kaufen & Verkaufen_2026.05.5297_APKPure.xapk` | `partially_disassembled` | Directly relevant to Rebuy buyback endpoint shape/rate-limit research; unpacked workspace exists at `decompiled/Rebuy`; first raw string pass found `https://api.rebuy.com`, `X-API-KEY`, bearer/auth token strings, cart/product route fragments, and sell/deep-link routes. |
+| `Medimops App_1.1.0_APKPure.xapk` | `partially_disassembled` | Momox retail/recommerce adjacent; unpacked workspace exists at `decompiled/Medimops`; first raw string pass looks thin/retail-oriented with no clear inventory/buyback API constants. |
 | `wer-zahlt-mehr-3-1-0.apk` | `not_disassembled` | Buyback comparison target. |
 | `NadirKitap_5.5.84_APKPure.xapk` | `not_disassembled` | Turkey book marketplace/recommerce target. |
 | `PangoBooks_ Buy & Sell Books_3.0.7_APKPure.xapk` | `not_disassembled` | US book marketplace app; endpoint/API value. |

@@ -358,3 +358,122 @@ Decision:
 - Keep `apk_work/full_extract` as the canonical local source for subsequent APK unpacking and JADX work.
 - Do not commit the extracted APK/XAPK/APKM files; `apk_work/` is ignored and remains a disposable working area.
 - This resolves the compressed archive seek bottleneck. Future passes should unpack from local files in priority order instead of running more targeted `tar -xJf` member pulls.
+
+## Continuation: Archive Deletion and Local-File APK Work
+
+Date: 2026-05-28
+
+Decision: delete the redundant compressed archive after verifying that the full local extraction exists and has enough filesystem headroom.
+
+Archive cleanup evidence:
+
+- Deleted `/home/davidgn/Downloads/apks.tar.xz`.
+- Confirmed the path no longer exists after deletion.
+- `/home/davidgn` free space increased to approximately 77G.
+- Continued APK work from `/home/davidgn/active_repos/rbm_crawlers/apk_work/full_extract`.
+
+Tooling decision:
+
+- Attempted to run repo-local `tools/jadx/bin/jadx`, but this checkout has no `tools/` directory.
+- Checked for installed `jadx`, `apktool`, `dex2jar`, `baksmali`, `aapt`, and `aapt2`; none were available on PATH.
+- Tried package installation for `jadx`; non-sudo `apt-get` lacked privileges and `sudo apt-get` required an interactive password. No decompiler was installed in this pass.
+- Continued with bounded XAPK/APK unzip plus raw `strings` scans. This is enough for host/route triage, but JADX remains the next useful tooling step for call-site attribution.
+
+### Rebuy current app
+
+Workspace: `decompiled/Rebuy`
+
+Observed state:
+
+- Artifact source: `apk_work/full_extract/rebuy - Kaufen & Verkaufen_2026.05.5297_APKPure.xapk`.
+- App package: `de.rebuy.android`.
+- App version: `2026.05.5297`, version code `5297`.
+- Base APK: `decompiled/Rebuy/de.rebuy.android.apk`.
+- Split APK: `decompiled/Rebuy/config.arm64_v8a.apk`.
+
+Endpoint and routing evidence from raw strings:
+
+- First-party API/web hosts include:
+  - `https://api.rebuy.com`
+  - `https://www.rebuy.de`
+  - `https://mobile.rebuy.com`
+  - staging/dev traces: `https://de-default.staging.rebuy.cloud` and `https://de.dev.rebuy.vagrant.cloud`
+- App/security/header strings include:
+  - `X-API-KEY`
+  - `Bearer %s`
+  - `AuthToken`, `authToken`, `KEY_TOKEN`, `SESSIONID`, `CSRFTOKEN`, `sessionId`, `reBuyUUid`, and `pushToken`
+- Sell/cart/product route fragments and events include:
+  - `/products`
+  - `/checkout`
+  - `/customers/green-last-scanned/sync`
+  - `/customers/my/selling-opportunities`
+  - `verkaufen/discovery/{categoryId}`
+  - `rebuy://verkaufen/omg/{category}`
+  - `rebuy://verkaufen?action={action}`
+  - `rebuy://verkaufen/zuletzt-gescannt`
+  - `TYPE_ISBN`, `Can only encode EAN_13`, and multiple barcode/ISBN scan UI strings
+- Web/deep-link evidence includes:
+  - `https://www.rebuy.de/verkaufen/buecher`
+  - `https://www.rebuy.de/verkaufen/medien`
+  - `https://www.rebuy.de/verkaufen/discovery/1092`
+  - `https://www.rebuy.de/verkaufen/i_12684550`
+  - `https://www.rebuy.de/verkaufen/i_13276796`
+  - `https://www.rebuy.de/verkaufen/zuletzt-gescannt`
+
+Decision:
+
+- This APK is useful. It confirms that the current Android app has a separate first-party API base, `https://api.rebuy.com`, in addition to the previously harvested web bulk-ISBN endpoint at `https://www.rebuy.de/verkaufen/api/bulk-isbn`.
+- Do not replace `scripts/probe_buyback_endpoints.py` yet. The raw string pass has host/header/route clues, but not enough call-site context to know the exact `api.rebuy.com` endpoint schema, request body, or required API key.
+- Next step is JADX or another DEX decompiler focused on strings near `rebuyHost`, `X-API-KEY`, `/customers/green-last-scanned/sync`, `/products`, `/checkout`, and ISBN/barcode scan code paths.
+
+### Momox current app
+
+Workspace: `decompiled/MomoxCurrent`
+
+Observed state:
+
+- Artifact source: `apk_work/full_extract/momox_ sell books & fashion_5.7.0-release_APKPure.apk`.
+- Plain APK contents were unzipped at `decompiled/MomoxCurrent/apk_unzip`.
+- Raw APK strings identify the main activity as `de.momox.inbound.ui.MainActivity`.
+
+Endpoint and routing evidence from raw strings:
+
+- Visible first-party/support hosts include:
+  - `https://momox-apps.firebaseio.com`
+  - `https://cdn.melibo.de/v2/app.html?key=95d5f3e8-9f8c-498e-9dcc-63600e9bbd79`
+  - `https://promo.momox.com/{at,de,es,fr,it}/...`
+- Strong sell-flow and ISBN/EAN UI evidence includes:
+  - `Scan the ISBN to find out the price`
+  - `ISBN/EAN oder Artikelnummer eingeben`
+  - `Enter ISBN/EAN or item number`
+  - `ISBN/EAN passt nicht zum Artikel`
+  - media/fashion checkout and scanned-history resource keys
+- The raw string pass did not expose the old `https://api.momox.de` / `media_offer?ean=` constants already recovered from Momox `3.7.5`.
+
+Decision:
+
+- Current Momox is partially useful but less immediately actionable from raw strings than the old Momox JADX output.
+- Keep existing Momox probe behavior unchanged: `scripts/probe_buyback_endpoints.py` still targets `https://api.momox.de/api/v4/media/offer/` and requires an explicit `MOMOX_TOKEN`.
+- Next step is decompilation of current Momox to determine whether the offer API is dynamically constructed, hidden in obfuscated Kotlin/Compose code, gated behind native modules, or now routed through a backend different from the old `media_offer` path.
+
+### Medimops app
+
+Workspace: `decompiled/Medimops`
+
+Observed state:
+
+- Artifact source: `apk_work/full_extract/Medimops App_1.1.0_APKPure.xapk`.
+- App package: `medimops.medimops.momoxbucher`.
+- App version: `1.1.0`, version code `1021`.
+- Base APK: `decompiled/Medimops/medimops.medimops.momoxbucher.apk`.
+- Split APKs include language/resource splits and `config.armeabi_v7a.apk`.
+
+Endpoint and routing evidence from raw strings:
+
+- The bounded scan found only generic search/resources and the app label `Medimops`.
+- No clear medimops inventory API, Momox buyback API, auth token, or product/search endpoint constants were visible in the raw string pass.
+
+Decision:
+
+- Treat Medimops as lower immediate value than Rebuy/current Momox for endpoint recovery.
+- It may be a thin native wrapper or otherwise not expose API constants in simple string extraction. Decompile later if DACH retail inventory coverage becomes more important than buyback endpoint recovery.
