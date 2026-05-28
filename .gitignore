@@ -7,6 +7,7 @@ __pycache__/
 *.pyc
 research/decompiled/
 decompiled/
+apk_work/
 artifacts/generated_snapshots/
 research/retained_qid_A14_repo_search_*/
 research/snapshots/

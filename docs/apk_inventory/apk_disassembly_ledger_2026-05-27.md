@@ -18,16 +18,16 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 | Artifact | Status | Reason |
 | :--- | :--- | :--- |
 | `BookChor - Online Bookstore_14.10_APKPure.xapk` | `partially_disassembled` | India book-first target; unpacked workspace exists at `decompiled/BookChor`; first endpoint pass found `www.bookchor.com` deep-link/web routes and Firebase/Razorpay non-inventory endpoints. |
-| `BookLal - Buy_Sell Used Books_3.3.1_APKPure.xapk` | `not_disassembled` | India used-book app; likely endpoint value. |
-| `BookLane - Buy-Sell Used Books_3.1.2_APKPure.xapk` | `not_disassembled` | India used-book app; likely endpoint value. |
+| `BookLal - Buy_Sell Used Books_3.3.1_APKPure.xapk` | `partially_disassembled` | India used-book app; unpacked workspace exists at `decompiled/BookLal`; first endpoint pass found Firebase Realtime Database/storage plus Bitactro integrity endpoints, but no clean public inventory REST API. |
+| `BookLane - Buy-Sell Used Books_3.1.2_APKPure.xapk` | `partially_disassembled` | India used-book app; unpacked workspace exists at `decompiled/BookLane`; first endpoint pass found Flutter/Firebase storage evidence for `old-book-seller-f1250`; existing repo intelligence also has live `https://booklaneapp.com/api` listing endpoints. |
 | `BookMamu+-+Used_New+Books_2.2.8_apkcombo.com.xapk` | `not_disassembled` | India book-first target; likely endpoint value. |
 | `BooksPie - Online Bookstore_5.1_APKPure.xapk` | `not_disassembled` | India book-first target; likely endpoint value. |
-| `Pustak+Market_15.0.22_apkcombo.com.xapk` | `not_disassembled` | India book-first target; likely endpoint value. |
+| `Pustak+Market_15.0.22_apkcombo.com.xapk` | `partially_disassembled` | India book-first target; unpacked workspace exists at `decompiled/PustakMarket`; first endpoint pass found `https://www.pustakmarket.com`, stale/non-resolving `https://new.pustakmarket.com`, and Firebase storage evidence, but no app REST API string yet. |
 | `Duozhuayu_3.1.5_APKPure.xapk` | `not_disassembled` | China recommerce/books target; likely app API value. |
 | `孔夫子旧书网_8.3.1_APKPure.apk` | `not_disassembled` | China used-book target; web detail pages are partially blocked/minimal. |
 | `闲鱼_7.26.20_APKPure.apk` | `not_disassembled` | China horizontal marketplace; useful where web access is constrained. |
 | `换享_3.0.6_APKPure.apk` | `not_disassembled` | Book/used-goods candidate from archive classification. |
-| `Kitabu_1.1.1_APKPure.xapk` | `not_disassembled` | Book-first target candidate. |
+| `Kitabu_1.1.1_APKPure.xapk` | `partially_disassembled` | Uzbekistan book-first target; unpacked workspace exists at `decompiled/Kitabu`; first endpoint pass found live public API base `https://api.kitabu.uz` and unauthenticated post/list/detail endpoints. |
 
 ## Priority 2: Recommerce / Buyback Operators
 

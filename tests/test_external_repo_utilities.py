@@ -18,6 +18,11 @@ from probe_buyback_endpoints import (  # noqa: E402
     parse_momox_offer,
     parse_rebuy_offer,
 )
+from probe_kitabu_marketplace import (  # noqa: E402
+    enrich_from_detail,
+    parse_filter_response,
+    parse_listing_summary,
+)
 from probe_retail_price_endpoints import (  # noqa: E402
     bookfinder_url,
     parse_abebooks_pricing,
@@ -100,6 +105,74 @@ def test_bonavendi_parsers_sort_partner_offers():
     assert uuid == "abc"
     assert [offer.partner for offer in offers] == ["B", "A"]
     assert [offer.price for offer in offers] == [3.4, 1.2]
+
+
+def test_kitabu_summary_parser_normalizes_public_listing():
+    listing = parse_listing_summary(
+        {
+            "postId": "abc-123",
+            "exchangeType": "SELL",
+            "createdDate": "2025-02-23T00:36:18",
+            "regionName": "Tashkent city",
+            "genreNames": "Scientific popular",
+            "authorName": "Jack C. Richards",
+            "attach": {"url": "https://api.kitabu.uz/api/v1/kb/attach/open/book.jpg"},
+            "title": "Tactics for Listening",
+            "status": "ACTIVE",
+            "printType": "PAPER_BOOK",
+            "price": 5000.0,
+        }
+    )
+
+    assert listing is not None
+    assert listing.post_id == "abc-123"
+    assert listing.title == "Tactics for Listening"
+    assert listing.price == 5000.0
+    assert listing.currency == "UZS"
+    assert listing.listing_url.endswith("/api/v1/kb/post/public/abc-123")
+
+
+def test_kitabu_filter_parser_keeps_pagination_metadata():
+    listings, page = parse_filter_response(
+        {
+            "data": {
+                "content": [{"postId": "abc-123", "title": "Book", "price": 0}],
+                "number": 0,
+                "size": 10,
+                "totalElements": 38,
+                "totalPages": 4,
+                "last": False,
+            }
+        }
+    )
+
+    assert len(listings) == 1
+    assert page["total_elements"] == 38
+    assert page["total_pages"] == 4
+
+
+def test_kitabu_detail_enrichment_redacts_profile_contact_payload():
+    listing = parse_listing_summary({"postId": "abc-123", "title": "Book"})
+    assert listing is not None
+
+    enriched = enrich_from_detail(
+        listing,
+        {
+            "data": {
+                "description": "Seller description",
+                "conditionType": "USED",
+                "bookLanguage": "LATIN",
+                "marketPrice": 100000.0,
+                "profile": {"name": "Seller", "phone": "911234567"},
+            }
+        },
+    )
+
+    payload = enriched.__dict__
+    assert payload["description"] == "Seller description"
+    assert payload["condition"] == "USED"
+    assert "profile" not in payload
+    assert "phone" not in payload
 
 
 def test_rare_book_link_generator_builds_manual_review_links():
