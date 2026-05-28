@@ -208,3 +208,106 @@ Decision:
 - Treat Pustak Market as a web target plus Firebase-backed app until deeper decompilation exposes API calls.
 - The app appears content-rich, but first-pass strings did not expose a clean REST inventory endpoint.
 - Useful next step is to crawl/probe `https://www.pustakmarket.com/home` and app-visible detail/listing routes, then use JADX to locate network classes and Firebase paths.
+
+## Continuation: BookMamu, BooksPie, Duozhuayu
+
+Date: 2026-05-28
+
+Decision: continue the book-first priority queue before moving deeper into broad horizontal marketplaces.
+
+Local artifact handling:
+
+- Extracted XAPK files were staged under `apk_work/extracted/`.
+- Unpacked workspaces were created under `decompiled/BookMamu`, `decompiled/BooksPie`, and `decompiled/Duozhuayu`.
+- A broader archive extraction was stopped after reaching Duozhuayu because the compressed tar stream was taking too long to walk to later entries. Remaining recommerce APKs should be pulled in smaller targeted batches.
+
+### BookMamu
+
+Workspace: `decompiled/BookMamu`
+
+Observed state:
+
+- App package: `book.bookmamu`.
+- App version: `2.2.8`, version code `39`.
+- Base APK: `decompiled/BookMamu/book.bookmamu.apk`.
+
+Endpoint and routing evidence:
+
+- API base URL: `https://prodbookmamuapi.azurewebsites.net/api/`.
+- The APK contains static bearer JWT strings matching the existing `src/bookmamu_spider.py` implementation.
+- Firebase/storage evidence includes `stage-bookmamu.appspot.com`, `bookmamustage.blob.core.windows.net`, and production blob image/video URLs under `bookmamuprod.blob.core.windows.net`.
+- Social/support/payment/SMS infrastructure includes Facebook/Instagram, Razorpay, Truecaller, and SMS provider endpoints.
+
+Live probe evidence:
+
+- `POST https://prodbookmamuapi.azurewebsites.net/api/booklist` with the app bearer token and a two-item approved/unsold filter returned HTTP 200 JSON.
+- The response contained active book records with title, author, condition, language, prices, category, blob media URLs, and address/location metadata.
+- The raw response also includes seller contact/address fields. These should not be cached or logged verbatim.
+
+Decision:
+
+- This APK confirms the existing BookMamu API spider is using the app's real backend surface.
+- The current spider writes normalized `BookListing` rows and does not cache raw API pages, which is appropriate because raw BookMamu responses can contain seller contact/address data.
+- Useful next step is a small parser test/probe wrapper for BookMamu that asserts the contact/address fields are excluded from any retained artifact.
+
+### BooksPie
+
+Workspace: `decompiled/BooksPie`
+
+Observed state:
+
+- App package: `com.sant.bookspie`.
+- App version: `5.1`, version code `33`.
+- Base APK: `decompiled/BooksPie/com.sant.bookspie.apk`.
+
+Endpoint and routing evidence:
+
+- API base URLs: `https://api.bookspie.com/` and `https://api.bookspie.com/api/`.
+- First-party routes include:
+  - `GET /api/getCategories`
+  - `POST /api/getBooks?page=`
+  - `POST /api/getFilteredBooks?page=`
+  - `/api/userBooks?id=`
+  - `/api/deleteBook/`
+  - `/api/downloadInvoice/IN-`
+- Legacy/alternate traces include `https://api.bechobooks.com`, `http://bechobooks.com/api/getCategories`, and `https://bechobooks.com/api/userBooks?id=`.
+- Firebase evidence includes `https://bookspie-default-rtdb.firebaseio.com` and `bookspie.appspot.com`.
+- Deep-link/social/payment/support traces include `bookspie.page.link`, WhatsApp send links, Razorpay, Shiprocket tracking, Google Maps APIs, and official social profiles.
+
+Live probe evidence:
+
+- `GET https://api.bookspie.com/api/getCategories` returned HTTP 200 JSON with 21 categories.
+- `POST https://api.bookspie.com/api/getBooks?page=1` returned HTTP 200 JSON with a paginated old-books feed, `per_page: 30`, `last_page: 460`, and `total: 13776` at probe time.
+- Raw listing responses embed user records with contact and push-token fields. These should not be retained.
+
+Decision:
+
+- This APK confirms the existing BooksPie API spider is using the app's real public old-books API.
+- The current `src/bookspie_spider.py` already prunes embedded user records before caching API pages; keep that redaction behavior.
+- Useful next step is to add a regression test around `_sanitized_cache_copy` so phone/email/push-token fields cannot accidentally re-enter cache artifacts.
+
+### Duozhuayu
+
+Workspace: `decompiled/Duozhuayu`
+
+Observed state:
+
+- App package: `com.duozhuayu.dejavu`.
+- App version: `3.1.5`, version code `190`.
+- Base APK and `arm64-v8a` split are present.
+
+Endpoint and routing evidence:
+
+- First-pass string extraction did not expose a clean Duozhuayu inventory/search API base.
+- Visible network strings were mainly Netease/Yunxin customer-service and telemetry infrastructure, including:
+  - `https://lbs.chatnos.com/lbs/conf.jsp`
+  - `https://lbs.netease.im/lbs/conf.jsp`
+  - `https://yunxin.163.com/lbs/conf.jsp`
+  - `https://statistic.live.126.net`
+  - `http://nos.netease.com`
+- Resource/UI strings include Duozhuayu branding, WeChat login/share assets, customer-service layouts, and product/customer-service widgets.
+
+Decision:
+
+- Treat this first pass as inconclusive for inventory API recovery. The app may hide first-party API constants in obfuscated/native code or derive hosts dynamically.
+- Useful next step is JADX plus targeted native-string extraction around `config.arm64_v8a.apk`, focusing on `dejavu`, `duozhuayu`, OkHttp/Retrofit clients, WebView bridges, mini-program/WeChat routes, and any dynamically decoded host strings.
