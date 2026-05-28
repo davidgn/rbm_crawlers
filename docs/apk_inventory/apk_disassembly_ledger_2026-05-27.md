@@ -39,8 +39,8 @@ Inventory source: `docs/apk_inventory/apks_tar_xz_inventory_2026-05-27.csv`
 | `rebuy - Kaufen & Verkaufen_2026.05.5297_APKPure.xapk` | `partially_disassembled` | Directly relevant to Rebuy buyback endpoint shape/rate-limit research; unpacked workspace exists at `decompiled/Rebuy`; first raw string pass found `https://api.rebuy.com`, `X-API-KEY`, bearer/auth token strings, cart/product route fragments, and sell/deep-link routes. |
 | `Medimops App_1.1.0_APKPure.xapk` | `partially_disassembled` | Momox retail/recommerce adjacent; unpacked workspace exists at `decompiled/Medimops`; first raw string pass looks thin/retail-oriented with no clear inventory/buyback API constants. |
 | `wer-zahlt-mehr-3-1-0.apk` | `not_disassembled` | Buyback comparison target. |
-| `NadirKitap_5.5.84_APKPure.xapk` | `not_disassembled` | Turkey book marketplace/recommerce target. |
-| `PangoBooks_ Buy & Sell Books_3.0.7_APKPure.xapk` | `not_disassembled` | US book marketplace app; endpoint/API value. |
+| `NadirKitap_5.5.84_APKPure.xapk` | `partially_disassembled` | Turkey book marketplace/recommerce target; unpacked workspace exists at `decompiled/NadirKitap`; first raw string pass found concrete `www.nadirkitap.com` web/mobile search/detail/seller/upload routes. |
+| `PangoBooks_ Buy & Sell Books_3.0.7_APKPure.xapk` | `partially_disassembled` | US book marketplace app; unpacked workspace exists at `decompiled/PangoBooks`; base APK React Native bundle confirms PangoBooks infrastructure including Elastic Cloud host, Firebase, Supabase, and Cloud Functions traces. |
 
 ## Priority 3: Regional Horizontal Marketplaces
 

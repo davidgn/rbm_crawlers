@@ -477,3 +477,73 @@ Decision:
 
 - Treat Medimops as lower immediate value than Rebuy/current Momox for endpoint recovery.
 - It may be a thin native wrapper or otherwise not expose API constants in simple string extraction. Decompile later if DACH retail inventory coverage becomes more important than buyback endpoint recovery.
+
+### PangoBooks current app
+
+Workspace: `decompiled/PangoBooks`
+
+Observed state:
+
+- Artifact source: `apk_work/full_extract/PangoBooks_ Buy & Sell Books_3.0.7_APKPure.xapk`.
+- App package: `com.grantwsingleton.pangobookslive`.
+- App version: `3.0.7`, version code `299`.
+- Base APK: `decompiled/PangoBooks/com.grantwsingleton.pangobookslive.apk`.
+- Base APK was also unzipped at `decompiled/PangoBooks/base_unzip` to inspect React Native assets.
+
+Endpoint and routing evidence from raw strings / React Native bundle:
+
+- Firebase evidence:
+  - `https://pangobooks.firebaseio.com`
+  - `https://firebasestorage.googleapis.com/v0/b/pangobooks.appspot.com/...`
+- Existing spider-relevant Elastic evidence:
+  - `https://6e6f78e8a87248ddb0013e106d1c0a13.us-central1.gcp.cloud.es.io:443`
+  - Bundle strings include search/listing vocabulary such as `seller_id`, `accept_offers:=true`, `books_listed:>0`, `query_by_weights`, `search_after`-style search code context, bookstore/listing routes, and PangoBooks web URL patterns.
+- Additional backend/support infrastructure:
+  - Supabase host trace: `https://ycqmakmuqpsdrvltqbqb.supabase.co`
+  - Cloud Functions trace: `https://us-central1-pangobooks.cloudfunctions.net/images-upload`
+  - Pango web/deep-link patterns including `https://pangobooks.com/books/:book_id`, `https://pangobooks.com/bookstore/:username`, `https://pangobooks.com/titles/:slug/:book_id`, `pango://bundle-search?...`, and `pangobooks.com/authors/...`
+
+Decision:
+
+- This APK confirms the same app/package/version cited by `src/pangobooks_spider.py`, and the base bundle confirms the Elastic Cloud host in the app artifact.
+- The bounded string pass did not cleanly isolate the embedded Elastic API key, but the existing spider already contains the previously recovered key and endpoint. Do not duplicate the key in docs.
+- Keep `src/pangobooks_spider.py` as the implementation path. Useful next step is a bounded live health probe or parser/redaction test around the PangoBooks record mapping, not more raw string work.
+
+### NadirKitap current app
+
+Workspace: `decompiled/NadirKitap`
+
+Observed state:
+
+- Artifact source: `apk_work/full_extract/NadirKitap_5.5.84_APKPure.xapk`.
+- App package: `nadirkitap.com`.
+- App version: `5.5.84`, version code `125`.
+- Base APK: `decompiled/NadirKitap/nadirkitap.com.apk`.
+- Split APKs include `config.arm64_v8a.apk`, `config.en.apk`, `config.fr.apk`, and `config.mdpi.apk`.
+
+Endpoint and routing evidence from raw strings:
+
+- Static asset and social hosts include:
+  - `https://static.nadirkitap.com/fotograf/`
+  - `https://static.nadirkitap.com/img/fotograf_eklenmemis_tr.jpg`
+  - `https://static.nadirkitap.com/img/fotograf_eklenmemis_en.jpg`
+  - `https://linkedin.com/company/nadirkitap`, `https://www.facebook.com/NadirKitapcom`, `https://www.instagram.com/nadirkitapcom/`, `https://tiktok.com/@nadirkitap`, and `https://x.com/nadirkitap`
+- Concrete first-party web/mobile routes include:
+  - `https://www.nadirkitap.com/kitapara_sonuc.php?kelime=`
+  - `https://www.nadirkitap.com/kitap-detay.php?kid=`
+  - `https://www.nadirkitap.com/efemera-detay.php?kid=`
+  - `https://www.nadirkitap.com/sahaf-detay.php?uyeid=`
+  - `https://www.nadirkitap.com/sahaflar.php?ara=1&favori=0&rumuz=`
+  - `https://www.nadirkitap.com/yeni-eklenen-kitaplar.html`
+  - `https://www.nadirkitap.com/nk_mobil/`
+  - `https://www.nadirkitap.com/nk_mobil/bkm`
+  - `https://www.nadirkitap.com/nk_mobil/hesap/avatar`
+  - `https://www.nadirkitap.com/nk_mobil/kitapEkle/resimYukle`
+  - `https://www.nadirkitap.com/nk_mobil/ucDBanaOzelOdeme`
+  - `https://www.nadirkitap.com/nk_mobil/ucDOdeme`
+- Route fragments also include `/kitapara`, `/kitapara-sonuc`, `/kitapara.php`, `/kitapara_sonuc.php`, `/kitap-detay/`, `/kitapekle`, `/listeledigiUrunlerim`, `/myProducts`, `/kategoriler.php`, `/dergiler-kategori19.html`, and `/efemera-kategori246.html`.
+
+Decision:
+
+- This APK is useful immediately even without JADX. It confirms that the app uses web-compatible routes and `nk_mobil` endpoints rather than hiding all behavior behind an opaque native API.
+- Good next step is to add a small NadirKitap probe/spider around `kitapara_sonuc.php?kelime=` and `kitap-detay.php?kid=`, with seller/detail redaction rules checked before caching any raw pages.
