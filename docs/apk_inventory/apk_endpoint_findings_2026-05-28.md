@@ -547,3 +547,31 @@ Decision:
 
 - This APK is useful immediately even without JADX. It confirms that the app uses web-compatible routes and `nk_mobil` endpoints rather than hiding all behavior behind an opaque native API.
 - Good next step is to add a small NadirKitap probe/spider around `kitapara_sonuc.php?kelime=` and `kitap-detay.php?kid=`, with seller/detail redaction rules checked before caching any raw pages.
+
+## Continuation: Local JADX Tooling Fixed
+
+Date: 2026-05-28
+
+Observed blocker:
+
+- The prior local-file APK pass could not use JADX because there was no repo-local `tools/jadx/bin/jadx`, no `jadx` on PATH, and package installation required sudo credentials.
+
+Actions completed:
+
+- Verified the machine has Java 21 available, which is sufficient for current JADX releases.
+- Installed JADX 1.5.5 locally under `tools/jadx`.
+- Added `tools/jadx/` to `.gitignore` so the binary tool install stays local and does not pollute repository diffs.
+- Verified `tools/jadx/bin/jadx --version` reports `1.5.5`.
+- Smoke-tested the tool against `decompiled/NadirKitap/nadirkitap.com.apk`, writing generated output to ignored workspace `decompiled/NadirKitap_jadx`.
+
+Smoke-test result:
+
+- JADX emitted usable sources and resources for NadirKitap.
+- The process exited with `finished with errors, count: 10`, which is acceptable for this class of obfuscated or mixed-framework APK; the output is still useful for endpoint, manifest, and route attribution.
+- Generated output confirmed manifest deep-link patterns for `www.nadirkitap.com`, including `/kitapara_sonuc.php.*`, `/kitapara.php.*`, and `/kitap-detay.php.*`, plus app source/resource trees under `decompiled/NadirKitap_jadx`.
+
+Decision:
+
+- Treat JADX as fixed and usable for the next APK endpoint attribution passes.
+- Prefer full decompilation when it completes quickly enough, then search generated source and resources with `rg`.
+- For very large or slow APKs, fall back to narrower JADX modes such as `--single-class`, `--decompilation-mode simple`, `--no-res`, or resource-first inspection before spending time on a full source pass.
