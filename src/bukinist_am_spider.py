@@ -1,23 +1,24 @@
 from html_search_spider import HTMLSearchSpider
 from curl_cffi import requests as curlex
 
-class AlininoAzSpider(HTMLSearchSpider):
+class BukinistAmSpider(HTMLSearchSpider):
     """
-    Spider for Alinino (Azerbaijan).
-    Leading online bookstore in Azerbaijan.
+    Spider for Bukinist (Armenia).
+    Largest bookstore chain in Armenia.
+    Uses Magento and curl_cffi for bypass.
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
-            platform_name="Alinino",
-            base_url="https://alinino.az",
-            search_path="search?q={query}&page={page}",
+            platform_name="Bukinist",
+            base_url="https://www.books.am",
+            search_path="en/catalogsearch/result/?q={query}&p={page}",
             selectors={
-                'container': '.product-card', 
-                'title': '.product-card__title',
-                'link': 'a.product-card__image',
-                'price': '.product-card__price',
+                'container': '.product-item', 
+                'title': '.product-item-link',
+                'link': '.product-item-link',
+                'price': '.price-wrapper',
             },
-            territory="Azerbaijan",
+            territory="Armenia",
             limit_pages=limit_pages
         )
 
@@ -31,7 +32,7 @@ class AlininoAzSpider(HTMLSearchSpider):
             return None
 
     def run(self, search_term="Potter"):
-        self.logger.info(f"Starting Alinino (AZ) crawler with curl_cffi. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Bukinist (AM) crawler with curl_cffi. Limit: {self.limit_pages} pages.")
         
         for page in range(1, self.limit_pages + 1):
             url = f"{self.base_url}/{self.search_path.format(query=search_term, page=page)}"
@@ -54,5 +55,5 @@ class AlininoAzSpider(HTMLSearchSpider):
             time.sleep(2)
 
 if __name__ == "__main__":
-    spider = AlininoAzSpider(limit_pages=1)
+    spider = BukinistAmSpider(limit_pages=1)
     spider.run()
