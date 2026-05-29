@@ -52,7 +52,7 @@ def test_book_text_signal_extractor_flags_rare_old_book():
 def test_momox_parser_extracts_offer():
     offer = parse_momox_offer(
         "9783442481754",
-        {"status": "offer", "price": "2.31", "title": "Der Schwarm"},
+        {"status": "offer", "price": "2.31", "product": {"title": "Der Schwarm"}},
     )
 
     assert offer.source == "momox"

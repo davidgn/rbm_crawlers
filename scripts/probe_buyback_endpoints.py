@@ -26,6 +26,8 @@ from isbn_utils import normalize_isbn  # noqa: E402
 
 
 MOMOX_URL = "https://api.momox.de/api/v4/media/offer/"
+MOMOX_APP_TOKEN = "63127d7c87fb8710fa163c72948f2bccc6a9a739"
+MOMOX_APP_USER_AGENT = "5.7.0-release"
 REBUY_URL = "https://www.rebuy.de/verkaufen/api/bulk-isbn"
 BONAVENDI_PRODUCT_URL = "https://api.bonavendi.de/rest/v2/products/{ean}"
 BONAVENDI_OFFERS_URL = (
@@ -58,7 +60,8 @@ def parse_momox_offer(ean: str, payload: dict[str, Any]) -> BuybackOffer:
     status = str(payload.get("status") or "")
     raw_price = payload.get("price")
     price = float(raw_price) if raw_price not in (None, "") else None
-    title = payload.get("title") or payload.get("name")
+    product = payload.get("product") or {}
+    title = payload.get("title") or payload.get("name") or product.get("title")
     return BuybackOffer(
         source="momox",
         ean=ean,
@@ -121,13 +124,7 @@ def error_offer(source: str, ean: str, exc: Exception) -> BuybackOffer:
 
 
 def query_momox(client: httpx.Client, ean: str, token: str | None) -> BuybackOffer:
-    if not token:
-        return BuybackOffer(
-            source="momox",
-            ean=ean,
-            status="skipped",
-            error="set MOMOX_TOKEN or pass --momox-token",
-        )
+    token = token or MOMOX_APP_TOKEN
     try:
         response = client.get(
             MOMOX_URL,
@@ -135,7 +132,7 @@ def query_momox(client: httpx.Client, ean: str, token: str | None) -> BuybackOff
             headers={
                 "X-API-TOKEN": token,
                 "X-MARKETPLACE-ID": "momox_de",
-                "User-Agent": "momox/11.0 (Android)",
+                "User-Agent": MOMOX_APP_USER_AGENT,
                 "Accept": "application/json",
             },
         )
@@ -201,7 +198,11 @@ def probe(eans: list[str], momox_token: str | None, timeout: float) -> dict[str,
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("isbn", nargs="+", help="ISBN-10/13 or EAN values to probe")
-    parser.add_argument("--momox-token", default=os.environ.get("MOMOX_TOKEN"))
+    parser.add_argument(
+        "--momox-token",
+        default=os.environ.get("MOMOX_TOKEN"),
+        help="Override the APK-recovered momox app token.",
+    )
     parser.add_argument("--timeout", type=float, default=20.0)
     parser.add_argument("--json-out", type=Path)
     args = parser.parse_args()

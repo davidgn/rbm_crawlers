@@ -3,7 +3,7 @@ import re
 import time
 import httpx
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
+from urllib.parse import urlencode, urljoin, urlparse, parse_qs
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -17,19 +17,22 @@ class NadirKitapSpider(BaseSpider):
     and bibliographic metadata.
 
     httpx + BeautifulSoup (server-rendered).
-    Browse: /kitap/ listing.  Pagination: ?page=N.
+    APK-confirmed search route:
+    /kitapara_sonuc.php?kelime=...
+
+    APK-confirmed detail route:
+    /kitap-detay.php?kid=...
     """
 
     BASE_URL = "https://www.nadirkitap.com"
-
-    BROWSE_CANDIDATES = [
-        "/kitap/",
-        "/kitaplar",
-        "/books",
-        "/search?q=",
-        "",
-    ]
-    DETAIL_SIGNALS = ["/kitap/", "/urun/", "/book/", "/item/"]
+    SEARCH_PATH = "/kitapara_sonuc.php"
+    DETAIL_PATH = "/kitap-detay.php"
+    SELLER_PATH_SIGNALS = ("/sahaf-detay.php", "/sahaflar.php")
+    DETAIL_SIGNALS = ("/kitap-detay.php",)
+    EMAIL_RE = re.compile(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}")
+    CONTACT_LINE_RE = re.compile(
+        r"(?im)(telefon|tel\.?|gsm|cep|whatsapp|e-?posta|email)\s*[:：]?\s*[^<\n\r]{3,80}"
+    )
 
     HEADERS = {
         "User-Agent": (
@@ -40,9 +43,10 @@ class NadirKitapSpider(BaseSpider):
         "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, query: str = "kitap"):
         super().__init__(platform_name="Nadir Kitap", territory="Turkey")
         self.limit_pages = limit_pages
+        self.query = query
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -54,13 +58,13 @@ class NadirKitapSpider(BaseSpider):
         seen: set[str] = set()
 
         try:
-            browse_url = self._find_browse_url()
+            browse_url = self._search_url(self.query)
 
             for pg_num in range(1, self.limit_pages + 1):
                 urls_to_try = (
                     [
-                        f"{browse_url}{'&' if '?' in browse_url else '?'}page={pg_num}",
-                        f"{browse_url.rstrip('/')}/page/{pg_num}/",
+                        f"{browse_url}&sayfa={pg_num}",
+                        f"{browse_url}&page={pg_num}",
                     ]
                     if pg_num > 1
                     else [browse_url]
@@ -101,41 +105,26 @@ class NadirKitapSpider(BaseSpider):
 
         self.logger.info(f"Finished. {self.items_scraped} items cached.")
 
-    def _find_browse_url(self) -> str:
-        for path in self.BROWSE_CANDIDATES:
-            candidate = self.BASE_URL + path
-            try:
-                resp = self.client.get(candidate)
-                if resp.status_code == 200:
-                    soup = BeautifulSoup(resp.text, "html.parser")
-                    hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
-                    if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
-                        self.logger.info(f"Browse URL confirmed: {candidate}")
-                        return candidate
-            except Exception as e:
-                self.logger.debug(f"Candidate {path} failed: {e}")
-        self.logger.warning("No browse path matched — using /kitap/.")
-        return self.BASE_URL + "/kitap/"
+    def _search_url(self, query: str) -> str:
+        return f"{self.BASE_URL}{self.SEARCH_PATH}?{urlencode({'kelime': query})}"
 
     def _extract_links(self, soup: BeautifulSoup, seen: set) -> list[str]:
         links = []
         for a in soup.find_all("a", href=True):
             href = urljoin(self.BASE_URL, a["href"])
+            parsed = urlparse(href)
             if (
-                self.BASE_URL in href
-                and any(sig in href for sig in self.DETAIL_SIGNALS)
+                parsed.netloc == "www.nadirkitap.com"
+                and parsed.path == self.DETAIL_PATH
+                and "kid" in parse_qs(parsed.query)
                 and href not in seen
-                and not href.rstrip("/").endswith("/kitap")
+                and not self._is_seller_url(href)
             ):
                 links.append(href)
         return list(dict.fromkeys(links))
 
     def _harvest_item(self, url: str):
-        slug = next(
-            (s for s in reversed(url.rstrip("/").split("/")) if s and s != "#"),
-            str(int(time.time()))
-        )
-        item_id = re.sub(r"[^a-zA-Z0-9_-]", "_", slug)[:80]
+        item_id = self._item_id_from_url(url)
 
         try:
             self.logger.info(f"Harvesting: {url}")
@@ -144,7 +133,7 @@ class NadirKitapSpider(BaseSpider):
                 self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
                 return
 
-            self.cache_html(item_id, resp.text, url=url)
+            self.cache_html(item_id, self._redacted_cache_html(resp.text), url=url)
 
             soup = BeautifulSoup(resp.text, "html.parser")
             h1 = soup.find("h1")
@@ -160,9 +149,36 @@ class NadirKitapSpider(BaseSpider):
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")
 
+    def _item_id_from_url(self, url: str) -> str:
+        parsed = urlparse(url)
+        kid = parse_qs(parsed.query).get("kid", [""])[0]
+        if kid:
+            return f"kitap_detay_{re.sub(r'[^0-9A-Za-z_-]', '_', kid)[:64]}"
+        slug = next(
+            (s for s in reversed(parsed.path.rstrip("/").split("/")) if s and s != "#"),
+            str(int(time.time())),
+        )
+        return re.sub(r"[^a-zA-Z0-9_-]", "_", slug)[:80]
+
+    def _is_seller_url(self, url: str) -> bool:
+        return any(signal in url for signal in self.SELLER_PATH_SIGNALS)
+
+    def _redacted_cache_html(self, html: str) -> str:
+        soup = BeautifulSoup(html, "html.parser")
+        for link in soup.find_all("a", href=True):
+            href = link["href"].strip().lower()
+            if href.startswith(("mailto:", "tel:", "sms:", "whatsapp:")):
+                link["href"] = "#redacted-contact"
+                link.string = "[redacted-contact]"
+
+        redacted = str(soup)
+        redacted = self.EMAIL_RE.sub("[redacted-email]", redacted)
+        return self.CONTACT_LINE_RE.sub(r"\1: [redacted-contact]", redacted)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Nadir Kitap Turkey cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--query", default="kitap")
     args = parser.parse_args()
-    NadirKitapSpider(limit_pages=args.limit).run()
+    NadirKitapSpider(limit_pages=args.limit, query=args.query).run()

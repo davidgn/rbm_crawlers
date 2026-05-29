@@ -575,3 +575,107 @@ Decision:
 - Treat JADX as fixed and usable for the next APK endpoint attribution passes.
 - Prefer full decompilation when it completes quickly enough, then search generated source and resources with `rg`.
 - For very large or slow APKs, fall back to narrower JADX modes such as `--single-class`, `--decompilation-mode simple`, `--no-res`, or resource-first inspection before spending time on a full source pass.
+
+## Continuation: Rebuy, Current Momox, NadirKitap Implementation Pass
+
+Date: 2026-05-28
+
+### Current Momox JADX result
+
+Workspace: `decompiled/MomoxCurrent_jadx`
+
+JADX result:
+
+- Full decompile of `apk_work/full_extract/momox_ sell books & fashion_5.7.0-release_APKPure.apk` completed with `finished with errors, count: 29`.
+- The nonzero exit is acceptable for this pass because the relevant Retrofit interfaces, API client setup, headers, and models were emitted.
+
+Endpoint evidence:
+
+- `decompiled/MomoxCurrent_jadx/sources/ca/C1706c.java` hardcodes base URL `https://api.momox.de` and normalizes it to a trailing-slash Retrofit base URL.
+- `decompiled/MomoxCurrent_jadx/sources/ca/C1704a.java` still contains the override property key `de.momox.mxapi.baseUrl`, defaulting to `http://localhost`; the constructor path in `C1706c` uses the production URL.
+- `decompiled/MomoxCurrent_jadx/sources/B8/b.java` adds current app headers:
+  - `User-Agent: 5.7.0-release`
+  - `X-API-TOKEN: 63127d7c87fb8710fa163c72948f2bccc6a9a739`
+  - `X-MARKETPLACE-ID: <marketplace id>`
+- `decompiled/MomoxCurrent_jadx/sources/B8/a.java` maps marketplace ids by device/country to `momox_de`, `momox_at`, `momox_fr`, `momox_es`, and `momox_it`.
+- `decompiled/MomoxCurrent_jadx/sources/ba/InterfaceC1636f.java` confirms the current media offer endpoint:
+  - `GET https://api.momox.de/api/v4/media/offer/?ean=<EAN>`
+- The same interface confirms adjacent current media cart/order routes:
+  - `POST api/v4/media/cart/items/`
+  - `GET api/v4/media/cart/summary/`
+  - `GET api/v4/media/cart/`
+  - `POST api/v4/media/orders/`
+- `decompiled/MomoxCurrent_jadx/sources/ba/InterfaceC1638h.java` confirms user-scoped scanned-item routes:
+  - `GET api/v4/user/media/scanned_items/`
+  - `POST api/v4/user/media/scanned_items/add_to_cart/`
+  - `DELETE api/v4/user/media/scanned_items/{ean}/`
+- `decompiled/MomoxCurrent_jadx/sources/da/D3.java` and `F3.java` confirm the offer response shape includes status, price, currency, and nested product fields including `ean` and `title`.
+
+Implementation decision:
+
+- Updated `scripts/probe_buyback_endpoints.py` to use the current APK-recovered Momox app token and user-agent by default.
+- Kept `MOMOX_TOKEN` / `--momox-token` as an override so later dynamic captures or rotated app tokens can replace the embedded default without code changes.
+- Extended the Momox parser to read nested `product.title`, matching the current `Offer(product=OfferProduct(...))` model shape.
+
+Live probe result:
+
+- Ran `scripts/probe_buyback_endpoints.py 9780306406157 --timeout 10` after applying the current Momox token/header update.
+- Momox returned HTTP 403 for `https://api.momox.de/api/v4/media/offer/?ean=9780306406157` from this environment.
+- Rebuy web bulk ISBN still returned HTTP 429 from this environment.
+- Bonavendi returned HTTP 403 from this environment.
+- Decision: treat these as network/WAF environment results, not as disproving the recovered APK endpoint shape. The Momox code path is still useful because the current app token, user-agent, marketplace header, base URL, and Retrofit path now match the APK.
+
+### Rebuy JADX result
+
+Workspace: `decompiled/Rebuy_jadx`
+
+JADX result:
+
+- Full decompile of `decompiled/Rebuy/de.rebuy.android.apk` completed with `finished with errors, count: 135`.
+- The decompile emitted large source trees under `de/rebuy`, including network DTO packages for green/sell, blue/buy, cart, product, order, account, and last-scanned flows.
+
+Positive evidence:
+
+- `decompiled/Rebuy_jadx/sources/hq/b.java` confirms the app wires `https://mobile.rebuy.com` and `https://api.rebuy.com` into a first-party network/config object.
+- Generated source confirms the app has first-party model coverage for green/sell flows:
+  - `decompiled/Rebuy_jadx/sources/de/rebuy/shared/network/product/lastscanned/dtos/CreateGreenLastScannedItemDto.java`
+  - `decompiled/Rebuy_jadx/sources/de/rebuy/shared/network/product/lastscanned/dtos/LastScannedCountDto.java`
+  - `decompiled/Rebuy_jadx/sources/de/rebuy/shared/network/product/lastscanned/dtos/LastScannedStatisticsDto.java`
+  - `decompiled/Rebuy_jadx/sources/de/rebuy/shared/network/product/dtos/TradeInPrice.java`
+  - `decompiled/Rebuy_jadx/sources/de/rebuy/shared/network/cart/green/dtos/ProductRequestDto.java`
+  - `decompiled/Rebuy_jadx/sources/de/rebuy/shared/network/cart/green/dtos/TrackedProduct.java`
+- `decompiled/Rebuy_jadx/sources/qq/n.java` constructs a `customers/my/products` request path for a product/customer search-style flow.
+- Generated resources confirm the user-facing green last-scanned and trade-in flows are active in this build.
+
+Negative evidence:
+
+- Targeted searches in `decompiled/Rebuy_jadx/sources/de/rebuy` did not recover plain Java/Kotlin string constants for:
+  - `rebuyHost`
+  - `X-API-KEY`
+  - `customers/green-last-scanned/sync`
+- This means the raw-string evidence is real and the `api.rebuy.com` base is now attributed, but the exact last-scanned sync call-site and API-key value are not yet easy to attribute from the default JADX Java output. They may be in generated client metadata, obfuscated infrastructure, resource/string pools, or code paths that require `--show-bad-code`, smali, or a narrower class-level pass.
+
+Decision:
+
+- Do not update `scripts/probe_buyback_endpoints.py` for Rebuy's `api.rebuy.com` path yet.
+- Keep the existing web `bulk-isbn` Rebuy probe until request schema, API key value, and call-site are recovered.
+- Next Rebuy pass should use smali/dex-oriented search or JADX `--show-bad-code` around the last-scanned DTOs and network client setup, rather than another broad full decompile.
+
+### NadirKitap implementation result
+
+Code changes:
+
+- Updated `src/nadir_kitap_spider.py` to use the APK-confirmed search route `https://www.nadirkitap.com/kitapara_sonuc.php?kelime=...`.
+- Restricted item extraction to APK-confirmed detail links shaped like `https://www.nadirkitap.com/kitap-detay.php?kid=...`.
+- Prevented seller/profile routes such as `sahaf-detay.php` and `sahaflar.php` from being treated as item pages.
+- Added cache redaction before writing detail HTML:
+  - `mailto:`, `tel:`, `sms:`, and `whatsapp:` links are neutralized.
+  - Email addresses are replaced.
+  - Obvious contact-labeled lines such as `Telefon:` and `WhatsApp:` are replaced.
+- Added `--query` to the CLI while preserving `--limit`.
+
+Test coverage:
+
+- Added `tests/test_nadir_kitap_spider.py`.
+- Verified APK-confirmed detail-link extraction, seller-link exclusion, and contact redaction.
+- Re-ran focused tests for NadirKitap, BooksPie redaction, and buyback/external utility parsers: 20 tests passed.
