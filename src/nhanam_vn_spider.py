@@ -3,18 +3,18 @@ from html_search_spider import HTMLSearchSpider
 class NhanamVnSpider(HTMLSearchSpider):
     """
     Spider for Nhã Nam (Vietnam).
-    Prestigious publisher and online bookstore.
+    A high-quality literature publisher and bookstore.
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
-            platform_name="Nha Nam",
+            platform_name="Nhã Nam",
             base_url="https://nhanam.vn",
             search_path="search?q={query}&page={page}",
             selectors={
-                'container': 'div.proloop', 
-                'title': 'h3',
-                'link': 'a.image-thumb',
-                'price': '.proloop-price',
+                'container': '.product-item', 
+                'title': '.product-title',
+                'link': 'a',
+                'price': '.product-price',
             },
             territory="Vietnam",
             limit_pages=limit_pages

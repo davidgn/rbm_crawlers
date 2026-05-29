@@ -3,18 +3,18 @@ from html_search_spider import HTMLSearchSpider
 class VinabookVnSpider(HTMLSearchSpider):
     """
     Spider for Vinabook (Vietnam).
-    One of the oldest and most dedicated online bookstores in Vietnam.
+    One of the oldest and most trusted online bookstores in Vietnam.
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Vinabook",
             base_url="https://www.vinabook.com",
-            search_path="search?q={query}&type=product&page={page}",
+            search_path="search?q={query}&page={page}",
             selectors={
-                'container': '.product-item', 
-                'title': 'h3',
+                'container': '.product-detail', 
+                'title': '.product-title',
                 'link': 'a',
-                'price': '.price-new',
+                'price': '.product-price',
             },
             territory="Vietnam",
             limit_pages=limit_pages
