@@ -3,17 +3,18 @@ from html_search_spider import HTMLSearchSpider
 class MetromediaHnSpider(HTMLSearchSpider):
     """
     Spider for Metromedia (Honduras).
-    Uses the Odoo platform.
+    A leading bookstore chain in Honduras.
+    Uses Odoo.
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Metromedia",
             base_url="https://metromedia.hn",
-            search_path="shop?search={query}",
+            search_path="shop?search={query}&page={page}",
             selectors={
                 'container': 'div.oe_product_cart', 
                 'title': 'h6 a',
-                'link': 'a[itemprop="url"]',
+                'link': 'a[itemprop=\"url\"]',
                 'price': '.product_price',
             },
             territory="Honduras",
