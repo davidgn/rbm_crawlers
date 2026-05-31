@@ -1,0 +1,9 @@
+{
+  "generated_at_utc": "2026-04-26",
+  "workflow": "global bookstore-registry executable harvest",
+  "retry_status": "local_network_blocked_download_hang",
+  "sources_promoted_to_raw_harvest_backed": [],
+  "web_observed_live": ["Mexico SIC JSON", "Love Your Bookshop Find a bookshop", "Booksellers Aotearoa Find a Bookseller"],
+  "do_not_promote": ["web_sample_normalized_rows_NOT_FULL_HARVEST_2026-04-26.csv"],
+  "immediate_next_move": "Run self-contained queue in network-enabled shell; start with Mexico SIC."
+}

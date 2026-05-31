@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/naudotosknygos_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.19,
+      "platform_name": "NaudotosKnygos.lt",
+      "territory": "Lithuania",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 12:12:54,095 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 15 existing URLs from naudotosknygos_lt_listings.jsonl\n2026-05-15 12:12:54,255 [INFO] ConfigurableMarketplaceSpider: Starting NaudotosKnygos.lt harvest. limit_pages=1 limit_items=3\n2026-05-15 12:12:55,723 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/ \"HTTP/1.1 200 OK\"\n2026-05-15 12:12:56,465 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/kopa \"HTTP/1.1 200 OK\"\n2026-05-15 12:12:57,565 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/slapta-istorija \"HTTP/1.1 200 OK\"\n2026-05-15 12:12:58,794 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/sinchronine-gamyba-paciu-laiku-budas-visai-imonei \"HTTP/1.1 200 OK\"\n2026-05-15 12:13:00,023 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/knyga-apie-ypac-tyra-pirmasis-lietuviskas-alyvuogiu-aliejaus-vadovelis \"HTTP/1.1 200 OK\"\n2026-05-15 12:13:01,559 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/weekendu-miestai-ir-priemiesciai-kaip-buvo-kuriami-modernus-kurortai-tarpukario-1918-1940-lietuvoje \"HTTP/1.1 200 OK\"\n2026-05-15 12:13:02,788 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/orbai-meiles-ir-isminties-pasiuntiniai-nusvitimas-per-orbus \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 23,
+      "output_items_after": 26,
+      "output_items_added": 3,
+      "cache_html_before": 16,
+      "cache_html_after": 19,
+      "cache_html_added": 3
+    }
+  ]
+}

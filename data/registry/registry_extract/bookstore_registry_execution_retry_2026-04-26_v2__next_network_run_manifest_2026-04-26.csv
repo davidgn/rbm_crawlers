@@ -1,0 +1,5 @@
+priority,job_id,expected_promotion,command,current_status
+1,mexico_sic_raw_json_csv_xml,registry-grade raw-harvest-backed after raw JSON/CSV/XML plus normalized CSV plus hashes exist,python3 run_first_executable_harvest_queue_selfcontained.py OR python3 scripts/mexico_sic_librerias_harvester.py OUTDIR,blocked_in_current_runtime_by_dns_download_hang
+2,australia_bookpeople_profiles_smoke,member/network profile-smoke after at least 10 profile rows persist,python3 scripts/australia_bookpeople_loveyourbookshop_harvester.py --outdir OUTDIR --limit 10 --sleep 0.1,queued_after_mexico_not_reached_in_retry
+3,new_zealand_booksellers_profiles_smoke,member/network profile-smoke after at least 10 profile rows persist,python3 scripts/new_zealand_booksellers_bookhub_harvester.py --outdir OUTDIR --limit 10 --sleep 0.1,queued_after_mexico_not_reached_in_retry
+4,japan_kosho_profiles_smoke,used-antiquarian profile-smoke after at least 10 profile rows persist,python3 scripts/japan_ehon_kosho_harvester.py --outdir OUTDIR --limit 10 --sleep 0.1,queued_after_mexico_not_reached_in_retry

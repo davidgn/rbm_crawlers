@@ -1,0 +1,16 @@
+source_field,normalized_field,required,notes
+Bookstore,entity_name,yes,Header field on SA Booksellers member table; not guaranteed to be true bookstore only.
+EmailAddress,raw_email,yes_if_present,Email is often present; preserve raw as public table contact value.
+FirstName,contact_person,no,"Header says FirstName, but rendered tail may include first name only, full name, title, or none."
+SAAddressLine1,address_line_1,no,Unstructured in rendered text; parse cautiously.
+SAAddressLine2,address_line_2,no,May contain street/suburb/complex portions.
+SAAddressLine3,address_line_3,no,May contain extra locality or premises detail.
+SAAddressLine4,address_line_4,no,May contain city/region fragments in some rows.
+SACity,city,no,Sometimes inferable; not reliably separated in rendered text.
+SARegion,region,no,Often missing in rendered text; do not infer without geocoding/address parser.
+SAPostalCode,postal_code,no,Often numeric token near end; can be confused with phone or street number.
+PhoneNumber,phone,no,Often lacks leading zero/country code after rendering; preserve raw and add normalized phone separately.
+derived,entity_role_primary,yes,"Classify using keyword rules and later manual QA: bookshop, stationer, publisher, distributor, marketplace, institution, service/noise."
+derived,role_flags,yes,"Allow multiple flags: bookshop, stationery_hybrid, publisher, distributor, chain_head_office, campus_bookshop, online_retailer, accounting_noise."
+derived,qa_status,yes,"candidate_keep, mixed_role_review, exclude_noise, duplicate_review, branch_expansion_needed."
+source_url,source_url,yes,Use https://www.sabooksellers.com/bookshops/ as primary source URL for rows.

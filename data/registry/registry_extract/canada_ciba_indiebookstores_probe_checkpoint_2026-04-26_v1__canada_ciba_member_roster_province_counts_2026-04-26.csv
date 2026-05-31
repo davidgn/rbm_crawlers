@@ -1,0 +1,13 @@
+province_or_territory,visible_roster_count,source_url,count_basis,date_observed
+Alberta,19,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+British Columbia,55,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Manitoba,4,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+New Brunswick,3,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Newfoundland and Labrador,2,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Nova Scotia,16,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Northwest Territories,1,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Ontario,94,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Prince Edward Island,2,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Quebec,8,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+Saskatchewan,4,https://www.indiebookstores.ca/ciba-members/,manual count from visible static CIBA Member Bookstores page text in web extract; list says as of March 2025,2026-04-26
+TOTAL,208,https://www.indiebookstores.ca/ciba-members/,sum of province/territory counts from visible static roster,2026-04-26

@@ -1,0 +1,93 @@
+source_name,normalized_field,observed_source_field_or_derivation
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,source_name,constant source label
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,country,constant country/territory
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,source_class,manifest taxonomy
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,entity_name,store/member/profile heading
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,entity_role_primary,"classification from source class, flags, description"
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,role_flags,services/categories/known role signals
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,address_line,source address/street line
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,city,city/town/locality field or parsed address
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,region_or_state,state/province/Bundesland/county when exposed or inferred from listing page
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,postal_code,postal code where parsed
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,country_code,source country or profile code
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,phone,telephone/mobile field
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,email,email field or contact link if exposed
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,website,source web/external website link
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,profile_url,directory profile/detail URL
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,external_url,store own site/social link where different from profile
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,services_or_tags,service flags/category labels/amenities
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,opening_hours,profile opening hours text
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,description,profile text/description
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,source_count_context,"current source count, query count, or count-note from evidence ledger"
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,last_seen_date,2026-04-26
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,confidence,high/medium/low from source + row parse quality
+Cámara Colombiana del Libro — Librerías Colombia / Camlibro,status_note,"QA note, e.g. online-only, chain branch, distributor, profile missing fields"
+Booksellers Association — Bookshop Search,source_name,constant source label
+Booksellers Association — Bookshop Search,country,constant country/territory
+Booksellers Association — Bookshop Search,source_class,manifest taxonomy
+Booksellers Association — Bookshop Search,entity_name,store/member/profile heading
+Booksellers Association — Bookshop Search,entity_role_primary,"classification from source class, flags, description"
+Booksellers Association — Bookshop Search,role_flags,services/categories/known role signals
+Booksellers Association — Bookshop Search,address_line,source address/street line
+Booksellers Association — Bookshop Search,city,city/town/locality field or parsed address
+Booksellers Association — Bookshop Search,region_or_state,state/province/Bundesland/county when exposed or inferred from listing page
+Booksellers Association — Bookshop Search,postal_code,postal code where parsed
+Booksellers Association — Bookshop Search,country_code,source country or profile code
+Booksellers Association — Bookshop Search,phone,telephone/mobile field
+Booksellers Association — Bookshop Search,email,email field or contact link if exposed
+Booksellers Association — Bookshop Search,website,source web/external website link
+Booksellers Association — Bookshop Search,profile_url,directory profile/detail URL
+Booksellers Association — Bookshop Search,external_url,store own site/social link where different from profile
+Booksellers Association — Bookshop Search,services_or_tags,service flags/category labels/amenities
+Booksellers Association — Bookshop Search,opening_hours,profile opening hours text
+Booksellers Association — Bookshop Search,description,profile text/description
+Booksellers Association — Bookshop Search,source_count_context,"current source count, query count, or count-note from evidence ledger"
+Booksellers Association — Bookshop Search,last_seen_date,2026-04-26
+Booksellers Association — Bookshop Search,confidence,high/medium/low from source + row parse quality
+Booksellers Association — Bookshop Search,status_note,"QA note, e.g. online-only, chain branch, distributor, profile missing fields"
+genialokal — Unsere Buchhandlungen,source_name,constant source label
+genialokal — Unsere Buchhandlungen,country,constant country/territory
+genialokal — Unsere Buchhandlungen,source_class,manifest taxonomy
+genialokal — Unsere Buchhandlungen,entity_name,store/member/profile heading
+genialokal — Unsere Buchhandlungen,entity_role_primary,"classification from source class, flags, description"
+genialokal — Unsere Buchhandlungen,role_flags,services/categories/known role signals
+genialokal — Unsere Buchhandlungen,address_line,source address/street line
+genialokal — Unsere Buchhandlungen,city,city/town/locality field or parsed address
+genialokal — Unsere Buchhandlungen,region_or_state,state/province/Bundesland/county when exposed or inferred from listing page
+genialokal — Unsere Buchhandlungen,postal_code,postal code where parsed
+genialokal — Unsere Buchhandlungen,country_code,source country or profile code
+genialokal — Unsere Buchhandlungen,phone,telephone/mobile field
+genialokal — Unsere Buchhandlungen,email,email field or contact link if exposed
+genialokal — Unsere Buchhandlungen,website,source web/external website link
+genialokal — Unsere Buchhandlungen,profile_url,directory profile/detail URL
+genialokal — Unsere Buchhandlungen,external_url,store own site/social link where different from profile
+genialokal — Unsere Buchhandlungen,services_or_tags,service flags/category labels/amenities
+genialokal — Unsere Buchhandlungen,opening_hours,profile opening hours text
+genialokal — Unsere Buchhandlungen,description,profile text/description
+genialokal — Unsere Buchhandlungen,source_count_context,"current source count, query count, or count-note from evidence ledger"
+genialokal — Unsere Buchhandlungen,last_seen_date,2026-04-26
+genialokal — Unsere Buchhandlungen,confidence,high/medium/low from source + row parse quality
+genialokal — Unsere Buchhandlungen,status_note,"QA note, e.g. online-only, chain branch, distributor, profile missing fields"
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,source_name,constant source label
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,country,constant country/territory
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,source_class,manifest taxonomy
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,entity_name,store/member/profile heading
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,entity_role_primary,"classification from source class, flags, description"
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,role_flags,services/categories/known role signals
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,address_line,source address/street line
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,city,city/town/locality field or parsed address
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,region_or_state,state/province/Bundesland/county when exposed or inferred from listing page
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,postal_code,postal code where parsed
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,country_code,source country or profile code
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,phone,telephone/mobile field
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,email,email field or contact link if exposed
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,website,source web/external website link
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,profile_url,directory profile/detail URL
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,external_url,store own site/social link where different from profile
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,services_or_tags,service flags/category labels/amenities
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,opening_hours,profile opening hours text
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,description,profile text/description
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,source_count_context,"current source count, query count, or count-note from evidence ledger"
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,last_seen_date,2026-04-26
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,confidence,high/medium/low from source + row parse quality
+buchhandel.at / Hauptverband des Österreichischen Buchhandels,status_note,"QA note, e.g. online-only, chain branch, distributor, profile missing fields"

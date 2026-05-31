@@ -1,0 +1,1 @@
+Wrote harvest outputs to /mnt/data/bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152305Z/mexico_sic

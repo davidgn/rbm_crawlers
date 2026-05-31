@@ -1,0 +1,23 @@
+{
+  "project": "Global bookstore-registry / book-market infrastructure discovery",
+  "checkpoint_date": "2026-04-25",
+  "bundle_status": "flat handoff bundle",
+  "workflow_phase": "broad global discovery complete; ready for harvest planning",
+  "macroregions_covered": [
+    "LATAM", "Caribbean", "Iberia", "France/Benelux/Switzerland", "DACH", "Nordics", "UK/Ireland", "Southern Europe", "Central/Eastern Europe", "Balkans", "Caucasus", "Turkey/Eastern Mediterranean", "MENA", "North Africa", "Sub-Saharan Africa", "Horn of Africa", "South Asia", "East Asia", "Southeast Asia", "Oceania/Pacific", "United States/Canada"
+  ],
+  "core_source_classes": [
+    "registry-grade", "network-grade", "member-grade", "publisher-sales-point", "chain-locator", "private-directory", "francophone/Ailf backbone", "church/campus bookstore network", "used-antiquarian overlay", "anchor-only", "historic-closed", "pickup-logistics-only"
+  ],
+  "tier1_direct_or_near_direct_harvest_examples": [
+    "Mexico SIC", "Argentina SInCA/datos.gob.ar", "Spain CEGAL/Todos tus libros", "Poland OBK", "South Africa SA Booksellers", "United States ABA/IndieBound", "Canada CIBA/IndieBookstores.ca", "Australia BookPeople", "New Zealand Booksellers Aotearoa/BookHub"
+  ],
+  "tier2_strong_structured_scrape_examples": [
+    "Colombia Camlibro", "Japan national bookstore guide/e-hon/Kosho", "Taiwan iCulture/Friendly Bookstore", "UK/Ireland Booksellers Association", "Germany genialokal", "Austria buchhandel.at", "Sri Lanka Sarasavi/Ceylon booksellers", "Vietnam Phuong Nam/Fahasa", "Malaysia Popular/MABOPA", "Singapore SBASA/Kinokuniya", "Ghana GBDC", "Nigeria BAN", "Panama Sicultura", "Costa Rica SiCultura", "Guatemala SIC"
+  ],
+  "priority_schema_warnings": [
+    "Do not collapse bookstore, publisher, distributor, pickup point, schoolbook supplier, stationery shop, church bookstore, campus bookstore, and used/antiquarian dealer into a single undifferentiated entity.",
+    "For conflict/political/status-sensitive markets, preserve last_seen_date and status notes.",
+    "For island and small-market lanes, anchor capture is often the correct model; do not overhunt for nonexistent registries."
+  ]
+}

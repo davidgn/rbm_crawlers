@@ -1,0 +1,40 @@
+{
+  "workflow": "bookstore_registry_global_discovery / harvest planning",
+  "source": "Mexico SIC Directorio de librerías y puntos de venta",
+  "observed_date": "2026-04-25",
+  "source_class": "registry-grade",
+  "source_urls": {
+    "sic_open_data_page": "https://sic.cultura.gob.mx/datos.php?table=libreria",
+    "sic_live_national_page": "https://sic.cultura.gob.mx/index.php?table=libreria",
+    "sic_live_state_counts": "https://sic.cultura.gob.mx/lista.php?disciplina=&estado_id=&table=libreria",
+    "sic_json_export": "https://sic.cultura.gob.mx/opendata/d/0_libreria_directorio.json",
+    "sic_csv_export": "https://sic.cultura.gob.mx/opendata/d/0_libreria_directorio.csv",
+    "sic_xml_export": "https://sic.cultura.gob.mx/opendata/d/0_libreria_directorio.xml",
+    "sic_metadata_xlsx": "https://sic.cultura.gob.mx/opendata/meta/0_libreria_directorio.xlsx",
+    "datos_gobmx_resource": "https://www.datos.gob.mx/dataset/sistema_informacion_cultural_espacios_culturales/resource/8e91816b-3a65-4643-a867-3a242ac8d527",
+    "datos_gobmx_csv_download": "https://www.datos.gob.mx/dataset/10d327a6-172a-4041-87e3-5107e54c4f12/resource/8e91816b-3a65-4643-a867-3a242ac8d527/download/0_libreria_directorio.csv"
+  },
+  "observed_source_facts": {
+    "sic_open_data_page_timestamp": "2026-04-25 12:00:52",
+    "sic_live_national_page_total": 1351,
+    "sic_live_state_count_total": 1351,
+    "sic_state_sum": 1351,
+    "sic_resource_summary_category_count": 1350,
+    "datos_gobmx_resource_size": "537.4 KiB",
+    "datos_gobmx_resource_format": "CSV",
+    "datos_gobmx_data_last_update": "2025-05-10",
+    "datos_gobmx_metadata_last_update": "2025-05-27",
+    "datos_gobmx_resource_created": "2025-03-13",
+    "json_endpoint_status": "opened successfully in web tool; raw full export could not be persisted via local runtime because direct CSV/XLSX download returned web-tool fetch errors and local container DNS failed",
+    "csv_endpoint_status": "direct URL known; web tool reported fetch failure '(400) OK'; preserve endpoint and retry via harvester script",
+    "metadata_xlsx_status": "direct URL known; web tool reported fetch failure 'OK'; preserve endpoint and retry via harvester script"
+  },
+  "qa_decisions": [
+    "Treat live SIC state total 1351 as the current governed count for this probe because national page and state-list page agree and state counts sum exactly.",
+    "Preserve 1350 category-count discrepancy from the SIC all-resources page as unresolved source-surface mismatch.",
+    "Preserve datos.gob.mx CSV resource as an older/static portal copy with last data update 2025-05-10 and size 537.4 KiB; do not treat it as identical to the live SIC JSON until file-level hashes and row counts are computed.",
+    "Normalize 0.00000 latitude/longitude to null in downstream clean output and keep a zero_coordinate flag.",
+    "Treat 1000-01-01 founding dates as source sentinels, not historical founding dates.",
+    "Do not classify all rows as independent bookstores: SIC includes chain branches, institutional sales points, museum/bookshop hybrids, legal/court bookshops, university bookstores, and blank-name sales points."
+  ]
+}

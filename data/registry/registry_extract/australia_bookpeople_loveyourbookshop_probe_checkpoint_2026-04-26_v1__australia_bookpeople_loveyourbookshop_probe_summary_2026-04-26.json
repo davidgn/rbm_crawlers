@@ -1,0 +1,32 @@
+{
+  "probe": "Australia BookPeople / Love Your Bookshop Find a Bookshop",
+  "date": "2026-04-26",
+  "classification": "member-grade / network-grade",
+  "harvest_status": "profile_probe_complete_store_crawl_needed",
+  "public_bulk_export_confirmed": false,
+  "full_export_created": false,
+  "primary_surface": "https://loveyourbookshop.org.au/find-a-bookshop/",
+  "profile_pattern": "https://loveyourbookshop.org.au/store/<slug>/",
+  "confirmed_profile_fields": [
+    "entity_name",
+    "description_raw",
+    "stockist_flags",
+    "gift_card_flags",
+    "voucher_flags",
+    "address_or_online_only",
+    "email",
+    "phone",
+    "website"
+  ],
+  "special_governance_flags": [
+    "online_only",
+    "used_antiquarian",
+    "secondhand",
+    "specialist_category",
+    "gift_card_in_store",
+    "gift_card_online",
+    "voucher_acceptance"
+  ],
+  "sample_row_count": 5,
+  "limits": "No full crawl or public bulk API confirmed in current runtime."
+}

@@ -1,0 +1,23 @@
+{
+  "probe": "Spain CEGAL / TodosTusLibros bookstore-directory seam",
+  "date": "2026-04-25",
+  "status": "static_listing_probe_complete_full_harvest_needed",
+  "source_class_recommendation": "network-grade / registry-network, not open-data registry-grade",
+  "primary_urls": [
+    "https://www.todostuslibros.com/librerias",
+    "https://www.cegal.es/que-hacemos/proyectos-tecnologicos-y-de-innovacion/todos-tus-libros/",
+    "https://www.cegal.es/wp-content/uploads/MAPA-DE-LIBRERIAS-2024-2025.pdf"
+  ],
+  "observed_counts": {
+    "cegal_mapa_2024_2025_independent_bookstores_spain": 2754,
+    "cegal_mapa_2024_2025_todostuslibros_platform_bookstores": 776,
+    "ttl_listing_pages_observed": 32,
+    "ttl_page_size_observed_page1": 25,
+    "ttl_last_page_rows_observed_page32_seeded": 1,
+    "ttl_listing_count_inferred_from_pagination": 776
+  },
+  "count_governance": "776 is strongly supported by official CEGAL report and matching TTL pagination inference, but exact current live count should still be confirmed by a complete profile-URL crawl and hash manifest.",
+  "extraction_recommendation": "Crawl paginated /librerias pages to collect profile URLs; then crawl /libreria/<slug>_<id> profiles for normalized address/contact fields. Do not scrape title inventory into the store registry table.",
+  "known_runtime_limitations": "Local container network access timed out; raw full crawl was not executed here. Web tool could view pages and profiles; artifacts are a probe and ready-to-run script, not a full export.",
+  "next_governed_move": "Run the included harvester in a normal networked runtime, producing raw HTML, listing/profile URL ledger, normalized profile CSV, counts and hashes; then proceed to Poland OBK if Spain full crawl is deferred."
+}

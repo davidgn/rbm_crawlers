@@ -1,0 +1,41 @@
+{
+  "promotions": [
+    {
+      "site_name": "PacificManuscriptsBureau",
+      "slug": "pacific_manuscripts_bureau",
+      "base_url": "https://asiapacific.anu.edu.au/pambu/catalogue/",
+      "discovery_mode": "spider",
+      "book_url_regex": "/index\\.php/(pmb\\d+|doc\\d+)",
+      "title_suffix_regexes": [" | Pacific Manuscripts Bureau"],
+      "wikidata_qid": "Q30258003"
+    },
+    {
+      "site_name": "TeTākupu",
+      "slug": "te_takupu",
+      "base_url": "https://tetakupu.wananga.com",
+      "discovery_mode": "sitemaps",
+      "sitemap_guesses": ["https://tetakupu.wananga.com/sitemap.xml"],
+      "book_url_regex": "/products/[\\w-]+",
+      "title_suffix_regexes": [" | Te Tākupu"],
+      "wikidata_qid": "Q60775079"
+    },
+    {
+      "site_name": "ImagesPublishingGroup",
+      "slug": "images_publishing_group",
+      "base_url": "https://imagespublishing.com/us/books/",
+      "discovery_mode": "spider",
+      "book_url_regex": "/book/[\\w-]+",
+      "title_suffix_regexes": [" | Images Publishing"],
+      "wikidata_qid": "Q30295909"
+    },
+    {
+      "site_name": "LandInformationNZ",
+      "slug": "land_information_new_zealand",
+      "base_url": "https://www.linz.govt.nz/resources",
+      "discovery_mode": "spider",
+      "book_url_regex": "/resources/[\\w-]+",
+      "title_suffix_regexes": [" | LINZ"],
+      "wikidata_qid": "Q131875111"
+    }
+  ]
+}

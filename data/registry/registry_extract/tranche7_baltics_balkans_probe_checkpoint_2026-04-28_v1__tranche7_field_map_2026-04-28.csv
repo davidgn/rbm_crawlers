@@ -1,0 +1,11 @@
+source_family,raw_field_or_visible_element,normalized_field,notes
+Latvia LGA WordPress,member page title,entity_name,Often legal/company name or chain brand.
+Latvia LGA WordPress,Adrese / city / postcode,street_address; locality; postal_code,May include HQ plus branch bullet lists.
+Latvia LGA WordPress,Tālrunis / Fakss / Mājas lapa,phone; fax; website,Dated; verify currentness.
+Croatia ZNK,alphabetical member link text,entity_name,Mixed publisher/bookseller list; role inferred later.
+Croatia ZNK,outbound website/social link,website_url,Need crawl target page for address/contact.
+Hungary MKKE,member company link,entity_name; profile_url,Detail page likely needed for contacts.
+Slovakia Litcentrum/ZVKS,institution text/contact person/phone,association_name; contact_name; phone,"Association anchor, not bookstore rows."
+Greece BIBLIONET,bookstore profile type/name,entity_name; entity_role_primary,Profile may also act as publisher record.
+Greece BIBLIONET,Ιστοτοπος / Διευθυνση / E-MAIL / Τηλεφωνο,website_url; street_address; email; phone,Strong row-level profile fields.
+Romania Jacek Lewinson CEE list,name/address/tel/website/email block,entity_name; street_address; phone; website_url; email,Private fallback only; verify before promotion.

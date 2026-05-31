@@ -1,0 +1,5 @@
+artifact,url,bytes,sha256,status
+raw_0_libreria_directorio.json,https://sic.cultura.gob.mx/opendata/d/0_libreria_directorio.json,,,"download_failed: URLError(gaierror(-3, 'Temporary failure in name resolution'))"
+raw_0_libreria_directorio.csv,https://sic.cultura.gob.mx/opendata/d/0_libreria_directorio.csv,,,"download_failed: URLError(gaierror(-3, 'Temporary failure in name resolution'))"
+raw_0_libreria_directorio.xml,https://sic.cultura.gob.mx/opendata/d/0_libreria_directorio.xml,,,"download_failed: URLError(gaierror(-3, 'Temporary failure in name resolution'))"
+raw_0_libreria_directorio.metadata_xlsx,https://sic.cultura.gob.mx/opendata/meta/0_libreria_directorio.xlsx,,,"download_failed: URLError(gaierror(-3, 'Temporary failure in name resolution'))"

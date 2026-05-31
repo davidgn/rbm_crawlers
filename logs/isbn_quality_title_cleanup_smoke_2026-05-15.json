@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/alibris_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.9,
+      "platform_name": "Alibris UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:17:13,507 [INFO] ConfigurableMarketplaceSpider: Starting Alibris UK harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 33,
+      "output_items_after": 36,
+      "output_items_added": 3,
+      "cache_html_before": 12,
+      "cache_html_after": 12,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/bokborsen_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 7.16,
+      "platform_name": "Bokborsen",
+      "territory": "Sweden",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:17:03,293 [INFO] ConfigurableMarketplaceSpider: Starting Bokborsen harvest. limit_pages=1 limit_items=3\n2026-05-15 11:17:04,640 [INFO] httpx: HTTP Request: GET https://www.bokborsen.se/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:17:05,782 [INFO] httpx: HTTP Request: GET https://www.bokborsen.se/view/Barjatinskij-Michail/Stalingrad-Andra-V%C3%A4rldskrigets-V%C3%A4ndpunkt/15579208 \"HTTP/1.1 200 OK\"\n2026-05-15 11:17:07,088 [INFO] httpx: HTTP Request: GET https://www.bokborsen.se/view/Thompson-Gene/Han-Svor-Att-H%C3%A4mnas/15579207 \"HTTP/1.1 200 OK\"\n2026-05-15 11:17:08,650 [INFO] httpx: HTTP Request: GET https://www.bokborsen.se/view/Cabr%C3%A9-Jaume/Jag-Bek%C3%A4nner/15579206 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 24,
+      "output_items_after": 27,
+      "output_items_added": 3,
+      "cache_html_before": 23,
+      "cache_html_after": 26,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/portal_dos_livreiros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.41,
+      "platform_name": "Portal dos Livreiros",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:17:10,094 [INFO] ConfigurableMarketplaceSpider: Starting Portal dos Livreiros harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 21,
+      "output_items_after": 24,
+      "output_items_added": 3,
+      "cache_html_before": 21,
+      "cache_html_after": 21,
+      "cache_html_added": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "probe": "Japan e-hon / Kosho split source probe",
+  "date": "2026-04-26",
+  "classification": "split: e-hon pickup-network + Kosho used-antiquarian association/marketplace directory",
+  "harvest_status": "split_probe_complete_endpoint_crawl_needed",
+  "public_bulk_export_confirmed": false,
+  "full_export_created": false,
+  "e_hon_coverage_signal": "about 3,000 nationwide member bookstores in public snippet; search by bookstore name/code; must verify through crawl",
+  "kosho_coverage_signal": "about 1,000 participating used bookstores and >7 million inventory items on home page; 2,300+ full association umbrella in About page",
+  "special_governance_flags": [
+    "pickup_network_partner",
+    "bookstore_delivery_flag",
+    "used_antiquarian",
+    "association_member",
+    "no_storefront",
+    "office_only",
+    "warehouse_separate",
+    "storefront_status_note"
+  ],
+  "sample_row_count": 5,
+  "limits": "e-hon search page partly inaccessible via current web-rendering tool; no full crawl run."
+}

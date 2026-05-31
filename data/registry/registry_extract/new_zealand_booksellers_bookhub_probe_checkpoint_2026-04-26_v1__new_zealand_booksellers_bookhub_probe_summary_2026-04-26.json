@@ -1,0 +1,32 @@
+{
+  "probe": "New Zealand Booksellers Aotearoa NZ / BookHub",
+  "date": "2026-04-26",
+  "classification": "member-grade / network-grade with inventory-commerce overlay",
+  "harvest_status": "profile_probe_complete_bookhub_endpoint_probe_needed",
+  "public_bulk_export_confirmed": false,
+  "full_export_created": false,
+  "primary_entity_surface": "https://www.booksellers.co.nz/find-a-bookseller",
+  "inventory_overlay_surface": "https://bookhub.co.nz/",
+  "visible_directory_profile_links_observed": "approximately 93 visible profile links in no-JS page, not a final count",
+  "bookhub_coverage_signal": "over 70 independent bookshops per BookHub About, not a full member-directory count",
+  "confirmed_profile_fields": [
+    "entity_name",
+    "description_raw",
+    "address",
+    "email",
+    "phone",
+    "website",
+    "social_handle"
+  ],
+  "special_governance_flags": [
+    "On BookHub",
+    "redeems_tokens",
+    "redeems_gift_cards",
+    "sells_tokens",
+    "sells_gift_cards",
+    "online_or_marketplace",
+    "inventory_observation"
+  ],
+  "sample_row_count": 3,
+  "limits": "No full rendered crawl or public bulk API confirmed in current runtime."
+}

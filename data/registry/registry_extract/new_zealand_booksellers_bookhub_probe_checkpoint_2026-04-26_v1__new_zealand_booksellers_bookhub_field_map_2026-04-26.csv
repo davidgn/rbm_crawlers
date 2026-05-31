@@ -1,0 +1,16 @@
+source_field,normalized_field,notes
+directory profile link text,entity_name,Primary store/member name from Booksellers Aotearoa directory or profile title.
+directory compact description,description_snippet,Short description from Find a Bookseller listing.
+profile body description,description_raw,Full member description from profile page.
+profile address line,street_address_full,Address if present; absent for online-only/marketplace entries.
+region filter,region,Directory filter region; may require rendered/endpoint extraction.
+service filters,service_flags,"Redeems/sells tokens/gift cards, On BookHub."
+email line,email,Public email from profile.
+phone line,phone,Public phone from profile.
+website link,website,External member/store website.
+social links/handles,social_urls,Profile may include social handles.
+BookHub product stock count,bookhub_stock_observation_count,"Inventory observation linked to product/store, not a store-count field."
+BookHub Find Store rows,bookhub_store_inventory_observation,Participating-store stock signal; join to store entity after name/profile reconciliation.
+profile URL,source_url,Booksellers profile URL.
+BookHub URL,bookhub_url,BookHub page or product/category source.
+classification,entity_role_primary,bookstore_location; online_bookstore; marketplace_retailer; specialist_bookstore; used_secondhand; chain_branch; review_needed.

@@ -1,0 +1,31 @@
+{
+  "workflow": "bookstore registry global discovery / harvest planning",
+  "date": "2026-04-28",
+  "latest_tranche": "Tranche 8 MENA / Arab-world bridge probe",
+  "durable_state": "Tranches 1-8 are probe-backed. No source is raw-harvest-backed in this runtime.",
+  "tranche8_scope": [
+    "Egypt",
+    "Arab Publishers Association multi-country",
+    "Jordan",
+    "United Arab Emirates",
+    "Saudi Arabia",
+    "Qatar",
+    "Lebanon"
+  ],
+  "raw_harvest_backed_sources": [],
+  "high_quality_export_targets_pending": [
+    "Mexico SIC",
+    "France data.gouv Base des librairies",
+    "Chile Frankfurt 2027 Librerías Google Sheet"
+  ],
+  "new_tranche8_priority_findings": [
+    "Jordan UJP member table is row-level but publisher/distributor-class.",
+    "Arab Publishers Association is a strong cross-country publisher/distributor bridge.",
+    "Egyptian Publishers Association has explicit 46 member count but visible noise/test entries.",
+    "UAE EPA says over 100 members; publisher directory only.",
+    "Saudi private directory fallback is contaminated; official publishing association is only an anchor.",
+    "Qatar QNL is official library infrastructure, not bookstores.",
+    "Lebanon AtLebanon Books category is currently a negative probe."
+  ],
+  "next_governed_move": "Either run high-quality exports in a network-enabled runtime or proceed to Tranche 9 with another region block."
+}

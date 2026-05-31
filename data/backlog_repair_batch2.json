@@ -1,0 +1,19 @@
+{
+  "repairs": [
+    {"site_name": "Editora Universitária Universidade de Santiago", "base_url": "https://us.edu.cv/", "book_url_regex": "/nexus/|/edicoes/", "discovery_mode": "spider"},
+    {"site_name": "NEI (National Electronics and Computer Technology Center)", "base_url": "https://www.nectec.or.th/", "book_url_regex": "/publications/|/books/", "discovery_mode": "spider"},
+    {"site_name": "Academy of the Arabic Language Cairo", "base_url": "http://www.arabicacademy.org.eg/", "book_url_regex": "/إصدارات/|/books/", "discovery_mode": "spider"},
+    {"site_name": "PNG University of Technology Press", "base_url": "https://www.pnguot.ac.pg/pnguot-press/", "book_url_regex": "/services/publication/", "discovery_mode": "spider"},
+    {"site_name": "Banaras Hindu University Press", "base_url": "https://www.bhu.ac.in/Site/UnitHome/1_152_1501_Vedic-Vigyan-Kendra-Published-Books", "book_url_regex": "/Vedic-Vigyan-Kendra-Published-Books/|/Press-and-Publication-Division/", "discovery_mode": "spider"},
+    {"site_name": "International Medical University", "base_url": "https://koha1.imu.edu.my/", "book_url_regex": "/cgi-bin/koha/opac-detail.pl\\?biblionumber=\\d+", "discovery_mode": "spider"},
+    {"site_name": "Universidad Autónoma de Yucatán", "base_url": "https://libreria.uady.mx/", "book_url_regex": "/products/", "discovery_mode": "sitemaps"},
+    {"site_name": "Editorial CECAR", "base_url": "https://cecar.edu.co/editorial/index.php/editorial/catalog", "book_url_regex": "/catalog/book/", "discovery_mode": "spider"},
+    {"site_name": "University of Maine Press", "base_url": "https://umaine.edu/press/catalog/", "book_url_regex": "/catalog/all-titles-a-z/", "discovery_mode": "spider"},
+    {"site_name": "Kenya Medical Research Institute KEMRI", "base_url": "http://repository.kemri.go.ke:8080/xmlui/", "book_url_regex": "/handle/\\d+/\\d+", "discovery_mode": "spider"},
+    {"site_name": "University of Tampa Press", "base_url": "https://utampapress.org/book-catalog", "book_url_regex": "/utampapress\\.org/(?!category|tag|author|page|book-catalog)[\\w-]+/", "discovery_mode": "spider"},
+    {"site_name": "University of Liberia Press", "base_url": "https://ul.edu.lr/publications/", "book_url_regex": "/publications/", "discovery_mode": "spider"},
+    {"site_name": "Northern Illinois University Press", "base_url": "https://niupress.niu.edu/", "book_url_regex": "/product/|/book/", "discovery_mode": "spider"},
+    {"site_name": "Bangladesh Academy of Sciences", "base_url": "https://www.bas.org.bd/publications", "book_url_regex": "/publications/|/download/", "discovery_mode": "spider"},
+    {"site_name": "ANU Press", "base_url": "https://press.anu.edu.au/", "book_url_regex": "/titles/|/catalog/", "discovery_mode": "sitemaps"}
+  ]
+}

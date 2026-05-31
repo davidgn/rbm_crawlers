@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 3
+  },
+  "reports": [
+    {
+      "file": "src/honto_jp_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 11.01,
+      "platform_name": "honto Japan",
+      "territory": "Japan",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:48:41,501 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 19 existing URLs from honto japan_listings.jsonl\n2026-05-15 11:48:41,753 [INFO] ConfigurableMarketplaceSpider: Starting honto Japan harvest. limit_pages=1 limit_items=3\n2026-05-15 11:48:42,580 [INFO] httpx: HTTP Request: GET https://honto.jp/netstore.html \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 11:48:42,963 [INFO] httpx: HTTP Request: GET https://honto.jp/?cid=nscl_rd \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:43,985 [INFO] httpx: HTTP Request: GET https://honto.jp/ebook/pd_35325444.html?cid=ip_eb_alpk_ra_01 \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:45,424 [INFO] httpx: HTTP Request: GET https://honto.jp/ebook/pd_35382811.html?cid=ip_eb_alpk_ra_02 \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:47,156 [INFO] httpx: HTTP Request: GET https://honto.jp/ebook/pd_35374865.html?cid=ip_eb_alpk_ra_03 \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:48,695 [INFO] httpx: HTTP Request: GET https://honto.jp/ebook/pd_35380570.html?cid=ip_eb_alpk_ra_04 \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:50,043 [INFO] httpx: HTTP Request: GET https://honto.jp/ebook/pd_35386928.html?cid=ip_eb_alpk_ra_05 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 42,
+      "output_items_after": 45,
+      "output_items_added": 3,
+      "cache_html_before": 20,
+      "cache_html_after": 23,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/netoff_jp_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 22.36,
+      "platform_name": "Netoff Japan",
+      "territory": "Japan",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:48:51,704 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 10 existing URLs from netoff japan_listings.jsonl\n2026-05-15 11:48:51,947 [INFO] ConfigurableMarketplaceSpider: Starting Netoff Japan harvest. limit_pages=1 limit_items=3\n2026-05-15 11:48:53,511 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/book/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:54,799 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0011093640/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:56,820 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0014131192/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:58,091 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0013576747/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:48:59,558 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0011962999/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:00,917 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0012043718/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:02,281 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0013329022/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:03,646 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0013332447/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:05,031 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0012023975/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:06,612 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0013603664/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:08,050 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0012023973/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:09,471 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0013066578/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:10,864 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0013734069/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:49:12,457 [INFO] httpx: HTTP Request: GET https://www.netoff.co.jp/detail/0010180278/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 32,
+      "output_items_after": 35,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 14,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/valuebooks_jp_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 15.94,
+      "platform_name": "ValueBooks Japan",
+      "territory": "Japan",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:49:14,030 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 10 existing URLs from valuebooks japan_listings.jsonl\n2026-05-15 11:49:14,281 [INFO] ConfigurableMarketplaceSpider: Starting ValueBooks Japan harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 28,
+      "output_items_after": 31,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 14,
+      "cache_html_added": 3
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 4
+  },
+  "reports": [
+    {
+      "file": "src/leuvendeu_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.69,
+      "platform_name": "LeuVendeu",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:15:30,404 [INFO] ConfigurableMarketplaceSpider: Starting LeuVendeu harvest. limit_pages=1 limit_items=3\n2026-05-15 11:15:33,183 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/home/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:34,985 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/livro/1565-enquanto-o-brasil-nascia-5/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:38,301 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/livro/a-iliada-e-a-odisseia/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:41,684 [INFO] httpx: HTTP Request: GET https://leuvendeu.com.br/livro/odisseia-serie-reencontro-8/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 13,
+      "output_items_after": 16,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 14,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/mybook_lv_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.84,
+      "platform_name": "myBook.lv",
+      "territory": "Latvia",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:15:19,893 [INFO] ConfigurableMarketplaceSpider: Starting myBook.lv harvest. limit_pages=1 limit_items=3\n2026-05-15 11:15:22,533 [INFO] httpx: HTTP Request: GET https://www.mybook.lv/lv \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:22,942 [INFO] httpx: HTTP Request: GET https://www.mybook.lv/lv/sludinajums/nebaidies-ne-no-ka-495786/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:24,377 [INFO] httpx: HTTP Request: GET https://www.mybook.lv/lv/sludinajums/elsewhere-497632/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:25,347 [INFO] httpx: HTTP Request: GET https://www.mybook.lv/lv/sludinajums/aspazija-kopotie-raksti-sesos-sejumos-476596/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 19,
+      "output_items_after": 22,
+      "output_items_added": 3,
+      "cache_html_before": 18,
+      "cache_html_after": 19,
+      "cache_html_added": 1
+    },
+    {
+      "file": "src/portal_dos_livreiros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.56,
+      "platform_name": "Portal dos Livreiros",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:15:26,754 [INFO] ConfigurableMarketplaceSpider: Starting Portal dos Livreiros harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 18,
+      "output_items_after": 21,
+      "output_items_added": 3,
+      "cache_html_before": 18,
+      "cache_html_after": 21,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/tradestories_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.24,
+      "platform_name": "Trade Stories",
+      "territory": "Portugal",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:15:16,439 [INFO] ConfigurableMarketplaceSpider: Starting Trade Stories harvest. limit_pages=1 limit_items=3\n2026-05-15 11:15:16,952 [INFO] httpx: HTTP Request: GET https://tradestories.pt/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:17,283 [INFO] httpx: HTTP Request: GET https://tradestories.pt/jorge-lima/livro/cozinheira-do-ditador \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:17,915 [INFO] httpx: HTTP Request: GET https://tradestories.pt/gabrielalivrosdesapego/livro/uniao-de-facto \"HTTP/1.1 200 OK\"\n2026-05-15 11:15:18,659 [INFO] httpx: HTTP Request: GET https://tradestories.pt/mariana-faria/livro/rapariga-na-agua \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 30,
+      "output_items_after": 33,
+      "output_items_added": 3,
+      "cache_html_before": 22,
+      "cache_html_after": 25,
+      "cache_html_added": 3
+    }
+  ]
+}

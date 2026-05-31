@@ -1,0 +1,13 @@
+territory,evidence_label,evidence_summary,source_url,evidence_type
+Ghana,GBDC official directory navigation,"GBDC page has Directory > List of Book Sellers and table headers S/N, Name, Specialisation, Postal/Location, E-Mail/Website, Contact No.",https://www.gbdc.gov.gh/list-booksellers,"official source, static list"
+Ghana,GBDC visible count,Observed S/N entries run from 1 to 47 on the official list.,https://www.gbdc.gov.gh/list-booksellers,"count evidence, not completeness proof"
+Nigeria,BAN home association scope,BAN home says it helps booksellers and bookstores in Nigeria and describes its members as certified booksellers.,https://nigerianbooksellers.org/,association scope
+Nigeria,BAN members page fields,"BAN members page exposes member blocks with description, products/services, address, email, phone, website.",https://nigerianbooksellers.org/members,member directory
+Morocco,Librairies du Maroc platform,Search/index evidence shows Librairies du Maroc with map/bookshop pages; direct fetch blocked in tool.,https://www.librairiesdumaroc.ma/magasins.php,platform evidence; terms-sensitive
+Morocco,GoAfrica Morocco directory fallback,"GoAfrica Morocco Librairie category reports 1,273 results and exposes business rows with location/contact/profile links.",https://www.goafricaonline.com/ma/annuaire/librairie,private directory fallback
+Italy,ALI associated bookstores page,ALI page says discover the libraries in its network and shows filters/sample stores; it says the full member list is being updated.,https://www.libraitaliani.it/librerie/,association directory
+Italy,ALI profile field sample,"Sample ALI profile exposes description, services, other products, hours, email, phone, address.",https://www.libraitaliani.it/libreria/libreria-del-toboso/,profile schema
+Italy,ALAI overlay count,ILAB says 101 antiquarian booksellers belong to ALAI and that ALAI is a rare/antiquarian association.,https://ilab.org/association/associazione-librai-antiquari-ditalia,used/antiquarian overlay
+Ukraine,UBI interactive map page,UBI official site lists Interactive map of Ukrainian book ecosystem under digital/activities.,https://ubi.org.ua/en/activity/interaktivna-mapa-knizhkovo-ekosistemi,official map surface
+Ukraine,UBI Research 2025 aggregate,UBI Research 2025 reports approximately 800 brick-and-mortar bookstores and 80 online shops in 2024.,https://ubi.org.ua/en/activity/doslidzhennya/doslidzhennya-2025,aggregate market count
+Ukraine,500-map milestone,Interfax reports UBI said the interactive map had reached 500 registered bookstores in June 2024.,https://en.interfax.com.ua/news/general/995936.html,press/count evidence

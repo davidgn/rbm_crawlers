@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/antoineonline_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.42,
+      "platform_name": "Antoine Online",
+      "territory": "Lebanon",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:51:53,673 [INFO] AntoineOnlineSpider: Starting Antoine Online harvest (cache-first). limit_pages=1\n2026-05-15 07:51:53,937 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/lbn/en/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:54,188 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:54,216 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/booksen \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:54,475 [INFO] AntoineOnlineSpider: Browse URL confirmed: https://www.antoineonline.com/lbn/en/books\n2026-05-15 07:51:54,653 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/lbn/en/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:54,926 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:54,951 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/booksen \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:54,978 [INFO] AntoineOnlineSpider: Index page 1: https://www.antoineonline.com/lbn/en/books\n2026-05-15 07:51:55,255 [INFO] AntoineOnlineSpider: Found 43 new links.\n2026-05-15 07:51:55,255 [INFO] AntoineOnlineSpider: Harvesting: https://www.antoineonline.com/intr/en/books/health-relationshipsandpersonaldevelopment/self-help-personaldevelopmentandpracticaladvice.html?internal_department=1924,1930&product_list_order=date_of_publication&/\n2026-05-15 07:51:55,283 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/books/health-relationshipsandpersonaldevelopment/self-help-personaldevelopmentandpracticaladvice.html?internal_department=1924,1930&product_list_order=date_of_publication&/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:56,288 [INFO] AntoineOnlineSpider: Harvesting: https://www.antoineonline.com/intr/en/books/languageandlinguistics/languageteachingandlearning.html?internal_department=1924,1930&product_list_order=date_of_publication&/\n2026-05-15 07:51:56,316 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/books/languageandlinguistics/languageteachingandlearning.html?internal_department=1924,1930&product_list_order=date_of_publication&/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:57,254 [INFO] AntoineOnlineSpider: Harvesting: https://www.antoineonline.com/intr/en/books/lifestyle-hobbiesandleisure/cookery-foodanddrink.html?&internal_department=1924,1948,1930&product_list_order=date_of_publication&/\n2026-05-15 07:51:57,282 [INFO] httpx: HTTP Request: GET https://www.antoineonline.com/intr/en/books/lifestyle-hobbiesandleisure/cookery-foodanddrink.html?&internal_department=1924,1948,1930&product_list_order=date_of_publication&/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 49,
+      "output_items_after": 52,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 11,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/auc_egypt_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 15.28,
+      "platform_name": "AUC Bookstores",
+      "territory": "Egypt",
+      "stdout_tail": "",
+      "stderr_tail": "eways \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:44,700 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/1-411-qi-facts-to-knock-you-sideways\n2026-05-15 07:51:45,401 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/10-voyages-through-the-human-mind-christmas-lectures-from-the-royal-institution\n2026-05-15 07:51:45,474 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/10-voyages-through-the-human-mind-christmas-lectures-from-the-royal-institution \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:45,475 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/10-voyages-through-the-human-mind-christmas-lectures-from-the-royal-institution\n2026-05-15 07:51:46,176 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/10-happier\n2026-05-15 07:51:46,261 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/10-happier \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:46,262 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/10-happier\n2026-05-15 07:51:46,963 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/100-days-of-active-resistance\n2026-05-15 07:51:47,079 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/100-days-of-active-resistance \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:47,239 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/products/100-days-of-active-resistance \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:47,979 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/100-facts-archaeology\n2026-05-15 07:51:48,562 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/100-facts-archaeology \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:48,629 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/products/100-facts-archaeology \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:48,637 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/100-facts-archaeology\n2026-05-15 07:51:49,338 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/a9781849993753\n2026-05-15 07:51:49,409 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/a9781849993753 \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:49,411 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/a9781849993753\n2026-05-15 07:51:50,112 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/100-ideas-that-changed-graphic-design\n2026-05-15 07:51:50,180 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/100-ideas-that-changed-graphic-design \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:50,180 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/100-ideas-that-changed-graphic-design\n2026-05-15 07:51:50,881 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/a9781473671249\n2026-05-15 07:51:50,947 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/a9781473671249 \"HTTP/1.1 503 Service Unavailable\"\n2026-05-15 07:51:50,948 [WARNING] AucEgyptSpider: Bad response (503) for https://aucbookstores.com/collections/all/products/a9781473671249\n2026-05-15 07:51:51,649 [INFO] AucEgyptSpider: Harvesting: https://aucbookstores.com/collections/all/products/a9781529353310\n2026-05-15 07:51:51,920 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/collections/all/products/a9781529353310 \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:52,108 [INFO] httpx: HTTP Request: GET https://aucbookstores.com/products/a9781529353310 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 82,
+      "output_items_after": 85,
+      "output_items_added": 3,
+      "cache_html_before": 40,
+      "cache_html_after": 40,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/maliks_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 7.33,
+      "platform_name": "Maliks",
+      "territory": "Lebanon",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:51:59,083 [INFO] MaliksSpider: Starting Maliks harvest (cache-first). limit_pages=1\n2026-05-15 07:51:59,903 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:52:00,647 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:00,978 [INFO] MaliksSpider: Browse URL confirmed: https://maliks.com/product-category/books\n2026-05-15 07:52:01,105 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:52:01,217 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:01,338 [INFO] MaliksSpider: Index page 1: https://maliks.com/product-category/books\n2026-05-15 07:52:01,504 [INFO] MaliksSpider: Found 35 new links.\n2026-05-15 07:52:01,504 [INFO] MaliksSpider: Harvesting: https://maliks.com/product-category/books/\n2026-05-15 07:52:01,615 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:02,657 [INFO] MaliksSpider: Harvesting: https://maliks.com/product-category/books/childrens/\n2026-05-15 07:52:03,616 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books/childrens/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:04,561 [INFO] MaliksSpider: Harvesting: https://maliks.com/product-category/books/fiction/\n2026-05-15 07:52:04,744 [INFO] httpx: HTTP Request: GET https://maliks.com/product-category/books/fiction/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 34,
+      "output_items_after": 37,
+      "output_items_added": 3,
+      "cache_html_before": 31,
+      "cache_html_after": 31,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/shorouk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 7.8,
+      "platform_name": "Shorouk",
+      "territory": "Egypt",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:52:06,555 [INFO] ShoroukSpider: Starting Shorouk harvest (cache-first). limit_pages=1\n2026-05-15 07:52:07,303 [INFO] httpx: HTTP Request: GET https://www.shoroukbookstores.com/books/arabic/literature-fiction \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:07,390 [INFO] ShoroukSpider: Browse URL confirmed: https://www.shoroukbookstores.com/books/arabic/literature-fiction\n2026-05-15 07:52:07,996 [INFO] httpx: HTTP Request: GET https://www.shoroukbookstores.com/books/arabic/literature-fiction \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:08,005 [INFO] ShoroukSpider: Index page 1: https://www.shoroukbookstores.com/books/arabic/literature-fiction\n2026-05-15 07:52:08,130 [INFO] ShoroukSpider: Found 12 new links.\n2026-05-15 07:52:08,130 [INFO] ShoroukSpider: Harvesting: https://www.shoroukbookstores.com/books/view.aspx?id=12be3452-0be8-4ea2-932a-ad72e43faef5\n2026-05-15 07:52:08,963 [INFO] httpx: HTTP Request: GET https://www.shoroukbookstores.com/books/view.aspx?id=12be3452-0be8-4ea2-932a-ad72e43faef5 \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:09,850 [INFO] ShoroukSpider: Harvesting: https://www.shoroukbookstores.com/books/view.aspx?id=055ff997-eb30-44e8-b2cf-2ef16c692378\n2026-05-15 07:52:10,682 [INFO] httpx: HTTP Request: GET https://www.shoroukbookstores.com/books/view.aspx?id=055ff997-eb30-44e8-b2cf-2ef16c692378 \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:11,545 [INFO] ShoroukSpider: Harvesting: https://www.shoroukbookstores.com/books/view.aspx?id=91f81c07-a11b-4f32-a8e5-ff84e9c149b8\n2026-05-15 07:52:12,431 [INFO] httpx: HTTP Request: GET https://www.shoroukbookstores.com/books/view.aspx?id=91f81c07-a11b-4f32-a8e5-ff84e9c149b8 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 15,
+      "output_items_after": 18,
+      "output_items_added": 3,
+      "cache_html_before": 12,
+      "cache_html_after": 12,
+      "cache_html_added": 0
+    }
+  ]
+}

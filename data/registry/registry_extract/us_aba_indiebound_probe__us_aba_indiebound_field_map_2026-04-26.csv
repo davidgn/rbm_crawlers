@@ -1,0 +1,14 @@
+raw_field_or_signal,normalized_field,source_surface,notes
+Bookstore or Company Name,query_store_name,ABA search form,"Input/query field, not output field."
+City,query_city,ABA search form,Use in query matrix and preserve searched city.
+State,query_state,ABA search form,State/province/territory dropdown includes US states plus BC/MB/ON/SK and PR/VI.
+Zip code,query_postal_code,ABA search form,Input/query field.
+Search fetched N results,source_query_result_count,ABA result page,Query-specific count; not global count.
+linked store name,entity_name,ABA result page,Usually linked to external store website; some rows unlinked or malformed.
+external href,website,ABA result page,"May be proper URL, Facebook, IndieCommerce/IndieLite, malformed HTTP/HTTPS text, or missing."
+address line,street_address/city/state/postal_code,ABA result page,Often a comma-delimited US address; some online/mobile rows only have city/state/zip.
+phone,phone,ABA result page,Free-form; normalize separately.
+description paragraph,description_raw,ABA result page,"Contains bookstore role, specialty, online/mobile/opening-status clues."
+"Search by ZIP Code, City, or Address",locator_query,IndieBound finder,Consumer locator input; results likely geocoded/radius-based.
+Ownership Identity filters,ownership_identity_public_flags,IndieBound finder,Opt-in public subset; unknown != false.
+Google geocoding locator behavior,locator_method_note,IndieBound FAQ,Use to document possible radius bias and dedupe behavior.

@@ -1,0 +1,46 @@
+{
+  "probe_id": "canada_ciba_indiebookstores_2026-04-26_v1",
+  "source_name": "Canadian Independent Booksellers Association / IndieBookstores.ca",
+  "country_or_territory_scope": [
+    "Canada"
+  ],
+  "classification": "member-grade / network-grade; CIBA-owned consumer locator and availability overlay",
+  "authority_surface": "CIBA member directory / CIBA Bookseller Member eligibility",
+  "overlay_surface": "IndieBookstores.ca bookstore finder, profiles, and dated CIBA member roster",
+  "harvest_status": "static_roster_profile_probe_complete_rendered_endpoint_harvest_needed",
+  "bulk_export_confirmed": false,
+  "public_api_confirmed": false,
+  "observed_counts": {
+    "ciba_static_roster_visible_count": 208,
+    "ciba_static_roster_list_date": "March 2025",
+    "ciba_public_claim_tbl": "more than 200 Canadian booksellers and their staff (TBL wording; not a store-row count)",
+    "indiebookstores_finder": "listing/profile surface observed; no clean global live count observed"
+  },
+  "province_counts": {
+    "Alberta": 19,
+    "British Columbia": 55,
+    "Manitoba": 4,
+    "New Brunswick": 3,
+    "Newfoundland and Labrador": 2,
+    "Nova Scotia": 16,
+    "Northwest Territories": 1,
+    "Ontario": 94,
+    "Prince Edward Island": 2,
+    "Quebec": 8,
+    "Saskatchewan": 4
+  },
+  "governance_notes": [
+    "Do not treat CIBA/TBL more-than-200 wording as a global bookstore-location count.",
+    "CIBA static roster is dated March 2025 and contains names/cities only; use as a roster checkpoint, not a full profile export.",
+    "CIBA member eligibility includes traditional, pop-up, and mobile stores with one to ten locations selling new books; secondhand and specialty stores can be members if they sell some new books ongoing.",
+    "IndieBookstores.ca is CIBA-owned and not itself an online shop; it redirects readers to store sites and supports book-in-stock/local discovery.",
+    "IndieBookstores profile/listing pages should be harvested as a richer public locator/profile overlay and deduped against the CIBA roster.",
+    "Rows should be staged as bookstore_location, chain_branch, mobile_pop_up_bookstore, specialty_comics_or_non_general_bookstore, specialty_store_with_books, online_only_or_no_public_storefront, or review_needed before promotion."
+  ],
+  "recommended_next_actions": [
+    "Run harvester in networked runtime to persist HTML, parse CIBA static roster, and probe IndieBookstores listing/profile links.",
+    "Use rendered-browser or endpoint discovery for Load More / filter behavior on IndieBookstores.ca/bookstores/.",
+    "Crawl profile URLs for address, phone, website, events_url, amenities, and nearby-store graph; preserve nullable fields.",
+    "Compare dated March 2025 roster to live IndieBookstores profile list and retain both source dates."
+  ]
+}

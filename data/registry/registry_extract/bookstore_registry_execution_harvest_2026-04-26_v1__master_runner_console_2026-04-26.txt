@@ -1,0 +1,65 @@
+{
+  "run_root": "/mnt/data/bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152305Z",
+  "jobs": [
+    {
+      "job_id": "mexico_sic_raw_json_csv_xml",
+      "country": "Mexico",
+      "source": "SIC Directorio de librerías y puntos de venta",
+      "source_class": "registry-grade/open-data",
+      "command": "/opt/pyvenv/bin/python3 /mnt/data/mexico_sic_probe/mexico_sic_librerias_harvester_2026-04-25.py /mnt/data/bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152305Z/mexico_sic",
+      "exit_code": 0,
+      "status": "blocked_or_empty",
+      "normalized_row_count": "",
+      "success_artifact_rel": "mexico_sic/mexico_sic_librerias_normalized.csv",
+      "stdout_log": "runs/20260426T152305Z/logs/mexico_sic_raw_json_csv_xml.stdout.txt",
+      "stderr_log": "runs/20260426T152305Z/logs/mexico_sic_raw_json_csv_xml.stderr.txt",
+      "started_at_utc": "2026-04-26T15:23:05.371858+00:00",
+      "finished_at_utc": "2026-04-26T15:23:16.681234+00:00"
+    },
+    {
+      "job_id": "australia_bookpeople_profiles_smoke",
+      "country": "Australia",
+      "source": "BookPeople / Love Your Bookshop",
+      "source_class": "member-grade/network-grade",
+      "command": "/opt/pyvenv/bin/python3 /mnt/data/australia_bookpeople_loveyourbookshop_probe/australia_bookpeople_loveyourbookshop_harvester_2026-04-26.py --outdir /mnt/data/bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152305Z/australia_bookpeople --limit 10 --sleep 0.1",
+      "exit_code": 0,
+      "status": "blocked_or_empty",
+      "normalized_row_count": 0,
+      "success_artifact_rel": "australia_bookpeople/australia_bookpeople_loveyourbookshop_normalized.csv",
+      "stdout_log": "runs/20260426T152305Z/logs/australia_bookpeople_profiles_smoke.stdout.txt",
+      "stderr_log": "runs/20260426T152305Z/logs/australia_bookpeople_profiles_smoke.stderr.txt",
+      "started_at_utc": "2026-04-26T15:23:16.681258+00:00",
+      "finished_at_utc": "2026-04-26T15:23:23.339810+00:00"
+    },
+    {
+      "job_id": "new_zealand_booksellers_profiles_smoke",
+      "country": "New Zealand",
+      "source": "Booksellers Aotearoa / BookHub",
+      "source_class": "member-grade/network-grade + inventory overlay",
+      "command": "/opt/pyvenv/bin/python3 /mnt/data/new_zealand_booksellers_bookhub_probe/new_zealand_booksellers_bookhub_harvester_2026-04-26.py --outdir /mnt/data/bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152305Z/new_zealand_booksellers --limit 10 --sleep 0.1",
+      "exit_code": 1,
+      "status": "blocked_or_empty",
+      "normalized_row_count": "",
+      "success_artifact_rel": "new_zealand_booksellers/new_zealand_booksellers_bookhub_normalized.csv",
+      "stdout_log": "runs/20260426T152305Z/logs/new_zealand_booksellers_profiles_smoke.stdout.txt",
+      "stderr_log": "runs/20260426T152305Z/logs/new_zealand_booksellers_profiles_smoke.stderr.txt",
+      "started_at_utc": "2026-04-26T15:23:23.339838+00:00",
+      "finished_at_utc": "2026-04-26T15:23:29.690747+00:00"
+    },
+    {
+      "job_id": "japan_kosho_profiles_smoke",
+      "country": "Japan",
+      "source": "日本の古本屋 / Kosho shop profiles",
+      "source_class": "used-antiquarian overlay/network-grade",
+      "command": "/opt/pyvenv/bin/python3 /mnt/data/japan_ehon_kosho_split_probe/japan_ehon_kosho_harvester_2026-04-26.py --outdir /mnt/data/bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152305Z/japan_kosho --limit 10 --sleep 0.1",
+      "exit_code": 1,
+      "status": "blocked_or_empty",
+      "normalized_row_count": "",
+      "success_artifact_rel": "japan_kosho/japan_ehon_kosho_normalized.csv",
+      "stdout_log": "runs/20260426T152305Z/logs/japan_kosho_profiles_smoke.stdout.txt",
+      "stderr_log": "runs/20260426T152305Z/logs/japan_kosho_profiles_smoke.stderr.txt",
+      "started_at_utc": "2026-04-26T15:23:29.690774+00:00",
+      "finished_at_utc": "2026-04-26T15:23:30.983514+00:00"
+    }
+  ]
+}

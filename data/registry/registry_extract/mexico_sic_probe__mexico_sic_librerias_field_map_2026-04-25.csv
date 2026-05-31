@@ -1,0 +1,23 @@
+source_field,normalized_field,type_or_parse,notes
+libreria_id,source_record_id,integer,Primary SIC row id; preserve exactly.
+libreria_nombre,entity_name,string,Bookstore / sales point name. Blank names observed in sample and should be QA-flagged.
+libreria_fecha_fundacion,founding_date_raw,date|string,Dates may include sentinel 1000-01-01; do not treat sentinel as true foundation date.
+libreria_adscripcion,operator_or_affiliation,string|null,Organization/operator/affiliation supplied by SIC.
+libreria_calle_numero,street_address,string,Street and number. Newlines may appear in export text.
+libreria_colonia,neighborhood_colonia,string,Colonia / neighborhood.
+libreria_cp,postal_code,string,Keep string; malformed/variable lengths observed.
+libreria_telefono1,phone_1,string,Phone field; may contain multiple numbers/extensions.
+libreria_telefono2,phone_2,string|null,Secondary phone field.
+pagina_web,website,string|null,"May include website, social profile, or be empty."
+email,email,string|null,May contain multiple emails separated by semicolon.
+gmaps_latitud,latitude,decimal,Coordinates; 0.00000 observed and should be null/QA-flagged.
+gmaps_longitud,longitude,decimal,Coordinates; 0.00000 observed and should be null/QA-flagged.
+estado_id,source_state_id,integer,SIC state id.
+municipio_id,source_municipality_id,integer,SIC municipality id.
+localidad_id,source_locality_id,integer,SIC locality id.
+nom_ent,state,string,State/entity name.
+nom_mun,municipality,string,Municipality name.
+nom_loc,locality,string,Locality name.
+link_sic,source_record_url,url,Record detail URL.
+fecha_mod,source_modified_at,datetime,"Use as source-modified timestamp / last-seen surrogate, not store status proof."
+libreria_ce,ce_flag_raw,boolean,Meaning to preserve as raw SIC flag until confirmed; appears true/false.

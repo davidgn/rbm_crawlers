@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/bookle_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 14.87,
+      "platform_name": "Bookle",
+      "territory": "South Africa",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:51:44,850 [INFO] BookleSpider: Starting Bookle harvest (cache-first). limit_pages=1\n2026-05-15 07:51:47,481 [INFO] httpx: HTTP Request: GET https://bookle.co.za/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:47,763 [INFO] httpx: HTTP Request: GET https://bookle.co.za/wp-content/uploads/2024/09/books.jpeg \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:48,037 [INFO] httpx: HTTP Request: GET https://bookle.co.za/listings \"HTTP/1.1 404 Not Found\"\n2026-05-15 07:51:48,632 [INFO] httpx: HTTP Request: GET https://bookle.co.za/browse \"HTTP/1.1 404 Not Found\"\n2026-05-15 07:51:49,615 [INFO] httpx: HTTP Request: GET https://bookle.co.za/shop \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:50,596 [INFO] httpx: HTTP Request: GET https://bookle.co.za/shop/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:50,970 [INFO] BookleSpider: Browse URL confirmed: https://bookle.co.za/shop\n2026-05-15 07:51:51,236 [INFO] httpx: HTTP Request: GET https://bookle.co.za/shop \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:51,510 [INFO] httpx: HTTP Request: GET https://bookle.co.za/shop/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:51,515 [INFO] BookleSpider: Index page 1: https://bookle.co.za/shop\n2026-05-15 07:51:51,621 [INFO] BookleSpider: Found 50 new links.\n2026-05-15 07:51:51,621 [INFO] BookleSpider: Harvesting: https://bookle.co.za/product/tropic-of-cancer-henry-miller/\n2026-05-15 07:51:52,664 [INFO] httpx: HTTP Request: GET https://bookle.co.za/product/tropic-of-cancer-henry-miller/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:53,810 [INFO] BookleSpider: Harvesting: https://bookle.co.za/product/god-bless-you-mr-rosewater-kurt-vonnegut/\n2026-05-15 07:51:54,911 [INFO] httpx: HTTP Request: GET https://bookle.co.za/product/god-bless-you-mr-rosewater-kurt-vonnegut/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:56,356 [INFO] BookleSpider: Harvesting: https://bookle.co.za/product/denial-of-the-soul-m-scott-peck/\n2026-05-15 07:51:57,345 [INFO] httpx: HTTP Request: GET https://bookle.co.za/product/denial-of-the-soul-m-scott-peck/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 75,
+      "output_items_after": 78,
+      "output_items_added": 3,
+      "cache_html_before": 51,
+      "cache_html_after": 51,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/diwan_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.45,
+      "platform_name": "Diwan",
+      "territory": "Egypt",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:51:38,891 [INFO] DiwanSpider: Starting Diwan harvest (cache-first). limit_pages=1\n2026-05-15 07:51:41,074 [INFO] httpx: HTTP Request: GET https://diwanegypt.com/product-category/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:41,222 [INFO] httpx: HTTP Request: GET https://diwanegypt.com/product-category/books/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:41,403 [INFO] DiwanSpider: Browse URL confirmed: https://diwanegypt.com/product-category/books\n2026-05-15 07:51:41,816 [INFO] httpx: HTTP Request: GET https://diwanegypt.com/product-category/books \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 07:51:41,964 [INFO] httpx: HTTP Request: GET https://diwanegypt.com/product-category/books/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:42,119 [INFO] DiwanSpider: Index page 1: https://diwanegypt.com/product-category/books\n2026-05-15 07:51:42,180 [INFO] DiwanSpider: Found 1 new links.\n2026-05-15 07:51:42,180 [INFO] DiwanSpider: Harvesting: https://diwanegypt.com/product/%d9%86%d8%ac%d9%85%d8%a9-%d8%a3%d8%ba%d8%b3%d8%b7%d8%b3/\n2026-05-15 07:51:43,238 [INFO] httpx: HTTP Request: GET https://diwanegypt.com/product/%d9%86%d8%ac%d9%85%d8%a9-%d8%a3%d8%ba%d8%b3%d8%b7%d8%b3/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:51:43,987 [INFO] DiwanSpider: Finished. 1 items cached.\n",
+      "output_items_before": 33,
+      "output_items_after": 34,
+      "output_items_added": 1,
+      "cache_html_before": 31,
+      "cache_html_after": 31,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/yes24_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.66,
+      "platform_name": "YES24",
+      "territory": "South Korea",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:51:59,691 [INFO] Yes24Spider: Starting YES24 harvest (cache-first). limit_pages=1\n2026-05-15 07:51:59,691 [INFO] Yes24Spider: === Category: All Books (Used) ===\n2026-05-15 07:51:59,691 [INFO] Yes24Spider: Listing page 1: https://www.yes24.com/Product/Search?CategoryNumber=001&SearchTarget=Used&Query=&SortType=New&PageNumber=1\n2026-05-15 07:52:00,884 [INFO] httpx: HTTP Request: GET https://www.yes24.com/Product/Search?CategoryNumber=001&SearchTarget=Used&Query=&SortType=New&PageNumber=1 \"HTTP/1.1 302 Found\"\n2026-05-15 07:52:01,172 [INFO] httpx: HTTP Request: GET https://www.yes24.com/Main/default.aspx \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:02,321 [INFO] Yes24Spider: Found 177 new listings.\n2026-05-15 07:52:02,322 [INFO] Yes24Spider: Harvesting: https://www.yes24.com/Product/Goods/101375755\n2026-05-15 07:52:02,941 [INFO] httpx: HTTP Request: GET https://www.yes24.com/Product/Goods/101375755 \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:04,034 [INFO] Yes24Spider: Harvesting: https://www.yes24.com/Product/Goods/189186704\n2026-05-15 07:52:04,540 [INFO] httpx: HTTP Request: GET https://www.yes24.com/Product/Goods/189186704 \"HTTP/1.1 200 OK\"\n2026-05-15 07:52:05,598 [INFO] Yes24Spider: Harvesting: https://www.yes24.com/Product/Goods/183809488\n2026-05-15 07:52:06,176 [INFO] httpx: HTTP Request: GET https://www.yes24.com/Product/Goods/183809488 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 118,
+      "output_items_after": 121,
+      "output_items_added": 3,
+      "cache_html_before": 105,
+      "cache_html_after": 105,
+      "cache_html_added": 0
+    }
+  ]
+}

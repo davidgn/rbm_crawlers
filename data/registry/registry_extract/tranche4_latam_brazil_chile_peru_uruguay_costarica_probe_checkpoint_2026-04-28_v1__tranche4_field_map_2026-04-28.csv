@@ -1,0 +1,16 @@
+source,source_field,normalized_field,notes
+ANL_Brazil,#### linked heading,entity_name,Linked visible associate name
+ANL_Brazil,href on heading,source_entity_url,External member website/social URL
+ANL_Brazil,following address/phone text,address_raw / phone_raw,"Free text, often city/state/CEP/phone merged"
+Chile_Frankfurt,download link / Google Sheet,source_export_url,Needs export/gviz resolution
+Chile_Frankfurt,sheet/tab,source_category,Expected categories: editoriales/distribuidoras/librerías; must locate Librerías tab
+CPL_Peru,#### member heading,entity_name,Member name; role signal often embedded in name
+CPL_Peru,address line,address_raw,Address with district/province/city
+CPL_Peru,Representante Legal/Cargo/Sector principal/Especialidad,representative_name / role_fields_raw,Frequently blank in visible parse but preserve columns
+CPL_Peru,phone + Sitio web,phone_raw / source_entity_url,Contact values from block footer
+CUL_Uruguay,category text,source_role_label,Librería / Editorial / Distribuidora
+CUL_Uruguay,member display name,entity_name,Dedupe across General + category sections
+CCL_CostaRica,member display name,entity_name,Active associate name
+CCL_CostaRica,person line,contact_name,Contact/representative/person when present
+CCL_CostaRica,email line,email_raw,Can include one or two emails
+CCL_CostaRica,website/social line,source_entity_url,Bare domain/social URL

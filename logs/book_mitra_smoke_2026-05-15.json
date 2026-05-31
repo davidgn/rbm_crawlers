@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/book_mitra_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 1.17,
+      "platform_name": "Book Mitra",
+      "territory": "India",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:27:21,188 [INFO] BookMitraSpider: Starting Book Mitra Firestore harvest. limit_pages=1 limit_items=5\n2026-05-15 07:27:21,463 [INFO] httpx: HTTP Request: POST https://firestore.googleapis.com/v1/projects/bookmitra-d320d/databases/(default)/documents:runQuery?key=AIzaSyDLgDr2gYH9UJE2eOrf3jtgMznnXRvZgYw \"HTTP/1.1 200 OK\"\n2026-05-15 07:27:21,470 [INFO] BookMitraSpider: Finished Book Mitra harvest. Saved 5 items.\n",
+      "output_items_before": 0,
+      "output_items_after": 5,
+      "output_items_added": 5,
+      "cache_html_before": 0,
+      "cache_html_after": 5,
+      "cache_html_added": 5
+    }
+  ]
+}

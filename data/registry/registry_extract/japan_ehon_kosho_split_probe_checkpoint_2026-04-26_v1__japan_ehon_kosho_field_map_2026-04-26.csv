@@ -1,0 +1,21 @@
+source_layer,source_field,normalized_field,notes
+e-hon,bookstore code / 書店コード,source_record_id,Probe exact parameter names; likely core dedupe key if exposed.
+e-hon,bookstore name / 書店名,entity_name,Pickup-network bookstore name.
+e-hon,prefecture / 都道府県,prefecture,Search/filter field.
+e-hon,address / 住所,street_address_full,Pickup partner address if exposed.
+e-hon,receiving method / 受け取り方法,pickup_service_flags,"Bookstore pickup, bookstore delivery, etc."
+e-hon,delivery service availability / 配達サービス,bookstore_delivery_flag,Some stores provide independent delivery.
+e-hon,source detail URL,source_url,Store detail/search URL.
+Kosho,profile id / id=,source_record_id,Stable profile ID from /abouts/?id=.
+Kosho,shop name / 書店名,entity_name,Used/antiquarian dealer/store name.
+Kosho,registered representative / 代表者名,representative_name,Governance/registration field; not public personal enrichment beyond source.
+Kosho,registered location / 所在地,registered_location,May be office/warehouse; do not blindly treat as public storefront.
+Kosho,association / 所属組合,association_affiliation,Used-book association affiliation.
+Kosho,access address / アクセス,street_address_full,Better storefront/access evidence if present.
+Kosho,fields handled / 取り扱い分野,specialty_fields,Used/antiquarian subject categories.
+Kosho,hours / 営業時間,hours,May be blank.
+Kosho,TEL,phone,Public contact phone if visible.
+Kosho,homepage / Webサイト,website,External dealer site when visible.
+Kosho,no-storefront statements,storefront_status_note,Critical QA flag for non-store/office-only/warehouse-only rows.
+both,source URL,source_url,Citation/provenance URL.
+both,classification,entity_role_primary,bookstore_location; pickup_network_partner; used_antiquarian_dealer; office_only_dealer; warehouse_only; review_needed.

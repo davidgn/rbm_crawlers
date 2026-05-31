@@ -1,0 +1,7 @@
+country,entity_name,source_class,entity_role_candidate,address_raw,source_url,promotion_status,qa_note
+Sweden,Bokhörnan i Veberöd,member-grade/network-grade,bookstore_location,"Silogatan 6, 222 36 Lund",https://booksellers.se/hitta-bokhandlare/,sample_only_not_full_harvest,Visible directory row; full row count not claimed.
+Sweden,Böcker & Blad,member-grade/network-grade,bookstore_location,"Ängsvägen 2, 473 33 Henån",https://booksellers.se/hitta-bokhandlare/,sample_only_not_full_harvest,Visible directory row; full row count not claimed.
+Finland,Kirjakauppaliitto 2026 count surface,official association + statistical count surface,aggregate_count_control,,https://kirjakauppaliitto.fi/kirjakauppojen-maara-suomessa/,count_control_not_entity_row,"2026 category counts: general 122, market/department 167, specialty 32."
+Czechia,"Agentura Rubico, s.r.o.",member-grade mixed directory,review_needed_mixed_member,"Olomouc, Kyselovská 12",https://www.sckn.cz/databaze-clenu-sckn/,sample_only_not_full_harvest,Visible SČKN member row; member database is mixed publisher/bookseller/distributor.
+Denmark,Bog & idé - Faaborg,chain-locator,chain_branch_bookstore_candidate,"Østergade 36, 5600 Faaborg",https://www.bog-ide.dk/boghandler/11410-boi---faaborg,sample_only_chain_overlay,Chain profile row; not national registry evidence.
+Norway,Adlibris,online-member list,online_bookseller,,https://bokhandlerforeningen.no/om-oss-2/vare-medlemmer/nettbokhandler/,sample_only_online_overlay,"Online member list, not physical bookstore row."

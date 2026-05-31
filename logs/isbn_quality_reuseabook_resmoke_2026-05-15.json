@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/reuseabook_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.09,
+      "platform_name": "Reuseabook",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:06:24,465 [INFO] ConfigurableMarketplaceSpider: Starting Reuseabook harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 6,
+      "output_items_after": 9,
+      "output_items_added": 3,
+      "cache_html_before": 6,
+      "cache_html_after": 6,
+      "cache_html_added": 0
+    }
+  ]
+}

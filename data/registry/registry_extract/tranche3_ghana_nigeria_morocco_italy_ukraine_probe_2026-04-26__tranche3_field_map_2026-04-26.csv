@@ -1,0 +1,31 @@
+territory,normalized_field,source_field_or_surface,notes
+Ghana,source_row_number,S/N,"official list sequence; use for source provenance, not stable ID"
+Ghana,entity_name,NAME,person/company/store names mixed
+Ghana,specialization,SPECIALISATION,mostly General in visible rows
+Ghana,postal_location,POSTAL/LOCATION,many are PO boxes; geocoding weak
+Ghana,email_or_website,E-MAIL / WEBSITE,email occasionally populated
+Ghana,phone,CONTACT NO.,phone/contact field
+Nigeria,entity_name,profile title,member name
+Nigeria,description,Description,profile description
+Nigeria,products_services,Products & Services,product/service categories
+Nigeria,address,Address,street/city or blank
+Nigeria,email,Email,may contain multiple emails
+Nigeria,phone,Phone Number,may contain multiple phones
+Nigeria,website,Visit Website link,optional
+Morocco,entity_name,GoAfrica row title / Librairies du Maroc shop title,private directory/noisy unless platform permission granted
+Morocco,address,GoAfrica address block,street/plus code/regional city
+Morocco,region_city,GoAfrica region/city lines,regional classification
+Morocco,phone,Gsm,obfuscated in snippets; parse with care
+Italy,entity_name,ALI profile title,member bookstore
+Italy,description,DESCRIZIONE,store description
+Italy,services,SERVIZI EXTRA,services flags
+Italy,other_products,ALTRI PRODOTTI,non-book product flags
+Italy,hours,ORARI DI APERTURA,opening hours
+Italy,email,CONTATTI Email,profile contact
+Italy,phone,CONTATTI Telefono,profile contact
+Italy,website,VAI AL SITO WEB,optional external site
+Italy,address,indirizzo della libreria,address
+Ukraine,entity_type,map layer/category,bookstores/libraries/fairs/etc.; must separate roles
+Ukraine,entity_name,map marker payload,requires network/API inspection
+Ukraine,geocoordinates,map marker lat/lon,expected but not yet captured
+Ukraine,aggregate_counts,Research 2025 count text,"aggregate only, not entity rows"

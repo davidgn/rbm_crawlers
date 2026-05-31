@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 1,
+    "timeouts": 1,
+    "zero_added": 1,
+    "cache_added": 3
+  },
+  "reports": [
+    {
+      "file": "src/naudotosknygos_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.79,
+      "platform_name": "NaudotosKnygos.lt",
+      "territory": "Lithuania",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:50:27,953 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 12 existing URLs from naudotosknygos_lt_listings.jsonl\n2026-05-15 11:50:28,121 [INFO] ConfigurableMarketplaceSpider: Starting NaudotosKnygos.lt harvest. limit_pages=1 limit_items=3\n2026-05-15 11:50:29,461 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:50:29,830 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knyga/mano \"HTTP/1.1 302 Found\"\n2026-05-15 11:50:30,176 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/login \"HTTP/1.1 200 OK\"\n2026-05-15 11:50:31,387 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knyga/parduota \"HTTP/1.1 302 Found\"\n2026-05-15 11:50:31,735 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/login \"HTTP/1.1 200 OK\"\n2026-05-15 11:50:32,638 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knyga/pirkiniai \"HTTP/1.1 302 Found\"\n2026-05-15 11:50:33,042 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/login \"HTTP/1.1 200 OK\"\n2026-05-15 11:50:34,169 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/sinchronine-gamyba-paciu-laiku-budas-visai-imonei \"HTTP/1.1 200 OK\"\n2026-05-15 11:50:35,257 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/knyga-apie-ypac-tyra-pirmasis-lietuviskas-alyvuogiu-aliejaus-vadovelis \"HTTP/1.1 200 OK\"\n2026-05-15 11:50:36,320 [INFO] httpx: HTTP Request: GET https://www.naudotosknygos.lt/knygos/weekendu-miestai-ir-priemiesciai-kaip-buvo-kuriami-modernus-kurortai-tarpukario-1918-1940-lietuvoje \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 20,
+      "output_items_after": 23,
+      "output_items_added": 3,
+      "cache_html_before": 13,
+      "cache_html_after": 16,
+      "cache_html_added": 3
+    },
+    {
+      "file": "src/ricardo_ch_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 150.12,
+      "platform_name": "Ricardo Switzerland Books",
+      "territory": "Switzerland",
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "output_items_before": 25,
+      "output_items_after": 25,
+      "output_items_added": 0,
+      "cache_html_before": 24,
+      "cache_html_after": 50,
+      "cache_html_added": 26
+    },
+    {
+      "file": "src/troca_de_livros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 32.5,
+      "platform_name": "Troca de Livros",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:50:37,417 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 10 existing URLs from troca de livros_listings.jsonl\n2026-05-15 11:50:37,587 [INFO] ConfigurableMarketplaceSpider: Starting Troca de Livros harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 29,
+      "output_items_after": 32,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 14,
+      "cache_html_added": 3
+    }
+  ]
+}

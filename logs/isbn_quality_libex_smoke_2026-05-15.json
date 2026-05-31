@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/libex_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.92,
+      "platform_name": "LibeX",
+      "territory": "Russia",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:07:22,773 [INFO] ConfigurableMarketplaceSpider: Starting LibeX harvest. limit_pages=1 limit_items=3\n2026-05-15 11:07:24,031 [INFO] httpx: HTTP Request: GET https://www.libex.ru/ \"HTTP/1.1 200 OK\"\n2026-05-15 11:07:24,513 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254132.html \"HTTP/1.1 200 OK\"\n2026-05-15 11:07:25,424 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254131.html \"HTTP/1.1 200 OK\"\n2026-05-15 11:07:26,413 [INFO] httpx: HTTP Request: GET https://www.libex.ru/detail/book1254130.html \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 16,
+      "output_items_after": 19,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 11,
+      "cache_html_added": 0
+    }
+  ]
+}

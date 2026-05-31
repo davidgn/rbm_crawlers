@@ -1,0 +1,56 @@
+{
+  "promotions": [
+    {
+      "site_name": "AboriginalStudiesPress",
+      "slug": "aboriginal_studies_press",
+      "base_url": "https://aiatsis.gov.au/shop",
+      "discovery_mode": "sitemaps",
+      "sitemap_guesses": ["https://aiatsis.gov.au/shop/sitemap.xml"],
+      "book_url_regex": "/products/[\\w-]+",
+      "title_suffix_regexes": [" | AIATSIS"],
+      "awards_heading_names": ["Awards", "Prizes"],
+      "wikidata_qid": "Q50039073"
+    },
+    {
+      "site_name": "AustralianLawReformCommission",
+      "slug": "australian_law_reform_commission",
+      "base_url": "https://www.alrc.gov.au/publications",
+      "discovery_mode": "spider",
+      "book_url_regex": "/publications/[\\w-]+",
+      "title_suffix_regexes": [" | ALRC"],
+      "awards_heading_names": ["Awards", "Prizes"],
+      "wikidata_qid": "Q4824330"
+    },
+    {
+      "site_name": "GeoscienceAustralia",
+      "slug": "geoscience_australia",
+      "base_url": "https://pid.geoscience.gov.au/dataset/ga/",
+      "discovery_mode": "spider",
+      "book_url_regex": "/ga/\\d+",
+      "title_suffix_regexes": [" | Geoscience Australia"],
+      "awards_heading_names": ["Awards", "Prizes"],
+      "wikidata_qid": "Q1325925"
+    },
+    {
+      "site_name": "TePapaPress",
+      "slug": "te_papa_press",
+      "base_url": "https://www.tepapastore.co.nz",
+      "discovery_mode": "sitemaps",
+      "sitemap_guesses": ["https://www.tepapastore.co.nz/sitemap.xml"],
+      "book_url_regex": "/products/[\\w-]+",
+      "title_suffix_regexes": [" | Te Papa Store"],
+      "awards_heading_names": ["Awards", "Prizes"],
+      "wikidata_qid": "Q58014406"
+    },
+    {
+      "site_name": "NZLawCommission",
+      "slug": "new_zealand_law_commission",
+      "base_url": "https://www.lawcom.govt.nz/publications",
+      "discovery_mode": "spider",
+      "book_url_regex": "/publications/[\\w-]+",
+      "title_suffix_regexes": [" | Law Commission"],
+      "awards_heading_names": ["Awards", "Prizes"],
+      "wikidata_qid": "Q1277667"
+    }
+  ]
+}

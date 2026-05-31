@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/book_mitra_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 0.95,
+      "platform_name": "Book Mitra",
+      "territory": "India",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:50:04,733 [INFO] BookMitraSpider: Starting Book Mitra Firestore harvest. limit_pages=1 limit_items=3\n2026-05-15 10:50:05,011 [INFO] httpx: HTTP Request: POST https://firestore.googleapis.com/v1/projects/bookmitra-d320d/databases/(default)/documents:runQuery?key=AIzaSyDLgDr2gYH9UJE2eOrf3jtgMznnXRvZgYw \"HTTP/1.1 200 OK\"\n2026-05-15 10:50:05,018 [INFO] BookMitraSpider: Finished Book Mitra harvest. Saved 3 items.\n",
+      "output_items_before": 8,
+      "output_items_after": 11,
+      "output_items_added": 3,
+      "cache_html_before": 5,
+      "cache_html_after": 5,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/bookends_ae_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.46,
+      "platform_name": "Bookends AE",
+      "territory": "UAE",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:49:54,758 [INFO] BookendsAESpider: Starting Bookends AE harvest (cache-first). limit_pages=1\n2026-05-15 10:49:55,184 [INFO] httpx: HTTP Request: GET https://bookends.ae/collections/all \"HTTP/1.1 200 OK\"\n2026-05-15 10:49:55,450 [INFO] BookendsAESpider: Browse URL confirmed: https://bookends.ae/collections/all\n2026-05-15 10:49:55,567 [INFO] httpx: HTTP Request: GET https://bookends.ae/collections/all \"HTTP/1.1 200 OK\"\n2026-05-15 10:49:55,587 [INFO] BookendsAESpider: Index page 1: https://bookends.ae/collections/all\n2026-05-15 10:49:55,805 [INFO] BookendsAESpider: Found 24 new links.\n2026-05-15 10:49:55,806 [INFO] BookendsAESpider: Harvesting: https://bookends.ae/collections/all/products/be501011936321\n2026-05-15 10:49:55,936 [INFO] httpx: HTTP Request: GET https://bookends.ae/collections/all/products/be501011936321 \"HTTP/1.1 200 OK\"\n2026-05-15 10:49:56,791 [INFO] BookendsAESpider: Harvesting: https://bookends.ae/collections/all/products/be501011936320\n2026-05-15 10:49:57,131 [INFO] httpx: HTTP Request: GET https://bookends.ae/collections/all/products/be501011936320 \"HTTP/1.1 200 OK\"\n2026-05-15 10:49:57,966 [INFO] BookendsAESpider: Harvesting: https://bookends.ae/collections/all/products/be500267936319\n2026-05-15 10:49:58,301 [INFO] httpx: HTTP Request: GET https://bookends.ae/collections/all/products/be500267936319 \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 60,
+      "output_items_after": 63,
+      "output_items_added": 3,
+      "cache_html_before": 50,
+      "cache_html_after": 50,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/cityreads_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.89,
+      "platform_name": "City Reads",
+      "territory": "Ghana",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:49:59,903 [INFO] CityReadsSpider: Starting City Reads harvest (cache-first). limit_pages=1\n2026-05-15 10:50:00,205 [INFO] httpx: HTTP Request: GET https://cityreadsbookstore.com/collections/all \"HTTP/1.1 200 OK\"\n2026-05-15 10:50:00,466 [INFO] CityReadsSpider: Browse URL confirmed: https://cityreadsbookstore.com/collections/all\n2026-05-15 10:50:00,581 [INFO] httpx: HTTP Request: GET https://cityreadsbookstore.com/collections/all \"HTTP/1.1 200 OK\"\n2026-05-15 10:50:00,604 [INFO] CityReadsSpider: Index page 1: https://cityreadsbookstore.com/collections/all\n2026-05-15 10:50:00,831 [INFO] CityReadsSpider: Found 21 new links.\n2026-05-15 10:50:00,831 [INFO] CityReadsSpider: Harvesting: https://cityreadsbookstore.com/products/dream-count\n2026-05-15 10:50:00,984 [INFO] httpx: HTTP Request: GET https://cityreadsbookstore.com/products/dream-count \"HTTP/1.1 200 OK\"\n2026-05-15 10:50:01,801 [INFO] CityReadsSpider: Harvesting: https://cityreadsbookstore.com/products/100-answers-to-100-questions-about-loving-your-wife\n2026-05-15 10:50:02,113 [INFO] httpx: HTTP Request: GET https://cityreadsbookstore.com/products/100-answers-to-100-questions-about-loving-your-wife \"HTTP/1.1 200 OK\"\n2026-05-15 10:50:02,953 [INFO] CityReadsSpider: Harvesting: https://cityreadsbookstore.com/products/100-facts-human-body\n2026-05-15 10:50:03,244 [INFO] httpx: HTTP Request: GET https://cityreadsbookstore.com/products/100-facts-human-body \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 45,
+      "output_items_after": 48,
+      "output_items_added": 3,
+      "cache_html_before": 21,
+      "cache_html_after": 21,
+      "cache_html_added": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/comprovendolibri_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 1.99,
+      "platform_name": "ComproVendoLibri.it",
+      "territory": "Italy",
+      "stdout_tail": "",
+      "stderr_tail": "",
+      "output_items_before": 0,
+      "output_items_after": 2,
+      "output_items_added": 2,
+      "cache_html_before": 0,
+      "cache_html_after": 1,
+      "cache_html_added": 1
+    }
+  ]
+}

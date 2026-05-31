@@ -1,0 +1,15 @@
+{
+  "date": "2026-04-26",
+  "workflow": "bookstore registry global discovery -> harvest planning/probe execution",
+  "previous_stopline": "Tranche 1 fully probe-backed; raw harvest execution blocked by local network/DNS.",
+  "this_pass": "Created Tranche 2 core probe package for Colombia, UK/Ireland, Germany, Austria.",
+  "new_probe_backed_sources": [
+    "Camlibro/Librerías Colombia",
+    "BA Bookshop Search",
+    "genialokal",
+    "buchhandel.at/HVB"
+  ],
+  "raw_harvest_backed_sources": [],
+  "next_governed_move": "Run network-enabled crawler for Camlibro /mapa and BA A-Z first, then genialokal Bundesland pages and buchhandel.at category pages; then normalize/dedupe. Alternatively continue probing Tier 2 sources: Ghana GBDC, Nigeria BAN, Italy ALI/ALAI, Morocco Librairies du Maroc, Ukraine UBI map.",
+  "local_network_boundary": "Local Python/curl direct fetch is unreliable/blocked in this chat; web tool observations are evidence but not raw harvested files."
+}

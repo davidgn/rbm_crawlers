@@ -1,0 +1,20 @@
+{
+  "workflow": "global bookstore registry discovery / harvest planning",
+  "checkpoint": "tranche5_europe_francophone_probe_2026-04-28",
+  "created_date": "2026-04-28",
+  "status": "Tranches 1-5 probe-backed; no source promoted to raw-harvest-backed in this runtime",
+  "new_sources_count": 5,
+  "new_sources": [
+    "France",
+    "Belgium / Flanders + Brussels",
+    "Switzerland",
+    "Netherlands",
+    "Portugal"
+  ],
+  "best_next_moves": [
+    "Network-enabled France data.gouv CSV fetch and row-count/hash",
+    "Network-enabled Mexico SIC CSV/JSON raw export if not already done",
+    "Belgium/Switzerland public HTML crawl with dedupe/classification"
+  ],
+  "governance": "Keep official registry-grade, network-grade, member-grade, chain-locator, voucher-overlay, and mixed-association lanes distinct."
+}

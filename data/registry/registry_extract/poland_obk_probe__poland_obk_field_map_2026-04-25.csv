@@ -1,0 +1,22 @@
+target_field,source_observed_field_or_rule,source_evidence,normalization_note
+country_or_territory,Poland / Polska,constant,Set ISO-like country label in normalized output.
+source_name,Ogólnopolska Baza Księgarń (OBK),OBK source identity,Registry authority surface.
+source_class,registry-grade,Institute of Books description + OBK public base,"Sector/government-supported public national bookstore base, not a mere private business directory."
+source_record_id,not directly exposed in visible search rows; may be present in map/profile AJAX or hidden links,search/listing probe,"Harvester should capture any hidden IDs, map URLs, or stable URL parameters if discovered."
+store_name,#### row heading in search results,listing rows,Preserve exact casing and punctuation.
+network_or_chain_name,Nazwa sieci księgarskiej filter/value where exposed; row subheading sometimes chain label,filters + row examples,Preserve source label; do not infer if absent.
+phone,phone lines beginning +48 or dash,listing rows,Allow multiple values; dash means missing/unknown.
+hours,line starting godziny otwarcia,listing rows,Preserve raw; do not parse into structured opening intervals in first pass.
+email_obfuscated,text with literal null tokens,listing rows,Preserve raw obfuscated email; do not reconstruct blindly without rule audit.
+website,visible external links,listing rows,Normalize URL but preserve source text.
+street_address,address line before postal code,listing rows,Preserve apartment/parenthetical accessibility notes separately if parseable.
+postal_code,Polish postal-code pattern NN-NNN,listing rows,Extract with regex; keep raw postal line too.
+city,text after postal code,listing rows,Extract from postal line; preserve raw.
+voivodeship,line beginning woj.,listing rows,Normalize Polish diacritics-preserving voivodeship names.
+map_url,mapa Google/maps link,listing rows,May contain coordinates or place query; capture as evidence but do not rely as geocode until parsed.
+awards_certificates,Nagrody/odznaczenia block,listing rows,Keep separate from bookstore identity; useful for certification overlays.
+bookstore_type,Rodzaj księgarni filter / row context,filter list,"Allowed source concepts include antykwariat, dziecięca, językowa, ogólnoasortymentowa, popularnonaukowa, religijna, turystyczna."
+assortment_profile,Oferta asortymentowa filter/list where selected,filter list,Important for used-book/antiquarian overlay; o=157 observed total 425 but filter identity needs UI/API confirmation.
+independent_or_chain,official statistics split plus possible chain-name filter,statistics + filters,Use source-provided split or chain label. Avoid over-inference from brand-like names.
+source_url,listing URL/page and profile URL when found,all pages,"Record exact URL, page number, and filter params."
+observed_count_context,"1,592 dated end-March; 1,584 homepage live counter; filtered counts 249/425 observed",statistics + search pages,"Separate current scrape count, dated statistics, and filtered search-result counts."

@@ -1,0 +1,10 @@
+normalized_field,description,france,belgium,switzerland,netherlands,portugal
+source_country,Country/territory lane for the row,France,Belgium/Flanders,Switzerland,Netherlands,Portugal
+source_class,Registry/network/member/commercial/overlay type,official open-data registry-grade,network/regional directory,network/voucher overlay,network/hybrid store locator,split independent network + mixed association + official form
+store_name,Public bookstore/business name,CSV field pending,heading text,heading text,profile/listing name pending endpoint,ReLI/APEL listing name
+address_line,Street/address text,CSV field pending,street line,Adresse line,pending endpoint/profile,APEL/ReLI profile text
+postal_city,Postal code and locality/city,CSV field pending,postal/city line,postal/city line,pending endpoint/profile,postal/city block
+phone,Telephone where exposed,CSV field pending,same line as postal/city often,phone field in row,pending profile,Tel. line
+email,Email where exposed; may be obfuscated,CSV field pending,not usually visible in row,"hex-obfuscated in Buchzentrum, plain in BuchBon",pending profile,APEL email line
+website,Public website/profile link,CSV field pending,not all rows,BuchBon/Buchzentrum external links,Libris profile/store links,APEL/ReLI links
+role_classification,Promotion class after QA,bookstore_location if matches official definition,independent_bookstore / chain_branch / review,bookstore_location / chain_branch / specialty / voucher_only_overlay,independent_bookstore / office_supply_hybrid / review,independent_bookstore / mixed_member / publisher / review

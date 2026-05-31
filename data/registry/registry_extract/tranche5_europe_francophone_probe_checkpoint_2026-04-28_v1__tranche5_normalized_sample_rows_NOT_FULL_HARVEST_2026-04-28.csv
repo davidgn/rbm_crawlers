@@ -1,0 +1,7 @@
+country,source,store_name,address,phone,role_classification,sample_status,source_url
+Belgium/Flanders,Boekhandels Vlaanderen,'t Oneindigde Verhaal,"Stationsstraat 68, 9100 Sint-Niklaas",+32 3 776 52 25,independent_bookstore,web-visible sample; not full harvest,https://www.boekhandelsvlaanderen.be/boekhandels
+Belgium/Flanders,Boekhandels Vlaanderen,Fnac Aalst,"Kattestraat 17, 9300 Aalst",053 30 01 50,chain_branch,web-visible sample; not full harvest,https://www.boekhandelsvlaanderen.be/boekhandels
+Switzerland,Buchzentrum,Müller & Schade,"Moserstrasse 16, 3014 Bern",031 320 26 26,bookstore_location,web-visible sample; not full harvest,https://www.buchzentrum.ch/de/buchwelt-schweiz/buchhandlungen/alle_geno
+Switzerland,BuchBon,Bücher Doppler GmbH,"Badstrasse 23, 5400 Baden",056 222 53 47,voucher_acceptor_bookstore_candidate,web-visible sample; not full harvest,https://buchbon.ch/fr/bookstores
+Portugal,ReLI,Story Owl,Torres Vedras / Distrito de Lisboa,,independent_bookstore_candidate,web-visible sample; not full harvest,https://www.reli.pt/pt/livrarias/
+Portugal,APEL,"The Poets And Dragons Society - Editores e Livreiros, Lda.","Avenida General Humberto Delgado, 47 E, 2825-279 Costa de Caparica",967004129,mixed_member_review_needed,web-visible sample; not full harvest,https://www.apel.pt/associados/lista/

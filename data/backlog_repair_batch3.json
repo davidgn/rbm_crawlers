@@ -1,0 +1,9 @@
+{
+  "repairs": [
+    {"site_name": "Editora Universitária Universidade de Santiago", "base_url": "https://us.edu.cv/", "book_url_regex": "/nexus/|/edicoes/", "discovery_mode": "spider"},
+    {"site_name": "NEI (National Electronics and Computer Technology Center)", "base_url": "https://www.nectec.or.th/", "book_url_regex": "/publications/|/books/", "discovery_mode": "spider"},
+    {"site_name": "Academy of the Arabic Language Cairo", "base_url": "http://www.arabicacademy.org.eg/", "book_url_regex": "/إصدارات/|/books/", "discovery_mode": "spider"},
+    {"site_name": "PNG University of Technology Press", "base_url": "https://www.pnguot.ac.pg/pnguot-press/", "book_url_regex": "/services/publication/", "discovery_mode": "spider"},
+    {"site_name": "Banaras Hindu University Press", "base_url": "https://www.bhu.ac.in/Site/UnitHome/1_152_1501_Vedic-Vigyan-Kendra-Published-Books", "book_url_regex": "/Vedic-Vigyan-Kendra-Published-Books/|/Press-and-Publication-Division/", "discovery_mode": "spider"}
+  ]
+}

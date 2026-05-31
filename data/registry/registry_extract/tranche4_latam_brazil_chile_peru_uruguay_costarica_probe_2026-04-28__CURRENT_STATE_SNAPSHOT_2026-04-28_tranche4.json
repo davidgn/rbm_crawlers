@@ -1,0 +1,45 @@
+{
+  "workflow": "bookstore_registry_global_discovery_to_harvest",
+  "date": "2026-04-28",
+  "tranche": 4,
+  "countries": [
+    "Brazil",
+    "Chile",
+    "Peru",
+    "Uruguay",
+    "Costa Rica"
+  ],
+  "status": "probe_backed",
+  "raw_harvest_backed_sources": [],
+  "new_probe_backed_sources": 5,
+  "governance_stopline": "No source in tranche 4 promoted to raw-harvest-backed. All rows are probe-backed, sample-only, and need network-enabled extraction / row-level role QA before promotion.",
+  "strongest_next_execution_candidates": [
+    "Chile Frankfurt2027/MINCAP Google Sheet export if public CSV/gviz works",
+    "Peru CPL static member directory parse",
+    "Uruguay CUL category-aware Socios parse",
+    "Brazil ANL public associates parse, with paid Anuário as controlled enrichment",
+    "Costa Rica CCL active-member parse with role classifier"
+  ],
+  "notes": [
+    "Chile is official but not row-backed yet; the Google Sheet JS shell was observed but not exported.",
+    "Peru, Uruguay, Brazil, and Costa Rica have static HTML pages suitable for a network-enabled parser.",
+    "All member/chamber sources contain mixed book-trade entities; bookstore-only promotion requires entity_role_primary classification."
+  ],
+  "source_urls": {
+    "Brazil_ANL_assoc": "https://www.anl.org.br/v1/associados/",
+    "Brazil_ANL_home": "https://www.anl.org.br/v1/",
+    "Brazil_ANL_services": "https://www.anl.org.br/v1/servicos/",
+    "Brazil_ANL_anuario": "https://www.anl.org.br/v1/anuario-nacional-de-livrarias-5a-edicao-2023/",
+    "Chile_Frankfurt_directory": "https://frankfurt2027.cultura.gob.cl/ecosistema-editorial/directorio-de-contactos/",
+    "Chile_Frankfurt_context": "https://frankfurt2027.cultura.gob.cl/ecosistema-editorial/",
+    "Chile_GoogleSheet": "https://docs.google.com/spreadsheets/d/1KOim9Nn70VElqYEEQ7pz7aAmVNPJYKBmFi3TrFVRi6E/edit?usp=sharing",
+    "Peru_CPL_directory": "https://cpl.org.pe/directorio-asociados/",
+    "Peru_FIL_organizer": "https://www.fillima.com.pe/organizador/",
+    "Uruguay_CUL_socios": "https://cul.com.uy/socios/",
+    "Uruguay_CUL_institucional": "https://cul.com.uy/institucional/",
+    "CostaRica_CCL_active": "https://cclcr.com/asociados/",
+    "CostaRica_CCL_home": "https://cclcr.com/",
+    "CostaRica_CCL_conozcanos": "https://cclcr.com/conozcanos/",
+    "CostaRica_SICultura_profile": "https://si.cultura.cr/agrupaciones-y-organizaciones/camara-costarricense-del-libro"
+  }
+}

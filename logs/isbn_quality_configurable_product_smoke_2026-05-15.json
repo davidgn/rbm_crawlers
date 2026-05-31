@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "files": 4,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 2
+  },
+  "reports": [
+    {
+      "file": "src/estante_virtual_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 38.6,
+      "platform_name": "Estante Virtual",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:03:24,213 [INFO] ConfigurableMarketplaceSpider: Starting Estante Virtual harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 7,
+      "output_items_after": 10,
+      "output_items_added": 3,
+      "cache_html_before": 4,
+      "cache_html_after": 5,
+      "cache_html_added": 1
+    },
+    {
+      "file": "src/reuseabook_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.12,
+      "platform_name": "Reuseabook",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:04:02,824 [INFO] ConfigurableMarketplaceSpider: Starting Reuseabook harvest. limit_pages=1 limit_items=3\n2026-05-15 11:04:06,048 [INFO] httpx: HTTP Request: GET https://reuseabook.com/ \"HTTP/1.1 500 Internal Server Error\"\n2026-05-15 11:04:06,078 [INFO] httpx: HTTP Request: GET https://reuseabook.com/books \"HTTP/1.1 403 Forbidden\"\n2026-05-15 11:04:06,247 [INFO] httpx: HTTP Request: GET https://reuseabook.com/sell-books \"HTTP/1.1 403 Forbidden\"\n2026-05-15 11:04:06,251 [INFO] ConfigurableMarketplaceSpider: Finished Reuseabook harvest. Saved 0 items.\n",
+      "output_items_before": 6,
+      "output_items_after": 6,
+      "output_items_added": 0,
+      "cache_html_before": 6,
+      "cache_html_after": 6,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/todostuslibros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.15,
+      "platform_name": "TodosTusLibros",
+      "territory": "Spain",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:03:16,454 [INFO] ConfigurableMarketplaceSpider: Starting TodosTusLibros harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 23,
+      "output_items_after": 26,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 11,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/uniliber_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 34.99,
+      "platform_name": "Uniliber",
+      "territory": "Spain",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 11:04:06,912 [INFO] ConfigurableMarketplaceSpider: Starting Uniliber harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 15,
+      "output_items_after": 18,
+      "output_items_added": 3,
+      "cache_html_before": 8,
+      "cache_html_after": 10,
+      "cache_html_added": 2
+    }
+  ]
+}

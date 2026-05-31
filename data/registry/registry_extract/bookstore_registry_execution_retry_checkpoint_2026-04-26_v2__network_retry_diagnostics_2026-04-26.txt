@@ -1,0 +1,14 @@
+Execution retry attempted inside current ChatGPT runtime on 2026-04-26.
+
+Local networking/DNS status:
+- Previous queue package already showed local direct-download/DNS failures.
+- A second self-contained queue run was attempted with a 45-second wrapper timeout.
+- The run entered the Mexico SIC harvester and hung during network resolution/download before producing raw or normalized files.
+- Hung processes were killed manually to prevent a stale run from masquerading as a completed harvest.
+
+Observed process stopline after kill:
+- New retry run directory was created under bookstore_registry_execution_harvest_2026-04-26_v1/runs/20260426T152736Z.
+- It contained only empty scaffolding: logs/ and mexico_sic/.
+- No raw JSON/CSV/XML, normalized CSV, or result manifest was produced by the retry.
+
+Web-tool observations were possible and are captured separately as evidence, but web access is not equivalent to a local raw export.

@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/gabonlivre_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.1,
+      "platform_name": "Gabon Livre",
+      "territory": "Gabon",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:51:42,022 [INFO] GabonLivreSpider: Starting Gabon Livre harvest (cache-first). limit_pages=1\n2026-05-15 10:51:43,721 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/boutique \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 10:51:45,052 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/boutique/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:51:45,360 [INFO] GabonLivreSpider: Browse URL confirmed: https://www.gabonlivre.com/boutique\n2026-05-15 10:51:46,075 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/boutique \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 10:51:47,232 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/boutique/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:51:47,236 [INFO] GabonLivreSpider: Index page 1: https://www.gabonlivre.com/boutique\n2026-05-15 10:51:47,331 [INFO] GabonLivreSpider: Found 26 new links.\n2026-05-15 10:51:47,331 [INFO] GabonLivreSpider: Harvesting: https://www.gabonlivre.com/produit/cup-cake-diares/\n2026-05-15 10:51:48,431 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/produit/cup-cake-diares/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:51:49,213 [INFO] GabonLivreSpider: Harvesting: https://www.gabonlivre.com/produit/athlete-millionnaire/\n2026-05-15 10:51:50,275 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/produit/athlete-millionnaire/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:51:51,197 [INFO] GabonLivreSpider: Harvesting: https://www.gabonlivre.com/produit/africa-rising/\n2026-05-15 10:51:52,220 [INFO] httpx: HTTP Request: GET https://www.gabonlivre.com/produit/africa-rising/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 102,
+      "output_items_after": 105,
+      "output_items_added": 3,
+      "cache_html_before": 29,
+      "cache_html_after": 29,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/preownedbooks_ng_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 11.96,
+      "platform_name": "PreownedBooks.ng",
+      "territory": "Nigeria",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:51:53,733 [INFO] PreownedBooksNgSpider: Starting PreownedBooks.ng harvest (cache-first). limit_pages=1\n2026-05-15 10:51:55,571 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/product-category/books \"HTTP/1.1 404 Not Found\"\n2026-05-15 10:51:56,381 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/books \"HTTP/1.1 404 Not Found\"\n2026-05-15 10:51:56,828 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/shop \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 10:51:57,823 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/shop/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:51:57,933 [INFO] PreownedBooksNgSpider: Browse URL confirmed: https://www.preownedbooks.ng/shop\n2026-05-15 10:51:58,430 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/shop \"HTTP/1.1 301 Moved Permanently\"\n2026-05-15 10:51:59,326 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/shop/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:51:59,329 [INFO] PreownedBooksNgSpider: Index page 1: https://www.preownedbooks.ng/shop\n2026-05-15 10:51:59,425 [INFO] PreownedBooksNgSpider: Found 24 new links.\n2026-05-15 10:51:59,425 [INFO] PreownedBooksNgSpider: Harvesting: https://www.preownedbooks.ng/product/winter-solstice-by-rosamunde-pilcher/\n2026-05-15 10:52:00,388 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/product/winter-solstice-by-rosamunde-pilcher/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:52:01,159 [INFO] PreownedBooksNgSpider: Harvesting: https://www.preownedbooks.ng/product/a-gentleman-in-moscow/\n2026-05-15 10:52:02,364 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/product/a-gentleman-in-moscow/ \"HTTP/1.1 200 OK\"\n2026-05-15 10:52:03,155 [INFO] PreownedBooksNgSpider: Harvesting: https://www.preownedbooks.ng/product/a-litter-of-bones/\n2026-05-15 10:52:04,172 [INFO] httpx: HTTP Request: GET https://www.preownedbooks.ng/product/a-litter-of-bones/ \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 51,
+      "output_items_after": 54,
+      "output_items_added": 3,
+      "cache_html_before": 27,
+      "cache_html_after": 27,
+      "cache_html_added": 0
+    }
+  ]
+}

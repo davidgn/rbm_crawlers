@@ -1,0 +1,11 @@
+source_field,normalized_field,surface,mapping_note,confidence
+Bookstore/store name,entity_name,CIBA member directory; IndieBookstores listing/profile,"Primary display name; CIBA member page has names only, IndieBookstores profile/listing pages have linked names/slugs.",high
+Province/Territory heading or filter,province_or_territory,CIBA static roster; IndieBookstores bookstore finder,CIBA roster grouped by province; IndieBookstores finder has province filter including provinces/territories shown in UI.,high
+City/town in parentheses,city_or_note,CIBA static roster,Parse from roster item parenthetical; mobile bookstore notes may include nonstandard wording.,medium
+Address line,street_address_full,IndieBookstores listing/profile,"Finder cards and profiles expose street address, city, province, postal code as one string.",high
+Phone,phone,IndieBookstores profile,Profile pages may expose phone; not present for every store.,medium
+Website / Visit Their Website,website,IndieBookstores profile,External bookstore website link.,high
+Events Page,events_url,IndieBookstores profile,"Optional events link, often same external domain.",medium
+Amenities / service icons,service_flags,IndieBookstores listing/profile,"Amenities/services include apparel, board games, cafe, gift cards, greeting cards, music, periodicals, puzzles, restaurant, stationery, toys.",medium
+Advanced search facets,specialty_or_service_facets,CIBA Wild Apricot directory; IndieBookstores finder,"CIBA member directory supports city/town, province/territory, specialty and more through advanced search but requires JavaScript.",medium
+CIBA member eligibility,entity_role_eligibility_context,CIBA Bookseller Members page,"Privately held Canadian-owned independent bookstore, traditional/pop-up/mobile, one to ten locations, selling new books; secondhand/specialty eligible if they sell some new books ongoing.",high

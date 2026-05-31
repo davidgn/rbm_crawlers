@@ -1,0 +1,21 @@
+source_field,normalized_field,notes
+profile page title / h1,entity_name,Bookshop/store name from /store/<slug>/ profile.
+profile body description,description_raw,Preserve for specialist/used/online/community classification.
+Stockists of badges,stockist_flags,"Reading-guide participation flags; useful enrichment, not core identity."
+Accepts ABA Book Gift Cards in store/online,accepts_aba_book_gift_cards,Split in_store vs online if possible.
+Sells ABA Book Gift Cards,sells_aba_book_gift_cards,Optional service/amenity flag.
+Accepts Australian Book Vouchers,accepts_australian_book_vouchers,Optional payment/voucher flag.
+ADDRESS block,street_address_full,Physical address; absent or replaced by Online only for online-only rows.
+Suburb/locality parsed from ADDRESS,locality,Parse conservatively from address text.
+State parsed from ADDRESS,state_or_territory,"Normalize VICTORIA, NEW SOUTH WALES, QUEENSLAND, etc."
+Postcode parsed from ADDRESS,postal_code,Australian postcode when present.
+Online only,online_only_flag,Explicit flag; do not treat as physical storefront.
+Email:,email,Public contact email from profile.
+Phone:,phone,Public phone from profile.
+Website: / Visit their website,website,External store website.
+Find a Bookshop directory Search category,directory_search_category,From ABA member form taxonomy where accessible.
+Membership sub type,membership_subtype,"From ABA/Membes taxonomy, not public profile."
+Store category,member_store_category,Single site/multiple/online-only taxonomy from member form.
+Profile URL,source_url,Canonical source profile.
+Crawl date,observed_date,Date observed/harvested.
+Classification,entity_role_primary,bookstore_location; online_only_bookstore; used_antiquarian_bookstore; specialty_bookstore; chain_branch; review_needed.

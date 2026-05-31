@@ -1,0 +1,28 @@
+{
+  "date": "2026-04-28",
+  "workflow": "global bookstore-registry discovery / executable harvest planning",
+  "tranche": 6,
+  "countries": [
+    "Denmark",
+    "Norway",
+    "Sweden",
+    "Finland",
+    "Czechia",
+    "Slovenia"
+  ],
+  "status": "probe_backed_only",
+  "raw_harvest_backed_sources": [],
+  "best_new_targets": [
+    "Sweden Svenska Bokhandlareföreningen Hitta bokhandlare static directory",
+    "Finland Kirjakauppaliitto official count/statistics surface",
+    "Czechia SČKN mixed member database"
+  ],
+  "caution_notes": [
+    "Denmark current official association page does not expose a confirmed public member/location directory.",
+    "Norway official association provides taxonomy and online-member list but no confirmed full physical directory.",
+    "Slovenia JAK RS surface is campaign-specific and dated, not a live national registry.",
+    "Czechia SČKN is mixed-role and needs bookstore vs publisher/distributor classification.",
+    "No source promoted to raw-harvest-backed in this tranche."
+  ],
+  "next_recommended_move": "Network-enabled raw/page fetch for Sweden Hitta bokhandlare and Czechia SČKN, plus France/Mexico/Chile export priorities if network access becomes available."
+}

@@ -1,0 +1,100 @@
+{
+  "handoff_id": "bookstore_registry_checkpoint_handoff_2026-04-30_post_tranche8_vFINAL",
+  "created_date": "2026-04-30",
+  "project": "Global bookstore-registry / book-market infrastructure discovery and harvest planning",
+  "bundle_type": "flat checkpoint and handoff; no nested zip members included",
+  "latest_stopline": "post Tranche 8 MENA / Arab-world bridge probe",
+  "durable_state": "Tranches 1-8 are probe-backed. No source has been promoted to raw-harvest-backed in this runtime.",
+  "raw_harvest_status": {
+    "raw_harvest_backed_sources": 0,
+    "blocked_reason": "local runtime DNS/network access blocked for direct downloads/crawls; web tool observations support probes but do not produce persisted raw full exports",
+    "execution_attempts": [
+      "bookstore_registry_execution_harvest_2026-04-26_v1",
+      "bookstore_registry_execution_retry_2026-04-26_v2"
+    ]
+  },
+  "tranches": {
+    "tranche1": [
+      "Mexico SIC",
+      "Argentina SInCA/Datos Argentina",
+      "Spain CEGAL/TodosTusLibros",
+      "Poland OBK",
+      "South Africa SA Booksellers",
+      "United States ABA/IndieBound",
+      "Canada CIBA/IndieBookstores.ca",
+      "Australia BookPeople/Love Your Bookshop",
+      "New Zealand Booksellers Aotearoa/BookHub",
+      "Japan e-hon/Kosho split"
+    ],
+    "tranche2": [
+      "Colombia Camlibro/Librerías Colombia",
+      "UK & Ireland Booksellers Association Bookshop Search",
+      "Germany genialokal",
+      "Austria buchhandel.at/Hauptverband"
+    ],
+    "tranche3": [
+      "Ghana GBDC",
+      "Nigeria Booksellers Association of Nigeria",
+      "Morocco Librairies du Maroc / GoAfrica fallback",
+      "Italy ALI/ALAI",
+      "Ukraine UBI interactive map"
+    ],
+    "tranche4": [
+      "Brazil ANL",
+      "Chile Frankfurt 2027 culture-ministry contact directory",
+      "Peru Cámara Peruana del Libro",
+      "Uruguay Cámara Uruguaya del Libro",
+      "Costa Rica Cámara Costarricense del Libro"
+    ],
+    "tranche5": [
+      "France data.gouv Base des librairies en France",
+      "Belgium/Flanders Boekhandels Vlaanderen",
+      "Switzerland Buchzentrum/BuchBon",
+      "Netherlands Libris/Blz.",
+      "Portugal ReLI/APEL/DGLAB"
+    ],
+    "tranche6": [
+      "Denmark",
+      "Norway",
+      "Sweden",
+      "Finland",
+      "Czechia",
+      "Slovenia"
+    ],
+    "tranche7": [
+      "Latvia",
+      "Croatia",
+      "Hungary",
+      "Slovakia",
+      "Greece",
+      "Romania"
+    ],
+    "tranche8": [
+      "Jordan",
+      "Arab Publishers Association cross-country bridge",
+      "Egypt",
+      "UAE",
+      "Saudi Arabia",
+      "Qatar",
+      "Lebanon"
+    ]
+  },
+  "highest_priority_network_enabled_targets": [
+    "Mexico SIC raw JSON/CSV/XML",
+    "France data.gouv CSV",
+    "Chile Frankfurt 2027 Google Sheet export",
+    "Spain CEGAL/TodosTusLibros profile crawl",
+    "Poland OBK crawl",
+    "Greece BIBLIONET crawl",
+    "Sweden booksellers.se crawl",
+    "Czechia SČKN member database crawl"
+  ],
+  "standing_governance": [
+    "Probe-backed evidence is not raw-harvest-backed evidence.",
+    "No count is promoted to a global bookstore count unless row-level source and scope are clear.",
+    "Private directories stay fallback/noisy unless corroborated.",
+    "Association/member surfaces need entity-role classification before bookstore-only promotion.",
+    "Inventory or voucher participation is not automatically a bookstore entity registry.",
+    "Publisher/distributor/library association rows must not contaminate bookstore tables."
+  ]
+}

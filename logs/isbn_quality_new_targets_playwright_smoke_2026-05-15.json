@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/secondhandbooks_lk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 37.96,
+      "platform_name": "2ndhandbooks.lk",
+      "territory": "Sri Lanka",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:50:11,162 [INFO] SecondHandBooksLkSpider: Starting 2ndhandbooks.lk harvest (cache-first). limit_pages=1\n2026-05-15 10:50:33,876 [INFO] SecondHandBooksLkSpider: Browse URL confirmed: https://2ndhandbooks.lk/shop\n2026-05-15 10:50:33,876 [INFO] SecondHandBooksLkSpider: Index page 1: https://2ndhandbooks.lk/shop\n2026-05-15 10:50:39,603 [INFO] SecondHandBooksLkSpider: Found 12 new links.\n2026-05-15 10:50:39,603 [INFO] SecondHandBooksLkSpider: Harvesting: https://2ndhandbooks.lk/product/sri_lanka:_the_years_of_terror_-_the_jvp_insurrection_1987-1989/511-01-02-C5028-1-A\n2026-05-15 10:50:42,554 [INFO] SecondHandBooksLkSpider: Harvesting: https://2ndhandbooks.lk/product/hundred_days_in_ceylon:_under_martial_law_1915/511-01-01-A5085-1-A\n2026-05-15 10:50:45,335 [INFO] SecondHandBooksLkSpider: Harvesting: https://2ndhandbooks.lk/product/pinball__1973_&_heat_the_wind_sing_(_two_novels)/890-01-12-H4-1-A\n2026-05-15 10:50:48,310 [INFO] SecondHandBooksLkSpider: Finished. 3 items cached.\n",
+      "output_items_before": 14,
+      "output_items_after": 17,
+      "output_items_added": 3,
+      "cache_html_before": 9,
+      "cache_html_after": 11,
+      "cache_html_added": 2
+    }
+  ]
+}

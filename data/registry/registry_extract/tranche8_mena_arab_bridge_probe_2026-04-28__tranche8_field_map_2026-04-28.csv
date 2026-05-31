@@ -1,0 +1,13 @@
+normalized_field,source_field_or_signal,mapping_note
+normalized_entity_name,name / publishing house / commercial name / business name,core entity label; preserve raw script
+country,country / emirate / address context,country-level scope; emirate/province/city as subfields where available
+city_or_area,address / location / city,extract from free-text address where no structured city exists
+street_address_raw,address / location / المكان,"raw address, no premature geocoding"
+phone_raw,phone / mobile / telephone,preserve all phone strings as raw; parse later
+email_raw,email / البريد الالكترونى / EMail,preserve visible email; beware obfuscated/protected emails
+website_raw,website / Web Site / الموقع,external URL or member profile URL
+entity_role_primary,source class plus name cues,"publisher, distributor, bookstore_candidate, library, private_directory_noise, unknown"
+source_class,association-grade / private-directory / official-library-directory,controls promotion and QA
+promotion_status,governed decision,probe_backed_only; no raw harvest-backed rows in tranche 8
+source_url,source URL,plain source URL
+source_observed_count,count claim or visible count,"only use exact page statements, not inferred global counts"

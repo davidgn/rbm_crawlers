@@ -1,0 +1,22 @@
+source_column,source_type,source_description,semantic_role,normalized_column,normalization_note
+localidad_id,integer,Código de la localidad censal (INDEC),source locality identifier,source_locality_id,preserve as string if leading-zero risk appears; source says integer
+provincia_id,integer,N° identificador de la provincia (INDEC),source province identifier,source_province_id,preserve
+departamento_id,integer,N° identificador del departamento (INDEC),source department identifier,source_department_id,preserve
+categoria,string,Nombre de la categoria,source category,source_category,expected Librerias/Librerías; preserve raw accenting
+provincia_nombre,string,Nombre de la provincia,province,admin1,normalize province spelling only in canonical field; retain raw
+departamento_nombre,string,Nombre del departamento,department/partido,admin2,retain raw
+localidad_nombre,string,Nombre de la localidad,locality/city,locality,retain raw
+nombre,string,Nombre de la librería,entity name,entity_name,trim; preserve raw accents/casing in source_entity_name
+domicilio,string,Dirección de la librería,street address,address_line1,do not geocode over source coordinates in first pass
+piso,string,,floor/suite,address_floor_or_unit,retain
+codigo_postal,integer,Código Postal,postal code,postal_code,cast to string; preserve empty values
+codigo_area,integer,Código de área telefónico,phone area code,phone_area,cast to string
+telefono,integer,N° de telefono,phone number,phone,cast to string; do not strip meaningful punctuation if present
+mail,string,Correo electrónico,email,email,lowercase only in normalized_email; keep raw
+web,string,Web o red social,website or social link,website_or_social,split/social-classify later
+Latitud,number,Latitud en decimal,latitude,latitude,parse decimal; nullable
+Longitud,number,Longitud en decimal,longitude,longitude,parse decimal; nullable
+tipo_latitud_longitud,string,Criterio de asignación de coordenadas,coordinate assignment type,coordinate_type,retain raw; useful for geocode confidence
+fuente,string,,source provenance,source_provenance,retain raw
+tipo_gestion,string,"Tipo de gestión del espacio (público, privado, mixto)",management type,management_type,"retain as public/private/mixed indicator, not bookstore role"
+actualizacion,integer,año actualización,update year,source_update_year,compute distribution after CSV fetch

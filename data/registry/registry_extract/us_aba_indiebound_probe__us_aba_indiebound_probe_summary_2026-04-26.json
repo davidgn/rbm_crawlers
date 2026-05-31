@@ -1,0 +1,39 @@
+{
+  "probe_id": "us_aba_indiebound_2026-04-26_v1",
+  "source_name": "American Booksellers Association BookWeb / IndieBound",
+  "country_or_territory_scope": [
+    "United States",
+    "Canada/province leakage in ABA state dropdown",
+    "U.S. territories PR/VI in dropdown"
+  ],
+  "classification": "member-grade / network-grade; consumer locator overlay",
+  "authority_surface": "BookWeb ABA Bookseller Member Directory",
+  "overlay_surface": "IndieBound Indie Bookstore Finder",
+  "harvest_status": "static_query_probe_complete_query_matrix_harvest_needed",
+  "bulk_export_confirmed": false,
+  "public_api_confirmed": false,
+  "observed_counts": {
+    "aba_about_claim": "over 3,200 independent bookstores supported by ABA",
+    "aba_chicago_il_query": "55 query-specific results",
+    "aba_name_token_o_query": "429 query-specific results",
+    "bookshop_participation_context": "over 2,500 ABA stores participate in Bookshop pool and over 2,500 in affiliate program"
+  },
+  "governance_notes": [
+    "Do not treat ABA membership/support count as public directory row count.",
+    "Do not treat query-specific result counts as global counts.",
+    "ABA directory rows mix physical stores, online-only bookstores, mobile/pop-up operations, airport/chain branches, specialty shops, used/new hybrids, and malformed website values.",
+    "IndieBound ownership identity filters are opt-in public-subset fields: absence is unknown, not false.",
+    "Use ABA member directory as primary authoritative member network; use IndieBound as locator/geocoding/identity overlay."
+  ],
+  "recommended_next_actions": [
+    "Build query matrix over state/province/territory plus major-city and alphabet/name-token searches.",
+    "Parse static result pages and dedupe by normalized name, address, city/state/zip, website, and phone.",
+    "Run IndieBound ZIP/city/address tiles only as overlay; preserve geocoding and radius-bias caveats.",
+    "Classify entity_role_primary before promoting any row to bookstore universe."
+  ],
+  "created_files": [
+    "/mnt/data/us_aba_indiebound_probe/us_aba_indiebound_source_evidence_ledger_2026-04-26.csv",
+    "/mnt/data/us_aba_indiebound_probe/us_aba_indiebound_field_map_2026-04-26.csv",
+    "/mnt/data/us_aba_indiebound_probe/us_aba_indiebound_normalized_sample_2026-04-26.csv"
+  ]
+}

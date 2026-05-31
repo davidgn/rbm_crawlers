@@ -1,0 +1,23 @@
+{
+  "date": "2026-04-28",
+  "workflow": "bookstore registry global discovery / executable harvest planning",
+  "latest_tranche": "7",
+  "tranche7_countries": [
+    "Latvia",
+    "Croatia",
+    "Hungary",
+    "Slovakia",
+    "Greece",
+    "Romania"
+  ],
+  "status": "probe_backed_only",
+  "raw_harvest_backed_sources": 0,
+  "priority_findings": [
+    "Greece BIBLIONET profile database is row-level and high-value",
+    "Latvia association member pages contain branch lists but are dated",
+    "Croatia ZNK and Hungary MKKE are useful mixed-role member seed surfaces",
+    "Slovakia ZVKS is only an association anchor so far",
+    "Romania remains private-seed/fallback-grade pending stronger public source"
+  ],
+  "next_governed_move": "Tranche 8: Balkans/MENA bridge or return to network-enabled export run for Mexico/France/Chile/Greece BIBLIONET."
+}

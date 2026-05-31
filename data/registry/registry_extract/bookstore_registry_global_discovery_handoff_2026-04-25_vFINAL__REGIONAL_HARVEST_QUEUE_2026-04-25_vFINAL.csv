@@ -1,0 +1,38 @@
+rank,region,country_or_source,action,reason,source_class
+1,LATAM,Mexico SIC,Test CSV/XML/JSON download and normalize,cleanest open data source,registry-grade
+2,LATAM,Argentina SInCA/datos.gob.ar,Download/scrape georeferenced bookstore dataset,official geodata and definition,registry-grade
+3,Iberia,Spain CEGAL/Todos tus libros,Scrape bookstore locator and inventory network,global benchmark,registry/network
+4,Europe,Poland OBK,Scrape national bookstore base,major registry-grade discovery,registry-grade
+5,Africa,South Africa SA Booksellers,Scrape public bookshops member table,clean structured association rows,registry/member
+6,North America,United States ABA/IndieBound,Scrape ABA directory and IndieBound store finder,top-tier directory,registry/network
+7,North America,Canada CIBA/IndieBookstores.ca,Scrape member/store finder,top-tier independent bookstore directory,registry/network
+8,Oceania,Australia BookPeople,Scrape Find a BookShop,national association tool,registry/network
+9,Oceania,New Zealand Booksellers Aotearoa/BookHub,Scrape directory and inventory overlay,strong registry/network,registry/network
+10,East Asia,Japan national bookstore guide/e-hon/Kosho,Scrape new-book and used-book networks,rich structured ecosystem,network + used overlay
+11,LATAM,Colombia Camlibro,Scrape known model source,rich LATAM source,registry-grade
+12,Europe,UK/Ireland BA,Harvest BA bookshop search,regional authority layer,registry/network
+13,Europe,Germany genialokal,Scrape dealer pages/local stock,high-value inventory/store network,network-grade
+14,Europe,Austria buchhandel.at,Scrape member directory,association-backed directory,registry/member
+15,Asia,Sri Lanka Sarasavi/Ceylon association,Scrape branch locator and association context,clean South Asia surface,chain/member
+16,Southeast Asia,Vietnam Phuong Nam/Fahasa,Scrape branch systems,strong official chain surfaces,chain-locator
+17,Southeast Asia,Malaysia Popular/MABOPA,Scrape Popular locator and classify members,structured chain and mixed association,chain/member
+18,Southeast Asia,Singapore SBASA/Kinokuniya,Scrape compact member/branch data,small but high quality,member/chain
+19,Africa,Ghana GBDC,Scrape official List of Booksellers,authority-quality African source,official-list
+20,Africa,Nigeria BAN,Scrape members page,major market and public member data,member-directory
+21,LATAM,Panama/Costa Rica/Guatemala,Scrape cultural directory bookstore categories,official cultural maps,registry/category scrape
+22,Europe,Italy ALI/Ministry/ALAI,Scrape multi-surface,quality register and antiquarian overlay,multi-surface
+23,East Asia,Taiwan iCulture/Friendly Bookstore,Scrape national and independent maps,strong map/list,registry/map
+24,East Asia,South Korea portal/map/chains,Probe current portal and chain locators,official/local bookstore infrastructure,portal/reconstruction
+25,MENA,Morocco Librairies du Maroc,Scrape store list/network,best MENA network find,network-grade
+26,Africa,Zimbabwe College Press,Scrape publisher bookseller list,clean sales-point source,publisher-sales-point
+27,Africa,Botswana/Eswatini Macmillan,Scrape bookseller lists,publisher sales-point model,publisher-sales-point
+28,Africa,Côte d'Ivoire/Benin/Togo/Burkina/Cameroon,Scrape AILF + Go Africa,francophone backbone plus breadth,AILF/private
+29,South Asia,India FPBAI + chains,Scrape association and classify; add chain locators,huge but mixed-role,association/chain
+30,South Asia,Bangladesh/Pakistan,Build platform/chain/city-market rows,large reconstruction markets,platform/chain
+31,East Asia,Hong Kong Locator.hk/MyBookOne,Scrape but tag last_seen/status,harvestable status-sensitive,private/chain
+32,MENA,UAE/Saudi/Kuwait,Scrape chain locators and classify hybrids,large chain markets,chain/reconstruction
+33,Africa,Kenya/Tanzania/Ethiopia/Uganda/Rwanda,Scrape private directories and anchors,strong enough seed tables,private/anchor
+34,Oceania,PNG/Fiji/Guam/New Caledonia,Scrape private/campus/church/francophone sources,operational Pacific lanes,mixed
+35,Caribbean,Bahamas/Barbados/T&T/Bermuda,Scrape local directories and Macmillan,private-directory harvest,private/publisher-sales-point
+36,Global,Used/antiquarian overlays,Harvest ABAA/ANZAAB/ALAI/Kosho etc separately,avoid merging with new-book retail,used-antiquarian
+37,Global,Small-market anchor lanes,Capture verified live anchors only,avoid overhunting nonexistent registries,anchor-only

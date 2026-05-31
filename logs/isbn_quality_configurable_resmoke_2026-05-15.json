@@ -1,0 +1,91 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/biblio_ie_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.81,
+      "platform_name": "Biblio.ie",
+      "territory": "Ireland",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:57:32,830 [INFO] ConfigurableMarketplaceSpider: Starting Biblio.ie harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 42,
+      "output_items_after": 45,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 11,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/biblio_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.73,
+      "platform_name": "Biblio UK",
+      "territory": "United Kingdom",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:57:27,458 [INFO] ConfigurableMarketplaceSpider: Starting Biblio UK harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 42,
+      "output_items_after": 45,
+      "output_items_added": 3,
+      "cache_html_before": 11,
+      "cache_html_after": 11,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/zvab_at_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 1.2,
+      "platform_name": "ZVAB Austria",
+      "territory": "Austria",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:57:40,925 [INFO] httpx: HTTP Request: GET https://www.zvab.com/servlet/SearchResults?kn=%C3%B6sterreich&pt=book&sts=t&sortby=17&start=0 \"HTTP/1.1 200 OK\"\n2026-05-15 07:57:41,121 [INFO] ZVABAustriaSpider: Done: 3 listings saved\n",
+      "output_items_before": 21,
+      "output_items_after": 24,
+      "output_items_added": 3,
+      "cache_html_before": 7,
+      "cache_html_after": 7,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/zvab_ch_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 1.34,
+      "platform_name": "ZVAB Switzerland",
+      "territory": "Switzerland",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:57:42,262 [INFO] httpx: HTTP Request: GET https://www.zvab.com/servlet/SearchResults?kn=Schweiz&pt=book&sts=t&sortby=17&start=0 \"HTTP/1.1 200 OK\"\n2026-05-15 07:57:42,473 [INFO] ZVABSwitzerlandSpider: Done: 3 listings saved\n",
+      "output_items_before": 21,
+      "output_items_after": 24,
+      "output_items_added": 3,
+      "cache_html_before": 7,
+      "cache_html_after": 7,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/zvab_de_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.0,
+      "platform_name": "ZVAB Germany",
+      "territory": "Germany",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 07:57:37,650 [INFO] ConfigurableMarketplaceSpider: Starting ZVAB Germany harvest. limit_pages=1 limit_items=3\n2026-05-15 07:57:37,929 [INFO] httpx: HTTP Request: GET https://www.zvab.com/servlet/SearchResults?kn=gebrauchte+buecher&pt=book&sts=t \"HTTP/1.1 200 OK\"\n2026-05-15 07:57:38,482 [INFO] httpx: HTTP Request: GET https://www.zvab.com/antiquariate/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:57:38,641 [INFO] httpx: HTTP Request: GET https://www.zvab.com/antiquariate/ \"HTTP/1.1 200 OK\"\n2026-05-15 07:57:39,336 [INFO] httpx: HTTP Request: GET https://www.zvab.com/antiquariate/oesterreich.shtml \"HTTP/1.1 200 OK\"\n",
+      "output_items_before": 29,
+      "output_items_after": 32,
+      "output_items_added": 3,
+      "cache_html_before": 6,
+      "cache_html_after": 6,
+      "cache_html_added": 0
+    }
+  ]
+}

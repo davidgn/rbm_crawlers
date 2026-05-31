@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/kaidee_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 23.52,
+      "platform_name": "Kaidee",
+      "territory": "Thailand",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:55:15,724 [INFO] KaideeSpider: Starting Kaidee Thailand Harvest (Cache-First). Limit: 1 pages.\n2026-05-15 10:55:16,457 [INFO] KaideeSpider: Fetching index page 1: https://www.kaidee.com/c12-books_newspapers_magazines?p=1\n2026-05-15 10:55:26,004 [INFO] KaideeSpider: Harvesting item: https://www.kaidee.com/product-371372256\n2026-05-15 10:55:30,100 [INFO] KaideeSpider: Harvesting item: https://www.kaidee.com/product-371366333\n2026-05-15 10:55:34,377 [INFO] KaideeSpider: Harvesting item: https://www.kaidee.com/product-371367232\n",
+      "output_items_before": 24,
+      "output_items_after": 27,
+      "output_items_added": 3,
+      "cache_html_before": 24,
+      "cache_html_after": 27,
+      "cache_html_added": 3
+    }
+  ]
+}

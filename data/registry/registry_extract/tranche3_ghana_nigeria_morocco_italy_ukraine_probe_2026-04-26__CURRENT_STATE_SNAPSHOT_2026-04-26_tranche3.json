@@ -1,0 +1,23 @@
+{
+  "workflow": "bookstore registry global discovery / executable harvest planning",
+  "date": "2026-04-26",
+  "tranche": "3",
+  "sources_added": [
+    "Ghana Book Development Council — List of Book Sellers",
+    "Booksellers Association of Nigeria — Members",
+    "Librairies du Maroc + Go Africa Online Morocco librairie category",
+    "ALI — Associazione Librai Italiani librerie + ALAI/ILAB antiquarian overlay",
+    "Ukrainian Book Institute — Interactive map of Ukrainian book ecosystem + Research 2025"
+  ],
+  "durable_stopline": "Tranche 1, Tranche 2, and Tranche 3 are probe-backed; no source promoted to raw-harvest-backed in this runtime.",
+  "raw_harvest_backed_sources": 0,
+  "probe_backed_sources_this_tranche": 5,
+  "governance_notes": [
+    "Ghana GBDC official list is small and parseable but mixes persons, publishers, and booksellers.",
+    "Nigeria BAN member page is active and parseable but requires dedupe and service-role classification.",
+    "Morocco Librairies du Maroc is terms-sensitive and blocked to tool; GoAfrica is a private-directory fallback only.",
+    "Italy ALI profile directory is active but incomplete by ALI's own notice; ALAI is separate antiquarian overlay.",
+    "Ukraine UBI has a national map and aggregate research counts; map records must be harvested separately from aggregate counts."
+  ],
+  "next_governed_move": "Tranche 4 probe block or network-enabled raw harvest starting with Mexico SIC, depending on available runtime networking."
+}

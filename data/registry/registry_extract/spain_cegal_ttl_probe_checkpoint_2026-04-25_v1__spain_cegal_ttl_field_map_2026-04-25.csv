@@ -1,0 +1,20 @@
+normalized_field,source_field_or_html_pattern,available_in_listing,available_in_profile,mapping_note,qa_rule
+source_country,constant: Spain,yes,yes,Set to Spain for TTL/CEGAL public listing.,Do not infer Portugal/LATAM from catalogue wording; this source seam is Spain TTL stores.
+source_name,TodosTusLibros / CEGAL,yes,yes,Source owner/network label.,Preserve as source_owner plus source_platform.
+source_record_id,"profile URL suffix after final underscore, e.g. _1474",yes,yes,Extract numeric ID from /libreria/<slug>_<id>.,Required key candidate but not guaranteed permanent; also keep URL.
+entity_name,h1 on profile; listing link text,yes,yes,Store display name.,Retain casing and accents; do not over-normalize.
+street_address,listing line before city/province; profile first bullet before postal code/city/province,yes,yes,Listing has address without postal code; profile is richer.,Profile value overrides listing when both are present.
+postal_code,"profile address line, if present",no,yes,Five-digit Spanish postal code usually appears between street and city.,Validate as five digits; leave null for foreign/outlier profiles.
+city,listing address tail; profile “Ciudad:” field,yes,yes,City/municipality.,Preserve source spelling; separate from province.
+province,listing address tail; profile “Provincia:” field / filter option,yes,yes,Spanish province.,Use province filter vocabulary for QA.
+phone,profile contact bullet,no,yes,May contain multiple numbers.,Split later only if needed; preserve raw phone string first.
+email,profile contact bullet,no,yes,Store email.,Personal data caution: business contact email published by store; preserve source URL.
+website,profile “Ver página web” link,no,yes,External shop/site URL.,Keep raw href and display domain if available.
+hours,profile contact bullet,no,yes,Free-text schedule.,Preserve raw Spanish/Catalan/Galician/Basque text; no normalization in first pass.
+source_profile_url,/libreria/<slug>_<id>,yes,yes,Primary evidence URL.,Required in normalized crawl output.
+source_listing_page,/librerias?page=N&seed=... or /librerias,yes,no,Discovery page for the profile link.,Retain crawl page and seed parameters.
+platform_membership,presence in TTL listing/profile,yes,yes,Set platform_membership=ttl_associated_bookshop.,Separate TTL membership from CEGAL total independent bookstore universe.
+commerce_enabled,TTL profile/product purchase controls or store chooser context,partial,partial,Requires fuller dynamic check; static profile shows add-to-cart on store page but not necessarily full fulfillment flags.,Leave null/unknown in first static crawl unless explicit.
+inventory_availability_signal,title-level pages / store profile product modules,partial,partial,TTL is an availability platform; store rows should not be confused with title-stock rows.,Keep in separate observations table if harvested.
+latitude,map widget / embedded data if discoverable,no,unknown,Not visible in plain web text; may exist in JS/network calls.,Do not geocode in source ledger; add later in enrichment lane.
+longitude,map widget / embedded data if discoverable,no,unknown,Not visible in plain web text; may exist in JS/network calls.,Do not geocode in source ledger; add later in enrichment lane.

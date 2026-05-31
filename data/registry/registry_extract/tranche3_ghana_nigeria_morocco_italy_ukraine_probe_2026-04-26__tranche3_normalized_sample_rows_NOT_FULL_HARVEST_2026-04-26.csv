@@ -1,0 +1,10 @@
+territory,source,entity_name,entity_role_preliminary,address,email,phone,website,qa_note
+Ghana,GBDC,Alpha Bookshop,bookstore_candidate,"Box AH 30, Accra",,0302244147/8,,official directory sample; postal-only
+Ghana,GBDC,EPP Books Services Ltd.,book_trade_candidate,"Box TF 490, Accra",Gibrine.adam@eppbooksglobal.com,0302778853/784849,,may be bookseller/service; classify after QA
+Nigeria,BAN,CSS Bookshop,bookstore_candidate,"4th Floor, Bookshop House,50/52, Broad Street, P.O Box 174, CMS, Lagos","info@cssbookshopslimited.com, sales@cssbookshopslimited.com","08159490159, 08159490156",,member profile says foremost bookshop
+Nigeria,BAN,Roving Heights,bookstore_candidate,"28, Ogunlana Drive, Surulere, Lagos, Nigeria",hello@rhbooks.com.ng,+2348078972157,rhbooks.com.ng,member profile
+Morocco,GoAfrica,Khashan SARL,private_directory_bookstore_candidate,"5 Av. Moulay Rachid, Tangier - 90000 - Maroc",,,,GoAfrica category row; private directory only
+Morocco,GoAfrica,LIBMAC (Librairie Imprimerie Bureautique Moulay Ali Chérif),private_directory_bookstore_candidate,"immeuble 12, Ave Moulay Ali Chrif, Temara - 12000 - Maroc",,,,mixed librairie/imprimerie/bureautique; classify carefully
+Italy,ALI,Libreria del Toboso,member_bookstore,"Via Prenestina, 63, Fiuggi, FR, Italia",,3477785585,,ALI profile sample
+Italy,ALI,Libraccio Varese,chain_branch_candidate,"Piazza XX Settembre, 21100 Varese, VA, Italia",,0332282333,negozi.libraccio.it,ALI profile sample
+Ukraine,UBI map,UBI interactive map bookstore marker,map_record_pending,,,,,entity rows pending map/API inspection

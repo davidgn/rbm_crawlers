@@ -1,0 +1,25 @@
+path,reason
+argentina_sinca_librerias_probe_checkpoint_2026-04-25_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+australia_bookpeople_loveyourbookshop_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+bookstore_registry_execution_harvest_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+bookstore_registry_execution_retry_checkpoint_2026-04-26_v2.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+bookstore_registry_global_discovery_handoff_2026-04-25_vFINAL.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+canada_ciba_indiebookstores_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+japan_ehon_kosho_split_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+mexico_sic_librerias_probe_checkpoint_2026-04-25_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+new_zealand_booksellers_bookhub_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+poland_obk_probe_checkpoint_2026-04-25_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+south_africa_sabooksellers_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+spain_cegal_ttl_probe_checkpoint_2026-04-25_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche1_oceania_japan_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche2_colombia_uk_germany_austria_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche3_ghana_nigeria_morocco_italy_ukraine_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche4_latam_brazil_chile_peru_uruguay_costarica_probe_checkpoint_2026-04-28_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche5_europe_francophone_probe_checkpoint_2026-04-28_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche6_nordics_central_europe_probe_checkpoint_2026-04-28_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche7_baltics_balkans_probe_checkpoint_2026-04-28_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche8_mena_arab_bridge_probe_checkpoint_2026-04-28_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+us_aba_indiebound_probe_checkpoint_2026-04-26_v1.zip,ZIP wrapper excluded from final bundle to enforce no nested ZIPs; non-ZIP contents extracted with source ZIP prefix where readable.
+tranche1_oceania_japan_probe_checkpoint_2026-04-26_v1.zip::australia_bookpeople_loveyourbookshop_probe_checkpoint_2026-04-26_v1.zip,Nested ZIP member excluded to enforce no nested ZIPs.
+tranche1_oceania_japan_probe_checkpoint_2026-04-26_v1.zip::new_zealand_booksellers_bookhub_probe_checkpoint_2026-04-26_v1.zip,Nested ZIP member excluded to enforce no nested ZIPs.
+tranche1_oceania_japan_probe_checkpoint_2026-04-26_v1.zip::japan_ehon_kosho_split_probe_checkpoint_2026-04-26_v1.zip,Nested ZIP member excluded to enforce no nested ZIPs.

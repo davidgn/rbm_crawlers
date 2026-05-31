@@ -1,0 +1,25 @@
+{
+  "workflow": "global bookstore-registry / book-market infrastructure discovery -> executable harvest planning",
+  "probe": "Argentina SInCA / Datos Argentina Mapa Cultural: Librerías",
+  "probe_date": "2026-04-25",
+  "source_class": "registry-grade_official_open_data_stale_sensitive",
+  "durable_status": "metadata_probe_complete_download_blocked_in_current_runtime",
+  "resource_id": "ee6ec36e-e4f2-42a0-adb8-525f0cb93c87",
+  "dataset_id": "37305de4-3cce-4d4b-9d9a-fec3ca61d09f",
+  "download_url": "https://datos.cultura.gob.ar/dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/ee6ec36e-e4f2-42a0-adb8-525f0cb93c87/download/libreria.csv",
+  "datos_argentina_resource_url": "https://datos.gob.ar/dataset/cultura-mapa-cultural-espacios-culturales/archivo/cultura_ee6ec36e-e4f2-42a0-adb8-525f0cb93c87",
+  "origin_resource_url": "https://datos.cultura.gob.ar/dataset/espacios-culturales-argentina-sinca/archivo/ee6ec36e-e4f2-42a0-adb8-525f0cb93c87",
+  "source_definition": "Establecimiento cuya actividad incluye la comercialización minorista de libros nuevos y/o usados.",
+  "source_format": "text/csv",
+  "source_frequency": "annual",
+  "source_created": "2021-12-02",
+  "source_last_change": "2022-05-03",
+  "field_count": 21,
+  "row_count_status": "not_computed; raw CSV not retrievable in this runtime",
+  "observed_fetch_limitations": [
+    "web tool could identify and open resource metadata but failed on direct CSV download with (400) OK",
+    "origin portal preview/data explorer was unavailable",
+    "local container DNS could not resolve datos.cultura.gob.ar"
+  ],
+  "governed_next_probe": "Run included harvester in a networked runtime, write raw CSV, compute exact row count, province distribution, update-year distribution, hash raw + normalized outputs, then spot-check stale rows."
+}

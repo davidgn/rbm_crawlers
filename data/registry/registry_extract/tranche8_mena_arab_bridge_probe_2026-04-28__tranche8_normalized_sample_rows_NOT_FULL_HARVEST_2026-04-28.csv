@@ -1,0 +1,9 @@
+country_or_scope,entity_name_raw,entity_role_primary,street_address_raw,phone_raw,email_raw,website_raw,source_url,status_note
+Jordan,دار وائل للنشر,publisher,الجبيهة - شارع احمد الطراونة - مقابل البوابة الشمالية للجامعة الأردنية - عمارة رقم 25,065335837 / 0798617163,wael@darwael.com,www.darwael.com,https://www.unionjp.com/MembersEn.aspx,sample_only_not_full_harvest
+Jordan,دار صفاء للطباعة والنشر والتوزيع,publisher_distributor,عمان شارع الملك حسين مجمع الفحيص التجاري,0096264612190 / 00962796854874,safa@darsafa.info,safa@darsafa.info,https://www.unionjp.com/MembersEn.aspx,sample_only_not_full_harvest
+ArabPA/Jordan,Ibsar Publishers and Distributors,publisher_distributor,ش الملك الحسين - حى جبل الحسين العبدلى - عمان - الأردن,00962.796914632,ibsarbraillejordan@gmail.com,www.amjadbook.com/ar/home-arabic/,https://www.arab-pa.org/en/shared/Publishers.aspx,sample_only_not_full_harvest
+ArabPA/Egypt,Orjouha for Publishing and Distribution,publisher_distributor,القاهرة- مصر,00201062462901 / 00201150636428,info@orjouha.com,www.orjouha.com,https://www.arab-pa.org/en/shared/Publishers.aspx,sample_only_not_full_harvest
+Egypt,Egyptian American Book Center,bookstore_or_publisher_candidate,not visible on list page,035759719,[email protected],profile link visible,https://www.egyptianpublishers.org/members/,sample_only_noise_sensitive
+Saudi Arabia,Used Book Library Qassim,bookstore_candidate_private_fallback,"Buraida, Qassim", +966 163236611,,,https://arablocal.com/business/category/book-stores,private_directory_sample_noisy
+Saudi Arabia,Sunglass Hut,false_positive_noise,Riyadh mall locations,+966 112057573,,,https://arablocal.com/business/category/book-stores,exclude_category_contamination
+Lebanon,Books In Lebanon category,negative_probe_no_rows,N/A,,,,https://www.atlebanon.com/ad-category/shopping-lebanon/book-stores-lebanon/,negative_probe

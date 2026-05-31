@@ -1,0 +1,7 @@
+{
+  "package": "bookstore_registry_execution_harvest_2026-04-26_v1",
+  "created_utc": "2026-04-26T15:24:17.972159+00:00",
+  "latest_run_dir": "runs/20260426T152305Z",
+  "runtime_stopline": "Attempted executable harvest queue; local DNS/network blocked external fetches, so outputs are execution logs/empty or failed manifests, not harvested ledgers.",
+  "next_move": "Run self-contained queue in network-enabled runtime; promote Mexico only after raw JSON/CSV/XML, normalized CSV, and hash manifest exist."
+}

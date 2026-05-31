@@ -1,0 +1,32 @@
+country,source_surface,source_field_observed,normalized_target_field,mapping_note
+Denmark,Boghandlerforeningen + Bogbrancheguiden / Bog & idé chain locator,association_contact,source_contact,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Denmark,Boghandlerforeningen + Bogbrancheguiden / Bog & idé chain locator,chain_store_name,chain_store_name,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Denmark,Boghandlerforeningen + Bogbrancheguiden / Bog & idé chain locator,street_address,street_address,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Denmark,Boghandlerforeningen + Bogbrancheguiden / Bog & idé chain locator,postal_city,city_or_postal_city,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Denmark,Boghandlerforeningen + Bogbrancheguiden / Bog & idé chain locator,delivery_to_store_signal,service_flag_store_delivery,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Denmark,Boghandlerforeningen + Bogbrancheguiden / Bog & idé chain locator,chain_profile_url,source_profile_url,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Norway,Den norske Bokhandlerforening,member_type_definition,entity_role_taxonomy_note,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Norway,Den norske Bokhandlerforening,online_bookseller_name,entity_name,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Norway,Den norske Bokhandlerforening,url,website_or_profile_url,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Norway,Den norske Bokhandlerforening,association_contact,source_contact,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Sweden,Svenska Bokhandlareföreningen — Hitta bokhandlare,bookstore_name,entity_name,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Sweden,Svenska Bokhandlareföreningen — Hitta bokhandlare,street_address,street_address,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Sweden,Svenska Bokhandlareföreningen — Hitta bokhandlare,postal_code,postal_code,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Sweden,Svenska Bokhandlareföreningen — Hitta bokhandlare,city,city,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Sweden,Svenska Bokhandlareföreningen — Hitta bokhandlare,association_directory_url,source_profile_url,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Sweden,Svenska Bokhandlareföreningen — Hitta bokhandlare,search_city_field,query_parameter_city,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Finland,Kirjakauppaliitto,year,observation_year,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Finland,Kirjakauppaliitto,general_bookstore_count,category_count_general_bookstore,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Finland,Kirjakauppaliitto,market_department_count,category_count_market_department,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Finland,Kirjakauppaliitto,specialty_bookstore_count,category_count_specialty_bookstore,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Finland,Kirjakauppaliitto,definition_note,source_scope_definition,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Finland,Kirjakauppaliitto,association_contact,source_contact,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Czechia,SČKN — Databáze členů SČKN,company_name,entity_name,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Czechia,SČKN — Databáze členů SČKN,city,city,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Czechia,SČKN — Databáze členů SČKN,street_address,street_address,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Czechia,SČKN — Databáze členů SČKN,contact_person,contact_person,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Czechia,SČKN — Databáze členů SČKN,detail_url,source_profile_url,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Slovenia,JAK RS campaign roster + Bralnica private directory,campaign_participation,source_context_note,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Slovenia,JAK RS campaign roster + Bralnica private directory,bookstore_name,entity_name,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Slovenia,JAK RS campaign roster + Bralnica private directory,possible address/contact from list,address_contact_unparsed,Observed during probe; confirm exact raw field names during network-enabled harvest.
+Slovenia,JAK RS campaign roster + Bralnica private directory,private_directory_profile,source_profile_url,Observed during probe; confirm exact raw field names during network-enabled harvest.

@@ -1,0 +1,78 @@
+{
+  "checkpoint": "South Africa SA Booksellers probe 2026-04-26",
+  "source_name": "SA Booksellers bookshops/member table",
+  "primary_url": "https://www.sabooksellers.com/bookshops/",
+  "source_class": "member-grade / industry-network directory",
+  "harvest_status": "static_member_table_probe_complete_role_filter_needed",
+  "live_probe_observations": {
+    "visible_member_table": true,
+    "reported_table_heading": [
+      "Bookstore",
+      "EmailAddress",
+      "FirstName",
+      "SAAddressLine1",
+      "SAAddressLine2",
+      "SAAddressLine3",
+      "SAAddressLine4",
+      "SACity",
+      "SARegion",
+      "SAPostalCode",
+      "PhoneNumber"
+    ],
+    "observed_raw_line_span": "Parsed text rows run from line 12 through line 260 on the web-viewed page; one line per rendered member/noise row cannot yet be treated as clean row count.",
+    "raw_candidate_line_count_if_one_line_per_rendered_row": 249,
+    "major_qa_issue": "Member list mixes bookstore/bookshop candidates with stationers, publishers, distributors, services, institutional bodies, online retailers, head offices, and accounting/noise rows."
+  },
+  "governed_interpretation": "Harvestable but not clean registry-grade. Import to staging/member-grade lane, classify entity roles, exclude accounting/noise artifacts, and only promote true bookstore/location rows after QA.",
+  "files": [
+    {
+      "filename": "south_africa_sabooksellers_field_map_2026-04-26.csv",
+      "relative_path": "south_africa_sabooksellers_field_map_2026-04-26.csv",
+      "bytes": 1692,
+      "sha256": "d910f198dce47dd9cc77cbad7d5d3ff1c0e60cfa3052e663b74f2568d50c712b"
+    },
+    {
+      "filename": "south_africa_sabooksellers_source_evidence_ledger_2026-04-26.csv",
+      "relative_path": "south_africa_sabooksellers_source_evidence_ledger_2026-04-26.csv",
+      "bytes": 2611,
+      "sha256": "3d25d5913696b72e400d4284517623ccfb9039410b8e6f770de6f2264b067b0b"
+    },
+    {
+      "filename": "south_africa_sabooksellers_normalized_sample_2026-04-26.csv",
+      "relative_path": "south_africa_sabooksellers_normalized_sample_2026-04-26.csv",
+      "bytes": 4076,
+      "sha256": "ba8ab2b8989b6590022354c021569297be3e790230a419a76c81cc901090f428"
+    },
+    {
+      "filename": "south_africa_sabooksellers_probe_summary_2026-04-26.json",
+      "relative_path": "south_africa_sabooksellers_probe_summary_2026-04-26.json",
+      "bytes": 1541,
+      "sha256": "abe8c2f1e9d5e50595a2d25c5e13c87cf78d86ab5886d29b1dcb7ff3c00a7afe"
+    },
+    {
+      "filename": "south_africa_sabooksellers_harvester_2026-04-26.py",
+      "relative_path": "south_africa_sabooksellers_harvester_2026-04-26.py",
+      "bytes": 6316,
+      "sha256": "5eda19aed508ba67547445ef4eb26db81b307fa4116afebb860843c634efd6f6"
+    },
+    {
+      "filename": "south_africa_sabooksellers_probe_report_2026-04-26.md",
+      "relative_path": "south_africa_sabooksellers_probe_report_2026-04-26.md",
+      "bytes": 4690,
+      "sha256": "bb0b0851f8ffef33c2ea29a26e6e1c67fc66bd88868e50d291db7c398e563647"
+    },
+    {
+      "filename": "bookstore_registry_harvest_manifest_tranche1_2026-04-26_south_africa_probe_update.csv",
+      "relative_path": "bookstore_registry_harvest_manifest_tranche1_2026-04-26_south_africa_probe_update.csv",
+      "bytes": 13935,
+      "sha256": "29e8def9314b1deaa57a20be72703f9a346639959de73ae832bf3f2b27f74f5e"
+    },
+    {
+      "filename": "south_africa_sabooksellers_probe_artifact_manifest_2026-04-26.csv",
+      "relative_path": "south_africa_sabooksellers_probe_artifact_manifest_2026-04-26.csv",
+      "bytes": 1385,
+      "sha256": "5b8b6cdb8058a11947222075fc6aa2e3d85ce6e803327183276a5b8b427fb4b5"
+    }
+  ],
+  "next_move": "Proceed to United States ABA BookWeb/IndieBound query-endpoint probe, or run SABA harvester externally to capture raw HTML and full parsed row candidates."
+}

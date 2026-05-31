@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/aladin_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 4.79,
+      "platform_name": "Aladin",
+      "territory": "South Korea",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:55:04,827 [INFO] AladinSpider: Starting Aladin harvest (cache-first). limit_pages=1\n2026-05-15 10:55:04,827 [INFO] AladinSpider: === Category: Foreign/English (id=74) ===\n2026-05-15 10:55:04,827 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=74&start=0&SortOrder=1\n2026-05-15 10:55:05,878 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=74&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:55:05,986 [INFO] AladinSpider: Found 1 new listings.\n2026-05-15 10:55:05,987 [INFO] AladinSpider: Harvesting: https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=391353737 \n2026-05-15 10:55:06,285 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=391353737%20 \"HTTP/1.1 200 OK\"\n2026-05-15 10:55:07,278 [INFO] AladinSpider: === Category: All (id=0) ===\n2026-05-15 10:55:07,279 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=0&start=0&SortOrder=1\n2026-05-15 10:55:07,601 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=0&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:55:07,682 [INFO] AladinSpider: No new listings at start=0 — done with category.\n2026-05-15 10:55:07,682 [INFO] AladinSpider: === Category: Humanities (id=1) ===\n2026-05-15 10:55:07,682 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=1&start=0&SortOrder=1\n2026-05-15 10:55:08,004 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=1&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:55:08,119 [INFO] AladinSpider: No new listings at start=0 — done with category.\n2026-05-15 10:55:08,119 [INFO] AladinSpider: === Category: Science/Tech (id=4) ===\n2026-05-15 10:55:08,120 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=4&start=0&SortOrder=1\n2026-05-15 10:55:08,413 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=4&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:55:08,518 [INFO] AladinSpider: No new listings at start=0 — done with category.\n2026-05-15 10:55:08,518 [INFO] AladinSpider: Finished. 1 items cached.\n",
+      "output_items_before": 1,
+      "output_items_after": 2,
+      "output_items_added": 1,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    }
+  ]
+}

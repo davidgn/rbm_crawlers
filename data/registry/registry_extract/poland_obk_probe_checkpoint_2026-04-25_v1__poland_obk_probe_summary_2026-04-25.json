@@ -1,0 +1,34 @@
+{
+  "workflow": "global bookstore registry discovery / executable harvest planning",
+  "probe": "Poland OBK / Ogólnopolska Baza Księgarń",
+  "date": "2026-04-25",
+  "status": "probe_complete_static_listing_full_harvest_needed",
+  "source_class": "registry-grade",
+  "authority": "OBK, linked to Polska Izba Książki / Institute of Books program surface",
+  "count_governance": {
+    "official_dated_end_march_2026_locations": 1592,
+    "official_dated_end_march_2026_independent": 921,
+    "homepage_live_counter_observed_księgarnie": 1584,
+    "homepage_live_counter_observed_klubokawiarnie": 83,
+    "filtered_search_ng_y_total_observed": 249,
+    "filtered_search_o_157_total_observed": 425,
+    "interpretation": "Do not flatten these. Treat 1,592/921 as dated statistics, 1,584 as live/current counter needing full crawl reconciliation, and 249/425 as filtered-listing counts only."
+  },
+  "harvestability": "Static HTML listing pages expose rows, pagination, filters, and visible fields; no bulk CSV/API confirmed in this probe.",
+  "minimum_fields_observed": [
+    "store_name",
+    "network_or_chain_name_when_present",
+    "phone",
+    "hours",
+    "email_obfuscated",
+    "website",
+    "street_address",
+    "postal_code",
+    "city",
+    "voivodeship",
+    "map_url",
+    "awards_certificates",
+    "source_url"
+  ],
+  "next_probe": "Run polite crawler against /search variants, discover unfiltered full listing route/API, preserve raw HTML, extract row pages, reconcile unique rows against live counter and dated statistics, and split current directory count from historical statistics."
+}

@@ -1,0 +1,27 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 1
+  },
+  "reports": [
+    {
+      "file": "src/troca_de_livros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 74.78,
+      "platform_name": "Troca de Livros",
+      "territory": "Brazil",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 12:13:45,281 [INFO] ConfigurableMarketplaceSpider: Restart-safe: pre-loaded 13 existing URLs from troca de livros_listings.jsonl\n2026-05-15 12:13:45,439 [INFO] ConfigurableMarketplaceSpider: Starting Troca de Livros harvest. limit_pages=1 limit_items=3\n",
+      "output_items_before": 32,
+      "output_items_after": 35,
+      "output_items_added": 3,
+      "cache_html_before": 14,
+      "cache_html_after": 17,
+      "cache_html_added": 3
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "files": 2,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 0,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/aladin_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.75,
+      "platform_name": "Aladin",
+      "territory": "South Korea",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:58:43,242 [INFO] AladinSpider: Starting Aladin harvest (cache-first). limit_pages=1\n2026-05-15 10:58:43,242 [INFO] AladinSpider: === Category: Foreign/English (id=74) ===\n2026-05-15 10:58:43,242 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=74&start=0&SortOrder=1\n2026-05-15 10:58:44,662 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=74&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:44,767 [INFO] AladinSpider: Found 1 new listings.\n2026-05-15 10:58:44,767 [INFO] AladinSpider: Harvesting: https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=391353737 \n2026-05-15 10:58:45,411 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=391353737%20 \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:46,528 [INFO] AladinSpider: === Category: All (id=0) ===\n2026-05-15 10:58:46,528 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=0&start=0&SortOrder=1\n2026-05-15 10:58:46,911 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=0&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:46,995 [INFO] AladinSpider: No new listings at start=0 — done with category.\n2026-05-15 10:58:46,995 [INFO] AladinSpider: === Category: Humanities (id=1) ===\n2026-05-15 10:58:46,995 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=1&start=0&SortOrder=1\n2026-05-15 10:58:47,306 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=1&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:47,450 [INFO] AladinSpider: No new listings at start=0 — done with category.\n2026-05-15 10:58:47,450 [INFO] AladinSpider: === Category: Science/Tech (id=4) ===\n2026-05-15 10:58:47,450 [INFO] AladinSpider: Listing page 1: https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=4&start=0&SortOrder=1\n2026-05-15 10:58:47,763 [INFO] httpx: HTTP Request: GET https://www.aladin.co.kr/shop/usedshop/wuseditemall.aspx?SearchTarget=usedBook&CategoryId=4&start=0&SortOrder=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:47,859 [INFO] AladinSpider: No new listings at start=0 — done with category.\n2026-05-15 10:58:47,860 [INFO] AladinSpider: Finished. 1 items cached.\n",
+      "output_items_before": 2,
+      "output_items_after": 3,
+      "output_items_added": 1,
+      "cache_html_before": 1,
+      "cache_html_after": 1,
+      "cache_html_added": 0
+    },
+    {
+      "file": "src/bookspie_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.18,
+      "platform_name": "BooksPie",
+      "territory": "India",
+      "stdout_tail": "",
+      "stderr_tail": "2026-05-15 10:58:48,607 [INFO] BooksPieSpider: Starting BooksPie old-books API harvest. max_pages=1 limit_items=3\n2026-05-15 10:58:53,367 [INFO] httpx: HTTP Request: GET https://api.bookspie.com/api/getCategories \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:54,020 [INFO] httpx: HTTP Request: POST https://api.bookspie.com/api/getBooks?page=1 \"HTTP/1.1 200 OK\"\n2026-05-15 10:58:54,028 [INFO] BooksPieSpider: Page 1 returned 30 listings.\n2026-05-15 10:58:54,029 [INFO] BooksPieSpider: Reached item limit.\n",
+      "output_items_before": 5613,
+      "output_items_after": 5616,
+      "output_items_added": 3,
+      "cache_html_before": 186,
+      "cache_html_after": 186,
+      "cache_html_added": 0
+    }
+  ]
+}
