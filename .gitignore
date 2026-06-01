@@ -13,4 +13,6 @@ artifacts/generated_snapshots/
 research/retained_qid_A14_repo_search_*/
 research/snapshots/
 *.zip
+*.apk
+*.xapk
 .env*

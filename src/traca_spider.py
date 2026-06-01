@@ -3,15 +3,16 @@ Traça spider — Brazilian used/new book marketplace (traca.com.br).
 
 Platform: Traça Livraria e Sebo
 Territory: Brazil
-Scale: ~200k listings
+Scale: ~25k listings (~100 pages of 250)
 
 API: Shopify /products.json (public, unauthenticated)
-  Bulk:        GET /products.json?limit=250&since_id=LAST_ID  (cursor, unlimited)
-  Per-product: GET /products/{handle}.json                    (for ISBN barcode)
+  Bulk:        GET /products.json?limit=250&page=N  (1-indexed, stops at ~page 100)
+  Per-product: GET /products/{handle}.json          (for ISBN barcode)
 
-Note: The bulk /products.json response omits variants[0].barcode (ISBN-13).
-      A per-product fetch is required to get the barcode field.
-      Use --skip-isbn to skip this step for a faster run without ISBNs.
+Note: since_id and created_at_max are both ignored by this store's Shopify proxy.
+      Page-based pagination works up to page ~100 then returns empty.
+      The bulk response omits variants[0].barcode (ISBN-13); use --skip-isbn to skip
+      the per-product fetch for a faster run without ISBNs.
 """
 
 import argparse
@@ -32,15 +33,16 @@ class TracaSpider(BaseSpider):
     """
     Traça Livraria e Sebo — Brazilian used and new book marketplace.
 
-    Shopify store with ~200k books. Paginated via since_id cursor (unlimited
-    depth). Per-product JSON fetch is required to obtain the ISBN-13 barcode
-    field, which is absent from the bulk catalogue response.
+    Shopify store with ~25k books. Paginated via ?page=N (since_id and
+    created_at_max are ignored by the store's proxy). Per-product JSON fetch
+    required to obtain the ISBN-13 barcode field absent from bulk responses.
     """
 
-    def __init__(self, limit_pages: int = 0, skip_isbn: bool = False):
+    def __init__(self, limit_pages: int = 0, skip_isbn: bool = False, start_page: int = 1):
         super().__init__(platform_name="Traça", territory="Brazil")
         self.limit_pages = limit_pages
         self.skip_isbn = skip_isbn
+        self.start_page = start_page
         self.client = httpx.Client(
             timeout=30.0,
             follow_redirects=True,
@@ -55,26 +57,35 @@ class TracaSpider(BaseSpider):
 
     def run(self):
         self.logger.info(
-            "Starting Traça harvest. limit_pages=%d skip_isbn=%s",
-            self.limit_pages, self.skip_isbn,
+            "Starting Traça harvest. start_page=%d limit_pages=%d skip_isbn=%s",
+            self.start_page, self.limit_pages, self.skip_isbn,
         )
 
-        page = 0
-        since_id = 0
-
         try:
-            while True:
-                page += 1
-                if self.limit_pages and page > self.limit_pages:
-                    self.logger.info("Reached page limit %d — stopping.", self.limit_pages)
+            for page in range(self.start_page, 10001):
+                if self.limit_pages and (page - self.start_page) >= self.limit_pages:
+                    self.logger.info("Reached page limit — stopping at page %d.", page)
                     break
 
-                url = f"{PRODUCTS_URL}?limit={PAGE_SIZE}&since_id={since_id}"
-                try:
-                    resp = self.client.get(url)
-                    resp.raise_for_status()
-                except Exception as e:
-                    self.logger.error("Request error on page %d: %s", page, e)
+                url = f"{PRODUCTS_URL}?limit={PAGE_SIZE}&page={page}"
+                resp = None
+                for attempt in range(4):
+                    try:
+                        resp = self.client.get(url)
+                        if resp.status_code == 429:
+                            wait = 30 * (attempt + 1)
+                            self.logger.warning("429 on page %d — backing off %ds", page, wait)
+                            time.sleep(wait)
+                            resp = None
+                            continue
+                        resp.raise_for_status()
+                        break
+                    except Exception as e:
+                        self.logger.error("Request error on page %d: %s", page, e)
+                        resp = None
+                        break
+                if resp is None:
+                    self.logger.error("Giving up on page %d after retries.", page)
                     break
 
                 products = resp.json().get("products", [])
@@ -90,10 +101,9 @@ class TracaSpider(BaseSpider):
                             "Error processing product %s: %s", product.get("id"), e
                         )
 
-                since_id = products[-1]["id"]
                 self.logger.info(
-                    "Page %d: %d products, %d total saved, since_id=%d",
-                    page, len(products), self.items_scraped, since_id,
+                    "Page %d: %d products, %d total saved",
+                    page, len(products), self.items_scraped,
                 )
 
                 if len(products) < PAGE_SIZE:
@@ -172,11 +182,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Traça Livraria e Sebo spider (Brazil)")
     parser.add_argument(
         "--limit", type=int, default=0,
-        help="Max bulk pages to fetch (default: 0 = unlimited)",
+        help="Max pages to fetch (default: 0 = unlimited)",
+    )
+    parser.add_argument(
+        "--start-page", type=int, default=1,
+        help="Page number to start from (default: 1)",
     )
     parser.add_argument(
         "--skip-isbn", action="store_true",
         help="Skip per-product barcode fetch (faster, no ISBNs)",
     )
     args = parser.parse_args()
-    TracaSpider(limit_pages=args.limit, skip_isbn=args.skip_isbn).run()
+    TracaSpider(limit_pages=args.limit, skip_isbn=args.skip_isbn, start_page=args.start_page).run()
