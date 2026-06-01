@@ -121,7 +121,7 @@ class BaseSpider:
     def get_playwright_stealth_config(self, playwright):
         """Standard stealth configuration for Playwright."""
         browser = playwright.chromium.launch(
-            headless=False, 
+            headless=True, 
             args=["--disable-blink-features=AutomationControlled"]
         )
         context = browser.new_context(
