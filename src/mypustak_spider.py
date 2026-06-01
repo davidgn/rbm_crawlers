@@ -20,8 +20,6 @@ Fields captured per record:
 """
 
 import argparse
-import json
-import re
 import time
 import httpx
 from models import BookListing
@@ -166,15 +164,6 @@ class MyPustakSpider(BaseSpider):
             else f"https://www.mypustak.com/search?value={slug or title}"
         )
 
-        item_id = re.sub(r"[^a-zA-Z0-9_-]", "_", str(book_id))[:80] if book_id else str(int(time.time()))
-
-        self.cache_html(
-            item_id,
-            _doc_to_html(doc, title, author, isbn, price, condition, pub, lang,
-                         binding, cat_path, image_url, listing_url),
-            url=listing_url,
-        )
-
         self.save_item(BookListing(
             territory=self.territory,
             platform=self.platform_name,
@@ -185,29 +174,6 @@ class MyPustakSpider(BaseSpider):
             listing_url=listing_url,
             isbn=isbn,
         ))
-
-
-def _doc_to_html(doc, title, author, isbn, price, condition, pub, lang,
-                 binding, cat_path, image_url, listing_url) -> str:
-    raw_json = json.dumps({k: v for k, v in doc.items() if k != "embedding"}, ensure_ascii=False)
-    return f"""<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><title>{title}</title></head>
-<body>
-<h1>{title}</h1>
-<p class="author">{author}</p>
-<p class="isbn">ISBN: {isbn}</p>
-<p class="price">₹{price}</p>
-<p class="condition">{condition}</p>
-<p class="publisher">{pub}</p>
-<p class="language">{lang}</p>
-<p class="binding">{binding}</p>
-<p class="category">{cat_path}</p>
-<p class="listing-url"><a href="{listing_url}">{listing_url}</a></p>
-<img src="{image_url}" alt="Book cover">
-<script type="application/json" id="raw-api-data">{raw_json}</script>
-</body>
-</html>"""
 
 
 if __name__ == "__main__":
