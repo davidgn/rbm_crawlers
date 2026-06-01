@@ -19,17 +19,19 @@ class BookStandSpider(BaseSpider):
             Stealth().apply_stealth_sync(page)
             
             try:
-                self.logger.info("Loading BookStand pre-owned page...")
-                page.goto("https://www.bookstand.app/bookstand/pre-owned", timeout=60000, wait_until="domcontentloaded")
+                self.logger.info("Loading BookStand marketplace...")
+                page.goto("https://www.bookstand.app/bookstand", timeout=60000, wait_until="domcontentloaded")
                 page.wait_for_timeout(5000)
                 
                 for current_page in range(1, self.limit_pages + 1):
                     self.logger.info(f"Scraping page {current_page}...")
+                    
                     page.wait_for_timeout(2000)
                     
-                    cards = page.query_selector_all("a.bg-card")
-                    if not cards:
-                        cards = page.query_selector_all("a.rounded-xl.border.bg-card")
+                    # Find all links starting with /bookstand/ but skip navigation tabs
+                    all_links = page.query_selector_all('a[href^="/bookstand/"]')
+                    cards = [a for a in all_links if len(a.get_attribute("href").split("/")[-1]) > 10]
+                    self.logger.info(f"Found {len(cards)} book cards on this page.")
                         
                     if not cards:
                         self.logger.warning("No book cards found. Stopping.")
@@ -40,10 +42,18 @@ class BookStandSpider(BaseSpider):
                     for link in links:
                         if not link: continue
                         abs_url = "https://www.bookstand.app" + link if link.startswith("/") else link
+                        if abs_url in self._seen_urls:
+                            continue
+                        
+                        detail_page = context.new_page()
+                        Stealth().apply_stealth_sync(detail_page)
                         try:
-                            self._scrape_detail(page, abs_url)
+                            self._scrape_detail(detail_page, abs_url)
+                            time.sleep(2) # Throttle
                         except Exception as e:
                             self.logger.error(f"Error scraping detail {abs_url}: {e}")
+                        finally:
+                            detail_page.close()
 
                     # Scroll for lazy load
                     page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
@@ -66,47 +76,58 @@ class BookStandSpider(BaseSpider):
         page.goto(url, timeout=30000, wait_until="domcontentloaded")
         page.wait_for_timeout(2000)
         
-        body = page.locator("body")
-        text = body.inner_text()
-        
-        title = page.locator("h1").inner_text() if page.locator("h1").count() > 0 else "Unknown"
-        
-        # Details section
-        details = {}
-        # Simple text extraction for details block
+        title = ""
         try:
-            # Look for lines after "DETAILS"
-            lines = text.split("\n")
-            if "DETAILS" in lines:
-                idx = lines.index("DETAILS")
-                for i in range(idx+1, len(lines), 2):
-                    if i+1 < len(lines):
-                        details[lines[i].strip().lower()] = lines[i+1].strip()
-                    if i > idx + 15: break # sanity
-        except:
-            pass
+            title_elem = page.query_selector("h1")
+            if title_elem: title = title_elem.inner_text().strip()
+        except: pass
+
+        # Enhanced metadata extraction from description list (dl/dt/dd)
+        details = {}
+        try:
+            # Get all dt/dd pairs
+            dts = page.query_selector_all("dt")
+            dds = page.query_selector_all("dd")
+            for dt, dd in zip(dts, dds):
+                key = dt.inner_text().strip().lower()
+                val = dd.inner_text().strip()
+                details[key] = val
+        except Exception as e:
+            self.logger.warning(f"DL extraction failed: {e}")
+
+        # Fallback to general text parsing if details is empty
+        if not details:
+            try:
+                text = page.inner_text("body")
+                lines = text.split("\n")
+                if "DETAILS" in lines:
+                    idx = lines.index("DETAILS")
+                    for i in range(idx+1, len(lines), 2):
+                        if i+1 < len(lines):
+                            details[lines[i].strip().lower()] = lines[i+1].strip()
+                        if i > idx + 15: break
+            except: pass
 
         item = BookListing(
             territory=self.territory,
             platform=self.platform_name,
             title=title,
-            author=details.get("by"), # some detail pages have 'by' line
+            author=details.get("author") or details.get("by"),
             isbn=details.get("isbn"),
             publisher=details.get("publisher"),
             pages=details.get("pages"),
-            category=details.get("genre"),
-            binding=details.get("format"),
+            category=details.get("genre") or details.get("category"),
+            binding=details.get("format") or details.get("binding"),
             condition=details.get("condition"),
-            price=None, # will capture if visible
-            listing_url=url,
+            listing_url=url
         )
         
-        # Price fallback
-        if "đ" in text or "$" in text or "₹" in text:
-            # find first price-like string
-            import re
-            m = re.search(r"([\$₹đ][0-9\.]+)", text)
-            if m: item.price = m.group(1)
+        # Price extraction
+        try:
+            price_elem = page.query_selector(".text-3xl.font-bold")
+            if price_elem:
+                item.price = price_elem.inner_text().strip()
+        except: pass
 
         self.save_item(item)
 

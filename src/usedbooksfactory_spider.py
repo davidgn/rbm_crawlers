@@ -12,14 +12,16 @@ class UsedBooksFactorySpider(BaseSpider):
         super().__init__(platform_name="UsedBooksFactory", territory="India")
         self.base_category_url = "https://www.usedbooksfactory.com/buy-second-hand-old-books/category/RECENTLY-ADDED-BOOKS"
         self.limit_pages = limit_pages
-        self.client = httpx.Client(timeout=30.0, follow_redirects=True)
+        self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        })
 
     def run(self):
-        self.logger.info(f"Starting UsedBooksFactory crawler. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Enhanced UsedBooksFactory crawler. Limit: {self.limit_pages} pages.")
         
-        for page in range(1, self.limit_pages + 1):
-            url = f"{self.base_category_url}?page={page}"
-            self.logger.info(f"Fetching page {page}: {url}")
+        for page_num in range(1, self.limit_pages + 1):
+            url = f"{self.base_category_url}?page={page_num}"
+            self.logger.info(f"Fetching listing page {page_num}: {url}")
             
             try:
                 response = self.client.get(url)
@@ -29,85 +31,126 @@ class UsedBooksFactorySpider(BaseSpider):
                 break
 
             soup = BeautifulSoup(response.text, "html.parser")
-            
             product_list = soup.find("ul", class_="aa-product-catg")
             if not product_list:
-                self.logger.warning(f"No product list found on page {page}. Stopping.")
                 break
                 
             items = product_list.find_all("li", recursive=False)
             if not items:
-                self.logger.info(f"No items found on page {page}. Stopping.")
                 break
 
-            for item in items:
+            for li in items:
                 try:
-                    self._parse_item(item)
+                    self._process_listing_item(li)
                 except Exception as e:
-                    self.logger.error(f"Error parsing item on page {page}: {e}")
+                    self.logger.error(f"Error processing item: {e}")
 
-            # Check if there's a next page link
+            # Check pagination
             pagination = soup.find("ul", class_="pagination")
-            if pagination:
-                next_page_link = pagination.find("a", href=lambda h: h and f"page={page+1}" in h)
-                if not next_page_link:
-                    self.logger.info("No next page link found. Reached end of pagination.")
-                    break
-            else:
+            if not pagination or not pagination.find("a", href=lambda h: h and f"page={page_num+1}" in h):
                 break
                 
-            time.sleep(1) # Polite delay
+            time.sleep(1)
             
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
 
-    def _parse_item(self, li):
-        # Extract URL
-        title_h3 = li.find("h3", class_="aa-product-title")
-        if not title_h3:
-            # Maybe it's an h4
-            title_h3 = li.find("h4", class_="aa-product-title")
-            
-        if not title_h3 or not title_h3.find("a"):
+    def _process_listing_item(self, li):
+        title_a = li.find("h3", class_="aa-product-title")
+        if not title_a:
+            title_a = li.find("h4", class_="aa-product-title")
+        if not title_a or not title_a.find("a"):
             return
             
-        title_a = title_h3.find("a")
-        title = title_a.text.strip()
-        listing_url = urljoin("https://www.usedbooksfactory.com", title_a.get("href"))
+        title_link = title_a.find("a")
+        listing_url = urljoin("https://www.usedbooksfactory.com", title_link.get("href"))
+        
+        if listing_url in self._seen_urls:
+            return
 
-        # Try to split title and author if there's a dash
-        author = None
-        if " - " in title:
-            parts = title.rsplit(" - ", 1)
-            title = parts[0].strip()
-            author = parts[1].strip()
-
-        # Extract Price from the add_to_cart button
+        # Extract initial price from listing
         price_val = None
         add_btn = li.find("a", class_="add_to_cart")
         if add_btn and add_btn.get("data-price"):
             price_val = "INR " + add_btn.get("data-price")
-        else:
-            # Fallback to span
-            price_span = li.find("span", class_="aa-product-price")
-            if price_span:
-                price_text = price_span.text.strip()
-                match = re.search(r"[\d,]+", price_text)
-                if match:
-                    price_val = "INR " + match.group(0).replace(",", "")
 
-        isbn = isbn_from_url(listing_url)
+        # Visit detail page for rich metadata
+        self._scrape_detail(listing_url, price_val)
 
-        item = BookListing(
-            territory=self.territory,
-            platform=self.platform_name,
-            title=title,
-            author=author,
-            isbn=isbn,
-            price=price_val,
-            listing_url=listing_url,
-        )
-        self.save_item(item)
+    def _scrape_detail(self, url, fallback_price):
+        try:
+            resp = self.client.get(url)
+            resp.raise_for_status()
+            soup = BeautifulSoup(resp.text, "html.parser")
+            
+            details = {}
+            table = soup.find("table", class_="table-bordered")
+            if table:
+                rows = table.find_all("tr", class_="techSpecRow")
+                for row in rows:
+                    cols = row.find_all("td")
+                    if len(cols) >= 2:
+                        label = cols[0].text.strip().lower()
+                        value = cols[1].text.strip()
+                        details[label] = value
+
+            # Extract fields from 'details' map
+            title_author = details.get("title/author:", "")
+            title = ""
+            author = None
+            if "/" in title_author:
+                parts = title_author.split("/", 1)
+                title = parts[0].strip()
+                author = parts[1].strip()
+            else:
+                title = title_author or soup.find("h2").text.strip() if soup.find("h2") else "Unknown"
+
+            edition_binding = details.get("edition/binding:", "")
+            edition = None
+            binding = None
+            if "/" in edition_binding:
+                eb_parts = edition_binding.split("/", 1)
+                edition = eb_parts[0].strip()
+                binding = eb_parts[1].strip()
+            else:
+                binding = edition_binding
+
+            # Category extraction from table row
+            category = None
+            cat_row = [r for r in table.find_all("tr") if "Category:" in r.text] if table else []
+            if cat_row:
+                links = cat_row[0].find_all("a")
+                category = ", ".join([a.text.strip() for a in links])
+
+            item = BookListing(
+                territory=self.territory,
+                platform=self.platform_name,
+                title=title,
+                author=author,
+                isbn=details.get("isbn:") or isbn_from_url(url),
+                edition=edition,
+                binding=binding,
+                category=category,
+                condition=details.get("condition:"),
+                price=fallback_price,
+                listing_url=url
+            )
+            
+            # Update price if more specific one found
+            if not item.price:
+                price_match = re.search(r"₹\s*([\d,]+)", resp.text)
+                if price_match:
+                    item.price = "INR " + price_match.group(1).replace(",", "")
+
+            self.save_item(item)
+            time.sleep(1) # Throttling for detail pages
+
+        except Exception as e:
+            self.logger.error(f"Error scraping detail {url}: {e}")
 
 if __name__ == "__main__":
-    spider = UsedBooksFactorySpider(limit_pages=3) # Dry run limit
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=10)
+    args = parser.parse_args()
+    spider = UsedBooksFactorySpider(limit_pages=args.limit)
     spider.run()

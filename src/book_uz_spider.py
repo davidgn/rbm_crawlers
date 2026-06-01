@@ -1,62 +1,102 @@
-import httpx
-from base_spider import BaseSpider
-from models import BookListing
+import argparse
 import json
+import time
+from playwright.sync_api import sync_playwright
+from playwright_stealth import Stealth
+from models import BookListing
+from base_spider import BaseSpider
 
 class BookUzSpider(BaseSpider):
-    """
-    Spider for Book.uz (Uzbekistan).
-    Uses their internal REST API.
-    """
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages=5):
         super().__init__(platform_name="Book.uz", territory="Uzbekistan")
         self.limit_pages = limit_pages
-        self.api_url = "https://backend.book.uz/user-api/book"
-        self.client = httpx.Client(verify=False)
 
-    def run(self, query: str = "Potter"):
-        self.logger.info(f"Starting API crawler for {self.platform_name}. Limit: {self.limit_pages} pages.")
+    def run(self):
+        self.logger.info("Starting Book.uz (Next.js) Crawler.")
         
-        headers = {
-            'language': 'uz',
-            'authorization': 'Bearer undefined',
-            'referer': 'https://book.uz/',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
-        }
-
-        for page in range(1, self.limit_pages + 1):
-            params = {'q': query, 'limit': 20, 'page': page}
-            self.logger.info(f"Fetching page {page}: {self.api_url} with q={query}")
+        with sync_playwright() as p:
+            browser, context = self.get_playwright_stealth_config(p)
+            page = context.new_page()
+            Stealth().apply_stealth_sync(page)
+            
             try:
-                r = self.client.get(self.api_url, params=params, headers=headers, timeout=15)
-                if r.status_code == 200:
-                    data = r.json()
-                    items = data.get('data', {}).get('data', [])
-                    if not items:
-                        self.logger.info(f"No items found on page {page}. Stopping.")
-                        break
+                # Target categories or search for 'old' books
+                # Based on research, state='old' is visible in homepage data
+                # We will visit the main page and some category pages to extract NEXT_DATA
+                urls = [
+                    "https://book.uz/",
+                    "https://book.uz/uz/books",
+                    "https://book.uz/ru/books"
+                ]
+                
+                for url in urls:
+                    self.logger.info(f"Visiting {url}...")
+                    page.goto(url, timeout=60000, wait_until="networkidle")
                     
-                    for item in items:
-                        title = item.get('name', '')
-                        book_id = item.get('id')
-                        link = f"https://book.uz/product/{book_id}" if book_id else ""
-                        
-                        listing = BookListing(
-                            platform=self.platform_name,
-                            territory=self.territory,
-                            title=title,
-                            listing_url=link
-                        )
-                        self.save_item(listing)
-                else:
-                    self.logger.info(f"API returned status {r.status_code} at page {page}.")
-                    break
+                    try:
+                        next_data_json = page.evaluate("document.getElementById('__NEXT_DATA__').innerText")
+                        data = json.loads(next_data_json)
+                        self._process_next_data(data)
+                    except Exception as e:
+                        self.logger.error(f"Failed to extract NEXT_DATA from {url}: {e}")
+
             except Exception as e:
-                self.logger.error(f"Failed to fetch {self.api_url}: {e}")
-                break
+                self.logger.error(f"Crawl failed: {e}")
+            finally:
+                browser.close()
+
+    def _process_next_data(self, data):
+        books = []
+        def find_books(obj):
+            if isinstance(obj, list):
+                for item in obj:
+                    if isinstance(item, dict) and "name" in item and "bookPrice" in item:
+                        books.append(item)
+                    else:
+                        find_books(item)
+            elif isinstance(obj, dict):
+                for k, v in obj.items():
+                    if isinstance(v, (list, dict)):
+                        find_books(v)
+
+        find_books(data)
+        self.logger.info(f"Found {len(books)} potential book objects in JSON.")
         
-        self.logger.info(f"Finished {self.platform_name}. Scraped {self.items_scraped} items.")
+        for b in books:
+            # We focus on state=='old' but can capture all if it helps saturation
+            # Many 'old' books are second hand.
+            listing_url = f"https://book.uz/books/details/{b.get('link')}" if b.get('link') else ""
+            if not listing_url or listing_url in self._seen_urls:
+                continue
+                
+            item = BookListing(
+                territory=self.territory,
+                platform=self.platform_name,
+                title=b.get("name", "Unknown"),
+                author=b.get("author", {}).get("fullName") if isinstance(b.get("author"), dict) else None,
+                isbn=b.get("barcode"),
+                publisher=b.get("publisher"),
+                publication_year=str(b.get("year")) if b.get("year") else None,
+                pages=str(b.get("numberOfPage")) if b.get("numberOfPage") else None,
+                binding=b.get("cover"),
+                language=b.get("language"),
+                price=f"{b.get('bookPrice')} UZS",
+                condition="Old" if b.get("state") == "old" else "New",
+                listing_url=listing_url
+            )
+            
+            # Additional description if available
+            if b.get("description"):
+                desc_texts = []
+                for d in b.get("description"):
+                    if isinstance(d, dict) and d.get("value"):
+                        desc_texts.append(d["value"])
+                item.seller_comments = " ".join(desc_texts)
+                
+            self.save_item(item)
 
 if __name__ == "__main__":
-    spider = BookUzSpider(limit_pages=1)
+    parser = argparse.ArgumentParser()
+    args = parser.parse_args()
+    spider = BookUzSpider()
     spider.run()
