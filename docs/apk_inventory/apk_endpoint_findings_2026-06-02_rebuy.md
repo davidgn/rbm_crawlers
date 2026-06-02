@@ -27,6 +27,11 @@ Because of that, the next useful step was a DEX/string-oriented pass rather than
 5. Used raw DEX string extraction from:
    - `decompiled/Rebuy/base_unzip/classes.dex`
    - `decompiled/Rebuy/base_unzip/classes2.dex`
+6. After confirming from `jadx --help` that this local JADX build supports `--single-class`, attempted bounded single-class decompiles for:
+   - `xy.j`
+   - `ux.x`
+   - `wz.b`
+7. The single-class attempts were directed to `/tmp/rebuy_single_class_jadx`, but they still stalled during APK loading/startup and emitted no target class files before termination. No additional endpoint evidence came from that route in this environment.
 
 ## Recovered route and auth inventory
 
@@ -98,8 +103,8 @@ The current decompiled Java output gives useful payload field names even where t
 - Treat `/customers/green-last-scanned/sync` and `/add-all-last-scanned-items` as authenticated app sell-flow leads that probably require bearer auth and/or the still-unrecovered app API key.
 - The best next Rebuy step is not more default JADX. Use one of:
   - install/use `baksmali` or `apktool` to inspect only the `xy.j`, `ux.x`, `wz.b`, and related networking methods;
-  - run JADX with a narrower class include/exclude setup if available;
-  - dynamic capture from the app if an emulator/session is available.
+  - dynamic capture from the app if an emulator/session is available;
+  - retry JADX single-class only with stronger process isolation/time budget, because the first `--single-class` attempt did not produce output before termination.
 
 ## Current conclusion
 
