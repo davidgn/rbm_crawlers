@@ -2,10 +2,10 @@
 
 ## Situational awareness refresh
 
-- Current branch head during this pass: `470240b1 Implement Global Expansion Fleet (Phase 4)`.
+- Current branch head during this continuation pass: `87153231 docs: archive APK endpoint findings and Bulgaria spider`.
 - The branch has moved beyond the earlier APK implementation commit `cc9d7dbc Apply APK endpoint findings`.
-- The worktree remains intentionally dirty with unrelated crawl/cache/data output under `src/cache/**`, `src/data/**`, and several untracked expansion artifacts. Those files were not used as edit targets in this pass.
-- Newer untracked APK notes exist for 2026-05-31 and 2026-06-01. They do not supersede the Rebuy gap; they repeat that Rebuy has `https://api.rebuy.com`, `https://mobile.rebuy.com`, `X-API-KEY`, bearer auth formatting, and `customers/my/products`, but no isolated API key value.
+- Current worktree delta during this continuation was limited to APK inventory documentation plus the Naiin discovery scaffold.
+- Recent APK notes for 2026-05-31 and 2026-06-01 do not supersede the Rebuy gap; they repeat that Rebuy has `https://api.rebuy.com`, `https://mobile.rebuy.com`, `X-API-KEY`, bearer auth formatting, and `customers/my/products`, but no isolated API key value.
 
 ## Why more Rebuy work was still justified
 
@@ -31,7 +31,13 @@ Because of that, the next useful step was a DEX/string-oriented pass rather than
    - `xy.j`
    - `ux.x`
    - `wz.b`
-7. The single-class attempts were directed to `/tmp/rebuy_single_class_jadx`, but they still stalled during APK loading/startup and emitted no target class files before termination. No additional endpoint evidence came from that route in this environment.
+7. The first single-class attempts were directed at the full APK and stalled during APK loading/startup before target class files were emitted.
+8. Retried the same target classes directly against `decompiled/Rebuy/base_unzip/classes2.dex` with `--no-res --show-bad-code --single-class`.
+9. The DEX-only retry succeeded and emitted:
+   - `/tmp/rebuy_single_class_jadx_dex/xy_j.java` (`2,719` lines)
+   - `/tmp/rebuy_single_class_jadx_dex/ux_x.java` (`7,629` lines)
+   - `/tmp/rebuy_single_class_jadx_dex/wz_b.java` (`196` lines)
+10. Attempted to install `apktool` as a supplemental smali path. `apt-cache` showed an `apktool` package candidate, but both `sudo apt-get install -y apktool` and direct `apt-get install -y apktool` were blocked by lack of interactive sudo/root privileges in this environment. The practical fallback remained JADX plus raw DEX/class-targeted output.
 
 ## Recovered route and auth inventory
 
@@ -95,17 +101,49 @@ The current decompiled Java output gives useful payload field names even where t
   - Converts product IDs into `CreateGreenLastScannedItemDto` and calls `xy.j.d(...)`.
   - This links last-scanned sync work to the `xy.j` network implementation, but default JADX still hides the exact method body.
 
+## DEX-only single-class route attribution
+
+The successful DEX-only single-class pass moved several Rebuy leads from string-only evidence to method/path/body evidence.
+
+The local HTTP method enum is `decompiled/Rebuy_jadx/sources/n00/c0.java`:
+
+- `c0.b` = `GET`
+- `c0.c` = `POST`
+- `c0.d` = `PUT`
+- `c0.e` = `DELETE`
+
+Recovered `xy.j` sell/last-scanned methods:
+
+| Class method | HTTP | Route | Request evidence | Response evidence |
+| :--- | :--- | :--- | :--- | :--- |
+| `xy.j.a(q40.b, ...)` | `PUT` | `/v3/green/carts/{cartId}/add-all-last-scanned-items` | no extra query parameters in this overload | `GreenCart` |
+| `xy.j.b(q40.b, int, int, ...)` | `PUT` | `/v3/green/carts/{cartId}/add-all-last-scanned-items` | query params `upPricingPercentage` and `isBasketPricing` | `GreenCart` |
+| `xy.j.c(ArrayList, ...)` | `PUT` | `/customers/green-last-scanned` | list body typed as `CreateGreenLastScannedItemDto` | `LastScannedCountDto` |
+| `xy.j.d(List, ...)` | `DELETE` | `/customers/green-last-scanned` | list body typed as `CreateGreenLastScannedItemDto` or equivalent product-id deletion payload | `LastScannedStatisticsDto`/operation result path in decompiled coroutine output |
+| `xy.j.e(boolean, int, ...)` | `GET` | `/customers/green-last-scanned` | query params `deletableCandidates` and `page_size` | `ProductSearchResult` |
+| `xy.j.f(String, ...)` | `GET` | dynamic URL string passed by caller | direct URL string; likely product/search URL | `ProductSearchResult` |
+| `xy.j.g(...)` | `GET` | `/customers/green-last-scanned/statistics` | no body | `LastScannedStatisticsDto` |
+| `xy.j.h(ArrayList, ...)` | `PUT` | `/customers/green-last-scanned/sync` | list body typed as `CreateGreenLastScannedItemDto` | sync/result wrapper |
+
+Recovered `ux.x` customer/search methods:
+
+- `ux.x.f(String username, String password, ...)` issues `POST /customers/oauth/token` with form fields `username` and `password`, and parses `Oauth2AccessToken`.
+- `ux.x.u(String url, ...)` issues `GET` against a caller-supplied URL and parses `ProductSearchResult`.
+- `decompiled/Rebuy_jadx/sources/qq/n.java` builds the caller-supplied product URL for `ux.x.u(...)` as `customers/my/products`, applies `SearchRequest` query parameters, and adds `max_items=150`.
+
+Decision: this is enough to describe the internal app flow, but still not enough to ship a live Rebuy API probe. The missing pieces are the app API key value, whether these routes accept anonymous traffic, and the exact product search query parameter names for ISBN/EAN searches after `SearchRequest` serialization.
+
 ## Decisions
 
 - Do not update `scripts/probe_buyback_endpoints.py` to use `https://api.rebuy.com` yet.
 - Keep using the current web endpoint `https://www.rebuy.de/verkaufen/api/bulk-isbn` for Rebuy live probing until the first-party API key and exact unauthenticated/authenticated request schemas are recovered.
-- Treat `customers/my/products` and `/products/bulk` as product discovery leads, not confirmed ISBN quote endpoints.
-- Treat `/customers/green-last-scanned/sync` and `/add-all-last-scanned-items` as authenticated app sell-flow leads that probably require bearer auth and/or the still-unrecovered app API key.
+- Treat `customers/my/products` as the confirmed app-side product discovery route, but not yet as a confirmed ISBN quote endpoint.
+- Treat `/customers/green-last-scanned/sync` and `/add-all-last-scanned-items` as authenticated app sell-flow routes that probably require bearer auth and/or the still-unrecovered app API key.
 - The best next Rebuy step is not more default JADX. Use one of:
-  - install/use `baksmali` or `apktool` to inspect only the `xy.j`, `ux.x`, `wz.b`, and related networking methods;
-  - dynamic capture from the app if an emulator/session is available;
-  - retry JADX single-class only with stronger process isolation/time budget, because the first `--single-class` attempt did not produce output before termination.
+  - inspect `SearchRequest` serialization and `qq.n.h(...)` query construction to recover exact product-search query keys;
+  - recover the `X-API-KEY` value from header/interceptor construction;
+  - dynamic capture from the app if an emulator/session is available.
 
 ## Current conclusion
 
-This pass improved Rebuy route attribution substantially but did not recover enough to ship a new Rebuy API adapter. The static evidence now supports a more precise next target: disassemble or dynamically trace `xy.j` methods around the last-scanned and green-cart routes, then map `ProductRequestDto` and `OrderProductDto` to concrete request bodies.
+This pass improved Rebuy route attribution substantially but did not recover enough to ship a new Rebuy API adapter. The static evidence now supports a more precise next target: recover `SearchRequest` query serialization and the app API key/header injector, then make a bounded, non-committed live probe against `https://api.rebuy.com/customers/my/products` only if the auth material is legitimately recovered.
