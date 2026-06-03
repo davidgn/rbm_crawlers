@@ -31,6 +31,21 @@ EDITION_KEYWORDS = (
     "arc",
 )
 
+BINDING_KEYWORDS = (
+    "hardcover",
+    "paperback",
+    "softcover",
+    "cloth",
+    "leather",
+    "board book",
+    "spiral bound",
+)
+
+LANGUAGE_KEYWORDS = (
+    "english", "spanish", "french", "german", "italian", "portuguese",
+    "russian", "chinese", "japanese", "korean", "arabic", "hindi", "bengali",
+)
+
 
 def normalize_isbn(value: str) -> str | None:
     raw = re.sub(r"[^0-9Xx]", "", value).upper()
@@ -56,6 +71,55 @@ def extract_years(text: str) -> list[int]:
 def extract_edition_flags(text: str) -> list[str]:
     lower = text.lower()
     return [keyword for keyword in EDITION_KEYWORDS if keyword in lower]
+
+
+def extract_binding(text: str) -> str | None:
+    lower = text.lower()
+    for keyword in BINDING_KEYWORDS:
+        if keyword in lower:
+            return keyword.title()
+    return None
+
+
+def extract_language(text: str) -> str | None:
+    lower = text.lower()
+    # Check for "Language: English" style patterns first
+    match = re.search(r"(?i)language\s*[:#]\s*(\w+)", text)
+    if match:
+        return match.group(1).title()
+    # Fallback to keyword matching
+    for lang in LANGUAGE_KEYWORDS:
+        if re.search(rf"\b{lang}\b", lower):
+            return lang.title()
+    return None
+
+
+def extract_publisher(text: str) -> str | None:
+    match = re.search(r"(?i)(?:publisher|published by)\s*[:#]\s*(.+)$", text, re.MULTILINE)
+    if match:
+        return match.group(1).strip()[:100]
+    return None
+
+
+def extract_page_count(text: str) -> int | None:
+    match = re.search(r"(?i)(\d+)\s*(?:pages|pp\b|\.p\b)", text)
+    if match:
+        return int(match.group(1))
+    return None
+
+
+def extract_dimensions(text: str) -> str | None:
+    match = re.search(r"(\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?(?:\s*[x×]\s*\d+(?:\.\d+)?)?\s*(?:cm|mm|in|inches))", text, re.I)
+    if match:
+        return match.group(1).strip()
+    return None
+
+
+def extract_category(text: str) -> str | None:
+    match = re.search(r"(?i)(?:category|subject|genre)\s*[:#]\s*(.+)$", text, re.MULTILINE)
+    if match:
+        return match.group(1).strip()[:100]
+    return None
 
 
 def extract_title_author_guess(text: str) -> dict[str, str | None]:
@@ -85,6 +149,12 @@ def extract_signals(text: str) -> dict[str, Any]:
         "oldest_year": years[0] if years else None,
         "newest_year": years[-1] if years else None,
         "edition_flags": extract_edition_flags(text),
+        "binding": extract_binding(text),
+        "language": extract_language(text),
+        "publisher": extract_publisher(text),
+        "page_count": extract_page_count(text),
+        "dimensions": extract_dimensions(text),
+        "category": extract_category(text),
     }
     payload.update(extract_title_author_guess(text))
     payload["needs_manual_review"] = bool(payload["edition_flags"]) or (

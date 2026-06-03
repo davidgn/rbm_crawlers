@@ -62,6 +62,8 @@ class KitabainSpider(BaseSpider):
                 return
             self.cache_html(item_id, resp.text, url=listing_url)
             listing = self._extract(resp.text, title, listing_url, category_label)
+            # Mandatory Metadata Scavenging
+            listing = self.scavenge_metadata(resp.text, listing)
             self.save_item(listing)
         except Exception as e:
             self.logger.error("Fetch error %s: %s", listing_url, e)
@@ -91,83 +93,16 @@ class KitabainSpider(BaseSpider):
             platform=self.platform_name,
             title=fields.get("Book Name") or title,
             author=fields.get("By") or None,
-            isbn=isbn,
-            publisher=fields.get("Publication Type") or None,
-            pages=fields.get("No Of Pages") or None,
-            category=category,
-            condition=fields.get("Condition") or None,
             price=price,
+            isbn=isbn,
+            category=fields.get("Category") or category,
+            condition=fields.get("Condition"),
             listing_url=url,
         )
 
-
-def _backfill_cached():
-    """Re-extract all cached Kitabain HTML pages to enrich existing records."""
-    import json
-    from pathlib import Path
-
-    spider = KitabainSpider.__new__(KitabainSpider)
-    BaseSpider.__init__(spider, "Kitabain", "Pakistan")
-
-    cache_dir = spider.cache_dir
-    data_file = spider.output_file
-
-    if not cache_dir.exists():
-        print("No cache dir found.")
-        return
-
-    # build index of cached pages (non-index files)
-    html_files = [f for f in cache_dir.glob("*.html") if not f.stem.startswith("index")]
-    print(f"Backfilling {len(html_files)} cached Kitabain pages…")
-
-    # load existing records keyed by listing_url
-    existing: dict[str, dict] = {}
-    if data_file.exists():
-        with data_file.open(encoding="utf-8") as fh:
-            for line in fh:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    d = json.loads(line)
-                    existing[d.get("listing_url", "")] = d
-                except Exception:
-                    pass
-
-    # build index: item_id (last number in URL) → record
-    id_to_record: dict[str, dict] = {}
-    for rec in existing.values():
-        url = rec.get("listing_url", "")
-        item_id = url.rstrip("/").rsplit("-", 1)[-1] if "-" in url else ""
-        if item_id.isdigit():
-            id_to_record[item_id] = rec
-
-    updated = 0
-    for html_file in html_files:
-        item_id = html_file.stem
-        old = id_to_record.get(item_id, {})
-        url = old.get("listing_url", f"https://www.kitabain.com/booksdetail/{item_id}")
-        html = html_file.read_text(encoding="utf-8", errors="ignore")
-        listing = spider._extract(html, old.get("title", ""), url, old.get("category", ""))
-        existing[url] = listing.to_dict()
-        updated += 1
-
-    tmp = data_file.with_suffix(".jsonl.tmp")
-    with tmp.open("w", encoding="utf-8") as fh:
-        for record in existing.values():
-            fh.write(json.dumps(record) + "\n")
-    tmp.replace(data_file)
-    print(f"Updated {updated} records. Total: {len(existing)}")
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit-pages", type=int, default=10)
-    parser.add_argument("--limit-items", type=int, default=50)
-    parser.add_argument("--backfill", action="store_true", help="Re-extract all cached pages")
+    parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
-    if args.backfill:
-        _backfill_cached()
-    else:
-        spider = KitabainSpider(limit_pages=args.limit_pages)
-        spider.run()
+    spider = KitabainSpider(limit_pages=args.limit)
+    spider.run()

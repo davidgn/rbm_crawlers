@@ -34,11 +34,13 @@ class SastoKitabSpider(BaseSpider):
                         break
 
                 cards = page.query_selector_all("a.book-card")
+                self.logger.info(f"Found {len(cards)} cards. Starting deep crawl.")
+                
                 for card in cards:
                     try:
-                        self._parse_card(card)
+                        self._harvest_card(card, context)
                     except Exception as e:
-                        self.logger.error(f"Error parsing card: {e}")
+                        self.logger.error(f"Error harvesting card: {e}")
             except Exception as e:
                 self.logger.error(f"Error loading page: {e}")
             finally:
@@ -46,54 +48,57 @@ class SastoKitabSpider(BaseSpider):
             
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
 
-    def _parse_card(self, card):
+    def _harvest_card(self, card, context):
         listing_url = card.get_attribute("href")
+        if listing_url and listing_url.startswith("/"):
+            listing_url = "https://www.sastokitab.com" + listing_url
         
         title_elem = card.query_selector("h4")
         if not title_elem: return
         title = title_elem.inner_text().strip()
         
-        price = None
-        price_elem = card.query_selector(".font-bold.text-gray-900")
-        if price_elem:
-            price = price_elem.inner_text().strip()
-
-        condition = None
-        category = None
-        # The category is in a span badge at the top
-        cat_elem = card.query_selector("span[class*='bg-blue-100']")
-        if cat_elem:
-            category = cat_elem.inner_text().strip()
-
-        # Search for condition in other spans
-        spans = card.query_selector_all("span")
-        for s in spans:
-            text = s.inner_text().strip()
-            if text in ["Good", "Like New", "Acceptable", "New", "Fair"]:
-                condition = text
-
-        # Seller name
-        seller = None
+        # Open detail page in a new tab for deep extraction
+        detail_page = context.new_page()
         try:
-            seller = card.evaluate("el => el.querySelector('.fas.fa-user')?.closest('.flex')?.querySelector('span')?.innerText")
-        except:
-            pass
+            detail_page.goto(listing_url, timeout=30000)
+            detail_page.wait_for_timeout(1000)
+            html = detail_page.content()
+            
+            # Basic info from card as fallback
+            price = None
+            price_elem = card.query_selector(".font-bold.text-gray-900")
+            if price_elem:
+                price = price_elem.inner_text().strip()
 
-        item = BookListing(
-            territory=self.territory,
-            platform=self.platform_name,
-            title=title,
-            price=price,
-            condition=condition,
-            category=category,
-            seller_id=seller,
-            listing_url=listing_url,
-        )
-        self.save_item(item)
+            item = BookListing(
+                territory=self.territory,
+                platform=self.platform_name,
+                title=title,
+                price=price,
+                listing_url=listing_url,
+            )
+            
+            # MANDATORY: Scavenge metadata from the full detail page
+            item = self.scavenge_metadata(html, item)
+            
+            # Capture seller comments/description
+            desc_elem = detail_page.query_selector(".book-description, .mt-6.text-gray-700")
+            if desc_elem:
+                item.seller_comments = desc_elem.inner_text().strip()
+                # Scavenge again from description if needed
+                item = self.scavenge_metadata(item.seller_comments, item)
+
+            self.save_item(item)
+            self.cache_html(listing_url.split("/")[-1], html, url=listing_url)
+            
+        except Exception as e:
+            self.logger.error(f"Error crawling detail page {listing_url}: {e}")
+        finally:
+            detail_page.close()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit", type=int, default=5)
     args = parser.parse_args()
     spider = SastoKitabSpider(limit_pages=args.limit)
     spider.run()

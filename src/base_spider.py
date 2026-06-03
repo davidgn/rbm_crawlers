@@ -4,10 +4,12 @@ import os
 import random
 import time
 import sqlite3
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from models import BookListing
 from ai_extractor import deep_extract
+from signal_scavenger import extract_signals
 from playwright.sync_api import sync_playwright
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
@@ -101,6 +103,31 @@ class BaseSpider:
         }
         meta_path.write_text(json.dumps(meta), encoding="utf-8")
 
+    def scavenge_metadata(self, text: str, listing: BookListing) -> BookListing:
+        """Use regex scavenging to fill in missing fields in a BookListing."""
+        signals = extract_signals(text)
+        
+        if not getattr(listing, 'isbn', None) and signals.get("isbn"):
+            listing.isbn = signals["isbn"]
+        if not getattr(listing, 'publication_year', None) and signals.get("publication_year"):
+            listing.publication_year = signals["publication_year"]
+        if not getattr(listing, 'publisher', None) and signals.get("publisher"):
+            listing.publisher = signals["publisher"]
+        if not getattr(listing, 'pages', None) and signals.get("pages"):
+            listing.pages = signals["pages"]
+        if not getattr(listing, 'binding', None) and signals.get("binding"):
+            listing.binding = signals["binding"]
+        if not getattr(listing, 'language', None) and signals.get("language"):
+            listing.language = signals["language"]
+        if not getattr(listing, 'dimensions', None) and signals.get("dimensions"):
+            listing.dimensions = signals["dimensions"]
+        if not getattr(listing, 'category', None) and signals.get("category"):
+            listing.category = signals["category"]
+        if not getattr(listing, 'edition', None) and signals.get("edition"):
+            listing.edition = signals["edition"]
+            
+        return listing
+
     def save_item(self, item: BookListing):
         """Append an item to the JSON Lines file, skipping duplicates."""
         url = item.listing_url or ""
@@ -109,7 +136,6 @@ class BaseSpider:
         
         # Harmonization: Attempt to enrich with QID if missing
         if not getattr(item, 'qid', None):
-            # If the platform itself is a publisher, we might find its QID
             item.qid = self.lookup_qid(self.platform_name)
 
         with open(self.output_file, 'a', encoding='utf-8') as f:
