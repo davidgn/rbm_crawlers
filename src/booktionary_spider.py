@@ -19,34 +19,34 @@ class BooktionarySpider(BaseSpider):
             Stealth().apply_stealth_sync(page)
             
             try:
-                self.logger.info("Loading Booktionary homepage...")
-                page.goto("https://booktionary.com.bd/", timeout=60000)
+                self.logger.info("Loading Booktionary old-books page...")
+                page.goto("https://booktionary.com.bd/old-books", timeout=60000)
                 page.wait_for_timeout(5000)
                 
-                product_selectors = [".product-item", ".book-item", ".card", ".item"]
+                item_selector = ".product-cart-wrap"
                 
                 for current_page in range(1, self.limit_pages + 1):
                     self.logger.info(f"Scraping page {current_page}...")
+                    page.wait_for_timeout(3000)
+                    
+                    cards = page.query_selector_all(item_selector)
+                    if not cards:
+                        self.logger.info("No more cards found.")
+                        break
+                        
+                    for card in cards:
+                        try:
+                            self._harvest_card(card, context)
+                        except Exception as e:
+                            self.logger.error(f"Error harvesting card: {e}")
+                    
+                    # Pagination: scroll to bottom to ensure 'Next' is visible
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                     page.wait_for_timeout(2000)
                     
-                    found_cards = False
-                    for selector in product_selectors:
-                        cards = page.query_selector_all(selector)
-                        valid_cards = [c for c in cards if c.query_selector("a")]
-                        if valid_cards:
-                            found_cards = True
-                            for card in valid_cards:
-                                try:
-                                    self._harvest_card(card, context)
-                                except Exception as e:
-                                    self.logger.error(f"Error harvesting card: {e}")
-                            break
-                            
-                    if not found_cards:
-                        break
-
                     next_btn = page.query_selector("a.next, li.next a, .pagination .next, [aria-label='Next']")
-                    if next_btn:
+                    if next_btn and next_btn.is_visible():
+                        self.logger.info("Clicking next page...")
                         next_btn.click()
                         page.wait_for_timeout(3000)
                     else:
@@ -60,8 +60,11 @@ class BooktionarySpider(BaseSpider):
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
 
     def _harvest_card(self, card, context):
-        title_elem = card.query_selector("h2, h3, h4, .title, .name")
+        title_elem = card.query_selector(".product-content-wrap h2 a, .product__name a")
+        if not title_elem: 
+            title_elem = card.query_selector("h2, h3, .title")
         if not title_elem: return
+        
         title = title_elem.inner_text().strip()
         
         link_elem = card.query_selector("a")
@@ -79,7 +82,7 @@ class BooktionarySpider(BaseSpider):
             detail_page.wait_for_timeout(1000)
             html = detail_page.content()
             
-            price_elem = card.query_selector(".price, .amount")
+            price_elem = card.query_selector(".product-price span, .price, .amount")
             price = price_elem.inner_text().strip() if price_elem else None
 
             item = BookListing(
@@ -90,10 +93,8 @@ class BooktionarySpider(BaseSpider):
                 listing_url=listing_url,
             )
             
-            # MANDATORY: Scavenge metadata
             item = self.scavenge_metadata(html, item)
             
-            # Seller comments/Description
             desc_elem = detail_page.query_selector(".product-description, #tab-description, .description")
             if desc_elem:
                 item.seller_comments = desc_elem.inner_text().strip()

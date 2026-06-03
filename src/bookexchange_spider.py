@@ -18,10 +18,12 @@ class BookExchangeSpider(BaseSpider):
             page = context.new_page()
             Stealth().apply_stealth_sync(page)
             
-            self.logger.info("Loading ExploreData.html...")
+            # Use search parameters to ensure books are shown
+            self.logger.info("Loading ExploreData.html with adType=sell...")
             try:
-                page.goto("https://bookexchange.lk/ExploreData.html", wait_until="domcontentloaded", timeout=60000)
-                page.wait_for_selector(".book-card, .info-card", timeout=30000)
+                page.goto("https://bookexchange.lk/ExploreData.html?adType=sell", wait_until="networkidle", timeout=60000)
+                # Wait for either cards or empty state
+                page.wait_for_selector(".book-card, .empty-state", timeout=30000)
             except Exception as e:
                 self.logger.error(f"Error loading page: {e}")
                 browser.close()
@@ -29,10 +31,20 @@ class BookExchangeSpider(BaseSpider):
 
             for current_page in range(1, self.limit_pages + 1):
                 self.logger.info(f"Scraping page {current_page}...")
-                page.wait_for_timeout(5000)
+                page.wait_for_timeout(3000)
                 
                 cards = page.query_selector_all(".book-card")
                 if not cards:
+                    # Try to clear filters if no books found
+                    clear_btn = page.query_selector("button:has-text(\"Clear Filters\")")
+                    if clear_btn and current_page == 1:
+                        self.logger.info("Clicking Clear Filters...")
+                        clear_btn.click()
+                        page.wait_for_timeout(3000)
+                        cards = page.query_selector_all(".book-card")
+                    
+                if not cards:
+                    self.logger.info("No more cards found.")
                     break
                     
                 for card in cards:
@@ -69,14 +81,12 @@ class BookExchangeSpider(BaseSpider):
         
         if listing_url in self._seen_urls: return
 
-        # Open detail page for deep extraction
         detail_page = context.new_page()
         try:
             detail_page.goto(listing_url, timeout=30000)
             detail_page.wait_for_timeout(1000)
             html = detail_page.content()
             
-            # Condition and Price (often in badges on card or detail)
             price = None
             condition = None
             badges = card.query_selector_all(".badge")
@@ -96,10 +106,8 @@ class BookExchangeSpider(BaseSpider):
                 listing_url=listing_url,
             )
             
-            # MANDATORY: Scavenge metadata from the full detail page
             item = self.scavenge_metadata(html, item)
             
-            # Extra scavenging from specific description block
             desc_elem = detail_page.query_selector(".card-text")
             if desc_elem:
                 item.seller_comments = desc_elem.inner_text().strip()
