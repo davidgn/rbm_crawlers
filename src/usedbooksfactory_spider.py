@@ -1,9 +1,9 @@
+import argparse
 import httpx
 from bs4 import BeautifulSoup
 import time
 import re
 from urllib.parse import urljoin
-from isbn_utils import isbn_from_url
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -17,7 +17,7 @@ class UsedBooksFactorySpider(BaseSpider):
         })
 
     def run(self):
-        self.logger.info(f"Starting Enhanced UsedBooksFactory crawler. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Enhanced UsedBooksFactory metadata-aware crawler. Limit: {self.limit_pages} pages.")
         
         for page_num in range(1, self.limit_pages + 1):
             url = f"{self.base_category_url}?page={page_num}"
@@ -93,7 +93,6 @@ class UsedBooksFactorySpider(BaseSpider):
                         value = cols[1].text.strip()
                         details[label] = value
 
-            # Extract fields from 'details' map
             title_author = details.get("title/author:", "")
             title = ""
             author = None
@@ -102,55 +101,41 @@ class UsedBooksFactorySpider(BaseSpider):
                 title = parts[0].strip()
                 author = parts[1].strip()
             else:
-                title = title_author or soup.find("h2").text.strip() if soup.find("h2") else "Unknown"
+                title = title_author.strip()
 
-            edition_binding = details.get("edition/binding:", "")
-            edition = None
-            binding = None
-            if "/" in edition_binding:
-                eb_parts = edition_binding.split("/", 1)
-                edition = eb_parts[0].strip()
-                binding = eb_parts[1].strip()
-            else:
-                binding = edition_binding
-
-            # Category extraction from table row
-            category = None
-            cat_row = [r for r in table.find_all("tr") if "Category:" in r.text] if table else []
-            if cat_row:
-                links = cat_row[0].find_all("a")
-                category = ", ".join([a.text.strip() for a in links])
-
+            isbn = details.get("isbn:")
+            publisher = details.get("publisher:")
+            year = details.get("year:")
+            
             item = BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
-                title=title,
+                title=title or "Unknown Title",
                 author=author,
-                isbn=details.get("isbn:") or isbn_from_url(url),
-                edition=edition,
-                binding=binding,
-                category=category,
-                condition=details.get("condition:"),
+                isbn=isbn,
+                publisher=publisher,
+                publication_year=year,
                 price=fallback_price,
-                listing_url=url
+                listing_url=url,
             )
             
-            # Update price if more specific one found
-            if not item.price:
-                price_match = re.search(r"₹\s*([\d,]+)", resp.text)
-                if price_match:
-                    item.price = "INR " + price_match.group(1).replace(",", "")
+            # MANDATORY: Scavenge metadata from the full HTML and descriptions
+            item = self.scavenge_metadata(resp.text, item)
+            
+            desc_elem = soup.find("div", id="description")
+            if desc_elem:
+                item.seller_comments = desc_elem.get_text(strip=True)
+                item = self.scavenge_metadata(item.seller_comments, item)
 
             self.save_item(item)
-            time.sleep(1) # Throttling for detail pages
-
+            self.cache_html(url.split("/")[-1].replace(".html", ""), resp.text, url=url)
+            
         except Exception as e:
-            self.logger.error(f"Error scraping detail {url}: {e}")
+            self.logger.error(f"Error crawling detail page {url}: {e}")
 
 if __name__ == "__main__":
-    import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit", type=int, default=5)
     args = parser.parse_args()
     spider = UsedBooksFactorySpider(limit_pages=args.limit)
     spider.run()

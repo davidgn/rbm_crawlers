@@ -1,3 +1,4 @@
+import argparse
 import time
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
@@ -10,21 +11,16 @@ class BookExchangeSpider(BaseSpider):
         self.limit_pages = limit_pages
 
     def run(self):
-        self.logger.info(f"Starting BookExchange crawler. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting BookExchange Enhanced Crawler. Limit: {self.limit_pages} pages.")
         
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, args=['--disable-blink-features=AutomationControlled'])
-            context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-            )
+            browser, context = self.get_playwright_stealth_config(p)
             page = context.new_page()
             Stealth().apply_stealth_sync(page)
             
-            # The site loads data via API on ExploreData.html
             self.logger.info("Loading ExploreData.html...")
             try:
                 page.goto("https://bookexchange.lk/ExploreData.html", wait_until="domcontentloaded", timeout=60000)
-                # Wait for at least one book card to appear or a message saying no ads
                 page.wait_for_selector(".book-card, .info-card", timeout=30000)
             except Exception as e:
                 self.logger.error(f"Error loading page: {e}")
@@ -33,73 +29,93 @@ class BookExchangeSpider(BaseSpider):
 
             for current_page in range(1, self.limit_pages + 1):
                 self.logger.info(f"Scraping page {current_page}...")
-                
-                # Wait a bit for JS to populate the cards
                 page.wait_for_timeout(5000)
                 
                 cards = page.query_selector_all(".book-card")
                 if not cards:
-                    self.logger.info("No cards found on page. Saving HTML for debugging...")
-                    with open("/home/davidgn/.gemini/tmp/davidgn/bookexchange_debug.html", "w") as dbg:
-                        dbg.write(page.content())
                     break
                     
                 for card in cards:
                     try:
-                        self._parse_card(card)
+                        self._harvest_card(card, context)
                     except Exception as e:
-                        self.logger.error(f"Error parsing card: {e}")
+                        self.logger.error(f"Error harvesting card: {e}")
                 
-                # Check for next page button
                 next_btn = page.query_selector(".pagination .page-item:last-child:not(.disabled) .page-link")
                 if next_btn and ("Next" in next_btn.inner_text() or "»" in next_btn.inner_text()):
                     self.logger.info("Clicking next page...")
                     next_btn.click()
-                    page.wait_for_timeout(2000) # Give time for network
+                    page.wait_for_timeout(2000)
                 else:
-                    self.logger.info("No next page button. Reached end.")
                     break
                     
             browser.close()
             
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
 
-    def _parse_card(self, card):
+    def _harvest_card(self, card, context):
         title_elem = card.query_selector(".card-title")
-        if not title_elem:
-            return
-            
+        if not title_elem: return
         title = title_elem.inner_text().strip()
         
-        # Link usually on the image or title or view details
         link_elem = card.query_selector("a.btn-outline-primary")
-        listing_url = link_elem.get_attribute("href") if link_elem else "https://bookexchange.lk/ExploreData.html"
-        if listing_url and listing_url.startswith("./"):
+        listing_url = link_elem.get_attribute("href") if link_elem else None
+        if not listing_url: return
+        
+        if listing_url.startswith("./"):
             listing_url = "https://bookexchange.lk/" + listing_url[2:]
-        elif listing_url and listing_url.startswith("/"):
+        elif listing_url.startswith("/"):
             listing_url = "https://bookexchange.lk" + listing_url
-            
-        # condition and price
-        price = None
-        condition = None
-        badges = card.query_selector_all(".badge")
-        for badge in badges:
-            text = badge.inner_text().strip()
-            if "Rs." in text or "LKR" in text:
-                price = "LKR " + text.replace("Rs.", "").replace(",", "").strip()
-            elif text in ["Like New", "Good", "Acceptable", "New"]:
-                condition = text
+        
+        if listing_url in self._seen_urls: return
 
-        item = BookListing(
-            territory=self.territory,
-            platform=self.platform_name,
-            title=title,
-            price=price,
-            condition=condition,
-            listing_url=listing_url,
-        )
-        self.save_item(item)
+        # Open detail page for deep extraction
+        detail_page = context.new_page()
+        try:
+            detail_page.goto(listing_url, timeout=30000)
+            detail_page.wait_for_timeout(1000)
+            html = detail_page.content()
+            
+            # Condition and Price (often in badges on card or detail)
+            price = None
+            condition = None
+            badges = card.query_selector_all(".badge")
+            for badge in badges:
+                text = badge.inner_text().strip()
+                if "Rs." in text:
+                    price = text
+                elif text in ["Like New", "Good", "Acceptable", "Fair"]:
+                    condition = text
+
+            item = BookListing(
+                territory=self.territory,
+                platform=self.platform_name,
+                title=title,
+                price=price,
+                condition=condition,
+                listing_url=listing_url,
+            )
+            
+            # MANDATORY: Scavenge metadata from the full detail page
+            item = self.scavenge_metadata(html, item)
+            
+            # Extra scavenging from specific description block
+            desc_elem = detail_page.query_selector(".card-text")
+            if desc_elem:
+                item.seller_comments = desc_elem.inner_text().strip()
+                item = self.scavenge_metadata(item.seller_comments, item)
+
+            self.save_item(item)
+            self.cache_html(listing_url.split("=")[-1], html, url=listing_url)
+            
+        except Exception as e:
+            self.logger.error(f"Error crawling detail page {listing_url}: {e}")
+        finally:
+            detail_page.close()
 
 if __name__ == "__main__":
-    spider = BookExchangeSpider(limit_pages=2)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=5)
+    args = parser.parse_args()
+    spider = BookExchangeSpider(limit_pages=args.limit)
     spider.run()
