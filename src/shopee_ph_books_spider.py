@@ -1,18 +1,19 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+import argparse
+from shopee_sea_base import ShopeeSeaSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Shopee Philippines Used Books",
-    territory="Philippines",
-    base_url="https://shopee.ph",
-    browse_paths=("/search?category=11044709&keyword=preloved+books", "/search?keyword=secondhand%20books"),
-    detail_signals=("-i.", "/product/", "/book"),
-    exclude_signals=("/buyer", "/help", "/cart"),
-    headers={"Accept-Language": "en-PH,en;q=0.9,fil;q=0.8"},
-    rendered=True,
-    render_wait_ms=5000,
-)
-
+class ShopeePhSpider(ShopeeSeaSpider):
+    def __init__(self, limit_pages=5):
+        super().__init__(
+            platform_name="Shopee Philippines",
+            territory="Philippines",
+            base_url="https://shopee.ph",
+            search_query="preloved books",
+            limit_pages=limit_pages
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Shopee Philippines used-books spider")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=2)
+    args = parser.parse_args()
+    spider = ShopeePhSpider(limit_pages=args.limit)
+    spider.run()

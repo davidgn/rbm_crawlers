@@ -301,6 +301,7 @@ class ConfigurableMarketplaceSpider(BaseSpider):
         self.cache_html(item_id, html, url=url)
         listing = self._listing_from_html(html, url)
         if listing:
+            listing = self.scavenge_metadata(html, listing)
             self.save_item(listing)
         else:
             self._save_link_fallback(url)
