@@ -657,11 +657,11 @@ Tajikistan,Central Asia,single-store bookstore layer,Donish,site,central asia ta
 Tajikistan,Central Asia,single-store bookstore layer,Книжный мир / Knyzhny Mir,site,central asia tajikistan pass1,medium,Concrete Dushanbe bookstore-layer anchor with fixed address and daily hours.,supporting,tajikistan::knyzhny_mir
 Tajikistan,Central Asia,weak-fit core,KITOBTJ,site,central asia tajikistan pass1,medium,Directory-backed online platform for Tajik and world literature with free delivery in Dushanbe; retained as a lighter corroborating online-book rail.,secondary,tajikistan::kitobtj
 Tajikistan,Central Asia,weak-fit core,KITOBZ,site,central asia tajikistan pass1,high,"Official online bookstore with broad category depth, live product merchandising, and integrated букинистика / sell-back signals inside the same rail.",primary,tajikistan::kitobz
-Thailand,Southeast Asia,annex / classifieds,Kaidee — books,site,live_web_resolution,high,Large horizontal classifieds rail with active used-book listings; annex.,primary,thailand::kaidee — books
+Thailand,Southeast Asia,annex / classifieds,Kaidee — books,site,live_harvest_active,high,Large horizontal classifieds rail with active used-book listings; annex.,primary,thailand::kaidee — books
 Thailand,Southeast Asia,offline / fair / literacy layer,Baan Books,site,live_web_resolution,high,"Community-library / literacy initiative in Thailand; literacy layer, not marketplace.",primary,thailand::baan books
-Thailand,Southeast Asia,single-store used booksellers,Dasa Books,site,web_resolved_2026_04_19,high,Resolved from live web evidence: specialist secondhand bookstore.,primary,thailand::dasa books
-Thailand,Southeast Asia,weak-fit core,Naiin,site,web_resolved_2026_04_19,high,Resolved from live web evidence: major online bookstore/e-book rail in Thailand.,primary,thailand::naiin
-Thailand,Southeast Asia,weak-fit core,SE-ED,site,web_resolved_2026_04_19,medium,Resolved from live web evidence: major national bookstore chain rail in Thailand.,primary,thailand::se-ed
+Thailand,Southeast Asia,single-store used booksellers,Dasa Books,site,live_harvest_active,high,Resolved from live web evidence: specialist secondhand bookstore.,primary,thailand::dasa books
+Thailand,Southeast Asia,weak-fit core,Naiin,site,live_harvest_active,high,Resolved from live web evidence: major online bookstore/e-book rail in Thailand.,primary,thailand::naiin
+Thailand,Southeast Asia,weak-fit core,SE-ED,site,live_harvest_active,medium,Resolved from live web evidence: major national bookstore chain rail in Thailand.,primary,thailand::se-ed
 The Bahamas,Caribbean,annex / classifieds,242Ads,site,consolidated_matrix_2026_04_15,medium,"curated hubs, not open marketplace",primary,the bahamas::242ads
 The Bahamas,Caribbean,annex / classifieds,Bahama Buy & Sell,site,consolidated_matrix_2026_04_15,medium,"curated hubs, not open marketplace",primary,the bahamas::bahama buy & sell
 The Bahamas,Caribbean,offline / fair / literacy layer,Christmas Book Fair,site,consolidated_matrix_2026_04_15,medium,"curated hubs, not open marketplace",primary,the bahamas::christmas book fair
