@@ -1,15 +1,18 @@
 import argparse
 import time
 import re
+from urllib.parse import urljoin
+
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
 from base_spider import BaseSpider
 
 class KingstoneSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=50):
         super().__init__(platform_name="Kingstone.com.tw", territory="Taiwan")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.kingstone.com.tw"
 
     def run(self):
@@ -60,6 +63,38 @@ class KingstoneSpider(BaseSpider):
                 self.logger.error(f"Extraction failed: {e}")
             finally:
                 browser.close()
+
+    def _parse_search_item(self, item) -> BookListing | None:
+        title_link = item.select_one("h3.pdnamebox a[href]") or item.select_one("a[href*='/basic/']")
+        if not title_link:
+            return None
+
+        listing_url = urljoin(self.base_url, title_link["href"])
+        product_id_match = re.search(r"/basic/([^/?#]+)/?", listing_url)
+        product_id = product_id_match.group(1) if product_id_match else None
+        class_node = item.select_one(".classbox span")
+        author_node = item.select_one(".author a") or item.select_one(".author")
+        publisher_node = item.select_one(".publish a") or item.select_one(".publish")
+
+        return BookListing(
+            territory=self.territory,
+            platform=self.platform_name,
+            title=self._clean(title_link.get_text(" ", strip=True)),
+            author=self._clean(author_node.get_text(" ", strip=True)) if author_node else None,
+            publisher=self._clean(publisher_node.get_text(" ", strip=True)) if publisher_node else None,
+            category=self._clean(class_node.get_text(" ", strip=True)) if class_node else None,
+            condition="New",
+            price=self._price(item.get_text(" ", strip=True)),
+            listing_url=listing_url,
+            seller_comments=f"Kingstone product id: {product_id}" if product_id else None,
+        )
+
+    def _price(self, text: str) -> str | None:
+        match = re.search(r"(?:特價|優惠價)?\s*([\d,]+)\s*元", text)
+        return f"TWD {match.group(1).replace(',', '')}" if match else None
+
+    def _clean(self, value: str) -> str:
+        return re.sub(r"\s+", " ", value).strip()
 
     def _harvest_item(self, page, url):
         # Extract ID from /basic/12345
