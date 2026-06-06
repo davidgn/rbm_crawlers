@@ -6,14 +6,14 @@ from playwright_stealth import Stealth
 from models import BookListing
 from base_spider import BaseSpider
 
-class MelomanSpider(BaseSpider):
+class FahasaSpider(BaseSpider):
     def __init__(self, limit_pages=50):
-        super().__init__(platform_name="Meloman", territory="Kazakhstan")
+        super().__init__(platform_name="Fahasa", territory="Vietnam")
         self.limit_pages = limit_pages
-        self.base_url = "https://www.meloman.kz"
+        self.base_url = "https://www.fahasa.com"
 
     def run(self):
-        self.logger.info(f"Starting Meloman Kazakhstan Harvest (Cache-First). Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Fahasa Vietnam Harvest (Cache-First). Limit: {self.limit_pages} pages.")
         
         with sync_playwright() as p:
             browser, context = self.get_playwright_stealth_config(p)
@@ -21,51 +21,48 @@ class MelomanSpider(BaseSpider):
             Stealth().apply_stealth_sync(page)
             
             try:
-                # Target Books category
-                target_url = "https://www.meloman.kz/books.html"
+                # Target 'New Releases' or search
+                target_url = "https://www.fahasa.com/sach-trong-nuoc.html"
                 
                 for current_page in range(1, self.limit_pages + 1):
+                    # Fahasa pagination: ?p=N
                     url = f"{target_url}?p={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
                     
                     try:
                         page.goto(url, wait_until="networkidle", timeout=60000)
-                        page.wait_for_timeout(3000)
+                        self.human_delay(3000, 6000)
+                        self.human_jitter(page)
                     except Exception as e:
                         self.logger.error(f"Failed to load {url}: {e}")
                         break
                     
-                    # Discover product links in the main product grid
-                    links_data = page.evaluate("""() => {
-                        const items = Array.from(document.querySelectorAll('.product-item-link, a.product-item-photo'));
-                        return items.map(a => a.href);
+                    # Discover product links
+                    # Fahasa products are typically inside .product-item and have unique slugs
+                    product_links = page.evaluate("""() => {
+                        const items = Array.from(document.querySelectorAll('.product-item a, .item a'));
+                        return items.map(a => a.href).filter(href => href.includes('.html'));
                     }""")
                     
-                    # Refined filter: must be .html and NOT a common non-book or system path
+                    # Refine filter: must NOT be a known category path
                     product_links = list(set([
-                        l for l in links_data 
-                        if ".html" in l 
-                        and not any(x in l for x in ["/books.html", "/customer/", "/wishlist/", "/press/", "/videogames/", "/candy/"])
+                        l for l in product_links 
+                        if not any(x in l for x in ["/customer/", "/checkout/", "/wishlist/", "sach-trong-nuoc.html", "van-hoc-trong-nuoc"])
                     ]))
                     
                     if not product_links:
-                        # Secondary attempt with broader selector
-                        product_links = page.evaluate("""() => {
-                            return Array.from(document.querySelectorAll('a[href*=".html"]')).filter(a => {
-                                const rect = a.getBoundingClientRect();
-                                return rect.width > 50 && rect.height > 50; // Filter out small icon links
-                            }).map(a => a.href);
-                        }""")
-                        product_links = list(set([l for l in product_links if not any(x in l for x in ["/books.html", "/customer/", "/wishlist/", "/press/"])]))
+                        # Attempt to find by slug length/pattern
+                        links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
+                        product_links = list(set([l for l in links if l.count('/') >= 4 and l.endswith('.html')]))
 
                     if not product_links:
                         self.logger.warning(f"No product links found on page {current_page}.")
                         break
                         
-                    for p_url in product_links[:12]: # Limited batch per page for efficiency
+                    for p_url in product_links[:10]:
                         try:
                             self._harvest_item(page, p_url)
-                            page.wait_for_timeout(1000)
+                            self.human_delay(1500, 3500)
                         except Exception as e:
                             self.logger.error(f"Error harvesting {p_url}: {e}")
                             
@@ -75,7 +72,7 @@ class MelomanSpider(BaseSpider):
                 browser.close()
 
     def _harvest_item(self, page, url):
-        # Extract unique ID or slug from URL
+        # Extract ID from slug
         item_id = url.split("/")[-1].replace(".html", "") if "/" in url else str(time.time())
         
         self.logger.info(f"Harvesting item: {url}")
@@ -90,7 +87,7 @@ class MelomanSpider(BaseSpider):
             platform=self.platform_name,
             title="Cached Item",
             listing_url=url,
-            condition="New/Kazakhstan Retail"
+            condition="New (Fahasa Retail)"
         )
         self.save_item(item)
 
@@ -98,5 +95,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
-    spider = MelomanSpider(limit_pages=args.limit)
+    spider = FahasaSpider(limit_pages=args.limit)
     spider.run()

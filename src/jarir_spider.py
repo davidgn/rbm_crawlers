@@ -37,16 +37,29 @@ class JarirSpider(BaseSpider):
                         self.logger.error(f"Failed to load {url}: {e}")
                         break
                     
-                    # Discover product links
-                    # Jarir paths typically follow: /item-name-123456.html
+                    # Discover product links: -[id].html
                     links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
-                    product_links = list(set([l for l in links if "jarir.com/" in l and l.endswith(".html") and not any(x in l for x in ["/customer/", "/books.html", "/arabic-books.html"])]))
+                    # Jarir products often have a numeric ID suffix before .html
+                    product_links = list(set([l for l in links if re.search(r"-\d+\.html$", l) and "jarir.com/" in l]))
+                    # Filter out obvious category links
+                    product_links = [l for l in product_links if not any(x in l for x in ["/customer/", "/books.html", "/arabic-books.html"])]
                     
                     if not product_links:
-                        self.logger.warning(f"No product links found on page {current_page}.")
-                        break
+                        # Fallback: look for common product classes if regex is too restrictive
+                        product_links = page.evaluate("""() => {
+                            return Array.from(document.querySelectorAll('.product-tile__link, .list-product__link')).map(a => a.href);
+                        }""")
+                    
+                    if not product_links:
+                        self.logger.warning(f"No product links found on page {current_page}. Scrolling...")
+                        page.evaluate("window.scrollBy(0, 2000)")
+                        time.sleep(2)
+                        links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
+                        product_links = list(set([l for l in links if re.search(r"-\d+\.html$", l) and "jarir.com/" in l]))
+
+                    if not product_links: break
                         
-                    for p_url in product_links[:10]:
+                    for p_url in product_links[:15]:
                         try:
                             self._harvest_item(page, p_url)
                             self.human_delay(1000, 2500)
