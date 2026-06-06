@@ -30,9 +30,15 @@ def local_fallback_extract(html_content):
 
         # Try to find ISBN in text
         isbn = None
-        isbn_match = re.search(r'(?:ISBN[-103]*?:?\s*)(97[89][- \d]{10,13}|[0-9X]{10})', html_content, re.IGNORECASE)
+        isbn_match = re.search(
+            r"ISBN(?:-1[03])?\s*:?\s*((?:97[89][\d -]{10,16})|(?:[\dXx][\dXx -]{8,14}[\dXx]))",
+            html_content,
+            re.IGNORECASE,
+        )
         if isbn_match:
-            isbn = isbn_match.group(1).replace('-', '').replace(' ', '')
+            candidate = re.sub(r"[-\s]", "", isbn_match.group(1))
+            if len(candidate) in {10, 13}:
+                isbn = candidate.upper()
 
         # Try to find price
         price = None

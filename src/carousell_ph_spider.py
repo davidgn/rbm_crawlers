@@ -78,7 +78,7 @@ class CarousellPhSpider(BaseSpider):
             html_content = p_page.content()
 
             # CACHE FIRST
-            self.cache_html(item_id, html_content)
+            self.cache_html(item_id, html_content, url=url)
 
             # Save minimal record
             item = BookListing(
