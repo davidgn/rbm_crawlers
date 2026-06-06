@@ -49,7 +49,7 @@ class BatchProcessor:
                     logger.warning(f"Could not read sidecar {meta_file.name}: {e}")
 
             logger.info(f"Processing {html_file.name}...")
-            ai_data = deep_extract(html_content)
+            ai_data = deep_extract(html_content, platform=self.platform)
 
             if ai_data:
                 # Sidecar values take precedence over whatever the AI inferred

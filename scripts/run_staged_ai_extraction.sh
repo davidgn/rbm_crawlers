@@ -12,6 +12,11 @@ platforms=(
     "Kaidee:Thailand"
     "Naiin:Thailand"
     "SE-ED:Thailand"
+    "Meloman:Kazakhstan"
+    "Asaxiy:Uzbekistan"
+    "Bukukita:Indonesia"
+    "Mudah.my:Malaysia"
+    "Carousell Philippines:Philippines"
 )
 
 echo "--- Starting RBM AI Extraction Batch ---"

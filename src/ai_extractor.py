@@ -7,57 +7,84 @@ from bs4 import BeautifulSoup
 
 logger = logging.getLogger("AIExtractor")
 
+PLATFORM_SELECTORS = {
+    "Books.com.tw": {
+        "title": "h1",
+        "isbn": "li:contains('ISBN')",
+        "price": ".price b",
+        "author": "a[href*='search?author']"
+    },
+    "Kingstone.com.tw": {
+        "title": "h1.pdnamebox",
+        "isbn": "li:contains('ISBN')",
+        "price": ".price_real",
+        "author": "a[href*='search/author']"
+    },
+    "Naiin": {
+        "title": ".product-title",
+        "isbn": ".product-isbn",
+        "price": ".product-price",
+        "author": ".product-author"
+    },
+    "SE-ED": {
+        "title": "h1",
+        "isbn": "div:contains('ISBN')",
+        "price": ".price-net",
+    }
+}
 
-def local_fallback_extract(html_content):
+def local_fallback_extract(html_content, platform=None):
     """
     Fallback extraction using BeautifulSoup when the AI API fails.
-    Extracts basic metadata to keep the pipeline moving.
+    Uses platform-specific selectors if available, otherwise general regex.
     """
     try:
         soup = BeautifulSoup(html_content, 'html.parser')
+        result = {"extraction_method": "local_bs4_fallback"}
 
-        # Try to find common title tags
-        title = None
-        if soup.title:
-            title = soup.title.string.strip()
-            # Clean up common suffixes
-            title = re.sub(r'\s*[-|]\s*.*$', '', title)
+        # 1. Try Platform-Specific Selectors
+        if platform and platform in PLATFORM_SELECTORS:
+            sel = PLATFORM_SELECTORS[platform]
+            for key, selector in sel.items():
+                try:
+                    el = soup.select_one(selector)
+                    if el:
+                        result[key] = el.get_text(strip=True)
+                except:
+                    pass
 
-        if not title:
-            h1 = soup.find('h1')
-            if h1:
-                title = h1.get_text(strip=True)
+        # 2. General Fallback for missing fields
+        if not result.get("title"):
+            title_tag = soup.title.string.strip() if soup.title else None
+            if title_tag:
+                result["title"] = re.sub(r'\s*[-|]\s*.*$', '', title_tag)
+            else:
+                h1 = soup.find('h1')
+                result["title"] = h1.get_text(strip=True) if h1 else "Unknown Title"
 
-        # Try to find ISBN in text
-        isbn = None
-        isbn_match = re.search(
-            r"ISBN(?:-1[03])?\s*:?\s*((?:97[89][\d -]{10,16})|(?:[\dXx][\dXx -]{8,14}[\dXx]))",
-            html_content,
-            re.IGNORECASE,
-        )
-        if isbn_match:
-            candidate = re.sub(r"[-\s]", "", isbn_match.group(1))
-            if len(candidate) in {10, 13}:
-                isbn = candidate.upper()
+        if not result.get("isbn"):
+            isbn_match = re.search(
+                r"ISBN(?:-1[03])?\s*:?\s*((?:97[89][\d -]{10,16})|(?:[\dXx][\dXx -]{8,14}[\dXx]))",
+                html_content,
+                re.IGNORECASE,
+            )
+            if isbn_match:
+                candidate = re.sub(r"[-\s]", "", isbn_match.group(1))
+                if len(candidate) in {10, 13}:
+                    result["isbn"] = candidate.upper()
 
-        # Try to find price
-        price = None
-        price_match = re.search(r'(฿|TWD|RM|Rp|VND|\$)\s*([\d,.]+)', html_content)
-        if price_match:
-            price = f"{price_match.group(1)} {price_match.group(2)}"
+        if not result.get("price"):
+            price_match = re.search(r'(฿|TWD|RM|Rp|VND|\$)\s*([\d,.]+)', html_content)
+            if price_match:
+                result["price"] = f"{price_match.group(1)} {price_match.group(2)}"
 
-        return {
-            "title": title or "Unknown Title",
-            "isbn": isbn,
-            "price": price,
-            "extraction_method": "local_bs4_fallback"
-        }
+        return result
     except Exception as e:
         logger.error(f"Fallback extraction failed: {e}")
         return None
 
 
-def deep_extract(html_content):
+def deep_extract(html_content, platform=None):
     """
     Call the bibliographic-parser subagent via Gemini CLI to extract structured data.
     Uses the non-interactive piped syntax with --skip-trust for automation.
@@ -84,17 +111,19 @@ def deep_extract(html_content):
                 if "{" in raw_out:
                     raw_out = raw_out[raw_out.find("{"):raw_out.rfind("}")+1]
 
-                return json.loads(raw_out)
+                data = json.loads(raw_out)
+                data["extraction_method"] = "gemini_ai"
+                return data
             except json.JSONDecodeError:
                 logger.error(f"Failed to decode AI output: {stdout}")
         else:
             logger.error(f"AI Extraction command failed: {stderr}")
             if "QUOTA_EXHAUSTED" in stderr or "TerminalQuotaError" in stderr or process.returncode != 0:
                 logger.warning("AI Quota exhausted or command failed. Falling back to local BeautifulSoup parser.")
-                return local_fallback_extract(html_content)
+                return local_fallback_extract(html_content, platform)
 
     except Exception as e:
         logger.error(f"AI Extraction error: {e}")
-        return local_fallback_extract(html_content)
+        return local_fallback_extract(html_content, platform)
 
-    return local_fallback_extract(html_content)
+    return local_fallback_extract(html_content, platform)
