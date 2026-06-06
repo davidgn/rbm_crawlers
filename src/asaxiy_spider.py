@@ -30,8 +30,9 @@ class AsaxiySpider(BaseSpider):
                     self.logger.info(f"Fetching index page {current_page}: {url}")
                     
                     try:
-                        page.goto(url, wait_until="domcontentloaded", timeout=60000)
-                        page.wait_for_timeout(3000)
+                        page.goto(url, wait_until="networkidle", timeout=60000)
+                        self.human_delay(2000, 5000)
+                        self.human_jitter(page)
                     except Exception as e:
                         self.logger.error(f"Failed to load {url}: {e}")
                         break
@@ -50,10 +51,10 @@ class AsaxiySpider(BaseSpider):
                         self.logger.warning(f"No product links found on page {current_page}.")
                         break
                         
-                    for p_url in product_links:
+                    for p_url in product_links[:10]:
                         try:
                             self._harvest_item(page, p_url)
-                            page.wait_for_timeout(1000)
+                            self.human_delay(1000, 3000)
                         except Exception as e:
                             self.logger.error(f"Error harvesting {p_url}: {e}")
                             

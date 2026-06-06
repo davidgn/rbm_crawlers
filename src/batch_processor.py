@@ -2,19 +2,20 @@ import os
 import json
 import logging
 from pathlib import Path
-from ai_extractor import deep_extract
+from ai_extractor import deep_extract, local_fallback_extract
 from models import BookListing
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 logger = logging.getLogger("BatchProcessor")
 
 class BatchProcessor:
-    def __init__(self, platform: str, territory: str):
+    def __init__(self, platform: str, territory: str, fallback_only: bool = False):
         self.platform = platform
         self.territory = territory
+        self.fallback_only = fallback_only
         base_path = Path(os.path.dirname(os.path.abspath(__file__)))
         self.cache_dir = base_path / "cache" / platform.lower().replace('.', '_')
-        self.output_file = base_path / "data" / f"{platform.lower().replace('.', '_')}_ai_extracted.jsonl"
+        self.output_file = base_path / "data" / f"{platform.lower().replace('.', '_')}_extracted.jsonl"
         
     def process_all(self):
         if not self.cache_dir.exists():
@@ -35,21 +36,35 @@ class BatchProcessor:
 
         count = 0
         for html_file in files:
+            # Load sidecar metadata written by spider at cache time
+            meta: dict = {}
+            try:
+                meta_file = html_file.with_suffix(".meta.json")
+                if meta_file.exists():
+                    try:
+                        with open(meta_file, "r", encoding="utf-8") as f:
+                            meta = json.load(f)
+                    except Exception as e:
+                        logger.warning(f"Could not read sidecar {meta_file.name}: {e}")
+            except OSError as e:
+                if e.errno == 36:
+                    logger.error(f"Skipping file due to OS-level filename length limit: {html_file.name}")
+                    continue
+                raise e
+
+            listing_url = meta.get("listing_url")
+            if listing_url in processed_urls:
+                continue
+
             with open(html_file, "r", encoding="utf-8") as f:
                 html_content = f.read()
 
-            # Load sidecar metadata written by spider at cache time
-            meta: dict = {}
-            meta_file = html_file.with_suffix(".meta.json")
-            if meta_file.exists():
-                try:
-                    with open(meta_file, "r", encoding="utf-8") as f:
-                        meta = json.load(f)
-                except Exception as e:
-                    logger.warning(f"Could not read sidecar {meta_file.name}: {e}")
-
             logger.info(f"Processing {html_file.name}...")
-            ai_data = deep_extract(html_content, platform=self.platform)
+            
+            if self.fallback_only:
+                ai_data = local_fallback_extract(html_content, platform=self.platform)
+            else:
+                ai_data = deep_extract(html_content, platform=self.platform)
 
             if ai_data:
                 # Sidecar values take precedence over whatever the AI inferred
@@ -78,7 +93,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--platform", required=True)
     parser.add_argument("--territory", required=True)
+    parser.add_argument("--fallback-only", action="store_true")
     args = parser.parse_args()
     
-    processor = BatchProcessor(args.platform, args.territory)
+    processor = BatchProcessor(args.platform, args.territory, fallback_only=args.fallback_only)
     processor.process_all()

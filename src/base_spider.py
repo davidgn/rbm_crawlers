@@ -57,6 +57,22 @@ class BaseSpider:
         }
         return headers
 
+    def human_delay(self, min_ms=1000, max_ms=3000):
+        """Pause execution for a random interval to mimic human reading time."""
+        delay = random.uniform(min_ms, max_ms) / 1000.0
+        time.sleep(delay)
+
+    def human_jitter(self, page):
+        """Perform minor mouse movements to mimic human interaction."""
+        try:
+            viewport = page.viewport_size
+            if viewport:
+                x = random.randint(0, viewport['width'])
+                y = random.randint(0, viewport['height'])
+                page.mouse.move(x, y)
+        except:
+            pass
+
     def lookup_qid(self, name: str) -> str:
         """Lookup a Wikidata QID from the master site definitions database."""
         if not os.path.exists(self.master_db_path):
@@ -148,11 +164,27 @@ class BaseSpider:
         """Standard stealth configuration for Playwright."""
         browser = playwright.chromium.launch(
             headless=True, 
-            args=["--disable-blink-features=AutomationControlled"]
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-infobars",
+                "--window-position=0,0",
+                "--ignore-certificate-errors",
+                "--ignore-certificate-errors-spki-list",
+                f"--user-agent={random.choice(self.user_agents)}"
+            ]
         )
+        
+        # Randomized viewport
+        width = random.randint(1280, 1920)
+        height = random.randint(720, 1080)
+        
         context = browser.new_context(
             user_agent=random.choice(self.user_agents),
-            viewport={'width': 1920, 'height': 1080}
+            viewport={'width': width, 'height': height},
+            java_script_enabled=True,
+            ignore_https_errors=True
         )
         return browser, context
 
