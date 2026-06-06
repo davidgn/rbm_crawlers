@@ -1,15 +1,17 @@
 import argparse
 import time
 import re
+from urllib.parse import urljoin, urlparse
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
 from base_spider import BaseSpider
 
 class TikiVnSpider(BaseSpider):
-    def __init__(self, limit_pages=5):
+    def __init__(self, limit_pages=5, limit_items=50):
         super().__init__(platform_name="Tiki.vn", territory="Vietnam")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://tiki.vn"
 
     def run(self):
@@ -42,13 +44,19 @@ class TikiVnSpider(BaseSpider):
                         
                     for link in links:
                         href = link.get_attribute("href")
-                        if href:
-                            if href.startswith("/"):
-                                href = self.base_url + href
-                            if href not in urls and href not in self._seen_urls:
-                                urls.append(href)
+                        product_url = self._product_url(href)
+                        if (
+                            product_url
+                            and product_url not in urls
+                            and product_url not in self._seen_urls
+                        ):
+                            urls.append(product_url)
+                            if len(urls) >= self.limit_items:
+                                break
                     
                     self.logger.info(f"Total unique URLs: {len(urls)}")
+                    if len(urls) >= self.limit_items:
+                        break
                     
                     # Next page
                     next_btn = page.query_selector("a.next, .pagination-item.next a")
@@ -59,7 +67,7 @@ class TikiVnSpider(BaseSpider):
                         break
 
                 self.logger.info(f"Deep crawling {len(urls)} listings.")
-                for url in urls:
+                for url in urls[: self.limit_items]:
                     self._harvest_listing(url, context)
             except Exception as e:
                 self.logger.error(f"Crawl error: {e}")
@@ -67,6 +75,17 @@ class TikiVnSpider(BaseSpider):
                 browser.close()
             
         self.logger.info(f"Finished. Scraped {self.items_scraped} items.")
+
+    def _product_url(self, href):
+        if not href:
+            return None
+        url = urljoin(f"{self.base_url}/", href)
+        parsed = urlparse(url)
+        if parsed.netloc not in {"tiki.vn", "www.tiki.vn"}:
+            return None
+        if not re.search(r"-p\d+\.html$", parsed.path):
+            return None
+        return url
 
     def _harvest_listing(self, url, context):
         detail_page = context.new_page()
@@ -110,6 +129,11 @@ class TikiVnSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=2)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int)
     args = parser.parse_args()
-    spider = TikiVnSpider(limit_pages=args.limit)
+    spider = TikiVnSpider(
+        limit_pages=args.limit_pages or args.limit,
+        limit_items=args.limit_items or 50,
+    )
     spider.run()

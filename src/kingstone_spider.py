@@ -16,6 +16,7 @@ class KingstoneSpider(BaseSpider):
         super().__init__(platform_name="Kingstone.com.tw", territory="Taiwan")
         self.limit_pages = limit_pages
         self.limit_items = limit_items
+        self.items_attempted = 0
         self.base_url = "https://www.kingstone.com.tw"
 
     def run(self):
@@ -31,9 +32,8 @@ class KingstoneSpider(BaseSpider):
                 target_url = "https://www.kingstone.com.tw/newbook/book"
 
                 for current_page in range(1, self.limit_pages + 1):
-                    if self.items_scraped >= self.limit_items:
+                    if self.items_attempted >= self.limit_items:
                         break
-
                     # Kingstone often uses page parameters
                     url = f"{target_url}?page={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
@@ -60,8 +60,9 @@ class KingstoneSpider(BaseSpider):
                         break
 
                     for p_url in product_links:
-                        if self.items_scraped >= self.limit_items:
+                        if self.items_attempted >= self.limit_items:
                             break
+                        self.items_attempted += 1
                         try:
                             self._harvest_item(page, p_url)
                             page.wait_for_timeout(1500)  # Gentle delay

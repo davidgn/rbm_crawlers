@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
@@ -66,10 +67,13 @@ def run_one(spider: str, timeout: int, limit_pages: int, limit_items: int) -> di
         report.update({"platform_name": config.platform_name, "territory": config.territory})
 
     cmd = [sys.executable, rel, "--limit-pages", str(limit_pages), "--limit-items", str(limit_items)]
+    env = os.environ.copy()
+    env["PYTHONUNBUFFERED"] = "1"
     try:
         proc = subprocess.run(
             cmd,
             cwd=ROOT,
+            env=env,
             text=True,
             capture_output=True,
             timeout=timeout,

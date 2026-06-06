@@ -8,11 +8,20 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class ShopeeSeaSpider(BaseSpider):
-    def __init__(self, platform_name: str, territory: str, base_url: str, search_query: str, limit_pages: int = 5):
+    def __init__(
+        self,
+        platform_name: str,
+        territory: str,
+        base_url: str,
+        search_query: str,
+        limit_pages: int = 5,
+        limit_items: int = 10,
+    ):
         super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url
         self.search_query = search_query
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
         self.logger.info(f"Starting {self.platform_name} Enhanced Crawler. Query: {self.search_query}")
@@ -54,9 +63,12 @@ class ShopeeSeaSpider(BaseSpider):
                             # Filter out non-product links
                             if "-i." in href and href not in urls and href not in self._seen_urls:
                                 urls.append(href)
+                                if len(urls) >= self.limit_items:
+                                    break
                     
                     self.logger.info(f"Total unique URLs found: {len(urls)}")
-                    if len(urls) >= 20: break # Good enough for smoke test
+                    if len(urls) >= self.limit_items:
+                        break
                     
                     # Next page
                     next_btn = page.query_selector("button.shopee-icon-button--right")
@@ -67,7 +79,7 @@ class ShopeeSeaSpider(BaseSpider):
                         break
 
                 self.logger.info(f"Deep crawling {len(urls)} listings.")
-                for url in urls[:10]: # Limit for test
+                for url in urls[: self.limit_items]:
                     self._harvest_listing(url, context)
             except Exception as e:
                 self.logger.error(f"Crawl error: {e}")
