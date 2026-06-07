@@ -30,7 +30,16 @@ class JarirSpider(BaseSpider):
                     self.logger.info(f"Fetching index page {current_page}: {url}")
                     
                     try:
-                        page.goto(url, wait_until="networkidle", timeout=60000)
+                        # Chunked Navigation: wait for product grid then stop
+                        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+                        try:
+                            # Wait for at least one product link to appear
+                            page.wait_for_selector("a[href*='.html']", timeout=15000)
+                        except:
+                            pass
+                        # Force stop to prevent ads/heavy trackers from timing out
+                        page.evaluate("window.stop()")
+                        
                         self.human_delay(2000, 4000)
                         self.human_jitter(page)
                     except Exception as e:

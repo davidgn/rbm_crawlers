@@ -29,8 +29,17 @@ class MelomanSpider(BaseSpider):
                     self.logger.info(f"Fetching index page {current_page}: {url}")
                     
                     try:
-                        page.goto(url, wait_until="networkidle", timeout=60000)
-                        page.wait_for_timeout(3000)
+                        # Chunked Navigation for Meloman
+                        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+                        try:
+                            # Wait for product items
+                            page.wait_for_selector(".product-item-link", timeout=15000)
+                        except:
+                            pass
+                        page.evaluate("window.stop()")
+
+                        self.human_delay(2000, 4000)
+                        self.human_jitter(page)
                     except Exception as e:
                         self.logger.error(f"Failed to load {url}: {e}")
                         break
