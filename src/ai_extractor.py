@@ -30,6 +30,18 @@ PLATFORM_SELECTORS = {
         "title": "h1",
         "isbn": "div:contains('ISBN')",
         "price": ".price-net",
+    },
+    "Tiki.vn": {
+        "title": "h1",
+        "isbn": "td:contains('ISBN')",
+        "price": ".product-price__current-price",
+        "author": "a[data-view-id*='author']"
+    },
+    "Gramedia": {
+        "title": ".product-title",
+        "isbn": "p:contains('ISBN')",
+        "price": ".product-price",
+        "author": ".product-author"
     }
 }
 
