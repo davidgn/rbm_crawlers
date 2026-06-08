@@ -1,59 +1,85 @@
-import json
+import argparse
+import time
 import re
-from html_search_spider import HTMLSearchSpider
+from playwright.sync_api import sync_playwright
+from playwright_stealth import Stealth
 from models import BookListing
+from base_spider import BaseSpider
 
-class ThryftSgSpider(HTMLSearchSpider):
-    """
-    Spider for Thryft SG (Singapore).
-    Uses JSON extraction from the web-pixels-manager-setup script tag.
-    """
-    def __init__(self, limit_pages: int = 50):
-        super().__init__(
-            platform_name="Thryft SG",
-            base_url="https://thryft.asia", # Redirected target
-            search_path="search?q={query}",
-            selectors={'container': 'script#web-pixels-manager-setup', 'title': 'unused'},
-            territory="Singapore",
-            limit_pages=limit_pages
-        )
+class ThryftSpider(BaseSpider):
+    def __init__(self, limit_pages=50):
+        super().__init__(platform_name="Thryft", territory="Singapore")
+        self.limit_pages = limit_pages
+        self.base_url = "https://thryft.sg/collections/all-books"
 
-    def _parse_item(self, item_soup):
-        if not item_soup.string: return
+    def run(self):
+        self.logger.info(f"Starting Thryft Singapore Harvest (Cache-First). Limit: {self.limit_pages} pages.")
+        
+        with sync_playwright() as p:
+            browser, context = self.get_playwright_stealth_config(p)
+            page = context.new_page()
+            Stealth().apply_stealth_sync(page)
+            
+            try:
+                for current_page in range(1, self.limit_pages + 1):
+                    url = f"{self.base_url}?page={current_page}"
+                    self.logger.info(f"Fetching index page {current_page}: {url}")
+                    
+                    try:
+                        page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                        self.human_delay(2000, 4000)
+                        self.human_jitter(page)
+                    except Exception as e:
+                        self.logger.error(f"Failed to load {url}: {e}")
+                        break
+                    
+                    # Discover product links: /products/[slug]
+                    links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
+                    product_links = list(set([l for l in links if "/products/" in l]))
+                    
+                    if not product_links:
+                        self.logger.warning(f"No product links found on page {current_page}.")
+                        break
+                        
+                    for p_url in product_links[:10]:
+                        try:
+                            self._harvest_item(context, p_url)
+                            self.human_delay(1500, 3000)
+                        except Exception as e:
+                            self.logger.error(f"Error harvesting {p_url}: {e}")
+                            
+            except Exception as e:
+                self.logger.error(f"Extraction failed: {e}")
+            finally:
+                browser.close()
+
+    def _harvest_item(self, context, url):
+        item_id = url.split("/")[-1] if "/" in url else str(time.time())
+        meta_path = self.cache_dir / f"{item_id}.meta.json"
+        if meta_path.exists(): return
+
+        p_page = context.new_page()
         try:
-            match = re.search(r'\"events\"\s*:\s*\"(.*?)\"\s*,\s*\"publish\"', item_soup.string)
-            if not match: match = re.search(r'events\"\s*:\s*\"(.*?)\"\s*,\s*\"publish\"', item_soup.string)
-            if match:
-                events_escaped = match.group(1)
-                events_json_str = events_escaped.replace('\\"', '"').replace('\\\\', '\\')
-                events_data = json.loads(events_json_str)
-                for event in events_data:
-                    if event[0] in ['search_submitted', 'page_viewed', 'search_results_viewed']:
-                         data = event[1]
-                         products = data.get('searchResult', {}).get('productVariants', [])
-                         if not products: products = data.get('products', [])
-                         for p in products:
-                             prod = p.get('product', p)
-                             title = prod.get('title') or prod.get('name')
-                             if not title: continue
-                             author = prod.get('type') or prod.get('vendor')
-                             price_info = p.get('price', {})
-                             price = price_info.get('amount')
-                             currency = price_info.get('currencyCode')
-                             url_path = prod.get('url', '')
-                             listing_url = self.base_url + url_path if url_path else ""
-                             listing = BookListing(
-                                 territory=self.territory,
-                                 platform=self.platform_name,
-                                 title=title,
-                                 author=author,
-                                 price=f"{currency} {price}" if price and currency else f"{price}",
-                                 listing_url=listing_url,
-                             )
-                             self.save_item(listing)
-        except Exception as e:
-            self.logger.error(f"Failed to parse Thryft SG JSON: {e}")
+            self.logger.info(f"Harvesting item: {url}")
+            p_page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            self.human_delay(2000, 4000)
+            html_content = p_page.content()
+            self.cache_html(item_id, html_content, url=url)
+            
+            item = BookListing(
+                territory=self.territory,
+                platform=self.platform_name,
+                title="Cached Item",
+                listing_url=url,
+                condition="Used (Thryft Singapore)"
+            )
+            self.save_item(item)
+        finally:
+            p_page.close()
 
 if __name__ == "__main__":
-    spider = ThryftSgSpider(limit_pages=1)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=10)
+    args = parser.parse_args()
+    spider = ThryftSpider(limit_pages=args.limit)
     spider.run()

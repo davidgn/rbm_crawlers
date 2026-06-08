@@ -42,6 +42,12 @@ PLATFORM_SELECTORS = {
         "isbn": "p:contains('ISBN')",
         "price": ".product-price",
         "author": ".product-author"
+    },
+    "Kitabain": {
+        "title": "h1",
+        "isbn": "span.bookdhead:contains('ISBN') + span",
+        "author": "span.bookdhead:contains('By:') + span",
+        "price": ".bookdetail-price",
     }
 }
 

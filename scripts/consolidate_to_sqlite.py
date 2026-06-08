@@ -24,6 +24,7 @@ def consolidate_to_sqlite():
         title TEXT,
         author TEXT,
         price TEXT,
+        price_usd REAL,
         platform TEXT,
         territory TEXT,
         listing_url TEXT UNIQUE,
