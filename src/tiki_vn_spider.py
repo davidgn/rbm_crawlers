@@ -1,16 +1,22 @@
 import argparse
 import time
 import re
+from urllib.parse import urljoin, urlparse
+
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
 from base_spider import BaseSpider
 
+
 class TikiSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=50):
         super().__init__(platform_name="Tiki.vn", territory="Vietnam")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.items_attempted = 0
         # Tiki Books Category
+        self.site_origin = "https://tiki.vn"
         self.base_url = "https://tiki.vn/nha-sach-tiki/c8322"
 
     def run(self):
@@ -23,6 +29,9 @@ class TikiSpider(BaseSpider):
             
             try:
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.items_attempted >= self.limit_items:
+                        break
+
                     # Tiki pagination: ?page=N
                     url = f"{self.base_url}?page={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
@@ -42,11 +51,11 @@ class TikiSpider(BaseSpider):
                     
                     # Discover product links: -p[id].html
                     links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
-                    product_links = list(set([
-                        l for l in links 
-                        if "-p" in l and ".html" in l 
-                        and not any(x in l for x in ["/customer/", "/checkout/", "/wishlist/", "/account/"])
-                    ]))
+                    product_links = list({
+                        product_url
+                        for link in links
+                        if (product_url := self._product_url(link))
+                    })
                     
                     if not product_links:
                         self.logger.warning(f"No product links found on page {current_page}.")
@@ -54,12 +63,19 @@ class TikiSpider(BaseSpider):
                         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                         self.human_delay(3000, 5000)
                         links = page.evaluate("() => Array.from(document.querySelectorAll('a')).map(a => a.href)")
-                        product_links = list(set([l for l in links if "-p" in l and ".html" in l]))
+                        product_links = list({
+                            product_url
+                            for link in links
+                            if (product_url := self._product_url(link))
+                        })
 
                     if not product_links:
                         break
                         
-                    for p_url in product_links[:15]: # Batch per page
+                    for p_url in product_links:
+                        if self.items_attempted >= self.limit_items:
+                            break
+                        self.items_attempted += 1
                         try:
                             self._harvest_item(context, p_url)
                             self.human_delay(1500, 3000)
@@ -70,6 +86,17 @@ class TikiSpider(BaseSpider):
                 self.logger.error(f"Extraction failed: {e}")
             finally:
                 browser.close()
+
+    def _product_url(self, href):
+        if not href:
+            return None
+        url = urljoin(f"{self.site_origin}/", href)
+        parsed = urlparse(url)
+        if parsed.netloc not in {"tiki.vn", "www.tiki.vn"}:
+            return None
+        if not re.search(r"-p\d+\.html$", parsed.path):
+            return None
+        return url
 
     def _harvest_item(self, context, url):
         # Extract ID from slug-p12345.html
@@ -103,9 +130,18 @@ class TikiSpider(BaseSpider):
         finally:
             p_page.close()
 
+
+TikiVnSpider = TikiSpider
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int)
+    parser.add_argument("--limit-items", type=int)
     args = parser.parse_args()
-    spider = TikiSpider(limit_pages=args.limit)
+    spider = TikiSpider(
+        limit_pages=args.limit_pages or args.limit,
+        limit_items=args.limit_items or 50,
+    )
     spider.run()

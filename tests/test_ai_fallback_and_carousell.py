@@ -65,7 +65,24 @@ def test_valid_ai_json_is_returned(monkeypatch):
     assert ai_extractor.deep_extract("<html></html>") == {
         "title": "Parsed",
         "isbn": "9780306406157",
+        "extraction_method": "gemini_ai",
     }
+
+
+def test_invalid_platform_selector_preserves_general_fallback(monkeypatch):
+    monkeypatch.setitem(
+        ai_extractor.PLATFORM_SELECTORS,
+        "Broken Store",
+        {"title": "h1["},
+    )
+
+    result = ai_extractor.local_fallback_extract(
+        "<html><head><title>Fallback Book | Store</title></head></html>",
+        platform="Broken Store",
+    )
+
+    assert result["title"] == "Fallback Book"
+    assert result["extraction_method"] == "local_bs4_fallback"
 
 
 def test_carousell_harvest_caches_source_url_and_closes_page(monkeypatch):

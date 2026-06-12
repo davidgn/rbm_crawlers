@@ -4,6 +4,7 @@ import logging
 import re
 
 from bs4 import BeautifulSoup
+from soupsieve.util import SelectorSyntaxError
 
 logger = logging.getLogger("AIExtractor")
 
@@ -68,8 +69,8 @@ def local_fallback_extract(html_content, platform=None):
                     el = soup.select_one(selector)
                     if el:
                         result[key] = el.get_text(strip=True)
-                except:
-                    pass
+                except SelectorSyntaxError:
+                    logger.warning("Ignoring invalid %s selector for %s", key, platform)
 
         # 2. General Fallback for missing fields
         if not result.get("title"):
