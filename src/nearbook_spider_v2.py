@@ -1,7 +1,5 @@
 import httpx
 import time
-import json
-import os
 import argparse
 from models import BookListing
 from base_spider import BaseSpider

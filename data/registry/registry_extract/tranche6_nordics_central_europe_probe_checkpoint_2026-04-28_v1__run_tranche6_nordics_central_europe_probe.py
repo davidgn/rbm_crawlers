@@ -4,10 +4,12 @@ Network-enabled Tranche 6 public-page probe runner.
 This script intentionally stages public pages only. It does not promote rows to canonical bookstore entities.
 """
 from __future__ import annotations
-import csv, hashlib, json, re, time
+import csv
+import hashlib
+import json
+import time
 from pathlib import Path
 from urllib.request import Request, urlopen
-from urllib.error import URLError, HTTPError
 
 OUT = Path("tranche6_network_run_output")
 OUT.mkdir(exist_ok=True)

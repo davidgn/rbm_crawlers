@@ -3,7 +3,6 @@ import json
 import logging
 from pathlib import Path
 from ai_extractor import deep_extract, local_fallback_extract
-from models import BookListing
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 logger = logging.getLogger("BatchProcessor")
@@ -32,7 +31,8 @@ class BatchProcessor:
                 for line in f:
                     try:
                         processed_urls.add(json.loads(line).get("listing_url"))
-                    except: continue
+                    except Exception:
+                        continue
 
         count = 0
         for html_file in files:

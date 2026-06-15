@@ -15,7 +15,13 @@ Notes:
   - If the site changes its HTML, preserve raw_html and update parse patterns.
 """
 from __future__ import annotations
-import csv, hashlib, html, os, random, re, sys, time
+import csv
+import hashlib
+import html
+import random
+import re
+import sys
+import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from urllib.parse import urljoin

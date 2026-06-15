@@ -1,9 +1,5 @@
-import argparse
 import httpx
 from bs4 import BeautifulSoup
-import time
-import re
-from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -16,7 +12,7 @@ class DasaSpider(BaseSpider):
         self.client = httpx.Client(timeout=30.0, follow_redirects=True)
 
     def run(self):
-        self.logger.info(f"Starting Dasa Books Thailand Harvest (Static).")
+        self.logger.info("Starting Dasa Books Thailand Harvest (Static).")
         
         # Dasa often has a huge single-page list or simple pagination.
         # If it's single page, we just harvest the whole thing.

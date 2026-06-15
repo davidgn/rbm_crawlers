@@ -1,5 +1,3 @@
-import time
-import json
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 
@@ -20,7 +18,7 @@ def run():
                     print(f"API Response [{response.status}]: {response.url}")
                     body = response.text()
                     print(f"Body snippet: {body[:200]}")
-                except Exception as e:
+                except Exception:
                     pass
 
         page.on("response", handle_response)

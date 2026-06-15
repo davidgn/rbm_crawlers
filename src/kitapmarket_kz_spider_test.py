@@ -24,7 +24,7 @@ class KitapmarketKzSpider(BaseSpider):
             try:
                 # Browse Catalog
                 url = "https://kitapmarket.kz/Catalog"
-                self.logger.info(f"Loading Kitapmarket.kz Catalog...")
+                self.logger.info("Loading Kitapmarket.kz Catalog...")
                 page.goto(url, timeout=60000, wait_until="domcontentloaded")
                 page.wait_for_timeout(5000)
                 

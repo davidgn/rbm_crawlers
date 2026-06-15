@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 
 repo_root = Path("/media/davidgn/data8/active_repos/unipress-parser-crawler-family")
@@ -85,7 +84,7 @@ with open(monolith_path, 'w') as f:
 with open(backlog_path, 'w') as f:
     json.dump({"backlog": remaining_backlog}, f, indent=2, ensure_ascii=False)
 
-print(f"Backlog Repair Complete.")
+print("Backlog Repair Complete.")
 print(f"Repaired: {len(repaired)}")
 print(f"New Giants Added: {len(NEW_GIANTS)}")
 print(f"Remaining Backlog: {len(remaining_backlog)}")

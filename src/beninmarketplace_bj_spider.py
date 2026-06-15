@@ -1,4 +1,3 @@
-import httpx
 from bs4 import BeautifulSoup
 from html_search_spider import HTMLSearchSpider
 

@@ -13,8 +13,6 @@ Firebase project: book-bookmamu (Firestore primary store; API is a REST bridge).
 """
 
 import argparse
-import os
-import sys
 import httpx
 import logging
 from base_spider import BaseSpider

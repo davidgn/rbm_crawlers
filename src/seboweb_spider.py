@@ -1,5 +1,4 @@
 import httpx
-import time
 from models import BookListing
 from base_spider import BaseSpider
 

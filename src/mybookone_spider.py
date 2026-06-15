@@ -4,7 +4,7 @@ import time
 import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
-from isbn_utils import normalize_isbn, isbn_from_url
+from isbn_utils import isbn_from_url
 from models import BookListing
 from base_spider import BaseSpider
 

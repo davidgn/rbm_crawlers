@@ -4,13 +4,10 @@ import os
 import random
 import time
 import sqlite3
-import re
 from datetime import datetime, timezone
 from pathlib import Path
 from models import BookListing
-from ai_extractor import deep_extract
 from signal_scavenger import extract_signals
-from playwright.sync_api import sync_playwright
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
 
@@ -70,7 +67,7 @@ class BaseSpider:
                 x = random.randint(0, viewport['width'])
                 y = random.randint(0, viewport['height'])
                 page.mouse.move(x, y)
-        except:
+        except Exception:
             pass
 
     def lookup_qid(self, name: str) -> str:
@@ -97,11 +94,14 @@ class BaseSpider:
         with open(self.output_file, encoding="utf-8") as fh:
             for line in fh:
                 line = line.strip()
-                if not line: continue
+                if not line:
+                    continue
                 try:
                     url = json.loads(line).get("listing_url") or ""
-                    if url: seen.add(url)
-                except Exception: pass
+                    if url:
+                        seen.add(url)
+                except Exception:
+                    pass
         if seen:
             self.logger.info("Restart-safe: pre-loaded %d existing URLs from %s", len(seen), self.output_file.name)
         return seen
@@ -157,7 +157,8 @@ class BaseSpider:
         with open(self.output_file, 'a', encoding='utf-8') as f:
             f.write(json.dumps(item.to_dict()) + '\n')
         
-        if url: self._seen_urls.add(url)
+        if url:
+            self._seen_urls.add(url)
         self.items_scraped += 1
 
     def get_playwright_stealth_config(self, playwright):

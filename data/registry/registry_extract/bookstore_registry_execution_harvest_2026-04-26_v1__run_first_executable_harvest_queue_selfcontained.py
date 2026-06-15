@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-import csv, json, shlex, subprocess, sys
+import csv
+import json
+import shlex
+import subprocess
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 

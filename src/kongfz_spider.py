@@ -22,7 +22,7 @@ class KongfzSpider(PlaywrightSearchSpider):
         )
 
     def run(self):
-        self.logger.info(f"Starting Kongfz Enhanced Playwright Crawler.")
+        self.logger.info("Starting Kongfz Enhanced Playwright Crawler.")
         super().run(search_term="哈利波特")
 
 if __name__ == "__main__":

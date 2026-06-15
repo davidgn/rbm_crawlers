@@ -1,7 +1,6 @@
 import json
 import httpx
 import time
-import os
 import csv
 
 input_file = "/mnt/data7/home/davidgn/active_repos/rbm_crawlers/src/data/nearbook_listings.jsonl"
@@ -19,7 +18,7 @@ def get_isbn(title, author):
             doc = data["docs"][0]
             if "isbn" in doc:
                 return doc["isbn"][0]
-    except Exception as e:
+    except Exception:
         return None
     return None
 

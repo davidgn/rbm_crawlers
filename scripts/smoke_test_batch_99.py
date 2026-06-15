@@ -33,7 +33,7 @@ for t in targets:
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
         resp = requests.get(t['url'], headers=headers, timeout=15, verify=False, allow_redirects=True)
         if resp.status_code == 200:
-            print(f"  [SUCCESS] URL resolves (200 OK)")
+            print("  [SUCCESS] URL resolves (200 OK)")
             if re.search(t['pattern'], resp.url):
                 print(f"  [SUCCESS] Pattern '{t['pattern']}' matches URL.")
             else:

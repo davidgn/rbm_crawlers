@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-import csv, hashlib, json, re, sys, time
+import csv
+import hashlib
+import json
+import time
 from pathlib import Path
 from urllib.request import Request, urlopen
 

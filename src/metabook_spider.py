@@ -17,7 +17,6 @@ Requires: pip install nodriver
 """
 import asyncio
 import re
-import time
 from bs4 import BeautifulSoup
 import nodriver
 from models import BookListing

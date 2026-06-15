@@ -1,7 +1,4 @@
 import argparse
-import time
-import json
-import os
 import re
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth

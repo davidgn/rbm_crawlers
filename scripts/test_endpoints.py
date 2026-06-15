@@ -22,7 +22,7 @@ for root, dirs, files in os.walk(lib_dir):
                         if any(x in match for x in ['w3.org', 'purl.org', 'localhost', 'example.com', 'xmlns.com']):
                             continue
                         urls.add(match)
-            except Exception as e:
+            except Exception:
                 pass
 
 print(f"Found {len(urls)} unique URLs to test.")

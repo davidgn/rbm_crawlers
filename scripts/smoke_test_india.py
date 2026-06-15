@@ -1,5 +1,4 @@
 import subprocess
-import os
 from pathlib import Path
 
 src_dir = Path("/home/davidgn/active_repos/rbm_crawlers/src")

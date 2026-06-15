@@ -17,12 +17,10 @@ from __future__ import annotations
 import csv
 import hashlib
 import html
-import os
 import re
 import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
-from typing import Iterable
 from urllib.parse import quote
 from urllib.request import Request, urlopen
 

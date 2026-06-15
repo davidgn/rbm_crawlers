@@ -2,7 +2,6 @@ import argparse
 import httpx
 from bs4 import BeautifulSoup
 import time
-import re
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider

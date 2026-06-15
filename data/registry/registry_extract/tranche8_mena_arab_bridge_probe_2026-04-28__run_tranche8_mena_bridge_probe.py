@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import csv, re, requests
+import csv
+import requests
 from bs4 import BeautifulSoup
 
 SOURCES = [

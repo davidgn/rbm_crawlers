@@ -7,7 +7,6 @@ import logging
 import re
 import random
 import signal
-from datetime import datetime
 from models import BookListing
 
 # Configure Logging

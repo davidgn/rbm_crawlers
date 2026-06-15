@@ -1,5 +1,4 @@
 import json
-import re
 from html_search_spider import HTMLSearchSpider
 from models import BookListing
 

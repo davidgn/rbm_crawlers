@@ -1,6 +1,5 @@
 import httpx
 import time
-import json
 from models import BookListing
 from base_spider import BaseSpider
 

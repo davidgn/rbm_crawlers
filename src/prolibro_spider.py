@@ -14,7 +14,6 @@ import argparse
 import re
 import time
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
 import httpx
 from models import BookListing
 from base_spider import BaseSpider

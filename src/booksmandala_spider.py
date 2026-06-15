@@ -1,5 +1,4 @@
 import argparse
-import time
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
@@ -11,7 +10,7 @@ class BooksMandalaSpider(BaseSpider):
         self.limit_pages = limit_pages
 
     def run(self):
-        self.logger.info(f"Starting Books Mandala Used Books Crawler.")
+        self.logger.info("Starting Books Mandala Used Books Crawler.")
         
         with sync_playwright() as p:
             browser, context = self.get_playwright_stealth_config(p)

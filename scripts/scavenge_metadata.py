@@ -1,6 +1,5 @@
 import sqlite3
 import re
-import os
 from pathlib import Path
 from bs4 import BeautifulSoup
 

@@ -5,7 +5,12 @@ Tranche 2 bookstore-registry public-page harvest runner — network-enabled runt
 Generated 2026-04-26. This script fetches only public pages and writes raw HTML plus
 parsed staging CSVs. It is intentionally conservative: rows are staging rows until QA.
 """
-import argparse, csv, hashlib, json, re, time
+import argparse
+import csv
+import hashlib
+import json
+import re
+import time
 from pathlib import Path
 from urllib.parse import urljoin
 

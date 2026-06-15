@@ -1,8 +1,4 @@
 import httpx
-from bs4 import BeautifulSoup
-import time
-from urllib.parse import urljoin
-from models import BookListing
 from base_spider import BaseSpider
 
 class BookLalSpider(BaseSpider):

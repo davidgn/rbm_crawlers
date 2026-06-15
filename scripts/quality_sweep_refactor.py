@@ -1,5 +1,4 @@
 import json
-import os
 from pathlib import Path
 
 repo_root = Path("/home/davidgn/active_repos/unipress-parser-crawler-family")
@@ -59,6 +58,6 @@ with open(monolith_path, 'w') as f:
 with open(backlog_path, 'w') as f:
     json.dump({"backlog": backlog_profiles}, f, indent=2, ensure_ascii=False)
 
-print(f"Quality Sweep Complete.")
+print("Quality Sweep Complete.")
 print(f"Active Profiles: {len(active_profiles)}")
 print(f"Backlog Profiles: {len(backlog_profiles)}")

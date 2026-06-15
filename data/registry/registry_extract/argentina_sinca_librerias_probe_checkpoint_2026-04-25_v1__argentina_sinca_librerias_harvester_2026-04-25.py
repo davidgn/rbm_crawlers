@@ -7,7 +7,10 @@ Run in a networked Python runtime:
 
 Outputs raw CSV, normalized CSV, province counts, update-year distribution, QA summary, and SHA256 manifest.
 """
-import argparse, csv, hashlib, json, re
+import argparse
+import csv
+import hashlib
+import json
 from pathlib import Path
 from datetime import datetime, timezone
 from urllib.request import Request, urlopen

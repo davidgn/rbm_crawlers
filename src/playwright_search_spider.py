@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
-from isbn_utils import normalize_isbn, isbn_from_url
+from isbn_utils import isbn_from_url
 from models import BookListing
 from base_spider import BaseSpider
 

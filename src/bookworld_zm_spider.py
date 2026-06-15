@@ -1,5 +1,4 @@
 import json
-import re
 from playwright_search_spider import PlaywrightSearchSpider
 from models import BookListing
 

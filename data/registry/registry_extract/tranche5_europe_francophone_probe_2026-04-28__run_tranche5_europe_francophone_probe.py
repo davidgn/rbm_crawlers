@@ -3,7 +3,10 @@
 Network-enabled runtime required. Saves raw files and a hash manifest; does not promote rows automatically.
 """
 from __future__ import annotations
-import csv, hashlib, json, time
+import csv
+import hashlib
+import json
+import time
 from pathlib import Path
 from urllib.request import Request, urlopen
 OUT=Path('tranche5_europe_francophone_network_run'); RAW=OUT/'raw'

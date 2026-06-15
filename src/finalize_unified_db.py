@@ -1,5 +1,4 @@
 import json
-import glob
 import sqlite3
 from pathlib import Path
 
@@ -34,7 +33,7 @@ def main():
                         VALUES (?, ?, ?, ?, ?, ?, ?)
                     """, (source, title, author, year, identifier, pages, category))
                     total_added += 1
-                except Exception as e:
+                except Exception:
                     pass
                     
     conn.commit()

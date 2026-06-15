@@ -15,7 +15,12 @@ obfuscated emails in source form; do not deobfuscate without a separate audit.
 """
 from __future__ import annotations
 
-import argparse, csv, hashlib, json, re, time
+import argparse
+import csv
+import hashlib
+import json
+import re
+import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import List, Dict, Optional

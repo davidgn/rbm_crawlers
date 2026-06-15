@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-import csv, time, hashlib
+import csv
+import time
+import hashlib
 from pathlib import Path
 import requests
 OUT = Path('tranche7_harvest_run_output')

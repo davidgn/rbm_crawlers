@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-import argparse, csv, hashlib, json, re, time
+import argparse
+import csv
+import hashlib
+import json
+import re
+import time
 from pathlib import Path
-from urllib.parse import urlencode
 import requests
 from bs4 import BeautifulSoup
 HEADERS={"User-Agent":"GSBPDb-bookstore-registry-research/0.1 (+contact researcher)"}

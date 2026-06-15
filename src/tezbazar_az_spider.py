@@ -1,6 +1,5 @@
 import argparse
 import time
-import re
 import httpx
 from bs4 import BeautifulSoup
 from models import BookListing

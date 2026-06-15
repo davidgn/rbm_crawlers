@@ -2,7 +2,6 @@ import json
 import sqlite3
 import os
 from pathlib import Path
-from datetime import datetime
 
 def consolidate_to_sqlite():
     data_dir = Path("/home/davidgn/active_repos/rbm_crawlers/src/data")
@@ -61,7 +60,7 @@ def consolidate_to_sqlite():
                     ))
                     if cursor.rowcount > 0:
                         total_rows += 1
-                except Exception as e:
+                except Exception:
                     continue
                     
     conn.commit()

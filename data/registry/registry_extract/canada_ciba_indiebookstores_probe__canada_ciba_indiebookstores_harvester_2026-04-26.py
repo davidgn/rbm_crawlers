@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-import csv, hashlib, json, re, time
+import csv
+import hashlib
+import json
+import re
+import time
 from pathlib import Path
 from urllib.parse import urljoin
 import requests

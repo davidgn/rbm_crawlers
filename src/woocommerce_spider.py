@@ -1,7 +1,5 @@
 import httpx
-import re
 import time
-from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
 
@@ -64,7 +62,7 @@ class WooCommerceAPISpider(BaseSpider):
                 for product in data:
                     try:
                         self._parse_product(product)
-                    except Exception as e:
+                    except Exception:
                         # self.logger.error(f"Error parsing product: {e}")
                         pass
                 

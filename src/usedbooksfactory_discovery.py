@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import json
 import os
 import logging
-from datetime import datetime
 from models import BookListing
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] Discovery: %(message)s')

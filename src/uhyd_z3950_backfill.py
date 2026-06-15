@@ -132,7 +132,7 @@ def z3950_query(title: str, author: str = "") -> str:
             if attempt == 0:
                 time.sleep(3)
                 continue
-            print(f"  yaz-client timeout (skipping)")
+            print("  yaz-client timeout (skipping)")
             return ""
         except Exception as e:
             print(f"  yaz-client error: {e}")

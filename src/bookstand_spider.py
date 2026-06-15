@@ -1,5 +1,4 @@
 import argparse
-import time
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
@@ -12,7 +11,7 @@ class BookStandSpider(BaseSpider):
         self.base_url = "https://bookstand.app"
 
     def run(self):
-        self.logger.info(f"Starting BookStand Enhanced Crawler.")
+        self.logger.info("Starting BookStand Enhanced Crawler.")
         
         with sync_playwright() as p:
             browser, context = self.get_playwright_stealth_config(p)

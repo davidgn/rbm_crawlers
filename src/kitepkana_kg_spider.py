@@ -1,6 +1,5 @@
 import httpx
 import time
-import re
 from bs4 import BeautifulSoup
 from models import BookListing
 from base_spider import BaseSpider

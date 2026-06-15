@@ -1,7 +1,6 @@
 import argparse
 import json
 import re
-import time
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
@@ -124,7 +123,6 @@ class TikiSpider(BaseSpider):
 
 def _backfill_cached():
     import json as _json
-    from pathlib import Path
 
     spider = TikiSpider.__new__(TikiSpider)
     BaseSpider.__init__(spider, "Tiki.vn", "Vietnam")
