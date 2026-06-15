@@ -1,0 +1,7 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.14
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^(src/(base_spider|models|isbn_utils|batch_processor|ai_extractor|carousell_ph_spider|kingstone_spider)\.py|tests/|scripts/ci_offline_smoke\.py)

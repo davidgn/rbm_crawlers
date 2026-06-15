@@ -26,6 +26,10 @@ jobs:
       - name: Lint maintained crawler and test surface
         run: |
           ruff check \
+            src/base_spider.py \
+            src/models.py \
+            src/isbn_utils.py \
+            src/batch_processor.py \
             src/ai_extractor.py \
             src/carousell_ph_spider.py \
             src/kingstone_spider.py \
@@ -34,10 +38,25 @@ jobs:
       - name: Compile maintained crawler and test surface
         run: |
           python -m py_compile \
+            src/base_spider.py \
+            src/models.py \
+            src/isbn_utils.py \
+            src/batch_processor.py \
             src/ai_extractor.py \
             src/carousell_ph_spider.py \
             src/kingstone_spider.py \
             scripts/ci_offline_smoke.py
+      - name: Type check (advisory)
+        run: |
+          mypy \
+            src/base_spider.py \
+            src/models.py \
+            src/isbn_utils.py \
+            src/batch_processor.py \
+            src/ai_extractor.py \
+            src/carousell_ph_spider.py \
+            src/kingstone_spider.py \
+            --ignore-missing-imports || true
       - name: Run tests
         run: pytest -q tests
       - name: Run offline smoke
