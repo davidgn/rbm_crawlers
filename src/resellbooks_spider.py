@@ -1,27 +1,14 @@
-import httpx
-from base_spider import BaseSpider
+from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
 
-class ReSellBooksSpider(BaseSpider):
-    def __init__(self, limit_pages=10):
-        super().__init__(platform_name="ReSellBooks", territory="India")
-        self.base_url = "https://www.resellbooks.com"
-        self.limit_pages = limit_pages
-        self.client = httpx.Client(timeout=30.0, follow_redirects=True)
-
-    def run(self):
-        self.logger.info(f"Starting ReSellBooks crawler. Limit: {self.limit_pages} pages.")
-        
-        # TODO: Implement specific crawling logic (e.g., sitemap parsing or category scraping)
-        # For now, this is a placeholder structure
-        url = f"{self.base_url}/"
-        try:
-            response = self.client.get(url)
-            self.logger.info(f"Successfully connected to {url}, status: {response.status_code}")
-        except Exception as e:
-            self.logger.error(f"Failed to fetch {url}: {e}")
-
-        self.logger.info(f"Finished ReSellBooks. Scraped {self.items_scraped} items.")
+CONFIG = MarketplaceConfig(
+    platform_name="ResellBooks",
+    territory="India",
+    base_url="https://rebooks.in",
+    browse_paths=("/",),
+    detail_signals=(), # No direct web listings; site points to Instagram/Telegram
+    social_profile=True,
+    headers={"Accept-Language": "en-IN,en;q=0.9"},
+)
 
 if __name__ == "__main__":
-    spider = ReSellBooksSpider(limit_pages=3)
-    spider.run()
+    run_configured_spider(CONFIG, "ResellBooks (ReBooks.in) India social marketplace spider")

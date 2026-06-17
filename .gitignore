@@ -16,3 +16,5 @@ research/snapshots/
 *.apk
 *.xapk
 .env*
+src/data/*.jsonl
+src/data/*.csv

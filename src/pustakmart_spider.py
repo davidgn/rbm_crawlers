@@ -1,27 +1,13 @@
-import httpx
-from base_spider import BaseSpider
+from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
 
-class PustakMartSpider(BaseSpider):
-    def __init__(self, limit_pages=10):
-        super().__init__(platform_name="PustakMart", territory="India")
-        self.base_url = "https://www.pustakmart.com"
-        self.limit_pages = limit_pages
-        self.client = httpx.Client(timeout=30.0, follow_redirects=True)
-
-    def run(self):
-        self.logger.info(f"Starting PustakMart crawler. Limit: {self.limit_pages} pages.")
-        
-        # TODO: Implement specific crawling logic (e.g., sitemap parsing or category scraping)
-        # For now, this is a placeholder structure
-        url = f"{self.base_url}/"
-        try:
-            response = self.client.get(url)
-            self.logger.info(f"Successfully connected to {url}, status: {response.status_code}")
-        except Exception as e:
-            self.logger.error(f"Failed to fetch {url}: {e}")
-
-        self.logger.info(f"Finished PustakMart. Scraped {self.items_scraped} items.")
+CONFIG = MarketplaceConfig(
+    platform_name="PustakMart",
+    territory="India",
+    base_url="https://www.pustakmart.com",
+    browse_paths=("/",),
+    detail_signals=("/product/", "/book/"),
+    headers={"Accept-Language": "en-IN,en;q=0.9"},
+)
 
 if __name__ == "__main__":
-    spider = PustakMartSpider(limit_pages=3)
-    spider.run()
+    run_configured_spider(CONFIG, "PustakMart India buy/sell platform spider")
