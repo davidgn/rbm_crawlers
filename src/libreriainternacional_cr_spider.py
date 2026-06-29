@@ -1,25 +1,18 @@
 from html_search_spider import HTMLSearchSpider
 
-class LibreriainternacionalCrSpider(HTMLSearchSpider):
-    """
-    Spider for Librería Internacional (Costa Rica).
-    The largest and most modern bookstore chain in Costa Rica.
-    """
-    def __init__(self, limit_pages: int = 50):
+class LibreriaInternacionalCrSpider(HTMLSearchSpider):
+    """Native spider for Librería Internacional (Costa Rica)."""
+    def __init__(self, limit_pages=10, **kwargs):
         super().__init__(
             platform_name="Librería Internacional",
-            base_url="https://www.libreriainternacional.com",
-            search_path="catalogsearch/result/?q={query}&p={page}",
-            selectors={
-                'container': '.item.product.product-item', 
-                'title': '.product-item-link',
-                'link': '.product-item-link',
-                'price': '.price-wrapper',
-            },
+            base_url="https://www.libreriainternacional.com/catalogsearch/result/",
+            search_path="?q={query}",
+            selectors={'container': '.product-item', 'title': '.product-item-link', 'price': '.price'},
             territory="Costa Rica",
-            limit_pages=limit_pages
+            limit_pages=limit_pages,
+            **kwargs
         )
 
 if __name__ == "__main__":
-    spider = LibreriainternacionalCrSpider(limit_pages=1)
+    spider = LibreriaInternacionalCrSpider()
     spider.run()
