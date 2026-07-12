@@ -1,18 +1,20 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="BookCycle",
-    territory="Bangladesh",
-    base_url="https://bookcyclebd.netlify.app",
-    browse_paths=("/", "/browse", "/books", "/search?q=book"),
-    detail_signals=("/book/",),
-    rendered=True,
-    render_wait_ms=7000,
-    headers={"Accept-Language": "en-BD,en;q=0.9,bn;q=0.8"},
-    link_fallback_on_detail_failure=True,
-)
-
+class BookCycleSpider(HTMLSearchSpider):
+    def __init__(self, limit_pages=5, limit_items=None, **kwargs):
+        super().__init__(
+            platform_name="BookCycle",
+            base_url="https://bookcycle.netlify.app",
+            search_path="?q={query}",
+            territory="Bangladesh",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            price_currency="BDT",
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "BookCycle Bangladesh used-books marketplace spider")
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    spider = BookCycleSpider(limit_pages=1, limit_items=5)
+    spider.run()
