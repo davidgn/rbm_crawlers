@@ -1,10 +1,10 @@
 from html_search_spider import HTMLSearchSpider
 
-class SecondHandBooksLkSpider(HTMLSearchSpider):
+class BooxwormLkSpider(HTMLSearchSpider):
     def __init__(self, limit_pages=5, limit_items=None, **kwargs):
         super().__init__(
-            platform_name="2ndhandbooks.lk",
-            base_url="https://2ndhandbooks.lk",
+            platform_name="Booxworm.lk",
+            base_url="https://booxworm.lk",
             search_path="?s={query}",
             territory="Sri Lanka",
             limit_pages=limit_pages,
@@ -16,5 +16,5 @@ class SecondHandBooksLkSpider(HTMLSearchSpider):
 if __name__ == "__main__":
     import logging
     logging.basicConfig(level=logging.INFO)
-    spider = SecondHandBooksLkSpider(limit_pages=1, limit_items=5)
+    spider = BooxwormLkSpider(limit_pages=1, limit_items=5)
     spider.run()

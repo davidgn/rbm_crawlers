@@ -1,20 +1,20 @@
 from html_search_spider import HTMLSearchSpider
 
-class SecondHandBooksLkSpider(HTMLSearchSpider):
+class MyBookBankPkSpider(HTMLSearchSpider):
     def __init__(self, limit_pages=5, limit_items=None, **kwargs):
         super().__init__(
-            platform_name="2ndhandbooks.lk",
-            base_url="https://2ndhandbooks.lk",
+            platform_name="My Book Bank",
+            base_url="https://mybookbank.com",
             search_path="?s={query}",
-            territory="Sri Lanka",
+            territory="Pakistan",
             limit_pages=limit_pages,
             limit_items=limit_items,
-            price_currency="LKR",
+            price_currency="PKR",
             **kwargs
         )
 
 if __name__ == "__main__":
     import logging
     logging.basicConfig(level=logging.INFO)
-    spider = SecondHandBooksLkSpider(limit_pages=1, limit_items=5)
+    spider = MyBookBankPkSpider(limit_pages=1, limit_items=5)
     spider.run()
