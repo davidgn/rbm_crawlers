@@ -84,7 +84,8 @@ def test_eslite_json_parser_extracts_offer():
     assert listing.publisher == "BLOOMSBURY PUBLISHING"
     assert listing.publication_year == "2014-10-09"
     assert listing.category == "中文書"
-    assert listing.price == "TWD 2199"
+    assert listing.price == "2199.00"
+    assert listing.price_currency == "TWD"
 
 
 def test_eslite_parser_marks_ebook_title():
@@ -152,7 +153,8 @@ def test_bookconekt_detail_parser_extracts_offer():
     assert listing.publisher == "Ruisseaux d'Afrique"
     assert listing.category == "Roman béninois"
     assert listing.isbn == "9789991915555"
-    assert listing.price == "XOF 5000"
+    assert listing.price == "5000"
+    assert listing.price_currency == "XOF"
 
 
 def test_taiwan_parsers_skip_incomplete_result_blocks():
