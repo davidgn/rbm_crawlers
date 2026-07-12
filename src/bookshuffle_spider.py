@@ -12,6 +12,8 @@ import argparse
 import base64
 import io
 import json
+import random
+import re
 import time
 import zipfile
 from pathlib import Path
@@ -45,20 +47,43 @@ class BookShuffleSpider(BaseSpider):
 
     def __init__(
         self,
-        apk_path: str,
+        apk_path: str = "",
         collection_group: str = "auto",
         limit: int = 100,
         page_size: int = 50,
+        limit_pages: int | None = None,
+        limit_items: int | None = None,
+        query: str | None = None,
     ):
         super().__init__(platform_name="BookShuffle", territory="Egypt")
-        self.apk_path = Path(apk_path).expanduser()
+        self.apk_path = Path(apk_path).expanduser() if apk_path else Path(".")
         self.collection_group = collection_group
-        self.limit = limit
+        self.limit = limit_items if limit_items is not None else limit
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.query = query
         self.page_size = min(page_size, 100)
         self.client = httpx.Client(timeout=60.0)
         self.access_token: str | None = None
 
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                resp = self.client.get(url)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
+        if not self.apk_path.exists() or self.apk_path.is_dir():
+            self.logger.warning("APK path %s does not exist or is not specified; skipping run.", self.apk_path)
+            return
         self.access_token = self._access_token()
         collection = self.collection_group
         docs = self._query_collection_group(collection, self.page_size)
@@ -77,6 +102,8 @@ class BookShuffleSpider(BaseSpider):
         )
 
         for doc in docs[: self.limit]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             listing = self._listing_from_doc(doc)
             if listing:
                 self.save_item(listing)
@@ -104,14 +131,24 @@ class BookShuffleSpider(BaseSpider):
                 "limit": limit,
             }
         }
-        response = self.client.post(
-            f"{self.FIRESTORE_BASE}:runQuery",
-            headers=self._headers(),
-            json=payload,
-        )
-        response.raise_for_status()
-        rows = response.json()
-        return [row["document"] for row in rows if isinstance(row, dict) and isinstance(row.get("document"), dict)]
+        for attempt in range(3):
+            try:
+                response = self.client.post(
+                    f"{self.FIRESTORE_BASE}:runQuery",
+                    headers=self._headers(),
+                    json=payload,
+                )
+                if response.status_code in [403, 429, 500, 502, 503, 504]:
+                    time.sleep(2 ** attempt)
+                    continue
+                response.raise_for_status()
+                rows = response.json()
+                return [row["document"] for row in rows if isinstance(row, dict) and isinstance(row.get("document"), dict)]
+            except Exception as e:
+                if attempt == 2:
+                    raise
+                time.sleep(2 ** attempt)
+        return []
 
     def _listing_from_doc(self, doc: dict[str, Any]) -> BookListing | None:
         data = self._doc_data(doc)
@@ -126,6 +163,7 @@ class BookShuffleSpider(BaseSpider):
             data.get("city") or data.get("area") or data.get("governorate") or data.get("city_name_en")
         )
         comments = self._comments(data, city)
+        price, price_currency = self._price_info(data)
 
         return BookListing(
             territory=self.territory,
@@ -135,7 +173,8 @@ class BookShuffleSpider(BaseSpider):
             author=self._join_values(data.get("authors") or data.get("bookAuthors")),
             category=category,
             condition=self._first_text(data, "bookCondition", "bookAvailability", "priceStatus"),
-            price=self._price(data),
+            price=price,
+            price_currency=price_currency,
             listing_url=f"https://bookshuffle.net/#/book/{doc_id}",
             seller_comments=comments,
         )
@@ -151,13 +190,23 @@ class BookShuffleSpider(BaseSpider):
                 parts.append(f"{label}={value}")
         return "; ".join(parts) if parts else None
 
-    def _price(self, data: dict[str, Any]) -> str | None:
+    def _price_info(self, data: dict[str, Any]) -> tuple[str | None, str | None]:
         value = data.get("price") or data.get("bookPrice")
+        if value is None:
+            return None, None
+        num_str = None
         if isinstance(value, (int, float)):
-            return f"{value} EGP"
-        if isinstance(value, str) and value:
-            return f"{value} EGP" if value.replace(".", "", 1).isdigit() else value
-        return None
+            num_str = f"{float(value):.2f}"
+        elif isinstance(value, str) and value:
+            clean = re.sub(r"[^\d.]", "", value)
+            if clean:
+                try:
+                    num_str = f"{float(clean):.2f}"
+                except ValueError:
+                    num_str = clean
+        if num_str:
+            return num_str, "EGP"
+        return None, None
 
     def _doc_data(self, doc: dict[str, Any]) -> dict[str, Any]:
         fields = doc.get("fields")
@@ -281,15 +330,21 @@ class BookShuffleSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Book Shuffle Firestore crawler")
-    parser.add_argument("--apk", required=True, help="Path to Book Shuffle APK or XAPK")
+    parser.add_argument("--apk", default="", help="Path to Book Shuffle APK or XAPK")
     parser.add_argument("--collection", default="auto", help="Firestore collection group to query")
     parser.add_argument("--limit", type=int, default=100, help="Maximum listings to save")
     parser.add_argument("--page-size", type=int, default=50, help="Firestore query page size")
-    args = parser.parse_args()
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
+    parser.add_argument("--query", type=str, default=None)
+    args, _ = parser.parse_known_args()
 
     BookShuffleSpider(
         apk_path=args.apk,
         collection_group=args.collection,
         limit=args.limit,
         page_size=args.page_size,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+        query=args.query,
     ).run()

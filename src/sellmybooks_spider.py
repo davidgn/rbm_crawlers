@@ -1,8 +1,11 @@
 import argparse
+import re
+import time
 import httpx
 from bs4 import BeautifulSoup
 from base_spider import BaseSpider
 from models import BookListing
+from isbn_utils import extract_isbn
 
 class SellMyBooksSpider(BaseSpider):
     """SellMyBooks India crawler using UsedBookr.com web catalog.
@@ -23,6 +26,20 @@ class SellMyBooksSpider(BaseSpider):
             }
         )
 
+    def _get_robust_response(self, url, params=None, max_retries=3):
+        for attempt in range(max_retries):
+            try:
+                resp = self.client.get(url, params=params)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         self.logger.info(f"Starting SellMyBooks (UsedBookr) crawler. Limit: {self.limit_pages} pages.")
         
@@ -30,9 +47,9 @@ class SellMyBooksSpider(BaseSpider):
         for page in range(1, self.limit_pages + 1):
             url = f"{self.categories_url}?page={page}"
             try:
-                response = self.client.get(url)
-                if response.status_code != 200:
-                    self.logger.warning(f"Failed to fetch {url}, status: {response.status_code}")
+                response = self._get_robust_response(url)
+                if not response or response.status_code != 200:
+                    self.logger.warning(f"Failed to fetch {url} or non-200 status")
                     break
                 
                 if not self._parse_page(response.text):
@@ -70,18 +87,24 @@ class SellMyBooksSpider(BaseSpider):
                 
                 price_p = product.find("p", class_="card-text")
                 price = None
+                price_currency = None
                 if price_p:
                     # Extract the bold part which is the current price
                     bold_price = price_p.find("b")
                     if bold_price:
-                        price = f"INR {bold_price.get_text(strip=True)}"
+                        raw_p = re.sub(r"[^\d.,]", "", bold_price.get_text(strip=True)).strip()
+                        if raw_p:
+                            price = raw_p
+                            price_currency = "INR"
                 
                 self.save_item(BookListing(
                     territory=self.territory,
                     platform=self.platform_name,
                     title=title,
                     author=author,
+                    isbn=extract_isbn(product),
                     price=price,
+                    price_currency=price_currency,
                     listing_url=listing_url,
                     category="Fiction" # Based on the URL we are crawling
                 ))

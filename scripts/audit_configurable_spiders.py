@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
-import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from types import ModuleType
@@ -242,5 +241,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.path.insert(0, str(SRC))
     raise SystemExit(main())

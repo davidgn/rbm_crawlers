@@ -1,22 +1,35 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+import argparse
+from playwright_search_spider import PlaywrightSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Biblio.ie",
-    territory="Ireland",
-    base_url="https://www.biblio.com",
-    browse_paths=("/bookstores/Ireland", "/search.php", "/subjects"),
-    detail_signals=("/book/", "/books/", "/bookstore/", "/isbn/"),
-    headers={
-        "Accept-Language": "en-IE,en;q=0.9",
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
-        ),
-    },
-    curl_impersonate="chrome124",
-)
-
+class BiblioIeSpider(PlaywrightSearchSpider):
+    """
+    Spider for Biblio Ireland using Playwright to bypass Cloudflare.
+    """
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
+        super().__init__(
+            platform_name="Biblio.ie",
+            base_url="https://biblio.ie",
+            search_path="search.php?key={query}&page={page}",
+            selectors={
+                'container': '.search-result, .item-card, .book-item, .result-item, div.search-result-row',
+                'title': 'h2 a, h3 a, a.title, .title a',
+                'link': 'h2 a, h3 a, a.title, .title a',
+                'price': '.price, .item-price, span.price',
+                'author': '.author, .item-author, p.author'
+            },
+            territory="Ireland",
+            price_currency="EUR",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Biblio.ie Ireland spider")
+    parser = argparse.ArgumentParser(description="Biblio Ireland Playwright Spider")
+    parser.add_argument("--query", type=str, default="Potter")
+    parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=10)
+    args = parser.parse_args()
+
+    spider = BiblioIeSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
+    spider.run(search_term=args.query)

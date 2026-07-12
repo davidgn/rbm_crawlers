@@ -1,8 +1,11 @@
 import argparse
+import re
+import time
 import httpx
 from bs4 import BeautifulSoup
 from base_spider import BaseSpider
 from models import BookListing
+from isbn_utils import extract_isbn
 
 class AntqCartSpider(BaseSpider):
     def __init__(self, limit_pages=10):
@@ -18,15 +21,29 @@ class AntqCartSpider(BaseSpider):
             }
         )
 
+    def _get_robust_response(self, url, params=None, max_retries=3):
+        for attempt in range(max_retries):
+            try:
+                resp = self.client.get(url, params=params)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         self.logger.info(f"Starting AntqCart crawler. Limit: {self.limit_pages} pages.")
         
         for page in range(1, self.limit_pages + 1):
             url = self.shop_url if page == 1 else f"{self.shop_url}page/{page}/"
             try:
-                response = self.client.get(url)
-                if response.status_code != 200:
-                    self.logger.warning(f"Failed to fetch {url}, status: {response.status_code}")
+                response = self._get_robust_response(url)
+                if not response or response.status_code != 200:
+                    self.logger.warning(f"Failed to fetch {url} or non-200 status")
                     break
                 
                 if not self._parse_page(response.text):
@@ -61,15 +78,17 @@ class AntqCartSpider(BaseSpider):
                 # But it's easier to find the parent <ul> and look for class "price"
                 parent_ul = title_item.find_parent("ul")
                 price = None
+                price_currency = None
                 if parent_ul:
                     price_tag = parent_ul.find("span", class_="price")
                     if price_tag:
                         # WooCommerce price can have <del> and <ins>
                         ins_tag = price_tag.find("ins")
-                        if ins_tag:
-                            price = ins_tag.get_text(strip=True)
-                        else:
-                            price = price_tag.get_text(strip=True)
+                        raw_price_str = ins_tag.get_text(strip=True) if ins_tag else price_tag.get_text(strip=True)
+                        clean_p = re.sub(r"[^\d.,]", "", raw_price_str).strip()
+                        if clean_p:
+                            price = clean_p
+                            price_currency = "INR"
                 
                 # Category is also in a sibling <li> with class "category"
                 category = None
@@ -89,7 +108,9 @@ class AntqCartSpider(BaseSpider):
                     territory=self.territory,
                     platform=self.platform_name,
                     title=title,
+                    isbn=extract_isbn(parent_ul) if parent_ul else None,
                     price=price,
+                    price_currency=price_currency,
                     category=category,
                     listing_url=listing_url,
                     seller_comments=description

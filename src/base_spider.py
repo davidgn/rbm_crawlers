@@ -25,8 +25,19 @@ class BaseSpider:
         self.cache_dir = base_path / "cache" / self.platform_name.lower().replace('.', '_')
         
         # Master DB path for harmonization
-        self.master_db_path = "/home/davidgn/active_repos/unipress-parser-crawler-family/scripts/session_artifacts/home_operational_residue_2026-04-22/db/unipress_site_definitions.db"
+        self.master_db_path = os.environ.get("MASTER_DB_PATH", "unipress_site_definitions.db")
         
+        # Real-time Event Firehose setup
+        try:
+            import redis
+            self.redis_client = redis.Redis.from_url(os.environ.get("REDIS_URL", "redis://localhost:6379/0"))
+        except ImportError:
+            self.logger.warning("Redis package not installed. Firehose disabled.")
+            self.redis_client = None
+        except Exception as e:
+            self.logger.warning(f"Redis connection failed: {e}")
+            self.redis_client = None
+            
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         
@@ -156,6 +167,13 @@ class BaseSpider:
 
         with open(self.output_file, 'a', encoding='utf-8') as f:
             f.write(json.dumps(item.to_dict()) + '\n')
+            
+        # Broadcast to the real-time arbitrage Firehose
+        if getattr(self, "redis_client", None):
+            try:
+                self.redis_client.publish('oracle_firehose', json.dumps(item.to_dict()))
+            except Exception as e:
+                self.logger.warning(f"Failed to publish to Firehose: {e}")
         
         if url:
             self._seen_urls.add(url)

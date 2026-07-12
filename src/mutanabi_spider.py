@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
 
 
 class MutanabiSpider(BaseSpider):
@@ -49,6 +50,20 @@ class MutanabiSpider(BaseSpider):
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
 
+    def _get_robust_response(self, url, params=None, max_retries=3):
+        for attempt in range(max_retries):
+            try:
+                resp = self.client.get(url, params=params)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         self.logger.info(
             f"Starting Mutanabi Shop harvest (cache-first). limit_pages={self.limit_pages}"
@@ -71,11 +86,11 @@ class MutanabiSpider(BaseSpider):
                 html, used_url = None, browse_url
                 for candidate in urls_to_try:
                     try:
-                        resp = self.client.get(candidate)
-                        if resp.status_code == 200 and len(resp.text) > 500:
+                        resp = self._get_robust_response(candidate)
+                        if resp and resp.status_code == 200 and len(resp.text) > 500:
                             html, used_url = resp.text, candidate
                             break
-                        if resp.status_code in (404, 410):
+                        if resp and resp.status_code in (404, 410):
                             break
                     except Exception as e:
                         self.logger.debug(f"Fetch error for {candidate}: {e}")
@@ -107,8 +122,8 @@ class MutanabiSpider(BaseSpider):
         for path in self.BROWSE_CANDIDATES:
             candidate = self.BASE_URL + path
             try:
-                resp = self.client.get(candidate)
-                if resp.status_code == 200:
+                resp = self._get_robust_response(candidate)
+                if resp and resp.status_code == 200:
                     soup = BeautifulSoup(resp.text, "html.parser")
                     hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
                     if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
@@ -140,9 +155,9 @@ class MutanabiSpider(BaseSpider):
 
         try:
             self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code != 200 or len(resp.text) < 500:
+                self.logger.warning(f"Bad response for {url}")
                 return
 
             self.cache_html(item_id, resp.text, url=url)
@@ -151,12 +166,42 @@ class MutanabiSpider(BaseSpider):
             h1 = soup.find("h1")
             title = h1.get_text(strip=True) if h1 else "Cached Item"
 
+            price = None
+            price_currency = None
+            price_node = soup.select_one(".price, .amount, [itemprop='price'], [class*='price']")
+            if price_node:
+                raw_price = re.sub(r"[^\d.,]", "", price_node.get_text()).strip()
+                if raw_price:
+                    price = raw_price
+                    price_currency = "IQD"
+
+            author = None
+            author_node = soup.select_one("[itemprop='author'], .author, [class*='author']")
+            if author_node:
+                author = author_node.get_text(strip=True)
+
+            category = None
+            cat_node = soup.select_one(".posted_in, .breadcrumb, [class*='category']")
+            if cat_node:
+                category = cat_node.get_text(", ", strip=True)
+
+            comments = None
+            desc_node = soup.select_one(".description, [itemprop='description'], #tab-description, [class*='description']")
+            if desc_node:
+                comments = desc_node.get_text(" ", strip=True)[:500]
+
             self.save_item(BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                author=author,
+                isbn=extract_isbn(soup),
+                category=category,
+                price=price,
+                price_currency=price_currency,
                 listing_url=url,
                 condition="Cached for AI extraction",
+                seller_comments=comments,
             ))
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")

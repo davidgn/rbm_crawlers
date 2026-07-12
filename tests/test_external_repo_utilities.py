@@ -1,12 +1,10 @@
 import json
-import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 FIXTURES = ROOT / "tests" / "fixtures"
-sys.path.insert(0, str(SCRIPTS))
 
 from extract_book_text_signals import extract_signals  # noqa: E402
 from evaluate_isbnlib import compare_value  # noqa: E402

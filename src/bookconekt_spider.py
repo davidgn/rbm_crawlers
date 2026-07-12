@@ -52,6 +52,20 @@ class BookconektSpider(BaseSpider):
             timeout=timeout, follow_redirects=True, headers=self.HEADERS
         )
 
+    def _get_robust_response(self, url, params=None, max_retries=3):
+        for attempt in range(max_retries):
+            try:
+                resp = self.client.get(url, params=params)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         self.logger.info(
             f"Starting Bookconekt harvest (cache-first). limit_pages={self.limit_pages}"
@@ -76,11 +90,11 @@ class BookconektSpider(BaseSpider):
                 html, used_url = None, browse_url
                 for candidate in urls_to_try:
                     try:
-                        resp = self.client.get(candidate)
-                        if resp.status_code == 200 and len(resp.text) > 500:
+                        resp = self._get_robust_response(candidate)
+                        if resp and resp.status_code == 200 and len(resp.text) > 500:
                             html, used_url = resp.text, candidate
                             break
-                        if resp.status_code in (404, 410):
+                        if resp and resp.status_code in (404, 410):
                             break
                     except Exception as e:
                         self.logger.debug(f"Fetch error for {candidate}: {e}")
@@ -137,9 +151,9 @@ class BookconektSpider(BaseSpider):
 
         try:
             self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code != 200 or len(resp.text) < 500:
+                self.logger.warning(f"Bad response for {url}")
                 return
 
             self.cache_html(item_id, resp.text, url=url)
@@ -156,6 +170,7 @@ class BookconektSpider(BaseSpider):
         title = h1.get_text(" ", strip=True) if h1 else "Cached Item"
 
         fields = self._detail_fields(soup)
+        price_val, price_curr = self._price_and_currency(soup)
         return BookListing(
             territory=self.territory,
             platform=self.platform_name,
@@ -166,7 +181,8 @@ class BookconektSpider(BaseSpider):
             publication_year=fields.get("publication_year"),
             category=fields.get("category"),
             condition=fields.get("condition") or "Cached for AI extraction",
-            price=self._price(soup),
+            price=price_val,
+            price_currency=price_curr,
             listing_url=url,
             seller_comments=fields.get("seller_comments"),
         )
@@ -204,7 +220,7 @@ class BookconektSpider(BaseSpider):
         )
         return self._clean(match.group(1)) if match else None
 
-    def _price(self, soup: BeautifulSoup) -> str | None:
+    def _price_and_currency(self, soup: BeautifulSoup) -> tuple[str | None, str | None]:
         for selector in (
             ".price .amount",
             ".woocommerce-Price-amount",
@@ -214,17 +230,17 @@ class BookconektSpider(BaseSpider):
             node = soup.select_one(selector)
             if not node:
                 continue
-            price = self._price_from_text(node.get_text(" ", strip=True))
-            if price:
-                return price
+            res = self._price_from_text(node.get_text(" ", strip=True))
+            if res[0]:
+                return res
         return self._price_from_text(soup.get_text(" ", strip=True))
 
-    def _price_from_text(self, text: str) -> str | None:
+    def _price_from_text(self, text: str) -> tuple[str | None, str | None]:
         match = re.search(r"([0-9][0-9\s.,]*)\s*(?:CFA|FCFA|XOF|₣)", text, re.I)
         if not match:
-            return None
+            return (None, None)
         amount = re.sub(r"[^\d]", "", match.group(1))
-        return f"XOF {amount}" if amount else None
+        return (amount, "XOF") if amount else (None, None)
 
     def _clean(self, value: str) -> str:
         return re.sub(r"\s+", " ", value).strip(" :-\u00a0")

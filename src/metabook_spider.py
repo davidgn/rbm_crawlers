@@ -16,8 +16,11 @@ One BookListing is saved per seller offer.
 Requires: pip install nodriver
 """
 import asyncio
+import random
 import re
+import time
 from bs4 import BeautifulSoup
+import httpx
 import nodriver
 from models import BookListing
 from base_spider import BaseSpider
@@ -52,12 +55,38 @@ FIELD_MAP = {
 
 class MetabookSpider(BaseSpider):
     def __init__(self, delay: float = 1.5, max_pages: int = 200,
-                 categories: list[str] | None = None, max_offers_per_book: int = 50):
+                 categories: list[str] | None = None, max_offers_per_book: int = 50,
+                 limit_pages: int | None = None, limit_items: int | None = None, query: str | None = None):
         super().__init__(platform_name="Metabook", territory="Greece")
         self.delay = delay
-        self.max_pages = max_pages
+        self.max_pages = limit_pages if limit_pages is not None else max_pages
         self.categories = categories or CATEGORIES
         self.max_offers_per_book = max_offers_per_book
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.query = query
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        client = httpx.Client(timeout=30.0, follow_redirects=True)
+        try:
+            for attempt in range(max_retries):
+                try:
+                    headers = {
+                        "User-Agent": random.choice([
+                            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                        ])
+                    }
+                    resp = client.get(url, headers=headers)
+                    if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                        time.sleep(2 ** attempt)
+                        continue
+                    return resp
+                except Exception:
+                    time.sleep(2 ** attempt)
+            return None
+        finally:
+            client.close()
 
     def run(self):
         asyncio.run(self._run_async())
@@ -68,6 +97,8 @@ class MetabookSpider(BaseSpider):
             await self._cf_warmup(browser)
             seen_books: set[str] = set()
             for cat_slug in self.categories:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 await self._harvest_category(browser, cat_slug, seen_books)
         finally:
             browser.stop()
@@ -90,6 +121,8 @@ class MetabookSpider(BaseSpider):
     async def _harvest_category(self, browser, cat_slug: str, seen_books: set):
         self.logger.info("Category: %s", cat_slug)
         for page_num in range(1, self.max_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{BASE_URL}/books?category={cat_slug}&page={page_num}"
             try:
                 html = await self._get_html(browser, url, wait=3.0)
@@ -105,6 +138,8 @@ class MetabookSpider(BaseSpider):
                 break
 
             for link in new_books:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 seen_books.add(link)
                 await self._harvest_book(browser, link)
                 await asyncio.sleep(self.delay)
@@ -133,7 +168,6 @@ class MetabookSpider(BaseSpider):
 
         soup = BeautifulSoup(html, "html.parser")
 
-        # Title
         h1_tags = soup.select("h1")
         title = None
         for h1 in h1_tags:
@@ -144,25 +178,27 @@ class MetabookSpider(BaseSpider):
         if not title:
             return
 
-        # Bibliographic metadata
         meta = self._parse_book_meta(soup)
 
-        # Individual offers
         offers = soup.select("div.grid.gap-y-10[class*=book-offers]")
         if not offers:
-            # Fallback: save one record for the book even without individual offer data
-            self.save_item(BookListing(
+            listing = BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
                 **self._meta_to_listing_kwargs(meta),
                 listing_url=book_url,
-            ))
+            )
+            listing = self.scavenge_metadata(html, listing)
+            self.save_item(listing)
             return
 
         for offer in offers[:self.max_offers_per_book]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             listing = self._listing_from_offer(offer, title, meta, book_url)
             if listing:
+                listing = self.scavenge_metadata(html, listing)
                 self.save_item(listing)
 
     def _parse_book_meta(self, soup: BeautifulSoup) -> dict:
@@ -170,7 +206,6 @@ class MetabookSpider(BaseSpider):
         meta_div = soup.select_one("div.text-sm.text-meta-gray-600.mt-8")
         if not meta_div:
             return meta
-        # The grid wrapper is the direct child of meta_div; rows are its children
         grid = meta_div.find("div", recursive=False)
         if not grid:
             return meta
@@ -181,7 +216,6 @@ class MetabookSpider(BaseSpider):
             label = label_el.get_text(strip=True).rstrip(":").strip().lower()
             if label not in FIELD_MAP:
                 continue
-            # Collect text from all non-label children
             value_parts = []
             for child in row.children:
                 if child is label_el:
@@ -211,7 +245,18 @@ class MetabookSpider(BaseSpider):
 
     def _listing_from_offer(self, offer, title: str, meta: dict, book_url: str) -> BookListing | None:
         price_el = offer.select_one("[class*=text-meta-red]")
-        price = price_el.get_text(strip=True) if price_el else None
+        price_val = None
+        price_curr = None
+        if price_el:
+            raw = price_el.get_text(strip=True)
+            m = re.search(r"([\d.,]+)", raw)
+            if m:
+                num = m.group(1).replace(",", ".")
+                try:
+                    price_val = f"{float(num):.2f}"
+                    price_curr = "EUR"
+                except ValueError:
+                    price_val = num
 
         cond_el = offer.select_one(".text-meta-gray-700")
         condition = cond_el.get_text(strip=True) if cond_el else None
@@ -235,7 +280,8 @@ class MetabookSpider(BaseSpider):
             **self._meta_to_listing_kwargs(meta),
             condition=condition,
             seller_comments=seller_comments,
-            price=price,
+            price=price_val,
+            price_currency=price_curr,
             seller_id=seller_id,
             listing_url=book_url,
         )
@@ -249,12 +295,18 @@ def main():
     parser.add_argument("--max-offers", type=int, default=50)
     parser.add_argument("--categories", nargs="*", default=None,
                         help="Category slugs to harvest (default: all 6)")
-    args = parser.parse_args()
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
+    parser.add_argument("--query", type=str, default=None)
+    args, _ = parser.parse_known_args()
     MetabookSpider(
         delay=args.delay,
         max_pages=args.max_pages,
         categories=args.categories,
         max_offers_per_book=args.max_offers,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+        query=args.query,
     ).run()
 
 

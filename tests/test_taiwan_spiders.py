@@ -1,4 +1,3 @@
-import sys
 from pathlib import Path
 
 from bs4 import BeautifulSoup
@@ -7,7 +6,6 @@ from hypothesis import given, settings, strategies as st
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
-sys.path.insert(0, str(SRC))
 
 from books_tw_spider import BooksTwSpider  # noqa: E402
 from bookconekt_spider import BookconektSpider  # noqa: E402

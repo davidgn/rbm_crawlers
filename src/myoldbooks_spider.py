@@ -16,6 +16,8 @@ category + subcategory labels (e.g. "COLLEGE | MDU | BCA | Semester 4").
 
 import argparse
 import logging
+import random
+import time
 from typing import Any
 
 import httpx
@@ -38,6 +40,22 @@ class MyOldBooksSpider(BaseSpider):
         super().__init__(platform_name="MyOldBooks", territory="India")
         self.page_size = page_size
 
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"}
+        with httpx.Client(timeout=30.0, follow_redirects=True, headers=headers) as client:
+            for attempt in range(max_retries):
+                try:
+                    resp = client.get(url)
+                    if resp.status_code in (403, 429, 500, 502, 503, 504):
+                        self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                        time.sleep(2 ** attempt)
+                        continue
+                    return resp
+                except Exception as e:
+                    self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         with httpx.Client(timeout=60) as client:
             cursor: str | None = None
@@ -50,6 +68,7 @@ class MyOldBooksSpider(BaseSpider):
                 for doc in docs:
                     listing = self._listing_from_doc(doc)
                     if listing:
+                        listing = self.scavenge_metadata(str(doc), listing)
                         self.save_item(listing)
                 self.logger.info("Page %d: %d docs (total %d)", page, len(docs), self.items_scraped)
                 if len(docs) < self.page_size:
@@ -81,12 +100,23 @@ class MyOldBooksSpider(BaseSpider):
                 "values": [{"stringValue": cursor}],
                 "before": False,
             }
-        try:
-            r = client.post(f"{FIRESTORE_BASE}:runQuery", json=query)
-            r.raise_for_status()
-        except Exception as e:
-            self.logger.error("Request failed: %s", e)
+        
+        r = None
+        for attempt in range(3):
+            try:
+                r = client.post(f"{FIRESTORE_BASE}:runQuery", json=query)
+                if r.status_code in (403, 429, 500, 502, 503, 504):
+                    time.sleep(2 ** attempt)
+                    continue
+                r.raise_for_status()
+                break
+            except Exception as e:
+                time.sleep(2 ** attempt)
+
+        if not r or r.status_code != 200:
+            self.logger.error("Request failed for fetch page")
             return []
+            
         rows = r.json()
         return [row["document"] for row in rows if isinstance(row, dict) and isinstance(row.get("document"), dict)]
 
@@ -108,7 +138,7 @@ class MyOldBooksSpider(BaseSpider):
             return None
 
         price_raw = sv("price")
-        price = f"₹{price_raw}" if price_raw else None
+        price = price_raw if price_raw else None
 
         return BookListing(
             territory=self.territory,
@@ -117,6 +147,7 @@ class MyOldBooksSpider(BaseSpider):
             title=title,
             category=category or None,
             price=price,
+            price_currency="INR",
             listing_url=f"https://myoldbooks.in/ad/{ad_id}",
             seller_comments=sv("location") or None,
         )

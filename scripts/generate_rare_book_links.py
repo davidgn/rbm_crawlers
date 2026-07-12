@@ -19,8 +19,6 @@ from urllib.parse import urlencode
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 SCRIPTS = ROOT / "scripts"
-sys.path.insert(0, str(SRC))
-sys.path.insert(0, str(SCRIPTS))
 
 from extract_book_text_signals import extract_signals  # noqa: E402
 from isbn_utils import normalize_isbn  # noqa: E402

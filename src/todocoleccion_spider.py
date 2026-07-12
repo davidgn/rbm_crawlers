@@ -1,18 +1,33 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="todocoleccion Books",
-    territory="Spain",
-    base_url="https://www.todocoleccion.net",
-    browse_paths=("/s/libros", "/libros-antiguos-segunda-mano/", "/s/libros-comics-revistas"),
-    detail_signals=("/libros-", "/libro-", "/a/"),
-    exclude_signals=("/ayuda", "/usuarios", "/carrito"),
-    headers={"Accept-Language": "es-ES,es;q=0.9,en;q=0.8"},
-    rendered=True,
-    render_wait_ms=4000,
-)
-
+class TodocoleccionSpider(HTMLSearchSpider):
+    """Auto-generated broad crawler for Todocoleccion."""
+    def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
+        super().__init__(
+            platform_name="Todocoleccion",
+            territory="Global",
+            base_url="https://www.todocoleccion.net",
+            search_path="buscador?q={query}&cat=6",
+            currency="USD",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            item_pattern=r'',
+            url_regex=r'',
+            price_regex=r'',
+            title_regex=r'',
+            isbn_regex=r'(97[89]\d{10})'
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "todocoleccion Spain books spider")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str, default="books")
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int)
+    args = parser.parse_args()
+    
+    TodocoleccionSpider(
+        search_term=args.query,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+    ).run()

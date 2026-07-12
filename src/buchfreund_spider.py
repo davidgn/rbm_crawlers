@@ -11,6 +11,7 @@ Fields per card: ISBN (from href), title, author, publisher, price (EUR),
 seller_comments (condition/edition note from p.mb-1).
 """
 import argparse
+import random
 import re
 import time
 from bs4 import BeautifulSoup
@@ -51,25 +52,51 @@ class BuchfreundSpider(BaseSpider):
         "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, delay: float = 0.4, max_pages: int = 2000):
+    def __init__(self, delay: float = 0.4, max_pages: int = 2000, limit_pages: int | None = None, limit_items: int | None = None, query: str | None = None):
         super().__init__(platform_name="Buchfreund", territory="Germany")
         self.delay = delay
-        self.max_pages = max_pages
+        self.max_pages = limit_pages if limit_pages is not None else max_pages
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.query = query
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                headers = self.HEADERS.copy()
+                headers["User-Agent"] = random.choice([
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                    "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+                ])
+                resp = self.client.get(url, headers=headers)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
 
     def run(self):
         categories = self._discover_categories()
         self.logger.info("Harvesting %d categories", len(categories))
         seen: set[str] = set()
         for slug in categories:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self._harvest_category(slug, seen)
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
 
     def _discover_categories(self) -> list[str]:
         try:
-            resp = self.client.get(urljoin(self.BASE_URL, self.SEED_CATEGORY))
-            resp.raise_for_status()
+            resp = self._get_robust_response(urljoin(self.BASE_URL, self.SEED_CATEGORY))
+            if not resp or resp.status_code != 200:
+                return CATEGORY_FALLBACK
             soup = BeautifulSoup(resp.text, "html.parser")
             slugs: list[str] = []
             seen: set[str] = set()
@@ -89,18 +116,15 @@ class BuchfreundSpider(BaseSpider):
 
     def _harvest_category(self, slug: str, seen: set):
         for page_num in range(1, self.max_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = (
                 f"{self.BASE_URL}/de/kategorien/{slug}"
                 if page_num == 1
                 else f"{self.BASE_URL}/de/kategorien/{slug}/{page_num}"
             )
-            try:
-                resp = self.client.get(url)
-                if resp.status_code in (404, 410):
-                    break
-                resp.raise_for_status()
-            except Exception as e:
-                self.logger.error("Fetch error %s page %d: %s", slug, page_num, e)
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code in (404, 410):
                 break
 
             soup = BeautifulSoup(resp.text, "html.parser")
@@ -112,12 +136,13 @@ class BuchfreundSpider(BaseSpider):
 
             new_count = 0
             for card in cards:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 link_el = card.select_one(".book-title a")
                 if not link_el:
                     continue
                 href = link_el.get("href", "")
                 listing_url = href if href.startswith("http") else urljoin(self.BASE_URL, href)
-                # Dedup by bookId (stable across categories)
                 book_id_m = re.search(r"bookId=(\d+)", href)
                 dedup_key = book_id_m.group(1) if book_id_m else listing_url
                 if dedup_key in seen:
@@ -160,7 +185,16 @@ class BuchfreundSpider(BaseSpider):
                 publisher = pub_m.group(1).strip().rstrip(",").strip() or None
 
         price_el = card.select_one("[class*='price']")
-        price = price_el.get_text(strip=True) if price_el else None
+        price_val = None
+        if price_el:
+            price_text = price_el.get_text(strip=True)
+            m = re.search(r"([\d]+[.,]\d{2})|([\d]+)", price_text)
+            if m:
+                num = (m.group(1) or m.group(2)).replace(",", ".")
+                try:
+                    price_val = f"{float(num):.2f}"
+                except ValueError:
+                    price_val = num
 
         note_el = card.select_one("p.mb-1")
         seller_comments = note_el.get_text(strip=True)[:400] if note_el else None
@@ -172,7 +206,8 @@ class BuchfreundSpider(BaseSpider):
             author=author,
             isbn=isbn,
             publisher=publisher,
-            price=price,
+            price=price_val,
+            price_currency="EUR" if price_val else None,
             listing_url=listing_url,
             seller_comments=seller_comments,
         )
@@ -183,8 +218,17 @@ def main():
     parser.add_argument("--delay", type=float, default=0.4)
     parser.add_argument("--max-pages", type=int, default=2000,
                         help="Max pages per category (10 listings/page)")
-    args = parser.parse_args()
-    BuchfreundSpider(delay=args.delay, max_pages=args.max_pages).run()
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
+    parser.add_argument("--query", type=str, default=None)
+    args, _ = parser.parse_known_args()
+    BuchfreundSpider(
+        delay=args.delay,
+        max_pages=args.max_pages,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+        query=args.query,
+    ).run()
 
 
 if __name__ == "__main__":

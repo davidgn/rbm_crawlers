@@ -1,22 +1,36 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+import argparse
+from playwright_search_spider import PlaywrightSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Biblio UK",
-    territory="United Kingdom",
-    base_url="https://biblio.co.uk",
-    browse_paths=("/", "/search.php", "/books"),
-    detail_signals=("/book/", "/books/", "/isbn/"),
-    headers={
-        "Accept-Language": "en-GB,en;q=0.9",
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
-        ),
-    },
-    curl_impersonate="chrome124",
-)
-
+class BiblioUkSpider(PlaywrightSearchSpider):
+    """
+    Spider for Biblio UK using Playwright to bypass Cloudflare.
+    """
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
+        super().__init__(
+            platform_name="Biblio UK",
+            base_url="https://biblio.co.uk",
+            search_path="search.php?key={query}&page={page}",
+            selectors={
+                'container': '.search-result, .item-card, .book-item, .result-item, div.search-result-row',
+                'title': 'h2 a, h3 a, a.title, .title a',
+                'link': 'h2 a, h3 a, a.title, .title a',
+                'price': '.price, .item-price, span.price',
+                'author': '.author, .item-author, p.author'
+            },
+            territory="United Kingdom",
+            price_currency="GBP",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Biblio UK spider")
+    parser = argparse.ArgumentParser(description="Biblio UK Playwright Spider")
+    parser.add_argument("--query", type=str, default="Potter")
+    parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=10)
+    args = parser.parse_args()
+
+    spider = BiblioUkSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
+    spider.run(search_term=args.query)
+

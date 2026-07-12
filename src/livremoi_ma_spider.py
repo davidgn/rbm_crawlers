@@ -11,6 +11,7 @@ class LivremoiMaSpider(HTMLSearchSpider):
             platform_name="LivreMoi",
             base_url="https://www.livremoi.ma",
             search_path="catalogsearch/result/?q={query}&p={page}",
+            price_currency="MAD",
             selectors={
                 'container': '.product-item', 
                 'title': '.product-item-link',

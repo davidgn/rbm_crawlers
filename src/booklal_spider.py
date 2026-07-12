@@ -36,6 +36,24 @@ class BookLalSpider(BaseSpider):
         self.limit_items = limit_items
         self.client = httpx.Client(timeout=httpx.Timeout(25.0, connect=8.0), follow_redirects=True)
 
+    def _get_robust_response(self, url, params=None, json=None, method="GET", max_retries=3):
+        import time
+        for attempt in range(max_retries):
+            try:
+                if method.upper() == "POST":
+                    resp = self.client.post(url, params=params, json=json)
+                else:
+                    resp = self.client.get(url, params=params)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         self.logger.info(
             "Starting BookLal Firestore harvest. limit_pages=%s limit_items=%s",
@@ -67,6 +85,7 @@ class BookLalSpider(BaseSpider):
                     if listing:
                         # Cache the raw document
                         doc_id = doc.get("name", "").rsplit("/", 1)[-1]
+                        import json
                         self.cache_html(
                             f"booklal_{doc_id}",
                             json.dumps(doc, ensure_ascii=False, indent=2),
@@ -107,11 +126,14 @@ class BookLalSpider(BaseSpider):
                     "before": False
                 }
 
-        response = self.client.post(
+        response = self._get_robust_response(
             self.RUN_QUERY_URL, 
             params={"key": self.API_KEY}, 
-            json=query
+            json=query,
+            method="POST"
         )
+        if not response:
+            return []
         response.raise_for_status()
         
         results = response.json()
@@ -128,9 +150,15 @@ class BookLalSpider(BaseSpider):
         listing_url = f"https://booklal.com/book/{doc_id}" # Fictional URL for reference
 
         author = self._clean(fields.get("Author"))
-        price = self._clean(fields.get("SellingPrice"))
-        if price and not price.startswith("INR"):
-            price = f"INR {price}"
+        raw_price = self._clean(fields.get("SellingPrice"))
+        price = None
+        price_currency = None
+        if raw_price:
+            import re
+            clean_p = re.sub(r"[^\d.,]", "", raw_price).strip()
+            if clean_p:
+                price = clean_p
+                price_currency = "INR"
 
         # Combine metadata into seller comments
         metadata = [
@@ -148,8 +176,10 @@ class BookLalSpider(BaseSpider):
             title=title,
             author=author,
             isbn=normalize_isbn(title) or normalize_isbn(fields.get("BookDescription")),
+            publisher=self._clean(fields.get("Publication")),
             category=self._clean(fields.get("BookCategory")),
             price=price,
+            price_currency=price_currency,
             listing_url=listing_url,
             seller_comments=seller_comments or None,
         )

@@ -1,22 +1,12 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
-
-
-CONFIG = MarketplaceConfig(
-    platform_name="Portal dos Livreiros",
-    territory="Brazil",
-    base_url="https://www.portaldoslivreiros.com.br",
-    browse_paths=("/", "/busca.asp", "/livros"),
-    detail_signals=("/livro.asp", "livro.asp?codigo=", "/book/"),
-    headers={
-        "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8",
-        "User-Agent": (
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-            "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
-        ),
-    },
-    cloudscraper=True,
-)
-
+from portaldoslivreiros_spider import PortalDosLivreirosSpider, main if 'main' in globals() else None
+import argparse
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Portal dos Livreiros Brazil spider")
+    parser = argparse.ArgumentParser(description="Portal dos Livreiros Playwright Spider")
+    parser.add_argument("--query", type=str, default="Potter")
+    parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=10)
+    args = parser.parse_args()
+
+    spider = PortalDosLivreirosSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
+    spider.run(search_term=args.query)

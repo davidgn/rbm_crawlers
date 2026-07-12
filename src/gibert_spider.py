@@ -1,17 +1,33 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Gibert",
-    territory="France",
-    base_url="https://www.gibert.com",
-    browse_paths=("/", "/livres", "/recherche/livre"),
-    detail_signals=(".html", "/livre/", "/product/"),
-    exclude_signals=("/customer/", "/account/", "/checkout/"),
-    headers={"Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8"},
-    rendered=True,
-)
-
+class GibertSpider(HTMLSearchSpider):
+    """Auto-generated broad crawler for Gibert."""
+    def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
+        super().__init__(
+            platform_name="Gibert",
+            territory="Global",
+            base_url="https://www.gibert.com",
+            search_path="recherche?controller=search&s={query}",
+            currency="USD",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            item_pattern=r'',
+            url_regex=r'',
+            price_regex=r'',
+            title_regex=r'',
+            isbn_regex=r'(97[89]\d{10})'
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Gibert France spider")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str, default="books")
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int)
+    args = parser.parse_args()
+    
+    GibertSpider(
+        search_term=args.query,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+    ).run()

@@ -6,7 +6,7 @@ class DangdangSpider(HTMLSearchSpider):
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
-            platform_name="Dangdang",
+            platform_name="Dangdang", price_currency="CNY",
             base_url="http://search.dangdang.com",
             search_path="?key={query}&page_index={page}",
             selectors={

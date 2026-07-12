@@ -1,9 +1,7 @@
-import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
 
 from kingstone_spider import KingstoneSpider  # noqa: E402
 from shopee_id_books_spider import ShopeeIdSpider  # noqa: E402

@@ -4,7 +4,9 @@ __pycache__/
 .hypothesis/
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
 *.pyc
+*.egg-info/
 research/decompiled/
 decompiled/
 apk_work/
@@ -18,3 +20,5 @@ research/snapshots/
 .env*
 src/data/*.jsonl
 src/data/*.csv
+src/cache/
+

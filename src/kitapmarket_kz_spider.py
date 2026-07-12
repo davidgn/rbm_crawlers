@@ -1,5 +1,8 @@
 import argparse
+import random
+import re
 import time
+import httpx
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
@@ -9,6 +12,29 @@ class KitapmarketKzSpider(BaseSpider):
     def __init__(self, limit_pages=10):
         super().__init__(platform_name="Kitapmarket.kz", territory="Kazakhstan")
         self.limit_pages = limit_pages
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        }
+        with httpx.Client(timeout=30.0, follow_redirects=True, headers=headers) as client:
+            for attempt in range(max_retries):
+                try:
+                    headers["User-Agent"] = random.choice([
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                        "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+                    ])
+                    resp = client.get(url, headers=headers)
+                    if resp.status_code in (403, 429, 500, 502, 503, 504):
+                        self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                        time.sleep(2 ** attempt)
+                        continue
+                    return resp
+                except Exception as e:
+                    self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+        return None
 
     def run(self):
         self.logger.info("Starting Kitapmarket.kz Enhanced Crawler.")
@@ -76,7 +102,7 @@ class KitapmarketKzSpider(BaseSpider):
         
         title = ""
         author = ""
-        price = ""
+        price = None
         try:
             h1 = page.query_selector("h1")
             if h1: title = h1.inner_text().strip()
@@ -85,7 +111,11 @@ class KitapmarketKzSpider(BaseSpider):
             if p_author: author = p_author.inner_text().strip()
             
             price_elem = page.query_selector("span:has-text('₸')")
-            if price_elem: price = price_elem.inner_text().strip()
+            if price_elem:
+                p_raw = price_elem.inner_text().strip()
+                p_match = re.search(r"[\d]+(?:\.\d+)?", p_raw.replace(" ", "").replace(",", "."))
+                if p_match:
+                    price = p_match.group(0)
         except: pass
 
         details = {}
@@ -114,12 +144,18 @@ class KitapmarketKzSpider(BaseSpider):
             category=details.get("категория") or details.get("genre"),
             condition=details.get("состояние") or details.get("status"),
             price=price,
+            price_currency="KZT",
             listing_url=url
         )
         
         try:
             desc_elem = page.query_selector("p.text-slate-700")
             if desc_elem: item.seller_comments = desc_elem.inner_text().strip()
+        except: pass
+        
+        try:
+            html_text = page.content()
+            item = self.scavenge_metadata(html_text, item)
         except: pass
         
         self.save_item(item)

@@ -23,6 +23,7 @@ Run:
 import argparse
 import json
 import logging
+import random
 import re
 import sys
 import time
@@ -30,6 +31,8 @@ from pathlib import Path
 
 import httpx
 from bs4 import BeautifulSoup
+
+from models import BookListing
 
 sys.stdout.reconfigure(line_buffering=True)
 logging.basicConfig(
@@ -40,9 +43,6 @@ log = logging.getLogger("AlibRuSpider")
 
 BASE_URL = "https://www.alib.ru"
 
-# All 15 top-level thematic categories. Each maps to its own tip2tip sub-category
-# list and TOPCAT.phtml page. The previous spider only covered t46 (a single
-# sub-hierarchy); this list gives full catalog coverage (~3.28M listings).
 TOP_LEVEL_CATEGORIES = [
     "tanart",    # Art / изобразительное искусство
     "tandet",    # Children's / детская литература
@@ -76,14 +76,31 @@ OUTPUT_FILE = DATA_DIR / "alib_ru_listings.jsonl"
 PAGE_SIZE = 60
 
 
-def _get(client: httpx.Client, url: str) -> bytes | None:
-    try:
-        r = client.get(url, headers=HEADERS, timeout=30.0)
-        if r.status_code == 200 and len(r.content) > 500:
-            return r.content
-    except Exception as exc:
-        log.warning("GET %s failed: %s", url, exc)
+def _get_robust_response(client: httpx.Client, url: str, max_retries: int = 3) -> bytes | None:
+    for attempt in range(max_retries):
+        try:
+            headers = HEADERS.copy()
+            headers["User-Agent"] = random.choice([
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+            ])
+            r = client.get(url, headers=headers, timeout=30.0)
+            if r.status_code in [403, 429, 500, 502, 503, 504]:
+                log.warning("Got status %d for %s. Retrying (%d/%d)...", r.status_code, url, attempt + 1, max_retries)
+                time.sleep(2 ** attempt)
+                continue
+            if r.status_code == 200 and len(r.content) > 500:
+                return r.content
+            return None
+        except Exception as exc:
+            log.warning("GET %s failed: %s. Retrying (%d/%d)...", url, exc, attempt + 1, max_retries)
+            time.sleep(2 ** attempt)
     return None
+
+
+def _get(client: httpx.Client, url: str) -> bytes | None:
+    return _get_robust_response(client, url)
 
 
 def _decode(data: bytes) -> str:
@@ -121,7 +138,6 @@ def fetch_all_categories(client: httpx.Client) -> list[tuple[str, str]]:
 
 def parse_book_total(html: str) -> int:
     """Extract total book count from pagination URL in the page."""
-    # Handle both raw & and HTML-encoded &amp;
     m = re.search(r"razdel\.php4\?n9=\d+&(?:amp;)?all=(\d+)", html)
     return int(m.group(1)) if m else 0
 
@@ -140,7 +156,7 @@ def _extract_price(text: str) -> str | None:
     m = re.search(r"Цена:\s*([\d\s]+)\s*руб", text)
     if m:
         rub = m.group(1).strip().replace(" ", "")
-        return f"₽{rub} RUB" if rub.isdigit() else None
+        return f"{float(rub):.2f}" if rub.isdigit() else None
     return None
 
 
@@ -159,20 +175,14 @@ def parse_entries(html: str) -> list[dict]:
         if "руб" not in text:
             continue
 
-        # Title: prefer content of <b> tag
         b = p.find("b")
         title_raw = b.get_text(" ", strip=True) if b else ""
         if not title_raw:
-            # Fallback: text before first publisher-city indicator
             title_raw = text[:200]
 
-        # Strip leading asterisks/quotes often used for emphasis
         title = re.sub(r"^[*\",\s]+|[*\",\s]+$", "", title_raw).strip() or None
 
-        # Author: often immediately after title before publisher info
-        # Pattern: "SURNAME I.O. Title" or "Title. SURNAME I.O."
         author: str | None = None
-        # Look for Cyrillic surname pattern before or within text
         au_m = re.match(
             r"^([А-ЯЁ][а-яёА-ЯЁ]+\s+[А-ЯЁ]\.[А-ЯЁ]?\.[,\s]?)", text
         )
@@ -183,7 +193,6 @@ def parse_entries(html: str) -> list[dict]:
         price = _extract_price(text)
         year = _extract_year(text)
 
-        # Seller from bs.php4 link
         seller_link = p.find("a", href=lambda h: h and "bs.php4" in str(h))
         seller_id = None
         if seller_link:
@@ -191,7 +200,6 @@ def parse_entries(html: str) -> list[dict]:
             if sm:
                 seller_id = sm.group(1)
 
-        # Individual book URL from 5_1_ link
         book_link = p.find("a", href=lambda h: h and "5_1_" in str(h))
         listing_url: str | None = None
         if book_link:
@@ -203,27 +211,28 @@ def parse_entries(html: str) -> list[dict]:
         if not title and not isbn:
             continue
 
-        records.append({
-            "territory": "Russia",
-            "platform": "Alib.ru",
-            "seller_id": seller_id,
-            "title": title,
-            "author": author,
-            "isbn": isbn,
-            "publisher": None,
-            "publication_year": year,
-            "edition": None,
-            "language": "ru",
-            "pages": None,
-            "binding": None,
-            "dimensions": None,
-            "category": None,
-            "condition": None,
-            "price": price,
-            "listing_url": listing_url,
-            "timestamp": None,
-            "seller_comments": None,
-        })
+        listing = BookListing(
+            territory="Russia",
+            platform="Alib.ru",
+            seller_id=seller_id,
+            title=title or "Unknown Title",
+            author=author,
+            isbn=isbn,
+            publisher=None,
+            publication_year=year,
+            edition=None,
+            language="ru",
+            pages=None,
+            binding=None,
+            dimensions=None,
+            category=None,
+            condition=None,
+            price=price,
+            price_currency="RUB" if price else None,
+            listing_url=listing_url or BASE_URL,
+            seller_comments=None,
+        )
+        records.append(listing.to_dict())
 
     return records
 
@@ -238,7 +247,6 @@ def crawl_category(
     limit: int,
     total_written: list[int],
 ) -> None:
-    # Page 1
     url = f"{BASE_URL}/{top_cat}.phtml?word2={category_code}"
     data = _get(client, url)
     if not data:
@@ -251,7 +259,6 @@ def crawl_category(
 
     offsets = list(range(PAGE_SIZE, total_books, PAGE_SIZE))
 
-    # Write page 1 records first
     _write_page(out_fh, html, seen, total_written)
     if limit and total_written[0] >= limit:
         return
@@ -289,7 +296,6 @@ def _write_page(
     records = parse_entries(html)
     new_count = 0
     for rec in records:
-        # Dedup key: title + seller
         key = f"{rec.get('title','')}::{rec.get('seller_id','')}::{rec.get('listing_url','')}"
         if key in seen:
             continue
@@ -326,7 +332,12 @@ def main():
                     help="Single sub-category code to crawl (requires --top-category)")
     ap.add_argument("--top-category", type=str, default="",
                     help="Single top-level category to crawl (e.g. tanproz)")
-    args = ap.parse_args()
+    ap.add_argument("--limit-pages", type=int, default=None)
+    ap.add_argument("--limit-items", type=int, default=None)
+    ap.add_argument("--query", type=str, default=None)
+    args, _ = ap.parse_known_args()
+
+    effective_limit = args.limit_items if args.limit_items is not None else args.limit
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     seen = load_seen_keys()
@@ -335,7 +346,6 @@ def main():
     client = httpx.Client(follow_redirects=True)
     total_written = [0]
 
-    # Build list of (top_cat, sub_code) pairs to crawl
     if args.category and args.top_category:
         pairs: list[tuple[str, str]] = [(args.top_category, args.category)]
     elif args.top_category:
@@ -353,9 +363,9 @@ def main():
     with open(OUTPUT_FILE, "a", encoding="utf-8") as out_fh:
         for top_cat, sub_code in pairs:
             crawl_category(
-                client, out_fh, top_cat, sub_code, seen, args.delay, args.limit, total_written
+                client, out_fh, top_cat, sub_code, seen, args.delay, effective_limit, total_written
             )
-            if args.limit and total_written[0] >= args.limit:
+            if effective_limit and total_written[0] >= effective_limit:
                 break
 
     log.info("Finished. Total new listings written: %d", total_written[0])

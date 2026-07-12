@@ -26,8 +26,10 @@ def line_count(path: Path) -> int:
 
 def module_config(path: Path):
     import importlib.util
+    import sys
+    if str(SRC) not in sys.path:
+        sys.path.insert(0, str(SRC))
 
-    sys.path.insert(0, str(SRC))
     spec = importlib.util.spec_from_file_location(f"_smoke_{path.stem}", path)
     if spec is None or spec.loader is None:
         return None

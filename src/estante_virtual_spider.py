@@ -1,16 +1,33 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Estante Virtual",
-    territory="Brazil",
-    base_url="https://www.estantevirtual.com.br",
-    browse_paths=("/", "/busca", "/livros"),
-    detail_signals=("/livros/", "/livro/", "/produto/"),
-    headers={"Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8"},
-    rendered=True,
-)
-
+class EstanteVirtualSpider(HTMLSearchSpider):
+    """Auto-generated broad crawler for EstanteVirtual."""
+    def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
+        super().__init__(
+            platform_name="EstanteVirtual",
+            territory="Global",
+            base_url="https://www.estantevirtual.com.br",
+            search_path="busca?q={query}",
+            currency="USD",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            item_pattern=r'(<div[^>]*>.*?</div>)',
+            url_regex=r'href="([^"]+)"',
+            price_regex=r'([\d,]+(?:\.\d{2})?)',
+            title_regex=r'<a[^>]*>([^<"]+)</a>',
+            isbn_regex=r'(97[89]\d{10})'
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Estante Virtual Brazil spider")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str, default="books")
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int)
+    args = parser.parse_args()
+    
+    EstanteVirtualSpider(
+        search_term=args.query,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+    ).run()

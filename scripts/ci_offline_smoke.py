@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-import sys
 from pathlib import Path
 
 from bs4 import BeautifulSoup
 
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
 
 from ai_extractor import local_fallback_extract  # noqa: E402
 from kingstone_spider import KingstoneSpider  # noqa: E402

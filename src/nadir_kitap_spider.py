@@ -1,4 +1,5 @@
 import argparse
+import random
 import re
 import time
 import httpx
@@ -43,13 +44,34 @@ class NadirKitapSpider(BaseSpider):
         "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100, query: str = "kitap"):
+    def __init__(self, limit_pages: int = 100, limit_items: int | None = None, query: str = "kitap"):
         super().__init__(platform_name="Nadir Kitap", territory="Turkey")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.query = query
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                headers = self.HEADERS.copy()
+                headers["User-Agent"] = random.choice([
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                    "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+                ])
+                resp = self.client.get(url, headers=headers)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
 
     def run(self):
         self.logger.info(
@@ -61,6 +83,8 @@ class NadirKitapSpider(BaseSpider):
             browse_url = self._search_url(self.query)
 
             for pg_num in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 urls_to_try = (
                     [
                         f"{browse_url}&sayfa={pg_num}",
@@ -72,15 +96,12 @@ class NadirKitapSpider(BaseSpider):
 
                 html, used_url = None, browse_url
                 for candidate in urls_to_try:
-                    try:
-                        resp = self.client.get(candidate)
-                        if resp.status_code == 200 and len(resp.text) > 500:
-                            html, used_url = resp.text, candidate
-                            break
-                        if resp.status_code in (404, 410):
-                            break
-                    except Exception as e:
-                        self.logger.debug(f"Fetch error for {candidate}: {e}")
+                    resp = self._get_robust_response(candidate)
+                    if resp and resp.status_code == 200 and len(resp.text) > 500:
+                        html, used_url = resp.text, candidate
+                        break
+                    if resp and resp.status_code in (404, 410):
+                        break
 
                 if not html:
                     self.logger.info(f"No content on page {pg_num} — done.")
@@ -96,6 +117,8 @@ class NadirKitapSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        return
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.7)
@@ -128,9 +151,9 @@ class NadirKitapSpider(BaseSpider):
 
         try:
             self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code != 200 or len(resp.text) < 500:
+                self.logger.warning(f"Bad response for {url}")
                 return
 
             self.cache_html(item_id, self._redacted_cache_html(resp.text), url=url)
@@ -139,13 +162,33 @@ class NadirKitapSpider(BaseSpider):
             h1 = soup.find("h1")
             title = h1.get_text(strip=True) if h1 else "Cached Item"
 
-            self.save_item(BookListing(
+            price_val = None
+            price_curr = None
+            for el in soup.find_all(text=re.compile(r"TL|Fiyat|₺", re.I)):
+                parent = el.parent
+                if parent:
+                    p_text = parent.get_text(strip=True)
+                    m = re.search(r"([\d.,]+)\s*(?:TL|₺)", p_text)
+                    if m:
+                        num = m.group(1).replace(".", "").replace(",", ".")
+                        try:
+                            price_val = f"{float(num):.2f}"
+                            price_curr = "TRY"
+                            break
+                        except ValueError:
+                            pass
+
+            listing = BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                price=price_val,
+                price_currency=price_curr,
                 listing_url=url,
-                condition="Cached for AI extraction",
-            ))
+                condition="Used",
+            )
+            listing = self.scavenge_metadata(resp.text, listing)
+            self.save_item(listing)
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")
 
@@ -179,6 +222,12 @@ class NadirKitapSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Nadir Kitap Turkey cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
     parser.add_argument("--query", default="kitap")
-    args = parser.parse_args()
-    NadirKitapSpider(limit_pages=args.limit, query=args.query).run()
+    args, _ = parser.parse_known_args()
+    NadirKitapSpider(
+        limit_pages=args.limit_pages or args.limit,
+        limit_items=args.limit_items,
+        query=args.query
+    ).run()

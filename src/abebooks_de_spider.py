@@ -19,6 +19,7 @@ Search terms focus on German-language and German-publisher books plus
 general used-book terms that surface German-market sellers.
 """
 import argparse
+import random
 import re
 import time
 from bs4 import BeautifulSoup
@@ -67,36 +68,66 @@ class AbeBooksDESpider(BaseSpider):
         "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, delay: float = 1.0, max_start: int = MAX_START):
+    def __init__(self, delay: float = 1.0, max_start: int = MAX_START, limit_pages: int | None = None, limit_items: int | None = None, query: str | None = None):
         super().__init__(platform_name="AbeBooks.de", territory="Germany")
         self.delay = delay
         self.max_start = max_start
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.query = query
+        if limit_pages is not None:
+            calc_max = max(0, (limit_pages - 1) * PER_PAGE)
+            self.max_start = min(self.max_start, calc_max)
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                headers = self.HEADERS.copy()
+                headers["User-Agent"] = random.choice([
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                    "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+                ])
+                resp = self.client.get(url, headers=headers)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
 
     def run(self):
         seen_ids: set[str] = set()
         for platform_name, base_url, territory in self.PLATFORMS:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self.platform_name = platform_name
             self.territory = territory
             self.logger.info("Harvesting %s (%s)", platform_name, base_url)
-            for term in SEARCH_TERMS:
-                self._harvest_term(base_url, term, seen_ids)
+            if self.query:
+                self._harvest_term(base_url, self.query, seen_ids)
+            else:
+                for term in SEARCH_TERMS:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
+                    self._harvest_term(base_url, term, seen_ids)
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
 
     def _harvest_term(self, base_url: str, term: str, seen_ids: set):
         for start in range(0, self.max_start + 1, PER_PAGE):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = (
                 f"{base_url}/servlet/SearchResults"
                 f"?kn={term.replace(' ', '+')}&pt=book&sts=t&sortby=17&start={start}"
             )
-            try:
-                resp = self.client.get(url)
-                if resp.status_code in (404, 410):
-                    break
-                resp.raise_for_status()
-            except Exception as e:
-                self.logger.error("term=%r start=%d error: %s", term, start, e)
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code in (404, 410):
                 break
 
             soup = BeautifulSoup(resp.text, "html.parser")
@@ -106,6 +137,8 @@ class AbeBooksDESpider(BaseSpider):
 
             new_count = 0
             for item in items:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 listing = self._listing_from_item(item, base_url)
                 if listing is None:
                     continue
@@ -151,7 +184,14 @@ class AbeBooksDESpider(BaseSpider):
 
         price_str = metas.get("price")
         currency = metas.get("priceCurrency", "EUR")
-        price = f"{price_str} {currency}" if price_str and float(price_str or 0) > 0 else None
+        price_val = None
+        if price_str:
+            try:
+                val = float(price_str.replace(",", ""))
+                if val > 0:
+                    price_val = f"{val:.2f}"
+            except ValueError:
+                pass
 
         isbn_raw = metas.get("isbn") or None
         if isbn_raw:
@@ -178,7 +218,8 @@ class AbeBooksDESpider(BaseSpider):
             edition=metas.get("bookEdition") or None,
             binding=metas.get("bookFormat") or None,
             condition=condition,
-            price=price,
+            price=price_val,
+            price_currency=currency if price_val else None,
             listing_url=url,
             seller_comments=seller_note,
         )
@@ -189,8 +230,17 @@ def main():
     parser.add_argument("--delay", type=float, default=1.0)
     parser.add_argument("--max-start", type=int, default=MAX_START,
                         help="Max start offset per search term (multiple of 30)")
-    args = parser.parse_args()
-    AbeBooksDESpider(delay=args.delay, max_start=args.max_start).run()
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
+    parser.add_argument("--query", type=str, default=None)
+    args, _ = parser.parse_known_args()
+    AbeBooksDESpider(
+        delay=args.delay,
+        max_start=args.max_start,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+        query=args.query
+    ).run()
 
 
 if __name__ == "__main__":

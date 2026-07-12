@@ -38,9 +38,11 @@ platforms = {
     "tiki_vn": "Vietnam"
 }
 
-os.chdir("/home/davidgn/active_repos/rbm_crawlers/src")
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+import sys
+python_bin = sys.executable
 
 for platform, territory in platforms.items():
     print(f"--- Processing {platform} ({territory}) ---")
-    cmd = ["/home/davidgn/.venvs/work/bin/python3", "batch_processor.py", "--platform", platform, "--territory", territory]
+    cmd = [python_bin, "batch_processor.py", "--platform", platform, "--territory", territory]
     subprocess.run(cmd)

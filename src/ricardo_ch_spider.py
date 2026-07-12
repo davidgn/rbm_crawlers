@@ -1,18 +1,20 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Ricardo Switzerland Books",
-    territory="Switzerland",
-    base_url="https://www.ricardo.ch",
-    browse_paths=("/de/c/buecher-82017/", "/de/s/b%C3%BCcher/"),
-    detail_signals=("/de/a/", "/fr/a/", "/it/a/"),
-    exclude_signals=("/help", "/my", "/checkout"),
-    headers={"Accept-Language": "de-CH,de;q=0.9,fr-CH;q=0.8,en;q=0.7"},
-    rendered=True,
-    render_wait_ms=4000,
-)
-
+class RicardoChSpider(HTMLSearchSpider):
+    def __init__(self, limit_pages=5, limit_items=None, **kwargs):
+        super().__init__(
+            platform_name="Ricardo",
+            base_url="https://www.ricardo.ch",
+            search_path="de/s/{query}",
+            territory="Switzerland",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            price_currency="CHF",
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Ricardo Switzerland books spider")
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    spider = RicardoChSpider(limit_pages=1, limit_items=5)
+    spider.run()

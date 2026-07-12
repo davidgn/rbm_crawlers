@@ -4,7 +4,7 @@ from pathlib import Path
 from collections import Counter
 from datetime import datetime
 
-DATA_DIR = Path('/home/davidgn/active_repos/rbm_crawlers/src/data')
+DATA_DIR = Path(__file__).parent / 'data'
 EXPORT_FILE = DATA_DIR / 'master_export.jsonl'
 REPORT_FILE = DATA_DIR / 'master_export_report.json'
 

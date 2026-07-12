@@ -1,6 +1,8 @@
 import argparse
+import random
 import time
 import re
+import httpx
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 from models import BookListing
@@ -11,6 +13,29 @@ class MudahSpider(BaseSpider):
         super().__init__(platform_name="Mudah.my", territory="Malaysia")
         self.limit_pages = limit_pages
         self.base_url = "https://www.mudah.my"
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        }
+        with httpx.Client(timeout=30.0, follow_redirects=True, headers=headers) as client:
+            for attempt in range(max_retries):
+                try:
+                    headers["User-Agent"] = random.choice([
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                        "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+                    ])
+                    resp = client.get(url, headers=headers)
+                    if resp.status_code in (403, 429, 500, 502, 503, 504):
+                        self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                        time.sleep(2 ** attempt)
+                        continue
+                    return resp
+                except Exception as e:
+                    self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+        return None
 
     def run(self):
         self.logger.info(f"Starting Mudah Malaysia Harvest (Cache-First). Limit: {self.limit_pages} pages.")
@@ -69,14 +94,30 @@ class MudahSpider(BaseSpider):
         # CACHE FIRST
         self.cache_html(item_id, html_content)
         
-        # Save minimal record
+        title = "Cached Item"
+        price_val = None
+        try:
+            h1 = page.query_selector("h1")
+            if h1:
+                title = h1.inner_text().strip()
+            price_el = page.query_selector("div[data-testid='mw-ad-price'], span:has-text('RM')")
+            if price_el:
+                p_match = re.search(r"[\d]+(?:\.\d+)?", price_el.inner_text().replace(",", ""))
+                if p_match:
+                    price_val = p_match.group(0)
+        except Exception:
+            pass
+
         item = BookListing(
             territory=self.territory,
             platform=self.platform_name,
-            title="Cached Item",
+            title=title,
+            price=price_val,
+            price_currency="MYR",
             listing_url=url,
             condition="Used (Mudah.my Marketplace)"
         )
+        item = self.scavenge_metadata(html_content, item)
         self.save_item(item)
 
 if __name__ == "__main__":

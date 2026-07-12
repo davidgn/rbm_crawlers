@@ -1,18 +1,18 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Mercado Libre Mexico Libros",
-    territory="Mexico",
-    base_url="https://listado.mercadolibre.com.mx",
-    browse_paths=("/libros-usados",),
-    detail_signals=("/MLM-", "/p/"),
-    exclude_signals=("/glossary/", "/ayuda/", "/account-verification"),
-    allowed_hosts=("articulo.mercadolibre.com.mx", "www.mercadolibre.com.mx"),
-    rendered=True,
-    headers={"Accept-Language": "es-MX,es;q=0.9,en;q=0.8"},
-)
-
+class MercadoLibreMxSpider(HTMLSearchSpider):
+    """Spider for Mercado Libre (Mexico)."""
+    def __init__(self, limit_pages=10, **kwargs):
+        super().__init__(
+            platform_name="Mercado Libre",
+            base_url="https://listado.mercadolibre.com.mx",
+            search_path="{query}",
+            selectors={'container': 'div.item', 'title': 'h3', 'price': '.price'},
+            territory="Mexico",
+            limit_pages=limit_pages,
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Mercado Libre Mexico books spider")
+    spider = MercadoLibreMxSpider()
+    spider.run()

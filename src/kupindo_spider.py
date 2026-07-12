@@ -1,18 +1,33 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Kupindo Books",
-    territory="Serbia",
-    base_url="https://www.kupindo.com",
-    browse_paths=("/Knjige/artikli/1", "/Knjige/Beletristika/artikli/1"),
-    detail_signals=("/Knjige/", "/artikal/", "/Aukcija/"),
-    exclude_signals=("/Pomoc", "/Registracija", "/Prijava"),
-    headers={"Accept-Language": "sr-RS,sr;q=0.9,en;q=0.8"},
-    rendered=True,
-    render_wait_ms=3500,
-)
-
+class KupindoSpider(HTMLSearchSpider):
+    """Auto-generated broad crawler for Kupindo."""
+    def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
+        super().__init__(
+            platform_name="Kupindo",
+            territory="Global",
+            base_url="https://www.kupindo.com",
+            search_path="Pretraga?Pretraga={query}",
+            currency="USD",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            item_pattern=r'',
+            url_regex=r'',
+            price_regex=r'',
+            title_regex=r'',
+            isbn_regex=r'(97[89]\d{10})'
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Kupindo Serbia books marketplace spider")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str, default="books")
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int)
+    args = parser.parse_args()
+    
+    KupindoSpider(
+        search_term=args.query,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
+    ).run()

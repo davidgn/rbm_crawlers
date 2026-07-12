@@ -5,8 +5,10 @@ from urllib.parse import urljoin, urlparse
 
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
+from bs4 import BeautifulSoup
 from models import BookListing
 from base_spider import BaseSpider
+from isbn_utils import extract_isbn
 
 
 class TikiSpider(BaseSpider):
@@ -18,6 +20,25 @@ class TikiSpider(BaseSpider):
         # Tiki Books Category
         self.site_origin = "https://tiki.vn"
         self.base_url = "https://tiki.vn/nha-sach-tiki/c8322"
+
+    def _get_robust_response(self, url, params=None, max_retries=3):
+        import httpx
+        client = httpx.Client(timeout=30.0, follow_redirects=True)
+        try:
+            for attempt in range(max_retries):
+                try:
+                    resp = client.get(url, params=params)
+                    if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                        self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                        time.sleep(2 ** attempt)
+                        continue
+                    return resp
+                except Exception as e:
+                    self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+            return None
+        finally:
+            client.close()
 
     def run(self):
         self.logger.info(f"Starting Tiki.vn Vietnam Harvest (Cache-First). Limit: {self.limit_pages} pages.")
@@ -119,10 +140,32 @@ class TikiSpider(BaseSpider):
             html_content = p_page.content()
             self.cache_html(item_id, html_content, url=url)
             
+            soup = BeautifulSoup(html_content, "html.parser")
+            h1 = soup.find("h1")
+            title = h1.get_text(strip=True) if h1 else "Cached Item"
+
+            price = None
+            price_currency = None
+            price_node = soup.select_one(".product-price__current-price, .flash-sale-price, [class*='price']")
+            if price_node:
+                raw_price = re.sub(r"[^\d.,]", "", price_node.get_text()).strip()
+                if raw_price:
+                    price = raw_price
+                    price_currency = "VND"
+
+            author = None
+            author_node = soup.select_one("[itemprop='author'], .author, [class*='author']")
+            if author_node:
+                author = author_node.get_text(strip=True)
+
             item = BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
-                title="Cached Item",
+                title=title,
+                author=author,
+                isbn=extract_isbn(soup),
+                price=price,
+                price_currency=price_currency,
                 listing_url=url,
                 condition="New (Tiki.vn Retail)"
             )

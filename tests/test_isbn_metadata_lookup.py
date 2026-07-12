@@ -1,4 +1,3 @@
-import sys
 from pathlib import Path
 
 import httpx
@@ -6,7 +5,6 @@ import httpx
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
-sys.path.insert(0, str(SRC))
 
 from isbn_metadata_lookup import (  # noqa: E402
     IsbnMetadata,

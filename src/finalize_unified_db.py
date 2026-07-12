@@ -3,11 +3,11 @@ import sqlite3
 from pathlib import Path
 
 def main():
-    db_path = '/home/davidgn/unified_bibliographic.db'
+    db_path = os.environ.get("UNIFIED_DB_PATH", "unified_bibliographic.db")
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
     
-    data_dir = Path('/mnt/data7/home/davidgn/active_repos/rbm_crawlers/src/data')
+    data_dir = Path(__file__).parent / 'data'
     all_files = list(data_dir.glob('*_listings.jsonl')) + list(data_dir.glob('*_ai_extracted.jsonl')) + list(data_dir.glob('*_enriched.jsonl'))
     
     total_added = 0

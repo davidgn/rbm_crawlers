@@ -1,17 +1,35 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+import argparse
+from playwright_search_spider import PlaywrightSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="TodosTusLibros",
-    territory="Spain",
-    base_url="https://www.todostuslibros.com",
-    browse_paths=("/", "/libros", "/mas_vendidos"),
-    detail_signals=("/libros/", "/ebook/", "/materias/"),
-    exclude_signals=("/librerias", "/usuarios", "/cesta"),
-    headers={"Accept-Language": "es-ES,es;q=0.9,en;q=0.8"},
-    cloudscraper=True,
-)
-
+class TodosTusLibrosSpider(PlaywrightSearchSpider):
+    """
+    Spider for TodosTusLibros (Spain) using Playwright to bypass anti-bot challenges.
+    """
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
+        super().__init__(
+            platform_name="TodosTusLibros",
+            base_url="https://www.todostuslibros.com",
+            search_path="busqueda/pagina_{page}.html?keyword={query}",
+            selectors={
+                'container': '.book, .libro, .real-book, div.card, li.book-item, .product-item',
+                'title': '.title a, h2 a, h3 a, a.title, .card-title',
+                'link': 'a[href*="/libros/"], a[href*="/libro/"], a.title',
+                'price': '.price, .precio, span.precio, .card-price',
+                'author': '.author a, .autor a, .author, .card-author'
+            },
+            territory="Spain",
+            price_currency="EUR",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "TodosTusLibros Spain book network spider")
+    parser = argparse.ArgumentParser(description="TodosTusLibros Playwright Spider")
+    parser.add_argument("--query", type=str, default="Potter")
+    parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=10)
+    args = parser.parse_args()
+
+    spider = TodosTusLibrosSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
+    spider.run(search_term=args.query)

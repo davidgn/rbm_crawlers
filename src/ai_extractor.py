@@ -110,11 +110,12 @@ def deep_extract(html_content, platform=None):
     Falls back to local BS4 extraction if the AI quota is exceeded.
     """
     try:
-        # Use a pipe to send HTML content directly to the gemini CLI
-        # --skip-trust is used to bypass the interactive trust prompt in non-interactive mode.
-        cmd = ["gemini", "--skip-trust", "-p", "@flash-preview-3 Extract structured bibliographic data from the following HTML. Return JSON only."]
+        # Use a pipe to send HTML content directly to the agy CLI
+        cmd = ["agy"]
+        prompt = "Extract JSON from this text: Return ONLY a valid JSON object extracting the following from the provided HTML text: {'title': '...', 'author': '...', 'condition': '...', 'isbn': '...', 'price': '...', 'publisher': '...'}. Absolutely NO conversational text. Here is the HTML:\n\n"
+        full_payload = prompt + html_content
         process = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        stdout, stderr = process.communicate(input=html_content)
+        stdout, stderr = process.communicate(input=full_payload)
 
         if process.returncode == 0:
             try:

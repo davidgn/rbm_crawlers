@@ -1,6 +1,8 @@
 import re
 from typing import Any
 
+from isbn_utils import normalize_isbn
+
 # ISBN-13 usually starts with 978 or 979.
 # ISBN-10 is 10 digits.
 # This regex is improved to be more specific.
@@ -39,13 +41,6 @@ def clean_html(html: str) -> str:
     # Collapse whitespace
     text = re.sub(r"\s+", " ", text)
     return text.strip()
-
-def normalize_isbn(value: str) -> str | None:
-    if not value: return None
-    raw = re.sub(r"[^0-9Xx]", "", value).upper()
-    if len(raw) in (10, 13):
-        return raw
-    return None
 
 def extract_signals(text: str) -> dict[str, Any]:
     if not text:

@@ -1,4 +1,3 @@
-import sys
 from pathlib import Path
 
 from bs4 import BeautifulSoup
@@ -6,7 +5,6 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
-sys.path.insert(0, str(SRC))
 
 from nadir_kitap_spider import NadirKitapSpider  # noqa: E402
 

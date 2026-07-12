@@ -3,9 +3,11 @@ import sqlite3
 import os
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+
 def consolidate_to_sqlite():
-    data_dir = Path("/home/davidgn/active_repos/rbm_crawlers/src/data")
-    extracted_files = list(data_dir.glob("*_extracted.jsonl"))
+    data_dir = ROOT / "src" / "data"
+    extracted_files = list(data_dir.glob("*_extracted.jsonl")) + list(data_dir.glob("*_listings.jsonl"))
     db_path = data_dir / "regional_book_marketplaces.db"
     
     # Remove old DB to ensure clean slate for consolidation
@@ -23,7 +25,9 @@ def consolidate_to_sqlite():
         title TEXT,
         author TEXT,
         price TEXT,
+        price_currency TEXT,
         price_usd REAL,
+        condition TEXT,
         platform TEXT,
         territory TEXT,
         listing_url TEXT UNIQUE,
@@ -45,13 +49,15 @@ def consolidate_to_sqlite():
                     item = json.loads(line)
                     cursor.execute("""
                     INSERT OR IGNORE INTO listings 
-                    (isbn, title, author, price, platform, territory, listing_url, scraped_at, extraction_method)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    (isbn, title, author, price, price_currency, condition, platform, territory, listing_url, scraped_at, extraction_method)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """, (
                         item.get("isbn"),
                         item.get("title"),
                         item.get("author"),
                         item.get("price"),
+                        item.get("price_currency"),
+                        item.get("condition"),
                         item.get("platform"),
                         item.get("territory"),
                         item.get("listing_url"),

@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/mnt/data7/home/davidgn/active_repos/openrefine-reconciliation-service')
 try:
     from lib.schemas.manifest import manifest
     print("Manifest loaded successfully!")

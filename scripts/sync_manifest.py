@@ -3,7 +3,6 @@ import sys
 path_dispatch = '/mnt/data7/home/davidgn/active_repos/openrefine-reconciliation-service/lib/reconcile_dispatch.py'
 path_manifest = '/mnt/data7/home/davidgn/active_repos/openrefine-reconciliation-service/lib/schemas/manifest.py'
 
-sys.path.append('/mnt/data7/home/davidgn/active_repos/openrefine-reconciliation-service')
 from lib.reconcile_dispatch import DIRECT_HANDLERS
 from lib.schemas.manifest import DEFAULT_TYPE_IDS
 

@@ -2,10 +2,12 @@ import json
 import httpx
 import time
 import csv
+import os
 
-input_file = "/mnt/data7/home/davidgn/active_repos/rbm_crawlers/src/data/nearbook_listings.jsonl"
-output_file = "/mnt/data7/home/davidgn/active_repos/rbm_crawlers/src/data/nearbook_enriched.jsonl"
-csv_file = "/mnt/data7/home/davidgn/active_repos/rbm_crawlers/src/data/nearbook_enriched.csv"
+base_dir = os.path.dirname(os.path.abspath(__file__))
+input_file = os.path.join(base_dir, "data", "nearbook_listings.jsonl")
+output_file = os.path.join(base_dir, "data", "nearbook_enriched.jsonl")
+csv_file = os.path.join(base_dir, "data", "nearbook_enriched.csv")
 
 def get_isbn(title, author):
     # Basic OpenLibrary search for ISBN

@@ -1,4 +1,6 @@
 import argparse
+import random
+import time
 import httpx
 from base_spider import BaseSpider
 from models import BookListing
@@ -20,6 +22,21 @@ class AskitabSpider(BaseSpider):
         self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0)
 
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+                resp = self.client.get(url, headers=headers)
+                if resp.status_code in (403, 429, 500, 502, 503, 504):
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         self.logger.info(f"Starting Askitab Firestore harvest. Limit: {self.limit_items} items.")
         
@@ -34,7 +51,19 @@ class AskitabSpider(BaseSpider):
                 }
             }
             
-            response = self.client.post(query_url, params={"key": self.API_KEY}, json=query)
+            response = None
+            for attempt in range(3):
+                try:
+                    response = self.client.post(query_url, params={"key": self.API_KEY}, json=query)
+                    if response.status_code in (403, 429, 500, 502, 503, 504):
+                        time.sleep(2 ** attempt)
+                        continue
+                    break
+                except Exception as e:
+                    time.sleep(2 ** attempt)
+
+            if not response:
+                return
             response.raise_for_status()
             
             results = response.json()
@@ -65,21 +94,24 @@ class AskitabSpider(BaseSpider):
         doc_id = doc_name.split("/")[-1]
         listing_url = f"https://www.askitab.com/book/{doc_id}"
         
-        price = self._get_val(fields.get("price"))
-        price_text = f"INR {price}" if price else "Free"
+        raw_price = self._get_val(fields.get("price"))
+        price_val = str(raw_price) if raw_price is not None else None
         
-        self.save_item(BookListing(
+        item = BookListing(
             territory=self.territory,
             platform=self.platform_name,
             title=title,
             author=self._get_val(fields.get("author")),
             isbn=self._get_val(fields.get("isbn")),
             condition=self._get_val(fields.get("condition")),
-            price=price_text,
+            price=price_val,
+            price_currency="INR",
             listing_url=listing_url,
             seller_comments=self._get_val(fields.get("message")),
             seller_id=self._get_val(fields.get("userId"))
-        ))
+        )
+        item = self.scavenge_metadata(str(fields), item)
+        self.save_item(item)
 
     def _get_val(self, field):
         if not field:

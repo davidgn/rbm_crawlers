@@ -150,10 +150,25 @@ class AlmaktabahSpider(BaseSpider):
             h1 = soup.find("h1")
             title = h1.get_text(strip=True) if h1 else "Cached Item"
 
+            price_val = None
+            price_currency_val = None
+            price_node = soup.select_one(".price, p.price, span.woocommerce-Price-amount")
+            if price_node:
+                match = re.search(r"[\d,]+(?:\.\d+)?", price_node.get_text())
+                if match:
+                    num = match.group(0).replace(",", "")
+                    try:
+                        price_val = f"{float(num):.2f}"
+                        price_currency_val = "LBP"
+                    except ValueError:
+                        pass
+
             self.save_item(BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
+                price=price_val,
+                price_currency=price_currency_val,
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
@@ -164,5 +179,8 @@ class AlmaktabahSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ALMAKTABAH Lebanon cache-first spider")
     parser.add_argument("--limit", type=int, default=100)
-    args = parser.parse_args()
-    AlmaktabahSpider(limit_pages=args.limit).run()
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
+    parser.add_argument("--query", type=str, default=None)
+    args, _ = parser.parse_known_args()
+    AlmaktabahSpider(limit_pages=args.limit_pages or args.limit).run()

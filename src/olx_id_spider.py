@@ -6,6 +6,7 @@ from urllib.parse import quote
 from base_spider import BaseSpider
 from configurable_marketplace_spider import MarketplaceConfig
 from models import BookListing
+from isbn_utils import normalize_isbn
 
 
 CONFIG = MarketplaceConfig(
@@ -36,6 +37,24 @@ class OLXIndonesiaBooksSpider(BaseSpider):
 
         self.session = curl_requests.Session(impersonate="chrome124")
 
+    def _get_robust_response(self, url, params=None, headers=None, method="GET", json_data=None, max_retries=3):
+        import time
+        for attempt in range(max_retries):
+            try:
+                if method.upper() == "POST":
+                    resp = self.session.post(url, headers=headers, json=json_data, timeout=25)
+                else:
+                    resp = self.session.get(url, params=params, headers=headers, timeout=25)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         payload = self._get_json(self.SEARCH_URL)
         if not payload:
@@ -53,13 +72,15 @@ class OLXIndonesiaBooksSpider(BaseSpider):
             "Accept-Language": "id-ID,id;q=0.9,en;q=0.8",
             "Referer": self.REFERER,
         }
-        response = self.session.get(url, headers=headers, timeout=25)
+        response = self._get_robust_response(url, headers=headers)
+        if not response:
+            return None
         if "application/json" in response.headers.get("content-type", ""):
             return response.json()
         if not self._solve_interstitial(response.text, headers):
             return None
-        response = self.session.get(url, headers=headers, timeout=25)
-        if "application/json" not in response.headers.get("content-type", ""):
+        response = self._get_robust_response(url, headers=headers)
+        if not response or "application/json" not in response.headers.get("content-type", ""):
             return None
         return response.json()
 
@@ -70,13 +91,13 @@ class OLXIndonesiaBooksSpider(BaseSpider):
             return False
         proof = int(seed_match.group(1)) + int(seed_match.group(2) + seed_match.group(3))
         verify_headers = {**headers, "Content-Type": "application/json", "Origin": CONFIG.base_url}
-        response = self.session.post(
+        response = self._get_robust_response(
             f"{CONFIG.base_url}/_sec/verify?provider=interstitial",
             headers=verify_headers,
-            data=json.dumps({"bm-verify": token_match.group(1), "pow": proof}),
-            timeout=25,
+            method="POST",
+            json_data={"bm-verify": token_match.group(1), "pow": proof},
         )
-        return response.status_code == 200 and "reload" in response.text
+        return response is not None and response.status_code == 200 and "reload" in response.text
 
     def _listing_from_api(self, item: dict) -> BookListing | None:
         title = self._clean_text(item.get("title"))
@@ -84,9 +105,15 @@ class OLXIndonesiaBooksSpider(BaseSpider):
         if not title or not item_id:
             return None
         price = None
+        price_currency = None
         price_value = item.get("price", {}).get("value") if isinstance(item.get("price"), dict) else None
         if isinstance(price_value, dict):
-            price = self._clean_text(price_value.get("display"))
+            raw_p = self._clean_text(price_value.get("display") or price_value.get("raw"))
+            if raw_p:
+                clean_p = re.sub(r"[^\d.,]", "", raw_p).strip()
+                if clean_p:
+                    price = clean_p
+                    price_currency = "IDR"
         location = self._location_text(item)
         description = self._clean_text(item.get("description"))
         comments = " | ".join(part for part in (description, location) if part)
@@ -95,8 +122,10 @@ class OLXIndonesiaBooksSpider(BaseSpider):
             platform=self.platform_name,
             seller_id=self._clean_text(item.get("user_id") or item.get("user_name")),
             title=title,
+            isbn=normalize_isbn(title) or (normalize_isbn(description) if description else None),
             condition="Used",
             price=price,
+            price_currency=price_currency,
             listing_url=f"{CONFIG.base_url}/item/{self._slug(title)}-iid-{item_id}",
             seller_comments=comments or None,
         )

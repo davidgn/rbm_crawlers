@@ -12,19 +12,39 @@ EXCHANGE_RATES = {
     "SAR": 3.75,
     "RM": 4.7,
     "MYR": 4.7,
+    "CNY": 7.2,
+    "RMB": 7.2,
+    "¥": 7.2,
+    "MAD": 10.0,
+    "NOK": 11.0,
+    "kr": 11.0,
+    "NZD": 1.66,
     "USD": 1.0,
     "฿": 36.5,
     "₫": 1.0, # Handled specially
     "Rp": 1.0, # Handled specially
     "₸": 450.0,
-    "$": 1.0
+    "$": 1.0,
+    "INR": 83.5,
+    "AUD": 1.5,
+    "CLP": 950.0,
+    "EUR": 0.92,
+    "PLN": 4.0,
+    "GHS": 14.5,
+    "PKR": 278.0,
+    "LYD": 4.8,
+    "SYP": 13000.0,
+    "EGP": 47.0,
+    "DOP": 59.0,
+    "JPY": 155.0
 }
 
 VND_RATE = 25400.0
 IDR_RATE = 16200.0
 
 def normalize_prices():
-    db_path = Path("/home/davidgn/active_repos/rbm_crawlers/src/data/regional_book_marketplaces.db")
+    ROOT = Path(__file__).resolve().parents[1]
+    db_path = ROOT / "src" / "data" / "regional_book_marketplaces.db"
     if not db_path.exists():
         print(f"Database {db_path} not found.")
         return
@@ -74,6 +94,15 @@ def normalize_prices():
                 elif "Malaysia" in territory: rate = EXCHANGE_RATES["MYR"]
 
         if rate:
+            # First, handle the incorrectly hardcoded INR issue for Dangdang/LivreMoi/Finn
+            if clean_price.startswith("INR "):
+                if territory == "China":
+                    rate = 7.2
+                elif territory == "Morocco":
+                    rate = 10.0
+                elif territory == "Norway":
+                    rate = 11.0
+
             nums = re.findall(r'[\d.]+', clean_price)
             if nums:
                 try:

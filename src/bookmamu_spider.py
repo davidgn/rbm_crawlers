@@ -13,6 +13,8 @@ Firebase project: book-bookmamu (Firestore primary store; API is a REST bridge).
 """
 
 import argparse
+import random
+import time
 import httpx
 import logging
 from base_spider import BaseSpider
@@ -44,6 +46,21 @@ class BookMamuSpider(BaseSpider):
             "Content-Type": "application/json",
         }
 
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        with httpx.Client(headers=self._headers(), timeout=30) as client:
+            for attempt in range(max_retries):
+                try:
+                    resp = client.get(url)
+                    if resp.status_code in (403, 429, 500, 502, 503, 504):
+                        self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                        time.sleep(2 ** attempt)
+                        continue
+                    return resp
+                except Exception as e:
+                    self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+        return None
+
     def run(self):
         with httpx.Client(headers=self._headers(), timeout=30) as client:
             for page in range(1, self.limit_pages + 1):
@@ -54,10 +71,20 @@ class BookMamuSpider(BaseSpider):
                     "Filter": {"IsApproved": True, "IsSold": False},
                     "Sort": {"CreatedDateTime": -1},
                 }]
-                try:
-                    r = client.post(BOOKLIST_URL, json=payload)
-                except Exception as e:
-                    self.logger.error("Request failed page %d: %s", page, e)
+                
+                r = None
+                for attempt in range(3):
+                    try:
+                        r = client.post(BOOKLIST_URL, json=payload)
+                        if r.status_code in (403, 429, 500, 502, 503, 504):
+                            time.sleep(2 ** attempt)
+                            continue
+                        break
+                    except Exception as e:
+                        time.sleep(2 ** attempt)
+
+                if not r:
+                    self.logger.error("Request failed page %d", page)
                     break
 
                 if r.status_code == 401:
@@ -80,16 +107,22 @@ class BookMamuSpider(BaseSpider):
                     location = ", ".join(filter(None, [city, state]))
                     condition = book.get("Condition") or ("New" if book.get("IsNew") else "")
 
-                    self.save_item(BookListing(
+                    selling_price = book.get("SellingPrice")
+                    price_val = str(selling_price) if selling_price is not None else None
+
+                    item = BookListing(
                         territory=self.territory,
                         platform=self.platform_name,
                         title=book.get("Title", ""),
                         author=book.get("Author", "") or None,
                         isbn=book.get("ISBN") or None,
-                        price=str(book.get("SellingPrice", "")),
+                        price=price_val,
+                        price_currency="INR",
                         condition=condition or None,
                         listing_url=f"https://bookmamu.in/book/{book.get('_id', '')}",
-                    ))
+                    )
+                    item = self.scavenge_metadata(str(book), item)
+                    self.save_item(item)
 
                 self.logger.info("Page %d: %d books (total %d)", page, len(books), self.items_scraped)
 

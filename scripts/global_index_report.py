@@ -1,11 +1,9 @@
-import sys
 import sqlite3
 from pathlib import Path
 
 # Add project roots to path for importing strategies
 REPO_RBM = "/home/davidgn/active_repos/rbm_crawlers"
 REPO_RECON = "/home/davidgn/active_repos/openrefine-reconciliation-service"
-sys.path.extend([REPO_RBM, REPO_RECON])
 
 from lib.reconcile_dispatch import dispatch_reconcile_query
 

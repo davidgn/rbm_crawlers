@@ -1,4 +1,5 @@
 import argparse
+import random
 import re
 import time
 from types import SimpleNamespace
@@ -59,11 +60,30 @@ class AladinSpider(BaseSpider):
 
     def __init__(self, limit_pages=100, limit_items=50):
         super().__init__(platform_name="Aladin", territory="South Korea")
-        self.limit_pages = limit_pages
-        self.limit_items = limit_items
+        self.limit_pages = limit_pages or 100
+        self.limit_items = limit_items or 50
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                headers = self.HEADERS.copy()
+                headers["User-Agent"] = random.choice([
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15"
+                ])
+                resp = self.client.get(url, headers=headers)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
 
     def run(self):
         self.logger.info(
@@ -77,15 +97,15 @@ class AladinSpider(BaseSpider):
                     break
                 self.logger.info(f"=== Category: {cat['name']} (id={cat['cat_id']}) ===")
                 for pg_num in range(self.limit_pages):
+                    if self.items_scraped >= self.limit_items:
+                        break
                     start = pg_num * self.PAGE_SIZE
                     url = self.LIST_URL.format(cat_id=cat["cat_id"], start=start)
                     self.logger.info(f"Listing page {pg_num + 1}: {url}")
 
-                    try:
-                        resp = self.client.get(url)
-                        resp.raise_for_status()
-                    except Exception as e:
-                        self.logger.error(f"Failed to fetch listing page: {e}")
+                    resp = self._get_robust_response(url)
+                    if not resp or resp.status_code != 200:
+                        self.logger.error(f"Failed to fetch listing page {url}")
                         break
 
                     soup = BeautifulSoup(resp.text, "html.parser")
@@ -119,15 +139,14 @@ class AladinSpider(BaseSpider):
         return list(dict.fromkeys(links))
 
     def _harvest_item(self, url: str):
-        # ItemId is the stable cache key
         m = re.search(r"ItemId=(\d+)", url)
         item_id = m.group(1) if m else re.sub(r"[^a-zA-Z0-9_-]", "_", url)[-60:]
 
         try:
             self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code != 200 or len(resp.text) < 500:
+                self.logger.warning(f"Bad response for {url}")
                 return
 
             self.cache_html(item_id, resp.text, url=url)
@@ -136,11 +155,29 @@ class AladinSpider(BaseSpider):
             h1 = soup.find("h1") or soup.find("div", class_=re.compile(r"title|book_name", re.I))
             title = self._title_from_soup(soup) or (h1.get_text(" ", strip=True) if h1 else None) or "Cached Item"
 
+            price_val = None
+            price_currency_val = None
+            price_node = soup.select_one("span.p_price, span.EbookPrices, .p_price, span.EbookNum")
+            if price_node:
+                match = re.search(r"[\d,]+", price_node.get_text())
+                if match:
+                    num = match.group(0).replace(",", "")
+                    if num.isdigit() and int(num) > 0:
+                        price_val = f"{float(num):.2f}"
+                        price_currency_val = "KRW"
+            if not price_val:
+                match = re.search(r"([\d,]{3,})\s*원", soup.get_text())
+                if match:
+                    price_val = f"{float(match.group(1).replace(',', '')):.2f}"
+                    price_currency_val = "KRW"
+
             self.save_item(BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
                 isbn=extract_isbn(soup),
+                price=price_val,
+                price_currency=price_currency_val,
                 listing_url=url,
                 condition="Cached for AI extraction",
             ))
@@ -164,5 +201,6 @@ if __name__ == "__main__":
                         help="Max listing pages per category (default: 100)")
     parser.add_argument("--limit-pages", type=int)
     parser.add_argument("--limit-items", type=int, default=50)
-    args = parser.parse_args()
+    parser.add_argument("--query", type=str, default=None)
+    args, _ = parser.parse_known_args()
     AladinSpider(limit_pages=args.limit_pages or args.limit, limit_items=args.limit_items).run()

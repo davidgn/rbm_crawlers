@@ -10,6 +10,7 @@ Product pages: https://www.taaze.tw/products/{oid}.html
 """
 import argparse
 import json
+import random
 import re
 import time
 
@@ -38,11 +39,34 @@ HEADERS = {
 class TaazeSpider(BaseSpider):
     BASE_URL = "https://www.taaze.tw"
 
-    def __init__(self, limit: int = 0, delay: float = 0.5):
+    def __init__(self, limit: int = 0, delay: float = 0.5, limit_pages: int | None = None, limit_items: int | None = None, query: str | None = None):
         super().__init__(platform_name="TAAZE.tw", territory="Taiwan")
-        self.limit = limit
+        self.limit = limit_items if limit_items is not None else limit
         self.delay = delay
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
+        self.query = query
         self.client = httpx.Client(timeout=30.0, verify=False, follow_redirects=True, headers=HEADERS)
+
+    def _get_robust_response(self, url: str, max_retries: int = 3):
+        for attempt in range(max_retries):
+            try:
+                headers = HEADERS.copy()
+                headers["User-Agent"] = random.choice([
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
+                    "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+                ])
+                resp = self.client.get(url, headers=headers)
+                if resp.status_code in [403, 429, 500, 502, 503, 504]:
+                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
+                    time.sleep(2 ** attempt)
+                    continue
+                return resp
+            except Exception as e:
+                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
+                time.sleep(2 ** attempt)
+        return None
 
     def _load_oids(self) -> list[str]:
         """Download sitemap files and extract OIDs from usedList URLs."""
@@ -50,9 +74,9 @@ class TaazeSpider(BaseSpider):
         seen = set()
         for sitemap_url in SITEMAP_FILES:
             try:
-                resp = self.client.get(sitemap_url, timeout=30.0)
-                if resp.status_code != 200:
-                    self.logger.warning("Sitemap %s returned %d", sitemap_url, resp.status_code)
+                resp = self._get_robust_response(sitemap_url)
+                if not resp or resp.status_code != 200:
+                    self.logger.warning("Sitemap %s failed or non-200", sitemap_url)
                     continue
                 for line in resp.text.splitlines():
                     line = line.strip()
@@ -72,7 +96,6 @@ class TaazeSpider(BaseSpider):
         all_oids = self._load_oids()
         self.logger.info("Total OIDs from sitemaps: %d", len(all_oids))
 
-        # Filter out already-scraped OIDs
         to_scrape = [
             oid for oid in all_oids
             if f"{self.BASE_URL}/products/{oid}.html" not in self._seen_urls
@@ -84,6 +107,8 @@ class TaazeSpider(BaseSpider):
             self.logger.info("Limiting to %d", self.limit)
 
         for i, oid in enumerate(to_scrape, 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             if i % 1000 == 0:
                 self.logger.info("[%d/%d] scraped=%d", i, len(to_scrape), self.items_scraped)
             url = f"{self.BASE_URL}/products/{oid}.html"
@@ -98,12 +123,13 @@ class TaazeSpider(BaseSpider):
 
     def _harvest_item(self, url: str):
         try:
-            resp = self.client.get(url)
-            if resp.status_code != 200:
+            resp = self._get_robust_response(url)
+            if not resp or resp.status_code != 200:
                 return
             self.cache_html(url.split("/")[-1].split(".")[0], resp.text, url=url)
             listing = self._extract(resp.text, url)
             if listing:
+                listing = self.scavenge_metadata(resp.text, listing)
                 self.save_item(listing)
         except Exception as e:
             self.logger.error("Fetch error %s: %s", url, e)
@@ -111,7 +137,6 @@ class TaazeSpider(BaseSpider):
     def _extract(self, html: str, url: str) -> BookListing | None:
         soup = BeautifulSoup(html, "html.parser")
 
-        # JSON-LD Book node
         data: dict = {}
         for script in soup.find_all("script", type="application/ld+json"):
             try:
@@ -137,7 +162,6 @@ class TaazeSpider(BaseSpider):
         isbn_clean = re.sub(r"\D", "", isbn_raw)
         isbn = isbn_clean if re.match(r"97[89]\d{10}$", isbn_clean) else None
 
-        # Fallback: parse ISBN from meta description
         if not isbn:
             meta_desc = soup.find("meta", attrs={"name": "description"})
             if meta_desc:
@@ -164,12 +188,18 @@ class TaazeSpider(BaseSpider):
         pub_year = (data.get("datePublished") or "")[:4] or None
 
         price_el = soup.select_one("[class*='price'], [itemprop='price']")
-        price = None
+        price_val = None
+        price_curr = None
         if price_el:
             price_text = price_el.get_text(strip=True)
             price_m = re.search(r"[\d,]+", price_text)
             if price_m:
-                price = f"TWD {price_m.group().replace(',', '')}"
+                num = price_m.group().replace(",", "")
+                try:
+                    price_val = f"{float(num):.2f}"
+                    price_curr = "TWD"
+                except ValueError:
+                    price_val = num
 
         return BookListing(
             territory=self.territory,
@@ -180,13 +210,13 @@ class TaazeSpider(BaseSpider):
             publisher=publisher,
             publication_year=pub_year,
             condition="Used",
-            price=price,
+            price=price_val,
+            price_currency=price_curr,
             listing_url=url,
         )
 
 
 def _backfill_cached(delay: float = 0.5):
-    """Re-fetch and extract all TAAZE JSONL records that lack structured data."""
     import json as _json
     import time as _time
     import warnings
@@ -244,10 +274,19 @@ def _backfill_cached(delay: float = 0.5):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=0, help="Max OIDs to scrape (0=all)")
+    parser.add_argument("--limit-pages", type=int, default=None)
+    parser.add_argument("--limit-items", type=int, default=None)
+    parser.add_argument("--query", type=str, default=None)
     parser.add_argument("--backfill", action="store_true", help="Re-fetch stubs and extract data")
     parser.add_argument("--delay", type=float, default=0.5)
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()
     if args.backfill:
         _backfill_cached(delay=args.delay)
     else:
-        TaazeSpider(limit=args.limit, delay=args.delay).run()
+        TaazeSpider(
+            limit=args.limit,
+            delay=args.delay,
+            limit_pages=args.limit_pages,
+            limit_items=args.limit_items,
+            query=args.query,
+        ).run()

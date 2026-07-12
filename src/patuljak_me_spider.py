@@ -1,18 +1,20 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from html_search_spider import HTMLSearchSpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Patuljak Montenegro Books",
-    territory="Montenegro",
-    base_url="https://patuljak.me",
-    browse_paths=("/c/knjige", "/c/srednja-skola"),
-    detail_signals=("/oglas/", "/c/knjige/", "/knjige/"),
-    exclude_signals=("/pomoc", "/login", "/registracija"),
-    headers={"Accept-Language": "sr-ME,sr;q=0.9,en;q=0.8"},
-    rendered=True,
-    render_wait_ms=3500,
-)
-
+class PatuljakMeSpider(HTMLSearchSpider):
+    def __init__(self, limit_pages=5, limit_items=None, **kwargs):
+        super().__init__(
+            platform_name="Patuljak.me",
+            base_url="https://patuljak.me",
+            search_path="pretraga?q={query}&category=knjige",
+            territory="Montenegro",
+            limit_pages=limit_pages,
+            limit_items=limit_items,
+            price_currency="EUR",
+            **kwargs
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Patuljak Montenegro books classifieds spider")
+    import logging
+    logging.basicConfig(level=logging.INFO)
+    spider = PatuljakMeSpider(limit_pages=1, limit_items=5)
+    spider.run()
