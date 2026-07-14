@@ -16,7 +16,7 @@
 | 5 | UChicago Upgrade | Migrate `uchicago_bookstore_used_spider.py` to Playwright & fix selectors | none | COMPLETED |
 | 6 | Verification & Audit | All 5 spiders successfully bypass blocks and extract >=1 BookListing | M1, M2, M3, M4, M5 | COMPLETED |
 | 7 | Commercial Bookstore Spiders | Implement and upgrade bookstore-specific crawlers for Ghana (Booknook.store), Gabon (Gabon Livre), and Angola (Angolivros) using WooCommerce API | none | COMPLETED |
-| 8 | More Low-Cost Bookstore Spiders | Implement and upgrade bookstore-specific crawlers for Algeria (Livres & Lis), North Macedonia (Matica Makedonska), Kosovo (House of Books), Tunisia (Dar El Kitab), Bolivia (Encantalibros), Paraguay (Libruras), and Mongolia (Foreign Book in Mongolia) using WooCommerce API, and Venezuela (Libronomia) using Shopify suggest API | none | COMPLETED |
+| 8 | More Low-Cost Bookstore Spiders | Implement and upgrade bookstore-specific crawlers for Algeria (Livres & Lis), North Macedonia (Matica Makedonska), Kosovo (House of Books), Tunisia (Dar El Kitab), Bolivia (Encantalibros), Paraguay (Libruras), Mongolia (Foreign Book in Mongolia), and Montenegro (Narodna Knjiga) using WooCommerce API, and Venezuela (Libronomia) using Shopify suggest API | none | COMPLETED |
 
 
 ## Interface Contracts
