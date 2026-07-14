@@ -44,6 +44,7 @@ SUBCLASSES = [
     "dar_elkitab_tn_spider",
     "encantalibros_bo_spider",
     "libruras_py_spider",
+    "foreignbook_mn_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
