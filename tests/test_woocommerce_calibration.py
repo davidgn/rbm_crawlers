@@ -38,6 +38,7 @@ SUBCLASSES = [
     "booknook_store_spider",
     "gabonlivre_spider",
     "angolivros_spider",
+    "livresetlis_dz_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
