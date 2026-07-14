@@ -1,14 +1,14 @@
 from woocommerce_spider import WooCommerceAPISpider
 
-class GabonLivreSpider(WooCommerceAPISpider):
+class BooknookStoreSpider(WooCommerceAPISpider):
     """
-    Broad crawler for Gabon Livre (Gabon).
+    Broad crawler for Booknook.store (Ghana).
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
-            platform_name="Gabon Livre",
-            base_url="https://www.gabonlivre.com",
-            territory="Gabon",
+            platform_name="Booknook.store",
+            base_url="https://booknook.store",
+            territory="Ghana",
             limit_pages=limit_pages
         )
 
@@ -18,4 +18,4 @@ if __name__ == "__main__":
     parser.add_argument("--limit-pages", type=int, default=5)
     args = parser.parse_args()
     
-    GabonLivreSpider(limit_pages=args.limit_pages).run()
+    BooknookStoreSpider(limit_pages=args.limit_pages).run()

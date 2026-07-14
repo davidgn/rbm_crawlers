@@ -1,16 +1,21 @@
-from configurable_marketplace_spider import MarketplaceConfig, run_configured_spider
+from woocommerce_spider import WooCommerceAPISpider
 
-
-CONFIG = MarketplaceConfig(
-    platform_name="Angolivros",
-    territory="Angola",
-    base_url="https://angolivros.ao",
-    browse_paths=("/", "/livros/", "/loja/", "/shop/"),
-    detail_signals=("/produto/", "/product/", "/livro/", "/book/"),
-    headers={"Accept-Language": "pt-AO,pt;q=0.9,en;q=0.8"},
-    link_fallback_on_detail_failure=True,
-)
-
+class AngolivrosSpider(WooCommerceAPISpider):
+    """
+    Broad crawler for Angolivros (Angola) using WooCommerce API.
+    """
+    def __init__(self, limit_pages: int = 50):
+        super().__init__(
+            platform_name="Angolivros",
+            base_url="https://angolivros.ao",
+            territory="Angola",
+            limit_pages=limit_pages
+        )
 
 if __name__ == "__main__":
-    run_configured_spider(CONFIG, "Angolivros Angola marketplace spider")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=5)
+    args = parser.parse_args()
+    
+    AngolivrosSpider(limit_pages=args.limit_pages).run()
