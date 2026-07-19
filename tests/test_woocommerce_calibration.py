@@ -49,6 +49,7 @@ SUBCLASSES = [
     "puroverso_uy_spider",
     "felix_si_spider",
     "cartier_md_spider",
+    "libreriacervantes_sv_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
