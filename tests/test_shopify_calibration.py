@@ -8,6 +8,7 @@ from shopify_search_spider import ShopifySearchSpider
 
 SUBCLASSES = [
     "libronomia_ve_spider",
+    "livreservice_ma_spider",
 ]
 
 class TestShopifyCalibration(unittest.TestCase):
