@@ -46,6 +46,7 @@ SUBCLASSES = [
     "libruras_py_spider",
     "foreignbook_mn_spider",
     "narodnaknjiga_me_spider",
+    "puroverso_uy_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
