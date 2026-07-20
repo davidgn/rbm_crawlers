@@ -52,6 +52,7 @@ SUBCLASSES = [
     "libreriacervantes_sv_spider",
     "tiranabook_al_spider",
     "kultura_mk_spider",
+    "ikona_mk_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
