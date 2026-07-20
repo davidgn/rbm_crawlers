@@ -61,6 +61,7 @@ SUBCLASSES = [
     "padhegaindia_in_spider",
     "libreriamoderna_sv_spider",
     "mybookstall_in_spider",
+    "tropik_ba_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
