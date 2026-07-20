@@ -11,7 +11,7 @@ class SbsPeSpider(HTMLSearchSpider):
             base_url="https://www.sbs.com.pe",
             search_path="catalogsearch/result/?q={query}",
             selectors={
-                "item_container": "li.product-item",
+                "container": "li.product-item",
                 "title": "a.product-item-link",
                 "author": "div.author-name",
                 "price": "span.price",
