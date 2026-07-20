@@ -54,6 +54,7 @@ SUBCLASSES = [
     "kultura_mk_spider",
     "ikona_mk_spider",
     "ezop_hr_spider",
+    "libreriaslectura_bo_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
