@@ -22,7 +22,8 @@ class RidibooksKrSpider(BaseSpider):
             headers.update({
                 "Accept": "application/json, text/plain, */*",
                 "Origin": "https://ridibooks.com",
-                "Referer": "https://ridibooks.com/"
+                "Referer": "https://ridibooks.com/",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
             })
             resp = self.client.get(self.api_url, params=params, headers=headers)
             if resp.status_code != 200:
@@ -50,6 +51,7 @@ class RidibooksKrSpider(BaseSpider):
                     platform=self.platform_name,
                     territory=self.territory
                 )
+                self.save_item(listing)
                 listings.append(listing)
         except Exception as e:
             self.logger.error(f"Error scraping RIDI Books for query '{query}': {e}")
