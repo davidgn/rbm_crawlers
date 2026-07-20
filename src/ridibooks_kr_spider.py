@@ -19,7 +19,11 @@ class RidibooksKrSpider(BaseSpider):
         try:
             params = {"keyword": query}
             headers = self.get_random_headers()
-            headers["Accept"] = "application/json"
+            headers.update({
+                "Accept": "application/json, text/plain, */*",
+                "Origin": "https://ridibooks.com",
+                "Referer": "https://ridibooks.com/"
+            })
             resp = self.client.get(self.api_url, params=params, headers=headers)
             if resp.status_code != 200:
                 self.logger.warning(f"Got status {resp.status_code} for search query '{query}'")
