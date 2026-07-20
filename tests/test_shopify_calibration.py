@@ -13,6 +13,7 @@ SUBCLASSES = [
     "kitabay_in_spider",
     "booklify_pk_spider",
     "champaca_in_spider",
+    "ninety_nine_bookstores_in_spider",
 ]
 
 class TestShopifyCalibration(unittest.TestCase):
