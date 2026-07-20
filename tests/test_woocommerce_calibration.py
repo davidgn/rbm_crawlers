@@ -57,6 +57,7 @@ SUBCLASSES = [
     "libreriaslectura_bo_spider",
     "mundokaypacha_ec_spider",
     "bookocean_pk_spider",
+    "godage_lk_spider",
 ]
 
 class TestWooCommerceCalibration(unittest.TestCase):
