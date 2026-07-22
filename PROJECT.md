@@ -44,6 +44,8 @@
 | 33 | Further Low-Cost M-Bag Retail Network Expansion | Implement bookstore crawlers for Pakistan (Paramount Books), India (Gyan Books), and Colombia (Librería de la U) | none | COMPLETED |
 | 34 | San Marino Expansion | Implement bookstore-specific crawler for San Marino (San Marino Libri) | none | COMPLETED |
 | 35 | Burundi Expansion | Implement bookstore-specific crawler for Burundi (Librairie Saint Paul) | none | COMPLETED |
+| 36 | Togo Expansion | Implement bookstore-specific crawler for Togo (Librairie BonPasteur) | none | COMPLETED |
+| 37 | Global Low-Cost M-Bag Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Nacional), Turkey (Nezih Kitap), and Vietnam (Nha Sach Ca Chep) | none | COMPLETED |
 
 
 ## Interface Contracts
