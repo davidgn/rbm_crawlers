@@ -46,6 +46,8 @@
 | 35 | Burundi Expansion | Implement bookstore-specific crawler for Burundi (Librairie Saint Paul) | none | COMPLETED |
 | 36 | Togo Expansion | Implement bookstore-specific crawler for Togo (Librairie BonPasteur) | none | COMPLETED |
 | 37 | Global Low-Cost M-Bag Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Nacional), Turkey (Nezih Kitap), and Vietnam (Nha Sach Ca Chep) | none | COMPLETED |
+| 38 | Deep Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, Egypt) | Implement bookstore crawlers for Colombia (Librería La Madriguera del Conejo), Turkey (Mephisto Kitap), and Egypt (Kotobna) | none | COMPLETED |
+| 39 | Papua New Guinea Expansion | Implement bookstore-specific crawlers for Papua New Guinea (UPNG Book Exchange and PNG University of Technology Press) | none | COMPLETED |
 
 
 ## Interface Contracts
