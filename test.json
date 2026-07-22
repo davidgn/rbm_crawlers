@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/genuine_reg_final_finnnorwayfinal_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.84,
+      "stdout_tail": "",
+      "stderr_tail": "2026-06-22 07:07:31,081 [INFO] FinnNorwayFinalSpider: Starting HTML Search crawler for FinnNorwayFinal. Limit: 1 pages.\n2026-06-22 07:07:31,082 [INFO] FinnNorwayFinalSpider: Fetching page 1: https://www.finn.no/search?q=University+of+Chicago+Press\n2026-06-22 07:07:33,017 [INFO] httpx: HTTP Request: GET https://www.finn.no/search?q=University+of+Chicago+Press \"HTTP/1.1 404 Not Found\"\n2026-06-22 07:07:33,107 [INFO] FinnNorwayFinalSpider: Reached end of pagination (404/400).\n2026-06-22 07:07:33,107 [INFO] FinnNorwayFinalSpider: Finished FinnNorwayFinal. Scraped 0 items.\n"
+    }
+  ]
+}

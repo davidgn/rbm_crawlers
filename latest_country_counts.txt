@@ -1,0 +1,116 @@
+Total Spiders Analyzed: 968
+
+--- Current Coverage by Country ---
+Global: 174
+Colombia: 160
+Egypt: 35
+India: 29
+Global/Unknown: 23
+Peru: 22
+South Africa: 17
+Argentina: 17
+Germany: 16
+United Kingdom: 16
+Brazil: 15
+Spain: 14
+South Korea: 13
+Saudi Arabia: 13
+Japan: 13
+Malaysia: 12
+Nigeria: 12
+Australia: 12
+Italy: 11
+Mexico: 11
+France: 11
+Bangladesh: 11
+Chile: 10
+Kenya: 10
+Indonesia: 10
+Taiwan: 9
+Pakistan: 9
+Russia: 8
+Turkey: 7
+China (mainland): 7
+Thailand: 7
+Vietnam: 7
+Finland: 6
+Hong Kong: 6
+Romania: 6
+Sweden: 6
+Uzbekistan: 6
+China: 6
+New Zealand: 5
+Lebanon: 5
+Kazakhstan: 5
+IC: 5
+Norway: 5
+Philippines: 5
+Netherlands: 5
+Benin: 4
+Sri Lanka: 4
+Singapore: 4
+Ukraine: 4
+Bulgaria: 4
+UAE: 4
+Nepal: 4
+Latvia: 4
+Switzerland: 4
+Israel: 4
+Czechia: 4
+Denmark: 4
+Kyrgyzstan: 4
+Portugal: 3
+Greece: 3
+Slovakia: 3
+Poland: 3
+Senegal: 3
+Lithuania: 3
+Iraq: 3
+Georgia: 3
+Zimbabwe: 3
+Estonia: 3
+Ireland: 3
+Gabon: 3
+Panama: 3
+Belgium: 3
+Austria: 3
+United States: 3
+Montenegro: 2
+Angola: 2
+Côte d: 2
+Cameroon: 2
+Morocco: 2
+Serbia: 2
+Croatia: 2
+Mali: 2
+Honduras: 2
+Zambia: 2
+Seychelles: 2
+Ghana: 2
+Guatemala: 2
+Armenia: 2
+Azerbaijan: 2
+Venezuela: 2
+Puerto Rico: 2
+Jordan: 1
+Chad: 1
+Libya: 1
+Jamaica: 1
+Iran: 1
+CA: 1
+Liberia: 1
+Bosnia and Herzegovina: 1
+Palestine: 1
+Uruguay: 1
+Slovenia: 1
+Syria: 1
+Middle East: 1
+Trinidad and Tobago: 1
+Costa Rica: 1
+Namibia: 1
+Dominican Republic: 1
+Togo: 1
+Guyana: 1
+IA: 1
+Hungary: 1
+MENA: 1

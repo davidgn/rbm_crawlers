@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "files": 13,
+    "nonzero": 1,
+    "timeouts": 1,
+    "zero_added": 13,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/agadirbookshop_eh_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.16,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:04,698 [INFO] AgadirbookshopEhSpider: Starting HTML Search crawler for Agadirbookshop. Limit: 1 pages.\n2026-07-20 10:39:04,699 [INFO] AgadirbookshopEhSpider: Fetching page 1: https://agadirbookshop.com/?s=University+of+Chicago+Press\n2026-07-20 10:39:09,758 [INFO] AgadirbookshopEhSpider: Finished Agadirbookshop. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/akaguriro_bi_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 14.72,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:38:53,154 [INFO] AkaguriroBiSpider: Starting HTML Search crawler for Akaguriro. Limit: 1 pages.\n2026-07-20 10:38:53,154 [INFO] AkaguriroBiSpider: Fetching page 1: https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press\n2026-07-20 10:38:54,075 [WARNING] AkaguriroBiSpider: Got 500 for https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press. Retrying (1/3)...\n2026-07-20 10:38:55,826 [WARNING] AkaguriroBiSpider: Got 500 for https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press. Retrying (2/3)...\n2026-07-20 10:38:58,435 [WARNING] AkaguriroBiSpider: Got 500 for https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press. Retrying (3/3)...\n2026-07-20 10:39:02,439 [ERROR] AkaguriroBiSpider: Failed to fetch https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press after retries.\n2026-07-20 10:39:02,440 [INFO] AkaguriroBiSpider: Finished Akaguriro. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/aksiku_id_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 11.96,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:15,065 [INFO] AksikuIdSpider: Starting HTML Search crawler for Aksiku. Limit: 1 pages.\n2026-07-20 10:39:15,066 [INFO] AksikuIdSpider: Fetching page 1: https://www.aksiku.com/search?q=University+of+Chicago+Press\n2026-07-20 10:39:20,526 [WARNING] AksikuIdSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-20 10:39:22,529 [INFO] AksikuIdSpider: Finished Aksiku. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/alibookscd_cd_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.63,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:02,632 [INFO] AlibookscdCdSpider: Starting HTML Search crawler for Alibooks.cd. Limit: 1 pages.\n2026-07-20 10:39:02,632 [INFO] AlibookscdCdSpider: Fetching page 1: https://alibookscd.com/?s=University+of+Chicago+Press\n2026-07-20 10:39:02,896 [WARNING] AlibookscdCdSpider: Got 403 for https://alibookscd.com/?s=University+of+Chicago+Press. Retrying (1/3)...\n2026-07-20 10:39:04,004 [WARNING] AlibookscdCdSpider: Got 403 for https://alibookscd.com/?s=University+of+Chicago+Press. Retrying (2/3)...\n2026-07-20 10:39:06,115 [WARNING] AlibookscdCdSpider: Got 403 for https://alibookscd.com/?s=University+of+Chicago+Press. Retrying (3/3)...\n2026-07-20 10:39:10,117 [ERROR] AlibookscdCdSpider: Failed to fetch https://alibookscd.com/?s=University+of+Chicago+Press after retries.\n2026-07-20 10:39:10,118 [INFO] AlibookscdCdSpider: Finished Alibooks.cd. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bekasbookstore_id_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 5.52,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:21,070 [INFO] BekasbookstoreIdSpider: Starting HTML Search crawler for Bekas Bookstore. Limit: 1 pages.\n2026-07-20 10:39:21,070 [INFO] BekasbookstoreIdSpider: Fetching page 1: https://bekasbookstore.id/search?q=University+of+Chicago+Press\n2026-07-20 10:39:23,370 [INFO] BekasbookstoreIdSpider: Reached end of pagination (404/400).\n2026-07-20 10:39:23,371 [INFO] BekasbookstoreIdSpider: Finished Bekas Bookstore. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bookstock_ua_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.45,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:15,372 [INFO] BookstockUaSpider: Starting HTML Search crawler for Bookstock. Limit: 1 pages.\n2026-07-20 10:39:15,377 [INFO] BookstockUaSpider: Fetching page 1: https://bookstock.net/search?q=University+of+Chicago+Press\n2026-07-20 10:39:20,825 [INFO] BookstockUaSpider: Finished Bookstock. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bourbonlivre_re_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 15.06,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/clankart_in_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.04,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:38:53,644 [INFO] ClankartInSpider: Restart-safe: pre-loaded 218 existing URLs from clankart_listings.jsonl\n2026-07-20 10:38:53,646 [INFO] ClankartInSpider: Starting HTML Search crawler for Clankart. Limit: 1 pages.\n2026-07-20 10:38:53,646 [INFO] ClankartInSpider: Fetching page 1: https://www.clankart.com/search?q=University+of+Chicago+Press\n2026-07-20 10:38:59,857 [INFO] ClankartInSpider: Finished Clankart. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/librailigne_ci_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.98,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:10,617 [INFO] LibrailigneCiSpider: Starting HTML Search crawler for Librailigne. Limit: 1 pages.\n2026-07-20 10:39:10,617 [INFO] LibrailigneCiSpider: Fetching page 1: https://librailigne.ci/?s=University+of+Chicago+Press\n2026-07-20 10:39:10,956 [WARNING] LibrailigneCiSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: librailigne.ci. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (1/3)...\n2026-07-20 10:39:12,757 [WARNING] LibrailigneCiSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: librailigne.ci. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (2/3)...\n2026-07-20 10:39:15,142 [WARNING] LibrailigneCiSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: librailigne.ci. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (3/3)...\n2026-07-20 10:39:19,145 [ERROR] LibrailigneCiSpider: Failed to fetch https://librailigne.ci/?s=University+of+Chicago+Press after retries.\n2026-07-20 10:39:19,146 [INFO] LibrailigneCiSpider: Finished Librailigne. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/lothus_cv_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.08,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:38:53,283 [INFO] LothusCvSpider: Starting HTML Search crawler for Livraria Lóthus. Limit: 1 pages.\n2026-07-20 10:38:53,286 [INFO] LothusCvSpider: Fetching page 1: https://lothus.cv/?s=University+of+Chicago+Press\n2026-07-20 10:38:54,114 [INFO] LothusCvSpider: No items found on page 1. Stopping.\n2026-07-20 10:38:54,115 [INFO] LothusCvSpider: Finished Livraria Lóthus. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/mypustak_in_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 3.91,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:38:56,247 [INFO] MypustakInSpider: Starting HTML Search crawler for MyPustak. Limit: 1 pages.\n2026-07-20 10:38:56,247 [INFO] MypustakInSpider: Fetching page 1: https://www.mypustak.com/search?q=University+of+Chicago+Press\n2026-07-20 10:38:57,323 [INFO] MypustakInSpider: No items found on page 1. Stopping.\n2026-07-20 10:38:57,323 [INFO] MypustakInSpider: Finished MyPustak. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/pedro_cardoso_cv_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.99,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:38:53,350 [INFO] PedroCardosoCvSpider: Starting HTML Search crawler for Livraria Pedro Cardoso. Limit: 1 pages.\n2026-07-20 10:38:53,350 [INFO] PedroCardosoCvSpider: Fetching page 1: https://catalogolpc.blogspot.com/search?q=University+of+Chicago+Press\n2026-07-20 10:38:56,282 [INFO] PedroCardosoCvSpider: Finished Livraria Pedro Cardoso. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/sahanbooks_so_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.5,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-20 10:39:02,353 [INFO] SahanbooksSoSpider: Starting HTML Search crawler for Sahanbooks. Limit: 1 pages.\n2026-07-20 10:39:02,353 [INFO] SahanbooksSoSpider: Fetching page 1: https://sahanbooks.com/?s=University+of+Chicago+Press\n2026-07-20 10:39:06,608 [INFO] SahanbooksSoSpider: Finished Sahanbooks. Scraped 0 items.\n"
+    }
+  ]
+}

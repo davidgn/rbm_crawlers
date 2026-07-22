@@ -1,0 +1,451 @@
+{
+  "summary": {
+    "files": 55,
+    "nonzero": 13,
+    "timeouts": 13,
+    "zero_added": 55,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/academy_sciences_malaysia_asm_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 25.3,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/academy_sciences_uzbekistan_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 25.33,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/air_university_press_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 23.18,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:11,961 [INFO] AirUniversityPressSpider: Starting HTML Search crawler for AirUniversityPress. Limit: 1 pages.\n2026-07-13 23:43:11,961 [INFO] AirUniversityPressSpider: Fetching page 1: https://www.airuniversity.af.edu/AUPress/?q=University+of+Chicago+Press\n2026-07-13 23:43:18,116 [INFO] AirUniversityPressSpider: Finished AirUniversityPress. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/alhaq_palestine_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 25.33,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/alresalah_bookshop_ly_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 23.76,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:11,858 [INFO] AlresalahBookshopLySpider: Starting HTML Search crawler for Alresalah Bookshop. Limit: 1 pages.\n2026-07-13 23:43:11,859 [INFO] AlresalahBookshopLySpider: Fetching page 1: https://alresalahbookshop.ly/?s=University+of+Chicago+Press\n2026-07-13 23:43:16,488 [WARNING] AlresalahBookshopLySpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-13 23:43:18,491 [INFO] AlresalahBookshopLySpider: Finished Alresalah Bookshop. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/american_university_cairo_press_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 24.68,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:11,945 [INFO] AmericanUniversityCairoPressSpider: Starting HTML Search crawler for AmericanUniversityinCairoPress. Limit: 1 pages.\n2026-07-13 23:43:11,946 [INFO] AmericanUniversityCairoPressSpider: Fetching page 1: https://www.aucpress.com/?q=University+of+Chicago+Press\n2026-07-13 23:43:19,559 [INFO] AmericanUniversityCairoPressSpider: Finished AmericanUniversityinCairoPress. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/an_sinha_institute_social_studies_ansiss_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 25.3,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/aphrc_african_population_health_research_center_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.83,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:11,859 [INFO] AphrcAfricanPopulationHealthResearchCenterSpider: Starting HTML Search crawler for AfricanPopulationandHealthResearchCenterAPHRC. Limit: 1 pages.\n2026-07-13 23:43:11,860 [INFO] AphrcAfricanPopulationHealthResearchCenterSpider: Fetching page 1: https://aphrc.org/publication-type/books-and-monographs/?q=University+of+Chicago+Press\n2026-07-13 23:43:13,208 [INFO] AphrcAfricanPopulationHealthResearchCenterSpider: Reached end of pagination (404/400).\n2026-07-13 23:43:13,209 [INFO] AphrcAfricanPopulationHealthResearchCenterSpider: Finished AfricanPopulationandHealthResearchCenterAPHRC. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/arab_council_social_sciences_acss_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 17.53,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:22,613 [INFO] ArabCouncilSocialSciencesAcssSpider: Starting HTML Search crawler for ArabCouncilfortheSocialSciencesACSS. Limit: 1 pages.\n2026-07-13 23:43:22,613 [INFO] ArabCouncilSocialSciencesAcssSpider: Fetching page 1: https://www.theacss.org/?q=University+of+Chicago+Press\n2026-07-13 23:43:31,065 [INFO] ArabCouncilSocialSciencesAcssSpider: Finished ArabCouncilfortheSocialSciencesACSS. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/assa_academy_social_sciences_australia_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.21,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:26,415 [INFO] AssaAcademySocialSciencesAustraliaSpider: Starting HTML Search crawler for AcademyoftheSocialSciencesinAustraliaASSA. Limit: 1 pages.\n2026-07-13 23:43:26,420 [INFO] AssaAcademySocialSciencesAustraliaSpider: Fetching page 1: https://socialsciences.org.au/?q=University+of+Chicago+Press\n2026-07-13 23:43:30,894 [INFO] AssaAcademySocialSciencesAustraliaSpider: Finished AcademyoftheSocialSciencesinAustraliaASSA. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/baku_book_center_az_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.48,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:27,274 [INFO] BakuBookCenterAzSpider: Starting HTML Search crawler for Baku Book Center. Limit: 1 pages.\n2026-07-13 23:43:27,274 [INFO] BakuBookCenterAzSpider: Fetching page 1: https://bakubookcenter.az/?s=University+of+Chicago+Press\n2026-07-13 23:43:31,720 [INFO] BakuBookCenterAzSpider: Finished Baku Book Center. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bookinist_am_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.47,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:28,723 [INFO] BookinistAmSpider: Starting HTML Search crawler for Bookinist. Limit: 1 pages.\n2026-07-13 23:43:28,723 [INFO] BookinistAmSpider: Fetching page 1: https://bookinist.am/?s=University+of+Chicago+Press\n2026-07-13 23:43:37,506 [INFO] BookinistAmSpider: Finished Bookinist. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bouquiniste_maroc_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.8,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:28,438 [INFO] BouquinisteMarocSpider: Starting HTML Search crawler for Bouquiniste Maroc. Limit: 1 pages.\n2026-07-13 23:43:28,450 [INFO] BouquinisteMarocSpider: Fetching page 1: https://www.bouquinistemaroc.com/?s=University+of+Chicago+Press\n2026-07-13 23:43:32,431 [INFO] BouquinisteMarocSpider: Finished Bouquiniste Maroc. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/caepr_aboriginal_economic_policy_research_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 15.66,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:28,837 [INFO] CaeprAboriginalEconomicPolicyResearchSpider: Starting HTML Search crawler for CentreforAboriginalEconomicPolicyResearchCAEPR. Limit: 1 pages.\n2026-07-13 23:43:28,837 [INFO] CaeprAboriginalEconomicPolicyResearchSpider: Fetching page 1: https://caepr.anu.edu.au/?q=University+of+Chicago+Press\n2026-07-13 23:43:35,365 [INFO] CaeprAboriginalEconomicPolicyResearchSpider: Finished CentreforAboriginalEconomicPolicyResearchCAEPR. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/cafrad_african_training_research_administration_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.55,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:28,902 [INFO] CafradAfricanTrainingResearchAdministrationSpider: Starting HTML Search crawler for AfricanTrainingandResearchCentreinAdministrationCAFRAD. Limit: 1 pages.\n2026-07-13 23:43:28,902 [INFO] CafradAfricanTrainingResearchAdministrationSpider: Fetching page 1: http://www.cafrad.org/publications/?q=University+of+Chicago+Press\n2026-07-13 23:43:31,345 [WARNING] CafradAfricanTrainingResearchAdministrationSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-13 23:43:33,347 [INFO] CafradAfricanTrainingResearchAdministrationSpider: Finished AfricanTrainingandResearchCentreinAdministrationCAFRAD. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/china_social_sciences_press_cssp_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 17.12,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:29,301 [INFO] ChinaSocialSciencesPressCsspSpider: Starting HTML Search crawler for ChinaSocialSciencesPressCSSP. Limit: 1 pages.\n2026-07-13 23:43:29,304 [INFO] ChinaSocialSciencesPressCsspSpider: Fetching page 1: http://www.csspw.com.cn/?q=University+of+Chicago+Press\n2026-07-13 23:43:36,980 [INFO] ChinaSocialSciencesPressCsspSpider: Finished ChinaSocialSciencesPressCSSP. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/csiro_publishing_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.15,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:40,846 [INFO] CsiroPublishingSpider: Starting HTML Search crawler for CSIROPublishing. Limit: 1 pages.\n2026-07-13 23:43:40,885 [INFO] CsiroPublishingSpider: Fetching page 1: https://www.publish.csiro.au/?q=University+of+Chicago+Press\n2026-07-13 23:43:46,717 [INFO] CsiroPublishingSpider: Finished CSIROPublishing. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/ecowas_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.01,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/educational_bookshop_ps_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.71,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:41,041 [INFO] EducationalBookshopPsSpider: Starting HTML Search crawler for Educational Bookshop. Limit: 1 pages.\n2026-07-13 23:43:41,041 [INFO] EducationalBookshopPsSpider: Fetching page 1: https://www.educationalbookshop.com/search?q=University+of+Chicago+Press\n2026-07-13 23:43:45,452 [INFO] EducationalBookshopPsSpider: Finished Educational Bookshop. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/foliant_kg_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 17.71,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:41,813 [INFO] FoliantKgSpider: Starting HTML Search crawler for Foliant. Limit: 1 pages.\n2026-07-13 23:43:41,814 [INFO] FoliantKgSpider: Fetching page 1: https://foliant.kg/?s=University+of+Chicago+Press\n2026-07-13 23:43:42,191 [WARNING] FoliantKgSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: foliant.kg. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (1/3)...\n2026-07-13 23:43:43,567 [WARNING] FoliantKgSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: foliant.kg. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (2/3)...\n2026-07-13 23:43:45,958 [WARNING] FoliantKgSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: foliant.kg. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (3/3)...\n2026-07-13 23:43:49,962 [ERROR] FoliantKgSpider: Failed to fetch https://foliant.kg/?s=University+of+Chicago+Press after retries.\n2026-07-13 23:43:49,963 [INFO] FoliantKgSpider: Finished Foliant. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/house_of_books_zw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.83,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:42,918 [INFO] HouseOfBooksZwSpider: Starting HTML Search crawler for House of Books Zimbabwe. Limit: 1 pages.\n2026-07-13 23:43:42,918 [INFO] HouseOfBooksZwSpider: Fetching page 1: https://houseofbookszim.com/?s=University+of+Chicago+Press\n2026-07-13 23:43:43,236 [WARNING] HouseOfBooksZwSpider: Got 403 for https://houseofbookszim.com/?s=University+of+Chicago+Press. Retrying (1/3)...\n2026-07-13 23:43:44,285 [WARNING] HouseOfBooksZwSpider: Got 403 for https://houseofbookszim.com/?s=University+of+Chicago+Press. Retrying (2/3)...\n2026-07-13 23:43:46,387 [WARNING] HouseOfBooksZwSpider: Got 403 for https://houseofbookszim.com/?s=University+of+Chicago+Press. Retrying (3/3)...\n2026-07-13 23:43:50,388 [ERROR] HouseOfBooksZwSpider: Failed to fetch https://houseofbookszim.com/?s=University+of+Chicago+Press after retries.\n2026-07-13 23:43:50,388 [INFO] HouseOfBooksZwSpider: Finished House of Books Zimbabwe. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/hsrc_press_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.04,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/ics_university_malaya_china_studies_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.29,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:46,763 [INFO] IcsUniversityMalayaChinaStudiesSpider: Starting HTML Search crawler for InstituteofChinaStudiesICSUniversityofMalaya. Limit: 1 pages.\n2026-07-13 23:43:46,775 [INFO] IcsUniversityMalayaChinaStudiesSpider: Fetching page 1: https://ics.um.edu.my/?q=University+of+Chicago+Press\n2026-07-13 23:43:50,432 [INFO] IcsUniversityMalayaChinaStudiesSpider: Finished InstituteofChinaStudiesICSUniversityofMalaya. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/iita_international_institute_tropical_agriculture_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.08,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:46,583 [INFO] IitaInternationalInstituteTropicalAgricultureSpider: Starting HTML Search crawler for IITAInternationalInstituteofTropicalAgriculture. Limit: 1 pages.\n2026-07-13 23:43:46,583 [INFO] IitaInternationalInstituteTropicalAgricultureSpider: Fetching page 1: https://www.iita.org/publications/?q=University+of+Chicago+Press\n2026-07-13 23:43:47,486 [INFO] IitaInternationalInstituteTropicalAgricultureSpider: Reached end of pagination (404/400).\n2026-07-13 23:43:47,486 [INFO] IitaInternationalInstituteTropicalAgricultureSpider: Finished IITAInternationalInstituteofTropicalAgriculture. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/ijr_justice_reconciliation_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.04,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/inpe_national_institute_space_research_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.01,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:55,610 [INFO] InpeNationalInstituteSpaceResearchSpider: Starting HTML Search crawler for NationalInstituteforSpaceResearchINPE. Limit: 1 pages.\n2026-07-13 23:43:55,610 [INFO] InpeNationalInstituteSpaceResearchSpider: Fetching page 1: http://www.inpe.br/biblioteca/publicacoes.php/?q=University+of+Chicago+Press\n2026-07-13 23:43:57,075 [WARNING] InpeNationalInstituteSpaceResearchSpider: Request failed: Failed to perform, curl: (60) SSL certificate problem: unable to get local issuer certificate. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (1/3)...\n2026-07-13 23:43:58,615 [WARNING] InpeNationalInstituteSpaceResearchSpider: Request failed: Failed to perform, curl: (60) SSL certificate problem: unable to get local issuer certificate. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (2/3)...\n2026-07-13 23:44:01,189 [WARNING] InpeNationalInstituteSpaceResearchSpider: Request failed: Failed to perform, curl: (60) SSL certificate problem: unable to get local issuer certificate. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (3/3)...\n2026-07-13 23:44:05,205 [ERROR] InpeNationalInstituteSpaceResearchSpider: Failed to fetch http://www.inpe.br/biblioteca/publicacoes.php/?q=University+of+Chicago+Press after retries.\n2026-07-13 23:44:05,206 [INFO] InpeNationalInstituteSpaceResearchSpider: Finished NationalInstituteforSpaceResearchINPE. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/iser_rhodes_social_economic_research_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.39,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:56,496 [INFO] IserRhodesSocialEconomicResearchSpider: Starting HTML Search crawler for InstituteforSocialandEconomicResearchISERRhodes. Limit: 1 pages.\n2026-07-13 23:43:56,496 [INFO] IserRhodesSocialEconomicResearchSpider: Fetching page 1: https://www.ru.ac.za/iser/?q=University+of+Chicago+Press\n2026-07-13 23:44:01,356 [INFO] IserRhodesSocialEconomicResearchSpider: Finished InstituteforSocialandEconomicResearchISERRhodes. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/iss_africa_security_studies_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 11.39,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:59,180 [INFO] IssAfricaSecurityStudiesSpider: Starting HTML Search crawler for InstituteforSecurityStudiesISSAfrica. Limit: 1 pages.\n2026-07-13 23:43:59,185 [INFO] IssAfricaSecurityStudiesSpider: Fetching page 1: https://issafrica.org/?q=University+of+Chicago+Press\n2026-07-13 23:44:01,946 [INFO] IssAfricaSecurityStudiesSpider: Finished InstituteforSecurityStudiesISSAfrica. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/kenya_national_academy_sciences_knas_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.04,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/livre_shop_ci_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.98,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:43:59,666 [INFO] LivreShopCiSpider: Starting HTML Search crawler for Livré. Limit: 1 pages.\n2026-07-13 23:43:59,666 [INFO] LivreShopCiSpider: Fetching page 1: https://livreshopci.com/?s=University+of+Chicago+Press\n2026-07-13 23:44:01,450 [WARNING] LivreShopCiSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-13 23:44:03,463 [INFO] LivreShopCiSpider: Finished Livré. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/mabooko_ma_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 17.36,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:00,597 [INFO] MabookoMaSpider: Restart-safe: pre-loaded 62 existing URLs from mabooko_listings.jsonl\n2026-07-13 23:44:00,603 [INFO] MabookoMaSpider: Starting HTML Search crawler for Mabooko. Limit: 1 pages.\n2026-07-13 23:44:00,603 [INFO] MabookoMaSpider: Fetching page 1: https://mabooko.com/?s=University+of+Chicago+Press\n2026-07-13 23:44:00,901 [WARNING] MabookoMaSpider: Got 403 for https://mabooko.com/?s=University+of+Chicago+Press. Retrying (1/3)...\n2026-07-13 23:44:01,988 [WARNING] MabookoMaSpider: Got 403 for https://mabooko.com/?s=University+of+Chicago+Press. Retrying (2/3)...\n2026-07-13 23:44:04,037 [WARNING] MabookoMaSpider: Got 403 for https://mabooko.com/?s=University+of+Chicago+Press. Retrying (3/3)...\n2026-07-13 23:44:08,040 [ERROR] MabookoMaSpider: Failed to fetch https://mabooko.com/?s=University+of+Chicago+Press after retries.\n2026-07-13 23:44:08,040 [INFO] MabookoMaSpider: Finished Mabooko. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/museo_nacional_antropologia_inah_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.56,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:04,237 [INFO] MuseoNacionalAntropologiaInahSpider: Starting HTML Search crawler for MuseoNacionaldeAntropologiaINAH. Limit: 1 pages.\n2026-07-13 23:44:04,247 [INFO] MuseoNacionalAntropologiaInahSpider: Fetching page 1: https://mna.inah.gob.mx/?q=University+of+Chicago+Press\n2026-07-13 23:44:07,612 [INFO] MuseoNacionalAntropologiaInahSpider: Finished MuseoNacionaldeAntropologiaINAH. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/national_archives_records_service_south_africa_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.02,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/naydizdes_tm_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.37,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:11,021 [INFO] NaydizdesTmSpider: Starting HTML Search crawler for NaydiZdes. Limit: 1 pages.\n2026-07-13 23:44:11,021 [INFO] NaydizdesTmSpider: Fetching page 1: https://naydizdes.com/search?q=University+of+Chicago+Press\n2026-07-13 23:44:13,014 [WARNING] NaydizdesTmSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-13 23:44:15,016 [INFO] NaydizdesTmSpider: Finished NaydiZdes. Scraped 1 items.\n"
+    },
+    {
+      "file": "src/nigerian_institute_advanced_legal_studies_nials_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.1,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/nigerian_institute_international_affairs_niia_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.77,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:14,253 [INFO] NigerianInstituteInternationalAffairsNiiaSpider: Starting HTML Search crawler for NigerianInstituteofInternationalAffairsNIIA. Limit: 1 pages.\n2026-07-13 23:44:14,253 [INFO] NigerianInstituteInternationalAffairsNiiaSpider: Fetching page 1: https://niia.gov.ng/?q=University+of+Chicago+Press\n2026-07-13 23:44:21,379 [INFO] NigerianInstituteInternationalAffairsNiiaSpider: Finished NigerianInstituteofInternationalAffairsNIIA. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/nigerian_institute_social_economic_research_niser_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 14.08,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:14,413 [INFO] NigerianInstituteSocialEconomicResearchNiserSpider: Starting HTML Search crawler for NigerianInstituteofSocialandEconomicResearchNISER. Limit: 1 pages.\n2026-07-13 23:44:14,414 [INFO] NigerianInstituteSocialEconomicResearchNiserSpider: Fetching page 1: https://niser.gov.ng/?q=University+of+Chicago+Press\n2026-07-13 23:44:19,629 [INFO] NigerianInstituteSocialEconomicResearchNiserSpider: Finished NigerianInstituteofSocialandEconomicResearchNISER. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/pages_projects_bw_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.97,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:16,073 [INFO] PagesProjectsBwSpider: Starting HTML Search crawler for Pages & Projects. Limit: 1 pages.\n2026-07-13 23:44:16,074 [INFO] PagesProjectsBwSpider: Fetching page 1: https://pages-projects.co.bw/?s=University+of+Chicago+Press\n2026-07-13 23:44:24,448 [INFO] PagesProjectsBwSpider: Finished Pages & Projects. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/raritet_kg_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.05,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/rekobo_ng_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 7.83,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:17,485 [INFO] RekoboNgSpider: Starting HTML Search crawler for Rekobo. Limit: 1 pages.\n2026-07-13 23:44:17,485 [INFO] RekoboNgSpider: Fetching page 1: https://rekobo.store/?s=University+of+Chicago+Press\n2026-07-13 23:44:18,195 [INFO] RekoboNgSpider: No items found on page 1. Stopping.\n2026-07-13 23:44:18,195 [INFO] RekoboNgSpider: Finished Rekobo. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/sansa_south_african_national_space_agency_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 9.99,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:23,231 [INFO] SansaSouthAfricanNationalSpaceAgencySpider: Starting HTML Search crawler for SouthAfricanNationalSpaceAgencySANSA. Limit: 1 pages.\n2026-07-13 23:44:23,231 [INFO] SansaSouthAfricanNationalSpaceAgencySpider: Fetching page 1: https://www.sansa.org.za/publications/?q=University+of+Chicago+Press\n2026-07-13 23:44:24,882 [INFO] SansaSouthAfricanNationalSpaceAgencySpider: Reached end of pagination (404/400).\n2026-07-13 23:44:24,882 [INFO] SansaSouthAfricanNationalSpaceAgencySpider: Finished SouthAfricanNationalSpaceAgencySANSA. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/selloff_ng_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.71,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:28,838 [INFO] SelloffNgSpider: Starting HTML Search crawler for Selloff.ng. Limit: 1 pages.\n2026-07-13 23:44:28,839 [INFO] SelloffNgSpider: Fetching page 1: https://selloff.ng/search?q=University+of+Chicago+Press\n2026-07-13 23:44:36,732 [INFO] SelloffNgSpider: Finished Selloff.ng. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/sharbains_bookshop_ps_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.9,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:31,000 [INFO] SharbainsBookshopPsSpider: Starting HTML Search crawler for Sharbain's Bookshop. Limit: 1 pages.\n2026-07-13 23:44:31,001 [INFO] SharbainsBookshopPsSpider: Fetching page 1: https://sharbain.com/search?q=University+of+Chicago+Press\n2026-07-13 23:44:38,308 [INFO] SharbainsBookshopPsSpider: Finished Sharbain's Bookshop. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/south_african_institute_international_affairs_saiia_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.05,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/south_african_reserve_bank_sarb_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.89,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:34,105 [INFO] SouthAfricanReserveBankSarbSpider: Starting HTML Search crawler for SouthAfricanReserveBankSARB. Limit: 1 pages.\n2026-07-13 23:44:34,105 [INFO] SouthAfricanReserveBankSarbSpider: Fetching page 1: https://www.resbank.co.za/en/home/publications/?q=University+of+Chicago+Press\n2026-07-13 23:44:40,182 [INFO] SouthAfricanReserveBankSarbSpider: Finished SouthAfricanReserveBankSARB. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/the_thrift_reader_ng_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.77,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:35,361 [INFO] TheThriftReaderNgSpider: Starting HTML Search crawler for The Thrift Reader Bookstore. Limit: 1 pages.\n2026-07-13 23:44:35,361 [INFO] TheThriftReaderNgSpider: Fetching page 1: https://thethriftreaderbookstore.com.ng/?s=University+of+Chicago+Press\n2026-07-13 23:44:36,902 [INFO] TheThriftReaderNgSpider: No items found on page 1. Stopping.\n2026-07-13 23:44:36,903 [INFO] TheThriftReaderNgSpider: Finished The Thrift Reader Bookstore. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/themainbooki_ng_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 17.67,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:36,533 [INFO] ThemainbookiNgSpider: Starting HTML Search crawler for Booki. Limit: 1 pages.\n2026-07-13 23:44:36,535 [INFO] ThemainbookiNgSpider: Fetching page 1: https://themainbooki.com/?s=University+of+Chicago+Press\n2026-07-13 23:44:42,994 [INFO] ThemainbookiNgSpider: Finished Booki. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/universidade_eduardo_mondlane_uem_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.03,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/universidade_nacional_timor_lorosae_untl_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 19.76,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:41,082 [INFO] UniversidadeNacionalTimorLorosaeUntlSpider: Starting HTML Search crawler for UniversidadeNacionalTimorLorosaeUNTL. Limit: 1 pages.\n2026-07-13 23:44:41,083 [INFO] UniversidadeNacionalTimorLorosaeUntlSpider: Fetching page 1: https://untl.edu.tl/pt/?q=University+of+Chicago+Press\n2026-07-13 23:44:48,080 [INFO] UniversidadeNacionalTimorLorosaeUntlSpider: Finished UniversidadeNacionalTimorLorosaeUNTL. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/university_alberta_press_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 16.99,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:48,899 [INFO] UniversityAlbertaPressSpider: Starting HTML Search crawler for UniversityofAlbertaPress. Limit: 1 pages.\n2026-07-13 23:44:48,900 [INFO] UniversityAlbertaPressSpider: Fetching page 1: https://ualbertapress.ca/?q=University+of+Chicago+Press\n2026-07-13 23:44:53,543 [INFO] UniversityAlbertaPressSpider: Finished UniversityofAlbertaPress. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/university_puerto_rico_press_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 19.43,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:48,744 [INFO] UniversityPuertoRicoPressSpider: Starting HTML Search crawler for UniversityofPuertoRicoPress. Limit: 1 pages.\n2026-07-13 23:44:48,745 [INFO] UniversityPuertoRicoPressSpider: Fetching page 1: https://laeditorialupr.org/?q=University+of+Chicago+Press\n2026-07-13 23:44:48,878 [WARNING] UniversityPuertoRicoPressSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: laeditorialupr.org. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (1/3)...\n2026-07-13 23:44:50,038 [WARNING] UniversityPuertoRicoPressSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: laeditorialupr.org. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (2/3)...\n2026-07-13 23:44:52,174 [WARNING] UniversityPuertoRicoPressSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: laeditorialupr.org. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (3/3)...\n2026-07-13 23:44:56,176 [ERROR] UniversityPuertoRicoPressSpider: Failed to fetch https://laeditorialupr.org/?q=University+of+Chicago+Press after retries.\n2026-07-13 23:44:56,176 [INFO] UniversityPuertoRicoPressSpider: Finished UniversityofPuertoRicoPress. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/websters_sz_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.18,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:49,993 [INFO] WebstersSzSpider: Starting HTML Search crawler for Websters Books. Limit: 1 pages.\n2026-07-13 23:44:49,993 [INFO] WebstersSzSpider: Fetching page 1: https://webstersbooks.co.sz/?s=University+of+Chicago+Press\n2026-07-13 23:44:51,100 [INFO] WebstersSzSpider: No items found on page 1. Stopping.\n2026-07-13 23:44:51,116 [INFO] WebstersSzSpider: Finished Websters Books. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/west_african_college_physicians_wacp_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 19.06,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:52,089 [INFO] WestAfricanCollegePhysiciansWacpSpider: Starting HTML Search crawler for WestAfricanCollegeofPhysiciansWACP. Limit: 1 pages.\n2026-07-13 23:44:52,089 [INFO] WestAfricanCollegePhysiciansWacpSpider: Fetching page 1: https://wacpco.org/?q=University+of+Chicago+Press\n2026-07-13 23:44:52,275 [WARNING] WestAfricanCollegePhysiciansWacpSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: wacpco.org. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (1/3)...\n2026-07-13 23:44:53,449 [WARNING] WestAfricanCollegePhysiciansWacpSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: wacpco.org. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (2/3)...\n2026-07-13 23:44:55,706 [WARNING] WestAfricanCollegePhysiciansWacpSpider: Request failed: Failed to perform, curl: (6) Could not resolve host: wacpco.org. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.. Retrying (3/3)...\n2026-07-13 23:44:59,708 [ERROR] WestAfricanCollegePhysiciansWacpSpider: Failed to fetch https://wacpco.org/?q=University+of+Chicago+Press after retries.\n2026-07-13 23:44:59,708 [INFO] WestAfricanCollegePhysiciansWacpSpider: Finished WestAfricanCollegeofPhysiciansWACP. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/world_agroforestry_icraf_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 15.28,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:51,473 [INFO] WorldAgroforestryIcrafSpider: Starting HTML Search crawler for WorldAgroforestryICRAF. Limit: 1 pages.\n2026-07-13 23:44:51,508 [INFO] WorldAgroforestryIcrafSpider: Fetching page 1: https://www.worldagroforestry.org/publications/?q=University+of+Chicago+Press\n2026-07-13 23:44:56,332 [INFO] WorldAgroforestryIcrafSpider: Finished WorldAgroforestryICRAF. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/zedbookstore_zm_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 13.28,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-13 23:44:52,711 [INFO] ZedbookstoreZmSpider: Starting HTML Search crawler for ZedBookStore. Limit: 1 pages.\n2026-07-13 23:44:52,711 [INFO] ZedbookstoreZmSpider: Fetching page 1: https://zedbookstore.online/?s=University+of+Chicago+Press\n2026-07-13 23:44:55,740 [INFO] ZedbookstoreZmSpider: Finished ZedBookStore. Scraped 0 items.\n"
+    }
+  ]
+}

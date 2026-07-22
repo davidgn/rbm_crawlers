@@ -1,0 +1,83 @@
+{
+  "summary": {
+    "files": 9,
+    "nonzero": 7,
+    "timeouts": 7,
+    "zero_added": 9,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/alefredobooks_jo_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 15.03,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 00:04:10,979 [INFO] AlefredobooksJoSpider: Starting HTML Search crawler for Alefredo Books. Limit: 1 pages.\n2026-07-14 00:04:10,980 [INFO] AlefredobooksJoSpider: Fetching page 1: https://alefredobooks.com/?s=University+of+Chicago+Press\n2026-07-14 00:04:16,278 [INFO] AlefredobooksJoSpider: Finished Alefredo Books. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/bookmartme_bh_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.1,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/leerbook_dz_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 26.63,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/livraria_barquinho_ao_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.12,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/livraria_kiela_ao_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 19.95,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 00:03:57,856 [INFO] LivrariaKielaAoSpider: Starting HTML Search crawler for Livraria Kiela. Limit: 1 pages.\n2026-07-14 00:03:57,866 [INFO] LivrariaKielaAoSpider: Fetching page 1: https://livrariakiela.com/?s=University+of+Chicago+Press\n2026-07-14 00:04:01,392 [INFO] LivrariaKielaAoSpider: Finished Livraria Kiela. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/mzadqatar_qa_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 20.05,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/readsina_dz_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 26.51,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/thriftbooks_mv_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 26.74,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/zyga_books_mv_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 26.56,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  ]
+}

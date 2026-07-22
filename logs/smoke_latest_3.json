@@ -1,0 +1,35 @@
+{
+  "summary": {
+    "files": 3,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 3,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/akaguriro_bi_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 18.38,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:08:53,762 [INFO] AkaguriroBiSpider: Starting HTML Search crawler for Akaguriro. Limit: 1 pages.\n2026-07-14 06:08:53,764 [INFO] AkaguriroBiSpider: Fetching page 1: https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press\n2026-07-14 06:08:54,655 [WARNING] AkaguriroBiSpider: Got 500 for https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press. Retrying (1/3)...\n2026-07-14 06:08:56,323 [WARNING] AkaguriroBiSpider: Got 500 for https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press. Retrying (2/3)...\n2026-07-14 06:08:58,955 [WARNING] AkaguriroBiSpider: Got 500 for https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press. Retrying (3/3)...\n2026-07-14 06:09:02,958 [ERROR] AkaguriroBiSpider: Failed to fetch https://akaguriro.com/category/books-magazines?q=University+of+Chicago+Press after retries.\n2026-07-14 06:09:02,958 [INFO] AkaguriroBiSpider: Finished Akaguriro. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/lothus_cv_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.58,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:08:53,760 [INFO] LothusCvSpider: Starting HTML Search crawler for Livraria Lóthus. Limit: 1 pages.\n2026-07-14 06:08:53,760 [INFO] LothusCvSpider: Fetching page 1: https://lothus.cv/?s=University+of+Chicago+Press\n2026-07-14 06:08:54,588 [INFO] LothusCvSpider: No items found on page 1. Stopping.\n2026-07-14 06:08:54,588 [INFO] LothusCvSpider: Finished Livraria Lóthus. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/pedro_cardoso_cv_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 12.68,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:08:53,802 [INFO] PedroCardosoCvSpider: Starting HTML Search crawler for Livraria Pedro Cardoso. Limit: 1 pages.\n2026-07-14 06:08:53,803 [INFO] PedroCardosoCvSpider: Fetching page 1: https://catalogolpc.blogspot.com/search?q=University+of+Chicago+Press\n2026-07-14 06:08:56,878 [INFO] PedroCardosoCvSpider: Finished Livraria Pedro Cardoso. Scraped 0 items.\n"
+    }
+  ]
+}

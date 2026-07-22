@@ -1,0 +1,14 @@
+# Row count validation — RBM post-pass230 Iraq, 2026-07-19
+
+Direct CSV validation performed after sync of Iraq data.
+
+File | Data rows | Columns
+--- | ---: | ---:
+`rbm_all_categories_verbose_compile_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2294 | 10
+`rbm_canonical_site_registry_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2364 | 12
+`rbm_revisit_queue_post_pass220.csv` | 221 | 5
+`rbm_sources_consulted_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2600 | 5
+`rbm_runtime_gap_bridge_evidence_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2159 | 14
+`rbm_territory_summaries_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 202 | 17
+
+Stopline count tuple: **202 territories / 2294 explicit rows / 2364 canonical rows / 221 revisit rows / 2600 source rows / 2159 evidence rows**.

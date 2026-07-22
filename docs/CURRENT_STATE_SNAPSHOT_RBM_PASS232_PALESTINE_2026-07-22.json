@@ -1,0 +1,34 @@
+{
+  "stopline": "post_pass232_palestine",
+  "formalized_date": "2026-07-22",
+  "data_pass_date": "2026-07-22",
+  "live_parent": "post_pass231_libya",
+  "counts": {
+    "territories": 202,
+    "explicit_rows": 2299,
+    "canonical_rows": 2368,
+    "revisit_rows": 221,
+    "source_rows": 2610,
+    "evidence_rows": 2166
+  },
+  "parent_counts": {
+    "territories": 202,
+    "explicit_rows": 2295,
+    "canonical_rows": 2365,
+    "revisit_rows": 221,
+    "source_rows": 2603,
+    "evidence_rows": 2161
+  },
+  "delta": {
+    "territories": 0,
+    "explicit_rows": 4,
+    "canonical_rows": 3,
+    "revisit_rows": 0,
+    "source_rows": 7,
+    "evidence_rows": 5
+  },
+  "classification_summary": "Added Watan Books and Yamameh as first-party book nodes, Dawerha as horizontal annex, corrected Al-Haq to institutional publications, and retained PS Mall as source-only boundary evidence.",
+  "strict_main_promotions": 0,
+  "active_spiders": 7,
+  "next_governed_move": "Begin Nigeria unless superseded."
+}

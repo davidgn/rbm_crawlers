@@ -3,7 +3,7 @@ from woocommerce_spider import WooCommerceAPISpider
 class WatanbooksSpider(WooCommerceAPISpider):
     """
     Spider for Watan Books (Palestine).
-    The primary modern marketplace for the West Bank.
+    First-party Palestinian online bookstore; not a third-party marketplace.
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(

@@ -1,0 +1,14 @@
+# Row count validation — RBM post-pass232 Palestine, 2026-07-22
+
+File | Data rows | Columns
+--- | ---: | ---:
+`rbm_all_categories_verbose_compile_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2299 | 10
+`rbm_canonical_site_registry_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2368 | 12
+`rbm_revisit_queue_post_pass220.csv` | 221 | 5
+`rbm_sources_consulted_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2610 | 5
+`rbm_runtime_gap_bridge_evidence_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 2166 | 14
+`rbm_territory_summaries_2026-05-06_pass217_russia_final_saturation_cleanup.csv` | 202 | 17
+
+Stopline: **202 / 2299 / 2368 / 221 / 2610 / 2166**.
+
+All six files pass CSV structural validation. The sync script is idempotent. Palestine has 19 canonical sites and 20 compile rows; the only repeated Palestine compile key is the expected two-category OpenSooq facet. No duplicate non-empty Palestine canonical URL remains.

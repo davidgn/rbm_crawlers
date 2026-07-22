@@ -1,20 +1,22 @@
-from html_search_spider import HTMLSearchSpider
+from woocommerce_spider import WooCommerceAPISpider
 
-class RokomariSpider(HTMLSearchSpider):
-    def __init__(self, limit_pages=5, limit_items=None, **kwargs):
+class RokomariBdSpider(WooCommerceAPISpider):
+    """
+    Broad crawler for Rokomari (Bangladesh) bookstore platform.
+    Bangladesh is a low-cost M-Bag origin country ($46.04 / 10 kg to US).
+    """
+    def __init__(self, limit_pages: int = 50):
         super().__init__(
-            platform_name="Rokomari",
+            platform_name="Rokomari_BD",
             base_url="https://www.rokomari.com",
-            search_path="search?term={query}",
             territory="Bangladesh",
-            limit_pages=limit_pages,
-            limit_items=limit_items,
-            price_currency="BDT",
-            **kwargs
+            limit_pages=limit_pages
         )
 
 if __name__ == "__main__":
-    import logging
-    logging.basicConfig(level=logging.INFO)
-    spider = RokomariSpider(limit_pages=1, limit_items=5)
-    spider.run()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=5)
+    args = parser.parse_args()
+    
+    RokomariBdSpider(limit_pages=args.limit_pages).run()

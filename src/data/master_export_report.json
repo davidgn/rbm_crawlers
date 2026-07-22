@@ -1,0 +1,25 @@
+{
+  "export_date": "2026-05-25T03:48:49.906303Z",
+  "total_records": 679,
+  "platform_breakdown": {
+    "kaidee": 21,
+    "naiin": 120,
+    "books n bobs": 2,
+    "TAAZE.tw": 41,
+    "BooksPie": 1,
+    "books_com_tw": 7,
+    "kitabain": 487
+  },
+  "language_breakdown": {
+    "Unknown": 677,
+    "Chinese": 1,
+    "Traditional Chinese": 1
+  },
+  "territory_breakdown": {
+    "Thailand": 141,
+    "Malaysia": 2,
+    "Taiwan": 48,
+    "India": 1,
+    "Pakistan": 487
+  }
+}

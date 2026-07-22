@@ -1,0 +1,3 @@
+## 2026-07-05T01:03:36Z
+
+You are explorer_m3_1. Working directory: /opt/repos/rbm_crawlers/.agents/explorer_m3_1. Scope document: /opt/repos/rbm_crawlers/.agents/sub_orch_m3/SCOPE.md. Analyze the codebase for the LSE Student Union spider (src/lse_student_union_spider.py), and formulate a strategy to migrate it to PlaywrightSearchSpider to crawl https://www.lsesu.com successfully (bypassing any blocks). Identify container and field selectors for title, link, price, and author (making sure to separate price value and price currency 'GBP'). Document your analysis, recommended selectors, and migration strategy in /opt/repos/rbm_crawlers/.agents/explorer_m3_1/analysis.md and send a handoff message when done. Do not write code.

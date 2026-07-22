@@ -1,0 +1,30 @@
+{
+  "stopline": "post_pass225_pakistan",
+  "live_parent": "post_pass224_bangladesh",
+  "counts": {
+    "territories": 202,
+    "explicit_rows": 2281,
+    "canonical_rows": 2354,
+    "revisit_rows": 221,
+    "source_rows": 2590,
+    "evidence_rows": 2149
+  },
+  "parent_counts": {
+    "territories": 202,
+    "explicit_rows": 2279,
+    "canonical_rows": 2352,
+    "revisit_rows": 221,
+    "source_rows": 2588,
+    "evidence_rows": 2147
+  },
+  "delta": {
+    "territories": 0,
+    "explicit_rows": 2,
+    "canonical_rows": 2,
+    "revisit_rows": 0,
+    "source_rows": 2,
+    "evidence_rows": 2
+  },
+  "classification_summary": "Pakistan pass 225 added Saeed Book Bank (Islamabad) and Booknet Pakistan to single-store bookstore layer, synced dataset categories across all 12 Pakistan entries, and confirmed resolution of revisit queue entries 157/158/159 with 20 active spiders built.",
+  "next_governed_move": "Resume backlog from roadmap, beginning with Sri Lanka unless superseded."
+}

@@ -1,0 +1,51 @@
+{
+  "summary": {
+    "files": 5,
+    "nonzero": 1,
+    "timeouts": 1,
+    "zero_added": 5,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/bookconekt_bj_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 21.08,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/bookworm_eg_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 8.34,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:00:58,107 [INFO] BookwormEgSpider: Starting HTML Search crawler for Bookworm Egypt. Limit: 1 pages.\n2026-07-14 06:00:58,107 [INFO] BookwormEgSpider: Fetching page 1: https://www.bookwormegy.com/?s=University+of+Chicago+Press\n2026-07-14 06:01:03,315 [INFO] BookwormEgSpider: Finished Bookworm Egypt. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/librairie_savoir_afrique_bj_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 20.85,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:00:50,368 [INFO] LibrairieSavoirAfriqueBjSpider: Starting HTML Search crawler for Librairie Savoir d'Afrique. Limit: 1 pages.\n2026-07-14 06:00:50,369 [INFO] LibrairieSavoirAfriqueBjSpider: Fetching page 1: https://savoirdafrique.bj/?s=University+of+Chicago+Press\n2026-07-14 06:01:00,742 [WARNING] LibrairieSavoirAfriqueBjSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-14 06:01:03,176 [WARNING] LibrairieSavoirAfriqueBjSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-07-14 06:01:05,184 [INFO] LibrairieSavoirAfriqueBjSpider: Finished Librairie Savoir d'Afrique. Scraped 2 items.\n"
+    },
+    {
+      "file": "src/maktabatie_iq_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.5,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:00:50,104 [INFO] MaktabatieIqSpider: Starting HTML Search crawler for Maktabati. Limit: 1 pages.\n2026-07-14 06:00:50,105 [INFO] MaktabatieIqSpider: Fetching page 1: https://maktabatie.com/?s=University+of+Chicago+Press\n2026-07-14 06:00:54,588 [INFO] MaktabatieIqSpider: Finished Maktabati. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/prosperos_ge_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 10.78,
+      "stdout_tail": "",
+      "stderr_tail": "2026-07-14 06:00:50,070 [INFO] ProsperosGeSpider: Starting HTML Search crawler for Prospero's Books. Limit: 1 pages.\n2026-07-14 06:00:50,071 [INFO] ProsperosGeSpider: Fetching page 1: https://prosperosbookshop.com/?s=University+of+Chicago+Press\n2026-07-14 06:00:54,782 [INFO] ProsperosGeSpider: Finished Prospero's Books. Scraped 0 items.\n"
+    }
+  ]
+}
