@@ -37,6 +37,7 @@
 | 26 | Premier Literary & Academic Publishing Network | Implement 5 verified non-duplicative bookstore crawlers for Pakistan (Ameer Books), India (Manjul Publishing House), Turkey (Can Yayınları), South Korea (Yeolhadang), and Brazil (Companhia das Letras) | none | COMPLETED |
 | 27 | Geographic Breadth Expansion (New Countries) | Implement 5 verified distinct bookstore crawlers spanning new M-Bag countries: Serbia (Laguna), Singapore (BooksActually), Dominican Republic (Aleph Librería), Kazakhstan (LitRes.kz), and Costa Rica (Siete Leguas) | none | COMPLETED |
 | 28 | Coverage Gap Closure — Cuba, Zambia, Bosnia, Cyprus, Uruguay | Implement 5 bookstore crawlers in countries with sparse dedicated-bookstore coverage: Cuba (Librería Virtual), Zambia (Zed Books), Bosnia (Saraybosna Books), Cyprus (Sol Books), and Uruguay (Librería Universidad) | none | COMPLETED |
+| 29 | Armenia & Turkmenistan Expansion | Implement bookstore-specific crawlers for Armenia (Zangak Bookstore) and Turkmenistan (Galam) | none | COMPLETED |
 
 
 ## Interface Contracts
