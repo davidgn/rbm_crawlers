@@ -43,6 +43,7 @@
 | 32 | Low-Cost M-Bag Expansion (Pakistan, Philippines, Thailand) | Implement bookstore crawlers for Pakistan (Saeed Book Bank), Philippines (National Book Store), and Thailand (Chulalongkorn University Book Center) | none | COMPLETED |
 | 33 | Further Low-Cost M-Bag Retail Network Expansion | Implement bookstore crawlers for Pakistan (Paramount Books), India (Gyan Books), and Colombia (Librería de la U) | none | COMPLETED |
 | 34 | San Marino Expansion | Implement bookstore-specific crawler for San Marino (San Marino Libri) | none | COMPLETED |
+| 35 | Burundi Expansion | Implement bookstore-specific crawler for Burundi (Librairie Saint Paul) | none | COMPLETED |
 
 
 ## Interface Contracts
