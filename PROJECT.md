@@ -38,6 +38,7 @@
 | 27 | Geographic Breadth Expansion (New Countries) | Implement 5 verified distinct bookstore crawlers spanning new M-Bag countries: Serbia (Laguna), Singapore (BooksActually), Dominican Republic (Aleph Librería), Kazakhstan (LitRes.kz), and Costa Rica (Siete Leguas) | none | COMPLETED |
 | 28 | Coverage Gap Closure — Cuba, Zambia, Bosnia, Cyprus, Uruguay | Implement 5 bookstore crawlers in countries with sparse dedicated-bookstore coverage: Cuba (Librería Virtual), Zambia (Zed Books), Bosnia (Saraybosna Books), Cyprus (Sol Books), and Uruguay (Librería Universidad) | none | COMPLETED |
 | 29 | Armenia & Turkmenistan Expansion | Implement bookstore-specific crawlers for Armenia (Zangak Bookstore) and Turkmenistan (Galam) | none | COMPLETED |
+| 30 | Kuwait Expansion | Implement bookstore-specific crawler for Kuwait (The English Bookshop) | none | COMPLETED |
 
 
 ## Interface Contracts
