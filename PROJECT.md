@@ -55,6 +55,8 @@
 | 44 | Deep Low-Cost M-Bag Retailers Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Ábaco), Turkey (Dost Kitabevi), and Vietnam (Nha Sach Kim Dong) | none | COMPLETED |
 | 45 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Herder), Turkey (İnkılap Kitabevi), and Vietnam (Nha Sach Nha Nam) | none | COMPLETED |
 | 46 | Tajikistan Expansion | Register classifieds/marketplace crawler for Tajikistan (Somon.tj) in project milestones | none | COMPLETED |
+| 47 | Eswatini Expansion | Implement bookstore-specific crawlers for Eswatini (Websters Books and Macmillan Education Eswatini) | none | COMPLETED |
+| 48 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Vietnam, Colombia) | Implement bookstore crawlers for South Africa (Wordsworth Books), Vietnam (Phuong Dong Books), and Colombia (Librería El Profesional) | none | COMPLETED |
 
 
 ## Interface Contracts
