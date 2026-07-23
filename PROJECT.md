@@ -52,6 +52,7 @@
 | 41 | Global Low-Cost M-Bag Retailers Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Tornamesa), Turkey (Homer Kitap), and Vietnam (Nha Sach Tri Tue) | none | COMPLETED |
 | 42 | Liberia Expansion | Implement bookstore-specific crawlers for Liberia (Liberia Book Store and University of Liberia Press) | none | COMPLETED |
 | 43 | Afghanistan Expansion | Implement bookstore-specific crawler for Afghanistan (Bookpoint) | none | COMPLETED |
+| 44 | Deep Low-Cost M-Bag Retailers Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Ábaco), Turkey (Dost Kitabevi), and Vietnam (Nha Sach Kim Dong) | none | COMPLETED |
 
 
 ## Interface Contracts
