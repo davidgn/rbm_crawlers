@@ -49,7 +49,8 @@
 | 38 | Deep Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, Egypt) | Implement bookstore crawlers for Colombia (Librería La Madriguera del Conejo), Turkey (Mephisto Kitap), and Egypt (Kotobna) | none | COMPLETED |
 | 39 | Papua New Guinea Expansion | Implement bookstore-specific crawlers for Papua New Guinea (UPNG Book Exchange and PNG University of Technology Press) | none | COMPLETED |
 | 40 | Global Low-Cost M-Bag Expansion (Egypt, Vietnam, Colombia) | Implement bookstore crawlers for Egypt (Kotob Khan), Vietnam (Nha Sach Minh Khai), and Colombia (Librería Central) | none | COMPLETED |
-| 41 | Liberia Expansion | Implement bookstore-specific crawlers for Liberia (Liberia Book Store and University of Liberia Press) | none | COMPLETED |
+| 41 | Global Low-Cost M-Bag Retailers Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería Tornamesa), Turkey (Homer Kitap), and Vietnam (Nha Sach Tri Tue) | none | COMPLETED |
+| 42 | Liberia Expansion | Implement bookstore-specific crawlers for Liberia (Liberia Book Store and University of Liberia Press) | none | COMPLETED |
 
 
 ## Interface Contracts
