@@ -59,6 +59,7 @@
 | 48 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Vietnam, Colombia) | Implement bookstore crawlers for South Africa (Wordsworth Books), Vietnam (Phuong Dong Books), and Colombia (Librería El Profesional) | none | COMPLETED |
 | 49 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería San Pablo), Turkey (Timaş Yayınları), and Vietnam (Khai Tri Bookstore) | none | COMPLETED |
 | 50 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Turkey, Vietnam) | Implement bookstore crawlers for South Africa (Bridge Books), Turkey (Pegasus Yayınları), and Vietnam (Nha Sach Tien Phong) | none | COMPLETED |
+| 51 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Turkey, Vietnam) | Implement bookstore crawlers for South Africa (Fogarty's Bookshop), Turkey (İthaki Yayınları), and Vietnam (Bookbuy) | none | COMPLETED |
 
 
 ## Interface Contracts
