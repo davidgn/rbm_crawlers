@@ -69,6 +69,7 @@
 | 58 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (The Bookery), Colombia (Librería El Dinosaurio), and Turkey (Kidega) | none | COMPLETED |
 | 59 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (CNA South Africa), Colombia (Librería La Valija de Fuego), and Turkey (Kitapzen) | none | COMPLETED |
 | 60 | Senegal Expansion | Implement bookstore-specific crawlers for Senegal (La Bouquinerie and Bëgg Lire) | none | COMPLETED |
+| 61 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Book Bound), Colombia (Librería El Telar de las Palabras), and Turkey (Kitap16) | none | COMPLETED |
 
 
 ## Interface Contracts
