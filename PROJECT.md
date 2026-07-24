@@ -62,6 +62,7 @@
 | 51 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Turkey, Vietnam) | Implement bookstore crawlers for South Africa (Fogarty's Bookshop), Turkey (İthaki Yayınları), and Vietnam (Bookbuy) | none | COMPLETED |
 | 52 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (The Book Lounge), Colombia (Librería Hojas de Parra), and Turkey (İlknokta) | none | COMPLETED |
 | 53 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, Vietnam) | Implement bookstore crawlers for Colombia (Librería El Candil), Turkey (Kitap Sahaf), and Vietnam (Nha Sach Nguyen Van Cu) | none | COMPLETED |
+| 54 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Graffiti Boeke), Colombia (Librería Camino a Casa), and Turkey (Nokta Kırtasiye) | none | COMPLETED |
 
 
 ## Interface Contracts
