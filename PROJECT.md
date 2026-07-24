@@ -67,6 +67,7 @@
 | 56 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Quagga Rare Books and Art), Colombia (Librería Prólogo), and Turkey (Kitap Seç) | none | COMPLETED |
 | 57 | Burkina Faso Expansion | Implement bookstore-specific crawlers for Burkina Faso (Librairie Bon Berger and Librairie Jeunesse d’Afrique) | none | COMPLETED |
 | 58 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (The Bookery), Colombia (Librería El Dinosaurio), and Turkey (Kidega) | none | COMPLETED |
+| 59 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (CNA South Africa), Colombia (Librería La Valija de Fuego), and Turkey (Kitapzen) | none | COMPLETED |
 
 
 ## Interface Contracts
