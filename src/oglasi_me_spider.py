@@ -73,8 +73,8 @@ class OglasiMeSpider(BaseSpider):
             if self.limit_items and items_scraped >= self.limit_items:
                 break
                 
-            # Oglasi.me expects query in parameter q, page in pageNumber
-            url = f"https://oglasi.me/pretraga?q={requests.utils.quote(search_term)}&pageNumber={page}"
+            # Oglasi.me expects query in parameter fullText within the /literatura/pretraga path to target books
+            url = f"https://oglasi.me/literatura/pretraga?fullText={requests.utils.quote(search_term)}&pageNumber={page}"
             self.logger.info(f"Fetching page {page}: {url}")
             
             resp = self._get_robust_response(url)
