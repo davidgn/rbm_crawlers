@@ -73,6 +73,7 @@
 | 62 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Palinuro), Turkey (Kitap365), and South Africa (Book Market) | none | COMPLETED |
 | 63 | Zambia Expansion | Implement bookstore-specific crawlers for Zambia (Bookworld Zambia and ZedBookStore) | none | COMPLETED |
 | 64 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Prestige Books), Colombia (Librería San Librario), and Turkey (Oda Kitap) | none | COMPLETED |
+| 65 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Red Pepper Books), Colombia (Librería Al pie de la letra), and Turkey (Kitap Kalbi) | none | COMPLETED |
 
 
 ## Interface Contracts
