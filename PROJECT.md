@@ -102,6 +102,7 @@
 | 90 | Cambodia Expansion | Implement bookstore-specific crawler for Cambodia (Chamnar Bookstore via WooCommerce API, 6511 titles in USD) | none | COMPLETED |
 | 91 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería San Francisco), Turkey (İnsan Kitap), and South Africa (Wits University Press) | none | COMPLETED |
 | 92 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Libros de la Esquina), Turkey (Say Yayınları), and South Africa (Unisa Press) | none | COMPLETED |
+| 93 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan) | Implement bookstore crawlers for India (Atlantic Books India, Motilal Banarsidass) and Pakistan (Vanguard Books Pakistan) | none | COMPLETED |
 
 
 ## Interface Contracts
