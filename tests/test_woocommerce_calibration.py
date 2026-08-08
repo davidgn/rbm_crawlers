@@ -54,6 +54,7 @@ SUBCLASSES = [
     "kultura_mk_spider",
     "ikona_mk_spider",
     "ezop_hr_spider",
+    "ku_si_mon_gw_spider",
     "libreriaslectura_bo_spider",
     "mundokaypacha_ec_spider",
     "bookocean_pk_spider",

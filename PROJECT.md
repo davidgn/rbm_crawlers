@@ -88,6 +88,7 @@
 | 76 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Siglo del Hombre), Turkey (Yapı Kredi Yayınları), and South Africa (Adams Booksellers) | none | COMPLETED |
 | 77 | Equatorial Guinea Expansion | Implement bookstore-specific crawler for Equatorial Guinea (Libros de Guinea Ecuatorial via HTML Catalog parser) | none | COMPLETED |
 | 78 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, India, Pakistan) | Implement bookstore crawlers for Vietnam (Dông A Books), India (Rupa Publications), and Pakistan (Dogar Books) | none | COMPLETED |
+| 79 | Guinea-Bissau Expansion | Implement bookstore-specific crawler for Guinea-Bissau (Ku Si Mon Editora via WooCommerce API) | none | COMPLETED |
 
 
 ## Interface Contracts
