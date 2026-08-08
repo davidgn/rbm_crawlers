@@ -111,6 +111,7 @@
 | 99 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería San Jerónimo), Turkey (Pan Yayıncılık), and South Africa (Porcupine Press) | none | COMPLETED |
 | 100 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería El Astillero), Turkey (Yordam Kitap), and South Africa (Jacana Media) | none | COMPLETED |
 | 101 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería El Astillero), Turkey (Yordam Kitap), and South Africa (Jacana Media) | none | COMPLETED |
+| 102 | Global Low-Cost M-Bag Retail Network Expansion (Pakistan, Vietnam, Colombia) | Implement bookstore crawlers for Pakistan (Paramount Books Pakistan), Vietnam (Nha Sach Kim Dong), and Colombia (Ediciones Uniandes) | none | COMPLETED |
 
 
 ## Interface Contracts
