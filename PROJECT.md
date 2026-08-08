@@ -98,6 +98,7 @@
 | 86 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Acentos), Turkey (Everest Yayınları), and South Africa (Booksite Afrika) | none | COMPLETED |
 | 87 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Tragaluz Editores), Turkey (Alfa Kitap), and South Africa (LAPA Uitgewers) | none | COMPLETED |
 | 88 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Hangar Books), Turkey (Destek Dükkan), and South Africa (NISC Books) | none | COMPLETED |
+| 89 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Lerner), Turkey (Tekin Yayınevi), and South Africa (Oma Winkel Books) | none | COMPLETED |
 
 
 ## Interface Contracts
