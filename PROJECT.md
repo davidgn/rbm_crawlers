@@ -81,6 +81,7 @@
 | 70 | Togo Expansion | Implement bookstore-specific crawlers for Togo (Librairie du Futur via WooCommerce and Librairie Bon Pasteur via HTML Search) | none | COMPLETED |
 | 71 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Egypt) | Implement bookstore crawlers for Philippines (Rex Bookstore) and Egypt (Balsam Books, Nahda Egypt) | none | COMPLETED |
 | 72 | Global Low-Cost M-Bag Retail Network Expansion (Egypt, Philippines, Thailand) | Implement bookstore crawlers for Egypt (Dar El Maarif), Philippines (Central Book Supply), and Thailand (Asia Books) | none | COMPLETED |
+| 73 | Global Low-Cost M-Bag Retail Network Expansion (India, Vietnam) | Implement bookstore crawlers for India (Kitab Khana, Munshiram Manoharlal) and Vietnam (Nobita Books) | none | COMPLETED |
 
 
 ## Interface Contracts
