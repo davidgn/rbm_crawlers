@@ -93,7 +93,8 @@
 | 81 | Bahrain Expansion | Implement bookstore-specific crawler for Bahrain (Neo Books & Coffee via nopCommerce Catalog parser) | none | COMPLETED |
 | 82 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Arteletra), Turkey (Penguen Kitabevi), and South Africa (Juta Books) | none | COMPLETED |
 | 83 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Babel Libros), Turkey (Beyaz Balina Yayınları), and South Africa (Mind Matters) | none | COMPLETED |
-| 84 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Acentos), Turkey (Everest Yayınları), and South Africa (Booksite Afrika) | none | COMPLETED |
+| 84 | Albania Expansion | Implement bookstore-specific crawler for Albania (Bukinist Albania via PrestaShop Catalog parser) | none | COMPLETED |
+| 85 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Acentos), Turkey (Everest Yayınları), and South Africa (Booksite Afrika) | none | COMPLETED |
 
 
 ## Interface Contracts
