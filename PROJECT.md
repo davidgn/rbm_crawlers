@@ -85,6 +85,7 @@
 | 74 | Global Low-Cost M-Bag Retail Network Expansion (India, Vietnam) | Implement bookstore crawlers for India (Kitab Khana, Munshiram Manoharlal) and Vietnam (Nobita Books) | none | COMPLETED |
 | 74 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan, Vietnam) | Implement bookstore crawlers for India (Chowkhamba Sanskrit Series), Pakistan (BookZone Pakistan), and Vietnam (Tân Việt Books) | none | COMPLETED |
 | 75 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan, Vietnam) | Implement bookstore crawlers for India (Oxford Bookstore), Pakistan (Pak Book Corporation), and Vietnam (Alpha Books) | none | COMPLETED |
+| 76 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Siglo del Hombre), Turkey (Yapı Kredi Yayınları), and South Africa (Adams Booksellers) | none | COMPLETED |
 
 
 ## Interface Contracts
