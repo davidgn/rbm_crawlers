@@ -108,6 +108,7 @@
 | 96 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Libros y Letras), Turkey (Kırmızı Balon Yayınları), and South Africa (African Sun Media) | none | COMPLETED |
 | 97 | Brunei Expansion | Implement bookstore-specific crawlers for Brunei (NollyBook via Shopify API and Icklebooks via WooCommerce API, 4310+ titles) | none | COMPLETED |
 | 98 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Taller de Edición Rocca), Turkey (Bilgi Yayınevi), and South Africa (Submarine Books) | none | COMPLETED |
+| 99 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería San Jerónimo), Turkey (Pan Yayıncılık), and South Africa (Porcupine Press) | none | COMPLETED |
 
 
 ## Interface Contracts
