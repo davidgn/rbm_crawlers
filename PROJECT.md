@@ -90,7 +90,8 @@
 | 78 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, India, Pakistan) | Implement bookstore crawlers for Vietnam (Dông A Books), India (Rupa Publications), and Pakistan (Dogar Books) | none | COMPLETED |
 | 79 | Guinea-Bissau Expansion | Implement bookstore-specific crawler for Guinea-Bissau (Ku Si Mon Editora via WooCommerce API) | none | COMPLETED |
 | 80 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Casa Tomada), Turkey (Epsilon Yayınevi), and South Africa (Love Books) | none | COMPLETED |
-| 81 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Arteletra), Turkey (Penguen Kitabevi), and South Africa (Juta Books) | none | COMPLETED |
+| 81 | Bahrain Expansion | Implement bookstore-specific crawler for Bahrain (Neo Books & Coffee via nopCommerce Catalog parser) | none | COMPLETED |
+| 82 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Arteletra), Turkey (Penguen Kitabevi), and South Africa (Juta Books) | none | COMPLETED |
 
 
 ## Interface Contracts
