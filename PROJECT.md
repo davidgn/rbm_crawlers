@@ -75,7 +75,8 @@
 | 64 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Prestige Books), Colombia (Librería San Librario), and Turkey (Oda Kitap) | none | COMPLETED |
 | 65 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Red Pepper Books), Colombia (Librería Al pie de la letra), and Turkey (Kitap Kalbi) | none | COMPLETED |
 | 66 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (On the Dot), Colombia (Librería Abrapalabra), and Turkey (Kitap Bulutu) | none | COMPLETED |
-| 67 | Malawi Expansion | Implement bookstore-specific crawlers for Malawi (BookHive MW via Supabase REST API and Logos Open Culture via WooCommerce) | none | COMPLETED |
+| 67 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Clarke's Bookshop), Colombia (Librería La Selva), and Turkey (Gelişim Yayınları) | none | COMPLETED |
+| 68 | Malawi Expansion | Implement bookstore-specific crawlers for Malawi (BookHive MW via Supabase REST API and Logos Open Culture via WooCommerce) | none | COMPLETED |
 
 
 ## Interface Contracts
