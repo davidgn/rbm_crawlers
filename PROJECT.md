@@ -79,6 +79,7 @@
 | 68 | Malawi Expansion | Implement bookstore-specific crawlers for Malawi (BookHive MW via Supabase REST API and Logos Open Culture via WooCommerce) | none | COMPLETED |
 | 69 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Colombia, Turkey) | Implement bookstore crawlers for South Africa (Protea Boekhuis), Colombia (Librería Exlibris), and Turkey (Ekin Kitap) | none | COMPLETED |
 | 70 | Togo Expansion | Implement bookstore-specific crawlers for Togo (Librairie du Futur via WooCommerce and Librairie Bon Pasteur via HTML Search) | none | COMPLETED |
+| 71 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Egypt) | Implement bookstore crawlers for Philippines (Rex Bookstore) and Egypt (Balsam Books, Nahda Egypt) | none | COMPLETED |
 
 
 ## Interface Contracts
