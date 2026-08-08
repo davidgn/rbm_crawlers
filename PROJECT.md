@@ -94,8 +94,10 @@
 | 82 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Arteletra), Turkey (Penguen Kitabevi), and South Africa (Juta Books) | none | COMPLETED |
 | 83 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Babel Libros), Turkey (Beyaz Balina Yayınları), and South Africa (Mind Matters) | none | COMPLETED |
 | 84 | Albania Expansion | Implement bookstore-specific crawler for Albania (Bukinist Albania via PrestaShop Catalog parser) | none | COMPLETED |
-| 85 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Acentos), Turkey (Everest Yayınları), and South Africa (Booksite Afrika) | none | COMPLETED |
-| 86 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Tragaluz Editores), Turkey (Alfa Kitap), and South Africa (LAPA Uitgewers) | none | COMPLETED |
+| 85 | Sierra Leone Expansion | Implement bookstore-specific crawler for Sierra Leone (Sierra Leone Writers Series via ASP.NET Catalog parser) | none | COMPLETED |
+| 86 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Acentos), Turkey (Everest Yayınları), and South Africa (Booksite Afrika) | none | COMPLETED |
+| 87 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Tragaluz Editores), Turkey (Alfa Kitap), and South Africa (LAPA Uitgewers) | none | COMPLETED |
+| 88 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Hangar Books), Turkey (Destek Dükkan), and South Africa (NISC Books) | none | COMPLETED |
 
 
 ## Interface Contracts
