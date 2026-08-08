@@ -87,6 +87,7 @@
 | 75 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan, Vietnam) | Implement bookstore crawlers for India (Oxford Bookstore), Pakistan (Pak Book Corporation), and Vietnam (Alpha Books) | none | COMPLETED |
 | 76 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Siglo del Hombre), Turkey (Yapı Kredi Yayınları), and South Africa (Adams Booksellers) | none | COMPLETED |
 | 77 | Equatorial Guinea Expansion | Implement bookstore-specific crawler for Equatorial Guinea (Libros de Guinea Ecuatorial via HTML Catalog parser) | none | COMPLETED |
+| 78 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, India, Pakistan) | Implement bookstore crawlers for Vietnam (Dông A Books), India (Rupa Publications), and Pakistan (Dogar Books) | none | COMPLETED |
 
 
 ## Interface Contracts
