@@ -83,7 +83,8 @@
 | 72 | Republic of the Congo Expansion | Implement bookstore-specific crawler for Republic of the Congo (Somba Buku via Next.js RSC payload parser) | none | COMPLETED |
 | 73 | Global Low-Cost M-Bag Retail Network Expansion (Egypt, Philippines, Thailand) | Implement bookstore crawlers for Egypt (Dar El Maarif), Philippines (Central Book Supply), and Thailand (Asia Books) | none | COMPLETED |
 | 74 | Global Low-Cost M-Bag Retail Network Expansion (India, Vietnam) | Implement bookstore crawlers for India (Kitab Khana, Munshiram Manoharlal) and Vietnam (Nobita Books) | none | COMPLETED |
-| 75 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan, Vietnam) | Implement bookstore crawlers for India (Chowkhamba Sanskrit Series), Pakistan (BookZone Pakistan), and Vietnam (Tân Việt Books) | none | COMPLETED |
+| 74 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan, Vietnam) | Implement bookstore crawlers for India (Chowkhamba Sanskrit Series), Pakistan (BookZone Pakistan), and Vietnam (Tân Việt Books) | none | COMPLETED |
+| 75 | Global Low-Cost M-Bag Retail Network Expansion (India, Pakistan, Vietnam) | Implement bookstore crawlers for India (Oxford Bookstore), Pakistan (Pak Book Corporation), and Vietnam (Alpha Books) | none | COMPLETED |
 
 
 ## Interface Contracts
