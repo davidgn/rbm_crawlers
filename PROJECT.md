@@ -115,9 +115,10 @@
 | 104 | Angola Expansion | Implement bookstore-specific crawler for Angola (Nina's Livraria via Supabase REST API) | none | COMPLETED |
 | 105 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Hoja de Roble), Turkey (Doğan Kitap), and South Africa (Tafelberg Uitgewers) | none | COMPLETED |
 | 106 | Belarus Expansion | Implement bookstore-specific crawler for Belarus (Belkniga via 1C-Bitrix Catalog parser) | none | COMPLETED |
-| 107 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Libre), Turkey (Cem Yayınevi), and South Africa (Struik Nature) | none | COMPLETED |
-| 108 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Lugar de Palabras), Turkey (Cumhuriyet Kitap), and South Africa (Loot South Africa) | none | COMPLETED |
-| 109 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Pascasia), Turkey (Karakutu Yayınları), and South Africa (Footprint Press) | none | COMPLETED |
+| 107 | Kosovo Expansion | Implement bookstore-specific crawlers for Kosovo (House of Books & Altera Books via WooCommerce API, 6540+ titles) | none | COMPLETED |
+| 108 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Libre), Turkey (Cem Yayınevi), and South Africa (Struik Nature) | none | COMPLETED |
+| 109 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Lugar de Palabras), Turkey (Cumhuriyet Kitap), and South Africa (Loot South Africa) | none | COMPLETED |
+| 110 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Pascasia), Turkey (Karakutu Yayınları), and South Africa (Footprint Press) | none | COMPLETED |
 | 110 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Anticuaria El Carnero), Turkey (İletişim Yayınları), and South Africa (Modjaji Books) | none | COMPLETED |
 
 
