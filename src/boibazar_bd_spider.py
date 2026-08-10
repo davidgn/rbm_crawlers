@@ -12,13 +12,8 @@ class BoibazarBdSpider(BaseSpider):
     """
     BASE_URL = "https://www.boibazar.com"
     CATEGORIES = [
-        "/category/fiction",
-        "/category/history",
-        "/category/novel",
-        "/category/literature",
-        "/category/biography",
-        "/category/islamic-books",
-        "/category/science-fiction",
+        "/",
+        "/publisher",
     ]
 
     def __init__(self, limit_pages: int = 15):
@@ -42,8 +37,8 @@ class BoibazarBdSpider(BaseSpider):
         seen_urls = set()
 
         for cat_path in self.CATEGORIES[:self.limit_pages]:
-            cat_url = f"{self.BASE_URL}{cat_path}"
-            self.logger.info(f"Fetching category: {cat_url}")
+            cat_url = f"{self.BASE_URL}{cat_path}" if cat_path.startswith('/') else cat_path
+            self.logger.info(f"Fetching page: {cat_url}")
             try:
                 resp = self.session.get(cat_url, timeout=20)
                 if resp.status_code != 200:
@@ -52,6 +47,8 @@ class BoibazarBdSpider(BaseSpider):
 
                 soup = BeautifulSoup(resp.text, "html.parser")
                 book_links = set()
+                publisher_links = set()
+
                 for a in soup.find_all("a", href=True):
                     href = a["href"]
                     if "/book/" in href and not href.endswith("/book/"):
@@ -59,8 +56,29 @@ class BoibazarBdSpider(BaseSpider):
                             book_links.add(href)
                         else:
                             book_links.add(f"{self.BASE_URL}{href if href.startswith('/') else '/' + href}")
+                    elif "/publisher/" in href and not href.endswith("/publisher/"):
+                        if href.startswith("http"):
+                            publisher_links.add(href)
+                        else:
+                            publisher_links.add(f"{self.BASE_URL}{href if href.startswith('/') else '/' + href}")
 
-                for book_url in list(book_links)[:10]:
+                # Also crawl sub-publishers to discover more books
+                for pub_url in list(publisher_links)[:5]:
+                    try:
+                        p_resp = self.session.get(pub_url, timeout=15)
+                        if p_resp.status_code == 200:
+                            p_soup = BeautifulSoup(p_resp.text, "html.parser")
+                            for a in p_soup.find_all("a", href=True):
+                                href = a["href"]
+                                if "/book/" in href and not href.endswith("/book/"):
+                                    if href.startswith("http"):
+                                        book_links.add(href)
+                                    else:
+                                        book_links.add(f"{self.BASE_URL}{href if href.startswith('/') else '/' + href}")
+                    except Exception:
+                        pass
+
+                for book_url in list(book_links)[:20]:
                     if book_url in seen_urls:
                         continue
                     seen_urls.add(book_url)
@@ -135,6 +153,6 @@ class BoibazarBdSpider(BaseSpider):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="BoiBazar Bangladesh spider")
-    parser.add_argument("--limit-pages", type=int, default=3)
+    parser.add_argument("--limit-pages", type=int, default=2)
     args = parser.parse_args()
     BoibazarBdSpider(limit_pages=args.limit_pages).run()
