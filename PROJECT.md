@@ -115,6 +115,7 @@
 | 104 | Angola Expansion | Implement bookstore-specific crawler for Angola (Nina's Livraria via Supabase REST API) | none | COMPLETED |
 | 105 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Hoja de Roble), Turkey (Doğan Kitap), and South Africa (Tafelberg Uitgewers) | none | COMPLETED |
 | 106 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería La Libre), Turkey (Cem Yayınevi), and South Africa (Struik Nature) | none | COMPLETED |
+| 107 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Lugar de Palabras), Turkey (Cumhuriyet Kitap), and South Africa (Loot South Africa) | none | COMPLETED |
 
 
 ## Interface Contracts
