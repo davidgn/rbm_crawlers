@@ -10,6 +10,7 @@ from woocommerce_spider import WooCommerceAPISpider
 from models import BookListing
 
 SUBCLASSES = [
+    "servilibro_py_spider",
     "icklebooks_bn_spider",
     "house_of_books_xk_spider",
     "alterabooks_xk_spider",
