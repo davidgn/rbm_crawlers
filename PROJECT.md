@@ -130,7 +130,6 @@
 | 119 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Libros del Espacio), Turkey (Aras Yayıncılık), and South Africa (Snapplify Store) | none | COMPLETED |
 | 120 | Global Low-Cost M-Bag Retail Network Expansion (Bangladesh, Turkey, South Africa) | Implement bookstore crawlers for Bangladesh (Wafilife), Turkey (Aras Yayıncılık), and South Africa (Snapplify Store) | none | COMPLETED |
 | 121 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Santo & Seña), Turkey (Ayrıntı Yayınları), and South Africa (Select Books) | none | COMPLETED |
-| 120 | Global Low-Cost M-Bag Retail Network Expansion (North Macedonia, Kazakhstan) | Implement bookstore crawlers for North Macedonia (Antolog Books) and Kazakhstan (Kitapal) | none | COMPLETED |
 
 
 ## Interface Contracts
