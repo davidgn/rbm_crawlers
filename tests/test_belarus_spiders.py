@@ -77,5 +77,73 @@ class TestBelknigaBySpider(unittest.TestCase):
         self.assertIn("belkniga.by", item.listing_url)
 
 
+from chitatel_by_spider import ChitatelBySpider
+
+
+class TestChitatelBySpider(unittest.TestCase):
+    def test_instantiation(self):
+        spider = ChitatelBySpider(limit_pages=1)
+        self.assertIsInstance(spider, BaseSpider)
+
+    def test_territory(self):
+        spider = ChitatelBySpider()
+        self.assertEqual(spider.territory, "Belarus")
+
+    def test_platform_name(self):
+        spider = ChitatelBySpider()
+        self.assertEqual(spider.platform_name, "Chitatel Belarus")
+
+    def test_html_parsing(self):
+        spider = ChitatelBySpider(limit_pages=1)
+        spider.CATEGORIES = ["/catalog/test/"]
+        spider.seen_urls = set()
+        emitted = []
+        spider.save_item = lambda item: emitted.append(item)
+
+        mock_cat_html = """
+        <html>
+            <body>
+                <a href="/catalog/book/1213950">The Adventures of Tom Sawyer</a>
+            </body>
+        </html>
+        """
+
+        mock_item_html = """
+        <html>
+            <body>
+                <h1>The Adventures of Tom Sawyer and Tom Sawyer, Detective</h1>
+                <div>Автор Марк Твен Штрих код 9781847494900</div>
+                <div>59.45 BYN</div>
+            </body>
+        </html>
+        """
+
+        mock_cat_resp = MagicMock()
+        mock_cat_resp.status_code = 200
+        mock_cat_resp.text = mock_cat_html
+
+        mock_item_resp = MagicMock()
+        mock_item_resp.status_code = 200
+        mock_item_resp.text = mock_item_html
+
+        def mock_get(url, **kwargs):
+            if "1213950" in url:
+                return mock_item_resp
+            return mock_cat_resp
+
+        with patch.object(spider.session, "get", side_effect=mock_get):
+            spider.run()
+
+        self.assertEqual(len(emitted), 1)
+        item = emitted[0]
+        self.assertEqual(item.title, "The Adventures of Tom Sawyer and Tom Sawyer, Detective")
+        self.assertEqual(item.author, "Марк Твен")
+        self.assertEqual(item.price, "59.45")
+        self.assertEqual(item.price_currency, "BYN")
+        self.assertEqual(item.isbn, "9781847494900")
+        self.assertEqual(item.territory, "Belarus")
+        self.assertIn("chitatel.by", item.listing_url)
+
+
 if __name__ == "__main__":
     unittest.main()
