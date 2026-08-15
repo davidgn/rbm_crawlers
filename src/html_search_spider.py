@@ -148,8 +148,20 @@ class HTMLSearchSpider(BaseSpider):
         if self.selectors and 'price' in self.selectors:
             price_el = item_soup.select_one(self.selectors['price'])
             if price_el:
-                match = re.search(r"[\d,]+(?:\.\d+)?", price_el.text.strip())
-                if match: price_val = match.group(0).replace(",", "")
+                txt = price_el.text.strip()
+                match = re.search(r"[\d\.,]+", txt)
+                if match:
+                    raw_num = match.group(0)
+                    if re.search(r"^\d{1,3}(?:\.\d{3})+,\d{2}$", raw_num):
+                        price_val = raw_num.replace(".", "").replace(",", ".")
+                    elif re.search(r"^\d+,\d{2}$", raw_num):
+                        price_val = raw_num.replace(",", ".")
+                    elif re.search(r"^\d{1,3}(?:,\d{3})+\.\d{2}$", raw_num):
+                        price_val = raw_num.replace(",", "")
+                    elif re.search(r"^\d{1,3}(?:\.\d{3})+$", raw_num):
+                        price_val = raw_num.replace(".", "")
+                    else:
+                        price_val = raw_num.replace(",", "")
         else:
             # Fallback: Search the parent or grandparent for a price-like number
             search_container = item_soup.find_parent()
