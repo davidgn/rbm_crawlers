@@ -60,7 +60,7 @@ class HTMLSearchSpider(BaseSpider):
         return None
     def run(self):
         self.logger.info(f"Starting HTML Search crawler for {self.platform_name}. Limit: {self.limit_pages} pages.")
-        search_term = os.getenv("RBM_SEARCH_TERM", "University of Chicago Press") 
+        search_term = os.getenv("RBM_SEARCH_TERM") or getattr(self, "default_query", "University of Chicago Press") 
         
         for page in range(1, self.limit_pages + 1):
             if self.limit_items is not None and self.items_attempted >= self.limit_items:
