@@ -168,6 +168,7 @@
 | 157 | Global Low-Cost M-Bag Retail Network Expansion (Pakistan, Turkey, South Africa) | Implement bookstore crawlers for Pakistan (Welcome Book Port), Turkey (Pınar Yayınları), and South Africa (Bumble Books) | none | COMPLETED |
 | 158 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Turkey, South Africa) | Implement bookstore crawlers for Vietnam (Thái Hà Books), Turkey (Büyüyenay Yayınları), and South Africa (African Minds) | none | COMPLETED |
 | 159 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Bukz), Turkey (Alfa Kitap), and South Africa (Christian Books SA) | none | COMPLETED |
+| 160 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Philippines, Egypt) | Implement bookstore crawlers for Turkey (Kitapsepeti), Philippines (National Book Store), and Egypt (Alef Bookstores) | none | COMPLETED |
 
 
 ## Interface Contracts
