@@ -170,6 +170,16 @@
 | 159 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Turkey, South Africa) | Implement bookstore crawlers for Colombia (Librería Bukz), Turkey (Alfa Kitap), and South Africa (Christian Books SA) | none | COMPLETED |
 | 160 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Philippines, Egypt) | Implement bookstore crawlers for Turkey (Kitapsepeti), Philippines (National Book Store), and Egypt (Alef Bookstores) | none | COMPLETED |
 | 161 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Turkey, South Africa) | Implement bookstore crawlers for Vietnam (NXB Tre), Turkey (Kitapsan), and South Africa (Clarke's Bookshop) | none | COMPLETED |
+| 162 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Turkey, Turkey) | Implement bookstore crawlers for Turkey (Nobel Kitap), Turkey (Pegem), Turkey (Pelikan Kitabevi) | none | COMPLETED |
+| 163 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Turkey, South Africa) | Implement bookstore crawlers for Turkey (Kitap Ambari), Turkey (Halk Kitabevi), South Africa (PNA) | none | COMPLETED |
+| 164 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Colombia, Colombia) | Implement bookstore crawlers for Colombia (Wilborada 1047), Colombia (Libreria Cascadas), Colombia (Libreria Medica) | none | COMPLETED |
+| 165 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Philippines, Philippines) | Implement bookstore crawlers for Philippines (OMF Literature), Philippines (Rex Book Store), Philippines (Popular Bookstore) | none | COMPLETED |
+| 166 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Egypt, Egypt) | Implement bookstore crawlers for Philippines (Christian Bible Society), Egypt (Cherry Blossom Books), Egypt (Maadi Bookshop) | none | COMPLETED |
+| 167 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for India (BookGanga), India (Pustakmandi), India (Prints Publications) | none | COMPLETED |
+| 168 | Global Low-Cost M-Bag Retail Network Expansion (India, India, Pakistan) | Implement bookstore crawlers for India (DK Agencies), India (Vedams Books), Pakistan (Iqra) | none | COMPLETED |
+| 169 | Global Low-Cost M-Bag Retail Network Expansion (Pakistan, Pakistan, Pakistan) | Implement bookstore crawlers for Pakistan (Urdu Bazar), Pakistan (Mr. Books), Pakistan (786 Books) | none | COMPLETED |
+| 170 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Vietnam, Vietnam) | Implement bookstore crawlers for Vietnam (Sach Xua), Vietnam (Minh Long Book), Vietnam (AnyBooks) | none | COMPLETED |
+| 171 | Global Low-Cost M-Bag Retail Network Expansion (India, Egypt, Egypt) | Implement bookstore crawlers for India (Booksbeka), Egypt (Book City Egypt), Egypt (Sphinx Books) | none | COMPLETED |
 
 
 ## Interface Contracts
