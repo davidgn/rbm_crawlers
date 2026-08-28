@@ -210,6 +210,16 @@
 | 199 | Global Low-Cost M-Bag Retail Network Expansion (Pakistan, Pakistan, Pakistan) | Implement bookstore crawlers for Pakistan (Multan Books), Pakistan (Peshawar Books), Pakistan (Royal Book Company) | none | COMPLETED |
 | 200 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for India (National Book Trust), India (Sahitya Akademi), India (Vikas Publishing) | none | COMPLETED |
 | 201 | Global Low-Cost M-Bag Retail Network Expansion (India, Egypt, Egypt) | Implement bookstore crawlers for India (Navneet), Egypt (Sufi Bookstore), Egypt (Tanweer) | none | COMPLETED |
+| 202 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Vietnam, Vietnam) | Implement bookstore crawlers for Vietnam (Bookstore VN), Vietnam (Sach Noi Viet), Vietnam (Nha Sach Giao Duc) | none | COMPLETED |
+| 203 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Vietnam, Philippines) | Implement bookstore crawlers for Vietnam (Saigon Books), Vietnam (Quang Van Books), Philippines (MegaTexts) | none | COMPLETED |
+| 204 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Philippines, Philippines) | Implement bookstore crawlers for Philippines (St Pauls PH), Philippines (Great Books PH), Philippines (Bookends PH) | none | COMPLETED |
+| 205 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Turkey, Turkey) | Implement bookstore crawlers for Turkey (Otuken), Turkey (Sel Yayincilik), Turkey (Iletisim Yayinlari) | none | COMPLETED |
+| 206 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, South Africa, Colombia) | Implement bookstore crawlers for South Africa (Smythes Books), South Africa (Textbook Trader), Colombia (Taller de Edicion) | none | COMPLETED |
+| 207 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Colombia, Colombia) | Implement bookstore crawlers for Colombia (Libreria Virgilio), Colombia (Libreria Grammata), Colombia (Libreria Pensamiento) | none | COMPLETED |
+| 208 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Pakistan, Pakistan) | Implement bookstore crawlers for Colombia (Fondo de Cultura Economica CO), Pakistan (Bookstow), Pakistan (Student Station) | none | COMPLETED |
+| 209 | Global Low-Cost M-Bag Retail Network Expansion (Pakistan, India, India) | Implement bookstore crawlers for Pakistan (Ilmi Markaz), India (Upkar Prakashan), India (Arihant Books) | none | COMPLETED |
+| 210 | Global Low-Cost M-Bag Retail Network Expansion (India, India, Egypt) | Implement bookstore crawlers for India (Diamond Books), India (Ruchikas), Egypt (Maktabtk) | none | COMPLETED |
+| 211 | Global Low-Cost M-Bag Retail Network Expansion (Egypt, Egypt, Egypt) | Implement bookstore crawlers for Egypt (Kotobgy), Egypt (Eqra Books), Egypt (Kutub Egypt) | none | COMPLETED |
 
 
 ## Interface Contracts
