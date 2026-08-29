@@ -439,6 +439,16 @@
 | 419 | Global Low-Cost M-Bag Retail Network Expansion (Sri Lanka, Nepal, Maldives) | Implement bookstore crawlers for Expographic Books, Ratna Pustak Bhandar, Asrafee Bookshop | none | COMPLETED |
 | 420 | Global Low-Cost M-Bag Retail Network Expansion (Mauritius, Mauritius, Ireland) | Implement bookstore crawlers for Le Printemps, Editions de l Ocean Indien, Bridge Street Books | none | COMPLETED |
 | 421 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, Ireland, Ireland) | Implement bookstore crawlers for Woodbine Books, Just Books, Liber Books | none | COMPLETED |
+| 422 | Global Low-Cost M-Bag Retail Network Expansion (Fiji, Latvia, Latvia) | Implement bookstore crawlers for USP Book Centre, Janis Roze, Zvaigzne ABC | none | COMPLETED |
+| 423 | Global Low-Cost M-Bag Retail Network Expansion (Lithuania, Lithuania, Ireland) | Implement bookstore crawlers for Pegasas LT, Vaga LT, The Clifden Bookshop | none | COMPLETED |
+| 424 | Global Low-Cost M-Bag Retail Network Expansion (Kazakhstan, Kazakhstan, Estonia) | Implement bookstore crawlers for Meloman KZ, Almaty Kitap, Pegasus EE | none | COMPLETED |
+| 425 | Global Low-Cost M-Bag Retail Network Expansion (Serbia, Serbia, Serbia) | Implement bookstore crawlers for Knjizara Kultura, Knjizara Roman, Vulkani RS | none | COMPLETED |
+| 426 | Global Low-Cost M-Bag Retail Network Expansion (Croatia, Romania, Cyprus) | Implement bookstore crawlers for Knjizara Ljevak, Librariile Humanitas, Parga CY | none | COMPLETED |
+| 427 | Global Low-Cost M-Bag Retail Network Expansion (Cyprus, New Zealand, New Zealand) | Implement bookstore crawlers for Mavromatis, Wardini Books, Mcleods Booksellers | none | COMPLETED |
+| 428 | Global Low-Cost M-Bag Retail Network Expansion (New Zealand, Armenia, Armenia) | Implement bookstore crawlers for Carsons Bookshop, Zangak Bookstore, Noyan Tapan | none | COMPLETED |
+| 429 | Global Low-Cost M-Bag Retail Network Expansion (Hong Kong, Hong Kong, Malta) | Implement bookstore crawlers for Bleak House Books, Kelly and Walsh, BDL Books | none | COMPLETED |
+| 430 | Global Low-Cost M-Bag Retail Network Expansion (Bulgaria, Moldova, Moldova) | Implement bookstore crawlers for Ozone BG, Bestseller MD, Elefant MD | none | COMPLETED |
+| 431 | Global Low-Cost M-Bag Retail Network Expansion (Slovenia, Slovenia, Albania) | Implement bookstore crawlers for Beletrina, Knjigarna Sanje, Bota e Librit | none | COMPLETED |
 
 
 ## Interface Contracts
