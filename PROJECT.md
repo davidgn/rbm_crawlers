@@ -544,6 +544,16 @@
 | 509 | Global Low-Cost M-Bag Retail Network Expansion (France, France, France) | Implement bookstore crawlers for Librairie Lardanchet, Librairie Giraud-Badin, Librairie Walden | none | COMPLETED |
 | 510 | Global Low-Cost M-Bag Retail Network Expansion (Netherlands, Netherlands, UK) | Implement bookstore crawlers for Antiquariat FORUM, Asher Rare Books, Simon Beattie | none | COMPLETED |
 | 511 | Global Low-Cost M-Bag Retail Network Expansion (UK, USA, USA) | Implement bookstore crawlers for Bernard Quaritch, Bauman Rare Books, Heritage Book Shop | none | COMPLETED |
+| 512 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Bluestockings, City Lit Books, RoscoeBooks | none | COMPLETED |
+| 513 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Madison Street Books, Myopic Books, Quimbys Bookstore | none | COMPLETED |
+| 514 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Subtext Books, Next Chapter Booksellers, Bookshop West Portal | none | COMPLETED |
+| 515 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, UK) | Implement bookstore crawlers for Bird and Beckett, Alley Cat Books, London Review Bookshop | none | COMPLETED |
+| 516 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Nomad Books, South Kensington Books, Hurlingham Books | none | COMPLETED |
+| 517 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Quinto Bookshop, Marchpane, Travis and Emery | none | COMPLETED |
+| 518 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Banyen Books, Spartacus Books, Pulpfiction Books | none | COMPLETED |
+| 519 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Bakka Phoenix Books, Queen Books, King W Books | none | COMPLETED |
+| 520 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Mega City Comics, New Beacon Books, Brick Lane Bookshop | none | COMPLETED |
+| 521 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Ireland) | Implement bookstore crawlers for Stoke Newington Bookshop, Broadway Bookshop, The Winding Stair | none | COMPLETED |
 
 
 ## Interface Contracts
