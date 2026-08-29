@@ -333,6 +333,16 @@
 | 319 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Dillons Bookshop), Australia (Matilda Bookshop), Australia (Fullers Bookshop) | none | COMPLETED |
 | 320 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, New Zealand) | Implement bookstore crawlers for Australia (Hobart Bookshop), Australia (Petrarchs Bookshop), New Zealand (Time Out Bookstore) | none | COMPLETED |
 | 321 | Global Low-Cost M-Bag Retail Network Expansion (New Zealand, New Zealand, New Zealand) | Implement bookstore crawlers for New Zealand (Dorothy Butler Bookshop), New Zealand (The Womens Bookshop), New Zealand (Dear Reader) | none | COMPLETED |
+| 322 | Global Low-Cost M-Bag Retail Network Expansion (New Zealand, New Zealand, New Zealand) | Implement bookstore crawlers for New Zealand (Good Books), New Zealand (Unity Books Wellington), New Zealand (The Childrens Bookshop) | none | COMPLETED |
+| 323 | Global Low-Cost M-Bag Retail Network Expansion (New Zealand, New Zealand, USA) | Implement bookstore crawlers for New Zealand (Scorpio Books), New Zealand (University Book Shop), USA (Bookmarks NC) | none | COMPLETED |
+| 324 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Hub City Bookshop), USA (Fiction Addiction), USA (E Shaver Bookseller) | none | COMPLETED |
+| 325 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (The Book Tavern), USA (Tombolo Books), USA (Oxford Exchange) | none | COMPLETED |
+| 326 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Sundog Books), USA (Page 158 Books), USA (McIntyres Books) | none | COMPLETED |
+| 327 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Scuppernong Books), USA (The Country Bookshop), USA (Novel Memphis) | none | COMPLETED |
+| 328 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Union Ave Books), USA (Brier Books), USA (Wild Fig Books) | none | COMPLETED |
+| 329 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Roebling Point Books), USA (Prologue Bookshop), USA (Gramercy Books) | none | COMPLETED |
+| 330 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Visible Voice Books), USA (Gathering Volumes), USA (BookSpace Columbus) | none | COMPLETED |
+| 331 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Source Booksellers), USA (Pages Bookshop), USA (27th Letter Books) | none | COMPLETED |
 
 
 ## Interface Contracts
