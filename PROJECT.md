@@ -283,6 +283,16 @@
 | 269 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (City Lights), USA (Tattered Cover), USA (Vromans) | none | COMPLETED |
 | 270 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (BookPeople), USA (Keplers), USA (Changing Hands) | none | COMPLETED |
 | 271 | Global Low-Cost M-Bag Retail Network Expansion (USA, Germany, Germany) | Implement bookstore crawlers for USA (Harvard Book Store), Germany (Weltbild), Germany (Lehmanns) | none | COMPLETED |
+| 272 | Global Low-Cost M-Bag Retail Network Expansion (Brazil, Brazil, Mexico) | Implement bookstore crawlers for Brazil (Livraria Cultura), Brazil (Capitolina Books), Mexico (Casa del Libro MX) | none | COMPLETED |
+| 273 | Global Low-Cost M-Bag Retail Network Expansion (Mexico, Mexico, Colombia) | Implement bookstore crawlers for Mexico (American Bookstore), Mexico (Books From Mexico), Colombia (Paulinas Colombia) | none | COMPLETED |
+| 274 | Global Low-Cost M-Bag Retail Network Expansion (Indonesia, Indonesia, Indonesia) | Implement bookstore crawlers for Indonesia (Periplus), Indonesia (Bukabuku), Indonesia (Books Beyond) | none | COMPLETED |
+| 275 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Elliott Bay Book Company), USA (Boulder Book Store), USA (Green Apple Books) | none | COMPLETED |
+| 276 | Global Low-Cost M-Bag Retail Network Expansion (USA, UK, UK) | Implement bookstore crawlers for USA (Parnassus Books), UK (Foyles), UK (Wordery) | none | COMPLETED |
+| 277 | Global Low-Cost M-Bag Retail Network Expansion (UK, Japan, Japan) | Implement bookstore crawlers for UK (Browns Books), Japan (Kinokuniya JP), Japan (Tsutaya) | none | COMPLETED |
+| 278 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Kramers), USA (Politics and Prose), USA (A Cappella Books) | none | COMPLETED |
+| 279 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Charis Books), USA (FoxTale Book Shoppe), USA (Eagle Eye Book Shop) | none | COMPLETED |
+| 280 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (The Bookworm Omaha), USA (Left Bank Books), USA (Subterranean Books) | none | COMPLETED |
+| 281 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Magers and Quinn), USA (Birchbark Books), USA (Moon Palace Books) | none | COMPLETED |
 
 
 ## Interface Contracts
