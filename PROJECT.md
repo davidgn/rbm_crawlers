@@ -478,6 +478,16 @@
 | 449 | Global Low-Cost M-Bag Retail Network Expansion (Chile, Chile, Peru) | Implement bookstore crawlers for Metales Pesados, Libreria Lolita, SBC PE | none | COMPLETED |
 | 450 | Global Low-Cost M-Bag Retail Network Expansion (Belgium, Belgium, Sweden) | Implement bookstore crawlers for Peinture Fraiche, Librairie Ptyx, English Bookshop SE | none | COMPLETED |
 | 451 | Global Low-Cost M-Bag Retail Network Expansion (Sweden, Norway, Portugal) | Implement bookstore crawlers for Hedengrens, Boklista, Livraria Ferin | none | COMPLETED |
+| 452 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, Austria) | Implement bookstore crawlers for Bucher Gilde, Do You Read Me, Buchhandlung Frick | none | COMPLETED |
+| 453 | Global Low-Cost M-Bag Retail Network Expansion (Austria, Italy, Italy) | Implement bookstore crawlers for Moser Buch, Libreria Hoepli, Libreria Gonnelli | none | COMPLETED |
+| 454 | Global Low-Cost M-Bag Retail Network Expansion (France, France, France) | Implement bookstore crawlers for La Galerne, Le Failler, Dialogues Brest | none | COMPLETED |
+| 455 | Global Low-Cost M-Bag Retail Network Expansion (France, Belgium, Belgium) | Implement bookstore crawlers for Librairie Passages, Limerick Ghent, De Reyghere | none | COMPLETED |
+| 456 | Global Low-Cost M-Bag Retail Network Expansion (Netherlands, Spain, Spain) | Implement bookstore crawlers for Boekhandel Roelants, Libreria Luces, Libreria Proteo | none | COMPLETED |
+| 457 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, UK) | Implement bookstore crawlers for Tipos Infames, Libreria Camara, Any Amount of Books | none | COMPLETED |
+| 458 | Global Low-Cost M-Bag Retail Network Expansion (USA, UAE, UAE) | Implement bookstore crawlers for Labyrinth Books, Kalimat Group, Menassah | none | COMPLETED |
+| 459 | Global Low-Cost M-Bag Retail Network Expansion (UK, Barbados, Barbados) | Implement bookstore crawlers for Word on the Water, Cloister Bookstore, Days Bookstore | none | COMPLETED |
+| 460 | Global Low-Cost M-Bag Retail Network Expansion (Trinidad and Tobago, Jamaica, Nigeria) | Implement bookstore crawlers for Nigel R Khan, Kingston Bookshop, Patabah Books | none | COMPLETED |
+| 461 | Global Low-Cost M-Bag Retail Network Expansion (Nigeria, Colombia, Ecuador) | Implement bookstore crawlers for Kachifo, Libreria Macondo, Libreria Nacional EC | none | COMPLETED |
 
 
 ## Interface Contracts
