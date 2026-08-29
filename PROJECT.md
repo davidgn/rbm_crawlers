@@ -564,6 +564,16 @@
 | 529 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Voltaire and Rousseau, Thistle Books, Caledonian Books | none | COMPLETED |
 | 530 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Argosy Books, Atticus Books, Cafe Books | none | COMPLETED |
 | 531 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Forbidden Planet NYC, Midtown Comics, Atomic Books | none | COMPLETED |
+| 532 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for White Whale Bookstore, Curious Iguana, A Likely Story | none | COMPLETED |
+| 533 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Red Emmas, The Ivy Bookshop, Snug Books | none | COMPLETED |
+| 534 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Greedy Reads, Charm City Books, Fabled Bookshop | none | COMPLETED |
+| 535 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Wild Detectives, Lark and Owl Booksellers, Monkey and Dog Books | none | COMPLETED |
+| 536 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Excelsior Bay Books, Cream and Amber, Red Balloon Bookshop | none | COMPLETED |
+| 537 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Chapter One Bookstore, Kings Books, Browsers Bookshop | none | COMPLETED |
+| 538 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Orca Books, Liberty Bay Books, Edmonds Bookshop | none | COMPLETED |
+| 539 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Explore Booksellers, Macdonald Book Shop, Old Firehouse Books | none | COMPLETED |
+| 540 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Bookies, The Printed Garden, Shakespeare and Co Montana | none | COMPLETED |
+| 541 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Book Bin, Waucoma Bookstore, Klindts Booksellers | none | COMPLETED |
 
 
 ## Interface Contracts
