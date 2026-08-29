@@ -1,20 +1,15 @@
-from html_search_spider import HTMLSearchSpider
+from shopify_search_spider import ShopifySearchSpider
 
-class SaeedAndSamirSpider(HTMLSearchSpider):
-    def __init__(self, limit_pages=5, limit_items=None, **kwargs):
+class SaeedAndSamirKwSpider(ShopifySearchSpider):
+    """
+    Shopify crawler for Saeed & Samir Bookstore (Kuwait).
+    Currency: KWD.
+    """
+    def __init__(self, limit_items: int = 50):
         super().__init__(
-            platform_name="Saeed and Samir",
+            platform_name="Saeed & Samir Bookstore",
             base_url="https://saeedandsamir.com",
-            search_path="search?q={query}",
             territory="Kuwait",
-            limit_pages=limit_pages,
-            limit_items=limit_items,
             price_currency="KWD",
-            **kwargs
+            limit_items=limit_items
         )
-
-if __name__ == "__main__":
-    import logging
-    logging.basicConfig(level=logging.INFO)
-    spider = SaeedAndSamirSpider(limit_pages=1, limit_items=5)
-    spider.run()
