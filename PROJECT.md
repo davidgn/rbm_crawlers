@@ -574,6 +574,16 @@
 | 539 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Explore Booksellers, Macdonald Book Shop, Old Firehouse Books | none | COMPLETED |
 | 540 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Bookies, The Printed Garden, Shakespeare and Co Montana | none | COMPLETED |
 | 541 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Book Bin, Waucoma Bookstore, Klindts Booksellers | none | COMPLETED |
+| 542 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, Ireland, France) | Implement bookstore crawlers for The Company of Books, Halfway up the Stairs, Librairie Delamain | none | COMPLETED |
+| 543 | Global Low-Cost M-Bag Retail Network Expansion (France, Germany, Netherlands) | Implement bookstore crawlers for Les Mots a la Bouche, Saint Georges English Bookshop, American Book Center | none | COMPLETED |
+| 544 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Germany) | Implement bookstore crawlers for Libreria Luxemburg, Anglo American Book Co, Shakespeare and Sons | none | COMPLETED |
+| 545 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, France) | Implement bookstore crawlers for Motto Berlin, Buchbox, Smith and Son Paris | none | COMPLETED |
+| 546 | Global Low-Cost M-Bag Retail Network Expansion (Japan, Spain, Spain) | Implement bookstore crawlers for Infinity Books Japan, Libreria La Central, Antonio Machado Libros | none | COMPLETED |
+| 547 | Global Low-Cost M-Bag Retail Network Expansion (Argentina, Malaysia, Italy) | Implement bookstore crawlers for Libreria Norte, Buku Fixi, Libreria Gozzini | none | COMPLETED |
+| 548 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Italy) | Implement bookstore crawlers for Studio Bibliografico Pera, Libreria Antiquaria di Porta Venezia, Libreria Antiquaria Xodo | none | COMPLETED |
+| 549 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, Japan) | Implement bookstore crawlers for Libreria Anticuaria Astarloa, Libreria Anticuaria Ripoll, Isseido Booksellers | none | COMPLETED |
+| 550 | Global Low-Cost M-Bag Retail Network Expansion (Japan, Japan, France) | Implement bookstore crawlers for Ohya Shobo, Subun So Book Store, Librairie Camille Sourget | none | COMPLETED |
+| 551 | Global Low-Cost M-Bag Retail Network Expansion (France, France, France) | Implement bookstore crawlers for Librairie Le Feu Follet, Librairie L Intersigne, Librairie Farfouille | none | COMPLETED |
 
 
 ## Interface Contracts
