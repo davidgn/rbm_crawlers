@@ -534,6 +534,16 @@
 | 499 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, UK) | Implement bookstore crawlers for Tidewater Books, The Bookmark, Book-ish | none | COMPLETED |
 | 500 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Schuler Books, Zandbroz Variety, Chaucers Books | none | COMPLETED |
 | 501 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Italy) | Implement bookstore crawlers for Antiquaria Pregliasco, Antiquaria Bourlot, Antiquaria Coenobium | none | COMPLETED |
+| 502 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Spoonbill and Sugartown, Powerhouse on 8th, Corner Bookstore | none | COMPLETED |
+| 503 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Albertine, Commonwealth Books, Brattle Book Shop | none | COMPLETED |
+| 504 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Raven Used Books, Head House Books, Faulkner House Books | none | COMPLETED |
+| 505 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Treadwells Books, Atlantis Bookshop, Watkins Books | none | COMPLETED |
+| 506 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Judd Books, Henry Sotheran, Peter Harrington | none | COMPLETED |
+| 507 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Australia) | Implement bookstore crawlers for Maggs Bros, Foster Books, Avenue Bookstore | none | COMPLETED |
+| 508 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, France) | Implement bookstore crawlers for Megalong Books, Farrells Bookshop, Librairie Clavreuil | none | COMPLETED |
+| 509 | Global Low-Cost M-Bag Retail Network Expansion (France, France, France) | Implement bookstore crawlers for Librairie Lardanchet, Librairie Giraud-Badin, Librairie Walden | none | COMPLETED |
+| 510 | Global Low-Cost M-Bag Retail Network Expansion (Netherlands, Netherlands, UK) | Implement bookstore crawlers for Antiquariat FORUM, Asher Rare Books, Simon Beattie | none | COMPLETED |
+| 511 | Global Low-Cost M-Bag Retail Network Expansion (UK, USA, USA) | Implement bookstore crawlers for Bernard Quaritch, Bauman Rare Books, Heritage Book Shop | none | COMPLETED |
 
 
 ## Interface Contracts
