@@ -275,6 +275,7 @@
 | 241 | Global Low-Cost M-Bag Retail Network Expansion (Kyrgyzstan) | Implement Janmates crawler (Kyrgyzstan) | none | COMPLETED |
 | 241 | Global Low-Cost M-Bag Retail Network Expansion (Costa Rica, Egypt, Lebanon) | Implement bookstore crawlers for Costa Rica (Libros Duluoz), Egypt (Bibliothek Egypt), Lebanon (Neel wa Furat) | none | COMPLETED |
 | 242 | Global Low-Cost M-Bag Retail Network Expansion (Sweden, Morocco, Morocco) | Implement bookstore crawlers for Sweden (Bokus), Morocco (EnglishBooks MA), Morocco (Books on Demand MA) | none | COMPLETED |
+| 243 | Global Low-Cost M-Bag Retail Network Expansion (Russian Federation) | Implement MoscowBooks crawler (Russia) | none | COMPLETED |
 | 243 | Global Low-Cost M-Bag Retail Network Expansion (Morocco, Saudi Arabia, Saudi Arabia) | Implement bookstore crawlers for Morocco (Heaven Books), Saudi Arabia (Book Link KSA), Saudi Arabia (Eagle Book) | none | COMPLETED |
 | 244 | Global Low-Cost M-Bag Retail Network Expansion (UAE, UAE, UAE) | Implement bookstore crawlers for UAE (Books Kinokuniya UAE), UAE (Bookswagon UAE), UAE (Books World UAE) | none | COMPLETED |
 | 245 | Global Low-Cost M-Bag Retail Network Expansion (Qatar, Qatar, Romania) | Implement bookstore crawlers for Qatar (Fnac Qatar), Qatar (MenaHub), Romania (Librarie net) | none | COMPLETED |
