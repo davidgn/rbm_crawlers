@@ -449,6 +449,16 @@
 | 429 | Global Low-Cost M-Bag Retail Network Expansion (Hong Kong, Hong Kong, Malta) | Implement bookstore crawlers for Bleak House Books, Kelly and Walsh, BDL Books | none | COMPLETED |
 | 430 | Global Low-Cost M-Bag Retail Network Expansion (Bulgaria, Moldova, Moldova) | Implement bookstore crawlers for Ozone BG, Bestseller MD, Elefant MD | none | COMPLETED |
 | 431 | Global Low-Cost M-Bag Retail Network Expansion (Slovenia, Slovenia, Albania) | Implement bookstore crawlers for Beletrina, Knjigarna Sanje, Bota e Librit | none | COMPLETED |
+| 432 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, Germany) | Implement bookstore crawlers for Bucher Bogen, Marga Schoeller, Hundt Hammer Stein | none | COMPLETED |
+| 433 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, France) | Implement bookstore crawlers for Buchhandlung Graff, Lehmstedt, Librairie de Paris | none | COMPLETED |
+| 434 | Global Low-Cost M-Bag Retail Network Expansion (France, France, France) | Implement bookstore crawlers for L Ecume des Pages, Le Divan, Librairie Kleber | none | COMPLETED |
+| 435 | Global Low-Cost M-Bag Retail Network Expansion (France, France, Singapore) | Implement bookstore crawlers for Sauramps, Ombres Blanches, City Book Room | none | COMPLETED |
+| 436 | Global Low-Cost M-Bag Retail Network Expansion (Malaysia, Malaysia, Italy) | Implement bookstore crawlers for Gerakbudaya Penang, Silverfish Books, Libreria Pontremoli | none | COMPLETED |
+| 437 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Luxembourg) | Implement bookstore crawlers for Libreria Bocca, Palazzo Roberti, Alinea LU | none | COMPLETED |
+| 438 | Global Low-Cost M-Bag Retail Network Expansion (Luxembourg, Montenegro, Kosovo) | Implement bookstore crawlers for Librairie Diderich, Karver ME, Buzuku KS | none | COMPLETED |
+| 439 | Global Low-Cost M-Bag Retail Network Expansion (Kosovo, Bosnia and Herzegovina, Bosnia and Herzegovina) | Implement bookstore crawlers for Artini KS, Svjetlostkomerc, Interliber BA | none | COMPLETED |
+| 440 | Global Low-Cost M-Bag Retail Network Expansion (Uruguay, Uruguay, Paraguay) | Implement bookstore crawlers for Isadora Libros, Banda Oriental, Books PY | none | COMPLETED |
+| 441 | Global Low-Cost M-Bag Retail Network Expansion (Lebanon, Jordan, Kuwait) | Implement bookstore crawlers for Stephan Lib, The Good Book Shop, Saeed and Samir | none | COMPLETED |
 
 
 ## Interface Contracts
