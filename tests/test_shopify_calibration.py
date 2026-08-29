@@ -7,6 +7,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from shopify_search_spider import ShopifySearchSpider
 
 SUBCLASSES = [
+    "jashanmal_bh_spider",
     "evasusedbooks_il_spider",
     "pashoshim_il_spider",
     "tecniciencia_ve_spider",

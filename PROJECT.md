@@ -249,9 +249,12 @@
 | 235 | Global Low-Cost M-Bag Retail Network Expansion (Tanzania, Zimbabwe, Zimbabwe) | Implement bookstore crawlers for Tanzania (Mkuki Na Nyota Publishers), Zimbabwe (Denmut Bookstore), Zimbabwe (Wordwide Africa Bookstore) | none | COMPLETED |
 | 236 | Global Low-Cost M-Bag Retail Network Expansion (Belarus) | Implement MyBooks.by spider (Belarus) | none | COMPLETED |
 | 237 | Global Low-Cost M-Bag Retail Network Expansion (Serbia) | Implement eKnjizara and Knjizara Riznica crawlers (Serbia) | none | COMPLETED |
+| 238 | Global Low-Cost M-Bag Retail Network Expansion (Bahrain) | Implement Jashanmal crawler (Bahrain) | none | COMPLETED |
 | 236 | Global Low-Cost M-Bag Retail Network Expansion (Singapore, Singapore, Taiwan) | Implement bookstore crawlers for Singapore (Popular Bookstore SG), Singapore (Books Kinokuniya SG), Taiwan (Sanmin Bookstore) | none | COMPLETED |
 | 237 | Global Low-Cost M-Bag Retail Network Expansion (Serbia) | Implement eKnjizara and Knjizara Riznica crawlers (Serbia) | none | COMPLETED |
+| 238 | Global Low-Cost M-Bag Retail Network Expansion (Bahrain) | Implement Jashanmal crawler (Bahrain) | none | COMPLETED |
 | 237 | Global Low-Cost M-Bag Retail Network Expansion (Hong Kong, Hong Kong, Uruguay) | Implement bookstore crawlers for Hong Kong (Elephants), Hong Kong (Swindon Book Co), Uruguay (Escaramuza) | none | COMPLETED |
+| 238 | Global Low-Cost M-Bag Retail Network Expansion (Bahrain) | Implement Jashanmal crawler (Bahrain) | none | COMPLETED |
 | 238 | Global Low-Cost M-Bag Retail Network Expansion (Uruguay, Uruguay, Bolivia) | Implement bookstore crawlers for Uruguay (Libreria Vila), Uruguay (Mercado Libros UY), Bolivia (Librerias Lectura) | none | COMPLETED |
 | 239 | Global Low-Cost M-Bag Retail Network Expansion (Bolivia, Bolivia, Bolivia) | Implement bookstore crawlers for Bolivia (El Baul del Libro), Bolivia (Libreria Yachaywasi), Bolivia (Libreria Alquimista) | none | COMPLETED |
 | 240 | Global Low-Cost M-Bag Retail Network Expansion (Costa Rica, Costa Rica, Costa Rica) | Implement bookstore crawlers for Costa Rica (Libreria Internacional), Costa Rica (Editorial Costa Rica), Costa Rica (Semi Colon Books) | none | COMPLETED |
