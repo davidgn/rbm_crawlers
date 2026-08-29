@@ -242,7 +242,9 @@
 | 231 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Ecuador, Ecuador) | Implement bookstore crawlers for Peru (Vidalibros), Ecuador (Librimundi), Ecuador (Libreria Espanola) | none | COMPLETED |
 | 232 | Global Low-Cost M-Bag Retail Network Expansion (Ghana, Ghana, Ghana) | Implement bookstore crawlers for Ghana (Booknook Store), Ghana (Kingdom Books Uganda), Ghana (Blue Knights Bookshop) | none | COMPLETED |
 | 233 | Global Low-Cost M-Bag Retail Network Expansion (Zambia) | Implement bookstore crawlers for Zambia (Zambian ARTS Publishing House, Zambezi Joy Society) | none | COMPLETED |
+| 234 | Global Low-Cost M-Bag Retail Network Expansion (Venezuela) | Implement bookstore crawlers for Venezuela (Booksflea, Tecni-Ciencia Libros) | none | COMPLETED |
 | 233 | Global Low-Cost M-Bag Retail Network Expansion (Ghana, Uganda, Uganda) | Implement bookstore crawlers for Ghana (Read2Live Books), Uganda (Uganda Bookshop), Uganda (Mahiri Books) | none | COMPLETED |
+| 234 | Global Low-Cost M-Bag Retail Network Expansion (Venezuela) | Implement bookstore crawlers for Venezuela (Booksflea, Tecni-Ciencia Libros) | none | COMPLETED |
 | 234 | Global Low-Cost M-Bag Retail Network Expansion (Uganda, Uganda, Tanzania) | Implement bookstore crawlers for Uganda (Bitabo), Uganda (God's Mercy Bookshop), Tanzania (Eduzone International) | none | COMPLETED |
 | 235 | Global Low-Cost M-Bag Retail Network Expansion (Tanzania, Zimbabwe, Zimbabwe) | Implement bookstore crawlers for Tanzania (Mkuki Na Nyota Publishers), Zimbabwe (Denmut Bookstore), Zimbabwe (Wordwide Africa Bookstore) | none | COMPLETED |
 | 236 | Global Low-Cost M-Bag Retail Network Expansion (Singapore, Singapore, Taiwan) | Implement bookstore crawlers for Singapore (Popular Bookstore SG), Singapore (Books Kinokuniya SG), Taiwan (Sanmin Bookstore) | none | COMPLETED |
