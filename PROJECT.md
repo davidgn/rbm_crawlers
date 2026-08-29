@@ -230,6 +230,16 @@
 | 219 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Colombia, Colombia) | Implement bookstore crawlers for Colombia (Libreria Polo), Colombia (Libreria Arte), Colombia (Libreria Sur) | none | COMPLETED |
 | 220 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Colombia, Colombia) | Implement bookstore crawlers for Colombia (Libreria Latina), Colombia (Libreria Catolica), Colombia (Libreria Bogota) | none | COMPLETED |
 | 221 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Pakistan, Pakistan) | Implement bookstore crawlers for Colombia (Siglo XXI Editores CO), Pakistan (Bookland PK), Pakistan (Bismillah Books) | none | COMPLETED |
+| 222 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Philippines, Philippines) | Implement bookstore crawlers for Philippines (Paper Boox), Philippines (Omniana), Philippines (Gregory Books) | none | COMPLETED |
+| 223 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Vietnam, Turkey) | Implement bookstore crawlers for Vietnam (Paperbacks in Saigon), Vietnam (Book Metro), Turkey (Kitapyurdu) | none | COMPLETED |
+| 224 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Turkey, Turkey) | Implement bookstore crawlers for Turkey (Ucuzkitapal), Turkey (Hepsiburada), Turkey (Turk Kitabevi) | none | COMPLETED |
+| 225 | Global Low-Cost M-Bag Retail Network Expansion (Turkey, Turkey, Colombia) | Implement bookstore crawlers for Turkey (Dunyada Kitap), Turkey (Dem Turkish Center), Colombia (Casa del Libro Colombia) | none | COMPLETED |
+| 226 | Global Low-Cost M-Bag Retail Network Expansion (Colombia, Colombia, Mexico) | Implement bookstore crawlers for Colombia (Happy Books), Colombia (Ediciones Hispanicas), Mexico (PlanetadeLibros Mexico) | none | COMPLETED |
+| 227 | Global Low-Cost M-Bag Retail Network Expansion (Mexico, Mexico, Argentina) | Implement bookstore crawlers for Mexico (Penguin Libros MX), Mexico (Libreria Maranatha), Argentina (Galerna Libros) | none | COMPLETED |
+| 228 | Global Low-Cost M-Bag Retail Network Expansion (Argentina, Argentina, Argentina) | Implement bookstore crawlers for Argentina (Libreria de la Biblioteca Nacional), Argentina (Woopy), Argentina (Libros del Pasaje) | none | COMPLETED |
+| 229 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Peru, Peru) | Implement bookstore crawlers for Peru (Librerias Crisol), Peru (Ibero Librerias), Peru (Librerias SBS) | none | COMPLETED |
+| 230 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Peru, Peru) | Implement bookstore crawlers for Peru (Communitas), Peru (Libreria El Virrey), Peru (Librerias Labrys) | none | COMPLETED |
+| 231 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Ecuador, Ecuador) | Implement bookstore crawlers for Peru (Vidalibros), Ecuador (Librimundi), Ecuador (Libreria Espanola) | none | COMPLETED |
 
 
 ## Interface Contracts
