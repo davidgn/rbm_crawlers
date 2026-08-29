@@ -243,12 +243,9 @@
 | 232 | Global Low-Cost M-Bag Retail Network Expansion (Ghana, Ghana, Ghana) | Implement bookstore crawlers for Ghana (Booknook Store), Ghana (Kingdom Books Uganda), Ghana (Blue Knights Bookshop) | none | COMPLETED |
 | 233 | Global Low-Cost M-Bag Retail Network Expansion (Zambia) | Implement bookstore crawlers for Zambia (Zambian ARTS Publishing House, Zambezi Joy Society) | none | COMPLETED |
 | 234 | Global Low-Cost M-Bag Retail Network Expansion (Venezuela) | Implement bookstore crawlers for Venezuela (Booksflea, Tecni-Ciencia Libros) | none | COMPLETED |
-| 235 | Global Low-Cost M-Bag Retail Network Expansion (Israel) | Implement bookstore crawlers for Israel (Eva's Used Books, Pashoshim) | none | COMPLETED |
 | 233 | Global Low-Cost M-Bag Retail Network Expansion (Ghana, Uganda, Uganda) | Implement bookstore crawlers for Ghana (Read2Live Books), Uganda (Uganda Bookshop), Uganda (Mahiri Books) | none | COMPLETED |
 | 234 | Global Low-Cost M-Bag Retail Network Expansion (Venezuela) | Implement bookstore crawlers for Venezuela (Booksflea, Tecni-Ciencia Libros) | none | COMPLETED |
-| 235 | Global Low-Cost M-Bag Retail Network Expansion (Israel) | Implement bookstore crawlers for Israel (Eva's Used Books, Pashoshim) | none | COMPLETED |
 | 234 | Global Low-Cost M-Bag Retail Network Expansion (Uganda, Uganda, Tanzania) | Implement bookstore crawlers for Uganda (Bitabo), Uganda (God's Mercy Bookshop), Tanzania (Eduzone International) | none | COMPLETED |
-| 235 | Global Low-Cost M-Bag Retail Network Expansion (Israel) | Implement bookstore crawlers for Israel (Eva's Used Books, Pashoshim) | none | COMPLETED |
 | 235 | Global Low-Cost M-Bag Retail Network Expansion (Tanzania, Zimbabwe, Zimbabwe) | Implement bookstore crawlers for Tanzania (Mkuki Na Nyota Publishers), Zimbabwe (Denmut Bookstore), Zimbabwe (Wordwide Africa Bookstore) | none | COMPLETED |
 | 236 | Global Low-Cost M-Bag Retail Network Expansion (Singapore, Singapore, Taiwan) | Implement bookstore crawlers for Singapore (Popular Bookstore SG), Singapore (Books Kinokuniya SG), Taiwan (Sanmin Bookstore) | none | COMPLETED |
 | 237 | Global Low-Cost M-Bag Retail Network Expansion (Hong Kong, Hong Kong, Uruguay) | Implement bookstore crawlers for Hong Kong (Elephants), Hong Kong (Swindon Book Co), Uruguay (Escaramuza) | none | COMPLETED |
@@ -306,6 +303,16 @@
 | 289 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Garden District Book Shop), USA (Octavia Books), USA (Joseph Beth) | none | COMPLETED |
 | 290 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Nicolas Books), USA (Literati Bookstore), USA (Prairie Lights) | none | COMPLETED |
 | 291 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Unabridged Bookstore), USA (Seminary Co op), USA (Women and Children First) | none | COMPLETED |
+| 292 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (The Book Cellar), USA (Volumes Bookcafe), USA (Boswell Book Company) | none | COMPLETED |
+| 293 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Brookline Booksmith), USA (Trident Booksellers), USA (Porter Square Books) | none | COMPLETED |
+| 294 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (RJ Julia Booksellers), USA (Northshire Bookstore), USA (Phoenix Books) | none | COMPLETED |
+| 295 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Print A Bookstore), USA (Longfellow Books), USA (Water Street Bookstore) | none | COMPLETED |
+| 296 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Midtown Scholar), USA (McNally Jackson), USA (Greenlight Bookstore) | none | COMPLETED |
+| 297 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Books Are Magic), USA (Word Bookstores), USA (Astoria Bookshop) | none | COMPLETED |
+| 298 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Kew and Willow Books), USA (Posman Books), USA (The Lit Bar) | none | COMPLETED |
+| 299 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Shakespeare and Co), USA (Unnameable Books), USA (Solid State Books) | none | COMPLETED |
+| 300 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (MahoganyBooks), USA (The Spiral Bookcase), USA (Main Street Books) | none | COMPLETED |
+| 301 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Left Bank Bookshop), USA (The Owl and Turtle Bookshop), USA (Shermans Maine Coast) | none | COMPLETED |
 
 
 ## Interface Contracts
