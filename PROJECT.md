@@ -419,6 +419,16 @@
 | 399 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Where the Sidewalk Ends, Brewster Book Store, Bank Square Books | none | COMPLETED |
 | 400 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Byrds Books, Hickory Stick Bookshop, Oblong Books | none | COMPLETED |
 | 401 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Golden Notebook, Inquiring Minds, Rough Draft Bar Books | none | COMPLETED |
+| 402 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Battenkill Books, Cafe con Libros, Loyalty Bookstores | none | COMPLETED |
+| 403 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Uncle Bobbies, Semicolon Bookstore, Wild Rumpus | none | COMPLETED |
+| 404 | Global Low-Cost M-Bag Retail Network Expansion (Iceland, Finland, Finland) | Implement bookstore crawlers for Forlagid, Rosebud Books, Nide Kauppa | none | COMPLETED |
+| 405 | Global Low-Cost M-Bag Retail Network Expansion (Norway, Norway, Denmark) | Implement bookstore crawlers for Tronsmo, Outland NO, Boghallen | none | COMPLETED |
+| 406 | Global Low-Cost M-Bag Retail Network Expansion (Denmark, Netherlands, Belgium) | Implement bookstore crawlers for Tranquebar, De Vries Van Stockum, Filigranes | none | COMPLETED |
+| 407 | Global Low-Cost M-Bag Retail Network Expansion (France, Italy, Spain) | Implement bookstore crawlers for Librairie Galignani, Todo Modo, Desnivel | none | COMPLETED |
+| 408 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Argentina, Argentina) | Implement bookstore crawlers for Libreria Rafael Alberti, Libreria Hernandez, Eterna Cadencia | none | COMPLETED |
+| 409 | Global Low-Cost M-Bag Retail Network Expansion (Brazil, Australia, Australia) | Implement bookstore crawlers for Livraria da Vila, The Sun Bookshop, Brunswick Bound | none | COMPLETED |
+| 410 | Global Low-Cost M-Bag Retail Network Expansion (Australia, New Zealand, New Zealand) | Implement bookstore crawlers for Paperchain Bookstore, Volume Books, Schrodingers Books | none | COMPLETED |
+| 411 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Malaysia, Malaysia) | Implement bookstore crawlers for Mt Cloud Bookshop, Lit Books MY, Areca Books | none | COMPLETED |
 
 
 ## Interface Contracts
