@@ -429,6 +429,16 @@
 | 409 | Global Low-Cost M-Bag Retail Network Expansion (Brazil, Australia, Australia) | Implement bookstore crawlers for Livraria da Vila, The Sun Bookshop, Brunswick Bound | none | COMPLETED |
 | 410 | Global Low-Cost M-Bag Retail Network Expansion (Australia, New Zealand, New Zealand) | Implement bookstore crawlers for Paperchain Bookstore, Volume Books, Schrodingers Books | none | COMPLETED |
 | 411 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Malaysia, Malaysia) | Implement bookstore crawlers for Mt Cloud Bookshop, Lit Books MY, Areca Books | none | COMPLETED |
+| 412 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Red Planet Books, Country Bookshelf, The Bookworm of Edwards | none | COMPLETED |
+| 413 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Off the Beaten Path, Books and Books Miami, Eighth Day Books | none | COMPLETED |
+| 414 | Global Low-Cost M-Bag Retail Network Expansion (Austria, Austria, Austria) | Implement bookstore crawlers for Buchhandlung Orlando, Leporello, Hartliebs Bucher | none | COMPLETED |
+| 415 | Global Low-Cost M-Bag Retail Network Expansion (Austria, Switzerland, Canada) | Implement bookstore crawlers for Shakespeare and Co Vienna, Bider and Tanner, Librairie Gallimard Montreal | none | COMPLETED |
+| 416 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Librairie Le Port de Tete, Renaud Bray, Archambault | none | COMPLETED |
+| 417 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Librairie Pantoute, Librairie Monet, Tattletales | none | COMPLETED |
+| 418 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Sri Lanka) | Implement bookstore crawlers for The Bookshelf Guelph, Sleuth of Baker Street, MD Gunasena | none | COMPLETED |
+| 419 | Global Low-Cost M-Bag Retail Network Expansion (Sri Lanka, Nepal, Maldives) | Implement bookstore crawlers for Expographic Books, Ratna Pustak Bhandar, Asrafee Bookshop | none | COMPLETED |
+| 420 | Global Low-Cost M-Bag Retail Network Expansion (Mauritius, Mauritius, Ireland) | Implement bookstore crawlers for Le Printemps, Editions de l Ocean Indien, Bridge Street Books | none | COMPLETED |
+| 421 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, Ireland, Ireland) | Implement bookstore crawlers for Woodbine Books, Just Books, Liber Books | none | COMPLETED |
 
 
 ## Interface Contracts
