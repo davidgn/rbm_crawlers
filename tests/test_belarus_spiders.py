@@ -147,3 +147,49 @@ class TestChitatelBySpider(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+from mybooks_by_spider import MyBooksBySpider
+
+class TestMyBooksBySpider(unittest.TestCase):
+    def test_instantiation(self):
+        spider = MyBooksBySpider(limit_pages=1)
+        self.assertIsInstance(spider, BaseSpider)
+
+    def test_territory(self):
+        spider = MyBooksBySpider()
+        self.assertEqual(spider.territory, "Belarus")
+
+    def test_platform_name(self):
+        spider = MyBooksBySpider()
+        self.assertEqual(spider.platform_name, "MyBooks")
+
+    def test_html_parsing(self):
+        spider = MyBooksBySpider(limit_pages=1)
+        spider.categories = ["/catalog/test/"]
+        spider.seen_urls = set()
+        emitted = []
+        spider.save_item = lambda item: emitted.append(item)
+
+        mock_cat_html = """
+        <html>
+            <body>
+                <meta data-ec-product data-id="123" data-name="Test Book" data-price="25.5" data-currency="BYN" data-code="1234567890123" />
+            </body>
+        </html>
+        """
+
+        mock_cat_resp = MagicMock()
+        mock_cat_resp.status_code = 200
+        mock_cat_resp.text = mock_cat_html
+
+        with patch.object(spider, "_get_with_retries", return_value=mock_cat_resp):
+            spider.run()
+
+        self.assertEqual(len(emitted), 1)
+        item = emitted[0]
+        self.assertEqual(item.title, "Test Book")
+        self.assertEqual(item.price, "25.5")
+        self.assertEqual(item.price_currency, "BYN")
+        self.assertEqual(item.isbn, "1234567890123")
+        self.assertEqual(item.territory, "Belarus")
+
