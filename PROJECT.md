@@ -323,6 +323,16 @@
 | 309 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Richard Booths Bookshop), UK (Winstones), UK (Mostly Books) | none | COMPLETED |
 | 310 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, Ireland, Ireland) | Implement bookstore crawlers for Ireland (The Gutter Bookshop), Ireland (OMahonys Booksellers), Ireland (Books Upstairs) | none | COMPLETED |
 | 311 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Canada (Munros Books), Canada (Russell Books), Canada (Bolen Books) | none | COMPLETED |
+| 312 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Canada (Massy Books), Canada (The Paper Hound), Canada (Pages on Kensington) | none | COMPLETED |
+| 313 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Canada (Shelf Life Books), Canada (Audreys Books), Canada (The Book Keeper) | none | COMPLETED |
+| 314 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Gleebooks), Australia (Kinokuniya Sydney), Australia (Better Read Than Dead) | none | COMPLETED |
+| 315 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Harry Hartog), Australia (Roaring Stories), Australia (Avid Reader) | none | COMPLETED |
+| 316 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Riverbend Books), Australia (Where the Wild Things Are), Australia (The Bookshop Darlinghurst) | none | COMPLETED |
+| 317 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Boffins Books), Australia (Planet Books), Australia (Crow Books) | none | COMPLETED |
+| 318 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Beaufort Street Books), Australia (Paper Bird), Australia (Imprints Booksellers) | none | COMPLETED |
+| 319 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, Australia) | Implement bookstore crawlers for Australia (Dillons Bookshop), Australia (Matilda Bookshop), Australia (Fullers Bookshop) | none | COMPLETED |
+| 320 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, New Zealand) | Implement bookstore crawlers for Australia (Hobart Bookshop), Australia (Petrarchs Bookshop), New Zealand (Time Out Bookstore) | none | COMPLETED |
+| 321 | Global Low-Cost M-Bag Retail Network Expansion (New Zealand, New Zealand, New Zealand) | Implement bookstore crawlers for New Zealand (Dorothy Butler Bookshop), New Zealand (The Womens Bookshop), New Zealand (Dear Reader) | none | COMPLETED |
 
 
 ## Interface Contracts
