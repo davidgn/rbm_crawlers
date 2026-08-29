@@ -240,6 +240,7 @@
 | 229 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Peru, Peru) | Implement bookstore crawlers for Peru (Librerias Crisol), Peru (Ibero Librerias), Peru (Librerias SBS) | none | COMPLETED |
 | 230 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Peru, Peru) | Implement bookstore crawlers for Peru (Communitas), Peru (Libreria El Virrey), Peru (Librerias Labrys) | none | COMPLETED |
 | 231 | Global Low-Cost M-Bag Retail Network Expansion (Peru, Ecuador, Ecuador) | Implement bookstore crawlers for Peru (Vidalibros), Ecuador (Librimundi), Ecuador (Libreria Espanola) | none | COMPLETED |
+| 232 | Global Low-Cost M-Bag Retail Network Expansion (Kuwait) | Implement bookstore crawlers for Kuwait (Spectrawide Bookstore, Kuwait Book Store) | none | COMPLETED |
 
 
 ## Interface Contracts
