@@ -396,6 +396,16 @@
 | 379 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Singapore, Singapore) | Implement bookstore crawlers for A Different Booklist, Wardah Books, Woods in the Books | none | COMPLETED |
 | 380 | Global Low-Cost M-Bag Retail Network Expansion (Singapore, India, India) | Implement bookstore crawlers for Epigram Books, Title Waves, Goobes Book Republic | none | COMPLETED |
 | 381 | Global Low-Cost M-Bag Retail Network Expansion (Sri Lanka, Sri Lanka, Taiwan) | Implement bookstore crawlers for Sarasavi Bookshop, Makeen Books, Caves Books TW | none | COMPLETED |
+| 382 | Global Low-Cost M-Bag Retail Network Expansion (Costa Rica, Mexico, Mexico) | Implement bookstore crawlers for Libreria Francesa CR, Libreria El Pendulo, Libreria Pegaso | none | COMPLETED |
+| 383 | Global Low-Cost M-Bag Retail Network Expansion (Ecuador, Ghana, Senegal) | Implement bookstore crawlers for Libreria Studium, Vidya Bookstore, L Harmattan SN | none | COMPLETED |
+| 384 | Global Low-Cost M-Bag Retail Network Expansion (UAE, Bahrain, Bahrain) | Implement bookstore crawlers for Kuttab Publishing, Neo Books and Coffee, Words Bookstore | none | COMPLETED |
+| 385 | Global Low-Cost M-Bag Retail Network Expansion (Jordan, Bangladesh, Nepal) | Implement bookstore crawlers for Books at Cafe, Batighar, Mandala Book Point | none | COMPLETED |
+| 386 | Global Low-Cost M-Bag Retail Network Expansion (Sri Lanka, Poland, Czechia) | Implement bookstore crawlers for Bargain Books LK, Gildia PL, Martinus CZ | none | COMPLETED |
+| 387 | Global Low-Cost M-Bag Retail Network Expansion (Cyprus, UK, UK) | Implement bookstore crawlers for Kyriakou Bookshops, The Haslemere Bookshop, Scarthin Books | none | COMPLETED |
+| 388 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for The Bookshop in Wigtown, Slightly Foxed, Gullivers Bookshop | none | COMPLETED |
+| 389 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Bookhaus Bristol, Max Minervas, Storysmith Books | none | COMPLETED |
+| 390 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Nepal) | Implement bookstore crawlers for Dulwich Books, Page 45, Tibet Book Store | none | COMPLETED |
+| 391 | Global Low-Cost M-Bag Retail Network Expansion (Oman, Bahrain, Ireland) | Implement bookstore crawlers for Al Roya Bookstore, The Bookcase BH, Tertulia Books IE | none | COMPLETED |
 
 
 ## Interface Contracts
