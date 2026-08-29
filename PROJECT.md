@@ -508,6 +508,16 @@
 | 479 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Puerto Rico) | Implement bookstore crawlers for Stanfords, Bookseller Crow, Libreria Contemporanea | none | COMPLETED |
 | 480 | Global Low-Cost M-Bag Retail Network Expansion (Argentina, Norway, USA) | Implement bookstore crawlers for Sopena Argentina, Bokoteket, MIT Press Bookstore | none | COMPLETED |
 | 481 | Global Low-Cost M-Bag Retail Network Expansion (UK, USA, USA) | Implement bookstore crawlers for Pluto Press, Milkweed Editions, Coffee House Press | none | COMPLETED |
+| 482 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Ken Sanders Books, Aunties Bookstore, Avid Bookshop | none | COMPLETED |
+| 483 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Rizzoli Bookstore, Yale UP, Princeton UP | none | COMPLETED |
+| 484 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Columbia UP, Duke UP, Cornell UP | none | COMPLETED |
+| 485 | Global Low-Cost M-Bag Retail Network Expansion (USA, UK, UK) | Implement bookstore crawlers for NYU Press, Armchair Books, Tills Bookshop | none | COMPLETED |
+| 486 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, Ireland, France) | Implement bookstore crawlers for Ulysses Rare Books, Alan Hannas Bookshop, Abbey Bookshop | none | COMPLETED |
+| 487 | Global Low-Cost M-Bag Retail Network Expansion (France, Spain, UK) | Implement bookstore crawlers for San Francisco Book Co, J and J Books, Edinburgh UP | none | COMPLETED |
+| 488 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Ireland) | Implement bookstore crawlers for Manchester UP, Bristol UP, Cork UP | none | COMPLETED |
+| 489 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, USA, USA) | Implement bookstore crawlers for UCD Press, Chicago UP, Harvard UP | none | COMPLETED |
+| 490 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Stanford UP, Johns Hopkins UP, UC Press | none | COMPLETED |
+| 491 | Global Low-Cost M-Bag Retail Network Expansion (USA, Canada, Canada) | Implement bookstore crawlers for UT Press, U of T Press, UBC Press | none | COMPLETED |
 
 
 ## Interface Contracts
