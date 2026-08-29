@@ -250,6 +250,16 @@
 | 239 | Global Low-Cost M-Bag Retail Network Expansion (Bolivia, Bolivia, Bolivia) | Implement bookstore crawlers for Bolivia (El Baul del Libro), Bolivia (Libreria Yachaywasi), Bolivia (Libreria Alquimista) | none | COMPLETED |
 | 240 | Global Low-Cost M-Bag Retail Network Expansion (Costa Rica, Costa Rica, Costa Rica) | Implement bookstore crawlers for Costa Rica (Libreria Internacional), Costa Rica (Editorial Costa Rica), Costa Rica (Semi Colon Books) | none | COMPLETED |
 | 241 | Global Low-Cost M-Bag Retail Network Expansion (Costa Rica, Egypt, Lebanon) | Implement bookstore crawlers for Costa Rica (Libros Duluoz), Egypt (Bibliothek Egypt), Lebanon (Neel wa Furat) | none | COMPLETED |
+| 242 | Global Low-Cost M-Bag Retail Network Expansion (Sweden, Morocco, Morocco) | Implement bookstore crawlers for Sweden (Bokus), Morocco (EnglishBooks MA), Morocco (Books on Demand MA) | none | COMPLETED |
+| 243 | Global Low-Cost M-Bag Retail Network Expansion (Morocco, Saudi Arabia, Saudi Arabia) | Implement bookstore crawlers for Morocco (Heaven Books), Saudi Arabia (Book Link KSA), Saudi Arabia (Eagle Book) | none | COMPLETED |
+| 244 | Global Low-Cost M-Bag Retail Network Expansion (UAE, UAE, UAE) | Implement bookstore crawlers for UAE (Books Kinokuniya UAE), UAE (Bookswagon UAE), UAE (Books World UAE) | none | COMPLETED |
+| 245 | Global Low-Cost M-Bag Retail Network Expansion (Qatar, Qatar, Romania) | Implement bookstore crawlers for Qatar (Fnac Qatar), Qatar (MenaHub), Romania (Librarie net) | none | COMPLETED |
+| 246 | Global Low-Cost M-Bag Retail Network Expansion (Bulgaria, Bulgaria, Bulgaria) | Implement bookstore crawlers for Bulgaria (Ciela), Bulgaria (Orange Center), Bulgaria (Knigomania) | none | COMPLETED |
+| 247 | Global Low-Cost M-Bag Retail Network Expansion (Bulgaria, Hungary, Hungary) | Implement bookstore crawlers for Bulgaria (Colibri), Hungary (Libri HU), Hungary (Lira HU) | none | COMPLETED |
+| 248 | Global Low-Cost M-Bag Retail Network Expansion (Hungary, Hungary, Poland) | Implement bookstore crawlers for Hungary (Bestsellers HU), Hungary (Prospero HU), Poland (Tania Ksiazka) | none | COMPLETED |
+| 249 | Global Low-Cost M-Bag Retail Network Expansion (Poland, Poland, Ireland) | Implement bookstore crawlers for Poland (Swiat Ksiazki), Poland (TheBooks PL), Ireland (Dubray Books) | none | COMPLETED |
+| 250 | Global Low-Cost M-Bag Retail Network Expansion (Greece, Greece, Cyprus) | Implement bookstore crawlers for Greece (Bookpath), Greece (Mitakosbooks), Cyprus (Cypronite) | none | COMPLETED |
+| 251 | Global Low-Cost M-Bag Retail Network Expansion (Cyprus, Malta, Malta) | Implement bookstore crawlers for Cyprus (Eros Anthos), Malta (BookClub MT), Malta (Midsea Books) | none | COMPLETED |
 
 
 ## Interface Contracts
