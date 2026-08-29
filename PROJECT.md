@@ -313,6 +313,16 @@
 | 299 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Shakespeare and Co), USA (Unnameable Books), USA (Solid State Books) | none | COMPLETED |
 | 300 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (MahoganyBooks), USA (The Spiral Bookcase), USA (Main Street Books) | none | COMPLETED |
 | 301 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Left Bank Bookshop), USA (The Owl and Turtle Bookshop), USA (Shermans Maine Coast) | none | COMPLETED |
+| 302 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Gulf of Maine Books), USA (Broadside Bookshop), USA (Odyssey Bookshop) | none | COMPLETED |
+| 303 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, UK) | Implement bookstore crawlers for USA (Amherst Books), USA (Montague Bookmill), UK (Daunt Books) | none | COMPLETED |
+| 304 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Hatchards), UK (Topping and Company), UK (Mr Bs Emporium) | none | COMPLETED |
+| 305 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Golden Hare Books), UK (The Portobello Bookshop), UK (Lighthouse Bookshop) | none | COMPLETED |
+| 306 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Mainstreet Trading Company), UK (The Edinburgh Bookshop), UK (News from Nowhere) | none | COMPLETED |
+| 307 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Five Leaves Bookshop), UK (Housmans), UK (Gays The Word) | none | COMPLETED |
+| 308 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Persephone Books), UK (The Book Hive), UK (Much Ado Books) | none | COMPLETED |
+| 309 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for UK (Richard Booths Bookshop), UK (Winstones), UK (Mostly Books) | none | COMPLETED |
+| 310 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, Ireland, Ireland) | Implement bookstore crawlers for Ireland (The Gutter Bookshop), Ireland (OMahonys Booksellers), Ireland (Books Upstairs) | none | COMPLETED |
+| 311 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Canada (Munros Books), Canada (Russell Books), Canada (Bolen Books) | none | COMPLETED |
 
 
 ## Interface Contracts
