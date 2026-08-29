@@ -343,6 +343,16 @@
 | 329 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Roebling Point Books), USA (Prologue Bookshop), USA (Gramercy Books) | none | COMPLETED |
 | 330 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Visible Voice Books), USA (Gathering Volumes), USA (BookSpace Columbus) | none | COMPLETED |
 | 331 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Source Booksellers), USA (Pages Bookshop), USA (27th Letter Books) | none | COMPLETED |
+| 332 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Brilliant Books), USA (McLean and Eakin), USA (The Book Bungalow) | none | COMPLETED |
+| 333 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Back of Beyond Books), USA (Mostly Books AZ), USA (The Poisoned Pen) | none | COMPLETED |
+| 334 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Bookmans), USA (Page and Palette), USA (Lorelei Books) | none | COMPLETED |
+| 335 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Pass Christian Books), USA (Bay Books MS), USA (Blue Cypress Books) | none | COMPLETED |
+| 336 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Tubby and Coos), USA (Cavalier House Books), USA (The Conundrum) | none | COMPLETED |
+| 337 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (That Bookstore in Blytheville), USA (Wordsworth Books AR), USA (Pearls Books) | none | COMPLETED |
+| 338 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Watermark Books), USA (Raven Book Store), USA (The Dusty Bookshelf) | none | COMPLETED |
+| 339 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Rainy Day Books), USA (The Book House), USA (Skylark Bookshop) | none | COMPLETED |
+| 340 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Yellow Dog Bookshop), USA (Downtown Books WI), USA (Mystery to Me) | none | COMPLETED |
+| 341 | Global Low-Cost M-Bag Retail Network Expansion (USA, Pakistan, Pakistan) | Implement bookstore crawlers for USA (A Room of Ones Own), Pakistan (The Last Word), Pakistan (Liberty Books) | none | COMPLETED |
 
 
 ## Interface Contracts
