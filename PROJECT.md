@@ -353,6 +353,16 @@
 | 339 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Rainy Day Books), USA (The Book House), USA (Skylark Bookshop) | none | COMPLETED |
 | 340 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Yellow Dog Bookshop), USA (Downtown Books WI), USA (Mystery to Me) | none | COMPLETED |
 | 341 | Global Low-Cost M-Bag Retail Network Expansion (USA, Pakistan, Pakistan) | Implement bookstore crawlers for USA (A Room of Ones Own), Pakistan (The Last Word), Pakistan (Liberty Books) | none | COMPLETED |
+| 342 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for Variety Book Depot, CMYK Bookstore, Blossom Book House | none | COMPLETED |
+| 343 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for Om Book Shop, Midland Book Shop, Fact and Fiction IN | none | COMPLETED |
+| 344 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, Germany) | Implement bookstore crawlers for Ocelot Berlin, Autorenbuchhandlung Berlin, Proust Woerter und Toene | none | COMPLETED |
+| 345 | Global Low-Cost M-Bag Retail Network Expansion (Germany, France, France) | Implement bookstore crawlers for Buchhandlung Walther Koenig, Shakespeare and Company Paris, Librairie Mollat | none | COMPLETED |
+| 346 | Global Low-Cost M-Bag Retail Network Expansion (France, France, Sweden) | Implement bookstore crawlers for Librairie Charybde, Librairie Quilombo, Akademibokhandeln | none | COMPLETED |
+| 347 | Global Low-Cost M-Bag Retail Network Expansion (Sweden, Norway, Norway) | Implement bookstore crawlers for Adlibris SE, ARK Bokhandel, Akademika NO | none | COMPLETED |
+| 348 | Global Low-Cost M-Bag Retail Network Expansion (Austria, Greece, Poland) | Implement bookstore crawlers for Buchhandlung Ritter, Protasis GR, Znak | none | COMPLETED |
+| 349 | Global Low-Cost M-Bag Retail Network Expansion (Croatia, Lithuania, Latvia) | Implement bookstore crawlers for Booksa HR, Humanitas LT, Petergailis | none | COMPLETED |
+| 350 | Global Low-Cost M-Bag Retail Network Expansion (Estonia, Slovenia, Germany) | Implement bookstore crawlers for Apollo Raamatud, Konzorcij SI, Buecher de | none | COMPLETED |
+| 351 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, Germany) | Implement bookstore crawlers for Dussmann, Schweitzer Online, Osiander | none | COMPLETED |
 
 
 ## Interface Contracts
