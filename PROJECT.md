@@ -363,6 +363,16 @@
 | 349 | Global Low-Cost M-Bag Retail Network Expansion (Croatia, Lithuania, Latvia) | Implement bookstore crawlers for Booksa HR, Humanitas LT, Petergailis | none | COMPLETED |
 | 350 | Global Low-Cost M-Bag Retail Network Expansion (Estonia, Slovenia, Germany) | Implement bookstore crawlers for Apollo Raamatud, Konzorcij SI, Buecher de | none | COMPLETED |
 | 351 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, Germany) | Implement bookstore crawlers for Dussmann, Schweitzer Online, Osiander | none | COMPLETED |
+| 352 | Global Low-Cost M-Bag Retail Network Expansion (Guatemala, Guatemala, Panama) | Implement bookstore crawlers for Kemik GT, Kishi Books GT, Librerias El Lector | none | COMPLETED |
+| 353 | Global Low-Cost M-Bag Retail Network Expansion (Panama, Panama, Honduras) | Implement bookstore crawlers for El Hombre de La Mancha, La Esquina PA, Guacamayas Bookstore | none | COMPLETED |
+| 354 | Global Low-Cost M-Bag Retail Network Expansion (Honduras, South Korea, South Korea) | Implement bookstore crawlers for Libreria Chichus, Interpark Books KR, Bandibooks | none | COMPLETED |
+| 355 | Global Low-Cost M-Bag Retail Network Expansion (China, Morocco, Dominican Republic) | Implement bookstore crawlers for JD Books, Librairie Cheikh, Cuesta Centro del Libro | none | COMPLETED |
+| 356 | Global Low-Cost M-Bag Retail Network Expansion (Dominican Republic, Puerto Rico, Puerto Rico) | Implement bookstore crawlers for Atlantico Books, La Tertulia PR, Libros AC PR | none | COMPLETED |
+| 357 | Global Low-Cost M-Bag Retail Network Expansion (Jamaica, Trinidad and Tobago, Chile) | Implement bookstore crawlers for Bookophilia JM, Metropolitan Books TT, Zig Zag CL | none | COMPLETED |
+| 358 | Global Low-Cost M-Bag Retail Network Expansion (Bolivia, Uruguay, Venezuela) | Implement bookstore crawlers for Gisbert Libreria, Libreria Guadalquivir, El Buscalibros VE | none | COMPLETED |
+| 359 | Global Low-Cost M-Bag Retail Network Expansion (Ghana, Ghana, Senegal) | Implement bookstore crawlers for Silverbird Book Centre, EPP Books GH, Librairie Clairafrique | none | COMPLETED |
+| 360 | Global Low-Cost M-Bag Retail Network Expansion (Cote dIvoire, El Salvador, Nicaragua) | Implement bookstore crawlers for Librairie de France CI, Libreria Cultural SV, Hispamer NI | none | COMPLETED |
+| 361 | Global Low-Cost M-Bag Retail Network Expansion (Ecuador, Argentina, Argentina) | Implement bookstore crawlers for Mr Books EC, Cuspide Libros, El Ateneo AR | none | COMPLETED |
 
 
 ## Interface Contracts
