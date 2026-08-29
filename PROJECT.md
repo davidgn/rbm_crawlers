@@ -374,6 +374,16 @@
 | 359 | Global Low-Cost M-Bag Retail Network Expansion (Ghana, Ghana, Senegal) | Implement bookstore crawlers for Silverbird Book Centre, EPP Books GH, Librairie Clairafrique | none | COMPLETED |
 | 360 | Global Low-Cost M-Bag Retail Network Expansion (Cote dIvoire, El Salvador, Nicaragua) | Implement bookstore crawlers for Librairie de France CI, Libreria Cultural SV, Hispamer NI | none | COMPLETED |
 | 361 | Global Low-Cost M-Bag Retail Network Expansion (Ecuador, Argentina, Argentina) | Implement bookstore crawlers for Mr Books EC, Cuspide Libros, El Ateneo AR | none | COMPLETED |
+| 362 | Global Low-Cost M-Bag Retail Network Expansion (Czechia, Czechia, Slovakia) | Implement bookstore crawlers for KupKnihu CZ, Nejlevnejsi Knihy CZ, Najlacnejsie Knihy SK | none | COMPLETED |
+| 363 | Global Low-Cost M-Bag Retail Network Expansion (Bulgaria, Croatia, Croatia) | Implement bookstore crawlers for Elephant Bookstore BG, Knjiga HR, Dominovic HR | none | COMPLETED |
+| 364 | Global Low-Cost M-Bag Retail Network Expansion (South Africa, Saudi Arabia, Argentina) | Implement bookstore crawlers for Exclusive Books SA, Obeikan SA, SBS Argentina | none | COMPLETED |
+| 365 | Global Low-Cost M-Bag Retail Network Expansion (Argentina, Paraguay, Ecuador) | Implement bookstore crawlers for Waldhuter, El Lector PY, Libreria Rayuela | none | COMPLETED |
+| 366 | Global Low-Cost M-Bag Retail Network Expansion (Costa Rica, Czechia, Slovakia) | Implement bookstore crawlers for Libreria Lehmann, Dobrovsky CZ, Panta Rhei SK | none | COMPLETED |
+| 367 | Global Low-Cost M-Bag Retail Network Expansion (Romania, Romania, Bosnia) | Implement bookstore crawlers for Diverta RO, Librex RO, Knjiga BA | none | COMPLETED |
+| 368 | Global Low-Cost M-Bag Retail Network Expansion (North Macedonia, Malta, Iceland) | Implement bookstore crawlers for Tri MK, Agenda Bookshop, Eymundsson | none | COMPLETED |
+| 369 | Global Low-Cost M-Bag Retail Network Expansion (Switzerland, Switzerland, Turkey) | Implement bookstore crawlers for Ex Libris CH, Payot CH, BKM Kitap | none | COMPLETED |
+| 370 | Global Low-Cost M-Bag Retail Network Expansion (Jordan, Nigeria, Morocco) | Implement bookstore crawlers for Readers Bookshop JO, Bookcraft NG, Kalila Wa Dimna MA | none | COMPLETED |
+| 371 | Global Low-Cost M-Bag Retail Network Expansion (Kenya, Botswana, Namibia) | Implement bookstore crawlers for Magunga Bookstore KE, Exclusive Books BW, Book Den NA | none | COMPLETED |
 
 
 ## Interface Contracts
