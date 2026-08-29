@@ -594,6 +594,16 @@
 | 559 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, Spain) | Implement bookstore crawlers for Canaima, Libreria Soriano, Diego Marin | none | COMPLETED |
 | 560 | Global Low-Cost M-Bag Retail Network Expansion (Finland, Japan, Japan) | Implement bookstore crawlers for Akateeminen Kirjakauppa, Book and Beer, Nostos Books | none | COMPLETED |
 | 561 | Global Low-Cost M-Bag Retail Network Expansion (Japan, Japan, India) | Implement bookstore crawlers for SPBS, Snow Shoveling, Oxford Bookstore India | none | COMPLETED |
+| 562 | Global Low-Cost M-Bag Retail Network Expansion (France, Germany, Germany) | Implement bookstore crawlers for Librairie Massena, Buecherbogen am Savignyplatz, Buchhandlung Boettger | none | COMPLETED |
+| 563 | Global Low-Cost M-Bag Retail Network Expansion (Germany, Germany, Italy) | Implement bookstore crawlers for Buchhandlung Heymann, LeseGlueck, Libreria del Convegno | none | COMPLETED |
+| 564 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Italy) | Implement bookstore crawlers for Libreria Ghibellina, Libreria l Argonauta, Libreria del Viaggiatore | none | COMPLETED |
+| 565 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Italy) | Implement bookstore crawlers for Libreria di Quartiere, Libreria Odradek, Libreria delle Donne | none | COMPLETED |
+| 566 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, Spain) | Implement bookstore crawlers for Libreria Lemus, Libreria Bosch, Libreria Mendez | none | COMPLETED |
+| 567 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, Argentina) | Implement bookstore crawlers for Libreria de la Imagen, Libreria Metropolis, Boutique del Libro | none | COMPLETED |
+| 568 | Global Low-Cost M-Bag Retail Network Expansion (Argentina, India, India) | Implement bookstore crawlers for Libreria de la Paz, Wayword and Wise, Atta Galatta | none | COMPLETED |
+| 569 | Global Low-Cost M-Bag Retail Network Expansion (India, India, Singapore) | Implement bookstore crawlers for Kunzum, Gangarams, Grassroots Book Room | none | COMPLETED |
+| 570 | Global Low-Cost M-Bag Retail Network Expansion (Norway, Finland, Finland) | Implement bookstore crawlers for Bokstua, Kansallinen Kirjakauppa, Tiedekirja | none | COMPLETED |
+| 571 | Global Low-Cost M-Bag Retail Network Expansion (Chile, Uruguay, Mexico) | Implement bookstore crawlers for Libreria Takk, Linardi y Risso, U-Topicas | none | COMPLETED |
 
 
 ## Interface Contracts
