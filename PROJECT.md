@@ -524,6 +524,16 @@
 | 489 | Global Low-Cost M-Bag Retail Network Expansion (Ireland, USA, USA) | Implement bookstore crawlers for UCD Press, Chicago UP, Harvard UP | none | COMPLETED |
 | 490 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Stanford UP, Johns Hopkins UP, UC Press | none | COMPLETED |
 | 491 | Global Low-Cost M-Bag Retail Network Expansion (USA, Canada, Canada) | Implement bookstore crawlers for UT Press, U of T Press, UBC Press | none | COMPLETED |
+| 492 | Global Low-Cost M-Bag Retail Network Expansion (UK, USA, USA) | Implement bookstore crawlers for Tate Shop, MoMA Design Store, Metropolitan Museum Store | none | COMPLETED |
+| 493 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Guggenheim Store, Artbooks Com, Printed Matter | none | COMPLETED |
+| 494 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, Canada) | Implement bookstore crawlers for Draw Down Books, Dashwood Books, The Word Montreal | none | COMPLETED |
+| 495 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Librairie Drawn and Quarterly, Glad Day Bookshop, Iron Dog Books | none | COMPLETED |
+| 496 | Global Low-Cost M-Bag Retail Network Expansion (USA, UK, UK) | Implement bookstore crawlers for Exile in Bookville, Bookmarks Bookshop, Marrison Books | none | COMPLETED |
+| 497 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Backstory, Phlox Books, Pages of Hackney | none | COMPLETED |
+| 498 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Wellesley Books, Belmont Books, Newtonville Books | none | COMPLETED |
+| 499 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, UK) | Implement bookstore crawlers for Tidewater Books, The Bookmark, Book-ish | none | COMPLETED |
+| 500 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Schuler Books, Zandbroz Variety, Chaucers Books | none | COMPLETED |
+| 501 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Italy) | Implement bookstore crawlers for Antiquaria Pregliasco, Antiquaria Bourlot, Antiquaria Coenobium | none | COMPLETED |
 
 
 ## Interface Contracts
