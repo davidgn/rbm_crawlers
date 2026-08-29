@@ -384,6 +384,16 @@
 | 369 | Global Low-Cost M-Bag Retail Network Expansion (Switzerland, Switzerland, Turkey) | Implement bookstore crawlers for Ex Libris CH, Payot CH, BKM Kitap | none | COMPLETED |
 | 370 | Global Low-Cost M-Bag Retail Network Expansion (Jordan, Nigeria, Morocco) | Implement bookstore crawlers for Readers Bookshop JO, Bookcraft NG, Kalila Wa Dimna MA | none | COMPLETED |
 | 371 | Global Low-Cost M-Bag Retail Network Expansion (Kenya, Botswana, Namibia) | Implement bookstore crawlers for Magunga Bookstore KE, Exclusive Books BW, Book Den NA | none | COMPLETED |
+| 372 | Global Low-Cost M-Bag Retail Network Expansion (Malaysia, Malaysia, Malaysia) | Implement bookstore crawlers for MPH Online, Popular MY, Gerakbudaya | none | COMPLETED |
+| 373 | Global Low-Cost M-Bag Retail Network Expansion (Indonesia, Ireland, Canada) | Implement bookstore crawlers for Kinokuniya ID, Khans Books, Type Books | none | COMPLETED |
+| 374 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Ben McNally Books, Drawn and Quarterly, Bookmark Canada | none | COMPLETED |
+| 375 | Global Low-Cost M-Bag Retail Network Expansion (Canada, New Zealand, UK) | Implement bookstore crawlers for Wordsworth Books CA, Unity Books NZ, Forum Books | none | COMPLETED |
+| 376 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Australia) | Implement bookstore crawlers for Gosh Comics, Forbidden Planet, Title Store AU | none | COMPLETED |
+| 377 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, USA) | Implement bookstore crawlers for Berkelouw Books, Collins Booksellers, Carmichaels | none | COMPLETED |
+| 378 | Global Low-Cost M-Bag Retail Network Expansion (USA, Canada, Canada) | Implement bookstore crawlers for Bookshop Santa Cruz, Kings Co-op, Glass Bookshop | none | COMPLETED |
+| 379 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Singapore, Singapore) | Implement bookstore crawlers for A Different Booklist, Wardah Books, Woods in the Books | none | COMPLETED |
+| 380 | Global Low-Cost M-Bag Retail Network Expansion (Singapore, India, India) | Implement bookstore crawlers for Epigram Books, Title Waves, Goobes Book Republic | none | COMPLETED |
+| 381 | Global Low-Cost M-Bag Retail Network Expansion (Sri Lanka, Sri Lanka, Taiwan) | Implement bookstore crawlers for Sarasavi Bookshop, Makeen Books, Caves Books TW | none | COMPLETED |
 
 
 ## Interface Contracts
