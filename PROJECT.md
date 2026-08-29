@@ -261,6 +261,16 @@
 | 249 | Global Low-Cost M-Bag Retail Network Expansion (Poland, Poland, Ireland) | Implement bookstore crawlers for Poland (Swiat Ksiazki), Poland (TheBooks PL), Ireland (Dubray Books) | none | COMPLETED |
 | 250 | Global Low-Cost M-Bag Retail Network Expansion (Greece, Greece, Cyprus) | Implement bookstore crawlers for Greece (Bookpath), Greece (Mitakosbooks), Cyprus (Cypronite) | none | COMPLETED |
 | 251 | Global Low-Cost M-Bag Retail Network Expansion (Cyprus, Malta, Malta) | Implement bookstore crawlers for Cyprus (Eros Anthos), Malta (BookClub MT), Malta (Midsea Books) | none | COMPLETED |
+| 252 | Global Low-Cost M-Bag Retail Network Expansion (Finland, Finland, Denmark) | Implement bookstore crawlers for Finland (Ruslania), Finland (Back Home Books), Denmark (Bog and Ide) | none | COMPLETED |
+| 253 | Global Low-Cost M-Bag Retail Network Expansion (Denmark, Iceland, Iceland) | Implement bookstore crawlers for Denmark (Books and Company), Iceland (Boksala studenta), Iceland (Salka) | none | COMPLETED |
+| 254 | Global Low-Cost M-Bag Retail Network Expansion (Iceland, Iceland, Switzerland) | Implement bookstore crawlers for Iceland (Sigvaldi Books), Iceland (Saga Store), Switzerland (Orell Fussli) | none | COMPLETED |
+| 255 | Global Low-Cost M-Bag Retail Network Expansion (Switzerland, Switzerland, Belgium) | Implement bookstore crawlers for Switzerland (CeDe ch), Switzerland (Buchhaus ch), Belgium (Bol BE) | none | COMPLETED |
+| 256 | Global Low-Cost M-Bag Retail Network Expansion (Belgium, Belgium, France) | Implement bookstore crawlers for Belgium (Standaard Boekhandel), Belgium (Tropismes), France (Fnac France) | none | COMPLETED |
+| 257 | Global Low-Cost M-Bag Retail Network Expansion (France, Italy, Italy) | Implement bookstore crawlers for France (Lireka), Italy (Mondadori Store), Italy (Torrossa) | none | COMPLETED |
+| 258 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Netherlands) | Implement bookstore crawlers for Italy (Feltrinelli), Italy (Giunti al Punto), Netherlands (Athenaeum Boekhandel) | none | COMPLETED |
+| 259 | Global Low-Cost M-Bag Retail Network Expansion (Netherlands, Netherlands, Netherlands) | Implement bookstore crawlers for Netherlands (Scheltema), Netherlands (Broese), Netherlands (Paagman) | none | COMPLETED |
+| 260 | Global Low-Cost M-Bag Retail Network Expansion (Czech Republic, Czech Republic, Czech Republic) | Implement bookstore crawlers for Czech Republic (Luxor), Czech Republic (Kosmas), Czech Republic (Megabooks CZ) | none | COMPLETED |
+| 261 | Global Low-Cost M-Bag Retail Network Expansion (Czech Republic, Czech Republic, Czech Republic) | Implement bookstore crawlers for Czech Republic (Knihobot CZ), Czech Republic (Academia CZ), Czech Republic (Book Therapy) | none | COMPLETED |
 
 
 ## Interface Contracts
