@@ -498,6 +498,16 @@
 | 469 | Global Low-Cost M-Bag Retail Network Expansion (Saudi Arabia, USA, USA) | Implement bookstore crawlers for Virgin Megastore KSA, City of Asylum Books, Little Shop of Stories | none | COMPLETED |
 | 470 | Global Low-Cost M-Bag Retail Network Expansion (Canada, South Africa, Australia) | Implement bookstore crawlers for Gullivers Bookstore, Skoobs, Title Pages | none | COMPLETED |
 | 471 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for Zubaan Books, LeftWord, Navayana | none | COMPLETED |
+| 472 | Global Low-Cost M-Bag Retail Network Expansion (Italy, Italy, Italy) | Implement bookstore crawlers for Lamico Fritz, GOGOL and Company, Libreria del Corso | none | COMPLETED |
+| 473 | Global Low-Cost M-Bag Retail Network Expansion (France, France, France) | Implement bookstore crawlers for La Procure, Librairie Vrin, The Red Wheelbarrow | none | COMPLETED |
+| 474 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, Argentina) | Implement bookstore crawlers for Libreria Berkana, Calamo, Corregidor | none | COMPLETED |
+| 475 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Baggins Book Bazaar, Sevenoaks Bookshop, Lutyens and Rubinstein | none | COMPLETED |
+| 476 | Global Low-Cost M-Bag Retail Network Expansion (UK, USA, USA) | Implement bookstore crawlers for John Sandoe Books, Macs Backs, Blue Bicycle Books | none | COMPLETED |
+| 477 | Global Low-Cost M-Bag Retail Network Expansion (Canada, New Zealand, UAE) | Implement bookstore crawlers for Bison Books, Smiths Bookshop, Jashanmal | none | COMPLETED |
+| 478 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Thailand, USA) | Implement bookstore crawlers for Artbook VN, Dasa Book Cafe, Bookends and Beginnings | none | COMPLETED |
+| 479 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Puerto Rico) | Implement bookstore crawlers for Stanfords, Bookseller Crow, Libreria Contemporanea | none | COMPLETED |
+| 480 | Global Low-Cost M-Bag Retail Network Expansion (Argentina, Norway, USA) | Implement bookstore crawlers for Sopena Argentina, Bokoteket, MIT Press Bookstore | none | COMPLETED |
+| 481 | Global Low-Cost M-Bag Retail Network Expansion (UK, USA, USA) | Implement bookstore crawlers for Pluto Press, Milkweed Editions, Coffee House Press | none | COMPLETED |
 
 
 ## Interface Contracts
