@@ -463,6 +463,16 @@
 | 439 | Global Low-Cost M-Bag Retail Network Expansion (Kosovo, Bosnia and Herzegovina, Bosnia and Herzegovina) | Implement bookstore crawlers for Artini KS, Svjetlostkomerc, Interliber BA | none | COMPLETED |
 | 440 | Global Low-Cost M-Bag Retail Network Expansion (Uruguay, Uruguay, Paraguay) | Implement bookstore crawlers for Isadora Libros, Banda Oriental, Books PY | none | COMPLETED |
 | 441 | Global Low-Cost M-Bag Retail Network Expansion (Lebanon, Jordan, Kuwait) | Implement bookstore crawlers for Stephan Lib, The Good Book Shop, Saeed and Samir | none | COMPLETED |
+| 442 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for Rachna Books, Trilogy Library, Walking BookFairs | none | COMPLETED |
+| 443 | Global Low-Cost M-Bag Retail Network Expansion (India, India, Japan) | Implement bookstore crawlers for Kahani Tree, Akshara Books, Cowbooks | none | COMPLETED |
+| 444 | Global Low-Cost M-Bag Retail Network Expansion (Japan, Japan, South Korea) | Implement bookstore crawlers for Utrecht JP, Keibunsha, Your Mind | none | COMPLETED |
+| 445 | Global Low-Cost M-Bag Retail Network Expansion (South Korea, Turkey, Greece) | Implement bookstore crawlers for Storage Book and Film, Robinson Crusoe 389, Evripidis | none | COMPLETED |
+| 446 | Global Low-Cost M-Bag Retail Network Expansion (Greece, Greece, Portugal) | Implement bookstore crawlers for Nakas Book House, Lexikopoleio, Livraria Lello | none | COMPLETED |
+| 447 | Global Low-Cost M-Bag Retail Network Expansion (Portugal, Portugal, Nigeria) | Implement bookstore crawlers for Flaneur, Snob, Ouida Books | none | COMPLETED |
+| 448 | Global Low-Cost M-Bag Retail Network Expansion (Mexico, Chile, Chile) | Implement bookstore crawlers for Carlos Fuentes, Feria Chilena, Que Leo | none | COMPLETED |
+| 449 | Global Low-Cost M-Bag Retail Network Expansion (Chile, Chile, Peru) | Implement bookstore crawlers for Metales Pesados, Libreria Lolita, SBC PE | none | COMPLETED |
+| 450 | Global Low-Cost M-Bag Retail Network Expansion (Belgium, Belgium, Sweden) | Implement bookstore crawlers for Peinture Fraiche, Librairie Ptyx, English Bookshop SE | none | COMPLETED |
+| 451 | Global Low-Cost M-Bag Retail Network Expansion (Sweden, Norway, Portugal) | Implement bookstore crawlers for Hedengrens, Boklista, Livraria Ferin | none | COMPLETED |
 
 
 ## Interface Contracts
