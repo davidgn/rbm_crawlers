@@ -554,6 +554,16 @@
 | 519 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Bakka Phoenix Books, Queen Books, King W Books | none | COMPLETED |
 | 520 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Mega City Comics, New Beacon Books, Brick Lane Bookshop | none | COMPLETED |
 | 521 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Ireland) | Implement bookstore crawlers for Stoke Newington Bookshop, Broadway Bookshop, The Winding Stair | none | COMPLETED |
+| 522 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Fountain Bookstore, Book No Further, The Bookshop Nashville | none | COMPLETED |
+| 523 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for McKays, Chop Suey Books, Books on Broad | none | COMPLETED |
+| 524 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Little City Books, Symposium Books, Cellar Stories | none | COMPLETED |
+| 525 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Booklovers Gourmet, Tall Tales Book Shop, Read Shop | none | COMPLETED |
+| 526 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Brave and Kind Books, Gatsby Books, The Book Jewel | none | COMPLETED |
+| 527 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Libros Schmibros, Reparations Club, Iliad Bookshop | none | COMPLETED |
+| 528 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Transreal Fiction, Typewronger Books, Mount Florida Books | none | COMPLETED |
+| 529 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Voltaire and Rousseau, Thistle Books, Caledonian Books | none | COMPLETED |
+| 530 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Argosy Books, Atticus Books, Cafe Books | none | COMPLETED |
+| 531 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Forbidden Planet NYC, Midtown Comics, Atomic Books | none | COMPLETED |
 
 
 ## Interface Contracts
