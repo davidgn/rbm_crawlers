@@ -293,6 +293,16 @@
 | 279 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Charis Books), USA (FoxTale Book Shoppe), USA (Eagle Eye Book Shop) | none | COMPLETED |
 | 280 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (The Bookworm Omaha), USA (Left Bank Books), USA (Subterranean Books) | none | COMPLETED |
 | 281 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Magers and Quinn), USA (Birchbark Books), USA (Moon Palace Books) | none | COMPLETED |
+| 282 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Book Soup), USA (Skylight Books), USA (Diesel Bookstore) | none | COMPLETED |
+| 283 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Booksmith), USA (BookBar Denver), USA (Third Place Books) | none | COMPLETED |
+| 284 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Village Books), USA (Kings English), USA (Weller Book Works) | none | COMPLETED |
+| 285 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Interabang Books), USA (Murder By The Book), USA (Brazos Bookstore) | none | COMPLETED |
+| 286 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Blue Willow Bookshop), USA (BookWoman), USA (Quail Ridge Books) | none | COMPLETED |
+| 287 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Flyleaf Books), USA (Malaprops Bookstore), USA (Regulator Bookshop) | none | COMPLETED |
+| 288 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Square Books), USA (Lemuria Books), USA (Alabama Booksmith) | none | COMPLETED |
+| 289 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Garden District Book Shop), USA (Octavia Books), USA (Joseph Beth) | none | COMPLETED |
+| 290 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Nicolas Books), USA (Literati Bookstore), USA (Prairie Lights) | none | COMPLETED |
+| 291 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Unabridged Bookstore), USA (Seminary Co op), USA (Women and Children First) | none | COMPLETED |
 
 
 ## Interface Contracts
