@@ -488,6 +488,16 @@
 | 459 | Global Low-Cost M-Bag Retail Network Expansion (UK, Barbados, Barbados) | Implement bookstore crawlers for Word on the Water, Cloister Bookstore, Days Bookstore | none | COMPLETED |
 | 460 | Global Low-Cost M-Bag Retail Network Expansion (Trinidad and Tobago, Jamaica, Nigeria) | Implement bookstore crawlers for Nigel R Khan, Kingston Bookshop, Patabah Books | none | COMPLETED |
 | 461 | Global Low-Cost M-Bag Retail Network Expansion (Nigeria, Colombia, Ecuador) | Implement bookstore crawlers for Kachifo, Libreria Macondo, Libreria Nacional EC | none | COMPLETED |
+| 462 | Global Low-Cost M-Bag Retail Network Expansion (UK, Ireland, Sweden) | Implement bookstore crawlers for Category Is Books, Bandon Books, Science Fiction Bokhandeln | none | COMPLETED |
+| 463 | Global Low-Cost M-Bag Retail Network Expansion (Sweden, Norway, Finland) | Implement bookstore crawlers for Antikvariat August, Cappelens Forslag, Arkadia Bookshop | none | COMPLETED |
+| 464 | Global Low-Cost M-Bag Retail Network Expansion (Spain, Spain, Spain) | Implement bookstore crawlers for Libreria Bardon, Desperate Literature, Libreria de Mujeres | none | COMPLETED |
+| 465 | Global Low-Cost M-Bag Retail Network Expansion (Portugal, Poland, Serbia) | Implement bookstore crawlers for Livraria Esperanca, Massolit Books, Knjizara Most | none | COMPLETED |
+| 466 | Global Low-Cost M-Bag Retail Network Expansion (Croatia, Czechia, Slovakia) | Implement bookstore crawlers for Antikvarijat Vremeplov, Neoluxor, Artforum | none | COMPLETED |
+| 467 | Global Low-Cost M-Bag Retail Network Expansion (Uruguay, Argentina, Argentina) | Implement bookstore crawlers for Libreria Pocho, Libreria de Avila, Walrus Books | none | COMPLETED |
+| 468 | Global Low-Cost M-Bag Retail Network Expansion (Hong Kong, Singapore, Singapore) | Implement bookstore crawlers for Lok Man Rare Books, Basheer Graphic, Littered with Books | none | COMPLETED |
+| 469 | Global Low-Cost M-Bag Retail Network Expansion (Saudi Arabia, USA, USA) | Implement bookstore crawlers for Virgin Megastore KSA, City of Asylum Books, Little Shop of Stories | none | COMPLETED |
+| 470 | Global Low-Cost M-Bag Retail Network Expansion (Canada, South Africa, Australia) | Implement bookstore crawlers for Gullivers Bookstore, Skoobs, Title Pages | none | COMPLETED |
+| 471 | Global Low-Cost M-Bag Retail Network Expansion (India, India, India) | Implement bookstore crawlers for Zubaan Books, LeftWord, Navayana | none | COMPLETED |
 
 
 ## Interface Contracts
