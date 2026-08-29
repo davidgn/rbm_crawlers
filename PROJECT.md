@@ -271,6 +271,16 @@
 | 259 | Global Low-Cost M-Bag Retail Network Expansion (Netherlands, Netherlands, Netherlands) | Implement bookstore crawlers for Netherlands (Scheltema), Netherlands (Broese), Netherlands (Paagman) | none | COMPLETED |
 | 260 | Global Low-Cost M-Bag Retail Network Expansion (Czech Republic, Czech Republic, Czech Republic) | Implement bookstore crawlers for Czech Republic (Luxor), Czech Republic (Kosmas), Czech Republic (Megabooks CZ) | none | COMPLETED |
 | 261 | Global Low-Cost M-Bag Retail Network Expansion (Czech Republic, Czech Republic, Czech Republic) | Implement bookstore crawlers for Czech Republic (Knihobot CZ), Czech Republic (Academia CZ), Czech Republic (Book Therapy) | none | COMPLETED |
+| 262 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Canada) | Implement bookstore crawlers for Canada (Indigo), Canada (Booksellers CA), Canada (McNally Robinson) | none | COMPLETED |
+| 263 | Global Low-Cost M-Bag Retail Network Expansion (Canada, Canada, Australia) | Implement bookstore crawlers for Canada (Book Depot CA), Canada (Book Outlet CA), Australia (Dymocks) | none | COMPLETED |
+| 264 | Global Low-Cost M-Bag Retail Network Expansion (Australia, Australia, New Zealand) | Implement bookstore crawlers for Australia (Readings AU), Australia (The Nile AU), New Zealand (The Nile NZ) | none | COMPLETED |
+| 265 | Global Low-Cost M-Bag Retail Network Expansion (UK, Malaysia, Nigeria) | Implement bookstore crawlers for UK (The Times Bookshop), Malaysia (Kinokuniya MY), Nigeria (Roving Heights) | none | COMPLETED |
+| 266 | Global Low-Cost M-Bag Retail Network Expansion (Nigeria, Nigeria, Nigeria) | Implement bookstore crawlers for Nigeria (Laterna Books), Nigeria (BellaBooks), Nigeria (Spine and Label) | none | COMPLETED |
+| 267 | Global Low-Cost M-Bag Retail Network Expansion (Nigeria, Kenya, Kenya) | Implement bookstore crawlers for Nigeria (Vog and Wod), Kenya (Prestige Bookshop), Kenya (Educate Yourself) | none | COMPLETED |
+| 268 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (Strand Books), USA (Half Price Books), USA (The Last Bookstore) | none | COMPLETED |
+| 269 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (City Lights), USA (Tattered Cover), USA (Vromans) | none | COMPLETED |
+| 270 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for USA (BookPeople), USA (Keplers), USA (Changing Hands) | none | COMPLETED |
+| 271 | Global Low-Cost M-Bag Retail Network Expansion (USA, Germany, Germany) | Implement bookstore crawlers for USA (Harvard Book Store), Germany (Weltbild), Germany (Lehmanns) | none | COMPLETED |
 
 
 ## Interface Contracts
