@@ -406,6 +406,16 @@
 | 389 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, UK) | Implement bookstore crawlers for Bookhaus Bristol, Max Minervas, Storysmith Books | none | COMPLETED |
 | 390 | Global Low-Cost M-Bag Retail Network Expansion (UK, UK, Nepal) | Implement bookstore crawlers for Dulwich Books, Page 45, Tibet Book Store | none | COMPLETED |
 | 391 | Global Low-Cost M-Bag Retail Network Expansion (Oman, Bahrain, Ireland) | Implement bookstore crawlers for Al Roya Bookstore, The Bookcase BH, Tertulia Books IE | none | COMPLETED |
+| 392 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Briar Patch, Bear Pond Books, The Bookery NH | none | COMPLETED |
+| 393 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Gibsons Bookstore, Toadstool Bookshops, Grolier Poetry | none | COMPLETED |
+| 394 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for The Bookloft, Sundance Bookstore, Gallery Bookshop | none | COMPLETED |
+| 395 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Pegasus Books, Walden Pond Books, The Book Table | none | COMPLETED |
+| 396 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Booked Evanston, Nonesuch Books, Titcombs Bookshop | none | COMPLETED |
+| 397 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Eight Cousins, Edgartown Books, Bunch of Grapes | none | COMPLETED |
+| 398 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Mitchells Book Corner, Nantucket Bookworks, Yellow Umbrella Books | none | COMPLETED |
+| 399 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Where the Sidewalk Ends, Brewster Book Store, Bank Square Books | none | COMPLETED |
+| 400 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Byrds Books, Hickory Stick Bookshop, Oblong Books | none | COMPLETED |
+| 401 | Global Low-Cost M-Bag Retail Network Expansion (USA, USA, USA) | Implement bookstore crawlers for Golden Notebook, Inquiring Minds, Rough Draft Bar Books | none | COMPLETED |
 
 
 ## Interface Contracts
