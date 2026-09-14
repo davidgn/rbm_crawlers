@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  scrapyd:
+    image: vimagick/scrapyd:latest
+    ports:
+      - "6800:6800"
+    volumes:
+      - ./data:/var/lib/scrapyd
+      - ./src:/src
+    mem_limit: 1024m
+    mem_reservation: 512m
+    environment:
+      - MAX_PROC=4
+      - MAX_PROC_PER_CPU=2
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    mem_limit: 512m
+    mem_reservation: 256m
+
+  # A python worker to feed spiders to scrapyd and manage the queue
+  orchestrator:
+    image: python:3.10-slim
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python3 orchestrator.py
+    depends_on:
+      - scrapyd
+      - redis
+    mem_limit: 512m
