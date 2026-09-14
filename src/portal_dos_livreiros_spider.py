@@ -1,4 +1,4 @@
-from portaldoslivreiros_spider import PortalDosLivreirosSpider, main if 'main' in globals() else None
+from portaldoslivreiros_spider import PortalDosLivreirosSpider
 import argparse
 
 if __name__ == "__main__":
