@@ -1,13 +1,12 @@
 import argparse
-import random
+import asyncio
 import re
 import time
-import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
-
+import nodriver as uc
 
 class LaPanafSpider(BaseSpider):
     """
@@ -19,9 +18,7 @@ class LaPanafSpider(BaseSpider):
     httpx + BeautifulSoup (server-rendered).
     Browse paths probed at startup.  Pagination: WooCommerce /page/N/ then ?page=N.
     """
-
     BASE_URL = "https://lapanaf.com"
-
     BROWSE_CANDIDATES = [
         "/product-category/livres",
         "/livres",
@@ -32,60 +29,30 @@ class LaPanafSpider(BaseSpider):
     ]
     DETAIL_SIGNALS = ["/product/", "/produit/", "/livre/", "/book/", "/item/"]
 
-    HEADERS = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        "Accept-Language": "fr-CI,fr;q=0.9,en;q=0.8",
-    }
-
-    def __init__(self, limit_pages: int = 100, limit_items: int | None = None, query: str | None = None):
-        super().__init__(platform_name="LaPanaf", territory="Côte d'Ivoire")
+    def __init__(self, limit_pages=100, limit_items=None):
+        super().__init__(platform_name="LaPanaf", territory="Côte d")
         self.limit_pages = limit_pages
         self.limit_items = limit_items
-        self.query = query
-        self.client = httpx.Client(
-            timeout=30.0, follow_redirects=True, headers=self.HEADERS
-        )
-
-    def _get_robust_response(self, url: str, max_retries: int = 3):
-        for attempt in range(max_retries):
-            try:
-                headers = self.HEADERS.copy()
-                headers["User-Agent"] = random.choice([
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",
-                    "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
-                ])
-                resp = self.client.get(url, headers=headers)
-                if resp.status_code in [403, 429, 500, 502, 503, 504]:
-                    self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
-                    time.sleep(2 ** attempt)
-                    continue
-                return resp
-            except Exception as e:
-                self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
-                time.sleep(2 ** attempt)
-        return None
 
     def run(self):
-        self.logger.info(
-            f"Starting LaPanaf harvest (cache-first). limit_pages={self.limit_pages}"
-        )
-        seen: set[str] = set()
+        asyncio.run(self._run_async())
 
+    async def _run_async(self):
+        self.logger.info(f"Starting LaPanaf harvest (nodriver). limit_pages={self.limit_pages}")
+        seen = set()
+        browser = await uc.start()
         try:
-            browse_url = self._find_browse_url()
+            page = await browser.get("about:blank")
+            browse_url = await self._find_browse_url(page)
 
             for pg_num in range(1, self.limit_pages + 1):
                 if self.limit_items is not None and self.items_scraped >= self.limit_items:
                     break
+                    
                 urls_to_try = (
                     [
                         f"{browse_url.rstrip('/')}/page/{pg_num}/",
-                        f"{browse_url}{'&' if '?' in browse_url else '?'}page={pg_num}",
+                        f"{browse_url}?page={pg_num}",
                     ]
                     if pg_num > 1
                     else [browse_url]
@@ -93,121 +60,83 @@ class LaPanafSpider(BaseSpider):
 
                 html, used_url = None, browse_url
                 for candidate in urls_to_try:
-                    resp = self._get_robust_response(candidate)
-                    if resp and resp.status_code == 200 and len(resp.text) > 500:
-                        html, used_url = resp.text, candidate
-                        break
-                    if resp and resp.status_code in (404, 410):
-                        break
+                    try:
+                        await page.get(candidate)
+                        await asyncio.sleep(5)
+                        resp_html = await page.get_content()
+                        if len(resp_html) > 500 and "Page not found" not in resp_html:
+                            html, used_url = resp_html, candidate
+                            break
+                    except Exception as e:
+                        self.logger.debug(f"Fetch error for {candidate}: {e}")
 
                 if not html:
-                    self.logger.info(f"No content on page {pg_num} — done.")
                     break
 
-                self.logger.info(f"Index page {pg_num}: {used_url}")
                 soup = BeautifulSoup(html, "html.parser")
                 book_links = self._extract_links(soup, seen)
 
                 if not book_links:
-                    self.logger.info(f"No new links on page {pg_num} — done.")
                     break
 
-                self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
                     if self.limit_items is not None and self.items_scraped >= self.limit_items:
-                        return
+                        break
                     seen.add(link)
-                    self._harvest_item(link)
-                    time.sleep(0.7)
+                    await self._harvest_item(page, link)
+                    await asyncio.sleep(2)
 
         finally:
-            self.client.close()
+            browser.stop()
 
-        self.logger.info(f"Finished. {self.items_scraped} items cached.")
-
-    def _find_browse_url(self) -> str:
+    async def _find_browse_url(self, page) -> str:
         for path in self.BROWSE_CANDIDATES:
             candidate = self.BASE_URL + path
-            resp = self._get_robust_response(candidate)
-            if resp and resp.status_code == 200:
-                soup = BeautifulSoup(resp.text, "html.parser")
+            try:
+                await page.get(candidate)
+                await asyncio.sleep(4)
+                html = await page.get_content()
+                soup = BeautifulSoup(html, "html.parser")
                 hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
                 if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
-                    self.logger.info(f"Browse URL confirmed: {candidate}")
                     return candidate
-        self.logger.warning("No browse path matched — using homepage.")
+            except Exception:
+                pass
         return self.BASE_URL
 
     def _extract_links(self, soup: BeautifulSoup, seen: set) -> list[str]:
         links = []
         for a in soup.find_all("a", href=True):
             href = urljoin(self.BASE_URL, a["href"])
-            if (
-                self.BASE_URL in href
-                and any(sig in href for sig in self.DETAIL_SIGNALS)
-                and href not in seen
-            ):
+            if self.BASE_URL in href and any(sig in href for sig in self.DETAIL_SIGNALS) and href not in seen:
                 links.append(href)
         return list(dict.fromkeys(links))
 
-    def _harvest_item(self, url: str):
-        slug = next(
-            (s for s in reversed(url.rstrip("/").split("/")) if s and s != "#"),
-            str(int(time.time()))
-        )
+    async def _harvest_item(self, page, url: str):
+        slug = next((s for s in reversed(url.rstrip("/").split("/")) if s and s != "#"), str(int(time.time())))
         item_id = re.sub(r"[^a-zA-Z0-9_-]", "_", slug)[:80]
-
         try:
-            self.logger.info(f"Harvesting: {url}")
-            resp = self._get_robust_response(url)
-            if not resp or resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response for {url}")
-                return
-
-            self.cache_html(item_id, resp.text, url=url)
-
-            soup = BeautifulSoup(resp.text, "html.parser")
+            await page.get(url)
+            await asyncio.sleep(4)
+            html = await page.get_content()
+            if len(html) < 500: return
+            self.cache_html(item_id, html, url=url)
+            soup = BeautifulSoup(html, "html.parser")
             h1 = soup.find("h1")
             title = h1.get_text(strip=True) if h1 else "Cached Item"
-
-            price_val = None
-            price_curr = None
-            price_el = soup.select_one(".price, .woocommerce-Price-amount, p.price")
-            if price_el:
-                raw = price_el.get_text(strip=True)
-                m = re.search(r"([\d.,]+)", raw)
-                if m:
-                    num = m.group(1).replace(" ", "").replace(".", "").replace(",", ".")
-                    try:
-                        price_val = f"{float(num):.2f}"
-                        price_curr = "XOF"
-                    except ValueError:
-                        pass
-
-            listing = BookListing(
+            self.save_item(BookListing(
                 territory=self.territory,
                 platform=self.platform_name,
                 title=title,
-                price=price_val,
-                price_currency=price_curr,
                 listing_url=url,
-                condition="New",
-            )
-            listing = self.scavenge_metadata(resp.text, listing)
-            self.save_item(listing)
-        except Exception as e:
-            self.logger.error(f"Error harvesting {url}: {e}")
-
+                condition="Cached for AI extraction",
+            ))
+        except Exception:
+            pass
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="LaPanaf Côte d'Ivoire cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
-    parser.add_argument("--limit-pages", type=int, default=None)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=100)
     parser.add_argument("--limit-items", type=int, default=None)
-    parser.add_argument("--query", type=str, default=None)
-    args, _ = parser.parse_known_args()
-    LaPanafSpider(
-        limit_pages=args.limit_pages or args.limit,
-        limit_items=args.limit_items,
-        query=args.query
-    ).run()
+    args = parser.parse_args()
+    LaPanafSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

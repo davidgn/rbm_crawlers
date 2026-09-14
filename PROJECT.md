@@ -221,6 +221,7 @@
 | 210 | Global Low-Cost M-Bag Retail Network Expansion (India, India, Egypt) | Implement bookstore crawlers for India (Diamond Books), India (Ruchikas), Egypt (Maktabtk) | none | COMPLETED |
 | 211 | Global Low-Cost M-Bag Retail Network Expansion (Egypt, Egypt, Egypt) | Implement bookstore crawlers for Egypt (Kotobgy), Egypt (Eqra Books), Egypt (Kutub Egypt) | none | COMPLETED |
 | 212 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Vietnam, Vietnam) | Implement bookstore crawlers for Vietnam (Nha Sach Dong Tay), Vietnam (Nha Sach Bach Khoa), Vietnam (Khuyen Hoc) | none | COMPLETED |
+| 213 | Malta Expansion | Implement bookstore-specific crawler for Malta (Agenda Bookshop via Nodriver/Shopify API) | none | COMPLETED |
 | 213 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Vietnam, Vietnam) | Implement bookstore crawlers for Vietnam (Book 365 VN), Vietnam (Sach Cu 24h), Vietnam (Gac Sach) | none | COMPLETED |
 | 214 | Global Low-Cost M-Bag Retail Network Expansion (Vietnam, Philippines, Philippines) | Implement bookstore crawlers for Vietnam (Sach Tham Khao), Philippines (FastBooks PH), Philippines (RareBooks PH) | none | COMPLETED |
 | 215 | Global Low-Cost M-Bag Retail Network Expansion (Philippines, Philippines, Philippines) | Implement bookstore crawlers for Philippines (Aklat PH), Philippines (ArtBooks PH), Philippines (New Day Publishers) | none | COMPLETED |
