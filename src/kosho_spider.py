@@ -97,6 +97,7 @@ class KoshoSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=10)
     args = parser.parse_args()
-    KoshoSpider(limit_pages=args.limit).run()
+    KoshoSpider(limit_pages=args.limit_pages).run()
