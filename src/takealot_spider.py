@@ -1,10 +1,11 @@
 import argparse
+import asyncio
 import re
 import time
-from playwright.sync_api import sync_playwright
-from playwright_stealth import Stealth
+from bs4 import BeautifulSoup
 from models import BookListing
 from base_spider import BaseSpider
+import nodriver as uc
 
 
 class TakealotSpider(BaseSpider):
@@ -12,10 +13,10 @@ class TakealotSpider(BaseSpider):
     Takealot Books (takealot.com/books) — South Africa main-universe bookstore.
 
     South Africa's dominant e-commerce platform with a major books category
-    covering new, used, and marketplace titles.  React SPA requiring Playwright.
+    covering new, used, and marketplace titles.  React SPA requiring Playwright/nodriver.
     Captures ISBNs, pricing, condition, and bibliographic metadata.
 
-    Playwright + stealth.
+    Re-written to use nodriver to bypass AWS WAF / Cloudflare blocks.
     Entry: /books category.  Pagination: ?page=N.
     Detail URLs matched on /PLID-XXXXXXXX (Takealot product ID pattern).
     """
@@ -23,68 +24,71 @@ class TakealotSpider(BaseSpider):
     BASE_URL = "https://www.takealot.com"
     BROWSE_URL = "https://www.takealot.com/books"
 
-    DETAIL_SIGNALS = ["/PLID", "/product/", "/p/"]
-
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=None):
         super().__init__(platform_name="Takealot Books", territory="South Africa")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
-        self.logger.info(
-            f"Starting Takealot Books harvest (cache-first). limit_pages={self.limit_pages}"
-        )
-        seen: set[str] = set()
+        asyncio.run(self._run_async())
 
-        with sync_playwright() as p:
-            browser, context = self.get_playwright_stealth_config(p)
-            page = context.new_page()
-            Stealth().apply_stealth_sync(page)
+    async def _run_async(self):
+        self.logger.info(f"Starting Takealot Books harvest (nodriver). limit_pages={self.limit_pages}")
+        seen = set()
 
-            try:
-                page.goto(self.BROWSE_URL, timeout=60000, wait_until="domcontentloaded")
-                page.wait_for_timeout(3000)
+        browser = await uc.start()
+        try:
+            page = await browser.get("about:blank")
+            await page.get(self.BROWSE_URL)
+            await asyncio.sleep(8) # Wait for initial load and bot check
 
-                for pg_num in range(1, self.limit_pages + 1):
-                    url = self.BROWSE_URL if pg_num == 1 else f"{self.BROWSE_URL}?page={pg_num}"
-                    self.logger.info(f"Index page {pg_num}: {url}")
+            for pg_num in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
 
-                    try:
-                        page.goto(url, timeout=30000, wait_until="domcontentloaded")
-                        page.wait_for_timeout(3000)
-                    except Exception as e:
-                        self.logger.error(f"Failed to load page {pg_num}: {e}")
+                url = self.BROWSE_URL if pg_num == 1 else f"{self.BROWSE_URL}?page={pg_num}"
+                self.logger.info(f"Index page {pg_num}: {url}")
+
+                try:
+                    await page.get(url)
+                    await asyncio.sleep(5)
+                except Exception as e:
+                    self.logger.error(f"Failed to load page {pg_num}: {e}")
+                    break
+
+                html = await page.get_content()
+                soup = BeautifulSoup(html, "html.parser")
+                
+                all_links = [a.get("href") for a in soup.find_all("a", href=True)]
+                book_links = [
+                    self.BASE_URL + l if l.startswith("/") else l
+                    for l in dict.fromkeys(all_links)
+                    if (re.search(r"/PLID\d+", l) or any(sig in l for sig in ["/product/", "/p/"]))
+                ]
+                
+                # filter seen
+                new_links = [l for l in book_links if l not in seen and self.BASE_URL in l]
+
+                if not new_links:
+                    self.logger.info(f"No new links on page {pg_num} — done.")
+                    break
+
+                self.logger.info(f"Found {len(new_links)} new links.")
+                for link in new_links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
                         break
+                    seen.add(link)
+                    await self._harvest_item(page, link)
+                    await asyncio.sleep(2)
 
-                    book_links = self._extract_book_links(page, seen)
-                    if not book_links:
-                        self.logger.info(f"No new links on page {pg_num} — done.")
-                        break
-
-                    self.logger.info(f"Found {len(book_links)} new links.")
-                    for link in book_links:
-                        seen.add(link)
-                        self._harvest_item(page, link)
-                        page.wait_for_timeout(700)
-
-            except Exception as e:
-                self.logger.error(f"Crawl error: {e}")
-            finally:
-                browser.close()
+        except Exception as e:
+            self.logger.error(f"Crawl error: {e}")
+        finally:
+            browser.stop()
 
         self.logger.info(f"Finished. {self.items_scraped} items cached.")
 
-    def _extract_book_links(self, page, seen: set) -> list[str]:
-        all_links: list[str] = page.evaluate(
-            "() => Array.from(document.querySelectorAll('a[href]')).map(a => a.href)"
-        )
-        return [
-            l for l in dict.fromkeys(all_links)
-            if self.BASE_URL in l
-            and (re.search(r"/PLID\d+", l) or any(sig in l for sig in ["/product/", "/p/"]))
-            and l not in seen
-        ]
-
-    def _harvest_item(self, page, url: str):
+    async def _harvest_item(self, page, url: str):
         m = re.search(r"PLID(\d+)", url)
         item_id = f"PLID{m.group(1)}" if m else re.sub(
             r"[^a-zA-Z0-9_-]", "_",
@@ -93,9 +97,9 @@ class TakealotSpider(BaseSpider):
 
         try:
             self.logger.info(f"Harvesting: {url}")
-            page.goto(url, wait_until="domcontentloaded", timeout=30000)
-            page.wait_for_timeout(2000)
-            html = page.content()
+            await page.get(url)
+            await asyncio.sleep(5)
+            html = await page.get_content()
 
             if len(html) < 500:
                 self.logger.warning(f"Thin response for {url} — skipping.")
@@ -103,8 +107,9 @@ class TakealotSpider(BaseSpider):
 
             self.cache_html(item_id, html, url=url)
 
-            title_el = page.query_selector("h1")
-            title = title_el.inner_text().strip() if title_el else "Cached Item"
+            soup = BeautifulSoup(html, "html.parser")
+            title_el = soup.find("h1")
+            title = title_el.get_text(strip=True) if title_el else "Cached Item"
 
             self.save_item(BookListing(
                 territory=self.territory,
@@ -116,9 +121,9 @@ class TakealotSpider(BaseSpider):
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Takealot Books South Africa cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int, default=100)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    TakealotSpider(limit_pages=args.limit).run()
+    TakealotSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

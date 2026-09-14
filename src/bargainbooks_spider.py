@@ -1,11 +1,12 @@
 import argparse
+import asyncio
 import re
 import time
-import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
+import nodriver as uc
 
 
 class BargainBooksSpider(BaseSpider):
@@ -16,7 +17,7 @@ class BargainBooksSpider(BaseSpider):
     catalog spanning all genres.  Captures ISBNs, pricing, and bibliographic
     metadata.
 
-    httpx + BeautifulSoup (server-rendered).
+    Re-written to use nodriver to bypass Cloudflare 403 blocks.
     Browse paths probed at startup.  Pagination: WooCommerce /page/N/ then ?page=N.
     """
 
@@ -32,32 +33,27 @@ class BargainBooksSpider(BaseSpider):
     ]
     DETAIL_SIGNALS = ["/product/", "/book/", "/item/", "/catalogue/"]
 
-    HEADERS = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        "Accept-Language": "en-ZA,en;q=0.9",
-    }
-
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=None):
         super().__init__(platform_name="Bargain Books", territory="South Africa")
         self.limit_pages = limit_pages
-        self.client = httpx.Client(
-            timeout=30.0, follow_redirects=True, headers=self.HEADERS
-        )
+        self.limit_items = limit_items
 
     def run(self):
-        self.logger.info(
-            f"Starting Bargain Books harvest (cache-first). limit_pages={self.limit_pages}"
-        )
-        seen: set[str] = set()
+        asyncio.run(self._run_async())
 
+    async def _run_async(self):
+        self.logger.info(f"Starting Bargain Books harvest (nodriver). limit_pages={self.limit_pages}")
+        seen = set()
+        
+        browser = await uc.start()
         try:
-            browse_url = self._find_browse_url()
+            page = await browser.get("about:blank")
+            browse_url = await self._find_browse_url(page)
 
             for pg_num in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
+                    
                 urls_to_try = (
                     [
                         f"{browse_url.rstrip('/')}/page/{pg_num}/",
@@ -70,11 +66,11 @@ class BargainBooksSpider(BaseSpider):
                 html, used_url = None, browse_url
                 for candidate in urls_to_try:
                     try:
-                        resp = self.client.get(candidate)
-                        if resp.status_code == 200 and len(resp.text) > 500:
-                            html, used_url = resp.text, candidate
-                            break
-                        if resp.status_code in (404, 410):
+                        await page.get(candidate)
+                        await asyncio.sleep(5)
+                        resp_html = await page.get_content()
+                        if len(resp_html) > 500 and "Page not found" not in resp_html:
+                            html, used_url = resp_html, candidate
                             break
                     except Exception as e:
                         self.logger.debug(f"Fetch error for {candidate}: {e}")
@@ -93,26 +89,29 @@ class BargainBooksSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     seen.add(link)
-                    self._harvest_item(link)
-                    time.sleep(0.7)
+                    await self._harvest_item(page, link)
+                    await asyncio.sleep(2)
 
         finally:
-            self.client.close()
+            browser.stop()
 
         self.logger.info(f"Finished. {self.items_scraped} items cached.")
 
-    def _find_browse_url(self) -> str:
+    async def _find_browse_url(self, page) -> str:
         for path in self.BROWSE_CANDIDATES:
             candidate = self.BASE_URL + path
             try:
-                resp = self.client.get(candidate)
-                if resp.status_code == 200:
-                    soup = BeautifulSoup(resp.text, "html.parser")
-                    hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
-                    if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
-                        self.logger.info(f"Browse URL confirmed: {candidate}")
-                        return candidate
+                await page.get(candidate)
+                await asyncio.sleep(4)
+                html = await page.get_content()
+                soup = BeautifulSoup(html, "html.parser")
+                hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
+                if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
+                    self.logger.info(f"Browse URL confirmed: {candidate}")
+                    return candidate
             except Exception as e:
                 self.logger.debug(f"Candidate {path} failed: {e}")
         self.logger.warning("No browse path matched — using homepage.")
@@ -130,7 +129,7 @@ class BargainBooksSpider(BaseSpider):
                 links.append(href)
         return list(dict.fromkeys(links))
 
-    def _harvest_item(self, url: str):
+    async def _harvest_item(self, page, url: str):
         slug = next(
             (s for s in reversed(url.rstrip("/").split("/")) if s and s != "#"),
             str(int(time.time()))
@@ -139,14 +138,17 @@ class BargainBooksSpider(BaseSpider):
 
         try:
             self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
+            await page.get(url)
+            await asyncio.sleep(5)
+            html = await page.get_content()
+            
+            if len(html) < 500:
+                self.logger.warning(f"Thin response for {url} — skipping.")
                 return
 
-            self.cache_html(item_id, resp.text, url=url)
+            self.cache_html(item_id, html, url=url)
 
-            soup = BeautifulSoup(resp.text, "html.parser")
+            soup = BeautifulSoup(html, "html.parser")
             h1 = soup.find("h1")
             title = h1.get_text(strip=True) if h1 else "Cached Item"
 
@@ -160,9 +162,9 @@ class BargainBooksSpider(BaseSpider):
         except Exception as e:
             self.logger.error(f"Error harvesting {url}: {e}")
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Bargain Books South Africa cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int, default=100)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BargainBooksSpider(limit_pages=args.limit).run()
+    BargainBooksSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()
