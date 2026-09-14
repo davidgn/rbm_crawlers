@@ -1,36 +1,18 @@
 import argparse
-import re
-import time
 import httpx
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
 from models import BookListing
 from base_spider import BaseSpider
-
 
 class GabonLivresSpider(BaseSpider):
     """
     Gabon Livres (gabonlivres.com) — Gabon digital/online bookshop.
-
-    Gabonese online book shop (distinct from gabonlivre.com multi-vendor
-    platform) focusing on digital and physical French-language titles.
-    Captures ISBNs, pricing, and bibliographic metadata.
-
-    httpx + BeautifulSoup (server-rendered).
-    Browse paths probed at startup.  Pagination: WooCommerce /page/N/ then ?page=N.
+    
+    Re-written to consume their new Next.js internal /api/books API.
+    Captures pricing, authors, and bibliographic metadata directly from JSON.
     """
 
     BASE_URL = "https://gabonlivres.com"
-
-    BROWSE_CANDIDATES = [
-        "/product-category/livres",
-        "/livres",
-        "/boutique",
-        "/shop",
-        "/catalogue",
-        "",
-    ]
-    DETAIL_SIGNALS = ["/product/", "/produit/", "/livre/", "/book/", "/item/"]
+    API_URL = "https://gabonlivres.com/api/books?limit=500&page={page}"
 
     HEADERS = {
         "User-Agent": (
@@ -38,131 +20,74 @@ class GabonLivresSpider(BaseSpider):
             "AppleWebKit/537.36 (KHTML, like Gecko) "
             "Chrome/124.0.0.0 Safari/537.36"
         ),
-        "Accept-Language": "fr-GA,fr;q=0.9,en;q=0.8",
+        "Accept": "application/json",
+        "Referer": "https://gabonlivres.com/catalogue"
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=50):
         super().__init__(platform_name="Gabon Livres", territory="Gabon")
         self.limit_pages = limit_pages
-        self.client = httpx.Client(
-            timeout=30.0, follow_redirects=True, headers=self.HEADERS
-        )
+        self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
-        self.logger.info(
-            f"Starting Gabon Livres harvest (cache-first). limit_pages={self.limit_pages}"
-        )
-        seen: set[str] = set()
-
+        self.logger.info(f"Starting Gabon Livres API harvest. limit_pages={self.limit_pages}")
+        
         try:
-            browse_url = self._find_browse_url()
-
-            for pg_num in range(1, self.limit_pages + 1):
-                urls_to_try = (
-                    [
-                        f"{browse_url.rstrip('/')}/page/{pg_num}/",
-                        f"{browse_url}{'&' if '?' in browse_url else '?'}page={pg_num}",
-                    ]
-                    if pg_num > 1
-                    else [browse_url]
-                )
-
-                html, used_url = None, browse_url
-                for candidate in urls_to_try:
-                    try:
-                        resp = self.client.get(candidate)
-                        if resp.status_code == 200 and len(resp.text) > 500:
-                            html, used_url = resp.text, candidate
-                            break
-                        if resp.status_code in (404, 410):
-                            break
-                    except Exception as e:
-                        self.logger.debug(f"Fetch error for {candidate}: {e}")
-
-                if not html:
-                    self.logger.info(f"No content on page {pg_num} — done.")
+            for page in range(1, self.limit_pages + 1):
+                url = self.API_URL.format(page=page)
+                self.logger.info(f"Fetching API page {page}: {url}")
+                
+                resp = self.client.get(url)
+                if resp.status_code != 200:
+                    self.logger.warning(f"Failed to fetch {url} - Status {resp.status_code}")
+                    break
+                    
+                data = resp.json()
+                books = data.get("books", [])
+                
+                if not books:
+                    self.logger.info(f"No more books found on page {page}.")
+                    break
+                    
+                self.logger.info(f"Found {len(books)} books on page {page}")
+                
+                for b in books:
+                    slug = b.get("slug")
+                    if not slug:
+                        continue
+                        
+                    author_data = b.get("author") or {}
+                    author_name = author_data.get("name")
+                    
+                    price = b.get("price")
+                    # Gabon Livres seems to use XAF / CFA Francs
+                    
+                    listing = BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=b.get("title"),
+                        author=author_name,
+                        price=str(price) if price is not None else None,
+                        price_currency="XAF",
+                        listing_url=f"{self.BASE_URL}/catalogue/{slug}",
+                        condition="Digital/New"
+                    )
+                    self.save_item(listing)
+                    
+                total_pages = data.get("totalPages", 1)
+                if page >= total_pages:
+                    self.logger.info(f"Reached final API page ({total_pages}).")
                     break
 
-                self.logger.info(f"Index page {pg_num}: {used_url}")
-                soup = BeautifulSoup(html, "html.parser")
-                book_links = self._extract_links(soup, seen)
-
-                if not book_links:
-                    self.logger.info(f"No new links on page {pg_num} — done.")
-                    break
-
-                self.logger.info(f"Found {len(book_links)} new links.")
-                for link in book_links:
-                    seen.add(link)
-                    self._harvest_item(link)
-                    time.sleep(0.7)
-
+        except Exception as e:
+            self.logger.error(f"Error during API crawl: {e}")
         finally:
             self.client.close()
-
-        self.logger.info(f"Finished. {self.items_scraped} items cached.")
-
-    def _find_browse_url(self) -> str:
-        for path in self.BROWSE_CANDIDATES:
-            candidate = self.BASE_URL + path
-            try:
-                resp = self.client.get(candidate)
-                if resp.status_code == 200:
-                    soup = BeautifulSoup(resp.text, "html.parser")
-                    hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
-                    if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
-                        self.logger.info(f"Browse URL confirmed: {candidate}")
-                        return candidate
-            except Exception as e:
-                self.logger.debug(f"Candidate {path} failed: {e}")
-        self.logger.warning("No browse path matched — using homepage.")
-        return self.BASE_URL
-
-    def _extract_links(self, soup: BeautifulSoup, seen: set) -> list[str]:
-        links = []
-        for a in soup.find_all("a", href=True):
-            href = urljoin(self.BASE_URL, a["href"])
-            if (
-                self.BASE_URL in href
-                and any(sig in href for sig in self.DETAIL_SIGNALS)
-                and href not in seen
-            ):
-                links.append(href)
-        return list(dict.fromkeys(links))
-
-    def _harvest_item(self, url: str):
-        slug = next(
-            (s for s in reversed(url.rstrip("/").split("/")) if s and s != "#"),
-            str(int(time.time()))
-        )
-        item_id = re.sub(r"[^a-zA-Z0-9_-]", "_", slug)[:80]
-
-        try:
-            self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
-                return
-
-            self.cache_html(item_id, resp.text, url=url)
-
-            soup = BeautifulSoup(resp.text, "html.parser")
-            h1 = soup.find("h1")
-            title = h1.get_text(strip=True) if h1 else "Cached Item"
-
-            self.save_item(BookListing(
-                territory=self.territory,
-                platform=self.platform_name,
-                title=title,
-                listing_url=url,
-                condition="Cached for AI extraction",
-            ))
-        except Exception as e:
-            self.logger.error(f"Error harvesting {url}: {e}")
-
+            
+        self.logger.info(f"Finished. {self.items_scraped} items added.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Gabon Livres cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
+    parser = argparse.ArgumentParser(description="Gabon Livres API spider")
+    parser.add_argument("--limit", type=int, default=50)
     args = parser.parse_args()
     GabonLivresSpider(limit_pages=args.limit).run()
