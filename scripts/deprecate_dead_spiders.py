@@ -35,6 +35,8 @@ def check_domain_alive(url):
                 if "parking-lander" in resp.text or "parking" in resp.text.lower() or "domain is for sale" in resp.text.lower():
                     return False, "Parked domain detected"
                 return True, "Alive"
+            elif resp.status_code in (403, 429, 202):
+                return True, f"Alive (bot protection: {resp.status_code})"
             return False, f"Status {resp.status_code}"
     except socket.gaierror:
         return False, "DNS resolution failed"
