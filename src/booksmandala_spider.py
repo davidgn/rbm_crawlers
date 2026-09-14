@@ -1,110 +1,93 @@
 import argparse
-import re
-import time
-from playwright.sync_api import sync_playwright
-from playwright_stealth import Stealth
+import httpx
 from models import BookListing
 from base_spider import BaseSpider
-from isbn_utils import normalize_isbn
 
 class BooksMandalaSpider(BaseSpider):
+    """
+    Books Mandala (booksmandala.com) — Nepal main-universe bookstore.
+    
+    Re-written to consume their Phoenix API backend directly, bypassing
+    Cloudflare UI challenges and abandoning the slow Playwright strategy.
+    """
+
+    BASE_URL = "https://booksmandala.com"
+    API_URL = "https://pheonix.booksmandala.com/api/v1/used-books?page={page}"
+
+    HEADERS = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        "Accept": "application/json",
+        "Referer": "https://booksmandala.com/used-books"
+    }
+
     def __init__(self, limit_pages=50):
         super().__init__(platform_name="BooksMandala", territory="Nepal")
         self.limit_pages = limit_pages
-
-    def _get_robust_response(self, url, params=None, max_retries=3):
-        import httpx
-        client = httpx.Client(timeout=30.0, follow_redirects=True)
-        try:
-            for attempt in range(max_retries):
-                try:
-                    resp = client.get(url, params=params)
-                    if resp.status_code in [403, 429, 500, 502, 503, 504]:
-                        self.logger.warning(f"Got status {resp.status_code} for {url}. Retrying ({attempt+1}/{max_retries})...")
-                        time.sleep(2 ** attempt)
-                        continue
-                    return resp
-                except Exception as e:
-                    self.logger.warning(f"Request failed for {url}: {e}. Retrying ({attempt+1}/{max_retries})...")
-                    time.sleep(2 ** attempt)
-            return None
-        finally:
-            client.close()
+        self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
-        self.logger.info("Starting Books Mandala Used Books Crawler.")
+        self.logger.info(f"Starting Books Mandala API harvest. limit_pages={self.limit_pages}")
         
-        with sync_playwright() as p:
-            browser, context = self.get_playwright_stealth_config(p)
-            page = context.new_page()
-            Stealth().apply_stealth_sync(page)
-            
-            try:
-                page.goto("https://booksmandala.com/used-books", timeout=60000, wait_until="networkidle")
-                page.wait_for_timeout(3000)
+        try:
+            for page in range(1, self.limit_pages + 1):
+                url = self.API_URL.format(page=page)
+                self.logger.info(f"Fetching API page {page}: {url}")
                 
-                # Scrolling for lazy load
-                for i in range(self.limit_pages):
-                    self.logger.info(f"Scrolling page {i+1}...")
-                    page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
-                    page.wait_for_timeout(2000)
+                resp = self.client.get(url)
+                if resp.status_code != 200:
+                    self.logger.warning(f"Failed to fetch {url} - Status {resp.status_code}")
+                    break
                     
-                    # If no new items appear or reached bottom
-                    # (Simple heuristic: check number of cards)
-
-                # Extract items
-                # Based on inspection, cards are usually in a specific div
-                # Finding all book cards
-                cards = page.locator("div.grid > div").all()
-                self.logger.info(f"Found {len(cards)} potential book cards.")
+                data = resp.json()
+                books = data.get("data", [])
                 
-                for card in cards:
-                    try:
-                        title_elem = card.locator("h3")
-                        if title_elem.count() == 0: continue
-                        title = title_elem.inner_text().strip()
+                if not books:
+                    self.logger.info(f"No more books found on page {page}.")
+                    break
+                    
+                self.logger.info(f"Found {len(books)} books on page {page}")
+                
+                for b in books:
+                    slug = b.get("slug")
+                    if not slug:
+                        continue
                         
-                        author_elem = card.locator("p.text-sm.text-gray-500")
-                        author = author_elem.inner_text().replace("by ", "").strip() if author_elem.count() > 0 else None
-                        
-                        price_elem = card.locator("span.font-bold")
-                        raw_price = price_elem.inner_text().strip() if price_elem.count() > 0 else None
-                        price = None
-                        price_currency = None
-                        if raw_price:
-                            clean_p = re.sub(r"[^\d.,]", "", raw_price).strip()
-                            if clean_p:
-                                price = clean_p
-                                price_currency = "NPR"
-                        
-                        # Link
-                        link_elem = card.locator("a").first
-                        listing_url = link_elem.get_attribute("href")
-                        if listing_url and listing_url.startswith("/"):
-                            listing_url = "https://booksmandala.com" + listing_url
+                    authors = b.get("authors", [])
+                    author_name = authors[0].get("name") if authors else None
+                    
+                    price = b.get("sales_price")
+                    
+                    listing = BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=b.get("name"),
+                        author=author_name,
+                        isbn=b.get("barcode"),
+                        price=str(price) if price is not None else None,
+                        price_currency="NPR",
+                        listing_url=f"{self.BASE_URL}/book/{slug}",
+                        condition="Used" if b.get("is_used") else "New"
+                    )
+                    self.save_item(listing)
+                    
+                pagination = data.get("pagination", {})
+                if not pagination.get("next"):
+                    self.logger.info(f"Reached final API page.")
+                    break
 
-                        listing = BookListing(
-                            territory=self.territory,
-                            platform=self.platform_name,
-                            title=title,
-                            author=author,
-                            isbn=normalize_isbn(title),
-                            price=price,
-                            price_currency=price_currency,
-                            listing_url=listing_url,
-                            condition="Used"
-                        )
-                        self.save_item(listing)
-                    except Exception as e:
-                        self.logger.error(f"Error parsing card: {e}")
-                        
-            except Exception as e:
-                self.logger.error(f"Crawl failed: {e}")
-            finally:
-                browser.close()
+        except Exception as e:
+            self.logger.error(f"Error during API crawl: {e}")
+        finally:
+            self.client.close()
+            
+        self.logger.info(f"Finished. {self.items_scraped} items added.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Books Mandala API spider")
     parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args()
     BooksMandalaSpider(limit_pages=args.limit).run()
