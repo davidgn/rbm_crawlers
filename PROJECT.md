@@ -617,3 +617,4 @@
 ## Code Layout
 - Spiders: `src/<spider_name>.py`
 - Base classes & models: `src/html_search_spider.py`, `src/playwright_search_spider.py`
+| 214 | Iceland Expansion | Implement bookstore-specific crawler for Iceland (Bokin via Shopify API) | none | COMPLETED |
