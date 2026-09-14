@@ -1,9 +1,9 @@
 import argparse
-from playwright_search_spider import PlaywrightSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class AlibrisUkSpider(PlaywrightSearchSpider):
+class AlibrisUkSpider(NodriverSearchSpider):
     """
-    Spider for Alibris UK using Playwright to bypass Cloudflare.
+    Spider for Alibris UK using nodriver to bypass Cloudflare.
     """
     def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
         super().__init__(

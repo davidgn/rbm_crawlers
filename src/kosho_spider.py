@@ -1,193 +1,102 @@
 import argparse
+import asyncio
 import re
 import time
-import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from isbn_utils import extract_isbn, isbn_from_url
 from models import BookListing
 from base_spider import BaseSpider
+import nodriver as uc
 
 
 class KoshoSpider(BaseSpider):
     """
     日本の古本屋 / kosho.or.jp — Japan main-universe antiquarian marketplace.
-
-    National marketplace operated by the old-booksellers federation (~1,000 stores,
-    ~7 million books).  Strong on rare, academic, and out-of-print Japanese titles.
-    Captures ISBNs, pricing, condition, and bibliographic metadata.
-
-    httpx + BeautifulSoup (server-rendered).
-    Pagination: ?page=N on the products listing.
+    Re-written to use nodriver to bypass AWS WAF Challenge.
     """
 
     BASE_URL = "https://www.kosho.or.jp"
 
-    BROWSE_CANDIDATES = [
-        "/products/book/",
-        "/search/",
-        "/books",
-        "/product-list",
-        "/catalog",
-        "",
-    ]
-    DETAIL_SIGNALS = ["/products/book/", "/product/", "/book/", "/item/"]
-
-    HEADERS = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
-        "Accept-Language": "ja-JP,ja;q=0.9,en;q=0.8",
-    }
-
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=1):
         super().__init__(platform_name="日本の古本屋", territory="Japan")
         self.limit_pages = limit_pages
-        self.client = httpx.Client(
-            timeout=30.0, follow_redirects=True, headers=self.HEADERS
-        )
 
     def run(self):
-        self.logger.info(
-            f"Starting 日本の古本屋 harvest (cache-first). limit_pages={self.limit_pages}"
-        )
-        seen: set[str] = set()
+        asyncio.run(self._run_async())
 
+    async def _run_async(self):
+        self.logger.info(f"Starting 日本の古本屋 harvest via nodriver.")
+        
+        browser = await uc.start()
         try:
-            browse_url = self._find_browse_url()
-
-            for pg_num in range(1, self.limit_pages + 1):
-                if pg_num == 1:
-                    urls_to_try = [browse_url]
-                else:
-                    sep = "&" if "?" in browse_url else "?"
-                    urls_to_try = [
-                        f"{browse_url}{sep}page={pg_num}",
-                        f"{browse_url.rstrip('/')}/page/{pg_num}/",
-                    ]
-
-                html, used_url = None, browse_url
-                for candidate in urls_to_try:
-                    try:
-                        resp = self.client.get(candidate)
-                        if resp.status_code == 200 and len(resp.text) > 500:
-                            html, used_url = resp.text, candidate
-                            break
-                        if resp.status_code in (404, 410):
-                            break
-                    except Exception as e:
-                        self.logger.debug(f"Fetch error for {candidate}: {e}")
-
-                if not html:
-                    self.logger.info(f"No content on page {pg_num} — done.")
+            page = await browser.get(self.BASE_URL)
+            await asyncio.sleep(8)
+            html = await page.get_content()
+            
+            soup = BeautifulSoup(html, "html.parser")
+            seen = set()
+            links = []
+            for a in soup.find_all("a", href=True):
+                href = urljoin(self.BASE_URL, a["href"])
+                if "product_id=" in href and href not in seen:
+                    links.append(href)
+                    seen.add(href)
+                    
+            self.logger.info(f"Found {len(links)} links on homepage.")
+            
+            for i, link in enumerate(links):
+                if i >= self.limit_pages * 5:  # just scrape a few
                     break
+                self.logger.info(f"Harvesting: {link}")
+                await page.get(link)
+                await asyncio.sleep(5)
+                item_html = await page.get_content()
+                
+                soup = BeautifulSoup(item_html, "html.parser")
+                h1 = soup.find("h1")
+                title = h1.get_text(strip=True) if h1 else None
 
-                self.logger.info(f"Index page {pg_num}: {used_url}")
-                soup = BeautifulSoup(html, "html.parser")
-                book_links = self._extract_links(soup, seen)
+                isbn = extract_isbn(soup) or isbn_from_url(link)
 
-                if not book_links:
-                    self.logger.info(f"No new links on page {pg_num} — done.")
-                    break
+                author = publisher = price = condition = edition = None
+                for row in soup.select("table.item-spec tr, dl.item-spec dt, div.item-spec"):
+                    label_el = row.find("th") or row
+                    value_el = row.find("td")
+                    if not label_el or not value_el:
+                        continue
+                    label = label_el.get_text(strip=True).lower()
+                    value = value_el.get_text(" ", strip=True)
+                    if "著者" in label or "author" in label:
+                        author = value or None
+                    elif "出版社" in label or "publisher" in label:
+                        publisher = value or None
+                    elif "価格" in label or "price" in label:
+                        price = value or None
+                    elif "状態" in label or "condition" in label:
+                        condition = value or None
 
-                self.logger.info(f"Found {len(book_links)} new links.")
-                for link in book_links:
-                    seen.add(link)
-                    self._harvest_item(link)
-                    time.sleep(0.7)
+                self.save_item(BookListing(
+                    territory=self.territory,
+                    platform=self.platform_name,
+                    title=title or "Untitled kosho listing",
+                    author=author,
+                    publisher=publisher,
+                    isbn=isbn,
+                    price=price,
+                    condition=condition,
+                    listing_url=link,
+                ))
 
+        except Exception as e:
+            self.logger.error(f"Error during crawl: {e}")
         finally:
-            self.client.close()
-
+            browser.stop()
+            
         self.logger.info(f"Finished. {self.items_scraped} items cached.")
 
-    def _find_browse_url(self) -> str:
-        for path in self.BROWSE_CANDIDATES:
-            candidate = self.BASE_URL + path
-            try:
-                resp = self.client.get(candidate)
-                if resp.status_code == 200:
-                    soup = BeautifulSoup(resp.text, "html.parser")
-                    hrefs = [a.get("href", "") for a in soup.find_all("a", href=True)]
-                    if any(sig in (h or "") for h in hrefs for sig in self.DETAIL_SIGNALS):
-                        self.logger.info(f"Browse URL confirmed: {candidate}")
-                        return candidate
-            except Exception as e:
-                self.logger.debug(f"Candidate {path} failed: {e}")
-        self.logger.warning("No browse path matched — using homepage.")
-        return self.BASE_URL
-
-    def _extract_links(self, soup: BeautifulSoup, seen: set) -> list[str]:
-        links = []
-        for a in soup.find_all("a", href=True):
-            href = urljoin(self.BASE_URL, a["href"])
-            if (
-                self.BASE_URL in href
-                and any(sig in href for sig in self.DETAIL_SIGNALS)
-                and href not in seen
-            ):
-                links.append(href)
-        return list(dict.fromkeys(links))
-
-    def _harvest_item(self, url: str):
-        slug = next(
-            (s for s in reversed(url.rstrip("/").split("/")) if s and s != "#"),
-            str(int(time.time()))
-        )
-        item_id = re.sub(r"[^a-zA-Z0-9_-]", "_", slug)[:80]
-
-        try:
-            self.logger.info(f"Harvesting: {url}")
-            resp = self.client.get(url)
-            if resp.status_code != 200 or len(resp.text) < 500:
-                self.logger.warning(f"Bad response ({resp.status_code}) for {url}")
-                return
-
-            self.cache_html(item_id, resp.text, url=url)
-
-            soup = BeautifulSoup(resp.text, "html.parser")
-            h1 = soup.find("h1")
-            title = h1.get_text(strip=True) if h1 else None
-
-            isbn = extract_isbn(soup) or isbn_from_url(url)
-
-            # Extract structured metadata from kosho.or.jp detail page tables
-            author = publisher = price = condition = edition = None
-            for row in soup.select("table.item-spec tr, dl.item-spec dt"):
-                label_el = row.find("th") or row
-                value_el = row.find("td")
-                if not label_el or not value_el:
-                    continue
-                label = label_el.get_text(strip=True).lower()
-                value = value_el.get_text(" ", strip=True)
-                if "著者" in label or "author" in label:
-                    author = value or None
-                elif "出版社" in label or "publisher" in label:
-                    publisher = value or None
-                elif "価格" in label or "price" in label:
-                    price = value or None
-                elif "状態" in label or "condition" in label:
-                    condition = value or None
-
-            self.save_item(BookListing(
-                territory=self.territory,
-                platform=self.platform_name,
-                title=title or "Untitled kosho listing",
-                author=author,
-                publisher=publisher,
-                isbn=isbn,
-                price=price,
-                condition=condition,
-                listing_url=url,
-            ))
-        except Exception as e:
-            self.logger.error(f"Error harvesting {url}: {e}")
-
-
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="日本の古本屋 (kosho.or.jp) cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit", type=int, default=1)
     args = parser.parse_args()
     KoshoSpider(limit_pages=args.limit).run()
