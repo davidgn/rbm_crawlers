@@ -1,9 +1,9 @@
-from playwright_search_spider import PlaywrightSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class MightyApeNzSpider(PlaywrightSearchSpider):
+class MightyApeNzSpider(NodriverSearchSpider):
     """
     Spider for Mighty Ape (New Zealand).
-    Uses Playwright to solve the Cloudflare challenge and extract data from the React interface.
+    Uses nodriver to solve the Cloudflare challenge and extract data from the React interface.
     """
     def __init__(self, limit_pages: int = 50):
         super().__init__(
@@ -22,7 +22,7 @@ class MightyApeNzSpider(PlaywrightSearchSpider):
 
     def run(self):
         # We override run to ensure enough wait time for the challenge
-        self.logger.info(f"Starting Mighty Ape (NZ) Playwright crawler. Limit: {self.limit_pages} pages.")
+        self.logger.info(f"Starting Mighty Ape (NZ) nodriver crawler. Limit: {self.limit_pages} pages.")
         super().run(search_term="Potter")
 
 if __name__ == "__main__":

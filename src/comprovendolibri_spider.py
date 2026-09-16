@@ -1,13 +1,13 @@
 import argparse
 import re
 from urllib.parse import parse_qs, urljoin, urlparse
-from playwright_search_spider import PlaywrightSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 from models import BookListing
 
-class ComproVendoLibriSpider(PlaywrightSearchSpider):
+class ComproVendoLibriSpider(NodriverSearchSpider):
     """
     Spider for ComproVendoLibri (Italy).
-    Uses Playwright to bypass Cloudflare challenges.
+    Uses nodriver to bypass Cloudflare challenges.
     """
     def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
         super().__init__(
@@ -84,7 +84,7 @@ class ComproVendoLibriSpider(PlaywrightSearchSpider):
         return re.sub(r"\s+", " ", value).strip(" ,;")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="ComproVendoLibri Playwright Spider")
+    parser = argparse.ArgumentParser(description="ComproVendoLibri nodriver Spider")
     parser.add_argument("--query", type=str, default="Potter")
     parser.add_argument("--limit-pages", type=int, default=1)
     parser.add_argument("--limit-items", type=int, default=10)

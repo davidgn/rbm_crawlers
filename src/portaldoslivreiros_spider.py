@@ -1,10 +1,10 @@
 import argparse
-from playwright_search_spider import PlaywrightSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class PortalDosLivreirosSpider(PlaywrightSearchSpider):
+class PortalDosLivreirosSpider(NodriverSearchSpider):
     """
     Spider for Portal dos Livreiros (Brazil).
-    Uses Playwright to bypass Cloudflare challenges.
+    Uses nodriver to bypass Cloudflare challenges.
     """
     def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
         super().__init__(
@@ -25,7 +25,7 @@ class PortalDosLivreirosSpider(PlaywrightSearchSpider):
         )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Portal dos Livreiros Playwright Spider")
+    parser = argparse.ArgumentParser(description="Portal dos Livreiros nodriver Spider")
     parser.add_argument("--query", type=str, default="Potter")
     parser.add_argument("--limit-pages", type=int, default=2)
     parser.add_argument("--limit-items", type=int, default=10)

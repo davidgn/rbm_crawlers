@@ -1,9 +1,9 @@
 import argparse
-from playwright_search_spider import PlaywrightSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class BiblioIeSpider(PlaywrightSearchSpider):
+class BiblioIeSpider(NodriverSearchSpider):
     """
-    Spider for Biblio Ireland using Playwright to bypass Cloudflare.
+    Spider for Biblio Ireland using nodriver to bypass Cloudflare.
     """
     def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
         super().__init__(
@@ -25,7 +25,7 @@ class BiblioIeSpider(PlaywrightSearchSpider):
         )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Biblio Ireland Playwright Spider")
+    parser = argparse.ArgumentParser(description="Biblio Ireland nodriver Spider")
     parser.add_argument("--query", type=str, default="Potter")
     parser.add_argument("--limit-pages", type=int, default=2)
     parser.add_argument("--limit-items", type=int, default=10)
