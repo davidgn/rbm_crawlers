@@ -87,8 +87,11 @@ class AbaaWebringSpider(BaseSpider):
     async def run_async(self):
         # Example seeds (In production, this would be populated from the ABAA member directory)
         seed_bookstores = [
-            "https://www.brattlebookshop.com/rare-books",
-            "https://www.strandbooks.com/rare-books/"
+            "https://www.brattlebookshop.com/",  # "/rare-books" 404s; crawl outward from the homepage instead
+            # strandbooks.com blocks plain httpx even on "/" (verified via nodriver: not a
+            # bad URL, a real block) — this whole crawler is httpx-based, so it can't reach
+            # that site at all until the fetch layer is migrated to nodriver. Omitted rather
+            # than left in to silently fail every run.
         ]
         
         async with httpx.AsyncClient() as client:
