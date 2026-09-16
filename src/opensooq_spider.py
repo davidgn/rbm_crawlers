@@ -22,7 +22,7 @@ OPENSOOQ_TLDS = {
 
 class OpenSooqSpider(HTMLSearchSpider):
     """Unified global crawler for OpenSooq across the MENA region."""
-    def __init__(self, search_term: str = "كتب", country_code: str = "JO", limit_pages: int = 50):
+    def __init__(self, search_term: str = "كتب", country_code: str = "JO", limit_pages: int = 50, limit_items: int | None = None):
         country_code = country_code.upper()
         if country_code not in OPENSOOQ_TLDS:
             raise ValueError(f"Unsupported country code: {country_code}. Must be one of {list(OPENSOOQ_TLDS.keys())}")
@@ -35,7 +35,7 @@ class OpenSooqSpider(HTMLSearchSpider):
             base_url=base_url,
             search_path="ar/find?term={search_term}",
             selectors={'container': 'div', 'title': 'h2', 'price': '.price'}, territory=country_code,
-            limit_pages=limit_pages
+            limit_pages=limit_pages, limit_items=limit_items
         )
 
 if __name__ == "__main__":
@@ -43,7 +43,8 @@ if __name__ == "__main__":
     parser.add_argument("--query", type=str, default="كتب مستعملة")
     parser.add_argument("--country", type=str, default="JO", help="Country code (e.g. JO, SA, AE)")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    
-    spider = OpenSooqSpider(search_term=args.query, country_code=args.country, limit_pages=args.limit_pages)
+
+    spider = OpenSooqSpider(search_term=args.query, country_code=args.country, limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()
