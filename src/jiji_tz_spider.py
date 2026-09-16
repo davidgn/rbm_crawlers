@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class JijiTzSpider(HTMLSearchSpider):
+class JijiTzSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Jiji_TZ", base_url="https://jiji.co.tz",

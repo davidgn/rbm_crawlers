@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class IrelandDonedealSpider(HTMLSearchSpider):
+class IrelandDonedealSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="DoneDeal_IE", base_url="https://www.donedeal.ie",

@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class IanosGrSpider(HTMLSearchSpider):
+class IanosGrSpider(NodriverSearchSpider):
     """
     Spider for Ianos (Greece).
     A leading bookstore chain in Greece.

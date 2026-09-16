@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class HouseOfBooksZwSpider(HTMLSearchSpider):
+class HouseOfBooksZwSpider(NodriverSearchSpider):
     def __init__(self, limit_pages=5, limit_items=None, **kwargs):
         super().__init__(
             platform_name="House of Books Zimbabwe",

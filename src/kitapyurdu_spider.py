@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class KitapyurduSpider(HTMLSearchSpider):
+class KitapyurduSpider(NodriverSearchSpider):
     """
     Broad crawler for Kitapyurdu (Turkey).
     """

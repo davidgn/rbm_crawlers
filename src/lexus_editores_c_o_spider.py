@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class LexusEditoresCOSpider(HTMLSearchSpider):
+class LexusEditoresCOSpider(NodriverSearchSpider):
     """Broad crawler for Lexus Editores (CO) (Colombia)."""
     def __init__(self, search_term: str = "libros", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

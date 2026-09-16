@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class GreenlightBookstoreSpider(HTMLSearchSpider):
+class GreenlightBookstoreSpider(NodriverSearchSpider):
     def __init__(self, limit_pages=5, limit_items=None, **kwargs):
         super().__init__(
             platform_name="Greenlight Bookstore",
