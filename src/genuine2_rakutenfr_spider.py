@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class RakutenFRSpider(HTMLSearchSpider):
+class RakutenFRSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="RakutenFR", base_url="https://fr.shopping.rakuten.com",

@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class TodocoleccionSpider(HTMLSearchSpider):
+class TodocoleccionSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Todocoleccion", base_url="https://www.todocoleccion.net",

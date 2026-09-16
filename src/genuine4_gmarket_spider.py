@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class GmarketSpider(HTMLSearchSpider):
+class GmarketSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Gmarket", base_url="https://www.gmarket.co.kr",

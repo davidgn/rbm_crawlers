@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class Elo7Spider(HTMLSearchSpider):
+class Elo7Spider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Elo7", base_url="https://www.elo7.com.br",

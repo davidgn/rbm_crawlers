@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class AfribabaRwandaSpider(HTMLSearchSpider):
+class AfribabaRwandaSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="AfribabaRwanda", base_url="https://rw.afribaba.com",

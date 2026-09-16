@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class FnacFRSpider(HTMLSearchSpider):
+class FnacFRSpider(NodriverSearchSpider):
     """Broad crawler for Fnac (FR) (France)."""
     def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

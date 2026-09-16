@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class RebuydealTuvaluSpider(HTMLSearchSpider):
+class RebuydealTuvaluSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="RebuydealTuvalu", base_url="https://www.rebuydeal.com",

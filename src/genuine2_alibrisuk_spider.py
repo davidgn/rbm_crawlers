@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class AlibrisUKSpider(HTMLSearchSpider):
+class AlibrisUKSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="AlibrisUK", base_url="https://alibris.co.uk",
