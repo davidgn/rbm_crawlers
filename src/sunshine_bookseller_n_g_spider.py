@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class SunshineBooksellerNGSpider(HTMLSearchSpider):
+class SunshineBooksellerNGSpider(NodriverSearchSpider):
     """Broad crawler for Sunshine Bookseller (NG) (Nigeria)."""
     def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

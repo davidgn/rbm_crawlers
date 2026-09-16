@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class SenegalExpatDakarSpider(HTMLSearchSpider):
+class SenegalExpatDakarSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Expat_Dakar_SN", base_url="https://www.expat-dakar.com",
