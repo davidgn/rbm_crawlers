@@ -3,6 +3,7 @@ import asyncio
 import httpx
 import re
 from base_api_spider import BaseAPISpider
+from models import BookListing
 
 class GonvillMxSpider(BaseAPISpider):
     """
@@ -86,13 +87,15 @@ class GonvillMxSpider(BaseAPISpider):
                     title_m = re.search(r'class="title">.*?>([^<]+)<', block)
                     title = title_m.group(1).strip() if title_m else None
                     
-                    self.process_listing(
+                    self.save_item(BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=title or "Unknown",
                         isbn=isbn,
-                        price=price,
-                        currency="MXN",
-                        url=url,
-                        title=title
-                    )
+                        price=str(price),
+                        price_currency="MXN",
+                        listing_url=url,
+                    ))
                     items_scraped += 1
                 
                 await asyncio.sleep(1) # Polite delay

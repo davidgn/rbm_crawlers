@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import httpx
 from base_api_spider import BaseAPISpider
+from models import BookListing
 
 class PorruaMxSpider(BaseAPISpider):
     """
@@ -42,11 +43,11 @@ class PorruaMxSpider(BaseAPISpider):
                 self.logger.info(f"Fetching page {page} via GraphQL...")
                 data = await self.fetch_json(client, self.graphql_url, params={"query": query})
                 
-                if not data or "data" not in data:
+                if not data or not data.get("data"):
                     self.logger.warning(f"No valid data returned on page {page}")
                     break
-                    
-                items = data.get("data", {}).get("categoryProducts", {}).get("items", [])
+
+                items = ((data.get("data") or {}).get("categoryProducts") or {}).get("items", [])
                 if not items:
                     self.logger.info(f"No more items found on page {page}. Terminating.")
                     break
@@ -71,13 +72,15 @@ class PorruaMxSpider(BaseAPISpider):
                     except ValueError:
                         continue
                         
-                    self.process_listing(
+                    self.save_item(BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=doc.get("name") or "Unknown",
                         isbn=isbn,
-                        price=price,
-                        currency="MXN",
-                        url=doc.get("url") or self.graphql_url,
-                        title=doc.get("name")
-                    )
+                        price=str(price),
+                        price_currency="MXN",
+                        listing_url=doc.get("url") or self.graphql_url,
+                    ))
                     items_scraped += 1
                 
                 await asyncio.sleep(1) # Polite delay

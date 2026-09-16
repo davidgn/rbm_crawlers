@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import httpx
 from base_api_spider import BaseAPISpider
+from models import BookListing
 
 class BookstopKeSpider(BaseAPISpider):
     """
@@ -51,11 +52,11 @@ class BookstopKeSpider(BaseAPISpider):
                     headers={"Content-Type": "application/json"}
                 )
                 
-                if not data or "data" not in data:
+                if not data or not data.get("data"):
                     self.logger.warning(f"No valid data returned on page {page}")
                     break
-                    
-                items = data.get("data", {}).get("products", {}).get("items", [])
+
+                items = ((data.get("data") or {}).get("products") or {}).get("items", [])
                 if not items:
                     self.logger.info(f"No more items found on page {page}. Terminating.")
                     break
@@ -79,13 +80,15 @@ class BookstopKeSpider(BaseAPISpider):
                     url_key = product.get("url_key")
                     url = f"https://bookstop.co.ke/{url_key}.html" if url_key else f"https://bookstop.co.ke/catalogsearch/result/?q={sku}"
                     
-                    self.process_listing(
+                    self.save_item(BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=product.get("name") or "Unknown",
                         isbn=sku,
-                        price=price,
-                        currency="KES",
-                        url=url,
-                        title=product.get("name")
-                    )
+                        price=str(price),
+                        price_currency="KES",
+                        listing_url=url,
+                    ))
                     items_scraped += 1
                 
                 await asyncio.sleep(1) # Polite delay

@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import httpx
 from base_api_spider import BaseAPISpider
+from models import BookListing
 
 class VtexSearchSpider(BaseAPISpider):
     """
@@ -63,13 +64,15 @@ class VtexSearchSpider(BaseAPISpider):
                     url_val = product.get("linkText")
                     full_url = f"https://{self.host}/{url_val}/p" if url_val else f"https://{self.host}/"
                     
-                    self.process_listing(
+                    self.save_item(BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=product.get("productName") or "Unknown",
                         isbn=product.get("productReference") or best_item.get("ean"),
-                        price=price,
-                        currency=self.currency,
-                        url=full_url,
-                        title=product.get("productName")
-                    )
+                        price=str(price),
+                        price_currency=self.currency,
+                        listing_url=full_url,
+                    ))
                     items_scraped += 1
                 
                 await asyncio.sleep(1)

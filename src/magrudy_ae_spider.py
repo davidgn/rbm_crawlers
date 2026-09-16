@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import httpx
 from base_api_spider import BaseAPISpider
+from models import BookListing
 
 class MagrudyAeSpider(BaseAPISpider):
     """
@@ -69,13 +70,15 @@ class MagrudyAeSpider(BaseAPISpider):
                     if price <= 0:
                         continue
                         
-                    self.process_listing(
+                    self.save_item(BookListing(
+                        territory=self.territory,
+                        platform=self.platform_name,
+                        title=product.get("title") or "Unknown",
                         isbn=isbn,
-                        price=price,
-                        currency="AED",
-                        url=f"https://www.magrudy.com/search?q={isbn}",
-                        title=product.get("title")
-                    )
+                        price=str(price),
+                        price_currency="AED",
+                        listing_url=f"https://www.magrudy.com/search?q={isbn}",
+                    ))
                     items_scraped += 1
                 
                 await asyncio.sleep(1) # Polite delay

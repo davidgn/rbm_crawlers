@@ -15,6 +15,9 @@ class KuwaitbookstoreKwSpider(ShopifySearchSpider):
         )
 
 if __name__ == "__main__":
-    spider = KuwaitbookstoreKwSpider(limit_items=5)
-    for listing in spider.yield_listings():
-        print(listing.model_dump_json(indent=2))
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str, default="books")
+    parser.add_argument("--limit-items", type=int, default=5)
+    args = parser.parse_args()
+    KuwaitbookstoreKwSpider(limit_items=args.limit_items).run(search_term=args.query)
