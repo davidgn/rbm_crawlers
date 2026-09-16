@@ -29,15 +29,23 @@ platforms = [
     ("moufflon_cy", "MoufflonCySpider", "Moufflon Bookshop", "https://moufflon.com.cy", "?s={query}&post_type=product", "Cyprus")
 ]
 
-for name, cls_name, plat_name, base_url, search_path, terr in platforms:
-    filename = f"/opt/repos/rbm_crawlers/src/{name}_spider.py"
-    with open(filename, 'w') as f:
-        f.write(spider_template.format(
-            class_name=cls_name,
-            platform_name=plat_name,
-            base_url=base_url,
-            search_path=search_path,
-            territory=terr
-        ))
+if __name__ == "__main__":
+    import os
 
-print(f"Created {len(platforms)} spider files for gap coverage.")
+    created = 0
+    for name, cls_name, plat_name, base_url, search_path, terr in platforms:
+        filename = f"/opt/repos/rbm_crawlers/src/{name}_spider.py"
+        if os.path.exists(filename):
+            print(f"Skipping {filename} (already exists).")
+            continue
+        with open(filename, 'w') as f:
+            f.write(spider_template.format(
+                class_name=cls_name,
+                platform_name=plat_name,
+                base_url=base_url,
+                search_path=search_path,
+                territory=terr
+            ))
+        created += 1
+
+    print(f"Created {created} spider files for gap coverage.")

@@ -1,7 +1,7 @@
 from html_search_spider import HTMLSearchSpider
 
 class YahooFurimaJapanSpider(HTMLSearchSpider):
-    """Native spider for Yahoo! Furima (Japan)."""
+    """Spider for Yahoo! Furima (Japan)."""
     def __init__(self, limit_pages=10, **kwargs):
         super().__init__(
             platform_name="Yahoo! Furima",

@@ -1,7 +1,7 @@
 from html_search_spider import HTMLSearchSpider
 
 class HardOffJapanSpider(HTMLSearchSpider):
-    """Native spider for Hard Off (Japan)."""
+    """Spider for Hard Off (Japan)."""
     def __init__(self, limit_pages=10, **kwargs):
         super().__init__(
             platform_name="Hard Off",

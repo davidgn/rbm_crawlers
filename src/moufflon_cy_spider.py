@@ -6,8 +6,8 @@ class MoufflonCySpider(HTMLSearchSpider):
         super().__init__(
             platform_name="Moufflon Bookshop",
             base_url="https://moufflon.com.cy",
-            search_path="?s={query}&post_type=product",
-            selectors={'container': 'div.item', 'title': 'h3', 'price': '.price'},
+            search_path="?s={query}&post_type=product&paged={page}",
+            selectors={'container': 'li.product', 'title': '.woocommerce-loop-product__title', 'price': '.price'},
             territory="Cyprus",
             limit_pages=limit_pages,
             **kwargs
