@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class NueveTresCuartosCOSpider(HTMLSearchSpider):
+class NueveTresCuartosCOSpider(NodriverSearchSpider):
     """Broad crawler for 9 3/4 (CO) (Colombia)."""
     def __init__(self, search_term: str = "libros", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

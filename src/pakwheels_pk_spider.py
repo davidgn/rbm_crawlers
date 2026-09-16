@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class PakwheelsPkSpider(HTMLSearchSpider):
+class PakwheelsPkSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="pakwheels_pk", base_url="https://www.pakwheels.com",

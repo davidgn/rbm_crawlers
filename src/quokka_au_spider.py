@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class QuokkaAuSpider(HTMLSearchSpider):
+class QuokkaAuSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Quokka_AU", base_url="https://quokka.com.au",

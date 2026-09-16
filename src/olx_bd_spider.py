@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class OlxBdSpider(HTMLSearchSpider):
+class OlxBdSpider(NodriverSearchSpider):
     """Native spider for OLX Bangladesh."""
     def __init__(self, limit_pages: int = 50):
         super().__init__(

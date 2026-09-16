@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class RussiaAvito2Spider(HTMLSearchSpider):
+class RussiaAvito2Spider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Avito_RU", base_url="https://www.avito.ru",

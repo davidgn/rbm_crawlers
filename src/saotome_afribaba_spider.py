@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class SaotomeAfribabaSpider(HTMLSearchSpider):
+class SaotomeAfribabaSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Afribaba_ST", base_url="https://st.afribaba.com",
