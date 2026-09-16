@@ -14,7 +14,12 @@ class MitPressBookstoreSpider(HTMLSearchSpider):
         )
 
     def run(self, search_term=None):
-        self.logger.warning("Permanently blocked by Akamai Bot Protection. Skipping.")
+        # Not actually Akamai-blocked (verified via nodriver 2026-09-16): the site
+        # runs Drupal/IndieCommerce, search_path above 404s, and the real search
+        # form POSTs to "/" with a CSRF form_build_id/form_token — needs real
+        # form interaction (fill + submit), not a GET URL, so it doesn't fit the
+        # NodriverSearchSpider get-and-parse pattern. Skipping until that's built.
+        self.logger.warning("Requires interactive Drupal/IndieCommerce form submission, not a URL pattern. Skipping.")
 
 if __name__ == "__main__":
     import logging
