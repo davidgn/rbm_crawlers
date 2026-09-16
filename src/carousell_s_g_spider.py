@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class CarousellSGSpider(HTMLSearchSpider):
+class CarousellSGSpider(NodriverSearchSpider):
     """Broad crawler for Carousell (SG) (Singapore)."""
     def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

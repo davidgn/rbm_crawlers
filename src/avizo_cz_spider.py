@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class AvizoCzSpider(HTMLSearchSpider):
+class AvizoCzSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Avizo_CZ", base_url="https://www.avizo.cz",

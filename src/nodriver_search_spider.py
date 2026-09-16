@@ -12,6 +12,8 @@ import nodriver as uc
 class NodriverSearchSpider(BaseSpider):
     def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict = None, territory: str = "India", price_currency: str = None, limit_pages: int = 5, limit_items: int = None, **kwargs):
         super().__init__(platform_name=platform_name, territory=territory)
+        if not base_url.startswith(("http://", "https://")):
+            base_url = f"https://{base_url}"
         self.base_url = base_url.rstrip("/")
         self.search_path = search_path
         self.selectors = selectors or {}

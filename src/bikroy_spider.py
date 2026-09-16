@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class BikroySpider(HTMLSearchSpider):
+class BikroySpider(NodriverSearchSpider):
     """Broad crawler for Bikroy (BD) (South Korea)."""
     def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

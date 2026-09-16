@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class BookMandeeSpider(HTMLSearchSpider):
+class BookMandeeSpider(NodriverSearchSpider):
     def __init__(self, limit_pages=50):
         super().__init__(
             platform_name="BookMandee",

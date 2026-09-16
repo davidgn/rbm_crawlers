@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class BajanMarketBbSpider(HTMLSearchSpider):
+class BajanMarketBbSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="BajanMarket_BB", base_url="https://bajanmarket.com",

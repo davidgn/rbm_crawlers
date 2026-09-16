@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class CanadaVaragesale2Spider(HTMLSearchSpider):
+class CanadaVaragesale2Spider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="VarageSale_CA", base_url="https://www.varagesale.com",

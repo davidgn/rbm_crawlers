@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class AlibrisSpider(HTMLSearchSpider):
+class AlibrisSpider(NodriverSearchSpider):
     """Broad crawler for Alibris (Saudi Arabia)."""
     def __init__(self, search_term: str = "books", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

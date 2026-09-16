@@ -1,7 +1,7 @@
 import argparse
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class BikroyBdSpider(HTMLSearchSpider):
+class BikroyBdSpider(NodriverSearchSpider):
     """
     Spider for Bikroy (Bangladesh).
     The largest C2C classifieds marketplace in Bangladesh, serving as the local equivalent to OLX for textbook trading.

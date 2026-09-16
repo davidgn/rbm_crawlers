@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class AdpostBdSpider(HTMLSearchSpider):
+class AdpostBdSpider(NodriverSearchSpider):
     """Native spider for AdPost Bangladesh."""
     def __init__(self, limit_pages: int = 50):
         super().__init__(
