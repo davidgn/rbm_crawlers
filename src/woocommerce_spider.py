@@ -8,11 +8,12 @@ class WooCommerceAPISpider(BaseSpider):
     A generic spider for bookstores built on WooCommerce that have the 
     /wp-json/wc/store/products REST API endpoint exposed.
     """
-    def __init__(self, platform_name: str, base_url: str, territory: str = "India", limit_pages: int = 10):
+    def __init__(self, platform_name: str, base_url: str, territory: str = "India", limit_pages: int = 10, limit_items: int | None = None, **kwargs):
         super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url.rstrip("/")
         self.api_endpoint = f"{self.base_url}/wp-json/wc/store/products"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, verify=False)
 
     def _get_robust_response(self, url: str, max_retries: int = 3):
@@ -44,6 +45,9 @@ class WooCommerceAPISpider(BaseSpider):
         current_endpoint_idx = 0
         
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
+
             url = endpoints[current_endpoint_idx].format(page=page)
             self.logger.info(f"Fetching page {page}: {url}")
             
@@ -81,6 +85,8 @@ class WooCommerceAPISpider(BaseSpider):
                     break
 
                 for product in data:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         self._parse_product(product)
                     except Exception:
