@@ -5,12 +5,12 @@ class JumiaRwSpider(HTMLSearchSpider):
     """Spider for Jumia Deals Rwanda (previously Vendito). Africa's leading online marketplace
     active in Rwanda, covering books, electronics, fashion and general merchandise C2C listings."""
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(
             platform_name="Jumia_RW", base_url="https://www.jumia.rw",
             search_path="catalog/?q={search_term}",
             selectors={'container': 'article.prd', 'title': 'h3.name', 'price': 'div.prc'},
-            territory="Rwanda", limit_pages=limit_pages
+            territory="Rwanda", limit_pages=limit_pages, limit_items=limit_items
         )
 
 
@@ -19,7 +19,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="books")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
-    spider = JumiaRwSpider(limit_pages=args.limit_pages)
+    spider = JumiaRwSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

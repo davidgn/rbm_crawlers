@@ -5,12 +5,12 @@ class AfribabaGuineaSpider(HTMLSearchSpider):
     """Spider for Afribaba Guinea (gn.afribaba.com). Pan-African C2C classifieds portal
     serving Guinea with books, electronics, clothing, furniture and general merchandise listings."""
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(
             platform_name="Afribaba_GN", base_url="https://gn.afribaba.com",
             search_path="search/?q={search_term}",
             selectors={'container': 'div.classified', 'title': 'h2.classified-title', 'price': 'span.classified-price'},
-            territory="Guinea", limit_pages=limit_pages
+            territory="Guinea", limit_pages=limit_pages, limit_items=limit_items
         )
 
 
@@ -19,7 +19,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="livres")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
-    spider = AfribabaGuineaSpider(limit_pages=args.limit_pages)
+    spider = AfribabaGuineaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

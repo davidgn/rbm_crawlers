@@ -6,12 +6,12 @@ class MercadolibreBoSpider(HTMLSearchSpider):
     C2C and B2C marketplace with a dedicated Bolivia portal covering books, electronics,
     clothing, collectibles and all general merchandise categories."""
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(
             platform_name="MercadoLibre_BO", base_url="https://listado.mercadolibre.com.bo",
             search_path="{search_term}",
             selectors={'container': 'li.ui-search-layout__item', 'title': 'h2.ui-search-item__title', 'price': 'span.andes-money-amount__fraction'},
-            territory="Bolivia", limit_pages=limit_pages
+            territory="Bolivia", limit_pages=limit_pages, limit_items=limit_items
         )
 
 
@@ -20,7 +20,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="libros")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
-    spider = MercadolibreBoSpider(limit_pages=args.limit_pages)
+    spider = MercadolibreBoSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

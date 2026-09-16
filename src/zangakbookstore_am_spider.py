@@ -5,7 +5,7 @@ class ZangakbookstoreAmSpider(HTMLSearchSpider):
     Broad crawler for Zangak Bookstore (Armenia) using HTML search parsing.
     Prices are in Armenian Dram (AMD).
     """
-    def __init__(self, limit_pages: int = 5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(
             platform_name="Zangak Bookstore",
             base_url="https://zangakbookstore.am",
@@ -18,13 +18,14 @@ class ZangakbookstoreAmSpider(HTMLSearchSpider):
             },
             territory="Armenia",
             price_currency="AMD",
-            limit_pages=limit_pages
+            limit_pages=limit_pages, limit_items=limit_items
         )
 
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
-    ZangakbookstoreAmSpider(limit_pages=args.limit_pages).run()
+    ZangakbookstoreAmSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

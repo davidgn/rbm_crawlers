@@ -2,13 +2,13 @@ from html_search_spider import HTMLSearchSpider
 
 class ClasificadosOnlinePrSpider(HTMLSearchSpider):
     """Native spider for ClasificadosOnline (Puerto Rico). The massive local peer-to-peer network."""
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(
             platform_name="ClasificadosOnline_PR",
             base_url="https://www.clasificadosonline.com",
             search_path="Miscelaneas/MiscSearch.asp?ClasSearch={search_term}",
             selectors={'container': 'div', 'title': 'h2', 'price': '.price'}, territory="Puerto Rico",
-            limit_pages=limit_pages
+            limit_pages=limit_pages, limit_items=limit_items
         )
 
 if __name__ == "__main__":
@@ -16,6 +16,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="libros")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = ClasificadosOnlinePrSpider(limit_pages=args.limit_pages)
+    spider = ClasificadosOnlinePrSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

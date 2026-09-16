@@ -5,12 +5,12 @@ class AnnoncesTnSpider(HTMLSearchSpider):
     """Spider for Annonce.tn (Tunisia). One of Tunisia's established C2C classifieds platforms
     covering books, electronics, clothing, furniture and general merchandise in French and Arabic."""
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(
             platform_name="Annonce_TN", base_url="https://www.annonce.tn",
             search_path="recherche?q={search_term}",
             selectors={'container': 'div.annonce-item', 'title': 'h2.annonce-title', 'price': 'span.annonce-price'},
-            territory="Tunisia", limit_pages=limit_pages
+            territory="Tunisia", limit_pages=limit_pages, limit_items=limit_items
         )
 
 
@@ -19,7 +19,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="livres")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
-    spider = AnnoncesTnSpider(limit_pages=args.limit_pages)
+    spider = AnnoncesTnSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()
