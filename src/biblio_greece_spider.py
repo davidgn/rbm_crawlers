@@ -9,13 +9,13 @@ class BiblioGreeceSpider(NodriverSearchSpider):
         super().__init__(
             platform_name="Biblio.com Greece",
             base_url="https://www.biblio.com",
-            search_path="search.php?key={query}&page={page}",
+            search_path="search.php?stage=1&result_type=works&keyisbn={query}&page={page}",
             selectors={
-                'container': '.search-result, .item-card, .book-item, .result-item, div.search-result-row',
-                'title': 'h2 a, h3 a, a.title, .title a',
-                'link': 'h2 a, h3 a, a.title, .title a',
-                'price': '.price, .item-price, span.price',
-                'author': '.author, .item-author, p.author'
+                'container': '#search_results_list .item.smarty',
+                'title': 'header.item-title h2.title a',
+                'link': 'header.item-title h2.title a',
+                'price': '.item-price',
+                'author': 'header.item-title h3.author'
             },
             territory="Greece",
             price_currency="EUR",

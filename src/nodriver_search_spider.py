@@ -38,15 +38,30 @@ class NodriverSearchSpider(BaseSpider):
                     
                 self.logger.info(f"Navigating to {url}")
                 await page.get(url)
-                await asyncio.sleep(5) # Allow CF to pass
-                
-                html = await page.get_content()
-                if "cloudflare" in html.lower() and "just a moment" in html.lower():
-                    self.logger.warning("Waiting longer for Cloudflare...")
-                    await asyncio.sleep(8)
-                    html = await page.get_content()
+                await asyncio.sleep(5) # Allow CF / initial render to pass
 
+                html = await page.get_content()
                 soup = BeautifulSoup(html, "html.parser")
+                container_sel = self.selectors.get('container')
+
+                # Retry if we're still on a Cloudflare challenge (worth waiting out,
+                # up to 3 extra rounds) or the page shell loaded but the (often
+                # client-rendered) results haven't landed yet (worth one extra try —
+                # beyond that it's more likely a stale selector than a slow render).
+                no_items_retries = 0
+                for extra_wait in (8, 8, 8):
+                    is_challenge = "cloudflare" in html.lower() and "just a moment" in html.lower()
+                    has_items = bool(container_sel and soup.select(container_sel))
+                    if is_challenge:
+                        self.logger.warning("Waiting longer for Cloudflare...")
+                    elif container_sel and not has_items and no_items_retries < 1:
+                        self.logger.info("No items rendered yet — waiting longer for page to load...")
+                        no_items_retries += 1
+                    else:
+                        break
+                    await asyncio.sleep(extra_wait)
+                    html = await page.get_content()
+                    soup = BeautifulSoup(html, "html.parser")
                 items = soup.select(self.selectors.get('container', 'body')) if self.selectors.get('container') else []
                 
                 if not items:
