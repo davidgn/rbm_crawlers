@@ -1,4 +1,5 @@
 import asyncio
+import os
 import re
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
@@ -9,16 +10,18 @@ from isbn_utils import isbn_from_url
 import nodriver as uc
 
 class NodriverSearchSpider(BaseSpider):
-    def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict, territory: str, price_currency: str = None, limit_pages: int = 5, limit_items: int = None, **kwargs):
+    def __init__(self, platform_name: str, base_url: str, search_path: str, selectors: dict = None, territory: str = "India", price_currency: str = None, limit_pages: int = 5, limit_items: int = None, **kwargs):
         super().__init__(platform_name=platform_name, territory=territory)
         self.base_url = base_url.rstrip("/")
         self.search_path = search_path
-        self.selectors = selectors
+        self.selectors = selectors or {}
         self.price_currency = price_currency
         self.limit_pages = limit_pages
         self.limit_items = limit_items
 
-    def run(self, search_term: str):
+    def run(self, search_term: str = None):
+        if not search_term:
+            search_term = os.getenv("RBM_SEARCH_TERM") or getattr(self, "default_query", "University of Chicago Press")
         asyncio.run(self._run_async(search_term))
 
     async def _run_async(self, search_term: str):
@@ -62,8 +65,15 @@ class NodriverSearchSpider(BaseSpider):
                     await asyncio.sleep(extra_wait)
                     html = await page.get_content()
                     soup = BeautifulSoup(html, "html.parser")
-                items = soup.select(self.selectors.get('container', 'body')) if self.selectors.get('container') else []
-                
+
+                if container_sel:
+                    items = soup.select(container_sel)
+                else:
+                    # No selectors configured: fall back to treating every link on the
+                    # page as a candidate item (title/price heuristics + skip-word
+                    # filtering happen in _parse_item), matching HTMLSearchSpider.
+                    items = soup.find_all('a', href=True)
+
                 if not items:
                     self.logger.info(f"No items found on page {page_num}.")
                     break
@@ -86,15 +96,36 @@ class NodriverSearchSpider(BaseSpider):
         if not item_soup:
             return
 
-        title_el = item_soup.select_one(self.selectors.get('title', ''))
-        if not title_el:
+        if self.selectors.get('title'):
+            title_el = item_soup.select_one(self.selectors['title'])
+            title = title_el.text.strip() if title_el else None
+        elif item_soup.name == 'a':
+            title = item_soup.get_text(strip=True)
+        else:
+            title = None
+
+        if not title or len(title) < 5:
+            return  # Skip items without a meaningful title
+
+        # Filter out common navigational links (only relevant in anchor-fallback mode,
+        # but harmless to apply generally — matches HTMLSearchSpider).
+        lower_title = title.lower()
+        skip_words = ['sign in', 'log in', 'login', 'account', 'cart', 'checkout', 'help',
+                      'about', 'contact', 'search', 'home', 'privacy', 'terms', 'conditions',
+                      'currency', 'cookie', 'skip', 'top', 'no results']
+        if any(word in lower_title for word in skip_words) and len(title) < 30:
             return
-        title = title_el.text.strip()
 
-        link_el = item_soup.select_one(self.selectors.get('link', 'a'))
-        listing_url = urljoin(self.base_url, link_el['href']) if link_el and link_el.has_attr('href') else None
+        if self.selectors.get('link'):
+            link_el = item_soup.select_one(self.selectors['link'])
+            listing_url = urljoin(self.base_url, link_el['href']) if link_el and link_el.has_attr('href') else None
+        elif item_soup.name == 'a' and item_soup.has_attr('href'):
+            listing_url = urljoin(self.base_url, item_soup['href'])
+        else:
+            fallback_link = item_soup.find('a', href=True) if hasattr(item_soup, 'find') else None
+            listing_url = urljoin(self.base_url, fallback_link['href']) if fallback_link else None
 
-        if not title or not listing_url:
+        if not listing_url:
             return
 
         def parse_single_price(raw_num: str) -> str:
@@ -150,6 +181,37 @@ class NodriverSearchSpider(BaseSpider):
                     raw_sym = sym_match.group(1).upper()
                     sym_map = {"$": "USD", "£": "GBP", "€": "EUR", "¥": "JPY", "RS.": "INR", "RS": "INR", "R$": "BRL"}
                     price_currency_extracted = sym_map.get(raw_sym, raw_sym)
+        elif not self.selectors:
+            # Anchor-fallback mode: no price selector to check, so search the
+            # surrounding text (parent/grandparent) for a price-like number.
+            search_container = item_soup.find_parent()
+            if search_container:
+                grandparent = search_container.find_parent()
+                if grandparent:
+                    search_container = grandparent
+                text_to_search = search_container.get_text(separator=' ', strip=True)
+                match = re.search(
+                    r"(?:Rs\.?|INR|USD|\$|£|€|\b(?:R\$|Rp|RM|TWD|฿|VND|kr|Kč|zł|CHF))\s*([\d,]+(?:\.\d+)?)",
+                    text_to_search, re.IGNORECASE,
+                )
+                if match:
+                    price_val = match.group(1).replace(",", "")
+                    if not price_currency_extracted:
+                        sym_match = re.search(
+                            r"(Rs\.?|INR|USD|\$|£|€|\b(?:R\$|Rp|RM|TWD|฿|VND|kr|Kč|zł|CHF))",
+                            match.group(0), re.IGNORECASE,
+                        )
+                        if sym_match:
+                            price_currency_extracted = sym_match.group(1).upper()
+                else:
+                    match = re.search(r"[\d,]{2,}(?:\.\d+)?", text_to_search)
+                    if match:
+                        price_val = match.group(0).replace(",", "")
+
+        # In anchor-fallback mode a price is required to consider it a valid
+        # listing at all (otherwise every nav link on the page becomes an "item").
+        if not self.selectors and not price_val:
+            return
 
         author = None
         author_el = item_soup.select_one(self.selectors.get('author')) if self.selectors.get('author') else None

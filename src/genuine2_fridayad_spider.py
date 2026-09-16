@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class FridayAdSpider(HTMLSearchSpider):
+class FridayAdSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="FridayAd", base_url="https://friday-ad.co.uk",
