@@ -12,7 +12,6 @@ import argparse
 import base64
 import io
 import json
-import random
 import re
 import time
 import zipfile
@@ -144,7 +143,7 @@ class BookShuffleSpider(BaseSpider):
                 response.raise_for_status()
                 rows = response.json()
                 return [row["document"] for row in rows if isinstance(row, dict) and isinstance(row.get("document"), dict)]
-            except Exception as e:
+            except Exception:
                 if attempt == 2:
                     raise
                 time.sleep(2 ** attempt)

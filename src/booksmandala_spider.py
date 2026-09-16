@@ -76,7 +76,7 @@ class BooksMandalaSpider(BaseSpider):
                     
                 pagination = data.get("pagination", {})
                 if not pagination.get("next"):
-                    self.logger.info(f"Reached final API page.")
+                    self.logger.info("Reached final API page.")
                     break
 
         except Exception as e:

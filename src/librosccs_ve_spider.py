@@ -6,8 +6,8 @@ class LibrosccsVeSpider(HTMLSearchSpider):
         super().__init__(
             platform_name="Libros.ccs",
             base_url="https://librosccs.com",
-            search_path="search?q={query}&page={page}",
-            selectors={'container': '.card-wrapper', 'title': 'h3.card__heading a', 'price': '.price-item'},
+            search_path="buscar?q={query}",
+            selectors={'container': 'div.item', 'title': 'h3', 'price': '.price'},
             territory="Venezuela",
             limit_pages=limit_pages,
             **kwargs

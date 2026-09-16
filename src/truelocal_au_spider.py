@@ -1,4 +1,3 @@
-import re
 from html_search_spider import HTMLSearchSpider
 
 class TruelocalAuSpider(HTMLSearchSpider):

@@ -16,7 +16,6 @@ category + subcategory labels (e.g. "COLLEGE | MDU | BCA | Semester 4").
 
 import argparse
 import logging
-import random
 import time
 from typing import Any
 
@@ -110,7 +109,7 @@ class MyOldBooksSpider(BaseSpider):
                     continue
                 r.raise_for_status()
                 break
-            except Exception as e:
+            except Exception:
                 time.sleep(2 ** attempt)
 
         if not r or r.status_code != 200:

@@ -1,6 +1,3 @@
-import json
-import random
-import re
 import time
 from typing import Any
 from urllib.parse import urljoin
@@ -68,7 +65,7 @@ class McitOpacSpider(BaseSpider):
                         time.sleep(2 ** attempt)
                         continue
                     break
-                except Exception as e:
+                except Exception:
                     time.sleep(2 ** attempt)
 
             if not result:

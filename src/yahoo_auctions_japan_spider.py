@@ -1,7 +1,7 @@
 from html_search_spider import HTMLSearchSpider
 
 class YahooAuctionsJapanSpider(HTMLSearchSpider):
-    """Spider for Yahoo! Auctions (Japan)."""
+    """Native spider for Yahoo! Auctions (Japan)."""
     def __init__(self, limit_pages=10, **kwargs):
         super().__init__(
             platform_name="Yahoo! Auctions",

@@ -1,7 +1,5 @@
 import argparse
 import asyncio
-import re
-import time
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 from isbn_utils import extract_isbn, isbn_from_url
@@ -26,7 +24,7 @@ class KoshoSpider(BaseSpider):
         asyncio.run(self._run_async())
 
     async def _run_async(self):
-        self.logger.info(f"Starting 日本の古本屋 harvest via nodriver.")
+        self.logger.info("Starting 日本の古本屋 harvest via nodriver.")
         
         browser = await uc.start()
         try:

@@ -1,5 +1,4 @@
 import argparse
-import re
 from html_search_spider import HTMLSearchSpider
 
 class N999MdSpider(HTMLSearchSpider):

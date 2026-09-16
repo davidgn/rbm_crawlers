@@ -49,7 +49,7 @@ class FollettSearchSpider(BaseSpider):
                 self.logger.info(f"Resolved: storeId={self.store_id}, catalogId={self.catalog_id}")
                 return True
             else:
-                self.logger.error(f"Could not find storeId or catalogId in config response.")
+                self.logger.error("Could not find storeId or catalogId in config response.")
                 return False
         except Exception as e:
             self.logger.error(f"Error resolving store config: {e}")

@@ -6,8 +6,8 @@ class BuybookBaSpider(HTMLSearchSpider):
         super().__init__(
             platform_name="Buybook",
             base_url="https://buybook.ba",
-            search_path="search?q={query}&page={page}",
-            selectors={'container': '.card-wrapper', 'title': 'h3.card__heading a', 'price': '.price-item'},
+            search_path="pretraga?q={query}",
+            selectors={'container': 'div.item', 'title': 'h3', 'price': '.price'},
             territory="Bosnia and Herzegovina",
             limit_pages=limit_pages,
             **kwargs

@@ -5,9 +5,9 @@ class LibreriaInternacionalCrSpider(HTMLSearchSpider):
     def __init__(self, limit_pages=10, **kwargs):
         super().__init__(
             platform_name="Librería Internacional",
-            base_url="https://www.libreriainternacional.com/catalogsearch/result/",
-            search_path="?q={query}",
-            selectors={'container': '.product-item', 'title': '.product-item-link', 'price': '.price'},
+            base_url="https://www.libreriainternacional.com",
+            search_path="search?q={query}",
+            selectors={'container': 'div.item', 'title': 'h3', 'price': '.price'},
             territory="Costa Rica",
             limit_pages=limit_pages,
             **kwargs

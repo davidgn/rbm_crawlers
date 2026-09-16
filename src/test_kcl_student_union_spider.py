@@ -1,4 +1,3 @@
-import os
 import sys
 import unittest
 import json
@@ -10,7 +9,6 @@ from unittest.mock import MagicMock, patch
 sys.path.insert(0, str(Path(__file__).parent))
 
 from kcl_student_union_spider import KclStudentUnionSpider
-from models import BookListing
 
 class TestKclStudentUnionSpider(unittest.TestCase):
     def setUp(self):

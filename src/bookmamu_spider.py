@@ -13,7 +13,6 @@ Firebase project: book-bookmamu (Firestore primary store; API is a REST bridge).
 """
 
 import argparse
-import random
 import time
 import httpx
 import logging
@@ -80,7 +79,7 @@ class BookMamuSpider(BaseSpider):
                             time.sleep(2 ** attempt)
                             continue
                         break
-                    except Exception as e:
+                    except Exception:
                         time.sleep(2 ** attempt)
 
                 if not r:

@@ -1,4 +1,3 @@
-import os
 import unittest
 from pathlib import Path
 from olx_ba_spider import OlxBASpider

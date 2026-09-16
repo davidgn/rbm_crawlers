@@ -1,4 +1,3 @@
-import re
 from curl_cffi import requests
 from bs4 import BeautifulSoup
 from base_spider import BaseSpider

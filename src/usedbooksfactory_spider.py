@@ -1,6 +1,5 @@
 import argparse
 import random
-import re
 import httpx
 from bs4 import BeautifulSoup
 import time

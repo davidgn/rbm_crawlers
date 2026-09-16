@@ -1,7 +1,6 @@
 import argparse
 import re
 from urllib.parse import parse_qs, urljoin, urlparse
-from bs4 import BeautifulSoup
 from playwright_search_spider import PlaywrightSearchSpider
 from models import BookListing
 

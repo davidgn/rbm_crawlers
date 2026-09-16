@@ -1,4 +1,3 @@
-import json
 from base_spider import BaseSpider
 from models import BookListing
 

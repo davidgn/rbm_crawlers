@@ -1,5 +1,4 @@
 import argparse
-import random
 import time
 import httpx
 from base_spider import BaseSpider
@@ -59,7 +58,7 @@ class AskitabSpider(BaseSpider):
                         time.sleep(2 ** attempt)
                         continue
                     break
-                except Exception as e:
+                except Exception:
                     time.sleep(2 ** attempt)
 
             if not response:

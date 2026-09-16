@@ -47,7 +47,7 @@ class LibrairieclgaGaSpider(BaseSpider):
                 book_links = set()
                 for a in soup.find_all("a", href=True):
                     href = a["href"].strip()
-                    if "/shop/" in href and not "/category/" in href and not "?search=" in href:
+                    if "/shop/" in href and "/category/" not in href and "?search=" not in href:
                         clean_href = href.split("?")[0]
                         if clean_href.startswith("http"):
                             book_links.add(clean_href)

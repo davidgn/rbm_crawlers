@@ -1,4 +1,3 @@
-import os
 
 spider_template = """from html_search_spider import HTMLSearchSpider
 

@@ -42,7 +42,6 @@ class PlaywrightSearchSpider(BaseSpider):
         self.logger.info(f"Starting Playwright Search crawler for {self.platform_name}. Limit: {self.limit_pages} pages.")
         
         # Check if sync_playwright is mocked in unit tests
-        from unittest.mock import MagicMock
         is_mocked = False
         try:
             if "mock" in str(type(sync_playwright)).lower():
@@ -53,7 +52,7 @@ class PlaywrightSearchSpider(BaseSpider):
         if not is_mocked:
             try:
                 from curl_cffi import requests as curlex
-                self.logger.info(f"Attempting search via curl_cffi Chrome impersonation...")
+                self.logger.info("Attempting search via curl_cffi Chrome impersonation...")
                 session = curlex.Session(impersonate="chrome110", timeout=30.0)
                 
                 success = True

@@ -23,7 +23,7 @@ class SombaBukuCgSpider(BaseSpider):
         }
 
     def run(self):
-        self.logger.info(f"Starting Somba Buku Congo crawler.")
+        self.logger.info("Starting Somba Buku Congo crawler.")
         
         urls = [
             f"{self.BASE_URL}/",

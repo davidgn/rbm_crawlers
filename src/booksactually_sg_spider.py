@@ -16,7 +16,8 @@ class BooksactuallySgSpider(ShopifySearchSpider):
         )
 
 if __name__ == "__main__":
-    import argparse, logging
+    import argparse
+    import logging
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="BooksActually Singapore Shopify Spider")
     parser.add_argument("--query", type=str, default="fiction")

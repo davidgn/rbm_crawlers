@@ -49,7 +49,7 @@ class MalibookMlSpider(BaseSpider):
                 book_links = set()
                 for a in soup.find_all("a", href=True):
                     href = a["href"].strip()
-                    if "/catalogue/" in href and not "/categorie/" in href:
+                    if "/catalogue/" in href and "/categorie/" not in href:
                         clean_href = href.split("?")[0]
                         if clean_href.startswith("http"):
                             book_links.add(clean_href)

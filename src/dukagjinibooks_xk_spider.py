@@ -1,4 +1,3 @@
-import json
 from curl_cffi import requests
 from base_spider import BaseSpider
 from models import BookListing

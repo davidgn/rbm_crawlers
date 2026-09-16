@@ -17,7 +17,8 @@ class OkadaLivresSenegalSnSpider(ShopifySearchSpider):
         )
 
 if __name__ == "__main__":
-    import argparse, logging
+    import argparse
+    import logging
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="Okada Livres Senegal Shopify Spider")
     parser.add_argument("--query", type=str, default="roman")

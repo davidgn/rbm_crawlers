@@ -1,6 +1,5 @@
 import httpx
 import asyncio
-import logging
 import tempfile
 import os
 import gzip

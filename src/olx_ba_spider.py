@@ -1,9 +1,6 @@
 import re
-import json
 import os
 import time
-import base64
-from bs4 import BeautifulSoup
 from curl_cffi import requests
 from base_spider import BaseSpider
 from models import BookListing

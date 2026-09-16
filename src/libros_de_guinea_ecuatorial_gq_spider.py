@@ -33,7 +33,7 @@ class LibrosDeGuineaEcuatorialGqSpider(BaseSpider):
         }
 
     def run(self):
-        self.logger.info(f"Starting Libros de Guinea Ecuatorial crawler.")
+        self.logger.info("Starting Libros de Guinea Ecuatorial crawler.")
         
         urls = [
             f"{self.BASE_URL}/biblioteca",

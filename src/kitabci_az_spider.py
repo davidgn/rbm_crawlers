@@ -17,7 +17,8 @@ class KitabciAzSpider(ShopifySearchSpider):
         )
 
 if __name__ == "__main__":
-    import argparse, logging
+    import argparse
+    import logging
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="Kitabci.az Azerbaijan Shopify Spider")
     parser.add_argument("--query", type=str, default="kitab")

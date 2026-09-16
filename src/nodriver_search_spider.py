@@ -1,9 +1,7 @@
 import asyncio
-import time
 import re
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
-from pydantic import ValidationError
 from models import BookListing
 from base_spider import BaseSpider
 from isbn_utils import isbn_from_url
