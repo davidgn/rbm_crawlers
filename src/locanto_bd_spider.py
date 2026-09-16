@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class LocantoBdSpider(HTMLSearchSpider):
+class LocantoBdSpider(NodriverSearchSpider):
     """Native spider for Locanto Bangladesh."""
     def __init__(self, limit_pages: int = 50):
         super().__init__(

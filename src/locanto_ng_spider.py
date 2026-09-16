@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class LocantoNgSpider(HTMLSearchSpider):
+class LocantoNgSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 10, limit_items: int | None = None):
         super().__init__(
             platform_name="Locanto Nigeria",

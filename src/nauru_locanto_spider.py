@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class NauruLocantoSpider(HTMLSearchSpider):
+class NauruLocantoSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Locanto_NR", base_url="https://nauru.locanto.com",

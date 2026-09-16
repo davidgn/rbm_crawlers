@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class LocantoCaSpider(HTMLSearchSpider):
+class LocantoCaSpider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Locanto_CA", base_url="https://locanto.ca",

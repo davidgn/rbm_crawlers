@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class LocantoCOSpider(HTMLSearchSpider):
+class LocantoCOSpider(NodriverSearchSpider):
     """Broad crawler for Locanto (CO) (Colombia)."""
     def __init__(self, search_term: str = "libros", limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(

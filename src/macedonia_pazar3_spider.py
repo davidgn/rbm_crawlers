@@ -1,6 +1,6 @@
-from html_search_spider import HTMLSearchSpider
+from nodriver_search_spider import NodriverSearchSpider
 
-class MacedoniaPazar3Spider(HTMLSearchSpider):
+class MacedoniaPazar3Spider(NodriverSearchSpider):
     def __init__(self, limit_pages: int = 50):
         super().__init__(
             platform_name="Pazar3_MK", base_url="https://www.pazar3.mk",
