@@ -26,6 +26,8 @@ class NodriverSearchSpider(BaseSpider):
             search_term = os.getenv("RBM_SEARCH_TERM") or getattr(self, "default_query", "University of Chicago Press")
         asyncio.run(self._run_async(search_term))
 
+    PAGE_TIMEOUT_S = 60  # hard cap so a single unresponsive site can't hang the whole crawl
+
     async def _run_async(self, search_term: str):
         self.logger.info(f"Starting nodriver crawl for {self.platform_name}. Search Term: {search_term}")
         browser = await uc.start()
@@ -34,66 +36,81 @@ class NodriverSearchSpider(BaseSpider):
             for page_num in range(1, self.limit_pages + 1):
                 if self.limit_items is not None and self.items_scraped >= self.limit_items:
                     break
-                
+
                 url_template = self.search_path if self.search_path.startswith("http") else f"{self.base_url}/{self.search_path.lstrip('/')}"
                 try:
                     url = url_template.format(query=search_term.replace(' ', '+'), search_term=search_term.replace(' ', '+'), page=page_num)
                 except Exception:
                     url = url_template
-                    
-                self.logger.info(f"Navigating to {url}")
-                await page.get(url)
-                await asyncio.sleep(5) # Allow CF / initial render to pass
 
-                html = await page.get_content()
-                soup = BeautifulSoup(html, "html.parser")
-                container_sel = self.selectors.get('container')
-
-                # Retry if we're still on a Cloudflare challenge (worth waiting out,
-                # up to 3 extra rounds) or the page shell loaded but the (often
-                # client-rendered) results haven't landed yet (worth one extra try —
-                # beyond that it's more likely a stale selector than a slow render).
-                no_items_retries = 0
-                for extra_wait in (8, 8, 8):
-                    is_challenge = "cloudflare" in html.lower() and "just a moment" in html.lower()
-                    has_items = bool(container_sel and soup.select(container_sel))
-                    if is_challenge:
-                        self.logger.warning("Waiting longer for Cloudflare...")
-                    elif container_sel and not has_items and no_items_retries < 1:
-                        self.logger.info("No items rendered yet — waiting longer for page to load...")
-                        no_items_retries += 1
-                    else:
-                        break
-                    await asyncio.sleep(extra_wait)
-                    html = await page.get_content()
-                    soup = BeautifulSoup(html, "html.parser")
-
-                if container_sel:
-                    items = soup.select(container_sel)
-                else:
-                    # No selectors configured: fall back to treating every link on the
-                    # page as a candidate item (title/price heuristics + skip-word
-                    # filtering happen in _parse_item), matching HTMLSearchSpider.
-                    items = soup.find_all('a', href=True)
-
-                if not items:
-                    self.logger.info(f"No items found on page {page_num}.")
+                try:
+                    keep_going = await asyncio.wait_for(
+                        self._process_page(page, url, page_num), timeout=self.PAGE_TIMEOUT_S
+                    )
+                except asyncio.TimeoutError:
+                    self.logger.error(f"Timed out after {self.PAGE_TIMEOUT_S}s loading page {page_num} ({url}). Stopping.")
                     break
-
-                for item in items:
-                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
-                        break
-                    try:
-                        self._parse_item(item)
-                    except Exception as e:
-                        self.logger.error(f"Error parsing item: {e}")
+                if not keep_going:
+                    break
 
                 await asyncio.sleep(2)
         except Exception as e:
             self.logger.error(f"Error: {e}")
         finally:
             browser.stop()
-            
+
+    async def _process_page(self, page, url, page_num) -> bool:
+        """Load and parse one search-results page. Returns False if the crawl
+        should stop (no items / end of results), True to continue to the next page."""
+        self.logger.info(f"Navigating to {url}")
+        await page.get(url)
+        await asyncio.sleep(5)  # Allow CF / initial render to pass
+
+        html = await page.get_content()
+        soup = BeautifulSoup(html, "html.parser")
+        container_sel = self.selectors.get('container')
+
+        # Retry if we're still on a Cloudflare challenge (worth waiting out,
+        # up to 3 extra rounds) or the page shell loaded but the (often
+        # client-rendered) results haven't landed yet (worth one extra try —
+        # beyond that it's more likely a stale selector than a slow render).
+        no_items_retries = 0
+        for extra_wait in (8, 8, 8):
+            is_challenge = "cloudflare" in html.lower() and "just a moment" in html.lower()
+            has_items = bool(container_sel and soup.select(container_sel))
+            if is_challenge:
+                self.logger.warning("Waiting longer for Cloudflare...")
+            elif container_sel and not has_items and no_items_retries < 1:
+                self.logger.info("No items rendered yet — waiting longer for page to load...")
+                no_items_retries += 1
+            else:
+                break
+            await asyncio.sleep(extra_wait)
+            html = await page.get_content()
+            soup = BeautifulSoup(html, "html.parser")
+
+        if container_sel:
+            items = soup.select(container_sel)
+        else:
+            # No selectors configured: fall back to treating every link on the
+            # page as a candidate item (title/price heuristics + skip-word
+            # filtering happen in _parse_item), matching HTMLSearchSpider.
+            items = soup.find_all('a', href=True)
+
+        if not items:
+            self.logger.info(f"No items found on page {page_num}.")
+            return False
+
+        for item in items:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
+            try:
+                self._parse_item(item)
+            except Exception as e:
+                self.logger.error(f"Error parsing item: {e}")
+
+        return True
+
     def _parse_item(self, item_soup):
         if not item_soup:
             return
