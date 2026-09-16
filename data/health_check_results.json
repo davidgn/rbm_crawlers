@@ -1,0 +1,18 @@
+{
+  "OK": 4629,
+  "ERROR": 2,
+  "TIMEOUT": 0,
+  "details": [
+    [
+      "27thletter_us_spider",
+      "ERROR",
+      "  File \"/opt/repos/rbm_crawlers/src/27thletter_us_spider.py\", line 3\n    class 27ThLetterBooksSpider(HTMLSearchSpider):\n           ^\nSyntaxError: invalid decimal literal\n"
+    ],
+    [
+      "books786_pk_spider",
+      "ERROR",
+      "  File \"/opt/repos/rbm_crawlers/src/books786_pk_spider.py\", line 19\n    spider = 786BooksSpider(limit_pages=1, limit_items=5)\n               ^\nSyntaxError: invalid decimal literal\n"
+    ]
+  ],
+  "timestamp": "2026-09-14T05:50:37.994110"
+}

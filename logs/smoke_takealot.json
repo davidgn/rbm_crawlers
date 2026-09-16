@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/takealot_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 20.54,
+      "stdout_tail": "",
+      "stderr_tail": "2026-09-14 06:09:51,429 [INFO] TakealotSpider: Starting Takealot Books harvest (nodriver). limit_pages=1\n2026-09-14 06:09:51,434 [INFO] nodriver.core.browser: starting\n\texecutable :/bin/chromium\n\narguments:\n--remote-allow-origins=*\n\t--no-first-run\n\t--no-service-autorun\n\t--no-default-browser-check\n\t--homepage=about:blank\n\t--no-pings\n\t--password-store=basic\n\t--disable-infobars\n\t--disable-breakpad\n\t--disable-dev-shm-usage\n\t--disable-session-crashed-bubble\n\t--disable-search-engine-choice-screen\n\t--user-data-dir=/tmp/uc_lf9s8l3z\n\t--disable-session-crashed-bubble\n\t--disable-features=IsolateOrigins,site-per-process\n\t--remote-debugging-host=127.0.0.1\n\t--remote-debugging-port=53525\n2026-09-14 06:10:02,862 [INFO] TakealotSpider: Index page 1: https://www.takealot.com/books\n2026-09-14 06:10:09,337 [INFO] TakealotSpider: No new links on page 1 — done.\n2026-09-14 06:10:09,341 [INFO] nodriver.core.browser: terminated browser with pid 150339 successfully\n2026-09-14 06:10:09,341 [INFO] TakealotSpider: Finished. 0 items cached.\n2026-09-14 06:10:09,344 [INFO] nodriver.core.browser: terminated browser with pid 150339 successfully\n2026-09-14 06:10:09,448 [INFO] nodriver.core.util: successfully removed temp profile /tmp/uc_lf9s8l3z\n"
+    }
+  ]
+}

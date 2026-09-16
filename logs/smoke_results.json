@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "files": 6,
+    "nonzero": 2,
+    "timeouts": 1,
+    "zero_added": 6,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/27thletter_us_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.16,
+      "stdout_tail": "",
+      "stderr_tail": "2026-09-14 05:56:38,249 [INFO] _27ThLetterBooksSpider: Starting HTML Search crawler for 27th Letter Books. Limit: 1 pages.\n2026-09-14 05:56:38,249 [INFO] _27ThLetterBooksSpider: Fetching page 1: https://www.27thletterbooks.com/search?q=University+of+Chicago+Press\n2026-09-14 05:56:41,626 [INFO] _27ThLetterBooksSpider: Finished 27th Letter Books. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/alibris_uk_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 22.92,
+      "stdout_tail": "",
+      "stderr_tail": "2026-09-14 05:56:46,806 [INFO] AlibrisUkSpider: Restart-safe: pre-loaded 2 existing URLs from alibris uk_listings.jsonl\n2026-09-14 05:56:46,807 [INFO] AlibrisUkSpider: Starting nodriver crawl for Alibris UK. Search Term: Potter\n2026-09-14 05:56:46,819 [INFO] nodriver.core.browser: starting\n\texecutable :/bin/chromium\n\narguments:\n--remote-allow-origins=*\n\t--no-first-run\n\t--no-service-autorun\n\t--no-default-browser-check\n\t--homepage=about:blank\n\t--no-pings\n\t--password-store=basic\n\t--disable-infobars\n\t--disable-breakpad\n\t--disable-dev-shm-usage\n\t--disable-session-crashed-bubble\n\t--disable-search-engine-choice-screen\n\t--user-data-dir=/tmp/uc_9cw7lh9o\n\t--disable-session-crashed-bubble\n\t--disable-features=IsolateOrigins,site-per-process\n\t--remote-debugging-host=127.0.0.1\n\t--remote-debugging-port=45657\n2026-09-14 05:56:52,047 [INFO] AlibrisUkSpider: Navigating to https://www.alibris.co.uk/booksearch?keyword=Potter&mtype=B&page=1\n2026-09-14 05:57:04,209 [INFO] AlibrisUkSpider: No items found on page 1.\n2026-09-14 05:57:04,216 [INFO] nodriver.core.browser: terminated browser with pid 148809 successfully\n2026-09-14 05:57:04,255 [INFO] nodriver.core.browser: terminated browser with pid 148809 successfully\n2026-09-14 05:57:04,351 [WARNING] asyncio: Loop <_UnixSelectorEventLoop running=False closed=True debug=False> that handles pid 148809 is closed\n2026-09-14 05:57:04,453 [INFO] nodriver.core.util: successfully removed temp profile /tmp/uc_9cw7lh9o\nException ignored in: <function BaseSubprocessTransport.__del__ at 0x7f2cc7371c60>\nTraceback (most recent call last):\n  File \"/usr/lib/python3.10/asyncio/base_subprocess.py\", line 126, in __del__\n    self.close()\n  File \"/usr/lib/python3.10/asyncio/base_subprocess.py\", line 104, in close\n    proto.pipe.close()\n  File \"/usr/lib/python3.10/asyncio/unix_events.py\", line 746, in close\n    self.write_eof()\n  File \"/usr/lib/python3.10/asyncio/unix_events.py\", line 732, in write_eof\n    self._loop.call_soon(self._call_connection_lost, None)\n  File \"/usr/lib/python3.10/asyncio/base_events.py\", line 753, in call_soon\n    self._check_closed()\n  File \"/usr/lib/python3.10/asyncio/base_events.py\", line 515, in _check_closed\n    raise RuntimeError('Event loop is closed')\nRuntimeError: Event loop is closed\n"
+    },
+    {
+      "file": "src/books786_pk_spider.py",
+      "returncode": -999,
+      "timeout": true,
+      "duration_s": 60.79,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "file": "src/cityreads_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 6.13,
+      "stdout_tail": "",
+      "stderr_tail": "2026-09-14 05:57:06,701 [INFO] CityReadsSpider: Restart-safe: pre-loaded 52 existing URLs from city reads_listings.jsonl\n2026-09-14 05:57:07,280 [INFO] CityReadsSpider: Starting Shopify API crawler for City Reads. Limit: 1 pages.\n2026-09-14 05:57:07,280 [INFO] CityReadsSpider: Fetching page 1: https://cityreadsbookstore.com/products.json?page=1&limit=250\n2026-09-14 05:57:08,726 [INFO] httpx: HTTP Request: GET https://cityreadsbookstore.com/products.json?page=1&limit=250 \"HTTP/1.1 200 OK\"\n2026-09-14 05:57:09,787 [INFO] CityReadsSpider: Finished City Reads. Scraped 0 items.\n"
+    },
+    {
+      "file": "src/kosho_spider.py",
+      "returncode": 2,
+      "timeout": false,
+      "duration_s": 2.62,
+      "stdout_tail": "",
+      "stderr_tail": "usage: kosho_spider.py [-h] [--limit LIMIT]\nkosho_spider.py: error: unrecognized arguments: --limit-pages 1 --limit-items 2\n"
+    },
+    {
+      "file": "src/portal_dos_livreiros_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 27.96,
+      "stdout_tail": "",
+      "stderr_tail": "2026-09-14 05:56:38,245 [INFO] PortalDosLivreirosSpider: Starting Playwright Search crawler for Portal dos Livreiros. Limit: 1 pages.\n2026-09-14 05:56:38,370 [INFO] PortalDosLivreirosSpider: Attempting search via curl_cffi Chrome impersonation...\n2026-09-14 05:56:38,618 [WARNING] PortalDosLivreirosSpider: curl_cffi returned status code 403. Falling back to Playwright.\n2026-09-14 05:56:40,991 [INFO] PortalDosLivreirosSpider: Bootstrapping session on base URL: https://www.portaldoslivreiros.com.br\n2026-09-14 05:56:51,654 [INFO] PortalDosLivreirosSpider: Navigating to https://www.portaldoslivreiros.com.br/busca.asp?palavra=Potter&page=1\n2026-09-14 05:57:03,135 [WARNING] PortalDosLivreirosSpider: Could not load or find container on https://www.portaldoslivreiros.com.br/busca.asp?palavra=Potter&page=1: Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"tr, div.livro, .item-livro\") to be visible\n\n2026-09-14 05:57:03,154 [ERROR] PortalDosLivreirosSpider: Blocked by advanced Cloudflare challenge.\n2026-09-14 05:57:03,528 [INFO] PortalDosLivreirosSpider: Finished Portal dos Livreiros. Scraped 0 items.\n"
+    }
+  ]
+}

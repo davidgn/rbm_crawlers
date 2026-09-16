@@ -1,0 +1,19 @@
+{
+  "summary": {
+    "files": 1,
+    "nonzero": 0,
+    "timeouts": 0,
+    "zero_added": 1,
+    "cache_added": 0
+  },
+  "reports": [
+    {
+      "file": "src/bargainbooks_spider.py",
+      "returncode": 0,
+      "timeout": false,
+      "duration_s": 59.26,
+      "stdout_tail": "",
+      "stderr_tail": "2026-09-14 06:10:42,619 [INFO] BargainBooksSpider: Restart-safe: pre-loaded 1 existing URLs from bargain books_listings.jsonl\n2026-09-14 06:10:42,620 [INFO] BargainBooksSpider: Starting Bargain Books harvest (nodriver). limit_pages=1\n2026-09-14 06:10:42,624 [INFO] nodriver.core.browser: starting\n\texecutable :/bin/chromium\n\narguments:\n--remote-allow-origins=*\n\t--no-first-run\n\t--no-service-autorun\n\t--no-default-browser-check\n\t--homepage=about:blank\n\t--no-pings\n\t--password-store=basic\n\t--disable-infobars\n\t--disable-breakpad\n\t--disable-dev-shm-usage\n\t--disable-session-crashed-bubble\n\t--disable-search-engine-choice-screen\n\t--user-data-dir=/tmp/uc_acoyg_43\n\t--disable-session-crashed-bubble\n\t--disable-features=IsolateOrigins,site-per-process\n\t--remote-debugging-host=127.0.0.1\n\t--remote-debugging-port=47079\n2026-09-14 06:11:17,187 [INFO] BargainBooksSpider: Browse URL confirmed: https://www.bargainbooks.co.za\n2026-09-14 06:11:22,835 [INFO] BargainBooksSpider: Index page 1: https://www.bargainbooks.co.za\n2026-09-14 06:11:23,325 [INFO] BargainBooksSpider: Found 40 new links.\n2026-09-14 06:11:23,326 [INFO] BargainBooksSpider: Harvesting: https://www.bargainbooks.co.za/product/the-four-principles-by-adrian-gore\n2026-09-14 06:11:28,960 [WARNING] BargainBooksSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-09-14 06:11:30,960 [INFO] BargainBooksSpider: Harvesting: https://www.bargainbooks.co.za/product/the-unlikely-candidate-by-koketso-molaolwe\n2026-09-14 06:11:36,803 [WARNING] BargainBooksSpider: Failed to publish to Firehose: Error 111 connecting to localhost:6379. Connection refused.\n2026-09-14 06:11:38,806 [INFO] nodriver.core.browser: terminated browser with pid 150537 successfully\n2026-09-14 06:11:38,806 [INFO] BargainBooksSpider: Finished. 2 items cached.\n2026-09-14 06:11:38,829 [INFO] nodriver.core.browser: terminated browser with pid 150537 successfully\n2026-09-14 06:11:38,936 [WARNING] asyncio: Loop <_UnixSelectorEventLoop running=False closed=True debug=False> that handles pid 150537 is closed\n2026-09-14 06:11:39,112 [INFO] nodriver.core.util: successfully removed temp profile /tmp/uc_acoyg_43\nException ignored in: <function BaseSubprocessTransport.__del__ at 0x7ff964e5d990>\nTraceback (most recent call last):\n  File \"/usr/lib/python3.10/asyncio/base_subprocess.py\", line 126, in __del__\n    self.close()\n  File \"/usr/lib/python3.10/asyncio/base_subprocess.py\", line 104, in close\n    proto.pipe.close()\n  File \"/usr/lib/python3.10/asyncio/unix_events.py\", line 746, in close\n    self.write_eof()\n  File \"/usr/lib/python3.10/asyncio/unix_events.py\", line 732, in write_eof\n    self._loop.call_soon(self._call_connection_lost, None)\n  File \"/usr/lib/python3.10/asyncio/base_events.py\", line 753, in call_soon\n    self._check_closed()\n  File \"/usr/lib/python3.10/asyncio/base_events.py\", line 515, in _check_closed\n    raise RuntimeError('Event loop is closed')\nRuntimeError: Event loop is closed\n"
+    }
+  ]
+}

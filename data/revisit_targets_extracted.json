@@ -1,0 +1,2073 @@
+[
+  {
+    "territory": "Afghanistan",
+    "potential_targets": [
+      "Sale",
+      "Leelam",
+      "BookPoint"
+    ],
+    "context": "Targeted only: reopen Afghanistan if a Afghanistan-native book-specific used/recommerce marketplace appears; if Leelam book-category/product-detail surfaces expose structured ISBN/detail metadata or stronger used/private listing depth; if Sale.af or BookPoint develops public used-book/buyback/consignment/seller mechanics; or if Facebook/social book surfaces platformize beyond ordinary social/horizontal posts."
+  },
+  {
+    "territory": "Albania",
+    "potential_targets": [
+      "ShtepiaeLibrit",
+      "Albas",
+      "Adrion",
+      "Bukinist",
+      "MerrJep"
+    ],
+    "context": "Targeted only: reopen Albania if a native book-specific third-party used/recommerce marketplace appears; if Bukinist/Adrion/Albas develop seller/used-book marketplace mechanics; if ShtepiaeLibrit exposes richer used-book inventory export or seller sourcing details; or for targeted ISBN/detail extraction from ShtepiaeLibrit, Bukinist, Adrion, MerrJep book listings and social used-book storefronts."
+  },
+  {
+    "territory": "Angola",
+    "potential_targets": [
+      "Angolivros",
+      "BayQi",
+      "Sebo Talatona"
+    ],
+    "context": "Targeted only: Angolivros active inventory/listing depth, seller-dashboard/account-flow capture, Sebo Talatona non-social domain or account-flow proof, social group volume, and any evidence of BayQi/general marketplace book-category depth."
+  },
+  {
+    "territory": "Argentina",
+    "potential_targets": [
+      "Buscalibre",
+      "BiblioMarket",
+      "Tubuc",
+      "Libros",
+      "Pila"
+    ],
+    "context": "Targeted only: monitor BiblioMarket/Tubuc seller/inventory depth; Pila de Libros current active exchange metrics/account flow; Buscalibre used-seller mechanics if Argentina-local evidence appears; additional Argentina-native book-specific resale platforms. No broad reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Austria",
+    "potential_targets": [
+      "Booklooker",
+      "Antiquariatsportal",
+      "Tyrolia",
+      "Buchfreund",
+      "Morawa Zeercle",
+      "ZVAB"
+    ],
+    "context": "Targeted only: monitor Austria-specific strict-main activity in ZVAB/Booklooker/Buchfreund/Antiquariatsportal; Bookbot Austria seller-volume and ISBN/detail capture; Tyrolia/Morawa Zeercle program continuity; any genuinely Austria-native book-specific third-party resale platform. No broad Austria reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Bangladesh",
+    "potential_targets": [
+      "BookCycle"
+    ],
+    "context": "BookCycle direct active-inventory hardening"
+  },
+  {
+    "territory": "Bangladesh",
+    "potential_targets": [
+      "Booktionary",
+      "Boisetu",
+      "Rokomari",
+      "BookCycle"
+    ],
+    "context": "BookCycle direct listing/account-flow proof; Booktionary peer-to-peer vs operator-mediated exchange/sale mechanics; Boisetu/Rokomari weak-fit cleanup only if fresh evidence appears."
+  },
+  {
+    "territory": "Bangladesh",
+    "potential_targets": [
+      "Booktionary"
+    ],
+    "context": "Booktionary operator-vs-peer mechanics"
+  },
+  {
+    "territory": "Belarus",
+    "potential_targets": [
+      "Ay",
+      "BookSale",
+      "Kufar"
+    ],
+    "context": "Targeted only: reopen Belarus if BookSale.by or another Belarus-native book-specific used/recommerce platform is directly live again, or if Ay.by/Kufar surfaces expose book-specialist seller onboarding, structured ISBN/detail metadata, or platform mechanics beyond ordinary horizontal classifieds/auction rails. Broad Belarus reopen no longer needed after pass153."
+  },
+  {
+    "territory": "Belgium",
+    "potential_targets": [
+      "Books",
+      "Recyclivre",
+      "Boekwinkeltjes",
+      "Targeted ISBN",
+      "BoekenBalie",
+      "Stubooks",
+      "De Slegte"
+    ],
+    "context": "Targeted ISBN/detail extraction across Books in Belgium, Boekwinkeltjes.be, Stubooks, BoekenBalie, De Slegte, P\u00eale-M\u00eale, and Recyclivre only if needed."
+  },
+  {
+    "territory": "Benin",
+    "potential_targets": [
+      "La Friperie",
+      "Livre"
+    ],
+    "context": "Benin pass on La Friperie du Livre activity and marketplace mechanics"
+  },
+  {
+    "territory": "Bosnia and Herzegovina",
+    "potential_targets": [
+      "Broad Bosnia",
+      "Bosnia-native",
+      "OLX"
+    ],
+    "context": "Targeted only: reopen if a Bosnia-native book-specific used/recommerce platform appears, or if OLX.ba books/literature surfaces expose structured ISBN/detail metadata or a book-specialist shop rail beyond ordinary classifieds. Broad Bosnia reopen no longer needed after pass151."
+  },
+  {
+    "territory": "Botswana",
+    "potential_targets": [
+      "Maun",
+      "Francistown"
+    ],
+    "context": "Francistown/Maun depth and educational/second-hand backfill"
+  },
+  {
+    "territory": "Botswana",
+    "potential_targets": [
+      "Harden"
+    ],
+    "context": "Harden social/classifieds and single-store used-book signals for seller flow, inventory depth, and book-specific marketplace mechanics."
+  },
+  {
+    "territory": "Brazil",
+    "potential_targets": [
+      "Livro",
+      "EscamBook",
+      "EstudeiVendi",
+      "Bazar",
+      "Skoob Plus",
+      "Seboweb"
+    ],
+    "context": "Targeted only: Seboweb public inventory/depth metrics; EscamBook live activity/volume and user-base proof; EstudeiVendi scale/activity; Bazar do Livro seller/consignment mechanics; Skoob Plus only if the official exchange-request pause lifts; any genuinely new Brazil-native book-specific used/recommerce platform. No broad Brazil reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Burkina Faso",
+    "potential_targets": [
+      "CoinAfrique"
+    ],
+    "context": "Burkina Faso pass on local book-specific rails beyond CoinAfrique"
+  },
+  {
+    "territory": "Burundi",
+    "potential_targets": [
+      "Revisit",
+      "Lubaga-style",
+      "Shopit",
+      "Bujumbura"
+    ],
+    "context": "Revisit for Bujumbura book-specific sale/exchange groups, schoolbook resale, and whether Shopit/Lubaga-style ecommerce carries books locally."
+  },
+  {
+    "territory": "Cameroon",
+    "potential_targets": [
+      "CoinAfrique",
+      "Only",
+      "Conz",
+      "Afrosmartshop",
+      "CamerBookshop"
+    ],
+    "context": "Only reopen for CamerBookshop direct seller-onboarding/listing/payment proof, used/consignment/schoolbook inventory evidence, or a genuinely new Cameroon-native book-specific used/recommerce platform. Keep Camerooncom/CoinAfrique/iConz/Facebook/Afrosmartshop as horizontal/social annex unless book-specific platform mechanics appear."
+  },
+  {
+    "territory": "Cameroon",
+    "potential_targets": [
+      "CoinAfrique",
+      "Only",
+      "Conz",
+      "Afrosmartshop",
+      "CamerBookshop"
+    ],
+    "context": "Only reopen for CamerBookshop direct seller-onboarding/listing/payment proof, used/consignment/schoolbook inventory evidence, or a genuinely new Cameroon-native book-specific used/recommerce platform. Keep Camerooncom/CoinAfrique/iConz/Facebook/Afrosmartshop as horizontal/social annex unless book-specific platform mechanics appear."
+  },
+  {
+    "territory": "Cape Verde / Cabo Verde",
+    "potential_targets": [
+      "Mindelo",
+      "Praia",
+      "WhatsApp"
+    ],
+    "context": "Praia/Mindelo student textbook resale; WhatsApp/Facebook book-trade groups; verify whether any bookstores accept used books or operate consignment/deposit sale; inspect local classified portals for live book inventory."
+  },
+  {
+    "territory": "Central African Republic",
+    "potential_targets": [
+      "ACOLITT",
+      "Bangui",
+      "WhatsApp"
+    ],
+    "context": "Bangui schoolbook resale groups, local booksellers, WhatsApp/Facebook book groups, and ACOLITT/literary-event sale points."
+  },
+  {
+    "territory": "Central Asia",
+    "potential_targets": [
+      "Uzbekistan",
+      "Tajikistan",
+      "Turkmenistan",
+      "Kyrgyzstan"
+    ],
+    "context": "Post-Kazakhstan Central Asia sweep: Kyrgyzstan/Uzbekistan/Tajikistan/Turkmenistan used-book online seams"
+  },
+  {
+    "territory": "Chad",
+    "potential_targets": [
+      "Djamena",
+      "Banque",
+      "Nibiya",
+      "Le Carr",
+      "TCHAD"
+    ],
+    "context": "Nibiya/All Chad book-category depth, Banque des livres TCHAD used-manual mechanics, Le Carr\u00e9 official ecommerce, N\u2019Djamena schoolbook resale groups, and any direct book-specific multi-seller/used-book rail."
+  },
+  {
+    "territory": "China (mainland)",
+    "potential_targets": [
+      "China"
+    ],
+    "context": "Targeted only: direct-render/inventory/account-flow proof for \u6709\u8def\u7f51; live scale/activity proof for \u6362\u4eab\u597d\u4e66; watch for any new book-specific mini-programs with public inventory/seller/buyback mechanics; no broad China reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Comoros",
+    "potential_targets": [
+      "Revisit",
+      "Moroni",
+      "Comorian"
+    ],
+    "context": "Revisit only if local Moroni bookshop, schoolbook resale groups, or Comorian social commerce book rails surface."
+  },
+  {
+    "territory": "Croatia",
+    "potential_targets": [
+      "Knjigoria Planet",
+      "Knjiga",
+      "Biblos",
+      "Nju",
+      "Ex Libris",
+      "Arka",
+      "Ezop",
+      "Midas",
+      "Superknji",
+      "Aukcije"
+    ],
+    "context": "Targeted only: reopen Croatia if a Croatia-native standalone book-specific third-party used/recommerce marketplace appears; if udzbenici.com or another used-textbook portal can be verified current with public seller/listing mechanics; or for targeted ISBN/detail extraction across Nju\u0161kalo, Aukcije.hr, Knjiga.hr/Ex Libris, Biblos, Knjigoria Planet, Midas, Arka, Ezop, and Superknji\u017eara/J&T."
+  },
+  {
+    "territory": "Cyprus",
+    "potential_targets": [
+      "Anna",
+      "Moufflon",
+      "Vendora",
+      "Soloneion",
+      "Bazaraki"
+    ],
+    "context": "Targeted future monitoring only: look for a true Cyprus-native book-specific third-party marketplace; ISBN/detail extraction from Moufflon, Soloneion, Vendora.cy, Bazaraki item pages, Anna/R\u00fcstem/Thrift Store Cyprus where exposed; watch Cyprus Book Swap activity only as social annex."
+  },
+  {
+    "territory": "C\u00f4te d'Ivoire",
+    "potential_targets": [
+      "Abidjan",
+      "Lis-Moi",
+      "LaPanaf"
+    ],
+    "context": "Abidjan marketplace-depth pass on LaPanaf, Lis-Moi used category, and used-book social sellers"
+  },
+  {
+    "territory": "Democratic Republic of the Congo",
+    "potential_targets": [
+      "Kicherche",
+      "Alibooks",
+      "CoinAfrique",
+      "Kinshasa WhatsApp"
+    ],
+    "context": "Targeted only: Alibooks/Kicherche seller integration, Kinshasa WhatsApp/social book sellers, schoolbook resale, CoinAfrique book-volume depth, or direct third-party/used/consignment mechanics."
+  },
+  {
+    "territory": "Denmark",
+    "potential_targets": [
+      "Antikvariat",
+      "Bogbasen",
+      "Bogtorvet",
+      "Saxo"
+    ],
+    "context": "Targeted only: deepen item-level ISBN/detail capture for Bogbasen, Saxo used books, Bogtorvet, Antikvariat.net, and specialist antikvariat pages; reopen broad Denmark only if a new Denmark-native app-only or student/book-specific resale marketplace with seller onboarding appears."
+  },
+  {
+    "territory": "Djibouti",
+    "potential_targets": [
+      "Revisit",
+      "Arabic",
+      "Librairie Victor Hugo",
+      "French"
+    ],
+    "context": "Revisit for Librairie Victor Hugo used-books/consignment, local schoolbook resale, and Arabic/French social sale groups."
+  },
+  {
+    "territory": "Equatorial Guinea",
+    "potential_targets": [
+      "Malabo",
+      "La Librer",
+      "Bata",
+      "WhatsApp",
+      "La Casa Tomada",
+      "Facebook Marketplace"
+    ],
+    "context": "Malabo/Bata textbook resale, Facebook Marketplace inventory depth, WhatsApp book-trade groups, and consignment/used-book signals at La Casa Tomada, La Librer\u00eda de Bata, and local publishers."
+  },
+  {
+    "territory": "Eritrea",
+    "potential_targets": [
+      "Revisit",
+      "Kebhi",
+      "Asmara"
+    ],
+    "context": "Revisit only for active Asmara/local social commerce, Kebhi sale/donation mechanics, and active local bookstore availability."
+  },
+  {
+    "territory": "Estonia",
+    "potential_targets": [
+      "Rahva Raamat",
+      "Raamatukoi",
+      "Antikvariaat",
+      "Raamatuvahetus",
+      "Raamatuhai",
+      "Vanaraamat",
+      "Yaga",
+      "Osta"
+    ],
+    "context": "Targeted only: item-level ISBN/detail extraction and seller-flow checks across Raamatuhai, Raamatuvahetus, Raamatukoi, Vanaraamat.ee, Rahva Raamat used books, Antikvariaat.eu, Osta.ee rare/books categories and Yaga books category; monitor Raamatuvahetus rendered availability counters and Raamatuhai terms/seller onboarding for activity changes."
+  },
+  {
+    "territory": "Eswatini",
+    "potential_targets": [
+      "Harden"
+    ],
+    "context": "Harden social/classifieds and single-store used-book signals for seller flow, inventory depth, and book-specific marketplace mechanics."
+  },
+  {
+    "territory": "Eswatini",
+    "potential_targets": [
+      "Macmillan",
+      "Manzini-vs-Mbabane"
+    ],
+    "context": "Manzini-vs-Mbabane segmentation, independent bookseller depth beyond Macmillan network, and any recoverable second-hand seam"
+  },
+  {
+    "territory": "Ethiopia",
+    "potential_targets": [
+      "Amharic-language",
+      "HuluMarket",
+      "BaleSuQ",
+      "Deepen AddisBooks"
+    ],
+    "context": "Deepen AddisBooks submission/listing economics, HuluMarket/BaleSuQ book volumes, and local Amharic-language used-book social groups."
+  },
+  {
+    "territory": "Finland",
+    "potential_targets": [
+      "Omakauppa",
+      "Kierr",
+      "Antikka",
+      "Suomalainen",
+      "Booky",
+      "Sumashop",
+      "Antikvaari",
+      "Booky Omakauppa",
+      "Antikvariaatti"
+    ],
+    "context": "Targeted only: item-level ISBN/detail capture and seller-flow checks across Antikvaari.fi, Antikvariaatti.net, Antikka.net, Booky.fi Omakauppa, Finlandia Kirja, Kierr\u00e4tyskeskus, Sumashop and selected antikvariat; monitor whether Suomalainen expands second-hand online or Booky Omakauppa changes status; reopen broad Finland only if a genuinely new Finland-native book-specific recommerce marketplace/app appears."
+  },
+  {
+    "territory": "France",
+    "potential_targets": [
+      "Rakuten",
+      "Livres",
+      "Recyclivre",
+      "Book Village",
+      "Ammareal",
+      "Label Emma",
+      "Gibert",
+      "La Bourse"
+    ],
+    "context": "Targeted only: deepen item-level ISBN capture across Book Village, La Bourse aux Livres, Recyclivre, Ammareal, Gibert, Momox France, and Rakuten; verify whether Label Emma\u00fcs partner-shop pages expose ISBN; watch for additional France-native peer-to-peer book-only marketplaces. Broad France reopen no longer needed after pass159."
+  },
+  {
+    "territory": "Gabon",
+    "potential_targets": [
+      "Only",
+      "Keep CoinAfrique"
+    ],
+    "context": "Only reopen for Gabon Livre root/full-site restoration, active vendor inventory depth, direct seller-onboarding/listing/payment proof for third-party used/consignment books, or a genuinely new Gabon-native book-specific used/recommerce platform. Keep CoinAfrique/Facebook/social/bookstore layers as annex unless they platformize."
+  },
+  {
+    "territory": "Gabon",
+    "potential_targets": [
+      "Only",
+      "Keep CoinAfrique"
+    ],
+    "context": "Only reopen for Gabon Livre root/full-site restoration, active vendor inventory depth, direct seller-onboarding/listing/payment proof for third-party used/consignment books, or a genuinely new Gabon-native book-specific used/recommerce platform. Keep CoinAfrique/Facebook/social/bookstore layers as annex unless they platformize."
+  },
+  {
+    "territory": "Ghana",
+    "potential_targets": [
+      "Jiji"
+    ],
+    "context": "Ghana deeper pass on used-book social commerce and Jiji/Facebook book sellers"
+  },
+  {
+    "territory": "Greece",
+    "potential_targets": [
+      "Politeia",
+      "Protoporia",
+      "Santorini",
+      "Athens"
+    ],
+    "context": "Targeted future extraction only: metabook item ISBN/details and seller breadth; Biblio Greece dealer/item coverage; Vendora Greece used-book category samples; Protoporia/Politeia/oldbooks.gr item metadata; selected Athens/Santorini used-bookshop surfaces. Broad Greece search can pause unless a new Greece-native book-specific recommerce platform appears."
+  },
+  {
+    "territory": "Guinea",
+    "potential_targets": [
+      "BazarAfrique",
+      "CoinAfrique"
+    ],
+    "context": "Guinea compact pass 2 on native book-specific rails beyond CoinAfrique/BazarAfrique"
+  },
+  {
+    "territory": "Guinea-Bissau",
+    "potential_targets": [
+      "Tchoca",
+      "Classi4U",
+      "Kugli",
+      "Coimbra",
+      "WhatsApp",
+      "Livraria Speransa",
+      "Bissau",
+      "Crioulo"
+    ],
+    "context": "Bissau student textbook resale; WhatsApp/Facebook book-trade groups; Guinea-Bissau Portuguese/Crioulo search terms; verify Livraria Speransa/Tchoca/Coimbra used-book signals; test Classi4U/Kugli for active local books inventory."
+  },
+  {
+    "territory": "Guyana",
+    "potential_targets": [
+      "The Book Barn"
+    ],
+    "context": "Targeted only: reopen Guyana if a Guyana-native book-specific used/recommerce platform appears; if Facebook/social schoolbook surfaces expose structured item metadata/ISBN or book-specialist seller rails beyond ordinary social posts; if The Book Barn develops public used-book inventory/buyback/consignment detail; or if import/ecommerce surfaces expose additional ISBN/detail capture worth backfilling. Broad Guyana reopen no longer needed after pass157."
+  },
+  {
+    "territory": "Hong Kong",
+    "potential_targets": [
+      "Philippines",
+      "BookDaddy",
+      "Sparktake",
+      "Proceed",
+      "Chinese-language",
+      "EasysBook"
+    ],
+    "context": "No immediate Hong Kong pass needed unless new BookDaddy checkout/payment evidence, fresh app-store currency for EasysBook/Sparktake, or a new Chinese-language book-specific open seller marketplace appears. Proceed to Philippines block."
+  },
+  {
+    "territory": "Iceland",
+    "potential_targets": [
+      "Sk"
+    ],
+    "context": "Targeted only: reopen if an Iceland-native public book-specific used/recommerce marketplace appears, or if B\u00f3kin/B\u00f3kalind/B\u00f3kakaffi\u00f0/Sk\u00e1lda/B\u00f3ksala surfaces expose seller onboarding, third-party listing/payment flows, or large structured ISBN detail. Broad Iceland reopen no longer needed after pass175."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "India",
+    "potential_targets": [
+      "Play",
+      "Pustak Market",
+      "Classic Pages",
+      "ResellPanda",
+      "Apnabook",
+      "Flying Books",
+      "BookLal",
+      "PustakMart"
+    ],
+    "context": "Targeted only: BookLal country-scope/localization resolution; Pustak Market live activity/account-flow proof; ResellPanda live inventory or official Play listing; Apnabook direct account/listing render; PustakMart open-vs-managed seller mechanics; Classic Pages seller/recommerce proof; Flying Books operator-vs-marketplace mechanics. No broad India reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Iran",
+    "potential_targets": [
+      "CanSell"
+    ],
+    "context": "new territory compact pass 1 + CanSell hardening"
+  },
+  {
+    "territory": "Iraq",
+    "potential_targets": [
+      "KRG-specific",
+      "Only",
+      "OpenSooq"
+    ],
+    "context": "Only reopen for a standalone book-specific used/recommerce platform, active app/marketplace seller-onboarding proof, KRG-specific marketplace evidence beyond single-store social commerce, or decisive used-book platform mechanics beyond OpenSooq/Facebook groups."
+  },
+  {
+    "territory": "Ireland",
+    "potential_targets": [
+      "Wob",
+      "ISBN-rich",
+      "Reopen",
+      "Do",
+      "Biblio"
+    ],
+    "context": "Do not continue broad Ireland passes. Reopen only on evidence-triggered basis: a genuinely Ireland-native book-specific used/recommerce marketplace, an active public swap/exchange platform with item/request flow, major change to Biblio.ie/Wob/ABA Ireland scope, or ISBN-rich item metadata from local used-book sellers worth backfilling."
+  },
+  {
+    "territory": "Israel",
+    "potential_targets": [
+      "Hebrew-vs-English-vs-Arabic",
+      "Book Gallery",
+      "Sefer",
+      "Findabook",
+      "Sefel",
+      "Jerusalem"
+    ],
+    "context": "second pass on antiquarian depth beyond Jerusalem, Hebrew-vs-English-vs-Arabic segmentation, digital-library/subscription rails, and shadow used-book specialists beyond Findabook / Book Gallery / Sefer ve Sefel"
+  },
+  {
+    "territory": "Israel / Palestine",
+    "potential_targets": [
+      "FindABook",
+      "Palestine"
+    ],
+    "context": "FindABook promotion + Palestine hold"
+  },
+  {
+    "territory": "Italy",
+    "potential_targets": [
+      "AbeBooks",
+      "LibreriaUniversitaria",
+      "Italian",
+      "Bookbot",
+      "Targeted ISBN",
+      "ComproVendoLibri",
+      "Maremagnum",
+      "Libraccio"
+    ],
+    "context": "Targeted ISBN/detail extraction across Maremagnum, ComproVendoLibri, AbeBooks.it, Bookbot.it, Libraccio, LibreriaUniversitaria.it, and selected Italian antiquarian/dealer surfaces only."
+  },
+  {
+    "territory": "Jordan",
+    "potential_targets": [
+      "Nebras"
+    ],
+    "context": "Nebras strict-core hardening"
+  },
+  {
+    "territory": "Kazakhstan",
+    "potential_targets": [
+      "Bukinist Almaty VK"
+    ],
+    "context": "Bukinist Almaty VK/social groups only for duplication/current-activity cleanup; no strict promotion without platformized mechanics."
+  },
+  {
+    "territory": "Kazakhstan",
+    "potential_targets": [
+      "ObmenBook"
+    ],
+    "context": "ObmenBook only if direct account/listing/payment or independent seller-onboarding mechanics appear; otherwise leave as high strict-candidate social-platform rail."
+  },
+  {
+    "territory": "Kazakhstan",
+    "potential_targets": [
+      "Belaya Aruana"
+    ],
+    "context": "Belaya Aruana direct social-store check only if re-opened; keep single-operator social-store posture."
+  },
+  {
+    "territory": "Kazakhstan",
+    "potential_targets": [
+      "ObmenBook"
+    ],
+    "context": "ObmenBook only if direct account/listing/payment or independent seller-onboarding mechanics appear; otherwise leave as high strict-candidate social-platform rail."
+  },
+  {
+    "territory": "Kenya",
+    "potential_targets": [
+      "Attic",
+      "Book",
+      "Pick",
+      "Books First"
+    ],
+    "context": "Targeted only: Pick A Book self-service seller dashboard/open third-party onboarding; Pick A Book marketplace inventory turnover; Attic/Books First consignment-vs-buyback mechanics; additional book-specific marketplace rails beyond existing core."
+  },
+  {
+    "territory": "Kosovo",
+    "potential_targets": [
+      "Bookey",
+      "Dukagjini",
+      "Educational Centre",
+      "Artini",
+      "Wolt",
+      "MerrJep",
+      "Buzuku",
+      "Pause",
+      "Revisit"
+    ],
+    "context": "Pause broad Kosovo search. Revisit only for a verifiable Kosovo-native standalone book-specific used/recommerce marketplace, a currently operating Bookey/book-swap app surface, or targeted ISBN/detail extraction across Dukagjini, Educational Centre, MerrJep, Buzuku, Artini and bookstore/Wolt surfaces."
+  },
+  {
+    "territory": "Kuwait",
+    "potential_targets": [
+      "Bookish",
+      "Benny-style",
+      "Page Turner",
+      "Better Books",
+      "Better",
+      "Bliss",
+      "Paper"
+    ],
+    "context": "Targeted only: check for a Kuwait-native standalone book-specific used/recommerce marketplace; direct seller-onboarding/listing/payment mechanics for any Page Turner/Bookish/Better/Benny-style platformization; current status for Bliss & Paper / Better Books if closure/reopening evidence changes."
+  },
+  {
+    "territory": "Kuwait",
+    "potential_targets": [
+      "Bookish",
+      "Benny-style",
+      "Page Turner",
+      "Better Books",
+      "Better",
+      "Bliss",
+      "Paper"
+    ],
+    "context": "Targeted only: check for a Kuwait-native standalone book-specific used/recommerce marketplace; direct seller-onboarding/listing/payment mechanics for any Page Turner/Bookish/Better/Benny-style platformization; current status for Bliss & Paper / Better Books if closure/reopening evidence changes."
+  },
+  {
+    "territory": "Kyrgyzstan",
+    "potential_targets": [
+      "Tabylga",
+      "Aksy",
+      "Bazar"
+    ],
+    "context": "Bazar.kg/Tabylga/Aksy book-category spot-check"
+  },
+  {
+    "territory": "Kyrgyzstan",
+    "potential_targets": [
+      "Komoda"
+    ],
+    "context": "Komoda used/resale specificity check"
+  },
+  {
+    "territory": "Latvia",
+    "potential_targets": [
+      "Book",
+      "LV",
+      "Gunas Gr",
+      "Luta",
+      "Buki"
+    ],
+    "context": "Targeted only: ISBN/detail extraction across myBook.lv, iBook.lv, Luta.lv, Book.id.LV, Buki.lv and Gunas Gr\u0101matas; monitor Luta/iBook operational continuity, Book.id.LV activity scale, and any Latvia-native book-specific app/platform that emerges after 2025."
+  },
+  {
+    "territory": "Lebanon",
+    "potential_targets": [
+      "Book Bazar",
+      "Bookbee",
+      "Barzakh",
+      "Stories_and_tales",
+      "Afkar"
+    ],
+    "context": "Targeted only: monitor for a Lebanon-native standalone book-specific used/recommerce platform with seller onboarding/listing/payment mechanics; check whether Bookbee/books_beirut/Afkar/Stories_and_tales or Book Bazar/Barzakh platformize beyond operator/social storefronts; no broad reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Lebanon",
+    "potential_targets": [
+      "Book Bazar",
+      "Bookbee",
+      "Barzakh",
+      "Stories_and_tales",
+      "Afkar"
+    ],
+    "context": "Targeted only: monitor for a Lebanon-native standalone book-specific used/recommerce platform with seller onboarding/listing/payment mechanics; check whether Bookbee/books_beirut/Afkar/Stories_and_tales or Book Bazar/Barzakh platformize beyond operator/social storefronts; no broad reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Lesotho",
+    "potential_targets": [
+      "Reopen",
+      "IXcess",
+      "Rebuydeal"
+    ],
+    "context": "Reopen only for current IXcess live app/store proof, standalone Lesotho-native book-specific used/recommerce marketplace mechanics, direct seller onboarding/listing/payment proof, or evidence that Facebook/Rebuydeal/classifieds surfaces have platformized into book-specific resale infrastructure."
+  },
+  {
+    "territory": "Lesotho",
+    "potential_targets": [
+      "Reopen",
+      "IXcess",
+      "Rebuydeal"
+    ],
+    "context": "Reopen only for current IXcess live app/store proof, standalone Lesotho-native book-specific used/recommerce marketplace mechanics, direct seller onboarding/listing/payment proof, or evidence that Facebook/Rebuydeal/classifieds surfaces have platformized into book-specific resale infrastructure."
+  },
+  {
+    "territory": "Liberia",
+    "potential_targets": [
+      "LIBSHOP",
+      "BNS"
+    ],
+    "context": "Targeted only: Liberia Book Store seller-onboarding/third-party consignment proof, student textbook resale groups, LIBSHOP/BNS book-category depth, and whether current bookstore/social surfaces show used/consignment inventory."
+  },
+  {
+    "territory": "Libya",
+    "potential_targets": [
+      "Only",
+      "OpenSooq"
+    ],
+    "context": "Only reopen for a standalone Libya-native book-specific used/recommerce platform; direct seller onboarding/listing/payment proof; or strong proof that social groups/storefronts have platformized beyond Facebook/OpenSooq."
+  },
+  {
+    "territory": "Lithuania",
+    "potential_targets": [
+      "Targeted ISBN"
+    ],
+    "context": "Targeted ISBN/detail extraction only; no broad Lithuania search unless a new Lithuania-native book-specific marketplace/app appears."
+  },
+  {
+    "territory": "Luxembourg",
+    "potential_targets": [
+      "The Green Library",
+      "Ernster",
+      "Letzshop",
+      "Bouquins Malins"
+    ],
+    "context": "Targeted only: reopen if a Luxembourg-native public book-specific used/recommerce marketplace with third-party seller onboarding/listing/payment proof appears; verify current direct operation of The Green Library if surfaced; optional ISBN/detail capture from Bouquins Malins/Ernster/Letzshop only if needed. No broad Luxembourg reopen after pass176."
+  },
+  {
+    "territory": "Madagascar",
+    "potential_targets": [
+      "Zoma",
+      "ZomaOkaz",
+      "Loozap"
+    ],
+    "context": "Targeted only: reopen for ZomaOkaz/Zoma seller-flow proof, a standalone Madagascar-native book-specific used/recommerce platform, proof that bouquinistes/social sellers aggregate into an online multi-seller rail, or direct platformized seller onboarding/listing/payment mechanics beyond Facebook/Loozap/ZomaOkaz horizontal classifieds."
+  },
+  {
+    "territory": "Malawi",
+    "potential_targets": [
+      "Only",
+      "MalondaPlace",
+      "Tisitano"
+    ],
+    "context": "Only reopen for a standalone Malawi-native book-specific used/recommerce marketplace; direct seller onboarding/listing/payment proof; or evidence that Tisitano/MalondaPlace/social used-book sellers have platformized into book-specific resale infrastructure."
+  },
+  {
+    "territory": "Malawi",
+    "potential_targets": [
+      "Only",
+      "MalondaPlace",
+      "Tisitano"
+    ],
+    "context": "Only reopen for a standalone Malawi-native book-specific used/recommerce marketplace; direct seller onboarding/listing/payment proof; or evidence that Tisitano/MalondaPlace/social used-book sellers have platformized into book-specific resale infrastructure."
+  },
+  {
+    "territory": "Malaysia",
+    "potential_targets": [
+      "Bookaholics",
+      "BooKu",
+      "BookSwap"
+    ],
+    "context": "No immediate Malaysia revisit needed unless new BookSwap/direct book-specific seller platform evidence appears; future optional work may inspect specific Bookaholics/BooKu product detail pages for ISBN values."
+  },
+  {
+    "territory": "Maldives",
+    "potential_targets": [
+      "Maldivian"
+    ],
+    "context": "verify whether any Maldivian used-book social sellers have marketplace/seller-onboarding mechanics"
+  },
+  {
+    "territory": "Mali",
+    "potential_targets": [
+      "Lamarlib"
+    ],
+    "context": "Mali pass on Lamarlib activity and seller/depot mechanics"
+  },
+  {
+    "territory": "Malta",
+    "potential_targets": [
+      "Agenda",
+      "Bookstop MLT",
+      "Merlin"
+    ],
+    "context": "Targeted monitoring only: watch for a Malta-native standalone book-specific third-party recommerce marketplace; targeted ISBN/detail extraction from Merlin, Agenda, Malta Online Bookshop, Maltapark item pages, Bookstop MLT and charity/thrift store surfaces where exposed."
+  },
+  {
+    "territory": "Mauritania",
+    "potential_targets": [
+      "OpenSooq",
+      "Librairie Ambulante",
+      "All-Souq"
+    ],
+    "context": "Targeted only: reopen for standalone Mauritania-native book-specific used/recommerce platform, seller onboarding/listing/payment proof, or evidence that Librairie Ambulante/OpenSooq/All-Souq/Facebook surfaces have platformized beyond social/horizontal classifieds."
+  },
+  {
+    "territory": "Mauritius",
+    "potential_targets": [
+      "Unique",
+      "AsterVender",
+      "Librairie Bourbon",
+      "Le BookShop"
+    ],
+    "context": "Targeted only: reopen for AsterVender seller/account/payment/listing-flow depth, a standalone Mauritius-native book-specific used/recommerce platform, current direct inventory proof for Le BookShop/Unique/Librairie Bourbon, or proof that social/classifieds/thrift surfaces have platformized beyond horizontal listings."
+  },
+  {
+    "territory": "Mayotte",
+    "potential_targets": [
+      "Deepen DoukaMay",
+      "Dzaoudzi",
+      "Mamoudzou"
+    ],
+    "context": "Deepen DoukaMay for book category presence and vendor listings; check Mamoudzou/Dzaoudzi book resale groups."
+  },
+  {
+    "territory": "Monaco",
+    "potential_targets": [
+      "SmailAds",
+      "La Bookinerie",
+      "Click"
+    ],
+    "context": "Targeted only: reopen Monaco if a Monaco-native book-specific used/recommerce platform appears, if Click/SmailAds exposes structured book-detail metadata/ISBN or a book-specialist seller rail beyond ordinary classifieds, or if La Bookinerie/book-exchange surfaces develop consignment/buyback/seller mechanics. Broad Monaco reopen no longer needed after pass155."
+  },
+  {
+    "territory": "Mongolia",
+    "potential_targets": [
+      "Ulaanbaatar"
+    ],
+    "context": "later check for additional publisher-store rails, regional bookstore nodes beyond Ulaanbaatar, or any book-first used-book specialist"
+  },
+  {
+    "territory": "Montenegro",
+    "potential_targets": [
+      "Pazar3",
+      "Oglasi",
+      "C2C",
+      "Patuljak",
+      "Platforma"
+    ],
+    "context": "Targeted only: monitor for a Montenegro-native book-specific C2C/third-party used-book marketplace; otherwise limit future work to ISBN/detail extraction from Platforma knjiga, Patuljak, Pazar3/Oglasi, and social storefronts."
+  },
+  {
+    "territory": "Morocco",
+    "potential_targets": [
+      "Arabic",
+      "French"
+    ],
+    "context": "publisher/distributor depth, French/Arabic chain structure, and specialist used-book seams beyond first-pass surface"
+  },
+  {
+    "territory": "Mozambique",
+    "potential_targets": [
+      "MaisVendas",
+      "Bazara",
+      "MOYA",
+      "Maputo"
+    ],
+    "context": "Targeted revisit for MOYA/MaisVendas book-category depth, Bazara seller/store mechanics, migration of Maputo schoolbook resale/social groups into a standalone rail, and any direct multi-seller used-book platform evidence."
+  },
+  {
+    "territory": "Namibia",
+    "potential_targets": [
+      "Harden"
+    ],
+    "context": "Harden social/classifieds and single-store used-book signals for seller flow, inventory depth, and book-specific marketplace mechanics."
+  },
+  {
+    "territory": "Namibia",
+    "potential_targets": [
+      "Windhoek",
+      "Walvis Bay"
+    ],
+    "context": "Windhoek/Walvis Bay specialist and second-hand seam deepening"
+  },
+  {
+    "territory": "Nepal",
+    "potential_targets": [
+      "Sasto",
+      "Sajha",
+      "StudyShelf",
+      "Hamrobazar"
+    ],
+    "context": "Targeted only: StudyShelf direct render/activity proof; Sasto app-surface direct render; Sajha seller/account/payment depth; Hamrobazar active category depth if it returns live results; any new Nepal-native book-specific used/recommerce platform. No broad reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Netherlands",
+    "potential_targets": [
+      "Booknext",
+      "Future",
+      "Antiqbook",
+      "Boekwinkeltjes",
+      "Bookmatch",
+      "BoekenBalie",
+      "Pause",
+      "De Slegte"
+    ],
+    "context": "Pause broad Netherlands searching. Future targeted revisit only for ISBN/detail extraction across Boekwinkeltjes, Bookmatch, Booknext, Antiqbook, BoekenBalie, bol, De Slegte, and selected single-store used-book layers, or if a new Netherlands-native book-specific recommerce platform appears."
+  },
+  {
+    "territory": "Niger",
+    "potential_targets": [
+      "Ubuy",
+      "CoinAfrique"
+    ],
+    "context": "Niger pass on local book-specific rails beyond CoinAfrique/Ubuy"
+  },
+  {
+    "territory": "Nigeria",
+    "potential_targets": [
+      "Fold"
+    ],
+    "context": "Fold into Nigeria targeted cleanup: horizontal/digital/book-retail rails only reopen if book-specific used/recommerce mechanics appear."
+  },
+  {
+    "territory": "Nigeria",
+    "potential_targets": [
+      "Fold"
+    ],
+    "context": "Fold into Nigeria targeted cleanup: horizontal/digital/book-retail rails only reopen if book-specific used/recommerce mechanics appear."
+  },
+  {
+    "territory": "Nigeria",
+    "potential_targets": [
+      "Fold"
+    ],
+    "context": "Fold into Nigeria targeted cleanup: horizontal/digital/book-retail rails only reopen if book-specific used/recommerce mechanics appear."
+  },
+  {
+    "territory": "Nigeria",
+    "potential_targets": [
+      "Fold"
+    ],
+    "context": "Fold into Nigeria targeted cleanup: horizontal/digital/book-retail rails only reopen if book-specific used/recommerce mechanics appear."
+  },
+  {
+    "territory": "Nigeria",
+    "potential_targets": [
+      "Six33Four",
+      "CampusHub",
+      "CampusTradeNG",
+      "SchoolBOOKS",
+      "AL",
+      "Booka",
+      "PreownedBooks",
+      "CampusPlug"
+    ],
+    "context": "Targeted only: SchoolBOOKS account/listing/payment flow; AL\u00c1K\u00d2W\u00c9 transition from launch/waitlist to live marketplace; Six33Four direct-site recovery; PreownedBooks vendor-count/payout live-flow monitoring; CampusPlug/CampusTradeNG/CampusHub book-category density; Booka used/resale proof. No broad Nigeria reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Nigeria",
+    "potential_targets": [
+      "Fold"
+    ],
+    "context": "Fold into Nigeria targeted cleanup: horizontal/digital/book-retail rails only reopen if book-specific used/recommerce mechanics appear."
+  },
+  {
+    "territory": "North Macedonia",
+    "potential_targets": [
+      "Bad Wolf",
+      "Matica",
+      "Pazar3",
+      "Chitam",
+      "Reklama5",
+      "TRI",
+      "Starokupujem",
+      "Bookcorner",
+      "VIPMarket5",
+      "Sakam Knigi",
+      "Antolog",
+      "Optional ISBN"
+    ],
+    "context": "Targeted only: reopen North Macedonia if a true book-first used/recommerce marketplace emerges, if Chitam.mk develops a structured catalogue beyond social storefronting, or if VIPMarket5/Starokupujem/Pazar3/Reklama5 expose structured exports/detail metadata. Optional ISBN/detail extraction across kniga.mk/TRI, Matica, literatura.mk, kupikniga.mk, Antolog, Bad Wolf, Bookcorner, Sakam Knigi, and Chitam.mk."
+  },
+  {
+    "territory": "Norway",
+    "potential_targets": [
+      "Norwegian",
+      "Bokia",
+      "Bokbua",
+      "Bok",
+      "Boklibris",
+      "Antikvariat",
+      "FINN",
+      "Bokloftet",
+      "Bookis"
+    ],
+    "context": "Targeted only: item-level ISBN/detail capture and seller-flow checks across Bookis Norway, iBok.no, Antikvariat.net Norwegian member stores, Bokia, Boklibris, Bokloftet, Bokbua, and FINN category samples; reopen broad Norway only if a new Norway-native book-specific recommerce marketplace/app appears or a major operator-status change affects Bookis/iBok/Antikvariat.net."
+  },
+  {
+    "territory": "Oman",
+    "potential_targets": [
+      "Read",
+      "House",
+      "Prose",
+      "OpenSooq",
+      "Let"
+    ],
+    "context": "Targeted only: verify any standalone Oman-native book-specific used/recommerce platform; direct seller onboarding/listing/payment proof; current House of Prose/Let\u2019s Read activity; or platformization beyond OpenSooq/dubizzle/Facebook/social groups. No broad reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Oman",
+    "potential_targets": [
+      "Read",
+      "House",
+      "Prose",
+      "OpenSooq",
+      "Let"
+    ],
+    "context": "Targeted only: verify any standalone Oman-native book-specific used/recommerce platform; direct seller onboarding/listing/payment proof; current House of Prose/Let\u2019s Read activity; or platformization beyond OpenSooq/dubizzle/Facebook/social groups. No broad reopen absent fresh strict-main evidence."
+  },
+  {
+    "territory": "Pakistan",
+    "potential_targets": [
+      "Booksecondstory"
+    ],
+    "context": "Booksecondstory residual seller-dashboard/payout/logistics proof only"
+  },
+  {
+    "territory": "Pakistan",
+    "potential_targets": [
+      "Booksecondstory",
+      "Kitabain",
+      "Kitab Rabta"
+    ],
+    "context": "targeted residual only: Kitabain used/secondhand depth; Booksecondstory seller dashboard/payout/logistics; Kitab Rabta third-party/open seller proof if any appears"
+  },
+  {
+    "territory": "Pakistan",
+    "potential_targets": [
+      "Kitabain"
+    ],
+    "context": "Kitabain used/secondhand inventory depth and open seller-flow precision only"
+  },
+  {
+    "territory": "Palestine",
+    "potential_targets": [
+      "Only",
+      "West Bank",
+      "Gaza"
+    ],
+    "context": "Only reopen for standalone Palestine-native book-specific used/recommerce marketplace, seller onboarding/listing/payment proof, or Gaza/West Bank city-specific platform evidence beyond horizontal classifieds/social groups."
+  },
+  {
+    "territory": "Portugal",
+    "potential_targets": [
+      "Monitor",
+      "Trade Stories",
+      "Book",
+      "Lisbon",
+      "FNAC",
+      "Loop",
+      "Ecolivros",
+      "Coimbra",
+      "Porto",
+      "WOOK",
+      "Bokay",
+      "Alfarrabista",
+      "Esconderijo"
+    ],
+    "context": "Targeted future ISBN/detail extraction only: Trade Stories item pages, WOOK/FNAC marketplace book products, Ecolivros/Esconderijo/Alfarrabista.com/Bokay catalogues, and selected Lisbon/Porto/Coimbra antiquarian dealers. Monitor whether a new Portugal-native book-only recommerce platform replaces the closed Book in Loop schoolbook niche."
+  },
+  {
+    "territory": "Republic of Congo",
+    "potential_targets": [
+      "CoinAfrique"
+    ],
+    "context": "Targeted only: online multi-seller/bouquiniste rail, seller onboarding/consignment mechanics, schoolbook resale groups, CoinAfrique depth, or migration of librairies par terre into a platform-like online rail."
+  },
+  {
+    "territory": "Rwanda",
+    "potential_targets": [
+      "Kigali",
+      "The First Page",
+      "Deepen Patchwork"
+    ],
+    "context": "Deepen Patchwork buy/trade mechanics, The First Page/book exchange, Kigali social resale groups, and any seller-onboarding surface."
+  },
+  {
+    "territory": "R\u00e9union",
+    "potential_targets": [
+      "Ellipsis",
+      "Bourbonlivre",
+      "Accent",
+      "Cash Converters",
+      "Sud"
+    ],
+    "context": "Targeted only: reopen for Bourbonlivre third-party seller/onboarding proof, leboncoin/book-group platformization beyond horizontal/social listings, current direct inventory depth for L\u2019Accent du Sud/Ellipsis/Cash Converters, or a new R\u00e9union-native book-specific used/recommerce marketplace."
+  },
+  {
+    "territory": "Saudi Arabia",
+    "potential_targets": [
+      "Rofoof",
+      "Only",
+      "Saudi",
+      "Kitabi-Lak",
+      "Mrrha"
+    ],
+    "context": "Only reopen for Rofoof live seller/inventory proof, Mrrha book-vertical scale/seller mechanics, current Kitabi-Lak alias resolution, additional provincial used-book specialists with direct inventory, or a genuinely standalone book-specific Saudi used/recommerce marketplace."
+  },
+  {
+    "territory": "Saudi Arabia",
+    "potential_targets": [
+      "Rofoof",
+      "Only",
+      "Saudi",
+      "Kitabi-Lak",
+      "Mrrha"
+    ],
+    "context": "Only reopen for Rofoof live seller/inventory proof, Mrrha book-vertical scale/seller mechanics, current Kitabi-Lak alias resolution, additional provincial used-book specialists with direct inventory, or a genuinely standalone book-specific Saudi used/recommerce marketplace."
+  },
+  {
+    "territory": "Senegal",
+    "potential_targets": [
+      "Lire",
+      "La Bouquinerie"
+    ],
+    "context": "Senegal depth pass on B\u00ebgg Lire / La Bouquinerie seller mechanics and regional pickup/delivery"
+  },
+  {
+    "territory": "Serbia",
+    "potential_targets": [
+      "Antikvarnica",
+      "Knjiga",
+      "Kupindo",
+      "Sigedon",
+      "PolovneKnjigeSrbija",
+      "Knjizara",
+      "Limundo",
+      "KP",
+      "Antikvarne-knjige",
+      "Halo"
+    ],
+    "context": "Targeted only: reopen Serbia if a Serbia-native book-specific open third-party used/recommerce marketplace appears, or for focused ISBN/detail extraction across Kupindo/Limundo/KP/Halo, Knjizara.com Antikvarnica, Knjiga na dlanu, PolovneKnjigeSrbija, Antikvarne-knjige.com, Sigedon, and fair exhibitors."
+  },
+  {
+    "territory": "Seychelles",
+    "potential_targets": [
+      "Reopen",
+      "Dusty Collection"
+    ],
+    "context": "Reopen only for Dusty Collection third-party seller onboarding/listing/payment proof, stronger sell-your-books/buyback terms, new Seychelles-native book-specific used/recommerce platform evidence, or proof that social/classifieds surfaces have platformized beyond horizontal item listings."
+  },
+  {
+    "territory": "Sierra Leone",
+    "potential_targets": [
+      "Salone Goo",
+      "Instagram",
+      "Freetown",
+      "WhatsApp"
+    ],
+    "context": "Freetown student textbook resale + local WhatsApp/Facebook/Instagram book-trade groups + Salone Goo internal book categories"
+  },
+  {
+    "territory": "Slovakia",
+    "potential_targets": [
+      "Vykupujeme-online",
+      "Bookbot",
+      "Restorio"
+    ],
+    "context": "Targeted only: deepen ISBN/detail capture for Restorio/Vykupujeme-online and Bookbot; test product-detail ISBN exposure; monitor whether any Slovakia-native peer marketplace/exchange rail emerges beyond classifieds. Broad Slovakia reopen no longer needed after pass150."
+  },
+  {
+    "territory": "Somalia / Somaliland",
+    "potential_targets": [
+      "Separate Somalia",
+      "Sahanbooks",
+      "Suuqa",
+      "Somaliland",
+      "SoBigDeal"
+    ],
+    "context": "Separate Somalia vs Somaliland in a future deep pass; harden Suuqa/SoBigDeal book categories and Sahanbooks local fulfillment."
+  },
+  {
+    "territory": "South Korea",
+    "potential_targets": [
+      "Joongna",
+      "Bookoa"
+    ],
+    "context": "later check for Bookoa/Joongna or any separate specialist used-book rail surfaced by primary-source verification"
+  },
+  {
+    "territory": "Spain",
+    "potential_targets": [
+      "Casa",
+      "Libro Marketplace",
+      "QuieroLibros",
+      "Relibrea",
+      "Fnac Segunda Vida",
+      "IberLibro",
+      "Hamelyn",
+      "Reciclibros",
+      "Biblio",
+      "Uniliber"
+    ],
+    "context": "Targeted future ISBN/detail extraction only: Relibrea, QuieroLibros, IberLibro, Uniliber, Biblio.es, Casa del Libro Marketplace, Hamelyn, Reciclibros, Fnac Segunda Vida; monitor for new Spain-native book-only apps."
+  },
+  {
+    "territory": "Sri Lanka",
+    "potential_targets": [
+      "BookSwap",
+      "BookExchange"
+    ],
+    "context": "BookExchange/BookSwap inventory-turnover and 2ndhandbooks seller-onboarding proof only"
+  },
+  {
+    "territory": "Suriname",
+    "potential_targets": [
+      "Via2000",
+      "Atlantis",
+      "ViaMarkt",
+      "Boekenportaal"
+    ],
+    "context": "Targeted only: reopen Suriname if a Suriname-native book-specific used/recommerce platform appears; if Facebook/Via2000/ViaMarkt expose structured book-detail metadata/ISBN or book-specialist seller rails beyond ordinary classifieds; or if Atlantis/Boekenportaal develops third-party seller, buyback, consignment, exchange, or public inventory-detail mechanics beyond single-operator book retail. Broad Suriname reopen no longer needed after pass156."
+  },
+  {
+    "territory": "Sweden",
+    "potential_targets": [
+      "Bokb",
+      "Adlibris Campus",
+      "Bokliv",
+      "Antikvariat",
+      "Campusbokhandeln",
+      "P2P",
+      "Studentapan"
+    ],
+    "context": "Targeted only: item-level ISBN/detail capture and seller-flow checks across Bokb\u00f6rsen, Bookis Sweden, Studentapan, Campusbokhandeln/Adlibris Campus, Antikvariat.net, Bokliv, and any newly surfaced Sweden-native book-specific app/P2P rail."
+  },
+  {
+    "territory": "Switzerland",
+    "potential_targets": [
+      "Loopsy",
+      "Buchplanet",
+      "Antiqbook Swiss",
+      "Exsila",
+      "Buchfreund",
+      "ZVAB"
+    ],
+    "context": "Targeted future work only: ISBN/detail extraction across Loopsy, Buchplanet, booklooker/Buchfreund/ZVAB/Antiqbook Swiss surfaces, plus monitor whether Exsila closure creates successor platforms."
+  },
+  {
+    "territory": "Syria",
+    "potential_targets": [
+      "Only",
+      "Bando",
+      "Damascus",
+      "Aleppo"
+    ],
+    "context": "Only reopen for an independent Syria-native book-specific used/recommerce marketplace; seller onboarding/listing/payment proof; Bando used-books listing-flow depth; direct inventory/account proof for Aleppo/Damascus used-book specialists; or new post-reopening platform evidence beyond Facebook/social classifieds."
+  },
+  {
+    "territory": "Syria",
+    "potential_targets": [
+      "Only",
+      "Bando",
+      "Damascus",
+      "Aleppo"
+    ],
+    "context": "Only reopen for an independent Syria-native book-specific used/recommerce marketplace; seller onboarding/listing/payment proof; Bando used-books listing-flow depth; direct inventory/account proof for Aleppo/Damascus used-book specialists; or new post-reopening platform evidence beyond Facebook/social classifieds."
+  },
+  {
+    "territory": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+    "potential_targets": [
+      "Portuguese",
+      "Livraria",
+      "Tom",
+      "WhatsApp"
+    ],
+    "context": "S\u00e3o Tom\u00e9 student textbook resale, WhatsApp/Facebook buy-sell groups, used/consignment practices at Livraria N\u00f3n, and S\u00e3o Tom\u00e9-local Portuguese search variants."
+  },
+  {
+    "territory": "Tajikistan",
+    "potential_targets": [
+      "Arzon"
+    ],
+    "context": "Arzon.tj books-category spot-check"
+  },
+  {
+    "territory": "Tajikistan",
+    "potential_targets": [
+      "KITOBZ-integrated",
+      "Dushanbe"
+    ],
+    "context": "later check for a stronger primary-source second online rail, more bookstore nodes outside Dushanbe, or a distinct book-first used-book specialist beyond KITOBZ-integrated buikinistika"
+  },
+  {
+    "territory": "Tanzania",
+    "potential_targets": [
+      "BayreBooks",
+      "Book Deal",
+      "Books First"
+    ],
+    "context": "Targeted only: reopen for a Tanzania-native book-specific used/recommerce platform, direct third-party seller onboarding/listing/payment proof, or evidence that Book Deal/BayreBooks/Books First/social groups/classifieds have platformized beyond single-store, regional-supplier or horizontal/social listings."
+  },
+  {
+    "territory": "Thailand",
+    "potential_targets": [
+      "Kaidee",
+      "Reshelf",
+      "Books",
+      "Thai",
+      "Lot",
+      "Dasa",
+      "Shopee",
+      "ChantraBook",
+      "GetBookie",
+      "Lazada"
+    ],
+    "context": "Targeted only: Reshelf seller-dashboard/payment/account-flow depth, live inventory/activity metrics, fee/escrow details, and whether any Thai book-specific platform beyond Reshelf appears; otherwise keep Kaidee/Shopee/Lazada/Facebook as horizontal/social annex and GetBookie/ChantraBook/Dasa/A Lot of Books as single-operator layers."
+  },
+  {
+    "territory": "The Gambia",
+    "potential_targets": [
+      "CLM",
+      "Timbooktoo",
+      "Greater Banjul",
+      "WhatsApp"
+    ],
+    "context": "Greater Banjul student textbook resale, WhatsApp/Facebook book-trade groups, Timbooktoo/CLM used-book signals, and any local book-specific seller-onboarding rails."
+  },
+  {
+    "territory": "Togo",
+    "potential_targets": [
+      "Star Librairie"
+    ],
+    "context": "Togo pass on active used-book sellers after Star Librairie closure"
+  },
+  {
+    "territory": "Turkmenistan",
+    "potential_targets": [
+      "Ashgabat"
+    ],
+    "context": "later deeper pass on state-publishing distribution, additional Ashgabat bookstore freshness, and any provincial or second-hand specialist seams"
+  },
+  {
+    "territory": "Turkmenistan",
+    "potential_targets": [
+      "Turkmen"
+    ],
+    "context": "Turkmen marketplace apps book-category test"
+  },
+  {
+    "territory": "Uganda",
+    "potential_targets": [
+      "Search",
+      "Luwum Street",
+      "WhatsApp"
+    ],
+    "context": "Search for book-only Ugandan Facebook/WhatsApp resale groups and textbook exchange surfaces; verify Luwum Street cluster and any online seller aggregation."
+  },
+  {
+    "territory": "United Arab Emirates",
+    "potential_targets": [
+      "Bookends"
+    ],
+    "context": "Bookends strict-core hardening"
+  },
+  {
+    "territory": "United Kingdom",
+    "potential_targets": [
+      "UK-wide",
+      "Scotland",
+      "UK",
+      "Reopen",
+      "Wales",
+      "Northern Ireland-specific",
+      "Do"
+    ],
+    "context": "Do not continue broad UK passes. Reopen only on evidence-triggered basis: genuinely new UK-wide book-specific used/recommerce marketplace, active swap/exchange rail with public item/request flow, Scotland/Wales/Northern Ireland-specific platform-like gap, or major operator/status change."
+  },
+  {
+    "territory": "Uzbekistan",
+    "potential_targets": [
+      "Kytab",
+      "Kitob"
+    ],
+    "context": "Kitob/Kytab product recovery and dedupe hold"
+  },
+  {
+    "territory": "Uzbekistan",
+    "potential_targets": [
+      "Kitabu"
+    ],
+    "context": "Kitabu active-inventory and in-app flow proof"
+  },
+  {
+    "territory": "Western Sahara / Sahrawi market surface",
+    "potential_targets": [
+      "Dakhla",
+      "La",
+      "Sahrawi-local",
+      "France",
+      "Spain",
+      "Revisit",
+      "Morocco"
+    ],
+    "context": "Revisit only for Sahrawi-local book fairs, refugee-camp book donation/exchange, La\u00e2youne/Dakhla bookshop or schoolbook resale evidence; avoid Morocco/Spain/France spillover."
+  },
+  {
+    "territory": "Yemen",
+    "potential_targets": [
+      "Aden",
+      "Mukalla",
+      "Only",
+      "Sana",
+      "Taiz",
+      "OpenSooq"
+    ],
+    "context": "Only reopen for a standalone book-specific Yemeni used/recommerce platform, direct seller-onboarding/inventory mechanics beyond OpenSooq/social storefronts, or stronger city-level used-book platform evidence in Sana\u2019a/Aden/Taiz/Mukalla. No broad reopen for ordinary bookstores, social pages, or horizontal classifieds."
+  },
+  {
+    "territory": "Yemen",
+    "potential_targets": [
+      "Aden",
+      "Mukalla",
+      "Only",
+      "Sana",
+      "Taiz",
+      "OpenSooq"
+    ],
+    "context": "Only reopen for a standalone book-specific Yemeni used/recommerce platform, direct seller-onboarding/inventory mechanics beyond OpenSooq/social storefronts, or stronger city-level used-book platform evidence in Sana\u2019a/Aden/Taiz/Mukalla. No broad reopen for ordinary bookstores, social pages, or horizontal classifieds."
+  },
+  {
+    "territory": "Zambia",
+    "potential_targets": [
+      "Province-level"
+    ],
+    "context": "Province-level bookstore segmentation, stronger second-hand mapping, and deeper linkage between archive, retail and fair infrastructure"
+  },
+  {
+    "territory": "Zambia",
+    "potential_targets": [
+      "Harden"
+    ],
+    "context": "Harden social/classifieds and single-store used-book signals for seller flow, inventory depth, and book-specific marketplace mechanics."
+  },
+  {
+    "territory": "Zimbabwe",
+    "potential_targets": [
+      "Harden"
+    ],
+    "context": "Harden social/classifieds and single-store used-book signals for seller flow, inventory depth, and book-specific marketplace mechanics."
+  },
+  {
+    "territory": "Zimbabwe",
+    "potential_targets": [
+      "Bulawayo-vs-Harare"
+    ],
+    "context": "Bulawayo-vs-Harare segmentation, stronger second-hand/antiquarian mapping, and deeper educational-distributor structure"
+  },
+  {
+    "territory": "Slovenia",
+    "potential_targets": [
+      "API",
+      "Bolha"
+    ],
+    "context": "Targeted only: reopen Slovenia if a Slovenia-native book-specific third-party used/recommerce marketplace appears; if Bolha develops a book-specialist marketplace rail beyond horizontal classifieds; if operator used-book sites expose structured ISBN/API exports worth targeted capture; or if a Slovenian textbook/used-book seller-onboarding surface is verified."
+  },
+  {
+    "territory": "Venezuela",
+    "potential_targets": [
+      "Puerto",
+      "Maracaibo",
+      "Margarita",
+      "Keep Libros",
+      "Optional",
+      "Libros",
+      "Otherwise",
+      "Caracas",
+      "Valencia",
+      "Hong Kong"
+    ],
+    "context": "Optional pass197 only if desired by roadmap: search deeper for any Venezuela-native book-specific third-party marketplace/seller dashboard, especially textbook/student resale and regional anticuarios beyond Caracas/Maracaibo/Valencia/Margarita. Otherwise advance to Hong Kong block. Keep Libros.ccs and Puerto de Libros as operator/consignment/weak-fit, not strict-main, until public seller-side mechanics appear."
+  },
+  {
+    "territory": "Philippines",
+    "potential_targets": [
+      "Chapters",
+      "Optional"
+    ],
+    "context": "No urgent Philippines pass needed. Optional later closure may inspect additional provincial/student/textbook groups and detail-page ISBN exposure, but Chapters is now sufficiently hardened as the sole current strict/main Philippines candidate."
+  },
+  {
+    "territory": "Philippines",
+    "potential_targets": [
+      "Shopee",
+      "Carousell",
+      "If"
+    ],
+    "context": "If revisited, do a narrow provincial/student/textbook/ISBN detail-page pass only; do not re-litigate Carousell/Shopee/Facebook unless a book-specific standalone platform appears."
+  },
+  {
+    "territory": "Indonesia",
+    "potential_targets": [
+      "Preloved",
+      "Bukubekas"
+    ],
+    "context": "Targeted only: reopen Indonesia if Bukubekas.id proves stable at scale, exposes managed checkout/payment or richer active listing/detail exports; if Preloved.co.id becomes book-specific or exposes durable book detail/ISBN exports; or if new Indonesia-native book-specific used/recommerce marketplace surfaces appear."
+  },
+  {
+    "territory": "Russia",
+    "potential_targets": [
+      "Return"
+    ],
+    "context": "Return only for future strict-candidate or ISBN/detail-page backfill; otherwise continue post-Russia backlog."
+  }
+]
