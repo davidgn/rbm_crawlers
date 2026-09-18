@@ -24,9 +24,10 @@ class BooksMandalaSpider(BaseSpider):
         "Referer": "https://booksmandala.com/used-books"
     }
 
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="BooksMandala", territory="Nepal")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
@@ -34,6 +35,8 @@ class BooksMandalaSpider(BaseSpider):
         
         try:
             for page in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 url = self.API_URL.format(page=page)
                 self.logger.info(f"Fetching API page {page}: {url}")
                 
@@ -52,6 +55,8 @@ class BooksMandalaSpider(BaseSpider):
                 self.logger.info(f"Found {len(books)} books on page {page}")
                 
                 for b in books:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     slug = b.get("slug")
                     if not slug:
                         continue
@@ -88,6 +93,7 @@ class BooksMandalaSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Books Mandala API spider")
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BooksMandalaSpider(limit_pages=args.limit).run()
+    BooksMandalaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

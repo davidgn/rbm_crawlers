@@ -16,9 +16,10 @@ class KoshoSpider(BaseSpider):
 
     BASE_URL = "https://www.kosho.or.jp"
 
-    def __init__(self, limit_pages=1):
+    def __init__(self, limit_pages=1, limit_items=None):
         super().__init__(platform_name="日本の古本屋", territory="Japan")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
         asyncio.run(self._run_async())
@@ -45,6 +46,8 @@ class KoshoSpider(BaseSpider):
             
             for i, link in enumerate(links):
                 if i >= self.limit_pages * 5:  # just scrape a few
+                    break
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
                     break
                 self.logger.info(f"Harvesting: {link}")
                 await page.get(link)
@@ -98,4 +101,4 @@ if __name__ == "__main__":
     parser.add_argument("--limit-pages", type=int, default=1)
     parser.add_argument("--limit-items", type=int, default=10)
     args = parser.parse_args()
-    KoshoSpider(limit_pages=args.limit_pages).run()
+    KoshoSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

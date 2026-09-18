@@ -9,9 +9,10 @@ from playwright_stealth import Stealth
 
 
 class CarousellPhSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Carousell Philippines", territory="Philippines")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.carousell.ph"
 
     def run(self):
@@ -30,6 +31,8 @@ class CarousellPhSpider(BaseSpider):
 
                 # Infinite scroll for Carousell instead of strict pagination
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     self.logger.info(f"Scrolling to load page {current_page} equivalents...")
                     page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
                     page.wait_for_timeout(3000)
@@ -52,6 +55,8 @@ class CarousellPhSpider(BaseSpider):
                     batch_links = product_links[:5]
 
                     for p_url in batch_links:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(context, p_url)
                         except Exception as e:
@@ -94,7 +99,8 @@ class CarousellPhSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = CarousellPhSpider(limit_pages=args.limit)
+    spider = CarousellPhSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

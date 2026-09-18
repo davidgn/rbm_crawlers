@@ -9,9 +9,10 @@ from isbn_utils import normalize_isbn
 
 
 class TikiSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Tiki.vn", territory="Vietnam")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.category_ids = [320, 316, 7741, 18328]
 
     def run(self):
@@ -24,8 +25,12 @@ class TikiSpider(BaseSpider):
                 page.goto("https://tiki.vn", timeout=60000, wait_until="domcontentloaded")
                 page.wait_for_timeout(3000)
                 for cat_id in self.category_ids:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     self.logger.info("Category: %s", cat_id)
                     for current_page in range(1, self.limit_pages + 1):
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         list_res = page.evaluate(f'''async () => {{
                             try {{
                                 const res = await fetch("https://tiki.vn/api/v2/products?limit=40&category={cat_id}&page={current_page}");
@@ -35,6 +40,8 @@ class TikiSpider(BaseSpider):
                         if not list_res or not list_res.get("data"):
                             break
                         for prod in list_res["data"]:
+                            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                                break
                             pid = prod.get("id")
                             if not pid:
                                 continue
@@ -231,4 +238,4 @@ if __name__ == "__main__":
     elif args.enrich_isbn:
         _enrich_isbn()
     else:
-        TikiSpider(limit_pages=args.limit_pages).run()
+        TikiSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

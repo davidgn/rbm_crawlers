@@ -7,9 +7,10 @@ from base_spider import BaseSpider
 import re
 
 class BooksNBobsSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Books n Bobs", territory="Malaysia")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://booksnbobs.com/preloved-books"
 
     def run(self):
@@ -22,6 +23,8 @@ class BooksNBobsSpider(BaseSpider):
             
             try:
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     url = f"{self.base_url}/page/{current_page}/"
                     self.logger.info(f"Scraping index page {current_page}: {url}")
                     
@@ -48,6 +51,8 @@ class BooksNBobsSpider(BaseSpider):
                         break
                         
                     for p_url in product_urls:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(page, p_url)
                             page.wait_for_timeout(500)
@@ -89,7 +94,8 @@ class BooksNBobsSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = BooksNBobsSpider(limit_pages=args.limit)
+    spider = BooksNBobsSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

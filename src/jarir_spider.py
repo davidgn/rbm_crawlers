@@ -7,9 +7,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class JarirSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Jarir Bookstore", territory="Middle East")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.jarir.com"
 
     def run(self):
@@ -25,6 +26,8 @@ class JarirSpider(BaseSpider):
                 target_url = "https://www.jarir.com/arabic-books.html"
                 
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     # Jarir pagination often uses ?p=N
                     url = f"{target_url}?p={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
@@ -69,6 +72,8 @@ class JarirSpider(BaseSpider):
                     if not product_links: break
                         
                     for p_url in product_links[:15]:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(page, p_url)
                             self.human_delay(1000, 2500)
@@ -103,7 +108,8 @@ class JarirSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = JarirSpider(limit_pages=args.limit)
+    spider = JarirSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

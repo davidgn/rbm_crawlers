@@ -5,9 +5,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class SastoKitabSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Sasto Kitab", territory="Nepal")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
         self.logger.info("Starting Sasto Kitab Enhanced Crawler.")
@@ -36,6 +37,8 @@ class SastoKitabSpider(BaseSpider):
                 self.logger.info(f"Found {len(cards)} cards. Starting deep crawl.")
                 
                 for card in cards:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         self._harvest_card(card, context)
                     except Exception as e:
@@ -97,7 +100,8 @@ class SastoKitabSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=5)
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = SastoKitabSpider(limit_pages=args.limit)
+    spider = SastoKitabSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

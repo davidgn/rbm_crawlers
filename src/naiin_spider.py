@@ -9,9 +9,10 @@ from base_spider import BaseSpider
 from isbn_utils import normalize_isbn
 
 class NaiinSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Naiin", territory="Thailand")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.naiin.com/category"
 
     def run(self):
@@ -27,6 +28,8 @@ class NaiinSpider(BaseSpider):
                 target_url = "https://www.naiin.com/books"
                 
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     # Naiin uses scroll or page params? Let's check common patterns
                     url = f"{target_url}?page={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
@@ -52,6 +55,8 @@ class NaiinSpider(BaseSpider):
                     if not product_links: break
                         
                     for p_url in product_links:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(page, p_url)
                             page.wait_for_timeout(1000)
@@ -158,10 +163,11 @@ def _backfill_cached():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     parser.add_argument("--backfill", action="store_true")
     args = parser.parse_args()
     if args.backfill:
         _backfill_cached()
     else:
-        NaiinSpider(limit_pages=args.limit).run()
+        NaiinSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

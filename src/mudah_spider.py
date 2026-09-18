@@ -9,9 +9,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class MudahSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Mudah.my", territory="Malaysia")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.mudah.my"
 
     def _get_robust_response(self, url: str, max_retries: int = 3):
@@ -50,6 +51,8 @@ class MudahSpider(BaseSpider):
                 target_url = "https://www.mudah.my/malaysia/hobbies-and-collectibles-for-sale/books-and-textbooks"
                 
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     # Mudah pagination: ?o=N
                     url = f"{target_url}?o={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
@@ -70,12 +73,14 @@ class MudahSpider(BaseSpider):
                         break
                         
                     for p_url in product_links:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(page, p_url)
                             page.wait_for_timeout(1000)
                         except Exception as e:
                             self.logger.error(f"Error harvesting {p_url}: {e}")
-                            
+
             except Exception as e:
                 self.logger.error(f"Extraction failed: {e}")
             finally:
@@ -122,7 +127,8 @@ class MudahSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = MudahSpider(limit_pages=args.limit)
+    spider = MudahSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

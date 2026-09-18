@@ -6,9 +6,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class KitabuUzSpider(BaseSpider):
-    def __init__(self, limit_pages=10):
+    def __init__(self, limit_pages=10, limit_items=None):
         super().__init__(platform_name="Kitabu.uz", territory="Uzbekistan")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
         self.logger.info("Starting Kitabu.uz Enhanced Crawler.")
@@ -21,12 +22,16 @@ class KitabuUzSpider(BaseSpider):
             try:
                 # Browse SELL and EXCHANGE types
                 for exchange_type in ["SELL", "EXCHANGE"]:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     url = f"https://kitabu.uz/library?formExchangeType={exchange_type}"
                     self.logger.info(f"Loading Kitabu.uz {exchange_type} page...")
                     page.goto(url, timeout=60000, wait_until="domcontentloaded")
                     page.wait_for_timeout(5000)
                     
                     for current_page in range(1, self.limit_pages + 1):
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         self.logger.info(f"Scraping {exchange_type} page {current_page}...")
                         
                         # Find book links
@@ -44,6 +49,8 @@ class KitabuUzSpider(BaseSpider):
                             break
                             
                         for link in links:
+                            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                                break
                             abs_url = "https://kitabu.uz" + link
                             if abs_url in self._seen_urls:
                                 continue
@@ -114,7 +121,8 @@ class KitabuUzSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = KitabuUzSpider(limit_pages=args.limit)
+    spider = KitabuUzSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

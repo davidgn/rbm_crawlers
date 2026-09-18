@@ -6,10 +6,11 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class AtticBooksKeSpider(BaseSpider):
-    def __init__(self, limit_pages=5):
+    def __init__(self, limit_pages=5, limit_items=None):
         super().__init__(platform_name="Attic Books", territory="Kenya")
         self.base_url = "https://atticbooks.co.ke"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
         self.logger.info(f"Starting Attic Books harvester. Limit: {self.limit_pages} pages.")
@@ -22,6 +23,8 @@ class AtticBooksKeSpider(BaseSpider):
             try:
                 # Browse books category
                 for page_num in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     url = f"{self.base_url}/books?page={page_num}"
                     self.logger.info(f"Fetching page {page_num}: {url}")
                     
@@ -48,6 +51,8 @@ class AtticBooksKeSpider(BaseSpider):
                         break
                         
                     for link in links:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         abs_url = link if link.startswith("http") else f"https:{link}" if link.startswith("//") else f"{self.base_url}{link}"
                         if abs_url in self._seen_urls: continue
                         
@@ -127,7 +132,8 @@ class AtticBooksKeSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = AtticBooksKeSpider(limit_pages=args.limit)
+    spider = AtticBooksKeSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

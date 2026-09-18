@@ -6,9 +6,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class GramediaSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Gramedia", territory="Indonesia")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         # Gramedia Books Category
         self.base_url = "https://www.gramedia.com/categories/buku"
 
@@ -22,6 +23,8 @@ class GramediaSpider(BaseSpider):
             
             try:
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     # Gramedia pagination: ?page=N
                     url = f"{self.base_url}?page={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
@@ -53,6 +56,8 @@ class GramediaSpider(BaseSpider):
                         break
                         
                     for p_url in product_links[:15]:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(context, p_url)
                             self.human_delay(2000, 4000)
@@ -97,7 +102,8 @@ class GramediaSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = GramediaSpider(limit_pages=args.limit)
+    spider = GramediaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

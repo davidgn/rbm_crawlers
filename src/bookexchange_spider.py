@@ -5,9 +5,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class BookExchangeSpider(BaseSpider):
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages=100, limit_items=None):
         super().__init__(platform_name="BookExchange.lk", territory="Sri Lanka")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
 
     def run(self):
         self.logger.info(f"Starting BookExchange Enhanced Crawler. Limit: {self.limit_pages} pages.")
@@ -29,6 +30,8 @@ class BookExchangeSpider(BaseSpider):
                 return
 
             for current_page in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 self.logger.info(f"Scraping page {current_page}...")
                 page.wait_for_timeout(3000)
                 
@@ -47,6 +50,8 @@ class BookExchangeSpider(BaseSpider):
                     break
                     
                 for card in cards:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         self._harvest_card(card, context)
                     except Exception as e:
@@ -122,7 +127,8 @@ class BookExchangeSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=5)
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = BookExchangeSpider(limit_pages=args.limit)
+    spider = BookExchangeSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

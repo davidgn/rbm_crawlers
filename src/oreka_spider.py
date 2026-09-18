@@ -6,9 +6,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class OrekaSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Oreka.vn", territory="Vietnam")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.oreka.vn/mua-ban-sach"
         self.isbn_pattern = re.compile(r'\b(97[89][0-9]{10})\b')
 
@@ -27,6 +28,8 @@ class OrekaSpider(BaseSpider):
             
             try:
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     url = f"{self.base_url}?page={current_page}"
                     self.logger.info(f"Fetching page {current_page}: {url}")
                     
@@ -44,6 +47,8 @@ class OrekaSpider(BaseSpider):
                     self.logger.info(f"Found {len(product_links)} items on page {current_page}.")
                     
                     for plink in product_links:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             # Open in same page or new page? Same page is safer for session
                             page.goto(plink, timeout=30000, wait_until="domcontentloaded")
@@ -85,6 +90,7 @@ class OrekaSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=50)
+    parser.add_argument("--limit-pages", type=int, default=50)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    OrekaSpider(limit_pages=args.limit).run()
+    OrekaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

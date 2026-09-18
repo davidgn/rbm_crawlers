@@ -6,9 +6,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class MelomanSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages=50, limit_items=None):
         super().__init__(platform_name="Meloman", territory="Kazakhstan")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.meloman.kz"
 
     def run(self):
@@ -24,6 +25,8 @@ class MelomanSpider(BaseSpider):
                 target_url = "https://www.meloman.kz/books.html"
                 
                 for current_page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     url = f"{target_url}?p={current_page}"
                     self.logger.info(f"Fetching index page {current_page}: {url}")
                     
@@ -71,6 +74,8 @@ class MelomanSpider(BaseSpider):
                         break
                         
                     for p_url in product_links[:12]: # Limited batch per page for efficiency
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         try:
                             self._harvest_item(page, p_url)
                             page.wait_for_timeout(1000)
@@ -104,7 +109,8 @@ class MelomanSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = MelomanSpider(limit_pages=args.limit)
+    spider = MelomanSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()
