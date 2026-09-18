@@ -30,7 +30,7 @@ class NodriverSearchSpider(BaseSpider):
 
     async def _run_async(self, search_term: str):
         self.logger.info(f"Starting nodriver crawl for {self.platform_name}. Search Term: {search_term}")
-        browser = await uc.start()
+        browser = await uc.start(no_sandbox=True)
         try:
             page = await browser.get("about:blank")
             for page_num in range(1, self.limit_pages + 1):

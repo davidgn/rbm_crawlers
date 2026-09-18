@@ -11,10 +11,10 @@ class LeuvendeuSpider(HTMLSearchSpider):
             base_url="https://leuvendeu.com.br",
             search_path="livro/busca/?q={query}",
             selectors={
-                'container': 'div.product__item, .product-item', 
-                'title': '.product__item__info-title, .title',
-                'link': 'a',
-                'price': '.product__item-price, .price',
+                'container': 'li.product', 
+                'title': '.woocommerce-loop-product__title, .product_title',
+                'link': 'a.woocommerce-LoopProduct-link',
+                'price': '.price',
             },
             territory="Brazil",
             limit_pages=limit_pages

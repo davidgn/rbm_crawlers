@@ -9,12 +9,12 @@ class TodosTusLibrosSpider(PlaywrightSearchSpider):
         super().__init__(
             platform_name="TodosTusLibros",
             base_url="https://www.todostuslibros.com",
-            search_path="busqueda/pagina_{page}.html?keyword={query}",
+            search_path="busquedas?keyword={query}&page={page}",
             selectors={
-                'container': '.book, .libro, .real-book, div.card, li.book-item, .product-item',
+                'container': '.book-col, .book, .libro, .real-book, div.card, li.book-item, .product-item',
                 'title': '.title a, h2 a, h3 a, a.title, .card-title',
                 'link': 'a[href*="/libros/"], a[href*="/libro/"], a.title',
-                'price': '.price, .precio, span.precio, .card-price',
+                'price': '.book-price, .price, .precio, span.precio, .card-price',
                 'author': '.author a, .autor a, .author, .card-author'
             },
             territory="Spain",

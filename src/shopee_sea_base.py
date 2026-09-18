@@ -1,5 +1,6 @@
 import random
 import asyncio
+from bs4 import BeautifulSoup
 import nodriver as uc
 from models import BookListing
 from base_spider import BaseSpider
@@ -26,7 +27,7 @@ class ShopeeSeaSpider(BaseSpider):
     async def _run_async(self):
         self.logger.info(f"Starting {self.platform_name} Enhanced Crawler (nodriver). Query: {self.search_query}")
         
-        browser = await uc.start()
+        browser = await uc.start(no_sandbox=True)
         try:
             page = await browser.get("about:blank")
             search_url = f"{self.base_url}/search?keyword={self.search_query.replace(' ', '%20')}"
@@ -49,18 +50,10 @@ class ShopeeSeaSpider(BaseSpider):
                     await page.scroll_down(300)
                     await asyncio.sleep(1)
                 
-                # We need to evaluate JS to get hrefs because nodriver DOM query can be tricky
-                links = await page.evaluate("""
-                    () => {
-                        let hrefs = [];
-                        document.querySelectorAll("a").forEach(a => {
-                            if (a.href && a.href.includes("-i.")) {
-                                hrefs.push(a.href);
-                            }
-                        });
-                        return hrefs;
-                    }
-                """)
+                html = await page.get_content()
+                soup = BeautifulSoup(html, "html.parser")
+                
+                links = [a.get("href") for a in soup.find_all("a", href=True) if "-i." in a.get("href", "")]
                 
                 for href in links:
                     if href.startswith("/"):
@@ -74,7 +67,6 @@ class ShopeeSeaSpider(BaseSpider):
                 if len(urls) >= self.limit_items:
                     break
                     
-                # We will just scrape one page for now since Shopee is aggressive
                 break
 
             self.logger.info(f"Deep crawling {len(urls)} listings.")
@@ -94,24 +86,16 @@ class ShopeeSeaSpider(BaseSpider):
             await page.get(url)
             await asyncio.sleep(random.randint(4, 6))
             html = await page.get_content()
+            soup = BeautifulSoup(html, "html.parser")
             
-            data = await page.evaluate("""
-                () => {
-                    const getText = sel => (document.querySelector(sel) || {}).textContent || "";
-                    return {
-                        title: getText(".V_P9_7, ._3g8H9a, .att_n-, h1").trim(),
-                        price: getText(".pqTWkA, ._3n5NQx, .G2747_").trim(),
-                        description: getText(".f_79S0, .product-detail__description, ._2u69s8").trim()
-                    };
-                }
-            """)
-            
-            title = data.get("title")
-            if not title:
-                title = "Unknown Title"
+            title_el = soup.select_one(".V_P9_7, ._3g8H9a, .att_n-, h1")
+            title = title_el.text.strip() if title_el else "Unknown Title"
                 
-            price = data.get("price")
-            desc = data.get("description")
+            price_el = soup.select_one(".pqTWkA, ._3n5NQx, .G2747_")
+            price = price_el.text.strip() if price_el else None
+            
+            desc_el = soup.select_one(".f_79S0, .product-detail__description, ._2u69s8")
+            desc = desc_el.text.strip() if desc_el else None
 
             item = BookListing(
                 territory=self.territory,
