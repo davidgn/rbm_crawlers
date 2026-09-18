@@ -22,8 +22,13 @@ class BukzCoSpider(ShopifyAPISpider):
 
 
 if __name__ == "__main__":
+    import argparse
     import logging
 
     logging.basicConfig(level=logging.INFO)
-    spider = BukzCoSpider(limit_pages=1, limit_items=5)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=5)
+    args = parser.parse_args()
+    spider = BukzCoSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()
