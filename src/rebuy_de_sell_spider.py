@@ -68,10 +68,11 @@ class RebuyDeSellSpider(BaseSpider):
     is solved once per run (~30 s) and reused for the session (24 h validity).
     """
 
-    def __init__(self, isbn_file: str = None, limit: int = 0):
+    def __init__(self, isbn_file: str = None, limit: int = 0, limit_pages: int = 0):
         super().__init__(platform_name="reBuy DE Sell", territory="Germany")
         self.isbn_file = isbn_file
         self.limit = limit
+        self.limit_pages = limit_pages  # unused: ISBN-list driven, no pagination
         self.client = httpx.Client(
             timeout=30.0,
             follow_redirects=True,
@@ -175,6 +176,8 @@ class RebuyDeSellSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="reBuy DE sell-price spider (ISBN lookup)")
     parser.add_argument("--isbn-file", metavar="FILE", help="File with one ISBN/EAN per line")
-    parser.add_argument("--limit", type=int, default=0, help="Max ISBNs to process (0=unlimited)")
+    parser.add_argument("--limit-items", type=int, default=0, help="Max ISBNs to process (0=unlimited)")
+    parser.add_argument("--limit-pages", type=int, default=0,
+                         help="Unused (ISBN-list driven, no pagination), kept for CLI consistency")
     args = parser.parse_args()
-    RebuyDeSellSpider(isbn_file=args.isbn_file, limit=args.limit).run()
+    RebuyDeSellSpider(isbn_file=args.isbn_file, limit=args.limit_items, limit_pages=args.limit_pages).run()

@@ -11,11 +11,12 @@ class McitOpacSpider(BaseSpider):
     Crawls the MCIT e-Granthalaya shared catalog in India.
     Extracts library holdings and book metadata.
     """
-    def __init__(self, search_term: str = "computer", limit_pages: int = 1):
+    def __init__(self, search_term: str = "computer", limit_pages: int = 1, limit_items: int | None = None):
         super().__init__(platform_name="MCIT OPAC", territory="India")
         self.base_url = "https://eg4.nic.in/OPAC/Default.aspx?CL_NAME=MCIT&LIB_CODE=NIELITAGT"
         self.search_term = search_term
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(verify=False, timeout=45.0)
 
     def _get_robust_response(self, url: str, max_retries: int = 3):
@@ -76,6 +77,8 @@ class McitOpacSpider(BaseSpider):
             self.logger.info(f"Found {len(records)} records in OPAC")
             
             for record in records:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 catalog_id = record.get("catalog_id")
                 if not catalog_id:
                     continue
@@ -153,5 +156,7 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="computer")
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    McitOpacSpider(search_term=args.query).run()
+    McitOpacSpider(search_term=args.query, limit_pages=args.limit_pages, limit_items=args.limit_items).run()

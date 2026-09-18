@@ -11,8 +11,10 @@ class NaiinApiSpider(BaseSpider):
     API search/product schemas are confirmed from static or live evidence.
     """
 
-    def __init__(self):
+    def __init__(self, limit_pages=5, limit_items=None):
         super().__init__(platform_name="NaiinAPI", territory="Thailand")
+        self.limit_pages = limit_pages  # unused: scaffold does not paginate yet
+        self.limit_items = limit_items  # unused: scaffold emits no listings yet
         self.base_url = "https://app-api.naiin.com/api/v1"
         self.headers = {
             "X-App-Key": "fmrGUjGLzVMf1r8fwzWLzWhgpRyEtgcL",
@@ -43,5 +45,10 @@ class NaiinApiSpider(BaseSpider):
         return []
 
 if __name__ == "__main__":
+    import argparse
     logging.basicConfig(level=logging.INFO)
-    NaiinApiSpider().run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    NaiinApiSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

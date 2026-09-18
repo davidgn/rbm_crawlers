@@ -4,12 +4,13 @@ from base_spider import BaseSpider
 from models import BookListing
 
 class PustakStoreSpider(BaseSpider):
-    def __init__(self, limit_pages=10, page_size=20):
+    def __init__(self, limit_pages=10, page_size=20, limit_items=None):
         super().__init__(platform_name="PustakStore", territory="India")
         self.base_url = "https://pustakstore.in"
         self.api_url = f"{self.base_url}/backend/api/public/product/search_results.php"
         self.limit_pages = limit_pages
         self.page_size = page_size
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, 
             follow_redirects=True,
@@ -24,6 +25,8 @@ class PustakStoreSpider(BaseSpider):
         # We can crawl by categories or just general search. 
         # For a broad crawl, we can omit the query to get all items.
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             try:
                 params = {
                     "page": page,
@@ -46,6 +49,8 @@ class PustakStoreSpider(BaseSpider):
                     break
                     
                 for item in items:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     self._process_item(item)
                     
             except Exception as e:
@@ -90,8 +95,9 @@ class PustakStoreSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="PustakStore India crawler")
-    parser.add_argument("--limit", type=int, default=10, help="Max pages to fetch")
+    parser.add_argument("--limit-pages", type=int, default=10, help="Max pages to fetch")
     parser.add_argument("--page-size", type=int, default=20, help="Items per page")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = PustakStoreSpider(limit_pages=args.limit, page_size=args.page_size)
+    spider = PustakStoreSpider(limit_pages=args.limit_pages, page_size=args.page_size, limit_items=args.limit_items)
     spider.run()

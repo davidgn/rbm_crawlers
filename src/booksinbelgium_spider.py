@@ -40,15 +40,18 @@ class BooksInBelgiumSpider(BaseSpider):
     }
     PAGE_SIZE = 48
 
-    def __init__(self, max_pages_per_category: int = 5000):
+    def __init__(self, limit_pages: int = 5000, limit_items: int | None = None):
         super().__init__(platform_name="BooksInBelgium", territory="Belgium")
-        self.max_pages_per_category = max_pages_per_category
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
         categories = self._discover_categories()
         self.logger.info("Found %d categories to harvest", len(categories))
         for slug in categories:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self._harvest_category(slug)
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
@@ -77,7 +80,9 @@ class BooksInBelgiumSpider(BaseSpider):
         return CATEGORY_FALLBACK
 
     def _harvest_category(self, slug: str):
-        for page_num in range(1, self.max_pages_per_category + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{self.BASE_URL}/nl/boeken/{slug}?page={page_num}"
             try:
                 resp = self.client.get(url)
@@ -101,6 +106,8 @@ class BooksInBelgiumSpider(BaseSpider):
                 break
 
             for rec in records:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 listing = self._listing_from_record(rec)
                 if listing:
                     self.save_item(listing)
@@ -175,11 +182,12 @@ class BooksInBelgiumSpider(BaseSpider):
 def main():
     parser = argparse.ArgumentParser(description="Books in Belgium Vue SSR spider")
     parser.add_argument(
-        "--max-pages", type=int, default=5000,
+        "--limit-pages", type=int, default=5000,
         help="Max pages per category (48 records/page)",
     )
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BooksInBelgiumSpider(max_pages_per_category=args.max_pages).run()
+    BooksInBelgiumSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

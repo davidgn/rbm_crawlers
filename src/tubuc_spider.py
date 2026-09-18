@@ -25,15 +25,18 @@ class TubucSpider(BaseSpider):
         "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, delay: float = 0.8, max_pages: int = 500):
+    def __init__(self, delay: float = 0.8, limit_pages: int = 500, limit_items: int | None = None):
         super().__init__(platform_name="Tubuc", territory="Argentina")
         self.delay = delay
-        self.max_pages = max_pages
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
         seen: set[str] = set()
-        for page_num in range(1, self.max_pages + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = (
                 f"{self.BASE_URL}/tienda/"
                 if page_num == 1
@@ -58,6 +61,8 @@ class TubucSpider(BaseSpider):
 
             self.logger.info("Found %d product links", len(product_links))
             for link in product_links:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 seen.add(link)
                 listing = self._harvest_product(link)
                 if listing:
@@ -150,10 +155,11 @@ class TubucSpider(BaseSpider):
 
 def main():
     parser = argparse.ArgumentParser(description="Tubuc Argentina WooCommerce spider")
-    parser.add_argument("--max-pages", type=int, default=500)
+    parser.add_argument("--limit-pages", type=int, default=500)
     parser.add_argument("--delay", type=float, default=0.8)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    TubucSpider(delay=args.delay, max_pages=args.max_pages).run()
+    TubucSpider(delay=args.delay, limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

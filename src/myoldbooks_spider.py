@@ -35,9 +35,11 @@ PAGE_SIZE = 100
 
 
 class MyOldBooksSpider(BaseSpider):
-    def __init__(self, page_size: int = PAGE_SIZE):
+    def __init__(self, page_size: int = PAGE_SIZE, limit_pages: int = 0, limit_items: int | None = None):
         super().__init__(platform_name="MyOldBooks", territory="India")
         self.page_size = page_size
+        self.limit_pages = limit_pages  # 0 = unlimited
+        self.limit_items = limit_items
 
     def _get_robust_response(self, url: str, max_retries: int = 3):
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"}
@@ -60,11 +62,17 @@ class MyOldBooksSpider(BaseSpider):
             cursor: str | None = None
             page = 0
             while True:
+                if self.limit_pages and page >= self.limit_pages:
+                    break
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 page += 1
                 docs = self._fetch_page(client, cursor)
                 if not docs:
                     break
                 for doc in docs:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     listing = self._listing_from_doc(doc)
                     if listing:
                         listing = self.scavenge_metadata(str(doc), listing)
@@ -155,8 +163,10 @@ class MyOldBooksSpider(BaseSpider):
 def main():
     parser = argparse.ArgumentParser(description="MyOldBooks Firestore spider (open read)")
     parser.add_argument("--page-size", type=int, default=PAGE_SIZE, help="Docs per Firestore page")
+    parser.add_argument("--limit-pages", type=int, default=0, help="Max Firestore pages to fetch (0 = unlimited)")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    MyOldBooksSpider(page_size=args.page_size).run()
+    MyOldBooksSpider(page_size=args.page_size, limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

@@ -28,15 +28,18 @@ class BegglireSpider(BaseSpider):
         "Accept-Language": "fr-SN,fr;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, delay: float = 0.5, max_pages: int = 200):
+    def __init__(self, delay: float = 0.5, limit_pages: int = 200, limit_items: int | None = None):
         super().__init__(platform_name="Bëgg Lire", territory="Senegal")
         self.delay = delay
-        self.max_pages = max_pages
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
         seen: set[str] = set()
-        for page_num in range(1, self.max_pages + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{BASE_URL}{LIST_PATH}"
             try:
                 resp = self.client.get(url, params={"page": page_num})
@@ -54,6 +57,8 @@ class BegglireSpider(BaseSpider):
 
             new_count = 0
             for card in cards:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 link_el = card.select_one(".book__card-image a")
                 if not link_el:
                     continue
@@ -153,9 +158,10 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Bëgg Lire Senegal used-book spider")
     parser.add_argument("--delay", type=float, default=0.5)
-    parser.add_argument("--max-pages", type=int, default=200)
+    parser.add_argument("--limit-pages", type=int, default=200)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BegglireSpider(delay=args.delay, max_pages=args.max_pages).run()
+    BegglireSpider(delay=args.delay, limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

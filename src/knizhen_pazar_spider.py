@@ -29,10 +29,11 @@ class KnizhenPazarSpider(BaseSpider):
     }
     TILES_PER_PAGE = 20
 
-    def __init__(self, delay: float = 0.3, max_pages: int = 20000):
+    def __init__(self, delay: float = 0.3, limit_pages: int = 20000, limit_items: int | None = None):
         super().__init__(platform_name="KnizhenPazar", territory="Bulgaria")
         self.delay = delay
-        self.max_pages = max_pages
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
@@ -43,6 +44,8 @@ class KnizhenPazarSpider(BaseSpider):
         self.logger.info("Found %d categories", len(categories))
         seen: set[str] = set()
         for cat_url, cat_name in categories:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self._harvest_category(cat_url, cat_name, seen)
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
@@ -71,7 +74,9 @@ class KnizhenPazarSpider(BaseSpider):
             return []
 
     def _harvest_category(self, base_url: str, cat_name: str, seen: set):
-        for page_num in range(1, self.max_pages + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{base_url}?page={page_num}"
             try:
                 resp = self.client.get(url)
@@ -91,6 +96,8 @@ class KnizhenPazarSpider(BaseSpider):
 
             new_count = 0
             for tile in tiles:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 link_el = tile.select_one(".prl__title a")
                 if not link_el:
                     continue
@@ -262,8 +269,12 @@ def main():
         help="Seconds between page requests",
     )
     parser.add_argument(
-        "--max-pages", type=int, default=20000,
+        "--limit-pages", type=int, default=20000,
         help="Max pages per category",
+    )
+    parser.add_argument(
+        "--limit-items", type=int, default=None,
+        help="Max total items to scrape",
     )
     parser.add_argument(
         "--backfill", action="store_true",
@@ -273,7 +284,7 @@ def main():
     if args.backfill:
         _backfill_detail_pages(delay=args.delay)
     else:
-        KnizhenPazarSpider(delay=args.delay, max_pages=args.max_pages).run()
+        KnizhenPazarSpider(delay=args.delay, limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

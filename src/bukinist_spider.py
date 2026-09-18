@@ -36,11 +36,14 @@ class BukinistSpider(BaseSpider):
         "Accept-Language": "uk-UA,uk;q=0.9,ru;q=0.8,en;q=0.7",
     }
 
-    def __init__(self, delay: float = 0.3, max_id: int = 0, min_id: int = 1):
+    def __init__(self, delay: float = 0.3, max_id: int = 0, min_id: int = 1,
+                 limit_pages: int = 0, limit_items: int | None = None):
         super().__init__(platform_name="Bukinist", territory="Ukraine")
         self.delay = delay
         self.max_id = max_id  # 0 = auto-discover from /books/last/1
         self.min_id = min_id
+        self.limit_pages = limit_pages  # unused: this spider is ID-range-based, not paginated
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
@@ -51,6 +54,8 @@ class BukinistSpider(BaseSpider):
         self.logger.info("Crawling IDs %d → %d", max_id, self.min_id)
 
         for book_id in range(max_id, self.min_id - 1, -1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{BASE_URL}/books/view/{book_id}"
             listing = self._fetch_book(url)
             if listing:
@@ -175,8 +180,12 @@ def main():
                         help="Highest book ID to fetch (0 = auto-discover)")
     parser.add_argument("--min-id", type=int, default=1,
                         help="Lowest book ID to fetch")
+    parser.add_argument("--limit-pages", type=int, default=0,
+                        help="Unused (ID-range scan, no pagination), kept for CLI consistency")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BukinistSpider(delay=args.delay, max_id=args.max_id, min_id=args.min_id).run()
+    BukinistSpider(delay=args.delay, max_id=args.max_id, min_id=args.min_id,
+                    limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

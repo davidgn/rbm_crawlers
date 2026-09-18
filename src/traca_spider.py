@@ -38,11 +38,13 @@ class TracaSpider(BaseSpider):
     required to obtain the ISBN-13 barcode field absent from bulk responses.
     """
 
-    def __init__(self, limit_pages: int = 0, skip_isbn: bool = False, start_page: int = 1):
+    def __init__(self, limit_pages: int = 0, skip_isbn: bool = False, start_page: int = 1,
+                 limit_items: int | None = None):
         super().__init__(platform_name="Traça", territory="Brazil")
         self.limit_pages = limit_pages
         self.skip_isbn = skip_isbn
         self.start_page = start_page
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0,
             follow_redirects=True,
@@ -65,6 +67,9 @@ class TracaSpider(BaseSpider):
             for page in range(self.start_page, 10001):
                 if self.limit_pages and (page - self.start_page) >= self.limit_pages:
                     self.logger.info("Reached page limit — stopping at page %d.", page)
+                    break
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    self.logger.info("Reached item limit %d — stopping.", self.limit_items)
                     break
 
                 url = f"{PRODUCTS_URL}?limit={PAGE_SIZE}&page={page}"
@@ -94,6 +99,8 @@ class TracaSpider(BaseSpider):
                     break
 
                 for product in products:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         self._process_product(product)
                     except Exception as e:
@@ -181,7 +188,7 @@ class TracaSpider(BaseSpider):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Traça Livraria e Sebo spider (Brazil)")
     parser.add_argument(
-        "--limit", type=int, default=0,
+        "--limit-pages", type=int, default=0,
         help="Max pages to fetch (default: 0 = unlimited)",
     )
     parser.add_argument(
@@ -192,5 +199,7 @@ if __name__ == "__main__":
         "--skip-isbn", action="store_true",
         help="Skip per-product barcode fetch (faster, no ISBNs)",
     )
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    TracaSpider(limit_pages=args.limit, skip_isbn=args.skip_isbn, start_page=args.start_page).run()
+    TracaSpider(limit_pages=args.limit_pages, skip_isbn=args.skip_isbn, start_page=args.start_page,
+                limit_items=args.limit_items).run()

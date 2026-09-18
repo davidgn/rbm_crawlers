@@ -53,11 +53,13 @@ class ReuseBooksSpider(BaseSpider):
         limit_centers: int = 1,
         radius_meters: int = DEFAULT_RADIUS_METERS,
         delay: float = 0.5,
+        limit_items: int | None = None,
     ):
         super().__init__(platform_name="ReuseBooks", territory="India")
         self.limit_centers = limit_centers
         self.radius_meters = radius_meters
         self.delay = delay
+        self.limit_items = limit_items
         self.client = httpx.Client(
             base_url=self.API_BASE,
             timeout=60.0,
@@ -80,6 +82,8 @@ class ReuseBooksSpider(BaseSpider):
         seen: set[str] = set()
         try:
             for center_name, latitude, longitude in self.DEFAULT_CENTERS[: self.limit_centers]:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 data = self._fetch_facets(center_name, latitude, longitude)
                 if not data:
                     continue
@@ -89,6 +93,8 @@ class ReuseBooksSpider(BaseSpider):
                 self.logger.info("%s returned %s listings.", center_name, len(listings))
 
                 for listing in listings:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     book_id = listing.get("_id")
                     if not book_id or book_id in seen:
                         continue
@@ -249,13 +255,15 @@ class ReuseBooksSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ReuseBooks public app API spider")
-    parser.add_argument("--limit", type=int, default=1, help="Maximum default city centers to query")
+    parser.add_argument("--limit-pages", type=int, default=1, help="Maximum default city centers to query")
     parser.add_argument("--radius", type=int, default=ReuseBooksSpider.DEFAULT_RADIUS_METERS, help="Search radius in meters")
     parser.add_argument("--delay", type=float, default=0.5, help="Delay between center requests")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
     ReuseBooksSpider(
-        limit_centers=args.limit,
+        limit_centers=args.limit_pages,
         radius_meters=args.radius,
         delay=args.delay,
+        limit_items=args.limit_items,
     ).run()

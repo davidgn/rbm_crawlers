@@ -10,11 +10,12 @@ class SuperknjizaraHrSpider(BaseSpider):
     Spider for Superknjižara (Croatia).
     Uses the internal POST API /get_products to bypass Cloudflare and retrieve results.
     """
-    def __init__(self, limit_pages=1, **kwargs):
+    def __init__(self, limit_pages=1, limit_items=None, **kwargs):
         # We set limit_pages to 1 because the API returns up to 90 items in one go,
         # and pagination via the API requires specific session states we bypass.
         super().__init__(platform_name="Superknjižara", territory="Croatia")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.api_url = "https://www.superknjizara.hr/get_products"
         self.base_url = "https://www.superknjizara.hr"
 
@@ -56,6 +57,8 @@ class SuperknjizaraHrSpider(BaseSpider):
             self.logger.info(f"Found {len(items)} items in API response.")
 
             for item in items:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 title_el = item.select_one('.product-info h3 a.product-click')
                 if not title_el:
                     continue
@@ -85,5 +88,11 @@ class SuperknjizaraHrSpider(BaseSpider):
             self.logger.error(f"Error fetching API: {e}")
 
 if __name__ == "__main__":
-    spider = SuperknjizaraHrSpider()
-    spider.run()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--query", type=str, default=None)
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    spider = SuperknjizaraHrSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
+    spider.run(search_term=args.query)

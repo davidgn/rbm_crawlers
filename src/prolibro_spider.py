@@ -53,10 +53,11 @@ class ProlibroSpider(BaseSpider):
         "Accept-Language": "es-CL,es;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, delay: float = 0.4, max_pages: int = 500):
+    def __init__(self, delay: float = 0.4, limit_pages: int = 500, limit_items: int | None = None):
         super().__init__(platform_name="Prolibro", territory="Chile")
         self.delay = delay
-        self.max_pages = max_pages
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
@@ -64,6 +65,8 @@ class ProlibroSpider(BaseSpider):
         self.logger.info("Harvesting %d categories", len(categories))
         seen: set[str] = set()
         for cat_id, cat_name in categories:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self._harvest_category(cat_id, cat_name, seen)
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
@@ -90,7 +93,9 @@ class ProlibroSpider(BaseSpider):
         return CATEGORY_FALLBACK
 
     def _harvest_category(self, cat_id: int, cat_name: str, seen: set):
-        for page_num in range(1, self.max_pages + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             params = {} if page_num == 1 else {"page": page_num}
             url = f"{BASE_URL}/search-products/{cat_id}"
             try:
@@ -109,6 +114,8 @@ class ProlibroSpider(BaseSpider):
 
             new_count = 0
             for card in cards:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 link_el = card.select_one("a.card-img-top")
                 if not link_el:
                     continue
@@ -169,9 +176,10 @@ class ProlibroSpider(BaseSpider):
 def main():
     parser = argparse.ArgumentParser(description="Prolibro Chile used-book spider")
     parser.add_argument("--delay", type=float, default=0.4)
-    parser.add_argument("--max-pages", type=int, default=500)
+    parser.add_argument("--limit-pages", type=int, default=500)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    ProlibroSpider(delay=args.delay, max_pages=args.max_pages).run()
+    ProlibroSpider(delay=args.delay, limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

@@ -30,18 +30,22 @@ class TrhKnihSpider(BaseSpider):
     def __init__(
         self,
         delay: float = 0.4,
-        max_pages: int = 20000,
+        limit_pages: int = 20000,
         fetch_detail: bool = True,
+        limit_items: int | None = None,
     ):
         super().__init__(platform_name="TrhKnih", territory="Czechia")
         self.delay = delay
-        self.max_pages = max_pages
+        self.limit_pages = limit_pages
         self.fetch_detail = fetch_detail
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
         seen: set[str] = set()
-        for page_num in range(1, self.max_pages + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{self.BASE_URL}/nabidky?page={page_num}"
             try:
                 resp = self.client.get(url)
@@ -60,6 +64,8 @@ class TrhKnihSpider(BaseSpider):
 
             new_count = 0
             for tile in tiles:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 link_el = tile.select_one("a.title-name")
                 if not link_el:
                     continue
@@ -167,17 +173,19 @@ class TrhKnihSpider(BaseSpider):
 
 def main():
     parser = argparse.ArgumentParser(description="TrhKnih Czechia used-book spider")
-    parser.add_argument("--max-pages", type=int, default=20000)
+    parser.add_argument("--limit-pages", type=int, default=20000)
     parser.add_argument("--delay", type=float, default=0.4)
     parser.add_argument(
         "--no-detail", action="store_true",
         help="Skip detail page fetches (tile data only, much faster)",
     )
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
     TrhKnihSpider(
         delay=args.delay,
-        max_pages=args.max_pages,
+        limit_pages=args.limit_pages,
         fetch_detail=not args.no_detail,
+        limit_items=args.limit_items,
     ).run()
 
 

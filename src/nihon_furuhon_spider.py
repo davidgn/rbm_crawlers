@@ -34,22 +34,27 @@ class NihonFuruhonSpider(BaseSpider):
         "Accept-Language": "ja-JP,ja;q=0.9,en;q=0.5",
     }
 
-    def __init__(self, delay: float = 0.5, max_pages_per_term: int = 60000):
+    def __init__(self, delay: float = 0.5, limit_pages: int = 60000, limit_items: int | None = None):
         super().__init__(platform_name="NihonFuruhon", territory="Japan")
         self.delay = delay
-        self.max_pages_per_term = max_pages_per_term
+        self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
 
     def run(self):
         seen: set[str] = set()
         for term in SEARCH_TERMS:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self.logger.info("Searching for: %s", term)
             self._harvest_term(term, seen)
         self.client.close()
         self.logger.info("Done: %d listings saved", self.items_scraped)
 
     def _harvest_term(self, term: str, seen: set):
-        for page_num in range(1, self.max_pages_per_term + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             params = {
                 "mode": "search",
                 "search_only_has_stock": "1",
@@ -80,6 +85,8 @@ class NihonFuruhonSpider(BaseSpider):
 
             new_count = 0
             for item in items:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 title_el = item.select_one("p.book_title a")
                 if not title_el:
                     continue
@@ -166,10 +173,11 @@ class NihonFuruhonSpider(BaseSpider):
 def main():
     parser = argparse.ArgumentParser(description="日本の古本屋 (kosho.or.jp) spider")
     parser.add_argument("--delay", type=float, default=0.5)
-    parser.add_argument("--max-pages", type=int, default=60000,
+    parser.add_argument("--limit-pages", type=int, default=60000,
                         help="Max pages per search term")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    NihonFuruhonSpider(delay=args.delay, max_pages_per_term=args.max_pages).run()
+    NihonFuruhonSpider(delay=args.delay, limit_pages=args.limit_pages, limit_items=args.limit_items).run()
 
 
 if __name__ == "__main__":

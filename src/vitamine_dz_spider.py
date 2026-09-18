@@ -10,9 +10,10 @@ class VitamineDzSpider(BaseSpider):
     Spider for Vitamine.dz (Algeria).
     Bypasses Google CSE by crawling the static category tree directly.
     """
-    def __init__(self, limit_pages=50, **kwargs):
+    def __init__(self, limit_pages=50, limit_items=None, **kwargs):
         super().__init__(platform_name="Vitamine.dz", territory="Algeria")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://www.vitamine.dz"
         self.client = httpx.Client(
             timeout=30.0,
@@ -47,6 +48,8 @@ class VitamineDzSpider(BaseSpider):
             cat_ids = [22] # fallback to pedagogiques
             
         for cat_id in list(cat_ids)[:10]: # Crawl up to 10 categories
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self.logger.info(f"Crawling Category {cat_id}")
             self._crawl_category(cat_id)
             
@@ -57,6 +60,8 @@ class VitamineDzSpider(BaseSpider):
         pages = 0
         
         while pages < self.limit_pages:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{self.base_url}/getMoreData.php?lastId={last_id}&cat={cat_id}&lg=fr"
             try:
                 r = self.client.get(url)
@@ -72,6 +77,8 @@ class VitamineDzSpider(BaseSpider):
                     break
                     
                 for p in products:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     self._parse_item(p)
                     
                 # Increment pagination - getMoreData.php usually uses an offset or ID. 
@@ -113,8 +120,12 @@ class VitamineDzSpider(BaseSpider):
                     listing_url=listing_url,
                 )
                 self.save_item(book)
-                self.items_scraped += 1
 
 if __name__ == "__main__":
-    spider = VitamineDzSpider(limit_pages=3)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=3)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    spider = VitamineDzSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

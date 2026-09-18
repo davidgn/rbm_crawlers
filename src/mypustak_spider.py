@@ -41,10 +41,11 @@ class MyPustakSpider(BaseSpider):
     read-only API key is embedded in the Next.js frontend bundle.
     """
 
-    def __init__(self, limit_pages: int = 0, include_sold_out: bool = False):
+    def __init__(self, limit_pages: int = 0, include_sold_out: bool = False, limit_items: int | None = None):
         super().__init__(platform_name="MyPustak", territory="India")
         self.limit_pages     = limit_pages        # 0 = unlimited
         self.include_sold_out = include_sold_out
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0,
             follow_redirects=True,
@@ -82,6 +83,9 @@ class MyPustakSpider(BaseSpider):
                 if self.limit_pages and page > self.limit_pages:
                     self.logger.info("Reached page limit %d — stopping.", self.limit_pages)
                     break
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    self.logger.info("Reached item limit %d — stopping.", self.limit_items)
+                    break
 
                 try:
                     resp = self.client.post(
@@ -114,6 +118,8 @@ class MyPustakSpider(BaseSpider):
                     break
 
                 for hit in hits:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     self._save_book(hit["document"])
 
                 self.logger.info(
@@ -178,9 +184,10 @@ class MyPustakSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="MyPustak India Typesense spider")
-    parser.add_argument("--limit", type=int, default=0,
+    parser.add_argument("--limit-pages", type=int, default=0,
                         help="Max pages to fetch (default: 0 = unlimited)")
+    parser.add_argument("--limit-items", type=int, default=None)
     parser.add_argument("--include-sold-out", action="store_true",
                         help="Include out-of-stock listings (default: in-stock only)")
     args = parser.parse_args()
-    MyPustakSpider(limit_pages=args.limit, include_sold_out=args.include_sold_out).run()
+    MyPustakSpider(limit_pages=args.limit_pages, include_sold_out=args.include_sold_out, limit_items=args.limit_items).run()
