@@ -46,9 +46,10 @@ class BukubekasSpider(BaseSpider):
         "Accept-Language": "id-ID,id;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100, use_playwright=False):
+    def __init__(self, limit_pages=100, use_playwright=False, limit_items=None):
         super().__init__(platform_name="Bukubekas.id", territory="Indonesia")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://bukubekas.id"
         self.use_playwright = use_playwright
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers=self.HEADERS)
@@ -75,6 +76,8 @@ class BukubekasSpider(BaseSpider):
         seen: set[str] = set()
 
         for pg_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             # Try WooCommerce-style /page/N/ first, then ?page=N
             urls_to_try = [
                 f"{browse_url.rstrip('/')}/page/{pg_num}/",
@@ -115,6 +118,8 @@ class BukubekasSpider(BaseSpider):
 
             self.logger.info(f"Found {len(book_links)} new links on page {pg_num}.")
             for link in book_links:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 seen.add(link)
                 self._harvest_item_httpx(link)
                 time.sleep(0.8)
@@ -195,6 +200,8 @@ class BukubekasSpider(BaseSpider):
                 browse_url = self._find_browse_url_pw(page)
 
                 for pg_num in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     # Try WooCommerce /page/N/ first
                     urls_to_try = (
                         [
@@ -228,6 +235,8 @@ class BukubekasSpider(BaseSpider):
 
                     self.logger.info(f"Found {len(book_links)} new links.")
                     for link in book_links:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         seen.add(link)
                         self._harvest_item_pw(page, link)
                         page.wait_for_timeout(700)
@@ -307,9 +316,10 @@ class BukubekasSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Bukubekas.id (Indonesia) cache-first spider")
-    parser.add_argument("--limit", type=int, default=100,
+    parser.add_argument("--limit-pages", type=int, default=100,
                         help="Max listing-index pages to crawl (default: 100)")
+    parser.add_argument("--limit-items", type=int, default=None)
     parser.add_argument("--playwright", action="store_true",
                         help="Force Playwright mode (default: httpx with auto-fallback)")
     args = parser.parse_args()
-    BukubekasSpider(limit_pages=args.limit, use_playwright=args.playwright).run()
+    BukubekasSpider(limit_pages=args.limit_pages, use_playwright=args.playwright, limit_items=args.limit_items).run()

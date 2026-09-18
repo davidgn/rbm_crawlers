@@ -9,9 +9,10 @@ import nodriver as uc
 from isbn_utils import isbn_from_url
 
 class AgendaBookshopSpider(BaseSpider):
-    def __init__(self, limit_items=None):
+    def __init__(self, limit_items=None, limit_pages=5):
         super().__init__(platform_name="Agenda Bookshop", territory="Malta")
         self.limit_items = limit_items
+        self.limit_pages = limit_pages  # unused: single suggest.json call, no pagination
 
     def run(self, query: str):
         asyncio.run(self._run_async(query))
@@ -76,5 +77,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="harry potter")
     parser.add_argument("--limit-items", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=5,
+                         help="Unused (single suggest.json call, no pagination), kept for CLI consistency")
     args = parser.parse_args()
-    AgendaBookshopSpider(limit_items=args.limit_items).run(args.query)
+    AgendaBookshopSpider(limit_items=args.limit_items, limit_pages=args.limit_pages).run(args.query)

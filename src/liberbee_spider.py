@@ -27,12 +27,14 @@ CF_WARMUP_SECS = 12
 
 
 class LiberbeeSpider(BaseSpider):
-    def __init__(self, delay: float = 2.0, max_pages: int = 300,
-                 categories: list[str] | None = None, fetch_detail: bool = True):
+    def __init__(self, delay: float = 2.0, limit_pages: int = 300,
+                 categories: list[str] | None = None, fetch_detail: bool = True,
+                 limit_items: int | None = None):
         super().__init__(platform_name="Liberbee", territory="Ukraine")
         self.delay = delay
-        self.max_pages = max_pages
+        self.limit_pages = limit_pages
         self.fetch_detail = fetch_detail
+        self.limit_items = limit_items
         self._categories = categories  # override for testing
 
     def run(self):
@@ -45,6 +47,8 @@ class LiberbeeSpider(BaseSpider):
             self.logger.info("Harvesting %d categories", len(categories))
             seen_books: set[str] = set()
             for slug in categories:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 await self._harvest_category(browser, slug, seen_books)
         finally:
             browser.stop()
@@ -76,7 +80,9 @@ class LiberbeeSpider(BaseSpider):
 
     async def _harvest_category(self, browser, cat_slug: str, seen_books: set):
         self.logger.info("Category: %s", cat_slug)
-        for page_num in range(1, self.max_pages + 1):
+        for page_num in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{BASE_URL}/books/{cat_slug}?page={page_num}"
             try:
                 html = await self._get_html(browser, url, wait=3.0)
@@ -92,6 +98,8 @@ class LiberbeeSpider(BaseSpider):
 
             new_count = 0
             for article in articles:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 book_url = self._article_url(article)
                 if not book_url or book_url in seen_books:
                     continue
@@ -256,7 +264,8 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Liberbee Ukraine used-book spider")
     parser.add_argument("--delay", type=float, default=2.0)
-    parser.add_argument("--max-pages", type=int, default=300)
+    parser.add_argument("--limit-pages", type=int, default=300)
+    parser.add_argument("--limit-items", type=int, default=None)
     parser.add_argument("--no-detail", action="store_true",
                         help="Skip detail page fetches (faster, less data)")
     parser.add_argument("--categories", nargs="*", default=None,
@@ -264,7 +273,8 @@ def main():
     args = parser.parse_args()
     LiberbeeSpider(
         delay=args.delay,
-        max_pages=args.max_pages,
+        limit_pages=args.limit_pages,
+        limit_items=args.limit_items,
         categories=args.categories,
         fetch_detail=not args.no_detail,
     ).run()

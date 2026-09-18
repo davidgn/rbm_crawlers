@@ -14,8 +14,10 @@ class AbaaWebringSpider(BaseSpider):
     """
     MAX_FETCHES_PER_SEED = 60  # depth<=3 alone doesn't bound breadth on a large site
 
-    def __init__(self):
+    def __init__(self, limit_pages=None, limit_items=None):
         super().__init__(platform_name="AntiquarianWebRing", territory="US")
+        self.limit_pages = limit_pages  # unused: recursive depth/fetch-count bounded, not page-based
+        self.limit_items = limit_items
         self.visited_urls = set()
         self.product_queue = asyncio.Queue()
         self._nodriver_browser = None
@@ -53,6 +55,8 @@ class AbaaWebringSpider(BaseSpider):
         if depth > 3 or current_url in self.visited_urls:
             return
         if self._fetch_counts.get(base_url, 0) >= self.MAX_FETCHES_PER_SEED:
+            return
+        if self.limit_items is not None and self.items_scraped >= self.limit_items:
             return
 
         self.visited_urls.add(current_url)
@@ -97,6 +101,8 @@ class AbaaWebringSpider(BaseSpider):
         while True:
             url, html = await self.product_queue.get()
             try:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    continue
                 self.logger.info(f"🧠 Running AI Extractor on {url}...")
                 
                 # This calls the existing gemini CLI integration in ai_extractor.py
@@ -147,5 +153,11 @@ class AbaaWebringSpider(BaseSpider):
         asyncio.run(self.run_async())
 
 if __name__ == "__main__":
-    spider = AbaaWebringSpider()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=None,
+                         help="Unused (depth/fetch-count bounded recursive crawl, not page-based), kept for CLI consistency")
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    spider = AbaaWebringSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()
