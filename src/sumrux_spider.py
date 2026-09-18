@@ -95,7 +95,8 @@ class SumruxSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Sumrux India crawler")
+    parser.add_argument("--limit-pages", type=int, default=3, help="Max pages to fetch")
     parser.add_argument("--limit-items", type=int, default=50, help="Max items to fetch")
     args = parser.parse_args()
-    spider = SumruxSpider(limit_items=args.limit_items)
+    spider = SumruxSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

@@ -70,6 +70,8 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--query", type=str, default="book")
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=20)
     args = parser.parse_args()
-    spider = TenpagesbookstoreAgSpider()
+    spider = TenpagesbookstoreAgSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run(args.query)
