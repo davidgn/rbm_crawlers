@@ -1,9 +1,9 @@
 import argparse
-from nodriver_search_spider import NodriverSearchSpider
+from flaresolverr_search_spider import FlaresolverrSearchSpider
 
-class AwesomebooksSpider(NodriverSearchSpider):
+class AwesomebooksSpider(FlaresolverrSearchSpider):
     """
-    Spider for AwesomeBooks using nodriver to bypass Cloudflare.
+    Spider for AwesomeBooks using Flaresolverr to bypass Cloudflare.
     """
     def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
         super().__init__(
@@ -25,7 +25,7 @@ class AwesomebooksSpider(NodriverSearchSpider):
         )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="AwesomeBooks nodriver Spider")
+    parser = argparse.ArgumentParser(description="AwesomeBooks Flaresolverr Spider")
     parser.add_argument("--query", type=str, default="Potter")
     parser.add_argument("--limit-pages", type=int, default=2)
     parser.add_argument("--limit-items", type=int, default=10)

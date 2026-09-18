@@ -1,9 +1,9 @@
 import argparse
-from nodriver_search_spider import NodriverSearchSpider
+from flaresolverr_search_spider import FlaresolverrSearchSpider
 
-class RecyclivreSpider(NodriverSearchSpider):
+class RecyclivreSpider(FlaresolverrSearchSpider):
     """
-    Spider for Recyclivre (France) using nodriver to bypass Cloudflare.
+    Spider for Recyclivre (France) using Flaresolverr to bypass Cloudflare.
     """
     def __init__(self, limit_pages: int = 5, limit_items: int | None = None, **kwargs):
         super().__init__(
@@ -25,7 +25,7 @@ class RecyclivreSpider(NodriverSearchSpider):
         )
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Recyclivre nodriver Spider")
+    parser = argparse.ArgumentParser(description="Recyclivre Flaresolverr Spider")
     parser.add_argument("--query", type=str, default="Potter")
     parser.add_argument("--limit-pages", type=int, default=2)
     parser.add_argument("--limit-items", type=int, default=10)

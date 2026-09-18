@@ -49,7 +49,7 @@ class PlaywrightSearchSpider(BaseSpider):
         except Exception:
             pass
 
-        if not is_mocked:
+        if not is_mocked and getattr(self, "use_curl_cffi", True):
             try:
                 from curl_cffi import requests as curlex
                 self.logger.info("Attempting search via curl_cffi Chrome impersonation...")
