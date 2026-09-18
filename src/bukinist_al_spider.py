@@ -22,9 +22,10 @@ class BukinistAlSpider(BaseSpider):
         "sq/29-111-vjet-shqiperi-111-libra",
     ]
 
-    def __init__(self, limit_pages: int = 15):
+    def __init__(self, limit_pages: int = 15, limit_items: int | None = None):
         super().__init__(platform_name="Bukinist Albania", territory="Albania")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -40,6 +41,8 @@ class BukinistAlSpider(BaseSpider):
         seen_urls = set()
 
         for cat in self.CATEGORIES[:self.limit_pages]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             cat_url = f"{self.BASE_URL}/{cat}"
             self.logger.info(f"Fetching category {cat}: {cat_url}")
             try:
@@ -52,6 +55,8 @@ class BukinistAlSpider(BaseSpider):
                 products = soup.select(".product-container, .product-miniature, .ajax_block_product")
 
                 for p in products:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     name_el = p.select_one(".product-name a, .product-title a, h5 a, a.product-name") or p.select_one(".product-name, .product-title, h5")
                     if not name_el:
                         continue
@@ -96,5 +101,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Bukinist Albania bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BukinistAlSpider(limit_pages=args.limit_pages).run()
+    BukinistAlSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

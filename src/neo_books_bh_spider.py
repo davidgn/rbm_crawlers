@@ -24,9 +24,10 @@ class NeoBooksBhSpider(BaseSpider):
         "classics-poetry",
     ]
 
-    def __init__(self, limit_pages: int = 20):
+    def __init__(self, limit_pages: int = 20, limit_items: int | None = None):
         super().__init__(platform_name="Neo Books & Coffee", territory="Bahrain")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -42,6 +43,8 @@ class NeoBooksBhSpider(BaseSpider):
         seen_urls = set()
 
         for cat in self.CATEGORIES[:self.limit_pages]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             cat_url = f"{self.BASE_URL}/en/{cat}"
             self.logger.info(f"Fetching category {cat}: {cat_url}")
             try:
@@ -54,6 +57,8 @@ class NeoBooksBhSpider(BaseSpider):
                 products = soup.select(".product-item, .item-box")
 
                 for p in products:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     title_el = p.select_one(".product-title a, h2.product-title a")
                     if not title_el:
                         continue
@@ -104,5 +109,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Neo Books & Coffee Bahrain bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    NeoBooksBhSpider(limit_pages=args.limit_pages).run()
+    NeoBooksBhSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

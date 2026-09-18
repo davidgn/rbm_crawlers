@@ -30,9 +30,10 @@ class SajhaKitabSpider(BaseSpider):
         "Accept-Language": "ne-NP,ne;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages: int = 100, limit_items: int | None = None):
         super().__init__(platform_name="Sajha Kitab", territory="Nepal")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -45,6 +46,8 @@ class SajhaKitabSpider(BaseSpider):
 
         try:
             for pg_num in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 if pg_num == 1:
                     url = self.BASE_URL + self.BROWSE_BASE
                 else:
@@ -69,6 +72,8 @@ class SajhaKitabSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.5)
@@ -123,6 +128,7 @@ class SajhaKitabSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Sajha Kitab Nepal cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int, default=100)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    SajhaKitabSpider(limit_pages=args.limit).run()
+    SajhaKitabSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

@@ -12,9 +12,10 @@ class BotimepegiAlSpider(BaseSpider):
     """
     BASE_URL = "https://botimepegi.al"
 
-    def __init__(self, limit_pages: int = 15):
+    def __init__(self, limit_pages: int = 15, limit_items: int | None = None):
         super().__init__(platform_name="Botimet Pegi Albania", territory="Albania")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -29,6 +30,8 @@ class BotimepegiAlSpider(BaseSpider):
         seen_urls = set()
 
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             cat_url = f"{self.BASE_URL}/books?page={page}&filter=all"
             self.logger.info(f"Fetching category page {page}: {cat_url}")
             try:
@@ -53,6 +56,8 @@ class BotimepegiAlSpider(BaseSpider):
                     break
 
                 for item_url in list(book_links)[:10]:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     if item_url in seen_urls:
                         continue
                     seen_urls.add(item_url)
@@ -120,5 +125,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Botimet Pegi Albania spider")
     parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BotimepegiAlSpider(limit_pages=args.limit_pages).run()
+    BotimepegiAlSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

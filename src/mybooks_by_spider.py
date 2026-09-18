@@ -8,9 +8,10 @@ class MyBooksBySpider(BaseSpider):
     Custom HTML crawler for mybooks.by (Belarus).
     Prices in BYN.
     """
-    def __init__(self, limit_pages: int = 5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="MyBooks", territory="Belarus")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://mybooks.by"
         self.categories = [
             "/Biznes-knigi/",
@@ -31,7 +32,11 @@ class MyBooksBySpider(BaseSpider):
 
     def run(self):
         for category in self.categories:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             for page in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 url = f"{self.base_url}{category}?page={page}"
                 try:
                     response = self._get_with_retries(url)
@@ -44,6 +49,8 @@ class MyBooksBySpider(BaseSpider):
                         break  # no more products on this category page
                     
                     for prod in products:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         title = prod.get('data-name', '').strip()
                         price_str = prod.get('data-price', '').strip()
                         currency = prod.get('data-currency', 'BYN').strip()
@@ -73,3 +80,12 @@ class MyBooksBySpider(BaseSpider):
                         self.save_item(listing)
                 except Exception as e:
                     self.logger.error(f"Error crawling {url}: {e}")
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="MyBooks Belarus spider")
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    MyBooksBySpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

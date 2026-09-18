@@ -12,9 +12,10 @@ class BookFlowSpider(BaseSpider):
     Spider for BookFlow using Cloudflare Origin IP bypass.
     Extracts directly from the WP REST API on the origin server.
     """
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(platform_name="BookFlow", territory="India")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.origin_ip = "103.171.45.137"
         self.host = "bookflow.in"
         self.base_url = "https://bookflow.in"
@@ -50,6 +51,8 @@ class BookFlowSpider(BaseSpider):
         self.logger.info(f"Starting Origin Bypass API crawler for {self.platform_name}. Limit: {self.limit_pages} pages.")
         
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             path = f"/wp-json/wp/v2/ad_post?page={page}&per_page=100"
             self.logger.info(f"Fetching page {page}: {self.base_url}{path}")
             
@@ -66,6 +69,8 @@ class BookFlowSpider(BaseSpider):
                     break
                     
                 for post in data:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     self._parse_post(post)
                     
             except Exception as e:
@@ -105,5 +110,9 @@ class BookFlowSpider(BaseSpider):
         self.save_item(book)
 
 if __name__ == "__main__":
-    spider = BookFlowSpider(limit_pages=2)
-    spider.run()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    BookFlowSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

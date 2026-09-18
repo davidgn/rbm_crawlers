@@ -11,9 +11,10 @@ class SoukabirTdSpider(BaseSpider):
     BASE_URL = "https://soukabir.com"
     CATEGORY_IDS = [169, 218, 551]  # Librairie et papeterie, Livres
 
-    def __init__(self, limit_pages: int = 10):
+    def __init__(self, limit_pages: int = 10, limit_items: int | None = None):
         super().__init__(platform_name="Soukabir Chad", territory="Chad")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -28,7 +29,11 @@ class SoukabirTdSpider(BaseSpider):
         seen_ids = set()
 
         for cat_id in self.CATEGORY_IDS:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             for page in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 api_url = f"{self.BASE_URL}/wp-json/wc/store/products?category={cat_id}&page={page}&per_page=20"
                 self.logger.info(f"Fetching category {cat_id} page {page}: {api_url}")
                 try:
@@ -41,6 +46,8 @@ class SoukabirTdSpider(BaseSpider):
                         break
 
                     for p in products:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         p_id = p.get("id")
                         if p_id in seen_ids:
                             continue
@@ -98,5 +105,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Soukabir Chad spider")
     parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    SoukabirTdSpider(limit_pages=args.limit_pages).run()
+    SoukabirTdSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

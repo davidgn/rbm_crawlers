@@ -7,10 +7,11 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class TremendosLibrosUySpider(BaseSpider):
-    def __init__(self, limit_pages=5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="Tremendos Libros", territory="Uruguay")
         self.base_url = "https://tremendoslibros.com"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         })
@@ -21,6 +22,8 @@ class TremendosLibrosUySpider(BaseSpider):
         genres = ["literatura", "filosofia", "historia", "politica", "biografias"]
         
         for genre in genres:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{self.base_url}/genero/{genre}"
             self.logger.info(f"Fetching genre: {url}")
             
@@ -35,6 +38,8 @@ class TremendosLibrosUySpider(BaseSpider):
                 self.logger.info(f"Found {len(links)} links in {genre}")
                 
                 for link in links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     abs_url = f"{self.base_url}{link}" if link.startswith("/") else link
                     if abs_url in self._seen_urls: continue
                     self._scrape_detail(abs_url)
@@ -105,7 +110,8 @@ class TremendosLibrosUySpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = TremendosLibrosUySpider(limit_pages=args.limit)
+    spider = TremendosLibrosUySpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

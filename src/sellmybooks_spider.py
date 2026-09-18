@@ -13,11 +13,12 @@ class SellMyBooksSpider(BaseSpider):
     UsedBookr is the consumer-facing platform for SimplySellBooks.in.
     """
     
-    def __init__(self, limit_pages=5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="SellMyBooks", territory="India")
         self.base_url = "https://www.usedbookr.com"
         self.categories_url = f"{self.base_url}/buy-second-hand-books-usedbooks/categories/all-fiction-books"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, 
             follow_redirects=True,
@@ -45,6 +46,8 @@ class SellMyBooksSpider(BaseSpider):
         
         # UsedBookr seems to use pagination like ?page=N
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{self.categories_url}?page={page}"
             try:
                 response = self._get_robust_response(url)
@@ -70,6 +73,8 @@ class SellMyBooksSpider(BaseSpider):
             return False
             
         for product in products:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             try:
                 title_tag = product.find("h4", class_="card-title")
                 if not title_tag:
@@ -116,7 +121,8 @@ class SellMyBooksSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SellMyBooks India (UsedBookr) crawler")
-    parser.add_argument("--limit", type=int, default=5, help="Max pages to fetch")
+    parser.add_argument("--limit-pages", type=int, default=5, help="Max pages to fetch")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = SellMyBooksSpider(limit_pages=args.limit)
+    spider = SellMyBooksSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

@@ -43,9 +43,10 @@ class NibiyaSpider(BaseSpider):
         "Accept-Language": "fr-TD,fr;q=0.9,en;q=0.8",
     }
 
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages: int = 100, limit_items: int | None = None):
         super().__init__(platform_name="Nibiya", territory="Chad")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, follow_redirects=True, headers=self.HEADERS
         )
@@ -80,6 +81,8 @@ class NibiyaSpider(BaseSpider):
             browse_url = self._find_browse_url()
 
             for pg_num in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 urls_to_try = (
                     [
                         f"{browse_url}{'&' if '?' in browse_url else '?'}page={pg_num}",
@@ -115,6 +118,8 @@ class NibiyaSpider(BaseSpider):
 
                 self.logger.info(f"Found {len(book_links)} new links.")
                 for link in book_links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     seen.add(link)
                     self._harvest_item(link)
                     time.sleep(0.7)
@@ -206,6 +211,7 @@ class NibiyaSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Nibiya Chad classifieds cache-first spider")
-    parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit-pages", type=int, default=100)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    NibiyaSpider(limit_pages=args.limit).run()
+    NibiyaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

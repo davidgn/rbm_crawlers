@@ -7,10 +7,11 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class DieselKgSpider(BaseSpider):
-    def __init__(self, limit_pages=5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="Diesel Forum KG", territory="Kyrgyzstan")
         self.forum_url = "https://diesel.elcat.kg/index.php?showforum=74"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True, headers={
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         })
@@ -19,6 +20,8 @@ class DieselKgSpider(BaseSpider):
         self.logger.info(f"Starting Diesel Forum KG harvester. Limit: {self.limit_pages} pages.")
         
         for i in range(self.limit_pages):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             st = i * 20 # Forum typically uses st=20, 40, etc for offset
             url = f"{self.forum_url}&st={st}"
             self.logger.info(f"Fetching forum page: {url}")
@@ -35,6 +38,8 @@ class DieselKgSpider(BaseSpider):
                     break
                     
                 for link in topic_links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     href = link.get("href")
                     if not href: continue
                     # Clean the URL (remove session ID)
@@ -92,7 +97,8 @@ class DieselKgSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = DieselKgSpider(limit_pages=args.limit)
+    spider = DieselKgSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

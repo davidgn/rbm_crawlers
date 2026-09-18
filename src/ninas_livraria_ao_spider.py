@@ -12,9 +12,10 @@ class NinasLivrariaAoSpider(BaseSpider):
     BASE_URL = "https://ninaslivraria.com"
     SUPABASE_URL = "https://qnfzfoyascoqbusnbbar.supabase.co"
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(platform_name="Nina's Livraria", territory="Angola")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -67,6 +68,8 @@ class NinasLivrariaAoSpider(BaseSpider):
 
             products = api_resp.json()
             for p in products:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 title = p.get("title")
                 if not title:
                     continue
@@ -98,5 +101,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Nina's Livraria Angola bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    NinasLivrariaAoSpider(limit_pages=args.limit_pages).run()
+    NinasLivrariaAoSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

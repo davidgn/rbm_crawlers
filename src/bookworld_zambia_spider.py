@@ -7,10 +7,11 @@ class BookworldZambiaSpider(BaseSpider):
     """
     Spider for Bookworld Zambia using their discovered AJAX API.
     """
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(platform_name="Bookworld Zambia", territory="Zambia")
         self.api_base = "https://www.bookworldzambia.com/ajax/store/products/facets"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True)
 
     def run(self):
@@ -19,7 +20,11 @@ class BookworldZambiaSpider(BaseSpider):
         search_terms = ["Harry Potter", "Potter", "Zambia", "Book"]
         
         for term in search_terms:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             for page in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 # The API uses GET with SearchTerm and Page
                 params = {
                     "SearchTerm": term,
@@ -39,6 +44,8 @@ class BookworldZambiaSpider(BaseSpider):
                         break
                         
                     for prod in products:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         self._parse_product(prod)
                         
                     if page >= data.get("TotalPages", 1):
@@ -78,5 +85,9 @@ class BookworldZambiaSpider(BaseSpider):
         self.save_item(book)
 
 if __name__ == "__main__":
-    spider = BookworldZambiaSpider(limit_pages=1)
-    spider.run()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    BookworldZambiaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

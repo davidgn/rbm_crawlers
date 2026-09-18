@@ -7,10 +7,11 @@ class UzumUzSpider(BaseSpider):
     """
     Spider for Uzum Market (Uzbekistan) using their GraphQL API.
     """
-    def __init__(self, limit_pages: int = 10):
+    def __init__(self, limit_pages: int = 10, limit_items: int | None = None):
         super().__init__(platform_name="Uzum", territory="Uzbekistan")
         self.api_url = "https://graphql.uzum.uz/"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True)
         self.limit_per_page = 48
 
@@ -20,7 +21,11 @@ class UzumUzSpider(BaseSpider):
         search_terms = ["Harry Potter", "Kitob", "O'zbekiston"]
         
         for term in search_terms:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             for page in range(0, self.limit_pages):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 offset = page * self.limit_per_page
                 self.logger.info(f"Searching for '{term}' page {page+1} (offset {offset})")
                 
@@ -79,6 +84,8 @@ class UzumUzSpider(BaseSpider):
                         break
                         
                     for item in items:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         card = item.get("catalogCard")
                         if card:
                             self._parse_item(card)
@@ -118,5 +125,9 @@ class UzumUzSpider(BaseSpider):
         self.save_item(item)
 
 if __name__ == "__main__":
-    spider = UzumUzSpider(limit_pages=1)
-    spider.run()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
+    args = parser.parse_args()
+    UzumUzSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

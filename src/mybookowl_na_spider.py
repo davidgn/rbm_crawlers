@@ -10,9 +10,10 @@ class MybookowlNaSpider(BaseSpider):
     """
     BASE_URL = "https://mybookowl.com"
 
-    def __init__(self, limit_pages: int = 10):
+    def __init__(self, limit_pages: int = 10, limit_items: int | None = None):
         super().__init__(platform_name="My Book Owl Namibia", territory="Namibia")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -27,6 +28,8 @@ class MybookowlNaSpider(BaseSpider):
         seen_ids = set()
 
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             api_url = f"{self.BASE_URL}/wp-json/wc/store/products?page={page}&per_page=20"
             self.logger.info(f"Fetching page {page}: {api_url}")
             try:
@@ -39,6 +42,8 @@ class MybookowlNaSpider(BaseSpider):
                     break
 
                 for p in products:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     p_id = p.get("id")
                     if p_id in seen_ids:
                         continue
@@ -96,5 +101,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="My Book Owl Namibia spider")
     parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    MybookowlNaSpider(limit_pages=args.limit_pages).run()
+    MybookowlNaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

@@ -8,11 +8,12 @@ from models import BookListing
 from isbn_utils import extract_isbn
 
 class AntqCartSpider(BaseSpider):
-    def __init__(self, limit_pages=10):
+    def __init__(self, limit_pages: int = 10, limit_items: int | None = None):
         super().__init__(platform_name="AntqCart", territory="India")
         self.base_url = "https://antqcart.com"
         self.shop_url = f"{self.base_url}/shop/"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, 
             follow_redirects=True,
@@ -39,6 +40,8 @@ class AntqCartSpider(BaseSpider):
         self.logger.info(f"Starting AntqCart crawler. Limit: {self.limit_pages} pages.")
         
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = self.shop_url if page == 1 else f"{self.shop_url}page/{page}/"
             try:
                 response = self._get_robust_response(url)
@@ -65,6 +68,8 @@ class AntqCartSpider(BaseSpider):
             return False
             
         for title_item in title_items:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             try:
                 # Structure: <li class="title"><h2><a href="...">Title</a></h2></li>
                 link_tag = title_item.find("a")
@@ -123,7 +128,8 @@ class AntqCartSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AntqCart India crawler")
-    parser.add_argument("--limit", type=int, default=10, help="Max pages to fetch")
+    parser.add_argument("--limit-pages", type=int, default=10, help="Max pages to fetch")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = AntqCartSpider(limit_pages=args.limit)
+    spider = AntqCartSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

@@ -4,9 +4,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class NearBookSpider(BaseSpider):
-    def __init__(self, limit_pages=100):
+    def __init__(self, limit_pages: int = 100, limit_items: int | None = None):
         super().__init__(platform_name="NearBook", territory="India")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True)
         self.base_url = "https://api.nearbook.app/api"
 
@@ -14,6 +15,8 @@ class NearBookSpider(BaseSpider):
         self.logger.info(f"Starting NearBook Harvest (Cache-First). Limit: {self.limit_pages} pages.")
         
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             list_url = f"{self.base_url}/latestBooks?page={page}"
             self.logger.info(f"Fetching page {page}: {list_url}")
             
@@ -30,6 +33,8 @@ class NearBookSpider(BaseSpider):
 
             books = data["books"]
             for book in books:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 book_id = book.get("bookId")
                 if not book_id: continue
                 
@@ -90,6 +95,7 @@ class NearBookSpider(BaseSpider):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=3)
+    parser.add_argument("--limit-pages", type=int, default=3)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    NearBookSpider(limit_pages=args.limit).run()
+    NearBookSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

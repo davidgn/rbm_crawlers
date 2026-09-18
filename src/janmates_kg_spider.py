@@ -7,13 +7,14 @@ class JanmatesKgSpider(BaseSpider):
     M-Bag origin: Kyrgyzstan ($41.94).
     """
 
-    def __init__(self, limit_pages: int = 5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(
             platform_name="Janmates_KG",
             territory="Kyrgyzstan"
         )
         self.price_currency = "KGS"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.base_url = "https://janmates.com"
 
     def run(self):
@@ -35,6 +36,8 @@ class JanmatesKgSpider(BaseSpider):
                 break
                 
             for product in products:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 title = product.get("title", "")
                 prod_url = product.get("url", "")
                 if prod_url.startswith("/"):
@@ -71,7 +74,8 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Janmates KG spider")
     parser.add_argument("--limit-pages", type=int, default=1)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
     
-    spider = JanmatesKgSpider(limit_pages=args.limit_pages)
+    spider = JanmatesKgSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

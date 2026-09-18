@@ -21,9 +21,10 @@ class BelknigaBySpider(BaseSpider):
         "/catalog/luchshie-predlojenia-beloriskih-izdatilstv/hudojistvennia-literatura/",
     ]
 
-    def __init__(self, limit_pages: int = 15):
+    def __init__(self, limit_pages: int = 15, limit_items: int | None = None):
         super().__init__(platform_name="Belkniga", territory="Belarus")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -39,6 +40,8 @@ class BelknigaBySpider(BaseSpider):
         seen_urls = set()
 
         for cat_path in self.CATEGORIES[:self.limit_pages]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             cat_url = f"{self.BASE_URL}{cat_path}"
             self.logger.info(f"Fetching category: {cat_url}")
             try:
@@ -57,6 +60,8 @@ class BelknigaBySpider(BaseSpider):
                         product_links.add(f"{self.BASE_URL}{href if href.endswith('/') else href + '/'}")
 
                 for item_url in list(product_links)[:10]:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     if item_url in seen_urls:
                         continue
                     seen_urls.add(item_url)
@@ -119,5 +124,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Belkniga Belarus bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=3)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BelknigaBySpider(limit_pages=args.limit_pages).run()
+    BelknigaBySpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

@@ -20,9 +20,10 @@ class LdbCiSpider(BaseSpider):
         "/categorie/developpement-personnel/",
     ]
 
-    def __init__(self, limit_pages: int = 10):
+    def __init__(self, limit_pages: int = 10, limit_items: int | None = None):
         super().__init__(platform_name="Librairie de Bingerville", territory="Cote d'Ivoire")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -37,6 +38,8 @@ class LdbCiSpider(BaseSpider):
         seen_urls = set()
 
         for cat_path in self.CATEGORIES[:self.limit_pages]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             cat_url = f"{self.BASE_URL}{cat_path}" if cat_path.startswith("/") else cat_path
             self.logger.info(f"Fetching category: {cat_url}")
             try:
@@ -57,6 +60,8 @@ class LdbCiSpider(BaseSpider):
                             book_links.add(f"{self.BASE_URL}{clean_href if clean_href.startswith('/') else '/' + clean_href}")
 
                 for item_url in list(book_links)[:15]:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     if item_url in seen_urls:
                         continue
                     seen_urls.add(item_url)
@@ -130,5 +135,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Librairie de Bingerville spider")
     parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    LdbCiSpider(limit_pages=args.limit_pages).run()
+    LdbCiSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

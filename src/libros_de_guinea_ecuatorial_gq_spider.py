@@ -21,9 +21,10 @@ class LibrosDeGuineaEcuatorialGqSpider(BaseSpider):
         "planos deacción estratégica"
     }
 
-    def __init__(self, limit_pages: int = 5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="Libros de Guinea Ecuatorial", territory="Equatorial Guinea")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.headers = {
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -43,6 +44,8 @@ class LibrosDeGuineaEcuatorialGqSpider(BaseSpider):
         seen_titles = set()
 
         for url in urls:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             try:
                 self.logger.info(f"Fetching {url}")
                 resp = requests.get(url, headers=self.headers, timeout=20)
@@ -53,6 +56,8 @@ class LibrosDeGuineaEcuatorialGqSpider(BaseSpider):
                 headings = soup.find_all(["h1", "h2", "h3", "h4", "h5"])
 
                 for h in headings:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     title = h.get_text(strip=True)
                     if not title or len(title) < 4:
                         continue
@@ -86,5 +91,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Libros de Guinea Ecuatorial bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    LibrosDeGuineaEcuatorialGqSpider(limit_pages=args.limit_pages).run()
+    LibrosDeGuineaEcuatorialGqSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

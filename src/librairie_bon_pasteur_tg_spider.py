@@ -12,9 +12,10 @@ class LibrairieBonPasteurTgSpider(BaseSpider):
     """
     BASE_URL = "https://librairiebonpasteur.tg"
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(platform_name="Librairie Bon Pasteur", territory="Togo")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -31,6 +32,8 @@ class LibrairieBonPasteurTgSpider(BaseSpider):
         seen_book_urls = set()
 
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             page_url = f"{self.BASE_URL}/boutique?page={page}"
             self.logger.info(f"Fetching catalog page {page}: {page_url}")
             try:
@@ -58,6 +61,8 @@ class LibrairieBonPasteurTgSpider(BaseSpider):
                     break
 
                 for book_url in page_new_urls:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         self._parse_book_page(book_url)
                     except Exception as e:
@@ -109,5 +114,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Librairie Bon Pasteur Togo bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    LibrairieBonPasteurTgSpider(limit_pages=args.limit_pages).run()
+    LibrairieBonPasteurTgSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

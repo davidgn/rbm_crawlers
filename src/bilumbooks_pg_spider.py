@@ -21,9 +21,10 @@ class BilumbooksPgSpider(BaseSpider):
         "picture-dictionary/",
     ]
 
-    def __init__(self, limit_pages: int = 15):
+    def __init__(self, limit_pages: int = 15, limit_items: int | None = None):
         super().__init__(platform_name="Bilum Books", territory="Papua New Guinea")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -39,6 +40,8 @@ class BilumbooksPgSpider(BaseSpider):
         seen_titles = set()
 
         for page in self.CATALOG_PAGES[:self.limit_pages]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             page_url = f"{self.BASE_URL}/{page}"
             self.logger.info(f"Fetching page {page}: {page_url}")
             try:
@@ -51,6 +54,8 @@ class BilumbooksPgSpider(BaseSpider):
                 headers = soup.find_all(["h1", "h2", "h3", "h4", "h5", "strong"])
 
                 for h in headers:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     title = h.get_text(strip=True)
                     if not title or len(title) < 5 or len(title) > 150:
                         continue
@@ -86,5 +91,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Bilum Books Papua New Guinea bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BilumbooksPgSpider(limit_pages=args.limit_pages).run()
+    BilumbooksPgSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

@@ -5,11 +5,12 @@ from base_spider import BaseSpider
 from models import BookListing
 
 class PustakMarketSpider(BaseSpider):
-    def __init__(self, limit_pages=5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="PustakMarket", territory="India")
         self.base_url = "https://pustakmarket.com"
         self.catalog_url = f"{self.base_url}/book/e-book/all"
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0, 
             follow_redirects=True,
@@ -25,6 +26,8 @@ class PustakMarketSpider(BaseSpider):
         # For now we'll start with the main all-books page.
         # Note: If they use standard page params, we could add ?page=N
         for page in range(1, self.limit_pages + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             url = f"{self.catalog_url}/{page}" if page > 1 else self.catalog_url
             try:
                 response = self.client.get(url)
@@ -50,6 +53,8 @@ class PustakMarketSpider(BaseSpider):
             return False
             
         for product in products:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             try:
                 content = product.find("div", class_="product-content")
                 if not content:
@@ -85,7 +90,8 @@ class PustakMarketSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="PustakMarket India crawler")
-    parser.add_argument("--limit", type=int, default=5, help="Max pages to fetch")
+    parser.add_argument("--limit-pages", type=int, default=5, help="Max pages to fetch")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    spider = PustakMarketSpider(limit_pages=args.limit)
+    spider = PustakMarketSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

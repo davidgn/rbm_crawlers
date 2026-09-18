@@ -18,9 +18,10 @@ class BookHiveMwSpider(BaseSpider):
         "Md7lo_-WMr_XWddtJJcqgMqRFBqqjNvO8jWHjmBnWvs"
     )
 
-    def __init__(self, limit_pages: int = 100):
+    def __init__(self, limit_pages: int = 100, limit_items: int | None = None):
         super().__init__(platform_name="BookHive_MW", territory="Malawi")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.headers = {
             "apikey": self.ANON_KEY,
             "Authorization": f"Bearer {self.ANON_KEY}",
@@ -31,6 +32,8 @@ class BookHiveMwSpider(BaseSpider):
         self.logger.info(f"Starting BookHive MW Supabase crawler. Limit: {self.limit_pages} pages.")
         page_size = 20
         for page in range(self.limit_pages):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             offset = page * page_size
             url = (
                 f"{self.SUPABASE_URL}/rest/v1/books"
@@ -49,6 +52,8 @@ class BookHiveMwSpider(BaseSpider):
                 break
 
             for row in data:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 title = row.get("title")
                 if not title:
                     continue
@@ -76,5 +81,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="BookHive Malawi Supabase spider")
     parser.add_argument("--limit-pages", type=int, default=100)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BookHiveMwSpider(limit_pages=args.limit_pages).run()
+    BookHiveMwSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

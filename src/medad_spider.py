@@ -6,9 +6,10 @@ from models import BookListing
 from base_spider import BaseSpider
 
 class MedadSpider(BaseSpider):
-    def __init__(self, limit_pages=50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(platform_name="MedadBookshop", territory="Egypt")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0, follow_redirects=True)
         # Main Categories on Medad
         self.categories = [
@@ -24,8 +25,12 @@ class MedadSpider(BaseSpider):
         self.logger.info(f"Starting Medad Harvest (Cache-First). Limit: {self.limit_pages} pages per category.")
         
         for cat in self.categories:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             self.logger.info(f"=== Harvesting Category: {cat['name']} ===")
             for page in range(1, self.limit_pages + 1):
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 # Magento 2 pagination: ?p=X
                 url = f"{cat['url']}?p={page}"
                 self.logger.info(f"Fetching page {page}: {url}")
@@ -46,6 +51,8 @@ class MedadSpider(BaseSpider):
                     break
 
                 for link in links:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         self._harvest_item(link['href'], cat['name'])
                     except Exception as e:
@@ -80,6 +87,7 @@ class MedadSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=10)
+    parser.add_argument("--limit-pages", type=int, default=10)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    MedadSpider(limit_pages=args.limit).run()
+    MedadSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

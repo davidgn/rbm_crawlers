@@ -13,9 +13,10 @@ class SlwsSlSpider(BaseSpider):
     START_ID = 1001
     END_ID = 1085
 
-    def __init__(self, limit_pages: int = 50):
+    def __init__(self, limit_pages: int = 50, limit_items: int | None = None):
         super().__init__(platform_name="Sierra Leone Writers Series", territory="Sierra Leone")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -30,6 +31,8 @@ class SlwsSlSpider(BaseSpider):
         
         count = 0
         for item_id in range(self.START_ID, self.END_ID + 1):
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             if count >= self.limit_pages:
                 break
 
@@ -70,5 +73,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Sierra Leone Writers Series bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=20)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    SlwsSlSpider(limit_pages=args.limit_pages).run()
+    SlwsSlSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

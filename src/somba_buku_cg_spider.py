@@ -11,9 +11,10 @@ class SombaBukuCgSpider(BaseSpider):
     """
     BASE_URL = "https://www.sombabuku.com"
 
-    def __init__(self, limit_pages: int = 5):
+    def __init__(self, limit_pages: int = 5, limit_items: int | None = None):
         super().__init__(platform_name="Somba Buku", territory="Congo")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.headers = {
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -33,6 +34,8 @@ class SombaBukuCgSpider(BaseSpider):
         seen_ids = set()
 
         for url in urls:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             try:
                 self.logger.info(f"Fetching {url}")
                 resp = requests.get(url, headers=self.headers, timeout=20)
@@ -46,6 +49,8 @@ class SombaBukuCgSpider(BaseSpider):
                 )
 
                 for book_id, title, author, price in matches:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     if book_id in seen_ids:
                         continue
                     seen_ids.add(book_id)
@@ -77,5 +82,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Somba Buku Congo bookstore spider")
     parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    SombaBukuCgSpider(limit_pages=args.limit_pages).run()
+    SombaBukuCgSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

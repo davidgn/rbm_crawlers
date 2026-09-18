@@ -16,9 +16,10 @@ class BoibazarBdSpider(BaseSpider):
         "/publisher",
     ]
 
-    def __init__(self, limit_pages: int = 15):
+    def __init__(self, limit_pages: int = 15, limit_items: int | None = None):
         super().__init__(platform_name="BoiBazar Bangladesh", territory="Bangladesh")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": (
@@ -37,6 +38,8 @@ class BoibazarBdSpider(BaseSpider):
         seen_urls = set()
 
         for cat_path in self.CATEGORIES[:self.limit_pages]:
+            if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                break
             cat_url = f"{self.BASE_URL}{cat_path}" if cat_path.startswith('/') else cat_path
             self.logger.info(f"Fetching page: {cat_url}")
             try:
@@ -79,6 +82,8 @@ class BoibazarBdSpider(BaseSpider):
                         pass
 
                 for book_url in list(book_links)[:20]:
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     if book_url in seen_urls:
                         continue
                     seen_urls.add(book_url)
@@ -154,5 +159,6 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="BoiBazar Bangladesh spider")
     parser.add_argument("--limit-pages", type=int, default=2)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BoibazarBdSpider(limit_pages=args.limit_pages).run()
+    BoibazarBdSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

@@ -42,9 +42,10 @@ class BookLaneSpider(BaseSpider):
     catalogue; deduplicates by book UUID.
     """
 
-    def __init__(self, limit_pages=200):
+    def __init__(self, limit_pages: int = 200, limit_items: int | None = None):
         super().__init__(platform_name="BookLane", territory="India")
         self.limit_pages = limit_pages
+        self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0,
             follow_redirects=True,
@@ -86,8 +87,12 @@ class BookLaneSpider(BaseSpider):
 
         try:
             for query in SEARCH_QUERIES:
+                if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                    break
                 self.logger.info("=== Query: %r ===", query)
                 for page in range(1, self.limit_pages + 1):
+                    if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                        break
                     try:
                         resp = self.client.get(SEARCH_URL, params={"q": query, "page": page})
                     except Exception as e:
@@ -115,6 +120,8 @@ class BookLaneSpider(BaseSpider):
 
                     new_count = 0
                     for book in books:
+                        if self.limit_items is not None and self.items_scraped >= self.limit_items:
+                            break
                         book_id = book.get("id", "")
                         if book_id in seen:
                             continue
@@ -195,7 +202,8 @@ def _book_to_html(book, title, price, condition, author, city, state,
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="BookLane India API spider")
-    parser.add_argument("--limit", type=int, default=200,
+    parser.add_argument("--limit-pages", type=int, default=200,
                         help="Max pages per query letter (default: 200)")
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
-    BookLaneSpider(limit_pages=args.limit).run()
+    BookLaneSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()
