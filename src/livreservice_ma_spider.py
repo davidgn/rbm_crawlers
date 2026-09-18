@@ -21,8 +21,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="Livre Service Morocco Shopify Spider")
     parser.add_argument("--query", type=str, default="roman")
+    parser.add_argument("--limit-pages", type=int, default=5)
     parser.add_argument("--limit-items", type=int, default=5)
     args, _ = parser.parse_known_args()
     
-    spider = LivreserviceMaSpider(limit_items=args.limit_items)
+    spider = LivreserviceMaSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run(search_term=args.query)

@@ -19,6 +19,7 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit-pages", type=int, default=5)
+    parser.add_argument("--limit-items", type=int, default=None)
     args = parser.parse_args()
 
-    KitabayInSpider(limit_pages=args.limit_pages).run()
+    KitabayInSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run()

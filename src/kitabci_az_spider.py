@@ -22,6 +22,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description="Kitabci.az Azerbaijan Shopify Spider")
     parser.add_argument("--query", type=str, default="kitab")
+    parser.add_argument("--limit-pages", type=int, default=5)
     parser.add_argument("--limit-items", type=int, default=5)
     args, _ = parser.parse_known_args()
-    KitabciAzSpider(limit_items=args.limit_items).run(search_term=args.query)
+    KitabciAzSpider(limit_pages=args.limit_pages, limit_items=args.limit_items).run(search_term=args.query)
