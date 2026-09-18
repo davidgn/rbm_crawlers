@@ -16,8 +16,9 @@ class AskitabSpider(BaseSpider):
     API_KEY = "AIzaSyB7YHobeoMhb24Lcy7CWmNT3lSs8988gYs"
     BASE_URL = f"https://firestore.googleapis.com/v1/projects/{PROJECT_ID}/databases/(default)/documents"
 
-    def __init__(self, limit_items=100):
+    def __init__(self, limit_pages=5, limit_items=100):
         super().__init__(platform_name="Askitab", territory="India")
+        self.limit_pages = limit_pages
         self.limit_items = limit_items
         self.client = httpx.Client(timeout=30.0)
 
@@ -119,7 +120,8 @@ class AskitabSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Askitab India Firestore crawler")
-    parser.add_argument("--limit", type=int, default=100, help="Max items to fetch")
+    parser.add_argument("--limit-pages", type=int, default=5, help="Unused (no pagination), kept for CLI consistency")
+    parser.add_argument("--limit-items", type=int, default=100, help="Max items to fetch")
     args = parser.parse_args()
-    spider = AskitabSpider(limit_items=args.limit)
+    spider = AskitabSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()

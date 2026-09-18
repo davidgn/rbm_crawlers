@@ -15,8 +15,9 @@ class BookBazarSpider(BaseSpider):
     ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRzb2h0c2RwY2JhdmVjb3p6Z3llIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyOTU5NjgsImV4cCI6MjA4MTg3MTk2OH0.mz6-6e3pkOg8OQ9E-9JIUXJjcSIVCLVbLepwLhG2SPQ"
     API_URL = f"{SUPABASE_URL}/rest/v1/books"
 
-    def __init__(self, limit_items=100):
+    def __init__(self, limit_pages=5, limit_items=100):
         super().__init__(platform_name="BookBazar", territory="India")
+        self.limit_pages = limit_pages
         self.limit_items = limit_items
         self.client = httpx.Client(
             timeout=30.0,
@@ -80,7 +81,8 @@ class BookBazarSpider(BaseSpider):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="BookBazar India Supabase crawler")
-    parser.add_argument("--limit", type=int, default=100, help="Max items to fetch")
+    parser.add_argument("--limit-pages", type=int, default=5, help="Unused (no pagination), kept for CLI consistency")
+    parser.add_argument("--limit-items", type=int, default=100, help="Max items to fetch")
     args = parser.parse_args()
-    spider = BookBazarSpider(limit_items=args.limit)
+    spider = BookBazarSpider(limit_pages=args.limit_pages, limit_items=args.limit_items)
     spider.run()
